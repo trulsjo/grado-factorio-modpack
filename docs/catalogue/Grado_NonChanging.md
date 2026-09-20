@@ -338,9 +338,18 @@ In dependency-list order.
 | **Owner** | `somethingtohide` |
 | **Read on** | 2026-09-20 |
 
-**Alternatives considered.** It names `Edit-Blueprints` and `Blueprint Designer Lab` as its predecessors, so that comparison is made upstream.
+**Alternatives considered.** **[`EditorExtensions`](https://mods.factorio.com/mod/EditorExtensions) by `raiguard`** — `2.6.1`, `factorio_version` **2.1**, 2026-06-26, 139,996 downloads. Its own summary says it "adds a separate editor lab that can be used to design blueprints separately from your main factory", which is this mod's whole job. **And it is already in `Grado_ChangingBase`**, one layer down, so every player of ChangingBase or anything above it already has both. It names `Edit-Blueprints` and `Blueprint Designer Lab` as its own predecessors.
 
-**Recommendation: keep**, and flag it: it adds surfaces to the save, which is the heaviest save-state footprint of any member here. Nothing it does reaches the real factory, but a save carrying its surfaces is not the same save without it.
+**They are not rivals, though.** `blueprint-sandboxes` declares `? EditorExtensions >= 2.3.0` — an optional dependency. The author knows about it and integrates with it rather than competing, so having both is a supported configuration and not a conflict.
+
+**Recommendation: reconsider:** which layer the sandbox feature belongs in. Three things point the same way and one points back:
+
+- `EditorExtensions` is in `Grado_ChangingBase`, the layer whose promise *permits* save changes. This mod creates surfaces, which is the heaviest save-state footprint of any member of `Grado_NonChanging` — the layer whose promise forbids exactly that. The feature is arguably sitting one layer too low.
+- Everyone from ChangingBase upward already gets `EditorExtensions`, so for four of the five packs this member is redundant capability.
+- It is the only member of this pack that duplicates a member of another pack in *function*. `bobinserters` duplicates by *name* across two packs, which is #3's; this is the same problem in a shape the catalogue format did not anticipate.
+- **Against all that:** a player using `Grado_NonChanging` alone gets no sandbox at all if this is dropped, and that is the pack with the most users. Dropping it to remove a redundancy that only exists in the packs above it would take the feature away from the one pack where it is not redundant.
+
+Which layer it belongs in is pack membership, so it is #7's and #8's jointly. Recorded, not settled.
 
 ### `blueprint_flip_and_turn`
 
@@ -615,6 +624,7 @@ pack, so it was checked rather than taken on faith.
 | `Bottleneck` | 2024-12-03 | `BottleneckLite`, 227,907 dl | 2026-08-17 | **replace** — current against a 2024 mod, and claims zero runtime overhead |
 | `Todo-List` | 2026-06-28 | `TaskList`, 86,183 dl | 2026-07-02 | **preference** — both current; sync-in-multiplayer against deliberately simpler |
 | `even-distribution` | 2026-06-24 | `EvenDistributionLite`, 52,179 dl | 2026-07-02 | **keep the incumbent** — both current, and only the incumbent has the Inventory Cleanup hotkey |
+| `blueprint-sandboxes` | 2026-07-11 | `EditorExtensions`, 139,996 dl | 2026-06-26 | **cross-layer** — not a swap; `EditorExtensions` is already in `Grado_ChangingBase` and this mod optionally depends on it |
 
 **Two look like counterparts and are not.** Worth recording so nobody re-runs the search:
 
@@ -630,6 +640,33 @@ all — `CursorEnhancements`, `StatsGui`, `QuickbarTemplates`, `MouseOverConstru
 `BetterAlertArrows`, `FluidMustFlow`, `ChangeInserterDropLane`. #2 asks about the mods already in the
 pack and the ones dropped from it, so none of these was assessed. Adding a mod that was never in the
 1.1 pack is a different question and a bigger one.
+
+## The pack cannot load on the Factorio version it declares
+
+Found while checking `EditorExtensions`, whose `info.json` requires `base >= 2.1.0`. That prompted
+the same check across this pack, and the result is not a nuance.
+
+**`Grado_NonChanging` declares `factorio_version: 2.0` and `base >= 2.0.0`. Ten of its 29 members
+refuse to load below 2.1, and six of those require `base >= 2.1.7`:**
+
+| member | requires |
+|---|---|
+| `BlueprintTools`, `Tapeline`, `blueprint-sandboxes`, `even-distribution`, `even-pickier-dollies`, `helmod` | `base >= 2.1.7` |
+| `FNEI`, `automatic-station-painter` | `base >= 2.1.0` |
+| `DiscoScience`, `Fill4Me` | `base >= 2.1` |
+
+A player on Factorio 2.0.x cannot satisfy those dependencies, so the pack's declared floor of 2.0.0
+is not a floor it can honour. **The effective requirement is 2.1.7**, and `base >= 2.0.0` advertises
+something the pack cannot deliver.
+
+`docs/porting-notes.md` carries this as an open question, worded as *"Confirm a `2.0` pack still
+loads them"* and marked unverified. It is no longer unverified for this pack: it does not, and the
+reason is the members' own `base` requirements rather than anything about the `factorio_version`
+field itself. The two are separate mechanisms and the dependency floor is the one that bites first.
+
+This is one of the decisions `CLAUDE.md` lists as still open, so it is reported rather than fixed.
+The same check is worth running on the other four packs before any of them is published — #3 to #6
+each own their own.
 
 ## What was not checked
 

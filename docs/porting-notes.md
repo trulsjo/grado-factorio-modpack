@@ -1,8 +1,13 @@
 # Porting notes
 
 Measured against the mod portal API on **2026-09-20**. Every mod here was
-checked by name; a mod listed as dropped has no 2.0 release under that name and no
-replacement was found.
+checked **by name only**, which is weaker than it sounds: a mod listed as dropped has no 2.0 release
+*under that name*, and no replacement was found *by that search*.
+
+**That search was not good enough, and one drop has already fallen to a better one.** Searching
+titles and summaries rather than names turns up `kry-picker-complete`, a 2.1 modpack that
+reassembles the Picker family; see `docs/mod-catalogue.md`. Treat every "dropped" line below as
+unconfirmed until a survey has re-checked it that way.
 
 ## Grado_NonChanging
 

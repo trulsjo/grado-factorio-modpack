@@ -1,0 +1,21 @@
+#!/bin/sh
+# Checks the message against the format CLAUDE.md lays down. The rules and the reasons live in
+# scripts/commit-check.ps1; this is only the wiring, so git has something without an extension to
+# run and the logic stays where the rest of this repository's logic is.
+#
+# INSTALL, once per clone, because git does not track .git/hooks:
+#
+#     git config core.hooksPath .githooks
+#
+# The message file survives a rejection, so `git commit -e -F .git/COMMIT_EDITMSG` reopens what you
+# typed rather than making you write it again.
+#
+# pwsh is what every other script here needs, so a clone that can run the gates can run this. If it
+# is genuinely missing, say so and let the commit through rather than blocking work on a machine
+# that was never going to run the gates either.
+if ! command -v pwsh >/dev/null 2>&1; then
+    echo "commit-msg: pwsh not found, so the message format was NOT checked." >&2
+    exit 0
+fi
+
+exec pwsh -NoProfile -File "$(git rev-parse --show-toplevel)/scripts/commit-check.ps1" "$1"

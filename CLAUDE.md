@@ -118,20 +118,48 @@ missing.
 ## Commit messages
 
 [Conventional Commits](https://www.conventionalcommits.org/) with a [gitmoji](https://gitmoji.dev/)
-prefix, same as the sibling `realistic-fusion-refreshed` repo:
+prefix, same as the sibling `realistic-fusion-refreshed` repo. One format, no exceptions:
 
 ```
 <emoji> <type>(<scope>): <subject>
+
+<body>
+
+<footer>
 ```
 
-- Imperative mood, lowercase after the colon, no trailing period, whole line ≤ 72 characters.
-- `<scope>` is the pack (`nonchanging`, `changingbase`, `abc`, `abcx`, `abcs`) or the area
-  (`docs`, `repo`).
-- Types: `feat` ✨, `fix` 🐛, `docs` 📝, `build` 📦 (dependency changes — the common one here),
-  `chore` 🔧, `refactor` ♻️, `revert` ⏪️. 🎉 to begin, 🔥 to remove.
-- Body explains **why**, not what the diff shows. Wrap at 72.
+**Subject line**
 
-The first commit `3ab917c` predates this section and does not follow it. History is left alone.
+- Imperative mood, lowercase after the colon, no trailing period, whole line ≤ 72 characters.
+- `<scope>` is optional but preferred. Use the pack (`nonchanging`, `changingbase`, `abc`, `abcx`,
+  `abcs`) or the area (`docs`, `repo`).
+- The emoji is the *rendered* character, not the `:shortcode:`.
+
+**Types, and the emoji that goes with each**
+
+| Type | Emoji | Use for |
+|---|---|---|
+| `feat` | ✨ | a new capability |
+| `fix` | 🐛 | a bug fix |
+| `docs` | 📝 | documentation only |
+| `refactor` | ♻️ | restructuring with no behaviour change |
+| `perf` | ⚡️ | performance |
+| `test` | ✅ | tests |
+| `build` | 📦 | packaging, `info.json`, dependencies — the common one here |
+| `chore` | 🔧 | tooling and config |
+| `style` | 🎨 | formatting and code structure only |
+| `revert` | ⏪️ | reverting a previous commit |
+
+A few situational ones worth knowing: 🎉 to begin a project, 🚚 to move or rename files, 🔥 to remove
+code or files, 🌐 for localisation, 💄 for icons and other visual assets, 🚧 for work in progress.
+
+**Body** — explain *why*, not what the diff already shows. Wrap at 72. Cite a mod by its portal name
+and pin the version or date behind a claim, because a portal reading goes stale.
+
+**Breaking changes** — put `!` before the colon *and* a `BREAKING CHANGE:` footer explaining the
+migration. Here that means a dependency change an existing save cannot survive: adding or removing a
+member mod of `Grado_ChangingBase` or anything below it in the chain. `Grado_NonChanging` is the one
+pack that by definition cannot trigger this. It breaks silently and players find out, not the build.
 
 Example:
 
@@ -141,6 +169,28 @@ Example:
 The 1.1 miniloader has no 2.0 release. miniloader-redux (hgschmie, 22,472
 downloads) is the maintained successor. Not yet loaded in game.
 ```
+
+**A hook checks all of this, and it is not installed by default.** `.githooks/commit-msg` runs
+`scripts/commit-check.ps1` on the message before the commit is written, and git does not track
+`.git/hooks`, so every clone has to opt in once:
+
+```
+git config core.hooksPath .githooks
+```
+
+It checks the emoji-and-type pairing, the case after the colon, the trailing period, both 72-character
+limits, the blank line, and that a `!` carries a `BREAKING CHANGE:` footer. Imperative mood is not
+checkable and is not checked. Trailers like `Co-Authored-By:` are exempt, and so is a line whose
+longest word is itself over 72 — a bare URL cannot be wrapped, and failing it would only teach
+people to ignore the gate.
+
+Both files are copied from `realistic-fusion-refreshed`, where the rule was measured to have rotted.
+It rotted here too: on 2026-09-20 all three commits in this repo failed, on 14 body lines over 72 and
+one subject with no gitmoji at all — including a commit written minutes after the rule was recorded.
+History is left alone; the hook stops it growing. `-Range origin/main..HEAD` checks a branch before a
+push, and `-SelfTest` proves the checker can still fail.
+
+The first commit `3ab917c` predates this section and does not follow it.
 
 ## Agent skills
 

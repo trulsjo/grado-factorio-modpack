@@ -69,8 +69,11 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
 - Version `0.1.0` starts a fresh line rather than continuing the 1.1 `0.0.x` numbering.
 - `alien-biomes-hr-terrain` was dropped **assuming** 2.0 `alien-biomes` absorbed the HR terrain.
   Not checked.
-- Sixteen mods are dropped with no replacement found, including seven of the nine Picker mods,
-  `angelsexploration`, `angelsindustries` and `Clowns-Science`.
+- Twenty mods are dropped with no replacement found, including seven of the nine Picker mods,
+  `angelsexploration`, `angelsindustries` and `Clowns-Science`. (Sixteen is the number of
+  *replacements*; this line carried it by mistake until 2026-09-20.)
+- Two dependencies the 1.1 `Grado_ChangingBase` declared optional, `? reverse-factory` and
+  `? Squeak Through`, are mandatory in the 2.0 pack. Nobody decided that.
 - `Grado_ABCS` uses the underscore to match the existing convention; Truls wrote `GradoABCS` once.
 
 ## Factorio specifics

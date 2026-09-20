@@ -89,6 +89,26 @@ Kept 1, replaced 1, dropped 0.
 
 Kept 1, replaced 0, dropped 0.
 
+## Verified against the portal, 2026-09-20
+
+The kept/replaced/dropped tables above were rebuilt from the published 1.1 entries under `ostogvin`
+and diffed against this repo, rather than trusted. Every 1.1 mod is accounted for; none vanished
+silently.
+
+| Pack (1.1 -> 2.0) | 1.1 members | kept | replaced | dropped |
+|---|---|---|---|---|
+| `Grado_NonChanging` `0.0.1` | 33 | 26 | 3 | 4 |
+| `Grado_ChangingBase` `0.0.2` | 29 | 16 | 7 | 6 |
+| `Grado_ABCX` `0.0.2` -> ABC + ABCX | 56 | 41 | 5 | 10 |
+
+Drops total **20**, replacements total **16**. `CLAUDE.md` claimed sixteen drops until this check;
+it had picked up the replacement count.
+
+Counting note: `Grado_ChangingBase` has two 1.1 releases, and `0.0.2` swapped `reverse-factory` for
+`crafting_combinator`. Its dependency list holds 31 entries but only 29 members, because
+`? reverse-factory` and `? Squeak Through` are optional. Counting those two as members is what
+produced the "31" in the brain page.
+
 ## Open questions
 
 - **`alien-biomes-hr-terrain` was dropped on the assumption that 2.0 `alien-biomes` absorbed the

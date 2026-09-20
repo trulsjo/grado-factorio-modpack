@@ -206,6 +206,12 @@ GitHub Issues on `trulsjo/grado-factorio-modpack`, via the `gh` CLI. See
 
 The five canonical roles, unchanged. See `docs/agents/triage-labels.md`.
 
+### Code review
+
+Two conventions on top of the `/code-review` plugin: a filtered finding is still reported, and the
+prose is reviewed as carefully as the code, because here there is almost none. **Load
+`docs/agents/code-review.md` before running a review.**
+
 ### Domain docs
 
 Single-context: `CONTEXT.md` and `docs/adr/` at the repo root. See

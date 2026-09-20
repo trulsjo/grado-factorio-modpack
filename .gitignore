@@ -1,3 +1,6 @@
 # Built pack zips
 /dist/
 *.zip
+
+# Personal, never committed
+CLAUDE.local.md

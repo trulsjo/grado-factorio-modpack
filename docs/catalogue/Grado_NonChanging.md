@@ -38,9 +38,9 @@ In dependency-list order.
 | **Owner** | `yeahtoast` |
 | **Read on** | 2026-09-20 |
 
-**Alternatives considered.** None needed; current on 2.1.
+**Alternatives considered.** **[`TaskList`](https://mods.factorio.com/mod/TaskList) by `raiguard`** — `0.6.0`, `factorio_version` **2.1**, 2026-07-02, 86,183 downloads, described as "simple and unobtrusive". Both are current and on 2.1, four days apart. This is a scope preference, not a maintenance question: the incumbent syncs between players in multiplayer and is three times more used; the alternative is deliberately smaller.
 
-**Recommendation: keep.** It writes entity colour, which is save state, but only for trains and only cosmetically.
+**Recommendation: keep**, unless a simpler interface is preferred over multiplayer sync. A genuine preference call with no wrong answer, which is why it is not resolved here. It writes entity colour, which is save state, but only for trains and only cosmetically.
 
 ### `BlueprintTools`
 
@@ -68,9 +68,9 @@ In dependency-list order.
 | **Owner** | `trold` |
 | **Read on** | 2026-09-20 |
 
-**Alternatives considered.** `BottleneckLite` exists and is what `kry-picker-complete` bundles instead. Not compared feature by feature here; the two are known to overlap and only one is wanted.
+**Alternatives considered.** **[`BottleneckLite`](https://mods.factorio.com/mod/BottleneckLite) by `raiguard`** — `1.4.1`, `factorio_version` **2.1**, 2026-08-17, 227,907 downloads. Same job; its summary claims "zero runtime overhead and instant response to changes in status", against the original's per-tick polling. It is a month old where this one is from 2024-12-03, and it is on 2.1 where this one is on 2.0. The download gap (319,119 against 227,907) is legacy accumulation, not current preference: the original ran through 1.1 when the player base was larger.
 
-**Recommendation: keep**, and settle it against `BottleneckLite` only if `kry-picker-complete` is adopted — see *The Picker family*. Last touched 2024-12-03.
+**Recommendation: replace with `BottleneckLite`.** It is the better-maintained of the two on every reading taken, and the runtime-overhead claim matters in a pack meant to be unobtrusive. This is the strongest replace case in the pack.
 
 ### `Brighter-Lamps`
 
@@ -203,9 +203,9 @@ In dependency-list order.
 | **Owner** | `Theanderblast` |
 | **Read on** | 2026-09-20 |
 
-**Alternatives considered.** `helmod` overlaps on throughput maths but plans a factory rather than measuring a built one.
+**Alternatives considered.** **[`RateCalculator`](https://mods.factorio.com/mod/RateCalculator) by `raiguard`** — `3.4.1`, `factorio_version` **2.1**, 2026-07-14, **439,485 downloads**, with releases running 0.18 through 2.1. It is the same job, 2.7 times more used, and current where this one is from 2024-11-02. `helmod`, already in the pack, overlaps on throughput maths but plans a factory rather than measuring a built one, so it does not replace either.
 
-**Recommendation: keep**, with a caveat its own summary states: it does not handle Quality. Last touched 2024-11-02.
+**Recommendation: replace with `RateCalculator`.** The incumbent's own portal summary admits it "supports Space Age but NOT anything to do with Quality", and Quality is a 2.0 mechanic this pack's players will meet. A mod that is behind on a core mechanic, less used, and eighteen months staler than an actively maintained equivalent has a weak case.
 
 ### `PipeVisualizer-Updated`
 
@@ -368,9 +368,9 @@ In dependency-list order.
 | **Owner** | `321freddy` |
 | **Read on** | 2026-09-20 |
 
-**Alternatives considered.** `EvenDistributionLite` is what `kry-picker-complete` bundles instead; the two overlap. Not compared feature by feature.
+**Alternatives considered.** **[`EvenDistributionLite`](https://mods.factorio.com/mod/EvenDistributionLite) by `raiguard`** — `1.5.0`, `factorio_version` **2.1**, 2026-07-02, 52,179 downloads. **This is the one comparison where the incumbent wins on the evidence.** Both are current and both on 2.1, eight days apart. The Lite does ctrl+drag distribution only; this one adds the Inventory Cleanup hotkey that pushes spare inventory into nearby machines, which the Lite has no equivalent for. The download gap is ten to one in the incumbent's favour and both are live, so it is not legacy accumulation this time.
 
-**Recommendation: keep**, and settle against `EvenDistributionLite` only if `kry-picker-complete` is adopted. The most-downloaded member of this pack.
+**Recommendation: keep**, unless the Inventory Cleanup hotkey is unwanted — in which case the Lite is the smaller mod doing the part that is used. Recorded because Truls leans toward the Lite; the evidence here leans the other way and both readings are defensible.
 
 ### `even-pickier-dollies`
 
@@ -580,13 +580,56 @@ criterion is reported unmet rather than satisfied.
 #### On `kry-picker-complete`
 
 #1 found [`kry-picker-complete`](https://mods.factorio.com/mod/kry-picker-complete) and flagged it
-here. Having now measured what is missing, the case for adopting it is weaker than it looked: this
-pack already has the two members that matter, and the bundle would additionally pull in
-`BottleneckLite` and `EvenDistributionLite`, which duplicate `Bottleneck` and `even-distribution`
-already present, plus a pack-depends-on-pack relationship nobody has decided to take on.
+here. Having now measured what is missing, the case for adopting it to *solve the Picker question* is
+weak: this pack already has the two members that matter, so the bundle would be bought for one
+feature it may not even carry.
 
-**The bundle is not the way to solve the Picker question**, because the Picker question is nearly
-solved already. Assess it on its own merits if at all, and it is #7's call either way.
+**But one of the two objections #1 recorded has since weakened.** It said the bundle would duplicate
+`Bottleneck` and `even-distribution`. Both of those entries above now recommend or seriously consider
+moving to `BottleneckLite` and `EvenDistributionLite` — which are exactly what the bundle carries. If
+those replacements happen, the bundle stops duplicating anything on that axis and starts looking like
+a tidy way to get them plus `CursorEnhancements`, `belt-visualizer`, `AutoDeconstruct`,
+`Shortcuts-ick` and `fluid-connection-indicators` in one dependency.
+
+What has not weakened is the structural objection: **a pack depending on another pack** is a
+commitment nobody has taken on, and it hands a third party control of six of this pack's members at
+once. That is the question worth putting to Truls, and it is a different question from the Picker one
+that brought the bundle up.
+
+**The bundle is not the way to solve the Picker question**, because that question is nearly solved
+already. Whether it is a good way to get the raiguard set is open, and it is #7's call.
+
+## The raiguard pattern
+
+Truls's observation that raiguard's mods are highly praised turns out to be load-bearing for this
+pack, so it was checked rather than taken on faith.
+
+**raiguard is already here.** `BlueprintTools` and `Tapeline` are current members, and
+`EditorExtensions` is a member of `Grado_ChangingBase` one layer down.
+
+**Four members of this pack have a raiguard counterpart, and they do not all point the same way:**
+
+| in the pack | last touched | raiguard alternative | last touched | verdict |
+|---|---|---|---|---|
+| `MaxRateCalculator` | 2024-11-02 | `RateCalculator`, 439,485 dl | 2026-07-14 | **replace** — 2.7× the use, current, and the incumbent admits it does not do Quality |
+| `Bottleneck` | 2024-12-03 | `BottleneckLite`, 227,907 dl | 2026-08-17 | **replace** — current against a 2024 mod, and claims zero runtime overhead |
+| `Todo-List` | 2026-06-28 | `TaskList`, 86,183 dl | 2026-07-02 | **preference** — both current; sync-in-multiplayer against deliberately simpler |
+| `even-distribution` | 2026-06-24 | `EvenDistributionLite`, 52,179 dl | 2026-07-02 | **keep the incumbent** — both current, and only the incumbent has the Inventory Cleanup hotkey |
+
+**Two look like counterparts and are not.** Worth recording so nobody re-runs the search:
+
+- **`RecipeBook`** is not an alternative to `FNEI`. Its own summary says *"This mod will not be
+  updated to Factorio 2.1"*, and its portal title carries "(2.0 ONLY)". It is a dead end regardless
+  of quality.
+- **`pipe-visualization-overlay`** is not an alternative to `PipeVisualizer-Updated`. It "draws a dark
+  background behind the pipe visualization to improve contrast" — a companion to a visualiser, not
+  one itself, and at 2,579 downloads from 2025-03-02.
+
+**Out of scope here, but recorded:** raiguard maintains other 2.x mods this pack does not carry at
+all — `CursorEnhancements`, `StatsGui`, `QuickbarTemplates`, `MouseOverConstruction`,
+`BetterAlertArrows`, `FluidMustFlow`, `ChangeInserterDropLane`. #2 asks about the mods already in the
+pack and the ones dropped from it, so none of these was assessed. Adding a mod that was never in the
+1.1 pack is a different question and a bigger one.
 
 ## What was not checked
 

@@ -1,0 +1,15 @@
+{
+  "name": "Grado_ABCS",
+  "version": "0.1.0",
+  "title": "Grado ABCS",
+  "author": "ostogvin",
+  "contact": "",
+  "homepage": "https://github.com/trulsjo/grado-factorio-modpack",
+  "factorio_version": "2.0",
+  "description": "Grado ABC plus the Space Age expansion. Not compatible with SpaceX - use Grado ABCX for that.",
+  "dependencies": [
+    "base >= 2.0.0",
+    "Grado_ABC",
+    "space-age"
+  ]
+}

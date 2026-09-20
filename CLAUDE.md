@@ -113,6 +113,10 @@ missing.
   tracked file.
 - **`info.json` is strict JSON — no comments.** Anything that needs explaining goes in
   `docs/porting-notes.md`, next to the mod it explains.
+- **Two documents, two jobs.** `docs/porting-notes.md` records what happened to the 1.1 packs;
+  `docs/catalogue/<pack>.md` records what is in each pack now and why, one entry per mod.
+  `docs/mod-catalogue.md` is the entry format. A fact about the port goes in the notes, a fact about
+  a mod goes in its catalogue entry.
 - **Record what was dropped and why**, never just remove a line. A dependency that silently vanishes
   cannot be revisited.
 - Cite a mod by its **portal name** (`even-pickier-dollies`), not its title, because the name is what

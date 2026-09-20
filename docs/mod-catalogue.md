@@ -45,14 +45,16 @@ and the search that was run.
 **Recommendation: keep | replace with `x` | drop.** The reason, in prose.
 ````
 
-Two variants add one row each, and change nothing else:
+Two variants. The first adds one row and changes nothing else; the second also moves the entry and
+constrains what its **Recommendation** may say.
 
-- **A mod that replaced a 1.1 mod** adds `| **Supersedes** | `old-name`, last 1.1 release |`. The
-  heading is the mod that is in the pack now, not the one it replaced — the heading has to match the
-  dependency list.
-- **A mod dropped during the port** adds `| **Status** | dropped during the port |` and sits in the
-  *Dropped during the port* section. Its **Recommendation** reads `stay dropped` or
-  `reconsider: <what>`.
+- **A mod that replaced a 1.1 mod** adds one row, `| **Supersedes** | `old-name`, last 1.1 release |`,
+  and changes nothing else. The heading is the mod that is in the pack now, not the one it replaced
+  — the heading has to match the dependency list.
+- **A mod dropped during the port** does three things: it adds
+  `| **Status** | dropped during the port |`, it sits in the *Dropped during the port* section rather
+  than *In the pack*, and its **Recommendation** begins `stay dropped` or `reconsider:` followed by
+  what is to be reconsidered.
 
 Field notes, where the name does not carry the meaning:
 
@@ -145,7 +147,7 @@ because it does not run for them.
 | **Latest** | `1.2.5`, `factorio_version` **1.1**, 2022-06-05 |
 | **Downloads** | 30,639 |
 | **Owner** | `Nexela` |
-| **Status** | dropped during the port, from `Grado_NonChanging` |
+| **Status** | dropped during the port |
 | **Read on** | 2026-09-20 |
 
 **Alternatives considered.** Searching the full 2.x list by title rather than name returns
@@ -157,8 +159,8 @@ and `fluid-connection-indicators`. `kry-picker-extended` (`1.2.4`, 2.1, 2026-08-
 that it is the 2.0/2.1 update of `PickerExtended` by `Nexela`, "who has seemingly left Factorio
 modding" — which is why the whole family went quiet at once rather than nine separate abandonments.
 
-**Recommendation: reconsider the whole Picker family against `kry-picker-complete`, as one
-question.** Not simply "add it": `BottleneckLite` and `EvenDistributionLite` overlap with
+**Recommendation: reconsider:** the whole Picker family against `kry-picker-complete`, as one
+question. Not simply "add it": `BottleneckLite` and `EvenDistributionLite` overlap with
 `Bottleneck` and `even-distribution` already in `Grado_NonChanging`, and its optional
 `squeak-through-2` is already a mandatory dependency of `Grado_ChangingBase` and the subject of
 issue #11. Whether a pack should depend on another pack at all is worth asking before the smaller

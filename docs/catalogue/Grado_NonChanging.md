@@ -340,7 +340,37 @@ In dependency-list order.
 
 **Alternatives considered.** **[`EditorExtensions`](https://mods.factorio.com/mod/EditorExtensions) by `raiguard`** — `2.6.1`, `factorio_version` **2.1**, 2026-06-26, 139,996 downloads. Its own summary says it "adds a separate editor lab that can be used to design blueprints separately from your main factory", which is this mod's whole job. **And it is already in `Grado_ChangingBase`**, one layer down, so every player of ChangingBase or anything above it already has both. It names `Edit-Blueprints` and `Blueprint Designer Lab` as its own predecessors.
 
-**They are not rivals, though.** `blueprint-sandboxes` declares `? EditorExtensions >= 2.3.0` — an optional dependency. The author knows about it and integrates with it rather than competing, so having both is a supported configuration and not a conflict.
+**That optional dependency is not friendly integration. It is a shim for an incompatibility, and it resolves it by switching the other mod's feature off.** `blueprint-sandboxes` states in its own FAQ:
+
+> When Editor Extensions is enabled, its Lab Setting is disabled because it is incompatible with this mod.
+
+and its changelog records when: *"Editor Extensions' Lab setting is forcefully disabled due to compatibility issues"*, version `1.16.6`, 2023-11-06. The `? EditorExtensions >= 2.3.0` line exists to guarantee load order so it can reach in and disable that setting.
+
+**So the two labs never coexist.** With both installed the player gets `blueprint-sandboxes`, and `EditorExtensions`' lab is off. The choice is already being made, silently, in favour of the mod in the lower-promise pack.
+
+#### What `blueprint-sandboxes` delivers that the `EditorExtensions` lab does not
+
+`EditorExtensions`' lab is one paragraph of a mod that is mostly about something else — map-editor conveniences, infinity chests and pipes, cheat mode, a testing scenario. The lab itself:
+
+> Enable the testing lab in the per-player mod settings to teleport to an isolated testing space when entering the map editor. This testing lab will run alongside your actual factory, and you can freely design and test within the lab without cheating in your actual game.
+
+Personal or shared, entered through the map editor. Against that, `blueprint-sandboxes` carries:
+
+| | `EditorExtensions` lab | `blueprint-sandboxes` |
+|---|---|---|
+| How you enter | through the map editor | its own shortcut, default Shift+B |
+| Isolation | one behaviour | two, **Full** and **None**, chosen in settings |
+| Remote View (2.0) | not integrated | **Isolation: None is built on it** — sandboxes are viewable from outside, and teammates can see, view and use each other's |
+| Undo/redo across the boundary | not stated | works under Isolation: None; resets under Full |
+| Research tree | not stated | separate Force under Full, with an all-tech setting; fully synchronized under None |
+| Alerts, chat, statistics, logistic and train groups | not stated | synchronized under None, separate under Full |
+| Character | not stated | swapped to God-mode under Full; **remains yours** under None |
+| Per-team surfaces | shared lab | personal *and* team sandboxes |
+| Other | — | daylight slider, tips-and-tricks onboarding, Factorissimo and Space Exploration integrations |
+
+**The answer to the question, plainly: yes, it delivers things the lab does not.** The substantial one is *Isolation: None*, which its own description says was "made possible by the Remote View in 2.0" — a mode where the sandbox is a viewable, shared, undo-continuous part of the same game rather than a place you teleport into. `EditorExtensions` has no equivalent, and could not have had one before 2.0.
+
+**What that does not settle** is whether any of it is wanted. If the sandbox is used as "somewhere to lay out a blueprint alone, occasionally", the lab covers that and the second mod is a mod for nothing. If it is used with someone else, or via Remote View, or with undo carried across, it is not. That is a question about how Truls actually plays, which no amount of portal reading answers.
 
 **Recommendation: reconsider:** which layer the sandbox feature belongs in. Three things point the same way and one points back:
 

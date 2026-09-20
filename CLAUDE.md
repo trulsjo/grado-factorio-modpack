@@ -141,3 +141,19 @@ Example:
 The 1.1 miniloader has no 2.0 release. miniloader-redux (hgschmie, 22,472
 downloads) is the maintained successor. Not yet loaded in game.
 ```
+
+## Agent skills
+
+### Issue tracker
+
+GitHub Issues on `trulsjo/grado-factorio-modpack`, via the `gh` CLI. See
+`docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+The five canonical roles, unchanged. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: `CONTEXT.md` and `docs/adr/` at the repo root. See
+`docs/agents/domain.md`.

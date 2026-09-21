@@ -141,7 +141,7 @@ missing.
   `Grado` leading all five so the family sorts together on the portal. The descriptor names the
   mods a player would search for; the initialism alone means nothing to someone browsing.
 - **`name` and `title` are not the same field.** The name is permanent and resolves dependencies;
-  the title is display only. `CONTEXT.md` is the glossary for this and the other four terms that
+  the title is display only. `CONTEXT.md` is the glossary for this and the other five terms that
   have been used two ways.
 
 ## Commit messages

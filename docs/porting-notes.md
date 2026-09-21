@@ -106,8 +106,27 @@ these are the mods they chose not to bring forward, not casualties of a dying ec
 `angelsexploration` and `angelsindustries` have no successor of any kind and stay dropped, the
 second one being the largest single loss in the
 project; `Clowns-Science` is `reconsider:` against `ScienceCostTweakerM`, which covers its recipes
-and labs but not its fluid-and-power science generation. See `docs/catalogue/Grado_ABC.md`. The
-other seven are #5's. The heading below describes the original port search, not the current state.
+and labs but not its fluid-and-power science generation. See `docs/catalogue/Grado_ABC.md`.
+
+**The other seven were re-checked the same day by #5, and here the pattern breaks: two of them
+genuinely are cases of nothing existing.** `baron-turrets` has no 2.x successor and its mandatory
+`baron-library` has no 2.x release either, so it is blocked twice over; `MilesBobsExpansion` has
+none either. What softens both is that the pack covers their ground another way -
+`bobwarfare` for turrets, `bobassembly` for the machine ladder - which is a different claim from a
+replacement existing. Four stay dropped for reasons of their own - `DeadlockCrating` is a
+higher-ratio version of a
+feature `deadlock-beltboxes-loaders` still supplies, and
+`beautiful_bridge_railway_bob_fix_updated_new` patches a mod that is itself dropped from
+`Grado_ChangingBase`, so it is the one drop whose disposal another pack decides.
+`RealisticFusionPower` stays dropped with no slot held: the sibling `realistic-fusion-refreshed`
+is unpublished, and more to the point it declares no Angel's or Bob's compatibility at all where
+the mod it succeeds declared six optional hooks. The remaining two -
+`DeadlockStackingForAngels` and `DeadlockStackingForMadclown` - are `reconsider:` as **one
+question with the three Deadlock mods still in the pack**, because the only 2.x candidate replaces
+the whole family's stacking recipes rather than filling either gap. See
+`docs/catalogue/Grado_ABC.md`.
+
+The heading below describes the original port search, not the current state.
 
 - `Clowns-Science`
 - `DeadlockCrating`
@@ -217,10 +236,16 @@ for. A title is display only and can be changed in any release, unlike the name.
   automatically. The difference matters: there is a third mod in the chain, named in none of our
   five dependency lists, that can go stale on its own. Evidence in
   `docs/catalogue/Grado_ChangingBase.md`. **This is now a pattern rather than an incident.** The
-  `Grado_ABC` part 1 survey found **nine** such mods on 2026-09-21 - `boblibrary`, `Clowns-Nuclear`
-  and seven Angel's graphics packages - every one mandatory, every one absent from all five
-  dependency lists, and `boblibrary` the most-installed mod in that pack. Any survey reading a
-  dependency list should expect it. See `docs/catalogue/Grado_ABC.md`.
+  `Grado_ABC` survey found **fifteen** such mods on 2026-09-21 - nine from part 1 (`boblibrary`,
+  `Clowns-Nuclear` and seven Angel's graphics packages) and six more from part 2 (four Artisanal
+  Reskins packages, `rusty-locale` and `Warheads_Continued`) - every one mandatory, every one
+  absent from all five dependency lists. The set was computed as the mandatory closure of all 45
+  members minus what the two lower packs already pull in, which is what keeps `flib` out of the
+  count: it is a mandatory dependency here but `Grado_NonChanging` already installs it. Two are
+  worth naming: `rusty-locale` is staler than any named member of the pack, and
+  `Warheads_Continued` is content rather than art. Any survey reading a dependency list should
+  expect this and should walk the closure rather than one level. See
+  `docs/catalogue/Grado_ABC.md`.
 - **`factorio_version` is declared `2.0`** on all five packs, while several member mods (Bob's,
   Angel's, MadClown) have moved to `2.1`. **Answered for `Grado_NonChanging` on 2026-09-21, and the
   answer is no:** ten of its 29 members require `base >= 2.1`, six of them `>= 2.1.7`, so a player on
@@ -229,10 +254,12 @@ for. A title is display only and can be changed in any release, unlike the name.
   for `Grado_ChangingBase` on 2026-09-21, and it raises the floor:** eleven of its 25 members require
   `base >= 2.1`, and `WideChests` `6.3.0` requires `>= 2.1.8`, the highest seen in any pack so far.
   See `docs/catalogue/Grado_ChangingBase.md`. **Answered the same way for `Grado_ABC` on
-  2026-09-21, and it is unanimous:** all 29 members surveyed by #4 require `base >= 2.1`, 22 of them
-  in their own dependency list. It does not raise the floor - the highest requirement from ABC's own
-  members is `>= 2.1.0` - but the pack inherits `Grado_ChangingBase`'s `>= 2.1.8`, so that is the
-  effective minimum for an ABC install. See `docs/catalogue/Grado_ABC.md`. Still unchecked on
+  2026-09-21:** all 29 of the overhaul-core members require `base >= 2.1`, 22 of them in their own
+  dependency list, and the pack is now measured in full - **twenty-six of the 45 declare it
+  directly** and the other nineteen are neutral or inherit it. It does not raise the floor - the
+  highest requirement from ABC's own members is `>= 2.1.0` - but the pack inherits
+  `Grado_ChangingBase`'s `>= 2.1.8`, so that is the effective minimum for an ABC install. See
+  `docs/catalogue/Grado_ABC.md`. Still unchecked on
   `Grado_ABCX` and `Grado_ABCS`, which hold one member apiece; the same check is one command each.
   The number itself is Truls's to set.
 - **`RealisticFusionPower` is among the drops.** It is the mod the separate

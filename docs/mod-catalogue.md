@@ -32,7 +32,10 @@ diagram's indentation, which runs the other way. `CONTEXT.md` is the glossary en
 wait: `bobinserters` is the only instance — it is a member of `Grado_ChangingBase` and
 `Grado_ABC` — and it is entered in both files until which layer keeps it is settled. That is pack
 membership, so it belongs to the decide-and-apply tickets #8 and #9 jointly, not to either
-pack's survey.
+pack's survey. A survey that reaches it may still *recommend* a layer, which is what a
+**Recommendation** is for; the `Grado_ChangingBase` survey did, on 2026-09-21, and the argument is
+in `docs/catalogue/Grado_ChangingBase.md`. Recommending is not settling, and the entry stays in
+both files either way.
 
 **Two different mods doing an overlapping job in two packs** is the other one, and it is the one
 that compounds as the surveys climb. It is recorded with an **Overlaps** row in the entry table,
@@ -69,9 +72,15 @@ This section was added on 2026-09-21, after the `Grado_NonChanging` survey found
 `blueprint-sandboxes` and `EditorExtensions` — different mods, adjacent packs, and one silently
 disables a feature of the other. The format had a rule for the same mod named twice and nothing for
 this. Surveys #3 through #6 are each likely to hit it again, with more layers beneath them than
-this one had — no instance is recorded yet, because none of those packs has been surveyed. #3 is
-the one that reaches the other half of *this* overlap: `EditorExtensions` is a
-`Grado_ChangingBase` member.
+this one had. #3 reached the other half of *this* overlap on 2026-09-21 — `EditorExtensions` is a
+`Grado_ChangingBase` member, and its entry carries the row and points at the comparison in
+`docs/catalogue/Grado_NonChanging.md`, which is what the rule asks of the higher side.
+
+**That survey found two more**, both against `Grado_ABC` and both with their comparison in
+`docs/catalogue/Grado_ChangingBase.md`, because that pack is the lower one:
+`UltimateBeltsSpaceAge` against `boblogistics`, and `miniloader-redux` against
+`deadlock-beltboxes-loaders`. Three instances out of two surveys is the rate to plan for: #4, #5
+and #6 sit above more layers than either of these did.
 
 ## The entry
 

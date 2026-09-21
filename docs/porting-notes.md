@@ -55,6 +55,16 @@ upstream and are mandatory here. That change is issue #11, not a counting artefa
 
 ### Dropped - no 2.0 release, no replacement found
 
+**Re-checked 2026-09-21 by the `Grado_ChangingBase` survey: none is recommended for adding back as
+itself, and not one of the six is a case of nothing existing** - "no replacement found" turns out to
+be false for all six once titles and summaries are searched. Four stay dropped - `crafting_combinator` was
+absorbed by the base game, `alien-biomes-hr-terrain` by a mandatory dependency,
+`beautiful_bridge_railway` has a two-mod functional replacement that was deliberately not taken, and
+`PickerTweaks` is the wrong kind of mod for a pack that must survive an overhaul. Two,
+`PickerPipeTools` and `PickerVehicles`, are `reconsider:` against `kry-picker-complete` and belong to
+#2 and #7 rather than here. See `docs/catalogue/Grado_ChangingBase.md`. The heading below describes
+the original port search, not the current state.
+
 - `PickerPipeTools`
 - `PickerTweaks`
 - `PickerVehicles`
@@ -125,10 +135,17 @@ The column is *carried over*, not *kept*: it counts mods present under the same 
 which is not the size of the 2.0 pack. It also counts members only, so `Grado_ChangingBase` shows 7
 replacements where the section above lists 8 - the eighth, `Squeak Through`, was optional upstream.
 
-Counting note: `Grado_ChangingBase` has two 1.1 releases, and `0.0.2` swapped `reverse-factory` for
-`crafting_combinator`. Its dependency list holds 31 entries but only 29 members, because
-`? reverse-factory` and `? Squeak Through` are optional. Counting those two as members is what
-produced the "31" in the brain page.
+Counting note: `Grado_ChangingBase` has two 1.1 releases. Its `0.0.2` dependency list holds 31
+entries but only 29 members, because `? reverse-factory` and `? Squeak Through` are optional.
+Counting those two as members is what produced the "31" in the brain page.
+
+**Corrected 2026-09-21.** This paragraph said `0.0.2` "swapped `reverse-factory` for
+`crafting_combinator`". Both 1.1 releases were read from the portal API that day and it is narrower
+than that: `0.0.1` (2024-09-29) carried `reverse-factory` as a mandatory member with no
+`crafting_combinator` and no `Squeak Through`; `0.0.2` (2024-10-08) **added** `crafting_combinator`
+and `? Squeak Through` and **demoted** `reverse-factory` to optional. Nothing was swapped out. The
+31/29 arithmetic above is unaffected. The demotion is half of issue #11 - `reverse-factory` was made
+optional in 1.1 and mandatory again in 2.0, rather than simply staying optional through the port.
 
 ## Publishing identity, settled 2026-09-21
 
@@ -170,13 +187,23 @@ for. A title is display only and can be changed in any release, unlike the name.
 ## Open questions
 
 - **`alien-biomes-hr-terrain` was dropped on the assumption that 2.0 `alien-biomes` absorbed the
-  HR terrain.** NOT verified. Check before releasing ChangingBase.
+  HR terrain. Answered 2026-09-21: the drop was right, the mechanism was wrong, and the mod stays
+  dropped.** `Earendel` did not grow `alien-biomes` to contain the terrain - he split *all* the
+  graphics into `alien-biomes-graphics`, created 2024-10-17 for the 2.0 port and now a mandatory
+  dependency of `alien-biomes` (`0.8.0`, 2.1, 2026-06-24), and edited the old mod's page to read
+  "Not required for Factorio 2.0 games". A ChangingBase player gets the high-resolution terrain
+  automatically. The difference matters: there is a third mod in the chain, named in none of our
+  five dependency lists, that can go stale on its own. Evidence in
+  `docs/catalogue/Grado_ChangingBase.md`.
 - **`factorio_version` is declared `2.0`** on all five packs, while several member mods (Bob's,
   Angel's, MadClown) have moved to `2.1`. **Answered for `Grado_NonChanging` on 2026-09-21, and the
   answer is no:** ten of its 29 members require `base >= 2.1`, six of them `>= 2.1.7`, so a player on
   2.0.x cannot satisfy the pack. See `docs/catalogue/Grado_NonChanging.md`. The mechanism is the
-  members' own `base` requirements rather than the `factorio_version` field. Still unchecked on the
-  other four packs; the same check is one command each.
+  members' own `base` requirements rather than the `factorio_version` field. **Answered the same way
+  for `Grado_ChangingBase` on 2026-09-21, and it raises the floor:** eleven of its 25 members require
+  `base >= 2.1`, and `WideChests` `6.3.0` requires `>= 2.1.8`, the highest seen in any pack so far.
+  See `docs/catalogue/Grado_ChangingBase.md`. Still unchecked on the other three packs; the same
+  check is one command each. The number itself is Truls's to set.
 - **`RealisticFusionPower` is among the drops.** It is the mod the separate
   *realistic-fusion-refreshed* project exists to succeed; that mod is a candidate to add here once it
   ships.
@@ -184,8 +211,17 @@ for. A title is display only and can be changed in any release, unlike the name.
   Its four drops cost that pack one feature, not four mods: `kry-picker-extended` and
   `BlueprintTools` are already members and cover the belt, planner and sorting features, and only
   `PickerInventoryTools`' requester-chest-from-blueprint has no successor found. See
-  `docs/catalogue/Grado_NonChanging.md`. The three Picker drops in `Grado_ChangingBase` are still
-  unassessed and are #3's. Original note follows.
+  `docs/catalogue/Grado_NonChanging.md`. **The three in `Grado_ChangingBase` were assessed on
+  2026-09-21 and reach the same place from a different direction:** `PickerTweaks` is recommended to
+  stay dropped on its own merits - a mod that adjusts base item values does not belong under an
+  overhaul - while `PickerPipeTools` and `PickerVehicles` split into features covered mostly by
+  `kry-picker-complete` members and optionals, and partly by mods already in the chain
+  (`PipeVisualizer-Updated` and `VehicleSnap`, both `Grado_NonChanging` members, which are in neither
+  that modpack's dependency list nor its optionals). Only `PickerPipeTools`' pipe clamps have no
+  successor found. That is the second pack to arrive at the same modpack question, from a different
+  direction. **Adoption is pack membership and splits by pack: `Grado_NonChanging`'s share is #7 and
+  `Grado_ChangingBase`'s is #8.** No ticket owns it for the chain, and one answer would serve both.
+  See `docs/catalogue/Grado_ChangingBase.md`. Original note follows.
 - **The Picker family lost seven of nine - and that is now disputed.** The name-only search found
   replacements for `PickerDollies` (`even-pickier-dollies`) and `PickerExtended`
   (`kry-picker-extended`) alone. Searching titles instead turns up `kry-picker-complete`, a 2.1

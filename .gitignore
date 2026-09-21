@@ -6,7 +6,9 @@
 CLAUDE.local.md
 
 # Agent orchestration state — session-scoped and machine-local. A pattern rather than the
-# bare directory because CLAUDE.md makes `.omc/skills/**` the one committable exception;
-# `.omc/` alone would stop git descending and the negation could never fire.
+# bare directory because the tooling treats `.omc/skills/**` as committable, and git does not
+# descend into an ignored directory, so `.omc/` alone would make that negation unreachable.
+# That exception is the agent tooling's own convention and is deliberately not documented in
+# this repo's CLAUDE.md — nothing here depends on it, and no such directory exists yet.
 .omc/*
 !.omc/skills/

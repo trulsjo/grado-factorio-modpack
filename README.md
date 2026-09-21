@@ -27,7 +27,8 @@ lives there, and each branch adds exactly one thing.
 **nothing has been launched in Factorio and no pack has been loaded.** See
 [docs/porting-notes.md](docs/porting-notes.md) for what was kept, replaced and dropped, and for the
 open questions. [docs/catalogue/](docs/catalogue/) is the other half: one file per pack, one entry
-per mod, recording what each mod does, how current it is and whether it should stay.
+per mod, recording what each mod does, how current it is and whether it should stay. Only
+`Grado_NonChanging` has been surveyed so far; the other four land one file at a time.
 
 ## Publishing
 

@@ -75,10 +75,12 @@ Settled so far, recorded here so nobody reopens them by accident:
 Listed in full with their evidence in `docs/porting-notes.md`. Do not close one silently.
 
 - `factorio_version` is declared `2.0` on all five packs while several members have moved to `2.1`.
-  **Answered for `Grado_NonChanging` and `Grado_ChangingBase`, and the answer is no** — ten and
-  eleven members respectively require `base >= 2.1`, and `WideChests` needs `>= 2.1.8`, the highest
-  floor found so far. Still unverified on the other three — that measurement is #15, and the number
-  to declare instead is #16.
+  **Answered for `Grado_NonChanging`, `Grado_ChangingBase` and `Grado_ABC`, and the answer is no** —
+  10 of 29 members, 11 of 25, and all 29 of the 45 that #4 surveyed require `base >= 2.1`.
+  `Grado_ABC`'s other 16 members are #5's and are unmeasured, which changes nothing: one member is
+  enough. `WideChests` needs `>= 2.1.8`, the highest floor found so far and the one `Grado_ABC`
+  inherits through the chain. Still unverified on `Grado_ABCX` and `Grado_ABCS` — that measurement
+  is #15, and the number to declare instead is #16.
 - ~~`alien-biomes-hr-terrain` was dropped **assuming** 2.0 `alien-biomes` absorbed the HR terrain.~~
   **Checked 2026-09-21: recommended to stay dropped, and the assumption's mechanism was wrong.**
   The graphics moved into `alien-biomes-graphics`, a mandatory dependency of `alien-biomes`, rather
@@ -86,13 +88,20 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   stands is still Truls's; the evidence makes this one close to forced. See
   `docs/catalogue/Grado_ChangingBase.md`.
 - Twenty mods are dropped with no replacement found, including seven of the nine Picker mods,
-  `angelsexploration`, `angelsindustries` and `Clowns-Science`. **Ten have been re-checked since** —
-  `Grado_NonChanging`'s four and `Grado_ChangingBase`'s six. **Neither survey recommends adding any
-  of the ten back as itself, and almost none stayed dropped for the reason originally recorded:**
+  `angelsexploration`, `angelsindustries` and `Clowns-Science`. **Thirteen have been re-checked
+  since** — `Grado_NonChanging`'s four, `Grado_ChangingBase`'s six, and the three named above,
+  which are `Grado_ABC`'s and were re-checked on 2026-09-21. **Neither of the first two surveys
+  recommends adding any of their ten back as itself, and almost none stayed dropped for the reason
+  originally recorded:**
   features turned out to be covered by mods already in the packs, by `kry-picker-complete`, or by the
   base game. Three of the ten end in `reconsider:` rather than `stay dropped` — two against
   `kry-picker-complete`, and `PickerInventoryTools` over whether its one feature is still wanted.
-  "No replacement found" now means "not yet re-checked" for the ten in `Grado_ABC`. (Sixteen is
+  **The three `Grado_ABC` drops break that pattern**: two have no successor of any kind and stay
+  dropped, `angelsindustries` being the largest single loss in the project, and `Clowns-Science` is
+  `reconsider:` against `ScienceCostTweakerM`. All three were dropped because their authors chose
+  not to port them — the AngelBob ecosystem moved to 2.1 in July 2026 nearly complete — which is a
+  narrower claim than the porting notes recorded. See `docs/catalogue/Grado_ABC.md`. "No replacement
+  found" now means "not yet re-checked" for the seven `Grado_ABC` drops that are #5's. (Sixteen is
   the number of *replacements*; this line carried it by mistake until 2026-09-20.)
 - Two dependencies the 1.1 `Grado_ChangingBase` declared optional, `? reverse-factory` and
   `? Squeak Through`, are mandatory in the 2.0 pack. Nobody decided that.

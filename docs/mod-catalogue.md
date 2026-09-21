@@ -82,6 +82,14 @@ this one had. #3 reached the other half of *this* overlap on 2026-09-21 — `Edi
 `deadlock-beltboxes-loaders`. Three instances out of two surveys is the rate to plan for: #4, #5
 and #6 sit above more layers than either of these did.
 
+**#4 found a fourth on 2026-09-21**, and it is the first one found from the higher side with no
+comparison already written: `angelsaddons-storage` (`Grado_ABC`) against the four `WideChests` mods
+(`Grado_ChangingBase`) — warehouses and silos against merged chests, the same outcome by different
+mechanisms. It is the case this section's third bullet describes, so the row and a pointer went in
+the `Grado_ABC` entry and issue **#30** was filed against the lower pack's file for the comparison
+itself. The other two overlaps #4 reached were both already written up by #3, which is the rule
+working: the higher survey spent a sentence each rather than re-deriving them.
+
 ## The entry
 
 The heading is always the bare portal name, on its own, because it is what makes the catalogue

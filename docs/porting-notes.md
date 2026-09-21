@@ -99,6 +99,16 @@ the whole branch's.
 
 ### Dropped - no 2.0 release, no replacement found
 
+**Re-checked 2026-09-21 by the `Grado_ABC` part 1 survey: three of these ten - `angelsexploration`,
+`angelsindustries` and `Clowns-Science` - now have their reason established, and the heading is
+wrong about all three in the same way.** Both authors are active on 2.x and ported everything else;
+these are the mods they chose not to bring forward, not casualties of a dying ecosystem.
+`angelsexploration` and `angelsindustries` have no successor of any kind and stay dropped, the
+second one being the largest single loss in the
+project; `Clowns-Science` is `reconsider:` against `ScienceCostTweakerM`, which covers its recipes
+and labs but not its fluid-and-power science generation. See `docs/catalogue/Grado_ABC.md`. The
+other seven are #5's. The heading below describes the original port search, not the current state.
+
 - `Clowns-Science`
 - `DeadlockCrating`
 - `DeadlockStackingForAngels`
@@ -206,7 +216,11 @@ for. A title is display only and can be changed in any release, unlike the name.
   "Not required for Factorio 2.0 games". A ChangingBase player gets the high-resolution terrain
   automatically. The difference matters: there is a third mod in the chain, named in none of our
   five dependency lists, that can go stale on its own. Evidence in
-  `docs/catalogue/Grado_ChangingBase.md`.
+  `docs/catalogue/Grado_ChangingBase.md`. **This is now a pattern rather than an incident.** The
+  `Grado_ABC` part 1 survey found **nine** such mods on 2026-09-21 - `boblibrary`, `Clowns-Nuclear`
+  and seven Angel's graphics packages - every one mandatory, every one absent from all five
+  dependency lists, and `boblibrary` the most-installed mod in that pack. Any survey reading a
+  dependency list should expect it. See `docs/catalogue/Grado_ABC.md`.
 - **`factorio_version` is declared `2.0`** on all five packs, while several member mods (Bob's,
   Angel's, MadClown) have moved to `2.1`. **Answered for `Grado_NonChanging` on 2026-09-21, and the
   answer is no:** ten of its 29 members require `base >= 2.1`, six of them `>= 2.1.7`, so a player on
@@ -214,8 +228,13 @@ for. A title is display only and can be changed in any release, unlike the name.
   members' own `base` requirements rather than the `factorio_version` field. **Answered the same way
   for `Grado_ChangingBase` on 2026-09-21, and it raises the floor:** eleven of its 25 members require
   `base >= 2.1`, and `WideChests` `6.3.0` requires `>= 2.1.8`, the highest seen in any pack so far.
-  See `docs/catalogue/Grado_ChangingBase.md`. Still unchecked on the other three packs; the same
-  check is one command each. The number itself is Truls's to set.
+  See `docs/catalogue/Grado_ChangingBase.md`. **Answered the same way for `Grado_ABC` on
+  2026-09-21, and it is unanimous:** all 29 members surveyed by #4 require `base >= 2.1`, 22 of them
+  in their own dependency list. It does not raise the floor - the highest requirement from ABC's own
+  members is `>= 2.1.0` - but the pack inherits `Grado_ChangingBase`'s `>= 2.1.8`, so that is the
+  effective minimum for an ABC install. See `docs/catalogue/Grado_ABC.md`. Still unchecked on
+  `Grado_ABCX` and `Grado_ABCS`, which hold one member apiece; the same check is one command each.
+  The number itself is Truls's to set.
 - **`RealisticFusionPower` is among the drops.** It is the mod the separate
   *realistic-fusion-refreshed* project exists to succeed; that mod is a candidate to add here once it
   ships.

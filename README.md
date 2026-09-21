@@ -30,5 +30,11 @@ open questions.
 
 ## Publishing
 
-New portal entries for `Grado_ABC` and `Grado_ABCS`; `Grado_NonChanging`, `Grado_ChangingBase` and
-`Grado_ABCX` already exist as 1.1 entries under `ostogvin`.
+`Grado_NonChanging`, `Grado_ChangingBase` and `Grado_ABCX` already exist on the portal under
+`ostogvin` as 1.1 entries, and the 2.0 packs go to those same entries - the 1.1 releases stay in
+place, and a player still on 1.1 keeps a working install. `Grado_ABC` and `Grado_ABCS` are new
+entries.
+
+All five start at `0.1.0` and version independently from there. A pack's major version tracks save
+compatibility rather than maturity: a major bump means a dependency change an existing save cannot
+survive. See [docs/adr/0001-version-major-tracks-save-compatibility.md](docs/adr/0001-version-major-tracks-save-compatibility.md).

@@ -76,8 +76,9 @@ by re-running the comparison rather than by reading.
 **Alternatives considered.** None exists. Searching the full 2.x list for "thorium" in name, title
 and summary returns this mod and nothing else — it is the only thorium chain on 2.x.
 
-Its mandatory `Clowns-Nuclear` is not in the dependency list; see *The nine mandatory dependencies
-the list does not name*. That mod declares `(?) RealisticReactorsReborn`, which #5 catalogues, so
+Its mandatory `Clowns-Nuclear` is not in the dependency list; see *The fifteen mandatory
+dependencies the list does not name*. That mod declares `(?) RealisticReactorsReborn`, which #5
+catalogues, so
 the Clowns nuclear pair and the pack's reactor mod are already integrated by their authors rather
 than merely coexisting.
 
@@ -367,7 +368,7 @@ the Angel's half, which matters only if the pack is ever trimmed.
 **Alternatives considered.** None searched; it is the Angel's train set, not a capability.
 
 It has **three mandatory graphics dependencies** that the pack's list does not name —
-`angelsaddons-mobility-graphics-crawler`, `-petro` and `-smelting`. See *The nine mandatory
+`angelsaddons-mobility-graphics-crawler`, `-petro` and `-smelting`. See *The fifteen mandatory
 dependencies the list does not name*.
 
 **Recommendation: keep.** Current on 2.1, released the same day as the Angel's core.
@@ -917,10 +918,11 @@ Angel's game, where fluid outposts multiply, they compose usefully.
 carries, by the maintainer of `extendedangels`.
 
 It requires `reskins-library` and `reskins-assets-base`, neither named in the dependency list. Its
-optional list covers every Angel's mod in the pack **and two that are not**:
-`? angelsexploration` and `? angelsindustries`, the pack's two largest drops. So the reskin series
-already carries support for content the pack no longer has, which costs nothing and is worth
-knowing if either is ever added back.
+optional list covers **seven of the pack's eight Angel's mods** — all but `angelsinfiniteores`,
+which it does not declare at all — plus `extendedangels`, **and two mods that are not in the pack**:
+`? angelsexploration` and `? angelsindustries`, its two largest drops. So the reskin series already
+carries support for content the pack no longer has, which costs nothing and is worth knowing if
+either is ever added back, and it does not cover one mod the pack does have.
 
 **Recommendation: keep.** Current on 2.1. All three Artisanal Reskins members, and all four of
 their hidden packages, shipped on the same day, 2026-07-20 — the series is released as a set, which
@@ -1034,8 +1036,15 @@ are recorded but the reason for each line is not.
 in-pack entry in this half that does not end in `keep`, and the reason is not that anything is wrong
 with the mod — it is that a pack listing a library nothing uses is either making a choice worth
 stating or carrying a line nobody meant to keep, and `CLAUDE.md` is clear that a dependency which
-vanishes silently cannot be revisited. Removing it is save-safe and costs a minor bump; keeping it
-costs a download.
+vanishes silently cannot be revisited.
+
+Removing it is save-safe and costs a **minor** bump, and that is worth showing the working on.
+`docs/adr/0001-version-major-tracks-save-compatibility.md` glosses major as "a member mod of
+`Grado_ChangingBase` or below added or removed", and on the gloss alone removing any `Grado_ABC`
+member would be major. The ADR's actual criterion is "a dependency change an existing save cannot
+survive", and this mod adds no entity, recipe or item for a save to hold. It is the one member of
+the pack where the gloss and the criterion come apart, which is worth recording for whoever writes
+the next version bump. Keeping it costs a download.
 
 ### `spidertrontiers-community-updates`
 
@@ -1052,8 +1061,8 @@ costs a download.
 **Alternatives considered.** None searched beyond the original, which has no 2.x release and last
 shipped in 2021.
 
-**This is the stalest member of the pack.** Its last release was 2024-11-16, ten months before
-this reading, and no other member of the 45 has gone that long. It declares `! spidertrontiers`
+**This is the stalest member of the pack.** Its last release was 2024-11-16, twenty-two months
+before this reading, and no other member of the 45 has gone that long. It declares `! spidertrontiers`
 and `! spidertrontiers-circulardependency`, both
 hard incompatibilities and both correct — the first is the mod it replaces. It declares
 `? bobvehicleequipment`, which is in the pack, so its equipment grids take Bob's equipment.
@@ -1454,7 +1463,8 @@ members require them and Factorio resolves mandatory dependencies transitively. 
 fix — but a mod nobody names is a mod nobody re-checks.
 
 The set was computed rather than spotted: the mandatory closure of all 45 members, minus everything
-the two packs below already pull in. That subtraction matters. **`flib` is the clearest case** — it
+the two lower packs — `Grado_NonChanging` and `Grado_ChangingBase` — already pull in. That
+subtraction matters. **`flib` is the clearest case** — it
 is a mandatory dependency of `reskins-library` here, but it is *already* pulled into every install
 by four `Grado_NonChanging` members, so it is not ABC's to claim. Four more are the lower packs':
 `alien-biomes-graphics`, `kry_stdlib`, `stdlib2` and `+FluidWagonColorMask`. Counting those would
@@ -1707,9 +1717,12 @@ members require `base >= 2.1`**, so a player on 2.0.x cannot satisfy this pack. 
 enough; there are twenty-nine.
 
 **#5's sixteen add-ons do not change the conclusion, and they are counted here so nobody re-derives
-them.** Four declare `base >= 2.1` themselves — `botReplacer`, `PlutoniumEnergy`, `pump` and
-`rso-mod` — and the other twelve declare either a bare `base` or no base dependency at all, which
-means they impose no floor rather than that they forbid one. Four of the twelve inherit 2.1
+them.** Four declare `base >= 2.1` themselves — `botReplacer`, `PlutoniumEnergy`, `pump` and `rso-mod`.
+Of the other twelve, **two declare `base >= 2.0`** — `deadlock-beltboxes-loaders` and
+`spidertrontiers-community-updates` — which is a real floor, just a lower one than the pack needs;
+the remaining ten declare a bare `base` or no base dependency at all, so they impose no floor
+rather than forbidding one. A `2.0` floor is satisfied by 2.1, so none of the twelve conflicts with
+the answer below. Four of the twelve inherit 2.1
 anyway: the three `reskins-*` mods reach it through `reskins-library` → `flib`, which requires
 `base >= 2.1.0`, and `WideChestsBobs` requires `WideChests >= 6.0.0` from the pack below. So the
 pack-wide count is

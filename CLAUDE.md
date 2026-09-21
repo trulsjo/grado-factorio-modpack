@@ -168,7 +168,7 @@ missing.
 ## Commit messages
 
 [Conventional Commits](https://www.conventionalcommits.org/) with a [gitmoji](https://gitmoji.dev/)
-prefix, same as the sibling `realistic-fusion-refreshed` repo. One format, no exceptions:
+prefix. One format, no exceptions:
 
 ```
 <emoji> <type>(<scope>): <subject>
@@ -178,67 +178,56 @@ prefix, same as the sibling `realistic-fusion-refreshed` repo. One format, no ex
 <footer>
 ```
 
-**Subject line**
+**The rules live in
+[`vendor/grado-factorio-tools/docs/commit-convention.md`](vendor/grado-factorio-tools/docs/commit-convention.md)**
+— the type table, the situational emoji, the subject and body limits, and what the check is blind
+to. That page is shared with `realistic-fusion-refreshed` and the tooling repo, so a rule change is
+one edit instead of three. If the submodule is not initialised, read it at
+<https://github.com/trulsjo/grado-factorio-tools/blob/main/docs/commit-convention.md> — but that
+shows `main`, which may be ahead of the commit this repo has pinned.
 
-- Imperative mood, lowercase after the colon, no trailing period, whole line ≤ 72 characters.
-- `<scope>` is optional but preferred. Use the pack (`nonchanging`, `changingbase`, `abc`, `abcx`,
-  `abcs`) or the area (`docs`, `repo`).
-- The emoji is the *rendered* character, not the `:shortcode:`.
+Three things are this repository's own, because all three are its domain rather than shared
+mechanics:
 
-**Types, and the emoji that goes with each**
-
-| Type | Emoji | Use for |
-|---|---|---|
-| `feat` | ✨ | a new capability |
-| `fix` | 🐛 | a bug fix |
-| `docs` | 📝 | documentation only |
-| `refactor` | ♻️ | restructuring with no behaviour change |
-| `perf` | ⚡️ | performance |
-| `test` | ✅ | tests |
-| `build` | 📦 | packaging, `info.json`, dependencies — the common one here |
-| `chore` | 🔧 | tooling and config |
-| `style` | 🎨 | formatting and code structure only |
-| `revert` | ⏪️ | reverting a previous commit |
-
-A few situational ones worth knowing: 🎉 to begin a project, 🚚 to move or rename files, 🔥 to remove
-code or files, 🌐 for localisation, 💄 for icons and other visual assets, 🚧 for work in progress.
-
-**Body** — explain *why*, not what the diff already shows. Wrap at 72. Cite a mod by its portal name
-and pin the version or date behind a claim, because a portal reading goes stale.
-
-**Breaking changes** — put `!` before the colon *and* a `BREAKING CHANGE:` footer explaining the
-migration. Here that means a dependency change an existing save cannot survive: adding or removing a
-member mod of `Grado_ChangingBase` or anything below it in the chain. `Grado_NonChanging` is the one
-pack that by definition cannot trigger this. It breaks silently and players find out, not the build.
+- **Scope vocabulary.** Use the pack (`nonchanging`, `changingbase`, `abc`, `abcx`, `abcs`) or the
+  area (`docs`, `repo`).
+- **What counts as a breaking change.** Here it is a dependency change an existing save cannot
+  survive: adding or removing a member mod of `Grado_ChangingBase` or anything below it in the
+  chain. `Grado_NonChanging` is the one pack that by definition cannot trigger this. It breaks
+  silently and players find out, not the build. The `!` and the `BREAKING CHANGE:` footer are the
+  shared mechanism; what triggers them is this repo's own.
+- **What a body has to cite.** Name a mod by its portal name and pin the version or date behind a
+  claim, because a portal reading goes stale.
 
 Example:
 
 ```
 📦 build(changingbase): replace miniloader with miniloader-redux
 
-The 1.1 miniloader has no 2.0 release. miniloader-redux (hgschmie, 22,472
-downloads) is the maintained successor. Not yet loaded in game.
+The 1.1 miniloader has no 2.0 release. miniloader-redux (hgschmie,
+22,472 downloads) is the maintained successor. Not yet loaded in game.
 ```
 
-**A hook checks all of this, and it is not installed by default.** `.githooks/commit-msg` runs
-`scripts/commit-check.ps1` on the message before the commit is written, and git does not track
-`.git/hooks`, so every clone has to opt in once:
+**A hook checks all of this, and it is not installed by default.** `.githooks/commit-msg` runs the
+shared check on the message before the commit is written. Git tracks neither `.git/hooks` nor a
+submodule's contents, so every clone opts in twice:
 
 ```
+git submodule update --init
 git config core.hooksPath .githooks
 ```
 
-It checks the emoji-and-type pairing, the case after the colon, the trailing period, both 72-character
-limits, the blank line, and that a `!` carries a `BREAKING CHANGE:` footer. Imperative mood is not
-checkable and is not checked. Trailers like `Co-Authored-By:` are exempt, and so is a line whose
-longest word is itself over 72 — a bare URL cannot be wrapped, and failing it would only teach
-people to ignore the gate.
+**Skipping either step is loud rather than silent.** The hook says the message was not checked and
+lets the commit through, instead of passing everything quietly — which is the posture
+[ADR 0001](https://github.com/trulsjo/grado-factorio-tools/blob/main/docs/adr/0001-siblings-consume-this-repo-as-a-submodule.md)
+requires, and what makes the second step safe to ask for.
 
-Both files are copied from `realistic-fusion-refreshed`, where the rule was measured to have rotted.
-It rotted here too: on 2026-09-20 all three commits in this repo failed, on 14 body lines over 72 and
-one subject with no gitmoji at all — including a commit written minutes after the rule was recorded.
-History is left alone; the hook stops it growing. `-Range origin/main..HEAD` checks a branch before a
-push, and `-SelfTest` proves the checker can still fail.
+The check came from `realistic-fusion-refreshed` and was **adopted through the tooling repo on
+2026-09-21**; before that this repo carried its own byte-identical copy of both files. The rule
+rotted here as it had there: on 2026-09-20 all three commits in this repo failed, on 14 body lines
+over 72 and one subject with no gitmoji at all — including a commit written minutes after the rule
+was recorded. History is left alone; the hook stops it growing. `-Range origin/main..HEAD` checks a
+branch before a push, and `-SelfTest` proves the check can still fail.
 
 The first commit `3ab917c` predates this section and does not follow it.
 

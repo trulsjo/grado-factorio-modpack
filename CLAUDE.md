@@ -65,12 +65,15 @@ Settled so far, recorded here so nobody reopens them by accident:
 Listed in full with their evidence in `docs/porting-notes.md`. Do not close one silently.
 
 - `factorio_version` is declared `2.0` on all five packs while several members have moved to `2.1`.
-  **Unverified** that a `2.0` pack loads them.
+  **Answered for `Grado_NonChanging`, and the answer is no** — ten of its members require
+  `base >= 2.1`. Still unverified on the other four.
 - Version `0.1.0` starts a fresh line rather than continuing the 1.1 `0.0.x` numbering.
 - `alien-biomes-hr-terrain` was dropped **assuming** 2.0 `alien-biomes` absorbed the HR terrain.
   Not checked.
 - Twenty mods are dropped with no replacement found, including seven of the nine Picker mods,
-  `angelsexploration`, `angelsindustries` and `Clowns-Science`. (Sixteen is the number of
+  `angelsexploration`, `angelsindustries` and `Clowns-Science`. **Four of the Picker seven have been
+  re-checked since** — `Grado_NonChanging`'s, where three turned out to be covered by mods already in
+  the pack. "No replacement found" now means "not yet re-checked" for the rest. (Sixteen is the number of
   *replacements*; this line carried it by mistake until 2026-09-20.)
 - Two dependencies the 1.1 `Grado_ChangingBase` declared optional, `? reverse-factory` and
   `? Squeak Through`, are mandatory in the 2.0 pack. Nobody decided that.

@@ -216,6 +216,7 @@ In dependency-list order.
 | **Latest** | `2.4.4`, `factorio_version` **2.0**, 2025-11-16 |
 | **Downloads** | 19,692 |
 | **Owner** | `Ashier` |
+| **Supersedes** | `PipeVisualizer` by `raiguard`, last `2.2.1` on 2024-03-29, 93,024 downloads |
 | **Read on** | 2026-09-20 |
 
 **Alternatives considered.** It is already the replacement for `PipeVisualizer`, made during the port. Original is 1.1-only.
@@ -420,6 +421,7 @@ Which layer it belongs in is pack membership, so it is #7's and #8's jointly. Re
 | **Latest** | `3.0.2`, `factorio_version` **2.1**, 2026-07-24 |
 | **Downloads** | 34,554 |
 | **Owner** | `hgschmie` |
+| **Supersedes** | `PickerDollies` by `Nexela`, last `1.2.6` on 2022-12-15, 53,375 downloads |
 | **Read on** | 2026-09-20 |
 
 **Alternatives considered.** It is the replacement for `PickerDollies`, made during the port, and `kry-picker-complete` bundles this same mod — so the two routes agree on it.
@@ -465,6 +467,7 @@ Which layer it belongs in is pack membership, so it is #7's and #8's jointly. Re
 | **Latest** | `1.2.4`, `factorio_version` **2.1**, 2026-08-10 |
 | **Downloads** | 4,127 |
 | **Owner** | `Kryzeth` |
+| **Supersedes** | `PickerExtended` by `Nexela`, last `4.1.4` on 2022-05-04, 23,787 downloads |
 | **Read on** | 2026-09-20 |
 
 **Alternatives considered.** It is the replacement for `PickerExtended`, made during the port, and states outright that it is the 2.0/2.1 update of `Nexela`'s original. `kry-picker-complete` is its companion pack.
@@ -643,10 +646,13 @@ already. Whether it is a good way to get the raiguard set is open, and it is #7'
 Truls's observation that raiguard's mods are highly praised turns out to be load-bearing for this
 pack, so it was checked rather than taken on faith.
 
-**raiguard is already here.** `BlueprintTools` and `Tapeline` are current members, and
-`EditorExtensions` is a member of `Grado_ChangingBase` one layer down.
+**raiguard is already here, and further back than it first looked.** `BlueprintTools` and `Tapeline`
+are current members, `EditorExtensions` is a member of `Grado_ChangingBase` one layer down, and
+`PipeVisualizer` — the 1.1 mod that `PipeVisualizer-Updated` is a fork of — was raiguard's too. That
+last one also explains `pipe-visualization-overlay` below: he wrote the visualiser, stopped, and
+someone else forked it.
 
-**Four members of this pack have a raiguard counterpart, and they do not all point the same way:**
+**Five members of this pack have a raiguard counterpart, and they do not all point the same way:**
 
 | in the pack | last touched | raiguard alternative | last touched | verdict |
 |---|---|---|---|---|

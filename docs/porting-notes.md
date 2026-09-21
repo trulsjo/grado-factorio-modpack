@@ -23,6 +23,11 @@ unconfirmed until a survey has re-checked it that way.
 
 ### Dropped - no 2.0 release, no replacement found
 
+**Re-checked 2026-09-21 by the `Grado_NonChanging` survey: three of these four now have
+coverage identified, and only `PickerInventoryTools` leaves a real gap.** See
+`docs/catalogue/Grado_NonChanging.md`. The heading below describes the original port search, not the
+current state.
+
 - `PickerAtheneum`
 - `PickerBeltTools`
 - `PickerBlueprinter`
@@ -130,12 +135,22 @@ produced the "31" in the brain page.
 - **`alien-biomes-hr-terrain` was dropped on the assumption that 2.0 `alien-biomes` absorbed the
   HR terrain.** NOT verified. Check before releasing ChangingBase.
 - **`factorio_version` is declared `2.0`** on all five packs, while several member mods (Bob's,
-  Angel's, MadClown) have moved to `2.1`. Confirm a `2.0` pack still loads them.
+  Angel's, MadClown) have moved to `2.1`. **Answered for `Grado_NonChanging` on 2026-09-21, and the
+  answer is no:** ten of its 29 members require `base >= 2.1`, six of them `>= 2.1.7`, so a player on
+  2.0.x cannot satisfy the pack. See `docs/catalogue/Grado_NonChanging.md`. The mechanism is the
+  members' own `base` requirements rather than the `factorio_version` field. Still unchecked on the
+  other four packs; the same check is one command each.
 - **Version `0.1.0`** starts a fresh line rather than continuing the 1.1 `0.0.x` series. Change it if
   the portal entries should continue their numbering instead.
 - **`RealisticFusionPower` is among the drops.** It is the mod the separate
   *realistic-fusion-refreshed* project exists to succeed; that mod is a candidate to add here once it
   ships.
+- **The Picker family lost seven of nine - and for `Grado_NonChanging` that is now answered.**
+  Its four drops cost that pack one feature, not four mods: `kry-picker-extended` and
+  `BlueprintTools` are already members and cover the belt, planner and sorting features, and only
+  `PickerInventoryTools`' requester-chest-from-blueprint has no successor found. See
+  `docs/catalogue/Grado_NonChanging.md`. The three Picker drops in `Grado_ChangingBase` are still
+  unassessed and are #3's. Original note follows.
 - **The Picker family lost seven of nine - and that is now disputed.** The name-only search found
   replacements for `PickerDollies` (`even-pickier-dollies`) and `PickerExtended`
   (`kry-picker-extended`) alone. Searching titles instead turns up `kry-picker-complete`, a 2.1

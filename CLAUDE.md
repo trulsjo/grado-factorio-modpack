@@ -61,12 +61,14 @@ Settled so far, recorded here so nobody reopens them by accident:
 - **One repo, one directory per pack.**
 - **The 2.0 packs reuse the three existing portal entries** (2026-09-21). The 1.1 releases stay
   in place on them; one entry serves each player the newest release matching their game version.
-- **Version `0.1.0` on all five, then each pack versions independently** (2026-09-21). It sits above
-  every published number and marks the 1.1 -> 2.0 break without claiming the packs work in game.
+- **Version `0.1.0` on all five** (2026-09-21), each pack versioning independently from there. It
+  sits above every published number and marks the 1.1 -> 2.0 break without claiming the packs work
+  in game. How a version is then chosen is under *Conventions*.
 - **The name is `Grado_ABCS`, with the underscore** (2026-09-21). Permanent — a name is the portal
   URL and what `info.json` resolves.
-- **Titles are short identity, colon, descriptor** (2026-09-21): `Grado ABCX: Angel's, Bob's,
-  MadClown, SpaceX`. The published entries used the raw name as the title; this replaces it.
+- **Titles are short identity, colon, descriptor** (2026-09-21). The published entries used the
+  raw name as the title; this replaces it. The form itself is under *Conventions*, which is where
+  it is stated once.
 
 ## Decisions still open
 
@@ -141,8 +143,8 @@ missing.
   `Grado` leading all five so the family sorts together on the portal. The descriptor names the
   mods a player would search for; the initialism alone means nothing to someone browsing.
 - **`name` and `title` are not the same field.** The name is permanent and resolves dependencies;
-  the title is display only. `CONTEXT.md` is the glossary for this and the other five terms that
-  have been used two ways.
+  the title is display only. `CONTEXT.md` is the glossary: six terms, these two among them, each
+  of which has been used here to mean two things.
 
 ## Commit messages
 

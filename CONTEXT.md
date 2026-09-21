@@ -38,5 +38,6 @@ _Avoid_: mod name, id, directory name (the directory happens to match, but it is
 
 **Title**:
 The `title` field in `info.json`, e.g. `Grado ABCS: Angel's, Bob's, MadClown, Space Age`. Display
-only - shown in the in-game mod list and on the portal page, and freely changed in any release.
+only - shown in the in-game mod list and on the pack's portal entry, and freely changed in any
+release.
 _Avoid_: name, display name

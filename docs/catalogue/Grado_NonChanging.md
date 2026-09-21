@@ -337,9 +337,10 @@ In dependency-list order.
 | **Latest** | `3.3.0`, `factorio_version` **2.1**, 2026-07-11 |
 | **Downloads** | 117,279 |
 | **Owner** | `somethingtohide` |
+| **Overlaps** | `EditorExtensions` (`Grado_ChangingBase`) |
 | **Read on** | 2026-09-20 |
 
-**Alternatives considered.** **[`EditorExtensions`](https://mods.factorio.com/mod/EditorExtensions) by `raiguard`** — `2.6.1`, `factorio_version` **2.1**, 2026-06-26, 139,996 downloads. Its own summary says it "adds a separate editor lab that can be used to design blueprints separately from your main factory", which is this mod's whole job. **And it is already in `Grado_ChangingBase`**, one layer down, so every player of ChangingBase or anything above it already has both. It names `Edit-Blueprints` and `Blueprint Designer Lab` as its own predecessors.
+**Alternatives considered.** **[`EditorExtensions`](https://mods.factorio.com/mod/EditorExtensions) by `raiguard`** — `2.6.1`, `factorio_version` **2.1**, 2026-06-26, 139,996 downloads. Its own summary says it "adds a separate editor lab that can be used to design blueprints separately from your main factory", which is this mod's whole job. **And it is already in `Grado_ChangingBase`**, one layer up, so every player of ChangingBase or anything above it already has both. It names `Edit-Blueprints` and `Blueprint Designer Lab` as its own predecessors.
 
 **That optional dependency is not friendly integration. It is a shim for an incompatibility, and it resolves it by switching the other mod's feature off.** `blueprint-sandboxes` states in its own FAQ:
 
@@ -377,7 +378,7 @@ Personal or shared, entered through the map editor. Against that, `blueprint-san
 
 - `EditorExtensions` is in `Grado_ChangingBase`, the layer whose promise *permits* save changes. This mod creates surfaces, which is the heaviest save-state footprint of any member of `Grado_NonChanging` — the layer whose promise forbids exactly that. The feature is arguably sitting one layer too low.
 - Everyone from ChangingBase upward already gets `EditorExtensions`, so for four of the five packs this member is redundant capability.
-- It is the only member of this pack that duplicates a member of another pack in *function*. `bobinserters` duplicates by *name* across two packs, which is #3's; this is the same problem in a shape the catalogue format did not anticipate.
+- It is the only member of this pack that duplicates a member of another pack in *function*. `bobinserters` duplicates by *name* across two packs, which is #3's; this is the other kind, and `docs/mod-catalogue.md` gained a rule for it on 2026-09-21 off the back of this entry. This pack is the lower one, so the comparison above is the one the format says lives here.
 - **Against all that:** a player using `Grado_NonChanging` alone gets no sandbox at all if this is dropped, and that is the pack with the most users. Dropping it to remove a redundancy that only exists in the packs above it would take the feature away from the one pack where it is not redundant.
 
 Which layer it belongs in is pack membership, so it is #7's and #8's jointly. Recorded, not settled.
@@ -647,7 +648,7 @@ Truls's observation that raiguard's mods are highly praised turns out to be load
 pack, so it was checked rather than taken on faith.
 
 **raiguard is already here, and further back than it first looked.** `BlueprintTools` and `Tapeline`
-are current members, `EditorExtensions` is a member of `Grado_ChangingBase` one layer down, and
+are current members, `EditorExtensions` is a member of `Grado_ChangingBase` one layer up, and
 `PipeVisualizer` — the 1.1 mod that `PipeVisualizer-Updated` is a fork of — was raiguard's too. That
 last one also explains `pipe-visualization-overlay` below: he wrote the visualiser, stopped, and
 someone else forked it.

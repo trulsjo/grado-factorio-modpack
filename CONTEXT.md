@@ -16,6 +16,16 @@ A mod named in a pack's `dependencies`. Written by someone else, published separ
 vendored into this repo. A pack that depends on another pack depends on it as a member.
 _Avoid_: dependency (true but wider - it also covers `base` and optional entries), child mod
 
+**Lower / higher**:
+Position in the chain, measured by dependency. `Grado_NonChanging` is the lowest and `Grado_ABCX`
+and `Grado_ABCS` are the highest; a pack is higher than every pack it depends on, and loads all of
+them. The README's diagram nests the chain downwards and so reads the opposite way - the words
+follow the dependency, not the indentation. Both directions have been written for the same pair
+(`docs/catalogue/Grado_NonChanging.md` called `Grado_ChangingBase` "one layer down" twice before
+2026-09-21), which is why it is here.
+_Avoid_: above/below without saying of what, upstream/downstream, base pack (`base` is Factorio's
+own mod)
+
 **Portal entry**:
 A mod's page on the mod portal, identified by its name and holding every release ever published
 under it. One entry spans game versions: the 1.1 and 2.0 releases of a pack live on the same entry.

@@ -19,8 +19,48 @@ order, and **Dropped during the port**, one entry per mod that was in the 1.1 pa
 now. Every mod, not only the interesting ones — an absent entry and a boring entry are different
 claims, and only one of them is verifiable.
 
-A mod listed in two packs is not this file's problem: `bobinserters` is the only one, and issue #3
-owns deciding which layer keeps it. Enter it in both files until that is settled.
+## Two kinds of duplication
+
+The chain has five layers and a pack loads every pack below it, so a mod can be duplicated two
+different ways. They are not the same problem and do not get the same treatment.
+
+*Lower* and *higher* below mean position in the chain measured by dependency, not by the README
+diagram's indentation, which runs the other way. `CONTEXT.md` is the glossary entry.
+
+**The same mod in two dependency lists** is a name collision, and this file's only answer is to
+wait: `bobinserters` is the only instance, issue #3 owns deciding which layer keeps it, and it is
+entered in both files until that is settled.
+
+**Two different mods doing an overlapping job in two packs** is the other one, and it is the one
+that compounds as the surveys climb. It is recorded with an **Overlaps** row in the entry table,
+`| **Overlaps** | `other-mod` (`Pack_Name`) |`, and a comparison in prose under the entry that owns
+it.
+
+**The lower pack's entry owns the comparison.** A mod in a lower pack is loaded for every pack
+above it, so its entry is the one every affected player's pack reaches; the higher pack's entry
+carries the **Overlaps** row and one sentence naming where the comparison lives. Either side can
+be the one that notices; the comparison still goes below.
+
+**A survey assesses only the mods in its own pack**, and edits only its own pack's file, because
+the five surveys run in parallel and two sessions writing one file collide. So the survey that
+notices an overlap:
+
+- adds the **Overlaps** row to its own entry, whichever side it is on;
+- writes the comparison if its own pack is the lower one, out of what both mods claim on the
+  portal and in their own docs — that much is checkable without judging the other mod's fit;
+- otherwise stops at the row and files an issue against the lower pack's catalogue, because the
+  comparison it would write has no file it is allowed to touch.
+
+A **Recommendation** never disposes of the other pack's mod. An overlap is evidence for
+`reconsider:` in this entry; what the other pack does about it is that pack's ticket, and which
+layer a feature belongs in is pack membership, which is Truls's under `CLAUDE.md`.
+
+This section was added on 2026-09-21, after the `Grado_NonChanging` survey found
+`blueprint-sandboxes` and `EditorExtensions` — different mods, adjacent packs, and one silently
+disables a feature of the other. The format had a rule for the same mod named twice and nothing for
+this. Surveys #3 through #6 will each hit it again with more layers below them than this one had,
+and #3 hits it first: `EditorExtensions` is a `Grado_ChangingBase` member, so that survey reaches
+the other half of this very overlap.
 
 ## The entry
 
@@ -45,8 +85,8 @@ and the search that was run.
 **Recommendation: keep | replace with `x` | drop | reconsider: `<what>`.** The reason, in prose.
 ````
 
-Two variants. The first adds one row and changes nothing else; the second also moves the entry and
-constrains what its **Recommendation** may say.
+Three variants. The first two add one row and change nothing else; the third also moves the entry
+and constrains what its **Recommendation** may say.
 
 - **A mod that replaced a 1.1 mod** adds one row, `| **Supersedes** | `old-name`, last 1.1 release |`,
   and changes nothing else. The heading is the mod that is in the pack now, not the one it replaced
@@ -56,6 +96,10 @@ hit a case the first three could not express. `keep`, `replace with` and `drop` 
 answer; a mod whose membership is genuinely unresolved has none of them to offer, and writing `keep`
 to stay inside the vocabulary would claim a decision nobody has taken. It names the open question
 instead. Use it sparingly — a survey where several entries reconsider has not done its work.
+
+- **A mod overlapping a mod in another pack** adds one row,
+  `| **Overlaps** | `other-mod` (`Pack_Name`) |`, and nothing else in the table. Which entry then
+  carries the comparison is *Two kinds of duplication* above.
 
 - **A mod dropped during the port** does three things: it adds
   `| **Status** | dropped during the port |`, it sits in the *Dropped during the port* section rather

@@ -59,6 +59,14 @@ Settled so far, recorded here so nobody reopens them by accident:
 - **SpaceX stays in, via the fork.** `SpaceMod` itself is 1.1-only; `SpaceModFeorasFork` is current
   (1.3.4, Factorio 2.1, 2026-07-10).
 - **One repo, one directory per pack.**
+- **The 2.0 packs reuse the three existing portal entries** (2026-09-21). The 1.1 releases stay
+  in place on them; one entry serves each player the newest release matching their game version.
+- **Version `0.1.0` on all five, then each pack versions independently** (2026-09-21). It sits above
+  every published number and marks the 1.1 -> 2.0 break without claiming the packs work in game.
+- **The name is `Grado_ABCS`, with the underscore** (2026-09-21). Permanent — a name is the portal
+  URL and what `info.json` resolves.
+- **Titles are short identity, colon, descriptor** (2026-09-21): `Grado ABCX: Angel's, Bob's,
+  MadClown, SpaceX`. The published entries used the raw name as the title; this replaces it.
 
 ## Decisions still open
 
@@ -67,7 +75,6 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
 - `factorio_version` is declared `2.0` on all five packs while several members have moved to `2.1`.
   **Answered for `Grado_NonChanging`, and the answer is no** — ten of its members require
   `base >= 2.1`. Still unverified on the other four.
-- Version `0.1.0` starts a fresh line rather than continuing the 1.1 `0.0.x` numbering.
 - `alien-biomes-hr-terrain` was dropped **assuming** 2.0 `alien-biomes` absorbed the HR terrain.
   Not checked.
 - Twenty mods are dropped with no replacement found, including seven of the nine Picker mods,
@@ -77,7 +84,6 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   *replacements*; this line carried it by mistake until 2026-09-20.)
 - Two dependencies the 1.1 `Grado_ChangingBase` declared optional, `? reverse-factory` and
   `? Squeak Through`, are mandatory in the 2.0 pack. Nobody decided that.
-- `Grado_ABCS` uses the underscore to match the existing convention; Truls wrote `GradoABCS` once.
 
 ## Factorio specifics
 
@@ -124,6 +130,19 @@ missing.
   cannot be revisited.
 - Cite a mod by its **portal name** (`even-pickier-dollies`), not its title, because the name is what
   `info.json` resolves.
+- **A pack's major version tracks save compatibility**, not maturity. Major = a dependency change an
+  existing save cannot survive (a member mod of `Grado_ChangingBase` or below added or removed);
+  minor = a save-safe dependency change; patch = metadata only. Same rule as the `!` in a commit
+  subject. `Grado_NonChanging` can never go major. Reasoning in
+  `docs/adr/0001-version-major-tracks-save-compatibility.md`.
+- **Packs version independently.** A bump means that pack's dependency list changed, so do not
+  bump the other four to match.
+- **A title is short identity, colon, descriptor** — `Grado ABC: Angel's, Bob's, MadClown`. Keep
+  `Grado` leading all five so the family sorts together on the portal. The descriptor names the
+  mods a player would search for; the initialism alone means nothing to someone browsing.
+- **`name` and `title` are not the same field.** The name is permanent and resolves dependencies;
+  the title is display only. `CONTEXT.md` is the glossary for this and the other four terms that
+  have been used two ways.
 
 ## Commit messages
 

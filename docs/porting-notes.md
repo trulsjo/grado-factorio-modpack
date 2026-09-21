@@ -130,6 +130,43 @@ Counting note: `Grado_ChangingBase` has two 1.1 releases, and `0.0.2` swapped `r
 `? reverse-factory` and `? Squeak Through` are optional. Counting those two as members is what
 produced the "31" in the brain page.
 
+## Publishing identity, settled 2026-09-21
+
+Three questions that had to be answered before anything reaches the portal. Measured against the
+portal API on 2026-09-21: `Grado_NonChanging` had `0.0.1`, `Grado_ChangingBase` and `Grado_ABCX` had
+`0.0.2`, all Factorio 1.1, all owned by `ostogvin`, 20-23 downloads each. `Grado_ABC`, `Grado_ABCS`
+and `GradoABCS` were all unclaimed.
+
+**The 2.0 packs reuse the three existing portal entries.** One entry holds releases for several game
+versions and serves each player the newest one matching their build, so the 1.1 releases stay in
+place and 1.1 players keep a working install. Publishing new entries instead would have left three
+stale 1.1 entries that searchers still find. The download counts were not the argument - twenty
+downloads is nothing - one URL per pack was.
+
+**Version `0.1.0` on all five, and packs version independently from there.** `0.1.0` sits above every
+published number, so it is legal on the reused entries, and the minor bump marks the 1.1 -> 2.0 break
+without claiming a stability nothing supports: no pack has been loaded in Factorio. `1.0.0` would
+have been a lie and `2.0.0` would have read as tracking the game version, which breaks the moment a
+pack targets 2.1. Continuing each entry's own line (`0.0.2` / `0.0.3` / `0.0.3`) was the alternative;
+it left the largest change these packs will ever have looking like a patch. Lockstep versioning was
+rejected with it - a pack's version answers "did this pack's dependency list change", and lockstep
+would publish four no-op releases every time one mod is swapped. What a bump *means* is a standing
+rule, not a port fact: see `CLAUDE.md` and `docs/adr/0001-version-major-tracks-save-compatibility.md`.
+
+**The name is `Grado_ABCS`, with the underscore.** `GradoABCS` was the alternative. A name is what
+`info.json` resolves and what the portal URL carries, and it cannot be changed without abandoning the
+entry, so this one is permanent. Its own sibling `Grado_ABCX` is already published with the
+underscore, as are the other two; `ABCX` and `ABCS` sitting next to each other spelled differently
+was the outcome to avoid.
+
+**The titles changed too, which nobody had decided.** The three published entries carry their raw
+name as the title (`Grado_NonChanging`); the repo had quietly moved to spaced titles
+(`Grado Non-Changing`). Publishing to a reused entry would have renamed what players see as a side
+effect. Settled deliberately instead: short identity, colon, descriptor - `Grado ABCX: Angel's,
+Bob's, MadClown, SpaceX`. The initialisms are the vocabulary the docs and commit scopes already use,
+but they mean nothing to someone browsing, and the descriptor names the mods people actually search
+for. A title is display only and can be changed in any release, unlike the name.
+
 ## Open questions
 
 - **`alien-biomes-hr-terrain` was dropped on the assumption that 2.0 `alien-biomes` absorbed the
@@ -140,8 +177,6 @@ produced the "31" in the brain page.
   2.0.x cannot satisfy the pack. See `docs/catalogue/Grado_NonChanging.md`. The mechanism is the
   members' own `base` requirements rather than the `factorio_version` field. Still unchecked on the
   other four packs; the same check is one command each.
-- **Version `0.1.0`** starts a fresh line rather than continuing the 1.1 `0.0.x` series. Change it if
-  the portal entries should continue their numbering instead.
 - **`RealisticFusionPower` is among the drops.** It is the mod the separate
   *realistic-fusion-refreshed* project exists to succeed; that mod is a candidate to add here once it
   ships.

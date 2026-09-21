@@ -42,7 +42,7 @@ greppable against a dependency list. Nothing else goes on that line — no arrow
 **Alternatives considered.** What else was looked at and why it was not preferred, or "none found"
 and the search that was run.
 
-**Recommendation: keep | replace with `x` | drop.** The reason, in prose.
+**Recommendation: keep | replace with `x` | drop | reconsider: `<what>`.** The reason, in prose.
 ````
 
 Two variants. The first adds one row and changes nothing else; the second also moves the entry and
@@ -51,6 +51,12 @@ constrains what its **Recommendation** may say.
 - **A mod that replaced a 1.1 mod** adds one row, `| **Supersedes** | `old-name`, last 1.1 release |`,
   and changes nothing else. The heading is the mod that is in the pack now, not the one it replaced
   — the heading has to match the dependency list.
+`reconsider:` was added to the in-pack verdicts on 2026-09-21, after the `Grado_NonChanging` survey
+hit a case the first three could not express. `keep`, `replace with` and `drop` each assert an
+answer; a mod whose membership is genuinely unresolved has none of them to offer, and writing `keep`
+to stay inside the vocabulary would claim a decision nobody has taken. It names the open question
+instead. Use it sparingly — a survey where several entries reconsider has not done its work.
+
 - **A mod dropped during the port** does three things: it adds
   `| **Status** | dropped during the port |`, it sits in the *Dropped during the port* section rather
   than *In the pack*, and its **Recommendation** begins `stay dropped` or `reconsider:` followed by

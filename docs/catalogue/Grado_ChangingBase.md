@@ -104,6 +104,14 @@ are carrying where — while this one reports *network contents*, what the provi
 hold. Not a replacement. Searching the 2.x list by title and summary for "LTN" returns no other
 content reader.
 
+**The mod that would fix this one is on the other side of issue #23.**
+**[`Cybersyn-Content-Reader`](https://mods.factorio.com/mod/Cybersyn-Content-Reader) by `danbopes`**
+— `1.1.2`, `factorio_version` **2.1**, 2026-08-01, 1,504 downloads — is a port of the same Optera
+mod to Cybersyn, one game version ahead of this one and ten months newer. It requires
+`cybersyn >= 2.1.2`, so it cannot be adopted on its own: the pack's weakest member cannot be
+strengthened without taking the whole train-logistics paradigm with it. That is the sharpest single
+argument in #23, and it is why this entry and that ticket have to be read together.
+
 **Recommendation: keep**, and re-check it before release. This is the weakest member of the pack on
 every axis at once: 1,190 downloads against the 46,939 of the mod it replaces, `factorio_version`
 still **2.0**, last touched 2025-10-17, and built against `LogisticTrainNetwork >= 2.4.2` while LTN
@@ -123,14 +131,25 @@ first thing that breaks when a pack is finally loaded.
 | **Owner** | `Optera` |
 | **Read on** | 2026-09-21 |
 
-**Alternatives considered.** None sought. The other three LTN mods in this pack exist only to serve
-it, so replacing it means replacing four members at once. The 2.x list does carry successors of the
-genre — `yet_another_train_manager`, `RailLogisticsDispatcher`, and Cybersyn by way of
-`LtnToCybersynMigration` — but swapping the train-logistics paradigm is a pack-design decision, not
-a maintenance one, and nothing about LTN's state prompts it.
+**Alternatives considered.** The other three LTN mods in this pack exist only to serve it, so
+replacing it means replacing four members at once. The 2.x list carries several successors of the
+genre — `yet_another_train_manager`, `RailLogisticsDispatcher`, `precise-train-logistics`, and
+**Project Cybersyn**, which is the serious one.
 
-**Recommendation: keep.** Released eleven days before this reading, so actively maintained. It is one
-of four members at `base >= 2.1.7`, the second-highest floor in the pack.
+**That comparison is now open as issue #23**, raised on 2026-09-21, and the evidence lives there
+rather than being summarised twice. The short of it: the two cores are equally maintained, 19
+releases each in the last twelve months, so this is a feature and timing question and not a rescue.
+Cybersyn offers per-cargo thresholds, per-wagon filters, automatic allow-lists, depot bypass and
+twice the station update rate; against that, its 2.1 support is a single release its own page calls
+experimental, while LTN ships a 2.1 and a 2.0 branch side by side on the same day. Checked while
+filing it: nothing else among the 100 members of the five packs depends on LTN, so the cluster moves
+as one unit and nothing in Angel's, Bob's, MadClown, SpaceX or Space Age notices either way.
+
+**Recommendation: keep — and the question is open as #23.** Released eleven days before this reading,
+so actively maintained, and it is the better-supported of the two on the game version this pack
+actually needs. That is a recommendation on the 2.1 evidence, not a closure: which train-logistics
+paradigm a pack ships is pack membership, so #23 records it and #8 settles it. It is one of four
+members at `base >= 2.1.7`, the second-highest floor in the pack.
 
 ### `LtnManager`
 

@@ -35,10 +35,19 @@ current state.
 
 ## Grado_ChangingBase
 
-31 entries in the 1.1 pack, of which 29 are members and 2 are optional: **16 carried over,
+31 entries in the 1.1 pack, of which 29 are members and 2 are optional: **17 carried over,
 8 replaced, 6 dropped** -> **25 in the 2.0 pack**. The count only balances once the optionals are
 named: `reverse-factory` carried over and `Squeak Through` was replaced, and both were `?` optional
 upstream and are mandatory here. That change is issue #11, not a counting artefact.
+
+**Corrected 2026-09-21: the carried-over figure read 16.** It was the members-only count sitting
+next to the all-entries count for replacements, so the line added up to neither 31 nor 25. On the
+all-entries basis this sentence uses, the two optionals are what separate it from the members-only
+table below: `reverse-factory` makes carried-over 17 rather than 16, and `Squeak Through` makes
+replacements 8 rather than 7. Both bases are now internally consistent - 17 + 8 + 6 = 31 entries,
+17 + 8 = 25 mods in the 2.0 pack, and 16 + 7 + 6 = 29 members - and neither is comparable to the
+other without saying which is being counted. Found by the review of #3; the measurement is release
+`0.0.2` diffed against `Grado_ChangingBase/info.json`.
 
 ### Replaced
 
@@ -61,9 +70,10 @@ be false for all six once titles and summaries are searched. Four stay dropped -
 absorbed by the base game, `alien-biomes-hr-terrain` by a mandatory dependency,
 `beautiful_bridge_railway` has a two-mod functional replacement that was deliberately not taken, and
 `PickerTweaks` is the wrong kind of mod for a pack that must survive an overhaul. Two,
-`PickerPipeTools` and `PickerVehicles`, are `reconsider:` against `kry-picker-complete` and belong to
-#2 and #7 rather than here. See `docs/catalogue/Grado_ChangingBase.md`. The heading below describes
-the original port search, not the current state.
+`PickerPipeTools` and `PickerVehicles`, are `reconsider:` against `kry-picker-complete`: assessed by
+#3, and adopting it into this pack is #8's rather than this file's. See
+`docs/catalogue/Grado_ChangingBase.md`. The heading below describes the original port search, not the
+current state.
 
 - `PickerPipeTools`
 - `PickerTweaks`
@@ -132,8 +142,10 @@ Drops total **20**, replacements total **16**. `CLAUDE.md` claimed sixteen drops
 it had picked up the replacement count.
 
 The column is *carried over*, not *kept*: it counts mods present under the same name in both,
-which is not the size of the 2.0 pack. It also counts members only, so `Grado_ChangingBase` shows 7
-replacements where the section above lists 8 - the eighth, `Squeak Through`, was optional upstream.
+which is not the size of the 2.0 pack. It also counts members only, so `Grado_ChangingBase` shows 16
+carried over and 7 replacements where the section above lists 17 and 8. The two differences are the
+same two mods: `reverse-factory` carried over and `Squeak Through` was replaced, and both were `?`
+optional upstream, so neither counts as a 1.1 member.
 
 Counting note: `Grado_ChangingBase` has two 1.1 releases. Its `0.0.2` dependency list holds 31
 entries but only 29 members, because `? reverse-factory` and `? Squeak Through` are optional.

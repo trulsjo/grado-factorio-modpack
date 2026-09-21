@@ -817,13 +817,18 @@ portal on 2026-09-21, say something narrower: `0.0.1` (2024-09-29) carried `reve
 mandatory member and had no `crafting_combinator` and no `Squeak Through`; `0.0.2` (2024-10-08)
 **added** `crafting_combinator` and `? Squeak Through` and **demoted** `reverse-factory` to
 `? reverse-factory`. Nothing was swapped out — the pack grew by two and one member became optional.
-The 31-and-29 arithmetic in `docs/porting-notes.md` is unaffected and checks out against `0.0.2`;
-only the word "swapped" was wrong, and the file is corrected in the same commit as this entry. **Its
-31 counts mods, not dependency entries** — `0.0.2` declares 33 lines in all, of which `base >= 1.1.0`
-and `Grado_NonChanging` are not mods, leaving 31 mods, 29 of them mandatory. That is the opposite
+The 31-and-29 split in `docs/porting-notes.md` checks out against `0.0.2`, and **its 31 counts mods,
+not dependency entries** — `0.0.2` declares 33 lines in all, of which `base >= 1.1.0` and
+`Grado_NonChanging` are not mods, leaving 31 mods, 29 of them mandatory. That is the opposite
 convention to the "27 entries" at the top of this file, which counts every line. Both numbers are
 right and neither is comparable to the other without saying which is being counted, which is how the
 brain page got a "31" it could not reconcile.
+
+**That same ambiguity had already broken a tally one paragraph above the one being corrected**, which
+the review of this ticket caught: the `Grado_ChangingBase` section's headline read "16 carried over,
+8 replaced, 6 dropped" — a members-only 16 beside an all-entries 8, adding up to neither 31 nor 25.
+Carried over is **17** on the basis that sentence uses. Both are fixed in the same commit, with the
+old readings kept.
 
 The correction matters beyond tidiness, because the demotion is half of issue #11: `reverse-factory`
 did not merely stay optional across the port. It was mandatory in `0.0.1`, made optional in `0.0.2`,

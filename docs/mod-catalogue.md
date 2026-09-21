@@ -87,8 +87,11 @@ comparison already written: `angelsaddons-storage` (`Grado_ABC`) against the fou
 (`Grado_ChangingBase`) — warehouses and silos against merged chests, the same outcome by different
 mechanisms. It is the case this section's third bullet describes, so the row and a pointer went in
 the `Grado_ABC` entry and issue **#30** was filed against the lower pack's file for the comparison
-itself. The other two overlaps #4 reached were both already written up by #3, which is the rule
-working: the higher survey spent a sentence each rather than re-deriving them.
+itself. The one other overlap #4 reached, `boblogistics` against `UltimateBeltsSpaceAge`, was
+already written up by #3, and the higher survey spent a sentence pointing at it rather than
+re-deriving it — which is the rule working. The third instance against `Grado_ABC`,
+`deadlock-beltboxes-loaders` against `miniloader-redux`, hangs off a mod #4 did not survey: it is
+one of #5's sixteen, so #4 reached two overlaps and not three.
 
 ## The entry
 

@@ -88,18 +88,19 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   stands is still Truls's; the evidence makes this one close to forced. See
   `docs/catalogue/Grado_ChangingBase.md`.
 - Twenty mods are dropped with no replacement found, including seven of the nine Picker mods,
-  `angelsexploration`, `angelsindustries` and `Clowns-Science`. **Thirteen have been re-checked
-  since** — `Grado_NonChanging`'s four, `Grado_ChangingBase`'s six, and the three named above,
-  which are `Grado_ABC`'s and were re-checked on 2026-09-21. **Neither of the first two surveys
-  recommends adding any of their ten back as itself, and almost none stayed dropped for the reason
-  originally recorded:**
-  features turned out to be covered by mods already in the packs, by `kry-picker-complete`, or by the
-  base game. Three of the ten end in `reconsider:` rather than `stay dropped` — two against
+  `angelsexploration`, `angelsindustries` and `Clowns-Science`. **All twenty have now been
+  re-checked**, the last seven on 2026-09-21 by #5, so "no replacement found" no longer means "not
+  yet checked" anywhere. They divide 4 + 6 + 3 + 7.
+
+  `Grado_NonChanging`'s four and `Grado_ChangingBase`'s six: **neither survey recommends adding any
+  of the ten back as itself, and almost none stayed dropped for the reason originally recorded** —
+  features turned out to be covered by mods already in the packs, by `kry-picker-complete`, or by
+  the base game. Three of the ten end in `reconsider:` rather than `stay dropped` — two against
   `kry-picker-complete`, and `PickerInventoryTools` over whether its one feature is still wanted.
-  **All twenty have now been re-checked** — `Grado_ABC`'s remaining seven on 2026-09-21 by #5 — so
-  "no replacement found" no longer means "not yet checked" anywhere. Its three core drops broke the
-  earlier pattern: two have no successor of any kind and stay dropped, `angelsindustries` being the
-  largest single loss in the project, and `Clowns-Science` is `reconsider:` against
+
+  `Grado_ABC`'s three core drops broke that pattern: two have no successor of any kind and stay
+  dropped, `angelsindustries` being the largest single loss in the project, and `Clowns-Science`
+  is `reconsider:` against
   `ScienceCostTweakerM`. Of the seven add-on drops, four stay dropped, `RealisticFusionPower` stays
   dropped with no slot held for the sibling project, and the two Deadlock stacking bridges are
   `reconsider:` **as one question together with the three Deadlock mods still in the pack**,

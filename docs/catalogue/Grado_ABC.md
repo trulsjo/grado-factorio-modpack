@@ -214,9 +214,11 @@ issue **#30** is filed against that file for it. The `WideChests` entries there 
 their cost scales with whatever overhaul is layered above, which is this pack.
 
 *Within-pack, one mod.* `WideChestsBobs` is a fifth family member and is in **this pack's own
-dependency list**, as #5's to catalogue. A within-pack overlap has no lower pack to defer to, so it
-is written under *Overlaps* below rather than sent to #30 — and #30 is told, because whoever closes
-it would otherwise compare four mods against a warehouse and miss the fifth.
+dependency list**, as #5's to catalogue. Whether it belongs in the row above at all is #33 — the
+format defines that row for cross-pack overlaps and this family straddles the boundary. A
+within-pack overlap has no lower pack to defer to, so it is written under *Overlaps* below rather
+than sent to #30 — and #30 is told, because whoever closes it would otherwise compare four mods
+against a warehouse and miss the fifth.
 
 **Recommendation: keep.** Current on 2.1 and the most-downloaded Angel's add-on. The overlap is
 evidence for the question #30 asks, not a reason to dispose of either side here — which layer owns

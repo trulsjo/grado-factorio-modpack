@@ -1,10 +1,11 @@
 #!/bin/sh
-# Checks the message against the format CLAUDE.md lays down. The rules and the reasons live in
-# scripts/commit-check.ps1; this is only the wiring, so git has something without an extension to
-# run and the logic stays where the rest of this repository's logic is.
+# Checks the message against the convention declared in
+# vendor/grado-factorio-tools/docs/commit-convention.md. The rules and the reasons live there and
+# in the check it runs; this is only the wiring, so git has something without an extension to run.
 #
-# INSTALL, once per clone, because git does not track .git/hooks:
+# INSTALL, twice per clone, because git tracks neither .git/hooks nor a submodule's contents:
 #
+#     git submodule update --init
 #     git config core.hooksPath .githooks
 #
 # The message file survives a rejection, so `git commit -e -F .git/COMMIT_EDITMSG` reopens what you
@@ -18,4 +19,15 @@ if ! command -v pwsh >/dev/null 2>&1; then
     exit 0
 fi
 
-exec pwsh -NoProfile -File "$(git rev-parse --show-toplevel)/scripts/commit-check.ps1" "$1"
+# A clone that skipped `git submodule update --init` has an empty vendor directory, so the check
+# cannot be resolved. Say so and let the commit through -- the same posture as a missing pwsh, and
+# what ADR 0001 requires. Left to pwsh this would be exit 64 and a usage dump, which blocks the
+# commit and names nothing the author can act on.
+CHECK="$(git rev-parse --show-toplevel)/vendor/grado-factorio-tools/scripts/commit-check.ps1"
+if [ ! -f "$CHECK" ]; then
+    echo "commit-msg: $CHECK not found, so the message format was NOT checked." >&2
+    echo "commit-msg: run 'git submodule update --init' to wire up the shared check." >&2
+    exit 0
+fi
+
+exec pwsh -NoProfile -File "$CHECK" "$1"

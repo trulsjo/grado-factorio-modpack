@@ -60,8 +60,9 @@ across its PRs #124, #126 and #127: ten findings, zero posted, nine real and sub
 
 **This repository is almost entirely prose, and nothing here checks it.** A pack is an `info.json`
 whose dependency list *is* the pack, and `CLAUDE.md` says these packs are expected to carry no Lua at
-all. The one gate that exists, `scripts/commit-check.ps1`, checks the *shape* of a commit message and
-says so in its own header. Nothing reads whether a sentence agrees with the number beside it, and
+all. The one gate that exists — the shared check, at
+`vendor/grado-factorio-tools/scripts/commit-check.ps1` since 2026-09-21 — reads the *shape* of a
+commit message and says so in its own header. Nothing reads whether a sentence agrees with the number beside it, and
 **nothing has ever been loaded in Factorio**, so the game cannot contradict a claim either.
 
 ### The rule

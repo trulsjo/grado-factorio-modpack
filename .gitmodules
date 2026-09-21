@@ -1,0 +1,3 @@
+[submodule "vendor/grado-factorio-tools"]
+	path = vendor/grado-factorio-tools
+	url = git@github.com:trulsjo/grado-factorio-tools.git

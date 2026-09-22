@@ -7,9 +7,9 @@ Lua into it.
 ## The chain
 
 ```
-Grado_NonChanging      quality of life; does not change save state or the factory
+Grado_NonChanging      quality of life; adds no content (see CONTEXT.md, *Promise*)
   |
-  +-- Grado_ChangingBase   may change saves/factory; compatible with most overhauls
+  +-- Grado_ChangingBase   may add content and change saves; compatible with most overhauls
         |
         +-- Grado_ABC          Angel's + Bob's + MadClown. The shared overhaul core.
               |

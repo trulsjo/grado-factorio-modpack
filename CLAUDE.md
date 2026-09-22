@@ -26,8 +26,8 @@ change can be made by editing a dependency list, it should be.
 ## The chain
 
 ```
-Grado_NonChanging        quality of life; does not change save state or the factory
-  └─ Grado_ChangingBase    may change saves/factory; compatible with most overhauls
+Grado_NonChanging        quality of life; adds no content (see CONTEXT.md, *Promise*)
+  └─ Grado_ChangingBase    may add content and change saves; compatible with most overhauls
        └─ Grado_ABC          Angel's + Bob's + MadClown. The shared overhaul core.
             ├─ Grado_ABCX     + Space Extension (SpaceX), via `SpaceModFeorasFork`
             └─ Grado_ABCS     + Space Age
@@ -69,6 +69,18 @@ Settled so far, recorded here so nobody reopens them by accident:
 - **Titles are short identity, colon, descriptor** (2026-09-21). The published entries used the
   raw name as the title; this replaces it. The form itself is under *Conventions*, which is where
   it is stated once.
+- **Each pack has a promise, and it is the membership test** (2026-09-22). `Grado_NonChanging`
+  adds no content; `Grado_ChangingBase` may, but not content that competes with an overhaul for
+  the same ground. Stated once in `CONTEXT.md` under *Promise*; the old wording, "does not change
+  save state or the factory", was false and is retired.
+- **`Grado_NonChanging`'s membership is settled** (2026-09-22, #7). 29 members to 26:
+  `AfraidOfTheDark`, `blueprint-sandboxes` and `blueprint_flip_and_turn` out, `Bottleneck` to
+  `BottleneckLite` and `MaxRateCalculator` to `RateCalculator`. `kry-picker-complete` declined.
+  Reasons per mod in `docs/catalogue/Grado_NonChanging.md`.
+- **A pack version does not move before its first release** (2026-09-22). All five stay at
+  `0.1.0` through any number of dependency edits; the major/minor rule under *Conventions* starts
+  applying at the first published release. `0.x` to `1.0.0` is the one major that signals
+  maturity rather than a broken save - see ADR 0002.
 
 ## Decisions still open
 
@@ -84,6 +96,15 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   `space-age` is not a portal mod, so whether the expansion raises that is unreadable until the pack
   is loaded (#29). So the measurement, which is #15, is complete for four packs and not completable
   for the fifth. The number to declare instead is #16.
+  **And on 2026-09-22 #7 found the other end of the same problem, which no declaration can fix.**
+  Six members of `Grado_NonChanging` declare `factorio_version: 2.0` and the portal does not serve
+  them to a 2.1 game at all: `CleanFloor`, `SpeedControl`, `WhereIsMyBody`, `YARM`,
+  `PipeVisualizer-Updated`, `solar-calc`. The modding docs are explicit that `"2.0"` means "this
+  major version and no other", with no 2.0-to-2.1 exception. The pack's effective floor is 2.1.7,
+  so on a 2.0 game five members cannot be satisfied and on a 2.1 game these six cannot be
+  downloaded - **there is no version it installs on.** 25 of 98 members across the three published
+  packs are in this state. #16 cannot be answered by choosing a number until they update or are
+  replaced.
 - ~~`alien-biomes-hr-terrain` was dropped **assuming** 2.0 `alien-biomes` absorbed the HR terrain.~~
   **Checked 2026-09-21: recommended to stay dropped, and the assumption's mechanism was wrong.**
   The graphics moved into `alien-biomes-graphics`, a mandatory dependency of `alien-biomes`, rather
@@ -98,8 +119,14 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   `Grado_NonChanging`'s four and `Grado_ChangingBase`'s six: **neither survey recommends adding any
   of the ten back as itself, and almost none stayed dropped for the reason originally recorded** —
   features turned out to be covered by mods already in the packs, by `kry-picker-complete`, or by
-  the base game. Three of the ten end in `reconsider:` rather than `stay dropped` — two against
+  the base game. Three of the ten ended in `reconsider:` rather than `stay dropped` — two against
   `kry-picker-complete`, and `PickerInventoryTools` over whether its one feature is still wanted.
+  **`PickerInventoryTools` is closed as of 2026-09-22 (#7): stay dropped, because the feature is
+  base-game.** Dropping a blueprint on a requester chest's "Add section" button is vanilla 2.0 -
+  the suggestion asking for it was closed Implemented, and a sweep of all 2.x mods by title and
+  summary found nothing reproducing the chest-slot form because nothing needs to. So
+  `Grado_NonChanging`'s four Picker drops cost that pack **no feature at all**, where the survey
+  had said one. The two `kry-picker-complete` ones are `Grado_ChangingBase`'s and stay open.
 
   `Grado_ABC`'s three core drops broke that pattern: two have no successor of any kind and stay
   dropped, `angelsindustries` being the largest single loss in the project, and `Clowns-Science`
@@ -162,7 +189,10 @@ missing.
 - **A pack's major version tracks save compatibility**, not maturity. Major = a dependency change an
   existing save cannot survive (a member mod of `Grado_ChangingBase` or below added or removed);
   minor = a save-safe dependency change; patch = metadata only. Same rule as the `!` in a commit
-  subject. `Grado_NonChanging` can never go major. Reasoning in
+  subject. **`Grado_NonChanging` is not exempt** - several of its members write to the save.
+  `0.x` to `1.0.0` is the one major that signals maturity rather than a broken save, and a pack's
+  version does not move at all before its first release. Reasoning in
+  `docs/adr/0002-any-pack-can-go-major-and-1-0-0-signals-maturity.md`, which supersedes
   `docs/adr/0001-version-major-tracks-save-compatibility.md`.
 - **Packs version independently.** A bump means that pack's dependency list changed, so do not
   bump the other four to match.
@@ -201,7 +231,9 @@ mechanics:
   area (`docs`, `repo`).
 - **What counts as a breaking change.** Here it is a dependency change an existing save cannot
   survive: adding or removing a member mod of `Grado_ChangingBase` or anything below it in the
-  chain. `Grado_NonChanging` is the one pack that by definition cannot trigger this. It breaks
+  chain - **`Grado_NonChanging` included**, which was written here as exempt until 2026-09-22 and is
+  not: `Tapeline`, `Todo-List`, `YARM` and `SpeedControl` all write to the save, and the removed
+  `blueprint-sandboxes` created whole surfaces. It breaks
   silently and players find out, not the build. The `!` and the `BREAKING CHANGE:` footer are the
   shared mechanism; what triggers them is this repo's own.
 - **What a body has to cite.** Name a mod by its portal name and pin the version or date behind a

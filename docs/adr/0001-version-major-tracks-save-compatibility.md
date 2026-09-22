@@ -1,5 +1,9 @@
 # A pack's major version tracks save compatibility
 
+> **Superseded by [ADR 0002](0002-any-pack-can-go-major-and-1-0-0-signals-maturity.md)**
+> (2026-09-22). The rule below stands. Two claims about it do not: `Grado_NonChanging` *can*
+> go major, and `0.x` to `1.0.0` *does* signal maturity.
+
 A pack carries no content of its own, so the usual semver reading - how much of the API changed -
 has nothing to measure. The one question a player actually asks a pack's version is whether they can
 update mid-save, so that is what the number answers: **major** for a dependency change an existing

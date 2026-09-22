@@ -52,15 +52,19 @@ effect is whatever the player then pastes.
 | **Latest** | `2.6.1`, `factorio_version` **2.1**, 2026-06-26 |
 | **Downloads** | 140,067 |
 | **Owner** | `raiguard` |
-| **Overlaps** | `blueprint-sandboxes` (`Grado_NonChanging`) |
 | **Read on** | 2026-09-21 |
 
-**Alternatives considered.** None needed for the mod as a whole. One of its features has a rival:
-`blueprint-sandboxes` in `Grado_NonChanging` reaches in and force-disables this mod's lab setting,
-so the two labs never coexist and the lab a ChangingBase player gets is always the other mod's. The
-comparison lives in the lower pack's entry — see `blueprint-sandboxes` in
-`docs/catalogue/Grado_NonChanging.md` — and which layer the sandbox feature belongs in is #7's and
-#8's jointly.
+**Alternatives considered.** None needed. **This entry carried an `Overlaps` row against
+`blueprint-sandboxes` (`Grado_NonChanging`) until 2026-09-22, and no longer does, because that mod
+is no longer in any pack.** #7 dropped it, settling the layer question this entry had recorded as
+"#7's and #8's jointly".
+
+**What that changes here is not nothing.** `blueprint-sandboxes` reached into this mod and
+force-disabled its lab setting, and had done since 2023-11-06 — so until #7, a `Grado_ChangingBase`
+player got the other mod's lab and never this one's. **With it gone, this mod's lab is reachable for
+the first time in the chain**, here and in every pack above. The feature was always listed; it was
+not always delivered. See `blueprint-sandboxes` under *Ruled out after the port* in
+`docs/catalogue/Grado_NonChanging.md` for the comparison and the ruling.
 
 **Recommendation: keep.** The lab is one paragraph of this mod; infinity chests, cheat mode and the
 editor conveniences are untouched by the collision and are what most of its 140,067 downloads are

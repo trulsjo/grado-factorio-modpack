@@ -1,13 +1,17 @@
 # Catalogue: `Grado_NonChanging`
 
-The quality-of-life pack. Its promise is that it does not change save state or the factory; see
-*The promise* below, where that turns out to need a decision rather than a checkmark.
+The quality-of-life pack. Its promise is that it **adds no content**: it may tune vanilla
+prototypes, may store its own data in the save, and changes the built factory only when the player
+asks it to. Stated once in `CONTEXT.md` under *Promise*, settled 2026-09-22 by #7. The pack was
+described here as one that "does not change save state or the factory" until that date; *The
+promise* below is where that wording was measured against the members and found false.
 
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
 **2026-09-20** and is reproduced from the fetched data rather than retyped.
 
-**All 29 current members have a 2.x release.** None is stranded on 1.1. That is not the same as
-being installable - see *Six members cannot be downloaded* below, found on 2026-09-22.
+**All 26 current members have a 2.x release.** None is stranded on 1.1 — nor were the 29 the
+survey read on 2026-09-20, before #7 removed three of them. That is not the same as being
+installable: see *Six members cannot be downloaded* below, found on 2026-09-22.
 
 ## Decisions, 2026-09-22 (#7)
 
@@ -39,31 +43,6 @@ additions that were never in the 1.1 pack, and a night-lighting replacement for 
 ## In the pack
 
 In dependency-list order.
-
-### `AfraidOfTheDark`
-
-| | |
-|---|---|
-| **Title** | Afraid Of The Dark (enforced personal lights + more) |
-| **Does** | Tunes character, car and locomotive light prototypes, and adds craftable balloon lights and tinted night-vision glasses |
-| **Latest** | `1.0.31`, `factorio_version` **2.0**, 2024-10-30 |
-| **Downloads** | 207,551 |
-| **Owner** | `binbinhfr` |
-| **Read on** | 2026-09-20 |
-
-**Alternatives considered.** None searched. The mod is current for 2.0 and nothing here needs replacing.
-
-**Recommendation: keep**, but see *The promise* below. This is the one member that adds craftable items and entities rather than only changing how the game is displayed or operated, so it is the clearest candidate for not belonging in this pack at all. Last touched 2024-10-30, which is 2.0-era rather than abandoned.
-
-**Ruled 2026-09-22 (#7): out.** The promise forbids content, and this is the only member that adds any - `balloon-light`, `short-balloon-light` and `perfect-night-glasses`, enabled off the vanilla `lamp` and `night-vision-equipment` technologies. Confirmed from source, not from the portal blurb.
-
-**The "Does" row above was wrong until 2026-09-22 and is corrected.** It read "forces the personal flashlight on". The mod contains no flashlight toggle and no force-on logic; vanilla already keeps the flashlight on permanently and offers no control for it, which is why `FlashlightOnOff` exists to add an *off* switch. What the mod actually does, in `data-updates.lua`, is tune light prototypes - `minimum_darkness` 0.2 against vanilla's 0.3, cone intensity 0.8 against 0.6, personal halo intensity 0.7 against 0.4 and size **100** against 25 - hardcoded in `config.lua` rather than exposed as settings. `data-final-fixes.lua` also sets `fast_replaceable_group = "lamps"` on every lamp.
-
-**Moving it to `Grado_ChangingBase` was decided and then reversed on the evidence.** The collision check came back clean on every count: `bobequipment` restyles the vanilla `night-vision-equipment` technology's icon and hangs two new tiers off it without removing or re-parenting it, so `perfect-night-glasses` sits alongside as a fourth option rather than conflicting; the Angel's mods that touch that technology, `angelsindustries` and `angelsexploration`, are both already dropped; `angelsaddons-cab` uses the prototype *type* under its own `angels-cab` category; MadClown's only references are in the dropped `Clowns-Science`. The mod's own `control.lua` even guards for the technology being absent, and its changelog records why - *"Added a check for removed night vision research"*, v1.0.26.
-
-**What sank the move was reachability, not compatibility.** It declares `factorio_version: 2.0`, and the portal does not serve it to a 2.1 game - `version=2.1&namelist=AfraidOfTheDark` returns `[]`, read 2026-09-22. `Grado_ChangingBase` inherits the 2.1.7 floor, so the move would have installed nothing on any version while handing three overhaul packs a dependency they cannot resolve. It is dropped instead, and recorded as the strongest candidate on the night-lighting ticket: it is the incumbent, and it is leaving over a version field rather than a fault. Its GitHub carries an open issue *"Update for Factorio 2.1"* (2026-08-19), so it may come back.
-
-**Alternatives searched 2026-09-22, none adopted.** Seven candidates, and no clean replacement among them. `realistic-flashlight-fixed` (`0.2.7`, fv 2.0, 2025-10-05, 2,772 downloads) is the closest and the only one verified craftable-free **from source**; it overshoots two knobs (`minimum_darkness` 0.1, cone intensity 0.9) but **does not cover the halo at all** - by default it writes `character.light = {flashlight}`, deleting vanilla's omni light, and even with `rf-enable-light-halo` gives intensity 0.3 at size 40 against 0.7 at size 100. Its 2.1 fork `realistic-flashlight-fixed-fork` (`1.0.0`, 2026-08-13) has 34 downloads. `light-overhaul` (Earendel, 37,337 downloads, `0.3.0`, fv 2.1, 2026-06-24) is categorically larger - global LUT lighting, darker nights, nightvision no longer desaturating, a standalone extract of AAI Industry's lighting - not a like-for-like swap. `adjustable_flashlight` (`0.1.0`, fv 2.0, 2024-10-16, 1,116), `EvenMoreLight` (`0.2.0`, fv 2.0, 2024-10-21, 7,208) and `Pro-Flashlight` (`1.5.9`, fv 2.1, 2026-08-22, 5,941) publish no reachable source, so "adds no craftables" is inferred from their descriptions - which is the inference that was just wrong about this mod.
 
 ### `Automatic_Train_Painter`
 
@@ -97,22 +76,21 @@ In dependency-list order.
 
 **Recommendation: keep.** Current on 2.1 and operates on blueprints in hand, never on placed entities.
 
-### `Bottleneck`
+### `BottleneckLite`
 
 | | |
 |---|---|
-| **Title** | Bottleneck |
+| **Title** | Bottleneck Lite |
 | **Does** | Colours a small status light on each machine so starved or blocked ones are visible at a glance |
-| **Latest** | `0.12.1`, `factorio_version` **2.0**, 2024-12-03 |
-| **Downloads** | 319,119 |
-| **Owner** | `trold` |
-| **Read on** | 2026-09-20 |
+| **Latest** | `1.4.1`, `factorio_version` **2.1**, 2026-08-17 |
+| **Downloads** | 228,138 |
+| **Owner** | `raiguard` |
+| **Supersedes** | `Bottleneck` by `trold`, last `0.12.1` on 2024-12-03, 319,119 downloads |
+| **Read on** | 2026-09-22 |
 
-**Alternatives considered.** **[`BottleneckLite`](https://mods.factorio.com/mod/BottleneckLite) by `raiguard`** — `1.4.1`, `factorio_version` **2.1**, 2026-08-17, 227,907 downloads. Same job; its summary claims "zero runtime overhead and instant response to changes in status", against the original's per-tick polling. It is a month old where this one is from 2024-12-03, and it is on 2.1 where this one is on 2.0. The download gap (319,119 against 227,907) is legacy accumulation, not current preference: the original ran through 1.1 when the player base was larger.
+**Alternatives considered.** It is itself the alternative — `Bottleneck` was the incumbent and the comparison lives in that entry, under *Ruled out after the port*. Its summary claims "zero runtime overhead and instant response to changes in status", against the original's per-tick polling.
 
-**Recommendation: replace with `BottleneckLite`.** It is the better-maintained of the two on every reading taken, and the runtime-overhead claim matters in a pack meant to be unobtrusive. This is the strongest replace case in the pack.
-
-**Ruled 2026-09-22 (#7): replaced by `BottleneckLite`.** A second reason emerged after the ruling and points the same way: `Bottleneck` declares `factorio_version: 2.0` and is not served to a 2.1 game, so it was unreachable in a pack whose effective floor is 2.1.7. `BottleneckLite 1.4.1` declares `base >= 2.1.0` and `flib >= 0.17.0`; `flib` is already demanded by `BlueprintTools` and `Tapeline` at that same version, so nothing new enters the pack.
+**Recommendation: keep.** Added by #7 on 2026-09-22. Current on 2.1, and it declares `base >= 2.1.0` and `flib >= 0.17.0` — under the pack's 2.1.7 floor, and `flib` was already demanded at that same version by `BlueprintTools` and `Tapeline`, so nothing new entered the pack with it. Its third dependency, `(?) space-exploration-postprocess`, is a hidden optional and pulls in nothing.
 
 ### `Brighter-Lamps`
 
@@ -234,23 +212,6 @@ In dependency-list order.
 
 **Recommendation: keep.** Cosmetic prototype change; pairs with the train painter.
 
-### `MaxRateCalculator`
-
-| | |
-|---|---|
-| **Title** | Max Rate Calculator |
-| **Does** | Selects an area and reports the maximum production and consumption rates of what is in it |
-| **Latest** | `200.0.53`, `factorio_version` **2.0**, 2024-11-02 |
-| **Downloads** | 163,584 |
-| **Owner** | `Theanderblast` |
-| **Read on** | 2026-09-20 |
-
-**Alternatives considered.** **[`RateCalculator`](https://mods.factorio.com/mod/RateCalculator) by `raiguard`** — `3.4.1`, `factorio_version` **2.1**, 2026-07-14, **439,485 downloads**, with releases running 0.18 through 2.1. It is the same job, 2.7 times more used, and current where this one is from 2024-11-02. `helmod`, already in the pack, overlaps on throughput maths but plans a factory rather than measuring a built one, so it does not replace either.
-
-**Recommendation: replace with `RateCalculator`.** The incumbent's own portal summary admits it "supports Space Age but NOT anything to do with Quality", and Quality is a 2.0 mechanic this pack's players will meet. A mod that is behind on a core mechanic, less used, and eighteen months staler than an actively maintained equivalent has a weak case.
-
-**Ruled 2026-09-22 (#7): replaced by `RateCalculator`.** `RateCalculator 3.4.1` declares `base >= 2.1.0` and `flib >= 0.17.0`, so like `BottleneckLite` it enters under the pack's 2.1.7 ceiling and brings no new transitive dependency.
-
 ### `PipeVisualizer-Updated`
 
 | | |
@@ -266,6 +227,22 @@ In dependency-list order.
 **Alternatives considered.** It is already the replacement for `PipeVisualizer`, made during the port. Original is 1.1-only.
 
 **Recommendation: keep.** Read-only overlay; last touched 2025-11-16.
+
+### `RateCalculator`
+
+| | |
+|---|---|
+| **Title** | Rate Calculator |
+| **Does** | Selects an area and reports the maximum production and consumption rates of what is in it |
+| **Latest** | `3.4.1`, `factorio_version` **2.1**, 2026-07-14 |
+| **Downloads** | 440,038 |
+| **Owner** | `raiguard` |
+| **Supersedes** | `MaxRateCalculator` by `Theanderblast`, last `200.0.53` on 2024-11-02, 163,584 downloads |
+| **Read on** | 2026-09-22 |
+
+**Alternatives considered.** It is itself the alternative — the comparison lives in the `MaxRateCalculator` entry, under *Ruled out after the port*. Releases run 0.18 through 2.1, and unlike the incumbent it does not exclude Quality.
+
+**Recommendation: keep.** Added by #7 on 2026-09-22. Declares `base >= 2.1.0` and `flib >= 0.17.0`, so it enters under the pack's 2.1.7 ceiling and brings no transitive dependency the pack did not already carry. `helmod`, also a member, overlaps on throughput maths but plans a factory rather than measuring a built one.
 
 ### `SpeedControl`
 
@@ -371,82 +348,6 @@ In dependency-list order.
 **Alternatives considered.** None needed; current on 2.1. Pairs with `Automatic_Train_Painter`.
 
 **Recommendation: keep.** Writes station colour, which is save state, cosmetically.
-
-### `blueprint-sandboxes`
-
-| | |
-|---|---|
-| **Title** | Blueprint Sandboxes |
-| **Does** | Gives a separate lab-like surface with editor-lite permissions for designing blueprints |
-| **Latest** | `3.3.0`, `factorio_version` **2.1**, 2026-07-11 |
-| **Downloads** | 117,279 |
-| **Owner** | `somethingtohide` |
-| **Overlaps** | `EditorExtensions` (`Grado_ChangingBase`) |
-| **Read on** | 2026-09-20 |
-
-**Alternatives considered.** **[`EditorExtensions`](https://mods.factorio.com/mod/EditorExtensions) by `raiguard`** — `2.6.1`, `factorio_version` **2.1**, 2026-06-26, 139,996 downloads. Its own summary says it "adds a separate editor lab that can be used to design blueprints separately from your main factory", which is this mod's whole job. **And it is already in `Grado_ChangingBase`**, one layer up, so every player of ChangingBase or anything above it already has both. It names `Edit-Blueprints` and `Blueprint Designer Lab` as its own predecessors.
-
-**That optional dependency is not friendly integration. It is a shim for an incompatibility, and it resolves it by switching the other mod's feature off.** `blueprint-sandboxes` states in its own FAQ:
-
-> When Editor Extensions is enabled, its Lab Setting is disabled because it is incompatible with this mod.
-
-and its changelog records when: *"Editor Extensions' Lab setting is forcefully disabled due to compatibility issues"*, version `1.16.6`, 2023-11-06. The `? EditorExtensions >= 2.3.0` line exists to guarantee load order so it can reach in and disable that setting.
-
-**So the two labs never coexist.** With both installed the player gets `blueprint-sandboxes`, and `EditorExtensions`' lab is off. The choice is already being made, silently, in favour of the mod in the lower-promise pack.
-
-#### What `blueprint-sandboxes` delivers that the `EditorExtensions` lab does not
-
-`EditorExtensions`' lab is one paragraph of a mod that is mostly about something else — map-editor conveniences, infinity chests and pipes, cheat mode, a testing scenario. The lab itself:
-
-> Enable the testing lab in the per-player mod settings to teleport to an isolated testing space when entering the map editor. This testing lab will run alongside your actual factory, and you can freely design and test within the lab without cheating in your actual game.
-
-Personal or shared, entered through the map editor. Against that, `blueprint-sandboxes` carries:
-
-| | `EditorExtensions` lab | `blueprint-sandboxes` |
-|---|---|---|
-| How you enter | through the map editor | its own shortcut, default Shift+B |
-| Isolation | one behaviour | two, **Full** and **None**, chosen in settings |
-| Remote View (2.0) | not integrated | **Isolation: None is built on it** — sandboxes are viewable from outside, and teammates can see, view and use each other's |
-| Undo/redo across the boundary | not stated | works under Isolation: None; resets under Full |
-| Research tree | not stated | separate Force under Full, with an all-tech setting; fully synchronized under None |
-| Alerts, chat, statistics, logistic and train groups | not stated | synchronized under None, separate under Full |
-| Character | not stated | swapped to God-mode under Full; **remains yours** under None |
-| Per-team surfaces | shared lab | personal *and* team sandboxes |
-| Other | — | daylight slider, tips-and-tricks onboarding, Factorissimo and Space Exploration integrations |
-
-**The answer to the question, plainly: yes, it delivers things the lab does not.** The substantial one is *Isolation: None*, which its own description says was "made possible by the Remote View in 2.0" — a mode where the sandbox is a viewable, shared, undo-continuous part of the same game rather than a place you teleport into. `EditorExtensions` has no equivalent, and could not have had one before 2.0.
-
-**What that does not settle** is whether any of it is wanted. If the sandbox is used as "somewhere to lay out a blueprint alone, occasionally", the lab covers that and the second mod is a mod for nothing. If it is used with someone else, or via Remote View, or with undo carried across, it is not. That is a question about how Truls actually plays, which no amount of portal reading answers.
-
-**Recommendation: reconsider:** which layer the sandbox feature belongs in. Three things point the same way and one points back:
-
-- `EditorExtensions` is in `Grado_ChangingBase`, the layer whose promise *permits* save changes. This mod creates surfaces, which is the heaviest save-state footprint of any member of `Grado_NonChanging` — the layer whose promise forbids exactly that. The feature is arguably sitting one layer too low.
-- Everyone from ChangingBase upward already gets `EditorExtensions`, so for four of the five packs this member is redundant capability.
-- It is the only member of this pack that duplicates a member of another pack in *function*. `bobinserters` duplicates by *name* across two packs, which is #8's and #9's; this is the other kind, and `docs/mod-catalogue.md` gained a rule for it on 2026-09-21 off the back of this entry. This pack is the lower one, so the comparison above is the one the format says lives here.
-- **Against all that:** a player using `Grado_NonChanging` alone gets no sandbox at all if this is dropped, and that is the pack with the most users. Dropping it to remove a redundancy that only exists in the packs above it would take the feature away from the one pack where it is not redundant.
-
-Which layer it belongs in is pack membership, so it is #7's and #8's jointly. Recorded, not settled.
-
-**Ruled 2026-09-22 (#7): out.** `EditorExtensions` does the job alone, and a mod that creates whole surfaces belongs at the tier whose promise permits save changes. `Grado_NonChanging`-only players get no sandbox; that is the accepted cost.
-
-**One consequence lands outside this pack.** `blueprint-sandboxes` has been force-disabling the `EditorExtensions` lab setting since 2023-11-06. Removing it *restores* that lab for `Grado_ChangingBase` and every pack above it - four packs change behaviour, none of them this one. Recorded for #8.
-
-### `blueprint_flip_and_turn`
-
-| | |
-|---|---|
-| **Title** | Blueprint Flip and Turn |
-| **Does** | Mirrors and flips a blueprint held in hand |
-| **Latest** | `200.8.6`, `factorio_version` **2.0**, 2025-01-23 |
-| **Downloads** | 59,710 |
-| **Owner** | `NovaM` |
-| **Read on** | 2026-09-20 |
-
-**Alternatives considered.** **Not settled.** Modern Factorio flips blueprints natively, and this mod's own summary already describes a workaround for base-game versions that do so. Whether 2.0's native flipping makes it fully redundant was not confirmed against a primary source — see *What was not checked*.
-
-**Recommendation: keep for now, and re-check before release.** This is the one member with a live chance of being redundant against the base game. Last touched 2025-01-23.
-
-**Ruled 2026-09-22 (#7): out.** The re-check was done and it is redundant. Base Factorio **1.1.0** (2020-11-23) shipped *"Added vertical/horizontal blueprint flipping"*; flip horizontal `H`, flip vertical `V` and rotate `R` are all vanilla keybinds, covering all three operations the mod's name advertises. FFF-442 (2026-06-12) records 2.0 widening base flipping further - pumpjacks and burner miners became flippable, inserter drop-sides flip with the blueprint. The mod claims nothing beyond "mirrors/flips a blueprint in hand" and has no post-2020 feature claims: its releases run `100.8.6` to `101.8.6` to `200.8.6`, the same feature level throughout, last functional change 2020-08, and its 2.0 changelog entry reads in full *"Try to support Factorio 2.0 (Spage Age)"*. No replacement needed and no feature lost.
 
 ### `even-distribution`
 
@@ -616,11 +517,168 @@ Four mods, and they are one question, not four. See *The Picker family* below.
 
 **What was not checked, named so absence is not read as evidence.** There is no base 2.0.x *changelog* line for this; it rests on the moderator's Implemented ruling plus the wiki. Two residual gaps in the base mechanic are filled by nothing found: blueprint *books* are unsupported, and item-requests nested inside blueprinted entities (turret ammo) can be missed. Neither is what `PickerInventoryTools` did. Separately, a named logistic group that already exists in the world is not overwritten on paste - the entity adopts the existing one.
 
+## Ruled out after the port
+
+Five mods that survived the 1.1 -> 2.0 port and were removed on 2026-09-22 by #7 — by a
+decision, not by an upstream gap. Entry format: `docs/mod-catalogue.md`, *a mod ruled out after
+the port*. Each keeps the recommendation the survey wrote, with the ruling appended below it, so
+what was recommended and what was decided stay separable.
+
+In former dependency-list order.
+
+### `AfraidOfTheDark`
+
+| | |
+|---|---|
+| **Title** | Afraid Of The Dark (enforced personal lights + more) |
+| **Does** | Tunes character, car and locomotive light prototypes, and adds craftable balloon lights and tinted night-vision glasses |
+| **Latest** | `1.0.31`, `factorio_version` **2.0**, 2024-10-30 |
+| **Downloads** | 207,551 |
+| **Owner** | `binbinhfr` |
+| **Read on** | 2026-09-20 |
+| **Status** | dropped 2026-09-22 (#7) |
+
+**Alternatives considered.** None searched. The mod is current for 2.0 and nothing here needs replacing.
+
+**Recommendation: keep**, but see *The promise* below. This is the one member that adds craftable items and entities rather than only changing how the game is displayed or operated, so it is the clearest candidate for not belonging in this pack at all. Last touched 2024-10-30, which is 2.0-era rather than abandoned.
+
+**Ruled 2026-09-22 (#7): out.** The promise forbids content, and this is the only member that adds any - `balloon-light`, `short-balloon-light` and `perfect-night-glasses`, enabled off the vanilla `lamp` and `night-vision-equipment` technologies. Confirmed from source, not from the portal blurb.
+
+**The "Does" row above was wrong until 2026-09-22 and is corrected.** It read "forces the personal flashlight on". The mod contains no flashlight toggle and no force-on logic; vanilla already keeps the flashlight on permanently and offers no control for it, which is why `FlashlightOnOff` exists to add an *off* switch. What the mod actually does, in `data-updates.lua`, is tune light prototypes - `minimum_darkness` 0.2 against vanilla's 0.3, cone intensity 0.8 against 0.6, personal halo intensity 0.7 against 0.4 and size **100** against 25 - hardcoded in `config.lua` rather than exposed as settings. `data-final-fixes.lua` also sets `fast_replaceable_group = "lamps"` on every lamp.
+
+**Moving it to `Grado_ChangingBase` was decided and then reversed on the evidence.** The collision check came back clean on every count: `bobequipment` restyles the vanilla `night-vision-equipment` technology's icon and hangs two new tiers off it without removing or re-parenting it, so `perfect-night-glasses` sits alongside as a fourth option rather than conflicting; the Angel's mods that touch that technology, `angelsindustries` and `angelsexploration`, are both already dropped; `angelsaddons-cab` uses the prototype *type* under its own `angels-cab` category; MadClown's only references are in the dropped `Clowns-Science`. The mod's own `control.lua` even guards for the technology being absent, and its changelog records why - *"Added a check for removed night vision research"*, v1.0.26.
+
+**What sank the move was reachability, not compatibility.** It declares `factorio_version: 2.0`, and the portal does not serve it to a 2.1 game - `version=2.1&namelist=AfraidOfTheDark` returns `[]`, read 2026-09-22. `Grado_ChangingBase` inherits the 2.1.7 floor, so the move would have installed nothing on any version while handing three overhaul packs a dependency they cannot resolve. It is dropped instead, and recorded as the strongest candidate on the night-lighting ticket: it is the incumbent, and it is leaving over a version field rather than a fault. Its GitHub carries an open issue *"Update for Factorio 2.1"* (2026-08-19), so it may come back.
+
+**Alternatives searched 2026-09-22, none adopted.** Seven candidates, and no clean replacement among them. `realistic-flashlight-fixed` (`0.2.7`, fv 2.0, 2025-10-05, 2,772 downloads) is the closest and the only one verified craftable-free **from source**; it overshoots two knobs (`minimum_darkness` 0.1, cone intensity 0.9) but **does not cover the halo at all** - by default it writes `character.light = {flashlight}`, deleting vanilla's omni light, and even with `rf-enable-light-halo` gives intensity 0.3 at size 40 against 0.7 at size 100. Its 2.1 fork `realistic-flashlight-fixed-fork` (`1.0.0`, 2026-08-13) has 34 downloads. `light-overhaul` (Earendel, 37,337 downloads, `0.3.0`, fv 2.1, 2026-06-24) is categorically larger - global LUT lighting, darker nights, nightvision no longer desaturating, a standalone extract of AAI Industry's lighting - not a like-for-like swap. `adjustable_flashlight` (`0.1.0`, fv 2.0, 2024-10-16, 1,116), `EvenMoreLight` (`0.2.0`, fv 2.0, 2024-10-21, 7,208) and `Pro-Flashlight` (`1.5.9`, fv 2.1, 2026-08-22, 5,941) publish no reachable source, so "adds no craftables" is inferred from their descriptions - which is the inference that was just wrong about this mod.
+
+### `Bottleneck`
+
+| | |
+|---|---|
+| **Title** | Bottleneck |
+| **Does** | Colours a small status light on each machine so starved or blocked ones are visible at a glance |
+| **Latest** | `0.12.1`, `factorio_version` **2.0**, 2024-12-03 |
+| **Downloads** | 319,119 |
+| **Owner** | `trold` |
+| **Read on** | 2026-09-20 |
+| **Status** | replaced by `BottleneckLite`, 2026-09-22 (#7) |
+
+**Alternatives considered.** **[`BottleneckLite`](https://mods.factorio.com/mod/BottleneckLite) by `raiguard`** — `1.4.1`, `factorio_version` **2.1**, 2026-08-17, 227,907 downloads. Same job; its summary claims "zero runtime overhead and instant response to changes in status", against the original's per-tick polling. It is a month old where this one is from 2024-12-03, and it is on 2.1 where this one is on 2.0. The download gap (319,119 against 227,907) is legacy accumulation, not current preference: the original ran through 1.1 when the player base was larger.
+
+**Recommendation: replace with `BottleneckLite`.** It is the better-maintained of the two on every reading taken, and the runtime-overhead claim matters in a pack meant to be unobtrusive. This is the strongest replace case in the pack.
+
+**Ruled 2026-09-22 (#7): replaced by `BottleneckLite`.** A second reason emerged after the ruling and points the same way: `Bottleneck` declares `factorio_version: 2.0` and is not served to a 2.1 game, so it was unreachable in a pack whose effective floor is 2.1.7. `BottleneckLite 1.4.1` declares `base >= 2.1.0` and `flib >= 0.17.0`; `flib` is already demanded by `BlueprintTools` and `Tapeline` at that same version, so nothing new enters the pack.
+
+### `MaxRateCalculator`
+
+| | |
+|---|---|
+| **Title** | Max Rate Calculator |
+| **Does** | Selects an area and reports the maximum production and consumption rates of what is in it |
+| **Latest** | `200.0.53`, `factorio_version` **2.0**, 2024-11-02 |
+| **Downloads** | 163,584 |
+| **Owner** | `Theanderblast` |
+| **Read on** | 2026-09-20 |
+| **Status** | replaced by `RateCalculator`, 2026-09-22 (#7) |
+
+**Alternatives considered.** **[`RateCalculator`](https://mods.factorio.com/mod/RateCalculator) by `raiguard`** — `3.4.1`, `factorio_version` **2.1**, 2026-07-14, **439,485 downloads**, with releases running 0.18 through 2.1. It is the same job, 2.7 times more used, and current where this one is from 2024-11-02. `helmod`, already in the pack, overlaps on throughput maths but plans a factory rather than measuring a built one, so it does not replace either.
+
+**Recommendation: replace with `RateCalculator`.** The incumbent's own portal summary admits it "supports Space Age but NOT anything to do with Quality", and Quality is a 2.0 mechanic this pack's players will meet. A mod that is behind on a core mechanic, less used, and eighteen months staler than an actively maintained equivalent has a weak case.
+
+**Ruled 2026-09-22 (#7): replaced by `RateCalculator`.** `RateCalculator 3.4.1` declares `base >= 2.1.0` and `flib >= 0.17.0`, so like `BottleneckLite` it enters under the pack's 2.1.7 ceiling and brings no new transitive dependency.
+
+### `blueprint-sandboxes`
+
+| | |
+|---|---|
+| **Title** | Blueprint Sandboxes |
+| **Does** | Gives a separate lab-like surface with editor-lite permissions for designing blueprints |
+| **Latest** | `3.3.0`, `factorio_version` **2.1**, 2026-07-11 |
+| **Downloads** | 117,279 |
+| **Owner** | `somethingtohide` |
+| **Overlaps** | `EditorExtensions` (`Grado_ChangingBase`) |
+| **Read on** | 2026-09-20 |
+| **Status** | dropped 2026-09-22 (#7) |
+
+**Alternatives considered.** **[`EditorExtensions`](https://mods.factorio.com/mod/EditorExtensions) by `raiguard`** — `2.6.1`, `factorio_version` **2.1**, 2026-06-26, 139,996 downloads. Its own summary says it "adds a separate editor lab that can be used to design blueprints separately from your main factory", which is this mod's whole job. **And it is already in `Grado_ChangingBase`**, one layer up, so every player of ChangingBase or anything above it already has both. It names `Edit-Blueprints` and `Blueprint Designer Lab` as its own predecessors.
+
+**That optional dependency is not friendly integration. It is a shim for an incompatibility, and it resolves it by switching the other mod's feature off.** `blueprint-sandboxes` states in its own FAQ:
+
+> When Editor Extensions is enabled, its Lab Setting is disabled because it is incompatible with this mod.
+
+and its changelog records when: *"Editor Extensions' Lab setting is forcefully disabled due to compatibility issues"*, version `1.16.6`, 2023-11-06. The `? EditorExtensions >= 2.3.0` line exists to guarantee load order so it can reach in and disable that setting.
+
+**So the two labs never coexist.** With both installed the player gets `blueprint-sandboxes`, and `EditorExtensions`' lab is off. The choice is already being made, silently, in favour of the mod in the lower-promise pack.
+
+#### What `blueprint-sandboxes` delivers that the `EditorExtensions` lab does not
+
+`EditorExtensions`' lab is one paragraph of a mod that is mostly about something else — map-editor conveniences, infinity chests and pipes, cheat mode, a testing scenario. The lab itself:
+
+> Enable the testing lab in the per-player mod settings to teleport to an isolated testing space when entering the map editor. This testing lab will run alongside your actual factory, and you can freely design and test within the lab without cheating in your actual game.
+
+Personal or shared, entered through the map editor. Against that, `blueprint-sandboxes` carries:
+
+| | `EditorExtensions` lab | `blueprint-sandboxes` |
+|---|---|---|
+| How you enter | through the map editor | its own shortcut, default Shift+B |
+| Isolation | one behaviour | two, **Full** and **None**, chosen in settings |
+| Remote View (2.0) | not integrated | **Isolation: None is built on it** — sandboxes are viewable from outside, and teammates can see, view and use each other's |
+| Undo/redo across the boundary | not stated | works under Isolation: None; resets under Full |
+| Research tree | not stated | separate Force under Full, with an all-tech setting; fully synchronized under None |
+| Alerts, chat, statistics, logistic and train groups | not stated | synchronized under None, separate under Full |
+| Character | not stated | swapped to God-mode under Full; **remains yours** under None |
+| Per-team surfaces | shared lab | personal *and* team sandboxes |
+| Other | — | daylight slider, tips-and-tricks onboarding, Factorissimo and Space Exploration integrations |
+
+**The answer to the question, plainly: yes, it delivers things the lab does not.** The substantial one is *Isolation: None*, which its own description says was "made possible by the Remote View in 2.0" — a mode where the sandbox is a viewable, shared, undo-continuous part of the same game rather than a place you teleport into. `EditorExtensions` has no equivalent, and could not have had one before 2.0.
+
+**What that does not settle** is whether any of it is wanted. If the sandbox is used as "somewhere to lay out a blueprint alone, occasionally", the lab covers that and the second mod is a mod for nothing. If it is used with someone else, or via Remote View, or with undo carried across, it is not. That is a question about how Truls actually plays, which no amount of portal reading answers.
+
+**Recommendation: reconsider:** which layer the sandbox feature belongs in. Three things point the same way and one points back:
+
+- `EditorExtensions` is in `Grado_ChangingBase`, the layer whose promise *permits* save changes. This mod creates surfaces, which is the heaviest save-state footprint of any member of `Grado_NonChanging` — the layer whose promise forbids exactly that. The feature is arguably sitting one layer too low.
+- Everyone from ChangingBase upward already gets `EditorExtensions`, so for four of the five packs this member is redundant capability.
+- It is the only member of this pack that duplicates a member of another pack in *function*. `bobinserters` duplicates by *name* across two packs, which is #8's and #9's; this is the other kind, and `docs/mod-catalogue.md` gained a rule for it on 2026-09-21 off the back of this entry. This pack is the lower one, so the comparison above is the one the format says lives here.
+- **Against all that:** a player using `Grado_NonChanging` alone gets no sandbox at all if this is dropped, and that is the pack with the most users. Dropping it to remove a redundancy that only exists in the packs above it would take the feature away from the one pack where it is not redundant.
+
+Which layer it belongs in is pack membership, so it is #7's and #8's jointly. Recorded, not settled.
+
+**Ruled 2026-09-22 (#7): out.** `EditorExtensions` does the job alone, and a mod that creates whole surfaces belongs at the tier whose promise permits save changes. `Grado_NonChanging`-only players get no sandbox; that is the accepted cost.
+
+**One consequence lands outside this pack.** `blueprint-sandboxes` has been force-disabling the `EditorExtensions` lab setting since 2023-11-06. Removing it *restores* that lab for `Grado_ChangingBase` and every pack above it - four packs change behaviour, none of them this one. Recorded for #8.
+
+### `blueprint_flip_and_turn`
+
+| | |
+|---|---|
+| **Title** | Blueprint Flip and Turn |
+| **Does** | Mirrors and flips a blueprint held in hand |
+| **Latest** | `200.8.6`, `factorio_version` **2.0**, 2025-01-23 |
+| **Downloads** | 59,710 |
+| **Owner** | `NovaM` |
+| **Read on** | 2026-09-20 |
+| **Status** | dropped 2026-09-22 (#7) |
+
+**Alternatives considered.** **Not settled.** Modern Factorio flips blueprints natively, and this mod's own summary already describes a workaround for base-game versions that do so. Whether 2.0's native flipping makes it fully redundant was not confirmed against a primary source — see *What was not checked*.
+
+**Recommendation: keep for now, and re-check before release.** This is the one member with a live chance of being redundant against the base game. Last touched 2025-01-23.
+
+**Ruled 2026-09-22 (#7): out.** The re-check was done and it is redundant. Base Factorio **1.1.0** (2020-11-23) shipped *"Added vertical/horizontal blueprint flipping"*; flip horizontal `H`, flip vertical `V` and rotate `R` are all vanilla keybinds, covering all three operations the mod's name advertises. FFF-442 (2026-06-12) records 2.0 widening base flipping further - pumpjacks and burner miners became flippable, inserter drop-sides flip with the blueprint. The mod claims nothing beyond "mirrors/flips a blueprint in hand" and has no post-2020 feature claims: its releases run `100.8.6` to `101.8.6` to `200.8.6`, the same feature level throughout, last functional change 2020-08, and its 2.0 changelog entry reads in full *"Try to support Factorio 2.0 (Spage Age)"*. No replacement needed and no feature lost.
+
 ## The promise, and why it needs a ruling
 
-`CLAUDE.md` and the README both say this pack "does not change save state or the factory". Taken
-literally, **several current members break it**, and they break it in three different ways that are
+`CLAUDE.md` and the README both said this pack "does not change save state or the factory", until
+#7 retired that wording on 2026-09-22. Taken literally, **several members broke it**, and they break it in three different ways that are
 worth separating before anyone decides anything.
+
+**The four lists below are the survey's reading of the 29 members as they stood on 2026-09-20**, and
+are kept as written because the ruling under *The ruling that is wanted* was taken against them. Four
+of the mods they name are no longer in the pack: `AfraidOfTheDark` and `blueprint-sandboxes` were
+dropped, `Bottleneck` and `MaxRateCalculator` replaced, and `blueprint_flip_and_turn` dropped — so
+group 1 is now `Brighter-Lamps` and `FluidWagonColorMask`, group 2 is `SpeedControl`, `Tapeline`,
+`Todo-List` and `YARM`, group 3 is unchanged, and the read-only group reads `BottleneckLite` and
+`RateCalculator` for the two it replaced and loses `blueprint_flip_and_turn`.
 
 **It alters a vanilla prototype, so an existing factory behaves differently the moment the mod
 loads.** `AfraidOfTheDark`, `Brighter-Lamps`, `FluidWagonColorMask`. `Brighter-Lamps` triples the area a lamp covers; `FluidWagonColorMask` adds a colour
@@ -732,9 +790,10 @@ The rest of the ledger, read 2026-09-22 from `https://mods.factorio.com/api/mods
 members and nine optional, and **not one of the 19 entries carries a version constraint**, `base`
 included. Four of the nine optional members are stranded on 2.0, two of those untouched for nearly
 two years. It pulls an undeclared transitive `kry_stdlib >= 2.2.13` through `kry-picker-extended`,
-which its own list never names. Seven mandatory members are not in this pack: `belt-visualizer`,
-`CursorEnhancements`, `Shortcuts-ick`, `AutoDeconstruct`, `fluid-connection-indicators`,
-`BottleneckLite` and `EvenDistributionLite`.
+which its own list never names. Of its nine mandatory members, three are in this pack -
+`kry-picker-extended`, `even-pickier-dollies` and `BottleneckLite`, the last of them put there by
+this same ruling. **Six are not:** `belt-visualizer`, `CursorEnhancements`, `Shortcuts-ick`,
+`AutoDeconstruct`, `fluid-connection-indicators` and `EvenDistributionLite`.
 
 The structural objection #1 recorded still stands on its own and is the reason not to revisit this
 lightly: **a pack depending on another pack** hands a third party control of six of this pack's
@@ -844,9 +903,18 @@ members; on a 2.0 game those five cannot be satisfied, and on a 2.1 game these s
 downloaded. Both ends are closed.
 
 **#7's edit improves this without fixing it**, taking the unserved count from ten to six by removing
-`Bottleneck`, `MaxRateCalculator`, `blueprint_flip_and_turn` and `AfraidOfTheDark`. Across the three
-published packs, 25 of 98 members are in this state. This is #16's to act on: it cannot be answered
-by choosing a number until those members update or are replaced.
+`Bottleneck`, `MaxRateCalculator`, `blueprint_flip_and_turn` and `AfraidOfTheDark`.
+
+**Across the chain's three lower packs — `Grado_NonChanging`, `Grado_ChangingBase` and `Grado_ABC` —
+21 of 95 distinct members are in this state.** Measured 2026-09-22 *after* this edit, by taking the
+union of the three dependency lists and asking the portal which names it serves at 2.1. The six
+above are `Grado_NonChanging`'s share; the other fifteen are `Nanobots2`, `WideChestsBobs`,
+`LTN_Content_Reader_Updated`, `StoneWaterWell-ActuallyUpdated`, `qol_research`, `safefill`,
+`deadlock-beltboxes-loaders`, `DeadlockStackingForBobs`, `DeadlockStackingForVanilla`,
+`angels-smelting-extended`, `RealisticReactorsReborn`, `True-Nukes_Continued`,
+`True-Nukes-Graphics_Continued`, `spidertrontiers-community-updates` and `UltimateBeltsSpaceAge`.
+This is #16's to act on: it cannot be answered by choosing a number until those members update or
+are replaced.
 
 **Not confirmed:** whether a mod declaring `factorio_version: 2.0` would *run* correctly if installed
 by hand on 2.1. The docs say it is unsupported and the portal will not serve it; nothing here has been

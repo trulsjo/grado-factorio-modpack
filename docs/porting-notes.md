@@ -259,9 +259,16 @@ for. A title is display only and can be changed in any release, unlike the name.
   directly** and the other nineteen are neutral or inherit it. It does not raise the floor - the
   highest requirement from ABC's own members is `>= 2.1.0` - but the pack inherits
   `Grado_ChangingBase`'s `>= 2.1.8`, so that is the effective minimum for an ABC install. See
-  `docs/catalogue/Grado_ABC.md`. Still unchecked on
-  `Grado_ABCX` and `Grado_ABCS`, which hold one member apiece; the same check is one command each.
-  The number itself is Truls's to set.
+  `docs/catalogue/Grado_ABC.md`. **Answered for both end-game branches on 2026-09-22, and
+  `Grado_ABCX` raises the floor again:** `SpaceModFeorasFork` `1.3.4` requires `base >= 2.1.9`, one
+  patch above `WideChests` and **the highest requirement anywhere in the project** - measured across
+  the chain's full mandatory closure, 98 distinct named members of the three lower packs and 19
+  hidden mandatory dependencies, 117 mods, latest 2.x release each. `Grado_ABCS` adds nothing to the
+  floor that can be read, because `space-age` is
+  not a portal mod and its `base` requirement is unreadable by this method at all; from the portal
+  alone it inherits `Grado_ChangingBase`'s `>= 2.1.8`. See `docs/catalogue/Grado_ABCX.md` and
+  `docs/catalogue/Grado_ABCS.md`. **So the measurement is complete for four packs and not completable
+  for the fifth without the game**, which is issue #29. The number itself is Truls's to set.
 - **`RealisticFusionPower` is among the drops.** It is the mod the separate
   *realistic-fusion-refreshed* project exists to succeed; that mod is a candidate to add here once it
   ships.

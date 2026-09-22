@@ -150,7 +150,7 @@ evidence for issue #9 rather than a question this pack can answer.
 `Grado_ABCX/info.json` declares `factorio_version` `2.0` and `base >= 2.0.0`. Its one member requires
 `base >= 2.1.9`.
 
-**That is the highest floor found anywhere in the project.** Measured across every member of all
+**That was the highest floor found anywhere in the project when it was measured.** Measured across every member of all
 three packs in the chain and their full mandatory closure — **98 distinct named members and 19
 hidden mandatory dependencies, 117 mods**, latest 2.x release each, read 2026-09-22 — the highest
 `base >=` any of them declares is `2.1.8`, from `WideChests` `6.3.0`. The fork raises it by one patch

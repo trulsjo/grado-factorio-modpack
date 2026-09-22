@@ -40,7 +40,7 @@ both files either way.
 line costs no player anything. It is now named as a member of exactly one of the five lists, and the
 joint #8-and-#9 disposal this paragraph described no longer applies — #8 made the edit, because "the
 duplication is gone" was its own acceptance criterion. **Both entries survive**, which is what the
-last sentence above requires and what the fifth variant below exists to license. There is no second
+last sentence above requires and what the sixth variant below exists to license. There is no second
 instance; if one appears, the procedure is the one described here and the ruling belongs to the
 lower pack's decide-and-apply ticket.
 
@@ -135,10 +135,11 @@ and the search that was run.
 **Recommendation: keep | replace with `x` | drop | reconsider: `<what>`.** The reason, in prose.
 ````
 
-Four variants. The first adds one row and changes nothing else; the second adds a row and
+Six variants. The first adds one row and changes nothing else; the second adds a row and
 requires prose to go with it; the third and fourth also move the entry and constrain what its
 **Recommendation** may say. The third and fourth differ only in *when* the mod left: during the
-1.1 -> 2.0 port, or by a decision taken afterwards.
+1.1 -> 2.0 port, or by a decision taken afterwards. The fifth and sixth were added on 2026-09-22,
+for mods that arrived after the port or lost a dependency-list line without leaving the chain.
 
 - **A mod that replaced a 1.1 mod** adds one row, `| **Supersedes** | `old-name`, last 1.1 release |`,
   and changes nothing else. The heading is the mod that is in the pack now, not the one it replaced
@@ -189,7 +190,7 @@ instead. Use it sparingly — a survey where several entries reconsider has not 
   would lose the comparison work with it. A reader checking the section against `info.json` finds
   the discrepancy answered in the row rather than unexplained.
 
-  Both added 2026-09-22 by #8, which hit all three gaps at once: it added three mods to
+  Both added 2026-09-22 by #8, which hit two more gaps at once: it added three mods to
   `Grado_ChangingBase` that no variant covered, and it resolved the `bobinserters` duplication by
   deleting a line from `Grado_ABC` whose entry then had no licensed shape. The lesson is the same one
   the variant above records — the format assumed the port was the only thing that ever moved a mod,

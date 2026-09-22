@@ -646,7 +646,8 @@ to.
 five tiers onto this mod's own, with no compatibility handling on either side, is content competing
 with an overhaul for the same ground, which is what `Grado_ChangingBase`'s promise forbids. The
 comparison is kept where it was written, in `docs/catalogue/Grado_ChangingBase.md` under *Ruled out
-after the port*. **This mod's belt tiers now stand alone in the chain.**
+after the port*. **This mod's belt tiers now stand alone below the branch point.** On `Grado_ABCS`
+they still meet Space Age's own tier past express; see `docs/catalogue/Grado_ABCS.md`.
 
 Two more were checked and are not overlaps. `underground-pipe-pack` in `Grado_ChangingBase` adds
 underground pipe shapes and an underground pump; this mod adds pump *tiers* and no pipes, so they
@@ -1670,11 +1671,11 @@ above it — which `WideChestsBobs` is precisely the mod that adds. An ABC playe
 four-mod cross-pack side is **#30**'s; whether the **Overlaps** row may name a same-pack mod at all
 is **#33**. This paragraph exists so the fifth mod is not lost between the two files.
 
-**Belts, where this pack meets the one below.** Four cross-pack overlaps have been recorded across
-the project so far and two of them are belt-adjacent, both against `Grado_ChangingBase`:
-~~`boblogistics` against `UltimateBeltsSpaceAge`~~ - void as of 2026-09-22 (#8), that mod is in no
-pack - and #5's `deadlock-beltboxes-loaders` against
-`miniloader-redux`. Both comparisons are already written in
+**Belts, where this pack meets the one below.** Six cross-pack overlaps have been recorded across
+the project and three of them are belt-adjacent, all against `Grado_ChangingBase`:
+~~`boblogistics` against `UltimateBeltsSpaceAge`~~ and ~~#6's `space-age` against it~~ - both void
+as of 2026-09-22 (#8), that mod is in no pack - and #5's `deadlock-beltboxes-loaders` against
+`miniloader-redux`, the one that survives. That comparison is written in
 `docs/catalogue/Grado_ChangingBase.md`. `boblogistics` is this half's side of the first and has the
 most surface area of any member against the layer below; a survey of either pack should look at
 belts first.

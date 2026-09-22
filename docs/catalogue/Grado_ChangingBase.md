@@ -12,10 +12,11 @@ The dependency list holds 22 entries: `base >= 2.0.0`, `Grado_NonChanging` — a
 `docs/catalogue/Grado_NonChanging.md` — and the **20 mods** below. The survey read 25; #8 took the
 pack to 20 on 2026-09-22 and the section after this one is its ledger. **Fourteen mods are no longer
 members**: the six lost in the port, reassessed at the end, and the eight under *Ruled out after the
-port* - six #8 removed outright and two it replaced.
+port* - **five** #8 removed outright and **three** it replaced. `LogisticTrainNetwork` counts as
+replaced, not removed: `cybersyn2` carries its `Supersedes` row.
 
-**All current members have a 2.x release.** None is stranded on 1.1. **Most require
-`base >= 2.1`**, which is the same finding the `Grado_NonChanging` survey reached and is fatal to
+**All 20 current members have a 2.x release.** None is stranded on 1.1. **Eleven of the twenty
+require `base >= 2.1`**, which is the same finding the `Grado_NonChanging` survey reached and is fatal to
 this pack's declared `factorio_version` for the same reason; see *The pack cannot load on the
 Factorio version it declares*. #8 raised the floor again, to `base >= 2.1.12`, by adopting
 `cybersyn2`.
@@ -28,11 +29,11 @@ ruling inline. **25 members to 20.**
 
 | mod | ruling |
 |---|---|
-| `LogisticTrainNetwork` | **out** — the train-logistics paradigm moves to Cybersyn 2 (#23) |
+| `LogisticTrainNetwork` | **replaced** by `cybersyn2` — the train-logistics paradigm moves to Cybersyn 2 (#23) |
 | `LTN_Combinator_Modernized` | **out** — with LTN |
 | `LtnManager` | **out** — with LTN; CS2 has the manager built in |
 | `LTN_Content_Reader_Updated` | **out** — with LTN, and **the feature is lost**: no CS2 content reader exists |
-| `cybersyn2` | **in** — the only addition, and a replacement rather than a new feature |
+| `cybersyn2` | **in** — replacing the LTN cluster. No mod entered this pack that did not displace one, which is rule 1 holding |
 | `UltimateBeltsSpaceAge` | **out** — fails the promise: belt tiers past express are `boblogistics`' ground |
 | `StoneWaterWell-ActuallyUpdated` | **out** — fails the promise: free water is Angel's water-treatment chain's ground |
 | `safefill` | **replaced** by `Waterfill_v17` — reachable at 2.1, where `safefill` is not |
@@ -49,7 +50,8 @@ ruling inline. **25 members to 20.**
 
 1. **Swaps in, additions out.** Replacing a member with a successor is porting; adding a mod the 1.1
    pack never had is a new feature nobody asked for. Same rule #7 applied one layer down. It is what
-   declines `kry-picker-complete` here, and it defers every candidate addition to a later ticket.
+   declines `kry-picker-complete` here, and it defers every candidate addition to a ticket still to
+   be filed for this pack, the counterpart of #41.
 2. **The promise is the membership test, and it had never been run on this pack.** #7 wrote
    `Grado_ChangingBase`'s promise on 2026-09-22 — *may add content, but not content that competes
    with an overhaul for the same ground* — one day after this survey was read, and said in as many
@@ -59,15 +61,16 @@ ruling inline. **25 members to 20.**
    `factorio_version: 2.0` and the portal does not serve them to a 2.1 game, which this pack's floor
    requires. #7's precedent is to leave such members in and track them (#43), and #8 followed it —
    except in entries the survey had already marked `reconsider:`, where it broke the tie.
-   `safefill` and `UltimateBeltsSpaceAge` are the two that touched.
+   `safefill` and `UltimateBeltsSpaceAge` are the two it touched.
 
-**A `2.0`-declaring member is unreachable, not merely stale.** Of the six, three leave with their
-mods - `LTN_Content_Reader_Updated`, `StoneWaterWell-ActuallyUpdated` and `UltimateBeltsSpaceAge` -
+**A `2.0`-declaring member is unreachable, not merely stale.** Of the six, three leave the pack
+outright - `LTN_Content_Reader_Updated`, `StoneWaterWell-ActuallyUpdated` and `UltimateBeltsSpaceAge` -
 and one is fixed by the `Waterfill_v17` swap. **`Nanobots2` and `qol_research` remain unreachable
 and stay in the pack**, which is #43's, not this ticket's.
 
 Two questions were deferred rather than answered: candidate additions that were never in the 1.1
-pack, and `kry-picker-complete`'s members assessed one at a time for whichever pack each fits.
+pack, which needs a ticket of its own, and `kry-picker-complete`'s members assessed one at a time
+for whichever pack each fits, which is **#46**.
 
 ## In the pack
 
@@ -220,8 +223,10 @@ water-placement mods. Four others do the same job: `RitnWaterfill` (`1.6.0`, 2.1
 downloads) — which declares `! Waterfill_v17`, so the two are mutually exclusive, and pulls
 `RitnLib >= 0.10`; `waterfill-2` (`1.0.3`, 2.1, 2026-08-26, 3,395 downloads); `waterfill-balanced`,
 a fork restricting placement to tiles beside existing water; and `Waterbomb`, which converts land to
-water by explosion rather than by placement. This one is the largest by an order of magnitude and
-the most recently released, and declares `base >= 2.1.0` and `? space-age >= 2.1.0`.
+water by explosion rather than by placement. This one is the largest by more than threefold over the
+next, `RitnWaterfill`, and **not** the most recently released — `RitnWaterfill` shipped `1.6.0` one
+day later, on 2026-09-12. It declares `base >= 2.1.0` and `? space-age >= 2.1.0`, where
+`RitnWaterfill` pulls `RitnLib >= 0.10` and declares `! Waterfill_v17`.
 
 **Recommendation: keep.** Added by #8 on 2026-09-22, replacing `safefill`, which declares `factorio_version: 2.0` and is
 therefore not served to a 2.1 game at all — see *The pack cannot load on the Factorio version it
@@ -410,7 +415,8 @@ feature leaves the pack outright. That was the one axis on which #23 found Cyber
 CS2 is the branch that does not have it.
 
 **Compatibility, checked on #23 and not re-derived.** `! OverloadedTrains`, which is in none of the
-five packs. Cross-surface behaviour for Space Age is plausible and unverified on either side;
+five packs. Cross-surface behaviour for Space Age was checked for CS1 on #23 and found plausible;
+that reading does not transfer to CS2, which is a ground-up rewrite — see *What was not checked*.
 `miniloader-redux` detection should work by mechanism, because Cybersyn's allow-list detection is by
 prototype type and `miniloader-redux` is built from `loader-1x1` prototypes. Nothing has been loaded
 in Factorio.
@@ -961,7 +967,8 @@ reader. `Cybersyn-Content-Reader` requires `cybersyn >= 2.1.2`, which is CS1, an
 the one axis on which Cybersyn beat LTN outright — CS2 is the branch that does not have it. The
 survey called this the pack's weakest member on every axis at once and it was also unreachable
 (`factorio_version` **2.0** against a 2.1 floor), so nothing here argued for keeping it; but it
-leaves as a loss, not as a tidy-up, and no replacement was found because none exists.
+leaves as a loss, not as a tidy-up: `Cybersyn-Content-Reader` is CS1's, and a name, title and
+summary sweep of the 2.x list returns no CS2 equivalent.
 
 ### `LogisticTrainNetwork`
 
@@ -1096,7 +1103,9 @@ before release rather than after. Flagged under *What constrains an overhaul on 
 anywhere is a balance change, and Angel's builds a water-treatment chain on the assumption that
 water has a cost.
 
-**Ruled 2026-09-22 (#8): out**, and it is the promise sweep's one clear failure. `Grado_ChangingBase`
+**Ruled 2026-09-22 (#8): out**, and it is the cleaner of the promise sweep's two failures — the one
+that fails on the promise alone, where `UltimateBeltsSpaceAge` also failed on staleness,
+reachability and the loader gap. `Grado_ChangingBase`
 may add content but not content that competes with an overhaul for the same ground, and a well
 producing free water anywhere on land does not merely touch Angel's water-treatment chain — it
 removes the need for the chain that overhaul exists to build. Its only declared overhaul

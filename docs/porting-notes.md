@@ -43,9 +43,10 @@ upstream and are mandatory here. That change is issue #11, not a counting artefa
 
 **Changed again after the port, 2026-09-22 (#8): 25 members to 20.** The figures above describe
 the 1.1 -> 2.0 port and are left as they were, because that is what this file records. #8 then
-removed six members by decision rather than by an upstream gap - the four LTN mods,
-`UltimateBeltsSpaceAge` and `StoneWaterWell-ActuallyUpdated` - added `cybersyn2`, and replaced
-`safefill` with `Waterfill_v17` and `ModuleInserterSimplified` with `ModuleInserterEx`. Two of the
+removed **five** members by decision rather than by an upstream gap - three of the four LTN mods,
+`UltimateBeltsSpaceAge` and `StoneWaterWell-ActuallyUpdated` - and **replaced three**:
+`LogisticTrainNetwork` with `cybersyn2`, `safefill` with `Waterfill_v17`, and
+`ModuleInserterSimplified` with `ModuleInserterEx`. 25 - 5 - 3 + 3 = 20. Two of the
 removals were the first application of this pack's promise, which was only written on 2026-09-22.
 Per-mod reasons are in `docs/catalogue/Grado_ChangingBase.md` under *Decisions, 2026-09-22 (#8)* and
 *Ruled out after the port*. #8 also settled #11 and #23.
@@ -63,7 +64,7 @@ other without saying which is being counted. Found by the review of #3; the meas
 
 | 1.1 mod | 2.0 replacement | since |
 |---|---|---|
-| `LTN_Content_Reader` | `LTN_Content_Reader_Updated` | **out 2026-09-22 (#8)**, with LTN; no successor exists |
+| `LTN_Content_Reader` | `LTN_Content_Reader_Updated` | **out 2026-09-22 (#8)**, with LTN; no successor found |
 | `miniloader` | `miniloader-redux` | |
 | `ModuleInserter` | `ModuleInserterSimplified` | **replaced again 2026-09-22 (#8)** by `ModuleInserterEx`, the configurable successor the 1.1 mod actually had |
 | `Nanobots` | `Nanobots2` | |
@@ -99,9 +100,9 @@ were ratified as they stood. `PickerPipeTools` and `PickerVehicles` close agains
 it is an addition of a mod never in the 1.1 pack. Restoring either feature-by-feature would mean two
 or three mods for one, and `Orphan Finder`, the closest single successor, declares
 `factorio_version` 2.0 and is unreachable at this pack's floor. **`PickerPipeTools`' pipe clamps
-remain the one feature in this pack's drops with **no successor found** - searched by name, title
-and summary, which is the strongest search this project runs and still not a proof of absence.** The bundle's members are
-ticketed for assessment one at a time.
+remain the one feature in this pack's drops with no successor found - searched by name, title and
+summary, which is the strongest search this project runs and still not a proof of absence.** The
+bundle's members are ticketed for assessment one at a time, as #46.
 
 - `PickerPipeTools`
 - `PickerTweaks`
@@ -360,6 +361,6 @@ for. A title is display only and can be changed in any release, unlike the name.
   feature leaves the pack outright, because no CS2 content reader exists. See
   `docs/catalogue/Grado_ChangingBase.md`.
 - **Nothing has been play-tested.** No pack has been loaded in Factorio, and no compatibility Lua has
-  been written or shown to be needed. **This now matters more than it did**: as of 2026-09-22 this
-  pack depends on a mod whose author describes it as having "known issues, bugs, missing features,
-  and even the occasional crash".
+  been written or shown to be needed. **This now matters more than it did**: as of 2026-09-22
+  `Grado_ChangingBase`, and therefore the three packs above it, depend on a mod whose author
+  describes it as having "known issues, bugs, missing features, and even the occasional crash".

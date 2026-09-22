@@ -6,7 +6,9 @@ did not exist in `Grado_NonChanging`: what a mod does to a save, and what it for
 from doing. The second has its own section, *What constrains an overhaul on top*.
 
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
-**2026-09-21** and is reproduced from the fetched data rather than retyped.
+**2026-09-21**, except those carrying a **Read on** of **2026-09-22**, which #8 took — the three
+entries it added and the readings inside its rulings. Each is reproduced from the fetched data
+rather than retyped; the **Read on** row is authoritative where it disagrees with this sentence.
 
 The dependency list holds 22 entries: `base >= 2.0.0`, `Grado_NonChanging` — a pack, catalogued in
 `docs/catalogue/Grado_NonChanging.md` — and the **20 mods** below. The survey read 25; #8 took the
@@ -1237,10 +1239,11 @@ recorded under `Waterfill_v17` in *In the pack*.
 
 ## `bobinserters` sits in two packs
 
-It is listed in `Grado_ChangingBase` and in `Grado_ABC`, the only mod named in two of the five
-dependency lists. `Grado_ABC` depends on `Grado_ChangingBase`, so one of the two lines does nothing.
-This survey recommends which; `docs/mod-catalogue.md` puts the disposal with #8 and #9 jointly, and
-nothing below settles it.
+It was listed in `Grado_ChangingBase` and in `Grado_ABC`, the only mod ever named as a member of
+two of the five dependency lists. `Grado_ABC` depends on `Grado_ChangingBase`, so one of the two
+lines did nothing. This survey recommended which; `docs/mod-catalogue.md` put the disposal with #8
+and #9 jointly. **#8 settled it on 2026-09-22 and the ruling is at the foot of this section**; the
+mod is now named as a member of exactly one list.
 
 **Recommendation: keep it in `Grado_ChangingBase` and drop the line from `Grado_ABC`.** Four
 reasons, in the order they matter:

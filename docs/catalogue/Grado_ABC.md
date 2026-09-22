@@ -9,8 +9,11 @@ core forecloses either end-game.
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
 **2026-09-21** and is reproduced from the fetched data rather than retyped.
 
-The dependency list holds 47 entries: `base >= 2.0.0`, `Grado_ChangingBase` — a pack, catalogued in
-`docs/catalogue/Grado_ChangingBase.md` — and **45 mods**. Ten more were dropped during the port.
+The dependency list holds 46 entries: `base >= 2.0.0`, `Grado_ChangingBase` — a pack, catalogued in
+`docs/catalogue/Grado_ChangingBase.md` — and **44 mods**. It read 47 and 45 until 2026-09-22, when
+#8 removed the duplicate `bobinserters` line; the mod is still installed by every player of this
+pack, through `Grado_ChangingBase`, and still has an entry below. Ten more were dropped during the
+port.
 **The pack is now catalogued in full**: #4 surveyed 29 members and 3 drops on 2026-09-21, #5 the
 other 16 and 7 the same day. Which ticket took which is *The split between #4 and #5* below, kept
 because two tickets writing one file is the only way a mod falls through.
@@ -604,11 +607,12 @@ than with a row here.
 the 29 members surveyed here; only the unnamed `boblibrary` is installed more. #5's sixteen were not
 measured, so this is not a claim about the whole pack.
 
-**This mod is listed in two packs** — here and in `Grado_ChangingBase`, which this pack depends on,
-so one of the two lines does nothing. Under `docs/mod-catalogue.md` it stays entered in both files
-until the duplicate is disposed of, and the disposal is #8's and #9's jointly. The argument is
-written out in `docs/catalogue/Grado_ChangingBase.md` under *`bobinserters` sits in two packs* and is
-not repeated here.
+**This mod was listed in two packs** — here and in `Grado_ChangingBase`, which this pack depends on,
+so one of the two lines did nothing. Under `docs/mod-catalogue.md` it stayed entered in both files
+until the duplicate was disposed of, and the disposal was put with #8 and #9 jointly. **#8 settled
+it alone on 2026-09-22, for the reason in the ruling below**, and the entry stays in both files
+either way. The argument is written out in `docs/catalogue/Grado_ChangingBase.md` under
+*`bobinserters` sits in two packs* and is not repeated here.
 
 **Recommendation: keep — in `Grado_ChangingBase`, and remove this line.** This survey reaches the
 same answer as the `Grado_ChangingBase` survey did on 2026-09-21, from the side that loses the line,

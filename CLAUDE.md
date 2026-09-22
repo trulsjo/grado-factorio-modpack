@@ -77,6 +77,16 @@ Settled so far, recorded here so nobody reopens them by accident:
   `AfraidOfTheDark`, `blueprint-sandboxes` and `blueprint_flip_and_turn` out, `Bottleneck` to
   `BottleneckLite` and `MaxRateCalculator` to `RateCalculator`. `kry-picker-complete` declined.
   Reasons per mod in `docs/catalogue/Grado_NonChanging.md`.
+- **`Grado_ChangingBase`'s membership is settled** (2026-09-22, #8). 25 members to 20, and it
+  settled #11 and #23 in the same pass. The four LTN mods out and `cybersyn2` in — **Cybersyn 2,
+  which its author declares alpha**; `UltimateBeltsSpaceAge` and `StoneWaterWell-ActuallyUpdated`
+  out as the first two failures of this pack's promise; `safefill` to `Waterfill_v17` and
+  `ModuleInserterSimplified` to `ModuleInserterEx`; `reverse-factory` and `squeak-through-2`
+  mandatory by decision; `bobinserters` kept here and its duplicate line removed from
+  `Grado_ABC/info.json`. `kry-picker-complete` declined here too. Three rules decided most of it:
+  **swaps in, additions out** (as #7); **the promise is the membership test**; and
+  **unreachability breaks a tie but does not decide alone**. Reasons per mod in
+  `docs/catalogue/Grado_ChangingBase.md`.
 - **A pack version does not move before its first release** (2026-09-22). All five stay at
   `0.1.0` through any number of dependency edits; the major/minor rule under *Conventions* starts
   applying at the first published release. `0.x` to `1.0.0` is the one major that signals
@@ -89,10 +99,14 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
 - `factorio_version` is declared `2.0` on all five packs while several members have moved to `2.1`.
   **Answered for `Grado_NonChanging`, `Grado_ChangingBase` and `Grado_ABC`, and the answer is no** —
   10 of 29 members, 11 of 25, and 26 of 45 declare `base >= 2.1` directly — the last now measured
-  across the whole pack rather than half of it. `WideChests` needs `>= 2.1.8`, which is the floor
-  `Grado_ABC` inherits through the chain. **Answered for `Grado_ABCX` on 2026-09-22, and it sets a
-  new project high**: `SpaceModFeorasFork` needs `base >= 2.1.9`. **`Grado_ABCS` is the one pack
-  that cannot be answered this way** — from the portal it inherits `>= 2.1.8`, but its own member
+  across the whole pack rather than half of it. **Those denominators are each pack as it stood when
+  it was measured**; after #7 and #8 the three lists hold 26, 20 and 44, and the numerators have not
+  been re-derived. `WideChests` needs `>= 2.1.8`.
+  **`Grado_ABCX` needs `base >= 2.1.9` via `SpaceModFeorasFork`, which was the project high until
+  #8. The project high is now `base >= 2.1.12`** (2026-09-22): `cybersyn2` and the `0-things`
+  library it pulls both require it, and `Grado_ABC`, `Grado_ABCX` and `Grado_ABCS` all inherit it
+  through `Grado_ChangingBase`. **`Grado_ABCS` is the one pack
+  that cannot be answered this way** — from the portal it inherits `>= 2.1.12`, but its own member
   `space-age` is not a portal mod, so whether the expansion raises that is unreadable until the pack
   is loaded (#29). So the measurement, which is #15, is complete for four packs and not completable
   for the fifth. The number to declare instead is #16.
@@ -103,14 +117,16 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   major version and no other", with no 2.0-to-2.1 exception. The pack's effective floor is 2.1.7,
   so on a 2.0 game five members cannot be satisfied and on a 2.1 game these six cannot be
   downloaded - **there is no version it installs on.** Across the chain's three lower packs, 21 of
-  95 distinct members are in this state, measured 2026-09-22. #16 cannot be answered by choosing a number until they update or are
+  95 distinct members are in this state, measured 2026-09-22 - **17 of 90 after #8 settled
+  `Grado_ChangingBase` the same day**, which took three of them out of the packs and fixed a fourth
+  by replacement. #16 cannot be answered by choosing a number until they update or are
   replaced.
 - ~~`alien-biomes-hr-terrain` was dropped **assuming** 2.0 `alien-biomes` absorbed the HR terrain.~~
-  **Checked 2026-09-21: recommended to stay dropped, and the assumption's mechanism was wrong.**
+  **Checked 2026-09-21 and ruled 2026-09-22 (#8): stays dropped, and the assumption's mechanism was
+  wrong.**
   The graphics moved into `alien-biomes-graphics`, a mandatory dependency of `alien-biomes`, rather
-  than being absorbed by it — so a third mod nobody names is pinned into the chain. Whether a drop
-  stands is still Truls's; the evidence makes this one close to forced. See
-  `docs/catalogue/Grado_ChangingBase.md`.
+  than being absorbed by it — so a third mod nobody names is pinned into the chain. The drop is now
+  settled rather than recommended. See `docs/catalogue/Grado_ChangingBase.md`.
 - Twenty mods are dropped with no replacement found, including seven of the nine Picker mods,
   `angelsexploration`, `angelsindustries` and `Clowns-Science`. **All twenty have now been
   re-checked**, the last seven on 2026-09-21 by #5, so "no replacement found" no longer means "not
@@ -126,7 +142,13 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   the suggestion asking for it was closed Implemented, and a sweep of all 2.x mods by title and
   summary found nothing reproducing the chest-slot form because nothing needs to. So
   `Grado_NonChanging`'s four Picker drops cost that pack **no feature at all**, where the survey
-  had said one. The two `kry-picker-complete` ones are `Grado_ChangingBase`'s and stay open.
+  had said one. ~~The two `kry-picker-complete` ones are `Grado_ChangingBase`'s and stay open.~~
+  **Closed 2026-09-22 (#8): `PickerPipeTools` and `PickerVehicles` stay dropped, and
+  `kry-picker-complete` is declined for this pack too** — an addition of a mod never in the 1.1
+  pack, plus the structural objection to a pack depending on a pack. The bundle's members are
+  ticketed for assessment one at a time. **`PickerPipeTools`' pipe clamps are the one feature in
+  that pack's drops with **no successor found** - a name, title and summary sweep of the 2.x list,
+  which is a search and not a proof.**
 
   `Grado_ABC`'s three core drops broke that pattern: two have no successor of any kind and stay
   dropped, `angelsindustries` being the largest single loss in the project, and `Clowns-Science`
@@ -138,8 +160,12 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   gap. Across the project, a drop is far more often an author's choice not to port than an
   ecosystem failing. See `docs/catalogue/Grado_ABC.md`. (Sixteen is the number of *replacements*;
   this line carried it by mistake until 2026-09-20.)
-- Two dependencies the 1.1 `Grado_ChangingBase` declared optional, `? reverse-factory` and
-  `? Squeak Through`, are mandatory in the 2.0 pack. Nobody decided that.
+- ~~Two dependencies the 1.1 `Grado_ChangingBase` declared optional, `? reverse-factory` and
+  `? Squeak Through`, are mandatory in the 2.0 pack. Nobody decided that.~~ **Closed 2026-09-22
+  (#8, settling #11): both stay mandatory, by decision.** An optional dependency installs nothing —
+  it only orders load if the player already has the mod — so a pack whose members are optional hands
+  the player less than its list implies. `squeak-through-2` was confirmed the right replacement for
+  `Squeak Through`.
 
 ## Factorio specifics
 

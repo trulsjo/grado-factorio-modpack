@@ -598,6 +598,7 @@ than with a row here.
 | **Downloads** | 406,215 |
 | **Owner** | `Bobingabout` |
 | **Read on** | 2026-09-21 |
+| **Status** | line removed from this pack 2026-09-22 (#8); still a member of `Grado_ChangingBase` |
 
 **Alternatives considered.** None. It is the mod for this, and at 406,215 the most-downloaded of
 the 29 members surveyed here; only the unnamed `boblibrary` is installed more. #5's sixteen were not
@@ -617,6 +618,14 @@ and adds one piece of evidence to it: the mod's only dependency is `base >= 2.1.
 every ABC install still resolves it through `Grado_ChangingBase`; removing it there would take it
 away from everyone playing that pack without an overhaul.
 
+**Ruled 2026-09-22 (#8): kept in `Grado_ChangingBase`, and this line removed from
+`Grado_ABC/info.json`.** #8 made the edit rather than leaving it to #9, because *"the duplication is
+gone"* is #8's own acceptance criterion and a ruling alone cannot meet it; #9 still decides
+everything else about this pack. **The entry stays here** rather than moving to a dropped section,
+because the mod is still installed by every `Grado_ABC` player — through `Grado_ChangingBase`, which
+is where it is now catalogued as a member. What was removed is a redundant line, not a mod.
+`bobinserters` is now named in exactly one of the five dependency lists.
+
 ### `boblogistics`
 
 | | |
@@ -626,17 +635,18 @@ away from everyone playing that pack without an overhaul.
 | **Latest** | `3.0.1`, `factorio_version` **2.1**, 2026-07-26 |
 | **Downloads** | 338,424 |
 | **Owner** | `Bobingabout` |
-| **Overlaps** | `UltimateBeltsSpaceAge` (`Grado_ChangingBase`) |
+| **Overlaps** | ~~`UltimateBeltsSpaceAge` (`Grado_ChangingBase`)~~ - resolved 2026-09-22 (#8), that mod is in no pack |
 | **Read on** | 2026-09-21 |
 
 **Alternatives considered.** None. Core Bob's, and the mod most other Bob's mods key their recipes
 to.
 
-The overlap is with `UltimateBeltsSpaceAge` in `Grado_ChangingBase`, which adds five belt tiers past
-express with no compatibility handling, stacking onto this mod's own tiers. `Grado_ChangingBase` is
-the lower pack and **the comparison is already written there**, in
-`docs/catalogue/Grado_ChangingBase.md` under that mod's entry, found from the other side on
-2026-09-21. Nothing is added here.
+~~The overlap is with `UltimateBeltsSpaceAge` in `Grado_ChangingBase`.~~ **Resolved 2026-09-22 by
+#8, which removed that mod from `Grado_ChangingBase` — in part because of this overlap.** Stacking
+five tiers onto this mod's own, with no compatibility handling on either side, is content competing
+with an overhaul for the same ground, which is what `Grado_ChangingBase`'s promise forbids. The
+comparison is kept where it was written, in `docs/catalogue/Grado_ChangingBase.md` under *Ruled out
+after the port*. **This mod's belt tiers now stand alone in the chain.**
 
 Two more were checked and are not overlaps. `underground-pipe-pack` in `Grado_ChangingBase` adds
 underground pipe shapes and an underground pump; this mod adds pump *tiers* and no pipes, so they
@@ -649,7 +659,9 @@ written, and six once #6 added two on 2026-09-22 — this is the only one on the
 comparison, and the belt question recurs. `miniloader-redux` against #5's
 `deadlock-beltboxes-loaders` is a separate one in the same subsystem, and #6's `space-age` against
 `UltimateBeltsSpaceAge` is a third, which makes belts the subsystem this project's overlaps keep
-landing in rather than a coincidence of two.
+landing in rather than a coincidence of two. **Two of those three are void as of 2026-09-22**: both
+named `UltimateBeltsSpaceAge`, and #8 removed it. The pattern the paragraph describes was real and
+is part of why it went.
 
 ### `bobmining`
 
@@ -1660,7 +1672,8 @@ is **#33**. This paragraph exists so the fifth mod is not lost between the two f
 
 **Belts, where this pack meets the one below.** Four cross-pack overlaps have been recorded across
 the project so far and two of them are belt-adjacent, both against `Grado_ChangingBase`:
-`boblogistics` against `UltimateBeltsSpaceAge`, and #5's `deadlock-beltboxes-loaders` against
+~~`boblogistics` against `UltimateBeltsSpaceAge`~~ - void as of 2026-09-22 (#8), that mod is in no
+pack - and #5's `deadlock-beltboxes-loaders` against
 `miniloader-redux`. Both comparisons are already written in
 `docs/catalogue/Grado_ChangingBase.md`. `boblogistics` is this half's side of the first and has the
 most surface area of any member against the layer below; a survey of either pack should look at
@@ -1750,7 +1763,9 @@ rather than in half. It does not raise the floor: the highest requirement found 
 below `Grado_ChangingBase`'s `>= 2.1.8` from `WideChests`. But
 `Grado_ABC` depends on `Grado_ChangingBase`, which depends on `Grado_NonChanging`, so it inherits
 both — **the effective minimum for anyone installing this pack is `base >= 2.1.8`**, and none of that
-comes from this pack's own members.
+comes from this pack's own members. **Raised to `base >= 2.1.12` on 2026-09-22 by #8**, which added
+`cybersyn2` to `Grado_ChangingBase`; the point of this paragraph — that the floor is inherited and
+none of it comes from this pack — is unchanged, and the number is not.
 
 The mechanism is the members' `base` requirements, not the `factorio_version` field — the field
 declares which game version the pack is *for*, and Factorio will not install a mod whose dependencies
@@ -1759,7 +1774,8 @@ written and all three answered no, and `Grado_ABCX` and `Grado_ABCS` looked like
 holding one member apiece — so this section called measurement **#15** nearly closed.
 
 **#6 reached both branches on 2026-09-22 and only half of that held.** `Grado_ABCX` was one command
-and raised the floor to `base >= 2.1.9`, above this pack's inherited `>= 2.1.8`. `Grado_ABCS` was not
+and raised the floor to `base >= 2.1.9`, above this pack's then-inherited `>= 2.1.8` — which #8
+raised to `>= 2.1.12` on 2026-09-22, above the fork's own floor again. `Grado_ABCS` was not
 a command at all: its one member is `space-age`, which is not a portal mod, so its `base` requirement
 cannot be read by this method and needs the game (**#29**). **#15 is therefore complete for four
 packs and not completable for the fifth**, which is a different shape from nearly closed. See

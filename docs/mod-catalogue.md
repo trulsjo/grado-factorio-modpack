@@ -28,14 +28,21 @@ problem and do not get the same treatment.
 *Lower* and *higher* below mean position in the chain measured by dependency, not by the README
 diagram's indentation, which runs the other way. `CONTEXT.md` is the glossary entry.
 
-**The same mod in two dependency lists** is a name collision, and this file's only answer is to
-wait: `bobinserters` is the only instance — it is a member of `Grado_ChangingBase` and
-`Grado_ABC` — and it is entered in both files until which layer keeps it is settled. That is pack
-membership, so it belongs to the decide-and-apply tickets #8 and #9 jointly, not to either
-pack's survey. A survey that reaches it may still *recommend* a layer, which is what a
-**Recommendation** is for; the `Grado_ChangingBase` survey did, on 2026-09-21, and the argument is
-in `docs/catalogue/Grado_ChangingBase.md`. Recommending is not settling, and the entry stays in
+**The same mod in two dependency lists** is a name collision, and this file's answer was to wait:
+`bobinserters` was the only instance named as a member of two lists — `Grado_ChangingBase` and
+`Grado_ABC` — and it was entered in both files until which layer kept it was settled. A survey that
+reaches such a mod may *recommend* a layer, which is what a **Recommendation** is for; the
+`Grado_ChangingBase` survey did, on 2026-09-21. Recommending is not settling, and the entry stays in
 both files either way.
+
+**Settled 2026-09-22 by #8: kept in `Grado_ChangingBase`, and the line removed from
+`Grado_ABC/info.json`**, because the mod's only dependency is `base >= 2.1.0` and removing the ABC
+line costs no player anything. It is now named as a member of exactly one of the five lists, and the
+joint #8-and-#9 disposal this paragraph described no longer applies — #8 made the edit, because "the
+duplication is gone" was its own acceptance criterion. **Both entries survive**, which is what the
+last sentence above requires and what the fifth variant below exists to license. There is no second
+instance; if one appears, the procedure is the one described here and the ruling belongs to the
+lower pack's decide-and-apply ticket.
 
 **Two different mods doing an overlapping job in two packs** is the other one, and it is the one
 that compounds as the surveys climb. It is recorded with an **Overlaps** row in the entry table,
@@ -167,6 +174,27 @@ instead. Use it sparingly — a survey where several entries reconsider has not 
   port, and `Grado_NonChanging` removed three mods that had survived it. Without this variant the
   entries stayed under *In the pack*, which broke the one guarantee the heading rule exists to give.
 
+- **A mod added after the port** is the mirror of the one above: a mod that was never in the 1.1
+  pack and entered by a decision. It sits under *In the pack*, carries the `**Supersedes**` row if
+  it displaced an existing member, and **its Recommendation reads `keep`, followed by "Added by
+  #<issue> on <date>" and the reason** — the verdict vocabulary is unchanged, because the entry is
+  describing a mod that is in the pack now. There is no `**Status**` row; membership is the
+  dependency list's job and the mod is in it.
+
+- **A mod resolved through a lower pack but no longer named in this one** keeps its entry under
+  *In the pack* and adds
+  `| **Status** | line removed from this pack <date> (#<issue>); still a member of `Pack_Name` |`.
+  **This is the one case where *In the pack* holds an entry the dependency list does not name**, and
+  it is deliberate: every player of this pack still installs the mod, so an entry that vanished
+  would lose the comparison work with it. A reader checking the section against `info.json` finds
+  the discrepancy answered in the row rather than unexplained.
+
+  Both added 2026-09-22 by #8, which hit all three gaps at once: it added three mods to
+  `Grado_ChangingBase` that no variant covered, and it resolved the `bobinserters` duplication by
+  deleting a line from `Grado_ABC` whose entry then had no licensed shape. The lesson is the same one
+  the variant above records — the format assumed the port was the only thing that ever moved a mod,
+  and it is not.
+
 Field notes, where the name does not carry the meaning:
 
 - **`portal-name`** is the name `info.json` resolves, not the title: `even-pickier-dollies`, not
@@ -203,6 +231,16 @@ it returns include the 2.1 mods. Match against `name`, `title` *and* `summary`.
 A successor can be a fork, a rewrite, or a different mod covering the same ground; do not require
 the name to look related. `PickerExtended` became `kry-picker-extended`, `WaterWell` became
 `StoneWaterWell-ActuallyUpdated`.
+
+**Two of the six were voided on 2026-09-22 by #8**, which removed `UltimateBeltsSpaceAge` from
+`Grado_ChangingBase` — in part because of the overlaps recorded here. `boblogistics` against it and
+`space-age` against it are both gone, and **#38 was closed as moot**. The instances are left in the
+text above because the point they make is about the *rate* at which surveys find overlaps, which the
+removal does not change; only the tally of live overlaps does, and that is **three**: `miniloader-redux` against
+`deadlock-beltboxes-loaders`, `angelsaddons-storage` against the `WideChests` family, and
+`SpaceModFeorasFork` against `space-age`. Three of the six are void — the two above and, earlier,
+`blueprint-sandboxes` against `EditorExtensions`, which **#7** voided on 2026-09-22 by removing
+`blueprint-sandboxes` from `Grado_NonChanging`.
 
 ## Worked examples
 

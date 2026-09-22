@@ -8,14 +8,66 @@ from doing. The second has its own section, *What constrains an overhaul on top*
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
 **2026-09-21** and is reproduced from the fetched data rather than retyped.
 
-The dependency list holds 27 entries: `base >= 2.0.0`, `Grado_NonChanging` — a pack, catalogued in
-`docs/catalogue/Grado_NonChanging.md` — and the **25 mods** below. Six more were dropped during the
-port and are reassessed at the end.
+The dependency list holds 22 entries: `base >= 2.0.0`, `Grado_NonChanging` — a pack, catalogued in
+`docs/catalogue/Grado_NonChanging.md` — and the **20 mods** below. The survey read 25; #8 took the
+pack to 20 on 2026-09-22 and the section after this one is its ledger. **Fourteen mods are no longer
+members**: the six lost in the port, reassessed at the end, and the eight under *Ruled out after the
+port* - six #8 removed outright and two it replaced.
 
-**All 25 current members have a 2.x release.** None is stranded on 1.1. **Eleven require
+**All current members have a 2.x release.** None is stranded on 1.1. **Most require
 `base >= 2.1`**, which is the same finding the `Grado_NonChanging` survey reached and is fatal to
 this pack's declared `factorio_version` for the same reason; see *The pack cannot load on the
-Factorio version it declares*.
+Factorio version it declares*. #8 raised the floor again, to `base >= 2.1.12`, by adopting
+`cybersyn2`.
+
+## Decisions, 2026-09-22 (#8)
+
+Truls ruled on every recommendation, and on #11 and #23, which are this pack's membership and were
+settled in the same pass. The survey text below is left as written; each affected entry carries its
+ruling inline. **25 members to 20.**
+
+| mod | ruling |
+|---|---|
+| `LogisticTrainNetwork` | **out** — the train-logistics paradigm moves to Cybersyn 2 (#23) |
+| `LTN_Combinator_Modernized` | **out** — with LTN |
+| `LtnManager` | **out** — with LTN; CS2 has the manager built in |
+| `LTN_Content_Reader_Updated` | **out** — with LTN, and **the feature is lost**: no CS2 content reader exists |
+| `cybersyn2` | **in** — the only addition, and a replacement rather than a new feature |
+| `UltimateBeltsSpaceAge` | **out** — fails the promise: belt tiers past express are `boblogistics`' ground |
+| `StoneWaterWell-ActuallyUpdated` | **out** — fails the promise: free water is Angel's water-treatment chain's ground |
+| `safefill` | **replaced** by `Waterfill_v17` — reachable at 2.1, where `safefill` is not |
+| `ModuleInserterSimplified` | **replaced** by `ModuleInserterEx` — the 1.1 pack had the configurable one |
+| `reverse-factory` | **mandatory**, by decision rather than by accident (#11) |
+| `squeak-through-2` | **mandatory** (#11), and confirmed the right replacement for `Squeak Through` |
+| `bobinserters` | **kept here**, and the duplicate line removed from `Grado_ABC/info.json` |
+| `qol_research` | kept — tested against the promise and passes |
+| `UltimateResearchQueue2` | kept — tested against the promise and passes |
+| `PickerPipeTools`, `PickerVehicles` | stay dropped — `kry-picker-complete` declined for this pack too |
+| everything else | kept or stays dropped as recommended |
+
+**Three rules were set before the mods were ruled on, and they decided most of them.**
+
+1. **Swaps in, additions out.** Replacing a member with a successor is porting; adding a mod the 1.1
+   pack never had is a new feature nobody asked for. Same rule #7 applied one layer down. It is what
+   declines `kry-picker-complete` here, and it defers every candidate addition to a later ticket.
+2. **The promise is the membership test, and it had never been run on this pack.** #7 wrote
+   `Grado_ChangingBase`'s promise on 2026-09-22 — *may add content, but not content that competes
+   with an overhaul for the same ground* — one day after this survey was read, and said in as many
+   words that it had not been checked against the existing members. #8 ran it against the five
+   flagged under *What constrains an overhaul on top*. Two failed.
+3. **Unreachability breaks a tie; it does not decide on its own.** Six members declared
+   `factorio_version: 2.0` and the portal does not serve them to a 2.1 game, which this pack's floor
+   requires. #7's precedent is to leave such members in and track them (#43), and #8 followed it —
+   except in entries the survey had already marked `reconsider:`, where it broke the tie.
+   `safefill` and `UltimateBeltsSpaceAge` are the two that touched.
+
+**A `2.0`-declaring member is unreachable, not merely stale.** Of the six, three leave with their
+mods - `LTN_Content_Reader_Updated`, `StoneWaterWell-ActuallyUpdated` and `UltimateBeltsSpaceAge` -
+and one is fixed by the `Waterfill_v17` swap. **`Nanobots2` and `qol_research` remain unreachable
+and stay in the pack**, which is #43's, not this ticket's.
+
+Two questions were deferred rather than answered: candidate additions that were never in the 1.1
+pack, and `kry-picker-complete`'s members assessed one at a time for whichever pack each fits.
 
 ## In the pack
 
@@ -72,140 +124,35 @@ for. It carries explicit optional compatibility with `Krastorio2`, `aai-industry
 `space-exploration`, `omnimatter_compression` and `DeadlockStackingForAngels` — the last an
 Angel's-family mod, so the author is already tracking the kind of overhaul this pack sits under.
 
-### `LTN_Combinator_Modernized`
+### `ModuleInserterEx`
 
 | | |
 |---|---|
-| **Title** | LTN Combinator Modernized |
-| **Does** | A combinator with a GUI for setting LTN's control signals on a train stop, instead of composing them by hand |
-| **Latest** | `2.5.0`, `factorio_version` **2.1**, 2026-06-25 |
-| **Downloads** | 104,467 |
-| **Owner** | `kryojenik` |
-| **Read on** | 2026-09-21 |
+| **Title** | Module Inserter Extended |
+| **Does** | Mass insert and remove modules into machines with construction robots, configured per machine type rather than one module type at a time |
+| **Latest** | `7.5.0`, `factorio_version` **2.1**, 2026-06-29 |
+| **Downloads** | 47,588 |
+| **Owner** | `Gorfiend7` |
+| **Supersedes** | `ModuleInserterSimplified` in this pack, 2026-09-22 (#8); both continue `ModuleInserter` by `Choumiko`, last `5.2.5` on 2024-10-06 |
+| **Read on** | 2026-09-22 |
 
-**Alternatives considered.** None. It is the maintained LTN combinator, and `LtnManager` names it as
-an optional dependency, so the LTN mods in this pack already expect each other.
+**Alternatives considered.** The mod it replaces, and the survey did the comparison — see
+`ModuleInserterSimplified` under *Ruled out after the port*. Both are current 2.1 continuations of
+the same 1.1 mod and the choice between them is a preference, which is why the survey recorded it
+rather than settling it.
 
-**Recommendation: keep.** Current on 2.1 and tracking LTN's own major version — it requires
-`LogisticTrainNetwork >= 3.0.0`, which the pack's LTN satisfies.
+**Recommendation: keep.** Added by #8 on 2026-09-22, replacing `ModuleInserterSimplified`. The 1.1 pack carried
+`ModuleInserter`, the configurable one, and the port replaced it with the deliberately *less*
+configurable of its two successors while the incumbent's own page named this one as "a straight
+upgrade from Module Inserter". That was never a decision, and `Grado_ABC` puts Bob's modules on
+Angel's machines, which is the situation per-machine-type configuration exists for. `pump`, a
+`Grado_ABC` member, already declares `? ModuleInserterEx >= 7.0.2`.
 
-### `LTN_Content_Reader_Updated`
-
-| | |
-|---|---|
-| **Title** | LTN Content Reader Update |
-| **Does** | A combinator that reports an LTN network's provider and requester contents to the circuit network, filtered by network ID, with a GUI colouring surplus green and deficit red |
-| **Latest** | `1.0.5`, `factorio_version` **2.0**, 2025-10-17 |
-| **Downloads** | 1,190 |
-| **Owner** | `vinnizp` |
-| **Supersedes** | `LTN_Content_Reader` by `Optera`, last `1.0.3` on 2022-11-18, 46,939 downloads |
-| **Read on** | 2026-09-21 |
-
-**Alternatives considered.** **[`ltn-train-info`](https://mods.factorio.com/mod/ltn-train-info) by
-`hgschmie`** — `2.0.4`, `factorio_version` **2.1**, 2026-08-20, 2,577 downloads, by the author of
-`miniloader-redux`. More current, but not the same mod: it emits *delivery* signals — what trains
-are carrying where — while this one reports *network contents*, what the providers and requesters
-hold. Not a replacement. Searching the 2.x list by title and summary for "LTN" returns no other
-content reader.
-
-**The mod that would fix this one is on the other side of issue #23.**
-**[`Cybersyn-Content-Reader`](https://mods.factorio.com/mod/Cybersyn-Content-Reader) by `danbopes`**
-— `1.1.2`, `factorio_version` **2.1**, 2026-08-01, 1,504 downloads — is a port of the same Optera
-mod to Cybersyn, one game version ahead of this one and ten months newer. It requires
-`cybersyn >= 2.1.2`, so it cannot be adopted on its own: the pack's weakest member cannot be
-strengthened without taking the whole train-logistics paradigm with it. That is the sharpest single
-argument in #23, and it is why this entry and that ticket have to be read together.
-
-**Recommendation: keep**, and re-check it before release. This is the weakest member of the pack on
-every axis at once: 1,190 downloads against the 46,939 of the mod it replaces, `factorio_version`
-still **2.0**, last touched 2025-10-17, and built against `LogisticTrainNetwork >= 2.4.2` while LTN
-is now `3.2.1`. The declared dependency has no upper bound so it will resolve, but "resolves" and
-"works against LTN 3.x" are the two claims this project keeps having to separate. Nothing here is a
-reason to drop it — there is nothing to drop it *for* — but it is the member most likely to be the
-first thing that breaks when a pack is finally loaded.
-
-### `LogisticTrainNetwork`
-
-| | |
-|---|---|
-| **Title** | LTN - Logistic Train Network |
-| **Does** | Replaces fixed train schedules with logistic train stops: depots hold idle trains, and the network dispatches whichever train fits a provider-to-requester delivery |
-| **Latest** | `3.2.1`, `factorio_version` **2.1**, 2026-09-10 |
-| **Downloads** | 286,624 |
-| **Owner** | `Optera` |
-| **Read on** | 2026-09-21 |
-
-**Alternatives considered.** The other three LTN mods in this pack exist only to serve it, so
-replacing it means replacing four members at once. The 2.x list carries several successors of the
-genre — `yet_another_train_manager`, `RailLogisticsDispatcher`, `precise-train-logistics`, and
-**Project Cybersyn**, which is the serious one.
-
-**That comparison is now open as issue #23**, raised on 2026-09-21, and the evidence lives there
-rather than being summarised twice. The short of it: the two cores are equally maintained, 19
-releases each in the last twelve months, so this is a feature and timing question and not a rescue.
-Cybersyn offers per-cargo thresholds, per-wagon filters, automatic allow-lists, depot bypass and
-twice the station update rate; against that, its 2.1 support is a single release its own page calls
-experimental, while LTN ships a 2.1 and a 2.0 branch side by side on the same day. Checked while
-filing it: nothing else among the 100 members of the five packs depends on LTN, so the cluster moves
-as one unit and nothing in Angel's, Bob's, MadClown, SpaceX or Space Age notices either way.
-
-**Recommendation: keep — and the question is open as #23.** Released eleven days before this reading,
-so actively maintained, and it is the better-supported of the two on the game version this pack
-actually needs. That is a recommendation on the 2.1 evidence, not a closure: which train-logistics
-paradigm a pack ships is pack membership, so #23 records it and #8 settles it. It is one of four
-members at `base >= 2.1.7`, the second-highest floor in the pack.
-
-### `LtnManager`
-
-| | |
-|---|---|
-| **Title** | LTN Manager |
-| **Does** | A GUI over a running LTN network: deliveries in flight, stop inventories, depot contents and the network's alerts in one window |
-| **Latest** | `0.6.0`, `factorio_version` **2.1**, 2026-08-16 |
-| **Downloads** | 118,632 |
-| **Owner** | `nihilistzsche` |
-| **Read on** | 2026-09-21 |
-
-**Alternatives considered.**
-**[`LtnManagerUpdated`](https://mods.factorio.com/mod/LtnManagerUpdated) by `FoMaK`** — `1.1.1`,
-`factorio_version` **2.1**, 2026-07-12, 4,280 downloads. A second continuation of the same mod. The
-incumbent is both more recent, by a month, and far more used, so the fork's name is the only thing
-recommending it.
-
-**Recommendation: keep.** Current on 2.1, and it declares `? LTN_Combinator_Modernized`, which is
-also in this pack.
-
-### `ModuleInserterSimplified`
-
-| | |
-|---|---|
-| **Title** | Module Inserter Simplified |
-| **Does** | Requests one module type into every machine in a dragged selection, to be fitted by construction bots, with no per-machine configuration |
-| **Latest** | `2.2.0`, `factorio_version` **2.1**, 2026-06-25 |
-| **Downloads** | 164,383 |
-| **Owner** | `Xorimuth` |
-| **Supersedes** | `ModuleInserter` by `Choumiko`, last `5.2.5` on 2024-10-06, 143,036 downloads |
-| **Read on** | 2026-09-21 |
-
-**Alternatives considered.**
-**[`ModuleInserterEx`](https://mods.factorio.com/mod/ModuleInserterEx), *Module Inserter Extended*,
-by `Gorfiend7`** — `7.5.0`, `factorio_version` **2.1**, 2026-06-29, 47,569 downloads, four days
-newer than the incumbent. Both are current; both are 2.x continuations of the same 1.1 mod. Which is
-which is stated on the incumbent's own portal page:
-
-> Use Module Inserter Extended if you want to create detailed configurations per machine type (it is
-> a straight upgrade from Module Inserter). Use Module Inserter Simplified if you want to easily
-> create module requests, one type at a time, without any complex configuration GUI.
-
-**Recommendation: reconsider:** whether this pack wants `ModuleInserterEx` instead. The 1.1 pack
-carried `ModuleInserter`, the configurable one, and the port replaced it with the deliberately
-*less* configurable of its two successors — while the mod's own page names the other as the straight
-upgrade. Nobody recorded choosing that. It matters more here than it would in a vanilla pack:
-`Grado_ABC` layers Bob's modules and Angel's machines on top, which is the situation per-machine-type
-configuration exists for. Simplified has 3.5 times the downloads, which is a real argument and not a
-tiebreaker — this is a preference, and the point of the entry is that the preference has not been
-expressed. `pump`, a `Grado_ABC` member, declares `? ModuleInserterEx >= 7.0.2`, so the other mod is
-already half-present in the chain as an optional.
+**It declares `flib >= 0.17.0`** where `ModuleInserterSimplified` declared no library at all — and
+**that costs the pack nothing**, because `flib` is already mandatory for three current members:
+`EditorExtensions` and `WideChests` at `>= 0.17.0` and `UltimateResearchQueue2` at `>= 0.17.1`. The
+swap adds no mod to the closure. It declares `base >= 2.1`, below the pack's floor, so it adds
+nothing there either.
 
 ### `Nanobots2`
 
@@ -230,85 +177,6 @@ family shows — see *The raiguard pattern* in `docs/catalogue/Grado_NonChanging
 half of the authorship story. Last touched 2025-03-12, which is quiet rather than abandoned, and it
 is the only successor that preserves the mechanic.
 
-### `StoneWaterWell-ActuallyUpdated`
-
-| | |
-|---|---|
-| **Title** | Stone Water Well |
-| **Does** | A placeable well producing water anywhere on land, removing the need to pipe from a lake |
-| **Latest** | `2.0.10`, `factorio_version` **2.0**, 2025-05-28 |
-| **Downloads** | 8,363 |
-| **Owner** | `TheDogOfChaos` |
-| **Supersedes** | `WaterWell` by `binbinhfr`, last `1.1.2` on 2020-11-29, 69,845 downloads |
-| **Read on** | 2026-09-21 |
-
-**Alternatives considered.** **[`WaterExtractor`](https://mods.factorio.com/mod/WaterExtractor) by
-`VanillaRainbow92`** — `1.1.0`, `factorio_version` **2.1**, 2026-07-10, 7,341 downloads. Comparable
-size, more than a year more current, same job. Also found: `StoneWaterWell-NoRestrict` (`2.0.2`,
-2.0, 2025-06-18, 1,264 downloads), a placement-restriction-free variant of this same mod, and
-`GroundWater` (`0.1.4`, 2.0, 2025-08-26, 561 downloads).
-
-**Recommendation: keep**, with the **Supersedes** row read as pack membership rather than lineage.
-This is a fork of a fork of `StoneWaterWell`, a different original from the `WaterWell` it replaced
-here; the port swapped one water-well mod for another rather than following a continuation.
-`WaterExtractor` is the better-maintained option if this one goes quiet, and it is worth a look
-before release rather than after. Flagged under *What constrains an overhaul on top* — free water
-anywhere is a balance change, and Angel's builds a water-treatment chain on the assumption that
-water has a cost.
-
-### `UltimateBeltsSpaceAge`
-
-| | |
-|---|---|
-| **Title** | Ultimate Belts Space Age |
-| **Does** | Five belt tiers past express, with matching splitters and undergrounds; the fastest is stated as six express belts |
-| **Latest** | `1.3.0`, `factorio_version` **2.0**, 2024-12-31 |
-| **Downloads** | 11,301 |
-| **Owner** | `Jabor047` |
-| **Supersedes** | `UltimateBelts` by `Tyarns`, last `1.1.1` on 2022-05-09, 54,161 downloads |
-| **Overlaps** | `boblogistics` (`Grado_ABC`) |
-| **Read on** | 2026-09-21 |
-
-**Alternatives considered.** Three mods continue `UltimateBelts` into 2.x and all three stopped
-within a week of each other: this one (`1.3.0`, 2024-12-31), **`NovasUltimateBelts`** (`2.0.0`,
-2024-12-26, 1,098 downloads) and **`UltimateBeltsSpaceAgeFork`** (`1.2.0`, 2024-12-26, 678
-downloads). The incumbent is the largest and the newest of the three, so the port chose correctly
-among them. The live alternative is outside the family:
-**[`more-belts`](https://mods.factorio.com/mod/more-belts) by `Keeper317`** — `0.4.1`,
-`factorio_version` **2.1**, 2026-08-05, 4,056 downloads, "5 additional tiers of belts, splitters and
-undergrounds. Custom belt speed for all 8 tiers in items/second." Same shape, nineteen months more
-current, and configurable speeds would let the tiers be fitted to whatever the overhaul beneath them
-does. `AdvancedBeltsSA` and `beyond-belts` add three tiers past Turbo rather than five and both
-advertise loader support.
-
-#### Against `boblogistics`
-
-`Grado_ABC` carries **`boblogistics`** (`3.0.1`, `factorio_version` **2.1**, 2026-07-26, 338,424
-downloads), which adds its own belt tiers past express. Both mods stack tiers onto the same
-progression, and no mod mediates between them: `UltimateBeltsSpaceAge` declares `base >= 2.0` and
-nothing else — no optional dependency on Bob's, no compatibility handling of any kind — while
-`boblogistics` declares optionals for `bobplates`, `bobinserters`, `space-age`, `valves`, `Krastorio2`
-and `aai-loaders`, and none for this. Neither side is arranging the other's tiers.
-
-**It also costs the loaders.** The 1.1 `miniloader` declared `? UltimateBelts >= 0.16.4`, so the 1.1
-pack had loaders for the Ultimate tiers. `miniloader-redux`, the 2.0 replacement, does not: its page
-lists exactly the base-game tiers — "three tiers in the base game ("Vanilla", Fast and Express) and
-four when playing Space Age (adds Turbo mode)" — plus optional support for `boblogistics`,
-`Krastorio2`, `TurboBelt`, `matts-logistics` and `space-exploration`. Ultimate Belts is not on that
-list. The gap may be worse than missing tiers: `miniloader-redux`'s normal mode "degrades with belts
-above 240 items/sec", and this mod's fastest tier is "equivalent to 6 express belts" — 270 items/sec
-at the base game's 45 for express. That is arithmetic off two portal pages and one base-game number,
-not a measurement; nothing has been loaded in Factorio. It is checkable the moment something is.
-
-**Recommendation: reconsider:** whether the belt-tier layer belongs in this pack at all, and if it
-does, whether `more-belts` should carry it. Three findings point the same way and none of them is
-that this mod is bad: it is the stalest member of the pack, twenty-one months since its last release
-and two and a half months quieter than the next one, `Nanobots2`; it is the only member whose tiers
-the pack's own loader mod cannot serve; and it is the clearest case of a `Grado_ChangingBase` member
-constraining the overhaul above it. Against that, it is the direct continuation of a 1.1 member and
-the most-used of its three siblings. Which pack a belt tier belongs in is pack membership, so this
-is recorded, not settled.
-
 ### `UltimateResearchQueue2`
 
 | | |
@@ -330,6 +198,45 @@ genre's other entries are hard incompatibilities rather than options.
 **Recommendation: keep.** Current on 2.1. Those three `!` lines are the thing to remember: any
 overhaul or personal mod pulling in a rival research queue will fail to load against this pack.
 
+**Ruled 2026-09-22 (#8): kept — tested against the promise and passes.** A research queue adds no
+content at all, so there is no ground for it to compete with an overhaul over. The three `!` lines
+stay worth remembering, but they name rival research-queue mods rather than overhauls, and no pack
+in the chain carries one.
+
+### `Waterfill_v17`
+
+| | |
+|---|---|
+| **Title** | Waterfill |
+| **Does** | Places water like landfill, unlocked by its own technology, with settings to disable collision with items and to allow placement on any planet |
+| **Latest** | `2.1.2`, `factorio_version` **2.1**, 2026-09-11 |
+| **Downloads** | 303,064 |
+| **Owner** | `untraceablesmurf` |
+| **Supersedes** | `safefill` in this pack, 2026-09-22 (#8) — pack membership, not lineage; the two are unrelated mods |
+| **Read on** | 2026-09-22 |
+
+**Alternatives considered.** The 2.1 list searched by title and summary for waterfill and
+water-placement mods. Four others do the same job: `RitnWaterfill` (`1.6.0`, 2.1, 2026-09-12, 91,882
+downloads) — which declares `! Waterfill_v17`, so the two are mutually exclusive, and pulls
+`RitnLib >= 0.10`; `waterfill-2` (`1.0.3`, 2.1, 2026-08-26, 3,395 downloads); `waterfill-balanced`,
+a fork restricting placement to tiles beside existing water; and `Waterbomb`, which converts land to
+water by explosion rather than by placement. This one is the largest by an order of magnitude and
+the most recently released, and declares `base >= 2.1.0` and `? space-age >= 2.1.0`.
+
+**Recommendation: keep.** Added by #8 on 2026-09-22, replacing `safefill`, which declares `factorio_version: 2.0` and is
+therefore not served to a 2.1 game at all — see *The pack cannot load on the Factorio version it
+declares*. This pack's floor is well above 2.0, so the member it replaces installs on nothing.
+
+**Two things this swap does not do, stated so they are not assumed.** It does not answer whether a
+waterfill mod survives the overhaul layers: `safefill`'s author declined to claim compatibility with
+anything but vanilla technologies and Nullius, and this mod is also technology-unlocked and its
+author makes no claim either way — which is less evidence, not better evidence. The question
+attaches to the feature rather than to the mod and is checkable the moment `Grado_ABC` is loaded.
+And **feature parity is unverified**: `safefill` advertised six water types, blueprintability, and a
+guarantee that structures, vehicles, resources, cliffs, trees and the player all survive placement.
+This mod's page documents an item-collision setting and a change to how placement over trees works,
+which is adjacent but not the same claim. The delta is a portal reading, not a test.
+
 ### `WideChests`
 
 | | |
@@ -344,10 +251,10 @@ overhaul or personal mod pulling in a rival research queue will fail to load aga
 **Alternatives considered.** None searched. It is current, and the pack carries three of its own
 add-ons, so replacing it means replacing four members.
 
-**Recommendation: keep.** It sets the pack's Factorio floor at `base >= 2.1.8`, which was the
-highest requirement of any member of any pack when this was written and **was overtaken on
-2026-09-22** by `SpaceModFeorasFork`'s `>= 2.1.9` in `Grado_ABCX` — so it remains the floor for this
-pack and for `Grado_ABC`, and is no longer the project's highest. See *What constrains an overhaul on
+**Recommendation: keep.** It set the pack's Factorio floor at `base >= 2.1.8`, which was the
+highest requirement of any member of any pack when this was written and **was overtaken twice on
+2026-09-22** — first by `SpaceModFeorasFork`'s `>= 2.1.9` in `Grado_ABCX`, then by `cybersyn2`'s
+`>= 2.1.12` in this pack, which #8 added. **It no longer sets this pack's floor either.** See *What constrains an overhaul on
 top* for
 what the family costs in load time once Angel's and Bob's chest types are in the game.
 
@@ -401,8 +308,9 @@ pairing; the pack's dependency list is what does.
 
 **Recommendation: keep**, with the same caveat as `WideChestsAllTypes`, which this one's summary
 puts more strongly: it "can increase memory usage and loading time significantly (depending on your
-mod settings)". Four of the pack's 25 members are this one family, and both of the members that cost
-load time are switched on.
+mod settings)". Four of the pack's 25 members were this one family when the survey was
+read, and both of the members that cost load time are switched on. **After #8 the pack has 20
+members, so the family is now a fifth of it** — the four are unchanged; the denominator shrank.
 
 ### `alien-biomes`
 
@@ -441,6 +349,71 @@ under three months before this reading.
 **Recommendation: keep — in this pack, and remove the duplicate listing from `Grado_ABC`.** It is
 the only mod named in two of the five dependency lists; the reasoning is in *`bobinserters` sits in
 two packs* below, and the disposal is #8's and #9's jointly, not this survey's.
+
+**Ruled 2026-09-22 (#8): kept here, and the duplicate line removed from `Grado_ABC/info.json`** in
+the same change. #8 made that edit rather than leaving it to #9, because "the duplication is gone"
+is #8's own acceptance criterion and a ruling alone cannot meet it. #9 still decides everything else
+about that pack.
+
+### `cybersyn2`
+
+| | |
+|---|---|
+| **Title** | Cybersyn 2 |
+| **Does** | Routes trains from providers to requesters under central planning driven by cybernetic combinators and the circuit network, with per-cargo thresholds, per-wagon filters, automatic allow-lists built from the inserters and pumps beside the track, depot bypass, and the network manager built in |
+| **Latest** | `0.4.0`, `factorio_version` **2.1**, 2026-09-09; 27 releases since 2026-04-07 |
+| **Downloads** | 1,484 |
+| **Owner** | `The_LORD_thy_GOD` |
+| **Supersedes** | `LogisticTrainNetwork` and its three satellites in this pack, 2026-09-22 (#8) — pack membership, not lineage |
+| **Read on** | 2026-09-22 |
+
+**Alternatives considered.** The incumbent it replaces and the generation between them, at length,
+on #23. LTN is not dying — both its cores shipped 19 releases in twelve months and it maintains a
+2.0 and a 2.1 branch in parallel. Project Cybersyn CS1 (`cybersyn`, `2.1.2`, 2.1, 2026-06-26, 58,742
+downloads) was the option #23 was written about and is not the one taken: its author's own page
+calls its 2.1 support experimental, it has had no release in three months, and it is a dead end,
+because CS2 states there is **no direct migration from CS1**. This mod is the official successor —
+same Discord and the `project-cybersyn` GitHub org, despite a different portal owner — and the most
+actively developed of the three.
+
+**Recommendation: keep.** Added by #8 on 2026-09-22 — **and the alpha warning is the reason to read
+this entry twice.** From its own portal page:
+
+> **WARNING: This mod is currently in an ALPHA state.** It is playable, but there are known issues,
+> bugs, missing features, and even the occasional crash. Future save-breaking changes, while
+> unlikely, are possible. Only install this mod if you are one of our testers
+
+Shipping this pack ships that to players. The decision was taken knowing it, on the grounds that
+CS1 is a dead end and CS2 is the only one of the three train-logistics options with a future. The
+choice is cheapest now and not later: nothing here is published and no 2.0 save exists, so removing
+LTN costs nobody an invalid entity today and would cost every logistic train stop in a player's base
+after a release.
+
+**It raises the pack's Factorio floor to `base >= 2.1.12`, the highest in the project** — above
+`Grado_ABCX`'s 2.1.9 — and `Grado_ABC`, `Grado_ABCX` and `Grado_ABCS` all inherit it. That is
+evidence for #15; the declaration is #16's.
+
+**It pulls `0-things >= 0.6.1`**, *Things* (`The_LORD_thy_GOD`, `0.6.3`, 2.1, 2026-09-20, 3,292
+downloads, `base >= 2.1.12`), a mandatory library by the same author which this pack's list does not
+name. Its own summary warns that "disabling Things while other mods are using it may break your
+save". This is the `alien-biomes-graphics` shape — a third mod nobody names pinned into the chain —
+and reconciling the closure is #39's, which is why the dependency list carries the mod and not the
+library. **It is a genuine addition to that closure, not a new kind of problem**: `flib`
+(`EditorExtensions`, `WideChests`, `UltimateResearchQueue2`), `stdlib2` (`Nanobots2`) and
+`kry_stdlib` (`reverse-factory`) are already mandatory in this pack and named in no list either.
+
+**What the swap costs, and it is not nothing.** Four members become one. `LtnManager`'s job is built
+in here, and the combinator GUI is available separately as `cybersyn2-combinator` and was declined —
+see the ruling under `LTN_Combinator_Modernized`. **`LTN_Content_Reader_Updated` has no successor at
+all**: `Cybersyn-Content-Reader` requires `cybersyn >= 2.1.2`, which is CS1, so the content-reader
+feature leaves the pack outright. That was the one axis on which #23 found Cybersyn beating LTN, and
+CS2 is the branch that does not have it.
+
+**Compatibility, checked on #23 and not re-derived.** `! OverloadedTrains`, which is in none of the
+five packs. Cross-surface behaviour for Space Age is plausible and unverified on either side;
+`miniloader-redux` detection should work by mechanism, because Cybersyn's allow-list detection is by
+prototype type and `miniloader-redux` is built from `loader-1x1` prototypes. Nothing has been loaded
+in Factorio.
 
 ### `miniloader-redux`
 
@@ -513,6 +486,22 @@ overhauls, but not Bob's or Angel's. Flagged under *What constrains an overhaul 
 technologies is the mechanism most likely to interact with an overhauled tech tree, and the
 settings offer a flat-value mode that sidesteps the tech tree entirely if it does.
 
+**Ruled 2026-09-22 (#8): kept — tested against the promise and passes.** #8 ran the promise against
+the five members flagged under *What constrains an overhaul on top*, and this is the one where the
+two readings diverge. It adds technologies, and the tech tree is what an overhaul restructures; but
+"competes for the same ground" means duplicating content the overhaul provides, the way this pack's
+belt tiers duplicated `boblogistics`' belt tiers, and nothing in Angel's or Bob's grants player
+quality-of-life bonuses. Sitting on a shared tech tree is not competing for a place on it. The
+stricter reading would disqualify every member that adds a technology, which is most of what a
+content mod is.
+
+The flat-value mode is a real escape hatch but not one the pack can pull: setting another mod's
+default needs settings-stage Lua, which these packs do not carry.
+
+**It remains unreachable** — `factorio_version` **2.0**, against a 2.1 floor — and stays in the pack
+under #8's third rule, which leaves such members alone outside entries already marked `reconsider:`.
+That is #43's, not this ticket's.
+
 ### `reverse-factory`
 
 | | |
@@ -536,33 +525,16 @@ Space Age ships a recycler doing a narrower version of the same job, so `Grado_A
 both; the mod declares `? space-age`, so its author is aware, and an **Overlaps** row against a paid
 DLC rather than a portal mod would not mean anything.
 
-### `safefill`
+**Ruled 2026-09-22 (#8, settling #11): mandatory, by decision.** The port flattened `? reverse-factory`
+to a hard requirement without anyone choosing to; the ruling keeps the result and supplies the
+reason. An optional dependency installs nothing — it only orders load if the player already has the
+mod — so a pack whose members are optional hands the player less than its list implies. That is what
+a mod does to declare soft compatibility, not what a pack does. These two were the only optional
+entries across all three published 1.1 packs, which reads as an outlier rather than a policy.
 
-| | |
-|---|---|
-| **Title** | Safe Waterfill |
-| **Does** | Places water like landfill, in six water types, replacing only empty land — structures, vehicles, resources, cliffs, trees and the player all survive it. Blueprintable |
-| **Latest** | `2.0.1`, `factorio_version` **2.0**, 2026-04-05 |
-| **Downloads** | 36,265 |
-| **Owner** | `anachrony` |
-| **Read on** | 2026-09-21 |
-
-**Alternatives considered.** None searched by name. The reason to look is in the recommendation, and
-it is not about this mod's maintenance.
-
-**Recommendation: reconsider:** whether it survives the overhaul layers, because its own page says
-where it stops:
-
-> This mod is currently compatible with the base game or any mods that retain standard vanilla
-> technologies. It is also compatible with the Nullius overhaul.
-
-`Grado_ABC` layers Angel's and Bob's, which do not retain the standard vanilla technologies — that
-is most of what an overhaul *is*. The author states the boundary and names the one overhaul they
-have crossed it for, and it is not one of ours. This does not mean the mod breaks; it means its
-author declines to claim it works there, and the waterfill recipe is unlocked by a technology, which
-is precisely the part being hedged. It is the clearest case in the pack of a member whose stated
-compatibility stops short of the layer above it, and it is checkable the moment `Grado_ABC` is
-loaded. Until then it is the entry to bring to that first load.
+The objection that this pack must stay overhaul-compatible and mandatory imposes was weighed and
+does not bite here: this is the survey's own example of the ideal member, with thirty-one optional
+dependencies naming Angel's, Bob's, Krastorio, SE, IR3, SeaBlock and Space Age.
 
 ### `squeak-through-2`
 
@@ -585,6 +557,23 @@ and more compatible version of Squeak Through, written from scratch" — and it 
 and is mandatory here — issue #11's, the same change as `reverse-factory`. And `kry-picker-complete`
 declares `? squeak-through-2`, so if the Picker question is answered by adopting that pack, this
 member is already satisfied rather than duplicated.
+
+**Ruled 2026-09-22 (#8, settling #11): mandatory, by decision, and the replacement stands.** The
+optionality reasoning is under `reverse-factory` above and applies unchanged; this mod shrinks
+collision boxes and nothing else, so it is no compatibility risk to impose.
+
+**On whether `squeak-through-2` is the right replacement for `Squeak Through`, which was #11's
+second question: yes.** Re-read 2026-09-22 — `_CodeGreen`, `0.2.0`, `factorio_version` **2.1**,
+2026-06-23, **282,772 downloads**, and it declares `! Squeak Through`, an explicit incompatibility
+with the mod it succeeds, which is how a designated successor announces itself. A search of the
+whole 2.1 list by name, title and summary returns **one** other candidate, and it is not a rival:
+`Exteros-QoL-System` (`Exteros`, `0.4.2`, 2.1, 2026-09-12, 3,923 downloads), a bundle whose summary
+offers "Even Distribution, Squeak Through, Auto Deconstruct & more" as one mod. It is declined as an
+addition under this ticket's first rule, which is a different statement from nothing existing. It declares no `base` floor,
+so it adds nothing to the pack's.
+
+The `kry-picker-complete` note above is now moot: #8 declined that bundle for this pack, as #7 did
+for `Grado_NonChanging`.
 
 ### `textplates`
 
@@ -683,6 +672,23 @@ open. A modpack that would be pulled in by the lower pack and inherited by the h
 answer, so whichever is taken first should decide for both. Only the pipe clamps have no successor
 at all.
 
+**Ruled 2026-09-22 (#8): stays dropped.** The `kry-picker-complete` question this entry deferred to
+is **declined for this pack**, on the same grounds #7 used for `Grado_NonChanging` — it is an
+addition of a mod never in the 1.1 pack, and #8 ruled additions out of its own scope. The structural
+objection #7 recorded stands too: a pack depending on a pack hands a third party control of several
+members at once.
+
+Taking the features individually was considered and does not work either. Underground highlighting
+is already in the chain through `PipeVisualizer-Updated` (`Grado_NonChanging`). **`Orphan Finder`
+declares `factorio_version` 2.0 and is unreachable** at this pack's floor, which removes the closest
+single successor. `fluid-connection-indicators` is reachable at 2.1 but is a different feature —
+connection verification, not orphan-finding. So restoring this mod would mean two mods for one, each
+closer to an addition than a replacement.
+
+**The pipe clamps are recorded as a genuine loss**, the only one in this pack's drops with no
+successor found. That is a search result, not a proof: name, title and summary across the 2.x list,
+which is what turned up `kry-picker-complete` where a name-only search had missed it.
+
 ### `PickerTweaks`
 
 | | |
@@ -716,6 +722,8 @@ living. Angel's and Bob's redefine the entities this reaches into. Its separatel
 are already covered by four mods that are in the chain on their own terms and can be reasoned about
 one at a time, which is the better arrangement regardless of the port.
 
+**Ruled 2026-09-22 (#8): stays dropped**, as recommended.
+
 ### `PickerVehicles`
 
 | | |
@@ -747,6 +755,14 @@ question. Three of its four features are `kry-picker-complete` members or option
 is already in the chain, which makes this the cleanest illustration of why the modpack is worth
 deciding about once rather than assembling by hand.
 
+**Ruled 2026-09-22 (#8): stays dropped**, with `PickerPipeTools` and for the same reason — the
+`kry-picker-complete` route is declined for this pack. Driving controls are already covered by
+`VehicleSnap` (`Grado_NonChanging`); the remaining three features would want `car-finder`, a
+train-toggle mod and `Honk`, which is three additions to restore one dropped mod.
+
+**Its members are not abandoned, though.** #8 opened a ticket to assess `kry-picker-complete`'s
+mandatory and optional members one at a time, for whichever pack each fits, rather than as a bundle.
+
 ### `alien-biomes-hr-terrain`
 
 | | |
@@ -766,6 +782,11 @@ deciding about once rather than assembling by hand.
 The author's own page for it now reads "Not required for Factorio 2.0 games", and the textures ship
 in `alien-biomes-graphics`, a hard dependency of the `alien-biomes` already in this pack. Listing it
 would pin a 1.1 mod into a 2.0 pack for no gain.
+
+**Ruled 2026-09-22 (#8): stays dropped**, as recommended and as verified. This closes the open
+decision `CLAUDE.md` carried for it, which had stood because the original drop rested on an
+assumption about where the HR terrain went; the mechanism turned out to be different from the
+assumption and the answer the same. See *`alien-biomes-hr-terrain`: the assumption, checked* below.
 
 ### `beautiful_bridge_railway`
 
@@ -804,6 +825,8 @@ membership and Truls's. **Related and not this ticket's:** `Grado_ABC` dropped
 `beautiful_bridge_railway_bob_fix_updated_new`, the Bob's-compatibility companion to this mod, so
 the same question reaches #4 and #5 from the other side. Whatever is decided here should be decided
 there.
+
+**Ruled 2026-09-22 (#8): stays dropped**, as recommended.
 
 ### `crafting_combinator`
 
@@ -860,6 +883,349 @@ The correction matters beyond tidiness, because the demotion is half of issue #1
 did not merely stay optional across the port. It was mandatory in `0.0.1`, made optional in `0.0.2`,
 and is mandatory again in the 2.0 pack.
 
+**Ruled 2026-09-22 (#8): stays dropped**, as recommended — the feature was absorbed by the base game.
+
+## Ruled out after the port
+
+Eight mods that survived the 1.1 -> 2.0 port and were removed on 2026-09-22 by #8 — by a
+decision, not by an upstream gap. Entry format: `docs/mod-catalogue.md`, *a mod ruled out after
+the port*. Each keeps the recommendation the survey wrote, with the ruling appended below it, so
+what was recommended and what was decided stay separable.
+
+In former dependency-list order.
+
+### `LTN_Combinator_Modernized`
+
+| | |
+|---|---|
+| **Title** | LTN Combinator Modernized |
+| **Does** | A combinator with a GUI for setting LTN's control signals on a train stop, instead of composing them by hand |
+| **Latest** | `2.5.0`, `factorio_version` **2.1**, 2026-06-25 |
+| **Downloads** | 104,467 |
+| **Owner** | `kryojenik` |
+| **Read on** | 2026-09-21 |
+| **Status** | dropped 2026-09-22 (#8) |
+
+**Alternatives considered.** None. It is the maintained LTN combinator, and `LtnManager` names it as
+an optional dependency, so the LTN mods in this pack already expect each other.
+
+**Recommendation: keep.** Current on 2.1 and tracking LTN's own major version — it requires
+`LogisticTrainNetwork >= 3.0.0`, which the pack's LTN satisfies.
+
+**Ruled 2026-09-22 (#8): out**, with LTN. A combinator GUI for a mod the pack no longer carries has
+nothing to configure. `cybersyn2-combinator` (`Moral1ty`, `2.1.4`, 2.1, 2026-08-21, **646
+downloads**, 6 releases) is the CS2 counterpart and was **declined** rather than swapped in: it is
+the weakest link the move would add, and it drags `fcore >= 1.0.0` (`Moral1ty`, `1.0.1`, 2.1,
+2026-08-22, **289 downloads**, 2 releases) into the chain with it. CS2's own credits thank a
+contributor for the modular combinators, which reads as combinator tooling being built in. If it is
+not enough, adding the mod later is a save-safe minor and `fcore` will have a track record by then.
+
+### `LTN_Content_Reader_Updated`
+
+| | |
+|---|---|
+| **Title** | LTN Content Reader Update |
+| **Does** | A combinator that reports an LTN network's provider and requester contents to the circuit network, filtered by network ID, with a GUI colouring surplus green and deficit red |
+| **Latest** | `1.0.5`, `factorio_version` **2.0**, 2025-10-17 |
+| **Downloads** | 1,190 |
+| **Owner** | `vinnizp` |
+| **Supersedes** | `LTN_Content_Reader` by `Optera`, last `1.0.3` on 2022-11-18, 46,939 downloads |
+| **Read on** | 2026-09-21 |
+| **Status** | dropped 2026-09-22 (#8) |
+
+**Alternatives considered.** **[`ltn-train-info`](https://mods.factorio.com/mod/ltn-train-info) by
+`hgschmie`** — `2.0.4`, `factorio_version` **2.1**, 2026-08-20, 2,577 downloads, by the author of
+`miniloader-redux`. More current, but not the same mod: it emits *delivery* signals — what trains
+are carrying where — while this one reports *network contents*, what the providers and requesters
+hold. Not a replacement. Searching the 2.x list by title and summary for "LTN" returns no other
+content reader.
+
+**The mod that would fix this one is on the other side of issue #23.**
+**[`Cybersyn-Content-Reader`](https://mods.factorio.com/mod/Cybersyn-Content-Reader) by `danbopes`**
+— `1.1.2`, `factorio_version` **2.1**, 2026-08-01, 1,504 downloads — is a port of the same Optera
+mod to Cybersyn, one game version ahead of this one and ten months newer. It requires
+`cybersyn >= 2.1.2`, so it cannot be adopted on its own: the pack's weakest member cannot be
+strengthened without taking the whole train-logistics paradigm with it. That is the sharpest single
+argument in #23, and it is why this entry and that ticket have to be read together.
+
+**Recommendation: keep**, and re-check it before release. This is the weakest member of the pack on
+every axis at once: 1,190 downloads against the 46,939 of the mod it replaces, `factorio_version`
+still **2.0**, last touched 2025-10-17, and built against `LogisticTrainNetwork >= 2.4.2` while LTN
+is now `3.2.1`. The declared dependency has no upper bound so it will resolve, but "resolves" and
+"works against LTN 3.x" are the two claims this project keeps having to separate. Nothing here is a
+reason to drop it — there is nothing to drop it *for* — but it is the member most likely to be the
+first thing that breaks when a pack is finally loaded.
+
+**Ruled 2026-09-22 (#8): out**, with LTN, **and the feature goes with it.** There is no CS2 content
+reader. `Cybersyn-Content-Reader` requires `cybersyn >= 2.1.2`, which is CS1, and #23 had named it
+the one axis on which Cybersyn beat LTN outright — CS2 is the branch that does not have it. The
+survey called this the pack's weakest member on every axis at once and it was also unreachable
+(`factorio_version` **2.0** against a 2.1 floor), so nothing here argued for keeping it; but it
+leaves as a loss, not as a tidy-up, and no replacement was found because none exists.
+
+### `LogisticTrainNetwork`
+
+| | |
+|---|---|
+| **Title** | LTN - Logistic Train Network |
+| **Does** | Replaces fixed train schedules with logistic train stops: depots hold idle trains, and the network dispatches whichever train fits a provider-to-requester delivery |
+| **Latest** | `3.2.1`, `factorio_version` **2.1**, 2026-09-10 |
+| **Downloads** | 286,624 |
+| **Owner** | `Optera` |
+| **Read on** | 2026-09-21 |
+| **Status** | replaced by `cybersyn2`, 2026-09-22 (#8) |
+
+**Alternatives considered.** The other three LTN mods in this pack exist only to serve it, so
+replacing it means replacing four members at once. The 2.x list carries several successors of the
+genre — `yet_another_train_manager`, `RailLogisticsDispatcher`, `precise-train-logistics`, and
+**Project Cybersyn**, which is the serious one.
+
+**That comparison is now open as issue #23**, raised on 2026-09-21, and the evidence lives there
+rather than being summarised twice. The short of it: the two cores are equally maintained, 19
+releases each in the last twelve months, so this is a feature and timing question and not a rescue.
+Cybersyn offers per-cargo thresholds, per-wagon filters, automatic allow-lists, depot bypass and
+twice the station update rate; against that, its 2.1 support is a single release its own page calls
+experimental, while LTN ships a 2.1 and a 2.0 branch side by side on the same day. Checked while
+filing it: nothing else among the 100 members of the five packs depends on LTN, so the cluster moves
+as one unit and nothing in Angel's, Bob's, MadClown, SpaceX or Space Age notices either way.
+
+**Recommendation: keep — and the question is open as #23.** Released eleven days before this reading,
+so actively maintained, and it is the better-supported of the two on the game version this pack
+actually needs. That is a recommendation on the 2.1 evidence, not a closure: which train-logistics
+paradigm a pack ships is pack membership, so #23 records it and #8 settles it. It is one of four
+members at `base >= 2.1.7`, the second-highest floor in the pack.
+
+**Ruled 2026-09-22 (#8): out, replaced by `cybersyn2`** — and by neither of the two answers #23 was
+written to choose between. #23 offered staying on LTN, swapping to Project Cybersyn CS1, waiting for
+CS2, or swapping the content reader alone; the ruling took CS2 itself, which #23 had listed only to
+rule out on its author's alpha warning. The reasoning is that CS1 is a dead end — it has no
+migration to its own successor — so adopting it would buy one unmigratable move now and another
+later, while LTN, though healthily maintained, is the paradigm being left. Doing it before any
+release costs nobody an invalid entity; doing it after costs every logistic train stop in a player's
+base. The alpha warning was read and accepted, not overlooked: see the `cybersyn2` entry under *In
+the pack*, which carries it in full along with the `base >= 2.1.12` floor and the `0-things` library
+the move pins into the chain.
+
+### `LtnManager`
+
+| | |
+|---|---|
+| **Title** | LTN Manager |
+| **Does** | A GUI over a running LTN network: deliveries in flight, stop inventories, depot contents and the network's alerts in one window |
+| **Latest** | `0.6.0`, `factorio_version` **2.1**, 2026-08-16 |
+| **Downloads** | 118,632 |
+| **Owner** | `nihilistzsche` |
+| **Read on** | 2026-09-21 |
+| **Status** | dropped 2026-09-22 (#8) |
+
+**Alternatives considered.**
+**[`LtnManagerUpdated`](https://mods.factorio.com/mod/LtnManagerUpdated) by `FoMaK`** — `1.1.1`,
+`factorio_version` **2.1**, 2026-07-12, 4,280 downloads. A second continuation of the same mod. The
+incumbent is both more recent, by a month, and far more used, so the fork's name is the only thing
+recommending it.
+
+**Recommendation: keep.** Current on 2.1, and it declares `? LTN_Combinator_Modernized`, which is
+also in this pack.
+
+**Ruled 2026-09-22 (#8): out**, with LTN. Unlike the other three this one loses nothing: CS2 has the
+network manager built in, which is why the four-mod LTN cluster becomes one mod rather than three.
+
+### `ModuleInserterSimplified`
+
+| | |
+|---|---|
+| **Title** | Module Inserter Simplified |
+| **Does** | Requests one module type into every machine in a dragged selection, to be fitted by construction bots, with no per-machine configuration |
+| **Latest** | `2.2.0`, `factorio_version` **2.1**, 2026-06-25 |
+| **Downloads** | 164,383 |
+| **Owner** | `Xorimuth` |
+| **Supersedes** | `ModuleInserter` by `Choumiko`, last `5.2.5` on 2024-10-06, 143,036 downloads |
+| **Read on** | 2026-09-21 |
+| **Status** | replaced by `ModuleInserterEx`, 2026-09-22 (#8) |
+
+**Alternatives considered.**
+**[`ModuleInserterEx`](https://mods.factorio.com/mod/ModuleInserterEx), *Module Inserter Extended*,
+by `Gorfiend7`** — `7.5.0`, `factorio_version` **2.1**, 2026-06-29, 47,569 downloads, four days
+newer than the incumbent. Both are current; both are 2.x continuations of the same 1.1 mod. Which is
+which is stated on the incumbent's own portal page:
+
+> Use Module Inserter Extended if you want to create detailed configurations per machine type (it is
+> a straight upgrade from Module Inserter). Use Module Inserter Simplified if you want to easily
+> create module requests, one type at a time, without any complex configuration GUI.
+
+**Recommendation: reconsider:** whether this pack wants `ModuleInserterEx` instead. The 1.1 pack
+carried `ModuleInserter`, the configurable one, and the port replaced it with the deliberately
+*less* configurable of its two successors — while the mod's own page names the other as the straight
+upgrade. Nobody recorded choosing that. It matters more here than it would in a vanilla pack:
+`Grado_ABC` layers Bob's modules and Angel's machines on top, which is the situation per-machine-type
+configuration exists for. Simplified has 3.5 times the downloads, which is a real argument and not a
+tiebreaker — this is a preference, and the point of the entry is that the preference has not been
+expressed. `pump`, a `Grado_ABC` member, declares `? ModuleInserterEx >= 7.0.2`, so the other mod is
+already half-present in the chain as an optional.
+
+**Ruled 2026-09-22 (#8): replaced by `ModuleInserterEx`**, which is the question this entry asked.
+The 1.1 pack carried the configurable mod and the port swapped it for the deliberately less
+configurable sibling without anyone deciding to; the ruling restores what was ported from. The
+download asymmetry the entry flags is real — 164,383 against 47,569, both read 2026-09-21 — and was read as measuring the
+vanilla audience rather than this chain's, where Bob's modules sit on Angel's machines.
+
+### `StoneWaterWell-ActuallyUpdated`
+
+| | |
+|---|---|
+| **Title** | Stone Water Well |
+| **Does** | A placeable well producing water anywhere on land, removing the need to pipe from a lake |
+| **Latest** | `2.0.10`, `factorio_version` **2.0**, 2025-05-28 |
+| **Downloads** | 8,363 |
+| **Owner** | `TheDogOfChaos` |
+| **Supersedes** | `WaterWell` by `binbinhfr`, last `1.1.2` on 2020-11-29, 69,845 downloads |
+| **Read on** | 2026-09-21 |
+| **Status** | dropped 2026-09-22 (#8) |
+
+**Alternatives considered.** **[`WaterExtractor`](https://mods.factorio.com/mod/WaterExtractor) by
+`VanillaRainbow92`** — `1.1.0`, `factorio_version` **2.1**, 2026-07-10, 7,341 downloads. Comparable
+size, more than a year more current, same job. Also found: `StoneWaterWell-NoRestrict` (`2.0.2`,
+2.0, 2025-06-18, 1,264 downloads), a placement-restriction-free variant of this same mod, and
+`GroundWater` (`0.1.4`, 2.0, 2025-08-26, 561 downloads).
+
+**Recommendation: keep**, with the **Supersedes** row read as pack membership rather than lineage.
+This is a fork of a fork of `StoneWaterWell`, a different original from the `WaterWell` it replaced
+here; the port swapped one water-well mod for another rather than following a continuation.
+`WaterExtractor` is the better-maintained option if this one goes quiet, and it is worth a look
+before release rather than after. Flagged under *What constrains an overhaul on top* — free water
+anywhere is a balance change, and Angel's builds a water-treatment chain on the assumption that
+water has a cost.
+
+**Ruled 2026-09-22 (#8): out**, and it is the promise sweep's one clear failure. `Grado_ChangingBase`
+may add content but not content that competes with an overhaul for the same ground, and a well
+producing free water anywhere on land does not merely touch Angel's water-treatment chain — it
+removes the need for the chain that overhaul exists to build. Its only declared overhaul
+compatibility is `pycoalprocessing`.
+
+**No swap was taken, deliberately.** `WaterExtractor` (`1.1.0`, 2.1, 2026-07-10, 7,341 downloads) is
+reachable where this mod is not and more current, and does the identical job — so it fails the
+promise identically. The promise attaches to the feature, not to the mod carrying it.
+
+**The cost is named rather than waved past:** a player running `Grado_ChangingBase` with no overhaul
+above it loses free water and gains nothing. The promise trades that away on purpose, because all
+three overhaul packs inherit this one.
+
+### `UltimateBeltsSpaceAge`
+
+| | |
+|---|---|
+| **Title** | Ultimate Belts Space Age |
+| **Does** | Five belt tiers past express, with matching splitters and undergrounds; the fastest is stated as six express belts |
+| **Latest** | `1.3.0`, `factorio_version` **2.0**, 2024-12-31 |
+| **Downloads** | 11,301 |
+| **Owner** | `Jabor047` |
+| **Supersedes** | `UltimateBelts` by `Tyarns`, last `1.1.1` on 2022-05-09, 54,161 downloads |
+| **Overlaps** | `boblogistics` (`Grado_ABC`) |
+| **Read on** | 2026-09-21 |
+| **Status** | dropped 2026-09-22 (#8) |
+
+**Alternatives considered.** Three mods continue `UltimateBelts` into 2.x and all three stopped
+within a week of each other: this one (`1.3.0`, 2024-12-31), **`NovasUltimateBelts`** (`2.0.0`,
+2024-12-26, 1,098 downloads) and **`UltimateBeltsSpaceAgeFork`** (`1.2.0`, 2024-12-26, 678
+downloads). The incumbent is the largest and the newest of the three, so the port chose correctly
+among them. The live alternative is outside the family:
+**[`more-belts`](https://mods.factorio.com/mod/more-belts) by `Keeper317`** — `0.4.1`,
+`factorio_version` **2.1**, 2026-08-05, 4,056 downloads, "5 additional tiers of belts, splitters and
+undergrounds. Custom belt speed for all 8 tiers in items/second." Same shape, nineteen months more
+current, and configurable speeds would let the tiers be fitted to whatever the overhaul beneath them
+does. `AdvancedBeltsSA` and `beyond-belts` add three tiers past Turbo rather than five and both
+advertise loader support.
+
+#### Against `boblogistics`
+
+`Grado_ABC` carries **`boblogistics`** (`3.0.1`, `factorio_version` **2.1**, 2026-07-26, 338,424
+downloads), which adds its own belt tiers past express. Both mods stack tiers onto the same
+progression, and no mod mediates between them: `UltimateBeltsSpaceAge` declares `base >= 2.0` and
+nothing else — no optional dependency on Bob's, no compatibility handling of any kind — while
+`boblogistics` declares optionals for `bobplates`, `bobinserters`, `space-age`, `valves`, `Krastorio2`
+and `aai-loaders`, and none for this. Neither side is arranging the other's tiers.
+
+**It also costs the loaders.** The 1.1 `miniloader` declared `? UltimateBelts >= 0.16.4`, so the 1.1
+pack had loaders for the Ultimate tiers. `miniloader-redux`, the 2.0 replacement, does not: its page
+lists exactly the base-game tiers — "three tiers in the base game ("Vanilla", Fast and Express) and
+four when playing Space Age (adds Turbo mode)" — plus optional support for `boblogistics`,
+`Krastorio2`, `TurboBelt`, `matts-logistics` and `space-exploration`. Ultimate Belts is not on that
+list. The gap may be worse than missing tiers: `miniloader-redux`'s normal mode "degrades with belts
+above 240 items/sec", and this mod's fastest tier is "equivalent to 6 express belts" — 270 items/sec
+at the base game's 45 for express. That is arithmetic off two portal pages and one base-game number,
+not a measurement; nothing has been loaded in Factorio. It is checkable the moment something is.
+
+**Recommendation: reconsider:** whether the belt-tier layer belongs in this pack at all, and if it
+does, whether `more-belts` should carry it. Three findings point the same way and none of them is
+that this mod is bad: it is the stalest member of the pack, twenty-one months since its last release
+and two and a half months quieter than the next one, `Nanobots2`; it is the only member whose tiers
+the pack's own loader mod cannot serve; and it is the clearest case of a `Grado_ChangingBase` member
+constraining the overhaul above it. Against that, it is the direct continuation of a 1.1 member and
+the most-used of its three siblings. Which pack a belt tier belongs in is pack membership, so this
+is recorded, not settled.
+
+**Ruled 2026-09-22 (#8): out** — the belt-tier layer leaves this pack rather than changing hands.
+Four findings pointed the same way and only the last is decisive. It was the stalest member
+(2024-12-31); it was unreachable (`factorio_version` **2.0** against a 2.1 floor); its tiers are
+unserved by the pack's own loader mod; and **it fails the promise**, because five tiers past express
+is precisely the ground `boblogistics` occupies, and `Grado_ABC`, `Grado_ABCX` and `Grado_ABCS` all
+inherit this pack.
+
+**`more-belts` was considered as the carrier and declined.** `Keeper317`, `0.4.1`,
+`factorio_version` **2.1**, 2026-08-05, 4,056 downloads — nineteen months more current, reachable,
+and its configurable per-tier speeds would have let the top tier be tuned under `miniloader-redux`'s
+240 items/sec degradation threshold. But it declares `base >= 2.0` and nothing else, exactly as this
+mod does: **no compatibility handling for `boblogistics` either**, so the loader gap persists and the
+promise failure is unchanged. Swapping would have fixed reachability and staleness and left the
+actual objection standing. If belt tiers are wanted later they are an overhaul-layer question, and
+`more-belts` is the better carrier for it.
+
+**This moots #38**, which existed to write a `#### Against the Space Age belt tier` subsection under
+this entry for `Grado_ABCS`.
+
+### `safefill`
+
+| | |
+|---|---|
+| **Title** | Safe Waterfill |
+| **Does** | Places water like landfill, in six water types, replacing only empty land — structures, vehicles, resources, cliffs, trees and the player all survive it. Blueprintable |
+| **Latest** | `2.0.1`, `factorio_version` **2.0**, 2026-04-05 |
+| **Downloads** | 36,265 |
+| **Owner** | `anachrony` |
+| **Read on** | 2026-09-21 |
+| **Status** | replaced by `Waterfill_v17`, 2026-09-22 (#8) |
+
+**Alternatives considered.** None searched by name. The reason to look is in the recommendation, and
+it is not about this mod's maintenance.
+
+**Recommendation: reconsider:** whether it survives the overhaul layers, because its own page says
+where it stops:
+
+> This mod is currently compatible with the base game or any mods that retain standard vanilla
+> technologies. It is also compatible with the Nullius overhaul.
+
+`Grado_ABC` layers Angel's and Bob's, which do not retain the standard vanilla technologies — that
+is most of what an overhaul *is*. The author states the boundary and names the one overhaul they
+have crossed it for, and it is not one of ours. This does not mean the mod breaks; it means its
+author declines to claim it works there, and the waterfill recipe is unlocked by a technology, which
+is precisely the part being hedged. It is the clearest case in the pack of a member whose stated
+compatibility stops short of the layer above it, and it is checkable the moment `Grado_ABC` is
+loaded. Until then it is the entry to bring to that first load.
+
+**Ruled 2026-09-22 (#8): replaced by `Waterfill_v17`** — and the swap answers a different question
+from the one this entry asked. What decided it was reachability, not overhaul compatibility: this
+mod declares `factorio_version: 2.0` and the portal does not serve it to a 2.1 game, which is the
+only kind of game this pack can install on, so the member the entry was hedging about installs on
+nothing. Under #8's third rule, unreachability breaks a tie in an entry already marked
+`reconsider:`, and this is one of the two it touched.
+
+**The question this entry raised is still open**, because it attaches to the feature rather than to
+the mod. `Waterfill_v17` is also technology-unlocked; its author simply makes no claim about
+overhauls either way, which is less evidence than `anachrony`'s explicit boundary, not better
+evidence. This remains the entry to bring to the first load of `Grado_ABC`, under its successor's
+name. The unverified feature delta — six water types, blueprintability, the survival guarantee — is
+recorded under `Waterfill_v17` in *In the pack*.
+
 ## `bobinserters` sits in two packs
 
 It is listed in `Grado_ChangingBase` and in `Grado_ABC`, the only mod named in two of the five
@@ -891,6 +1257,13 @@ reasons, in the order they matter:
 
 The one thing that would overturn this is a decision that `Grado_ChangingBase` should ship no
 inserter changes at all, which is a question about that pack's scope rather than about this mod.
+
+**Ruled 2026-09-22 (#8): kept in `Grado_ChangingBase`, and the line removed from
+`Grado_ABC/info.json`**, as recommended and for the reasons above. The direction was not close; what
+needed settling was who applies it, since the edit lands in a file #9 owns. #8 made it, because
+*"the duplication is gone"* is #8's own acceptance criterion and a ruling cannot satisfy it. The
+removal is save-safe: every `Grado_ABC` install still resolves `bobinserters` through this pack.
+`bobinserters` is now named in exactly one of the five dependency lists.
 
 ## `alien-biomes-hr-terrain`: the assumption, checked
 
@@ -933,19 +1306,25 @@ the answer in the same commit.
 
 ## What constrains an overhaul on top
 
-The ticket asks which members limit what can be layered above. **Five of the twenty-five do**, in
-descending order of how likely they are to matter. The other twenty constrain nothing in the sense
-used here — they add a GUI, a shortcut, a display, or an entity that no overhaul has an opinion
-about — which is not the same as costing nothing, and the paragraph after the table is about four of
-them that do.
+The ticket asks which members limit what can be layered above. The survey found **five of the
+twenty-five**, in descending order of how likely they are to matter. **#8 then used this table as
+the promise sweep** — "constrains an overhaul" and the promise's "competes with an overhaul for the
+same ground" are close to the same test, and the promise had never been run against this pack's
+members. Two of the five failed and are gone; one was replaced; two passed. The table is left as the
+survey wrote it with each row's outcome appended, because a sweep that overwrites what it swept
+cannot be audited.
 
-| Mod | What it constrains | Evidence |
-|---|---|---|
-| `safefill` | Tech-tree overhauls | Its own page claims compatibility only with "the base game or any mods that retain standard vanilla technologies", plus Nullius. Angel's and Bob's are neither |
-| `UltimateBeltsSpaceAge` | Belt progression | Five tiers past express with no compatibility handling at all, stacking onto `boblogistics`' own tiers, and unserved by the pack's loader mod |
-| `UltimateResearchQueue2` | Any other research queue | Three hard `!` incompatibilities: `sonaxaton-research-queue`, `UltimateResearchQueue`, `awesome-rqm`. A load failure, not a balance question |
-| `qol_research` | Tech-tree overhauls, mildly | Adds technologies; optional compatibility covers `space-exploration`, `nullius` and `Krastorio2`, but neither Bob's nor Angel's. Its flat-value setting is the escape hatch |
-| `StoneWaterWell-ActuallyUpdated` | Water economies | Free water anywhere on land, with `pycoalprocessing` its only overhaul compatibility. Angel's builds a water-treatment chain that assumes water has a cost |
+The other twenty constrained nothing in the sense used here — they add a GUI, a shortcut, a display,
+or an entity that no overhaul has an opinion about — which is not the same as costing nothing, and
+the paragraph after the table is about four of them that do.
+
+| Mod | What it constrains | Evidence | Promise sweep, 2026-09-22 (#8) |
+|---|---|---|---|
+| `safefill` | Tech-tree overhauls | Its own page claims compatibility only with "the base game or any mods that retain standard vanilla technologies", plus Nullius. Angel's and Bob's are neither | **replaced** by `Waterfill_v17` — on reachability, not on this; the question survives under the successor's name |
+| `UltimateBeltsSpaceAge` | Belt progression | Five tiers past express with no compatibility handling at all, stacking onto `boblogistics`' own tiers, and unserved by the pack's loader mod | **fails — out.** Belt tiers past express are `boblogistics`' ground |
+| `UltimateResearchQueue2` | Any other research queue | Three hard `!` incompatibilities: `sonaxaton-research-queue`, `UltimateResearchQueue`, `awesome-rqm`. A load failure, not a balance question | **passes** — a research queue adds no content, and the `!` mods are rival queues, not overhauls |
+| `qol_research` | Tech-tree overhauls, mildly | Adds technologies; optional compatibility covers `space-exploration`, `nullius` and `Krastorio2`, but neither Bob's nor Angel's. Its flat-value setting is the escape hatch | **passes** — nothing in Angel's or Bob's grants player QoL bonuses, so there is no contested slot |
+| `StoneWaterWell-ActuallyUpdated` | Water economies | Free water anywhere on land, with `pycoalprocessing` its only overhaul compatibility. Angel's builds a water-treatment chain that assumes water has a cost | **fails — out.** It removes the need for the chain that overhaul exists to build |
 
 Four more are not a compatibility constraint but a cost, and the cost scales with the overhaul rather
 than with this pack: the `WideChests` family. `WideChestsAllTypes` merges *all* basic chest types and says
@@ -961,33 +1340,51 @@ the most invasive thing in the pack on paper, and it is the member with the best
 thirty-one optional dependencies naming Angel's, Bob's, Krastorio, SE, IR3, SeaBlock and Space Age. It is
 the shape of what a `Grado_ChangingBase` member should look like.
 
+**One member joined this list after the survey was written and is not in the table**, because the
+table records what the survey found: `cybersyn2` constrains nothing an overhaul does, but it sets
+the pack's Factorio floor at `base >= 2.1.12` and every pack above inherits it. A floor is not a
+compatibility constraint in the sense used here; it is recorded under the section below.
+
 ## The pack cannot load on the Factorio version it declares
 
-`info.json` declares `"factorio_version": "2.0"` and `base >= 2.0.0`. **Eleven of the twenty-five
-members require `base >= 2.1`**, so a player on 2.0.x cannot satisfy this pack:
+`info.json` declares `"factorio_version": "2.0"` and `base >= 2.0.0`. Most members require
+`base >= 2.1`, so a player on 2.0.x cannot satisfy this pack. **#8's membership changes raised the
+floor twice over**, to a number no pack in the project had reached:
 
 | Floor | Members |
 |---|---|
+| `base >= 2.1.12` | `cybersyn2` — **added 2026-09-22 (#8)**, and the highest floor in the project |
 | `base >= 2.1.8` | `WideChests` |
-| `base >= 2.1.7` | `LogisticTrainNetwork`, `alien-biomes`, `miniloader-redux`, `textplates` |
-| `base >= 2.1.0` / `>= 2.1` | `AdditionalPasteSettings`, `EditorExtensions`, `LTN_Combinator_Modernized`, `LtnManager`, `UltimateResearchQueue2`, `bobinserters` |
+| `base >= 2.1.7` | `alien-biomes`, `miniloader-redux`, `textplates` |
+| `base >= 2.1.0` / `>= 2.1` | `AdditionalPasteSettings`, `EditorExtensions`, `ModuleInserterEx`, `UltimateResearchQueue2`, `Waterfill_v17`, `bobinserters` |
 
-`WideChestsLogistic` adds a twelfth indirectly: it requires `WideChests >= 6.3.0`, which is the
-release that requires 2.1.8. And `alien-biomes`' mandatory `alien-biomes-graphics` requires 2.1.7 on
-its own account.
+Two more arrive indirectly: `WideChestsLogistic` requires `WideChests >= 6.3.0`, which is the release
+that requires 2.1.8, and `alien-biomes`' mandatory `alien-biomes-graphics` requires 2.1.7 on its own
+account. `cybersyn2` brings a third, `0-things`, which also requires 2.1.12.
+
+**The survey's table read `>= 2.1.8` and named three LTN mods that are no longer members** -
+`LogisticTrainNetwork` at `>= 2.1.7` and `LTN_Combinator_Modernized` and `LtnManager` at `>= 2.1`.
+The fourth,
+`LTN_Content_Reader_Updated`, was never in it, because a mod declaring `factorio_version: 2.0`
+declares no 2.1 requirement to record - which is the other half of the same problem. It is
+replaced above rather than annotated, because a floor table is a calculation over the current list
+and an outdated one is simply wrong. The survey's finding — that the pack cannot load on the version
+it declares — is unchanged and now larger.
 
 **This is the same answer `Grado_NonChanging` reached on 2026-09-21, reached the same way**, and it
 raises the floor rather than confirming it: that pack's highest requirement was `>= 2.1.7`, this one
-needs `>= 2.1.8`. Since `Grado_ChangingBase` depends on `Grado_NonChanging`, it inherits that pack's
-floor too, so the effective minimum for anyone installing this pack is the higher of the two.
+now needs `>= 2.1.12`. Since `Grado_ChangingBase` depends on `Grado_NonChanging`, it inherits that
+pack's floor too, so the effective minimum for anyone installing this pack is the higher of the two.
 
 The mechanism is the members' own `base` requirements, not the `factorio_version` field — the field
 declares which game version the pack is *for*, and Factorio will not install a mod whose
 dependencies cannot resolve regardless of what it says. Two of the five packs had been checked when
 this was written and both answered no. **All five have now been reached, on 2026-09-22**, and the
-answer is no for four of them: `Grado_ABC` inherits this pack's `>= 2.1.8`, `Grado_ABCX` needs
-`>= 2.1.9`, and `Grado_ABCS` cannot be measured from the portal at all because its only member is
-not a portal mod. That measurement is **#15**.
+answer is no for four of them: `Grado_ABC` inherits this pack's floor, `Grado_ABCX` needs
+`>= 2.1.9` on its own account, and `Grado_ABCS` cannot be measured from the portal at all because
+its only member is not a portal mod. That measurement is **#15**, and **#8 changed its inputs on
+2026-09-22**: `Grado_ABCX`'s own 2.1.9 is no longer the project high, because `Grado_ABC`,
+`Grado_ABCX` and `Grado_ABCS` all now inherit `>= 2.1.12` through this pack.
 **The number to declare instead is Truls's to set** and is **#16**; this section supplies the
 evidence for this pack, not the decision.
 
@@ -997,11 +1394,13 @@ Stated plainly so the gaps are not mistaken for clean results.
 
 - **Nothing was loaded in Factorio.** No pack, no member mod, no combination. Every claim above is a
   portal or documentation reading. The 240-vs-270 items/sec arithmetic under
-  `UltimateBeltsSpaceAge` is the clearest case: it follows from two mod pages and has never been
-  observed.
+  `UltimateBeltsSpaceAge` was the clearest case: it followed from two mod pages and was never
+  observed. That mod is now out, so the arithmetic is moot rather than resolved.
 - **The overhaul-compatibility flags are readings of what authors claim**, not tests. `safefill`'s
-  boundary is a sentence on its page; it may work fine under Angel's. The point of flagging it is
-  that nobody has to guess in-game which member to suspect first.
+  boundary was a sentence on its page; it may have worked fine under Angel's. The point of flagging
+  it is that nobody has to guess in-game which member to suspect first. **#8's promise sweep ran on
+  exactly these readings and nothing stronger**, which is worth saying plainly: two members were
+  removed on what their authors claim and what Angel's and Bob's are known to do, not on a load.
 - **`WideChestsAllTypes` and `WideChestsUnlimited` were not measured.** "Increases loading time" is
   quoted from the mods, and the size of the increase under Angel's and Bob's chest types is
   unmeasured and is the kind of thing only a load will tell.
@@ -1010,8 +1409,21 @@ Stated plainly so the gaps are not mistaken for clean results.
   they are display preferences with no capability behind them.
 - **The pipe clamps of `PickerPipeTools` have no successor found**, and unlike the other Picker
   features that is a genuine gap rather than an unfinished search.
-- **Whether `LTN_Content_Reader_Updated` works against LTN `3.2.1` is unknown.** It resolves; that
-  is all that has been established, and it is the member most likely to be the first failure.
-- **Two mods were not re-examined for their `?`-to-mandatory change**, only noted:
-  `reverse-factory` and `squeak-through-2` were optional in the 1.1 pack and are mandatory here.
-  That is issue #11's.
+- ~~**Whether `LTN_Content_Reader_Updated` works against LTN `3.2.1` is unknown.**~~ Moot: both are
+  out as of 2026-09-22 (#8).
+- ~~**Two mods were not re-examined for their `?`-to-mandatory change.**~~ Closed 2026-09-22 (#8,
+  settling #11): both stay mandatory by decision, and `squeak-through-2` was confirmed the right
+  replacement for `Squeak Through`.
+
+Three gaps are new as of 2026-09-22 and belong to #8 rather than to the survey:
+
+- **`cybersyn2` is author-declared alpha and nothing has been loaded.** "Known issues, bugs, missing
+  features, and even the occasional crash" is the author's own description of the mod this pack now
+  depends on for train logistics. No part of it has been observed running.
+- **`Waterfill_v17`'s feature parity with `safefill` is unverified.** Six water types,
+  blueprintability and the survival guarantee are claims made by the mod being replaced; the
+  replacement's page documents an item-collision setting and tree handling. Nobody has compared them
+  in game.
+- **CS2's cross-surface behaviour for Space Age was not checked at all.** #23 checked CS1's and
+  found it plausible; that reading does not transfer to a mod rewritten from the ground up, and it
+  matters for `Grado_ABCS`.

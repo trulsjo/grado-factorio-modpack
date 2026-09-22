@@ -77,10 +77,13 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
 - `factorio_version` is declared `2.0` on all five packs while several members have moved to `2.1`.
   **Answered for `Grado_NonChanging`, `Grado_ChangingBase` and `Grado_ABC`, and the answer is no** —
   10 of 29 members, 11 of 25, and 26 of 45 declare `base >= 2.1` directly — the last now measured
-  across the whole pack rather than half of it. `WideChests` needs `>= 2.1.8`, the highest floor
-  found so far and the one `Grado_ABC` inherits through the chain. Still unverified on
-  `Grado_ABCX` and `Grado_ABCS` — that measurement
-  is #15, and the number to declare instead is #16.
+  across the whole pack rather than half of it. `WideChests` needs `>= 2.1.8`, which is the floor
+  `Grado_ABC` inherits through the chain. **Answered for `Grado_ABCX` on 2026-09-22, and it sets a
+  new project high**: `SpaceModFeorasFork` needs `base >= 2.1.9`. **`Grado_ABCS` is the one pack
+  that cannot be answered this way** — from the portal it inherits `>= 2.1.8`, but its own member
+  `space-age` is not a portal mod, so whether the expansion raises that is unreadable until the pack
+  is loaded (#29). So the measurement, which is #15, is complete for four packs and not completable
+  for the fifth. The number to declare instead is #16.
 - ~~`alien-biomes-hr-terrain` was dropped **assuming** 2.0 `alien-biomes` absorbed the HR terrain.~~
   **Checked 2026-09-21: recommended to stay dropped, and the assumption's mechanism was wrong.**
   The graphics moved into `alien-biomes-graphics`, a mandatory dependency of `alien-biomes`, rather

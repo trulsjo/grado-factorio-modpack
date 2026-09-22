@@ -340,8 +340,11 @@ overhaul or personal mod pulling in a rival research queue will fail to load aga
 **Alternatives considered.** None searched. It is current, and the pack carries three of its own
 add-ons, so replacing it means replacing four members.
 
-**Recommendation: keep.** It sets the pack's Factorio floor at `base >= 2.1.8`, the highest
-requirement of any member of any pack surveyed so far. See *What constrains an overhaul on top* for
+**Recommendation: keep.** It sets the pack's Factorio floor at `base >= 2.1.8`, which was the
+highest requirement of any member of any pack when this was written and **was overtaken on
+2026-09-22** by `SpaceModFeorasFork`'s `>= 2.1.9` in `Grado_ABCX` — so it remains the floor for this
+pack and for `Grado_ABC`, and is no longer the project's highest. See *What constrains an overhaul on
+top* for
 what the family costs in load time once Angel's and Bob's chest types are in the game.
 
 ### `WideChestsAllTypes`
@@ -976,8 +979,11 @@ floor too, so the effective minimum for anyone installing this pack is the highe
 
 The mechanism is the members' own `base` requirements, not the `factorio_version` field — the field
 declares which game version the pack is *for*, and Factorio will not install a mod whose
-dependencies cannot resolve regardless of what it says. Two of the five packs have now been checked
-and both answer no. The remaining three are one command each, and that measurement is **#15**.
+dependencies cannot resolve regardless of what it says. Two of the five packs had been checked when
+this was written and both answered no. **All five have now been reached, on 2026-09-22**, and the
+answer is no for four of them: `Grado_ABC` inherits this pack's `>= 2.1.8`, `Grado_ABCX` needs
+`>= 2.1.9`, and `Grado_ABCS` cannot be measured from the portal at all because its only member is
+not a portal mod. That measurement is **#15**.
 **The number to declare instead is Truls's to set** and is **#16**; this section supplies the
 evidence for this pack, not the decision.
 

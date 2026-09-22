@@ -93,6 +93,18 @@ re-deriving it — which is the rule working. The third instance against `Grado_
 `deadlock-beltboxes-loaders` against `miniloader-redux`, hangs off a mod #4 did not survey: it is
 one of #5's sixteen, so #4 reached two overlaps and not three.
 
+**#6 found the fifth and sixth on 2026-09-22**, and between them they are the only survey to have
+used both of the rules above. `SpaceModFeorasFork` (`Grado_ABCX`)
+against `space-age` (`Grado_ABCS`) is the same-layer case this section names — the only pair that
+can reach it: one survey, two packs,
+no lower one, so the comparison is written in `docs/catalogue/Grado_ABCX.md` because #6 reached the
+fork first, and `docs/catalogue/Grado_ABCS.md` points at it. `space-age` against
+`UltimateBeltsSpaceAge` (`Grado_ChangingBase`) is the third-bullet case again — noticed from the
+higher side, with no comparison already written — so the row and a pointer went in the `Grado_ABCS`
+entry and issue **#38** was filed against the lower pack's file. **Six instances across the five
+surveys**, and none of them was predicted before the survey that hit it; a survey that reports none
+should re-check rather than conclude.
+
 ## The entry
 
 The heading is always the bare portal name, on its own, because it is what makes the catalogue

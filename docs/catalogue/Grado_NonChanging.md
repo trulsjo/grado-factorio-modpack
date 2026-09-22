@@ -916,6 +916,13 @@ above are `Grado_NonChanging`'s share; the other fifteen are `Nanobots2`, `WideC
 This is #16's to act on: it cannot be answered by choosing a number until those members update or
 are replaced.
 
+**#8 took four off that list on 2026-09-22, by settling `Grado_ChangingBase`.**
+`LTN_Content_Reader_Updated`, `StoneWaterWell-ActuallyUpdated` and `UltimateBeltsSpaceAge` left the
+pack, and `safefill` was replaced by `Waterfill_v17`, which the portal does serve at 2.1. **21 of 95
+becomes 17 of 90** — the list above is left as measured, since re-deriving it across the chain is
+#43's. `Nanobots2` and `qol_research` are the two that remain unserved in that pack and were kept
+anyway, on the same precedent #7 set here. None of this touches this pack's own six.
+
 **Not confirmed:** whether a mod declaring `factorio_version: 2.0` would *run* correctly if installed
 by hand on 2.1. The docs say it is unsupported and the portal will not serve it; nothing here has been
 loaded in Factorio.

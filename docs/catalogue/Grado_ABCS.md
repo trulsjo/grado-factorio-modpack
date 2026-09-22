@@ -39,7 +39,7 @@ Three findings:
 | **Latest** | Not published as a portal release. The portal entry's only release is `1.1.0`, `factorio_version` **1.1**, 2023-08-25 — a placeholder, not the expansion |
 | **Downloads** | 276, which is the placeholder's count and says nothing about the expansion |
 | **Owner** | `compilatron` |
-| **Overlaps** | `SpaceModFeorasFork` (`Grado_ABCX`); `UltimateBeltsSpaceAge` (`Grado_ChangingBase`) |
+| **Overlaps** | `SpaceModFeorasFork` (`Grado_ABCX`); ~~`UltimateBeltsSpaceAge` (`Grado_ChangingBase`)~~ - resolved 2026-09-22 (#8), that mod is in no pack |
 | **Read on** | 2026-09-22 |
 
 **Alternatives considered.** None is possible. `space-age` is the official expansion; no mod
@@ -100,20 +100,23 @@ survey covering both writes it once and points at it from the other side; #6 rea
 The short of it: both are the end-game after the rocket, they overlap completely rather than
 partially, and the overlap is the branch point rather than a duplication anyone should resolve.
 
-#### Against `UltimateBeltsSpaceAge`
+#### ~~Against `UltimateBeltsSpaceAge`~~ — resolved 2026-09-22 (#8)
 
-Space Age adds a belt tier past express. `Grado_ChangingBase` carries `UltimateBeltsSpaceAge`, which
-adds five, and `docs/catalogue/Grado_ChangingBase.md` already compares those five against
-`boblogistics`' tiers in `Grado_ABC` and recommends reconsidering whether the belt-tier layer belongs
-in that pack at all. This pack makes a two-way overlap three-way, on the same progression, for
-players on this branch only.
+**`Grado_ChangingBase` no longer carries `UltimateBeltsSpaceAge`, so this overlap does not exist.**
+#8 removed the belt-tier layer from that pack on 2026-09-22, and the three-way pile-up this
+subsection was written to describe is part of why: five tiers past express, stacking onto
+`boblogistics`' own tiers with no compatibility handling on any side, is content competing with an
+overhaul for the same ground, which `Grado_ChangingBase`'s promise forbids.
 
-**The comparison is not written here**, because the lower pack owns it and a survey edits only its
-own packs' files. Issue **#38** is filed against `docs/catalogue/Grado_ChangingBase.md` for it, and
-this row points there until it is written. The evidence it should start from is already in that
-file: `miniloader-redux`'s own page text, quoted there, says it serves "three tiers in the base game
-("Vanilla", Fast and Express) and four when playing Space Age (adds Turbo mode)" — so on this branch
-the pack's loader mod gains a tier it can serve while the five it cannot remain unserved.
+**What survives on this branch is a two-way overlap that needs no comparison**: Space Age's belt
+tier past express, and `boblogistics`' tiers in `Grado_ABC`. `miniloader-redux` serves both — its
+own page says "three tiers in the base game ("Vanilla", Fast and Express) and four when playing
+Space Age (adds Turbo mode)", and it declares optional support for `boblogistics`. The tier it could
+not serve was the one that left.
+
+**Issue #38 is moot** and was closed with the reason. It existed to write this subsection under the
+`UltimateBeltsSpaceAge` entry in `docs/catalogue/Grado_ChangingBase.md`, and that entry is now under
+*Ruled out after the port*.
 
 ## Dropped during the port
 
@@ -135,7 +138,10 @@ It also refines the count: **seventeen of the 117 declare `space-age` optionally
 seventeen are `Grado_ABC` members, not ten.** The eleventh is `deadlock-beltboxes-loaders`, which is
 not a Bob's mod and so fell outside the frame #4 counted in; the remaining six are
 `Grado_ChangingBase`'s `EditorExtensions`, `StoneWaterWell-ActuallyUpdated`, `alien-biomes`,
-`reverse-factory` and `underground-pipe-pack`, and `Grado_NonChanging`'s `FactorySearch`. But an
+`reverse-factory` and `underground-pipe-pack`, and `Grado_NonChanging`'s `FactorySearch`. *(Read
+2026-09-22, before #8 changed that pack the same day: `StoneWaterWell-ActuallyUpdated` is no longer
+a member, and the incoming `cybersyn2` and `Waterfill_v17` were not in the frame. The count is left
+as measured; re-deriving it is #10's.)* But an
 overhaul that replaces the ore-to-plate chain and an expansion that adds four planets with
 their own ores are not integrated by resolving; they are integrated by somebody writing the bridge.
 `Grado_ABCX` has no equivalent gap, because the fork declares direct Bob's integration and is

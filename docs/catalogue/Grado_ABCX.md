@@ -21,8 +21,11 @@ Four findings, and the first is the one #6 was asked to check:
   `1.3.0` on 2024-10-28, the fork's first 2.0 release, and has held across five releases and the
   twenty-three months since. **The five-pack split stands on current evidence.** See *The
   incompatibility, re-verified*.
-- **The pack requires `base >= 2.1.9`** — the fork's own floor, and **the highest in the project**,
-  above the `2.1.8` `WideChests` sets for `Grado_ChangingBase`. That answers issue #15 for this
+- **The pack requires `base >= 2.1.9`** — the fork's own floor, which was **the highest in the
+  project** when this was read, above the `2.1.8` `WideChests` sets for `Grado_ChangingBase`.
+  **Overtaken later the same day by #8**: `cybersyn2`, added to `Grado_ChangingBase`, requires
+  `base >= 2.1.12`, so this pack's effective minimum is that and the fork's 2.1.9 is no longer what
+  decides it. That answers issue #15 for this
   pack, and it makes the pack's declared `factorio_version` `2.0` wrong for the fourth time in four
   surveys. See *The pack cannot load on the Factorio version it declares*.
 - **The fork is maintained, but thinly and by hand-off.** Last release 2026-07-10, two and a half
@@ -151,8 +154,11 @@ evidence for issue #9 rather than a question this pack can answer.
 three packs in the chain and their full mandatory closure — **98 distinct named members and 19
 hidden mandatory dependencies, 117 mods**, latest 2.x release each, read 2026-09-22 — the highest
 `base >=` any of them declares is `2.1.8`, from `WideChests` `6.3.0`. The fork raises it by one patch
-version. So the effective minimum for a `Grado_ABCX` install is **`base >= 2.1.9`**, and a player on
-2.0.x cannot satisfy the pack.
+version. So the effective minimum for a `Grado_ABCX` install was **`base >= 2.1.9`**, and a player
+on 2.0.x cannot satisfy the pack. **Read again after #8 settled `Grado_ChangingBase` later on
+2026-09-22: the minimum is `base >= 2.1.12`**, from `cybersyn2` and the `0-things` library it pulls,
+both of which this pack inherits. The count above is left as measured; the conclusion the section
+draws is unchanged and the number it draws it from is higher.
 
 Two things about that count, because both are easy to get wrong and this survey got both wrong first
 time round. **98 is distinct mods, not declarations**: the three lists hold 99 entries and

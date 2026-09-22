@@ -644,9 +644,12 @@ compose. `bobinserters` is not a rival either — that one moves an inserter's p
 this one adds tiers of inserter, and this mod declares the other as optional.
 
 **Recommendation: keep.** Current on 2.1. It is also the member with the most surface area against
-the layer below: of the four cross-pack overlaps recorded across the project so far, this is the
-only one on the Bob's side of a belt comparison, and the belt question recurs — `miniloader-redux`
-against #5's `deadlock-beltboxes-loaders` is a separate one in the same subsystem.
+the layer below: of the six cross-pack overlaps recorded across the project — four when this was
+written, and six once #6 added two on 2026-09-22 — this is the only one on the Bob's side of a belt
+comparison, and the belt question recurs. `miniloader-redux` against #5's
+`deadlock-beltboxes-loaders` is a separate one in the same subsystem, and #6's `space-age` against
+`UltimateBeltsSpaceAge` is a third, which makes belts the subsystem this project's overlaps keep
+landing in rather than a coincidence of two.
 
 ### `bobmining`
 
@@ -1751,10 +1754,17 @@ comes from this pack's own members.
 
 The mechanism is the members' `base` requirements, not the `factorio_version` field — the field
 declares which game version the pack is *for*, and Factorio will not install a mod whose dependencies
-cannot resolve regardless of what it says. Three of the five packs have now been checked and all
-three answer no. `Grado_ABCX` and `Grado_ABCS` are one command each and hold one member apiece, so
-measurement **#15** is nearly closed. **The number to declare instead is Truls's** and is **#16**;
-this section supplies the evidence for this pack, not the decision.
+cannot resolve regardless of what it says. Three of the five packs had been checked when this was
+written and all three answered no, and `Grado_ABCX` and `Grado_ABCS` looked like one command each,
+holding one member apiece — so this section called measurement **#15** nearly closed.
+
+**#6 reached both branches on 2026-09-22 and only half of that held.** `Grado_ABCX` was one command
+and raised the floor to `base >= 2.1.9`, above this pack's inherited `>= 2.1.8`. `Grado_ABCS` was not
+a command at all: its one member is `space-age`, which is not a portal mod, so its `base` requirement
+cannot be read by this method and needs the game (**#29**). **#15 is therefore complete for four
+packs and not completable for the fifth**, which is a different shape from nearly closed. See
+`docs/catalogue/Grado_ABCX.md` and `docs/catalogue/Grado_ABCS.md`. **The number to declare instead is
+Truls's** and is **#16**; this section supplies the evidence for this pack, not the decision.
 
 ## What was not checked
 

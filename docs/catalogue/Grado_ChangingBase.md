@@ -225,8 +225,8 @@ downloads) — which declares `! Waterfill_v17`, so the two are mutually exclusi
 a fork restricting placement to tiles beside existing water; and `Waterbomb`, which converts land to
 water by explosion rather than by placement. This one is the largest by more than threefold over the
 next, `RitnWaterfill`, and **not** the most recently released — `RitnWaterfill` shipped `1.6.0` one
-day later, on 2026-09-12. It declares `base >= 2.1.0` and `? space-age >= 2.1.0`, where
-`RitnWaterfill` pulls `RitnLib >= 0.10` and declares `! Waterfill_v17`.
+day later, on 2026-09-12. What it does lead on is reach: it declares `base >= 2.1.0` and
+`? space-age >= 2.1.0` and pulls no library, where `RitnWaterfill` needs `RitnLib`.
 
 **Recommendation: keep.** Added by #8 on 2026-09-22, replacing `safefill`, which declares `factorio_version: 2.0` and is
 therefore not served to a 2.1 game at all — see *The pack cannot load on the Factorio version it

@@ -128,9 +128,10 @@ and the search that was run.
 **Recommendation: keep | replace with `x` | drop | reconsider: `<what>`.** The reason, in prose.
 ````
 
-Three variants. The first adds one row and changes nothing else; the second adds a row and
-requires prose to go with it; the third also moves the entry and constrains what its
-**Recommendation** may say.
+Four variants. The first adds one row and changes nothing else; the second adds a row and
+requires prose to go with it; the third and fourth also move the entry and constrain what its
+**Recommendation** may say. The third and fourth differ only in *when* the mod left: during the
+1.1 -> 2.0 port, or by a decision taken afterwards.
 
 - **A mod that replaced a 1.1 mod** adds one row, `| **Supersedes** | `old-name`, last 1.1 release |`,
   and changes nothing else. The heading is the mod that is in the pack now, not the one it replaced
@@ -152,6 +153,19 @@ instead. Use it sparingly — a survey where several entries reconsider has not 
   `| **Status** | dropped during the port |`, it sits in the *Dropped during the port* section rather
   than *In the pack*, and its **Recommendation** begins `stay dropped` or `reconsider:` followed by
   what is to be reconsidered.
+
+- **A mod ruled out after the port** is the same shape for a mod that survived the port and was
+  removed later, by a decision rather than by an upstream gap. It adds
+  `| **Status** | dropped <date> (#<issue>) |`, or
+  ``| **Status** | replaced by `new-name`, <date> (#<issue>) |`` if something took its place, and it
+  sits in the *Ruled out after the port* section. **Its Recommendation is left exactly as the survey
+  wrote it**, with the ruling appended below as its own paragraph — because a ruling that overwrites
+  the recommendation it acted on cannot be audited afterwards. The replacement, if there is one, gets
+  its own entry under *In the pack* carrying the `**Supersedes**` row.
+
+  Added 2026-09-22, settling a gap #7 hit: the three variants above all assume a mod left during the
+  port, and `Grado_NonChanging` removed three mods that had survived it. Without this variant the
+  entries stayed under *In the pack*, which broke the one guarantee the heading rule exists to give.
 
 Field notes, where the name does not carry the meaning:
 
@@ -258,7 +272,9 @@ modding" — which is why the whole family went quiet at once rather than nine s
 
 **Recommendation: reconsider:** the whole Picker family against `kry-picker-complete`, as one
 question. Not simply "add it": `BottleneckLite` and `EvenDistributionLite` overlap with
-`Bottleneck` and `even-distribution` already in `Grado_NonChanging`, and its optional
+`even-distribution` already in `Grado_NonChanging` — and with `BottleneckLite` itself, which #7 made
+a member on 2026-09-22, so half of this overlap is now the bundle duplicating a mod the pack already
+has rather than competing with a different one. Its optional
 `squeak-through-2` is already a mandatory dependency of `Grado_ChangingBase` and the subject of
 issue #11. Whether a pack should depend on another pack at all is worth asking before the smaller
 question.

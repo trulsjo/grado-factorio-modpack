@@ -102,8 +102,8 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   `PipeVisualizer-Updated`, `solar-calc`. The modding docs are explicit that `"2.0"` means "this
   major version and no other", with no 2.0-to-2.1 exception. The pack's effective floor is 2.1.7,
   so on a 2.0 game five members cannot be satisfied and on a 2.1 game these six cannot be
-  downloaded - **there is no version it installs on.** 25 of 98 members across the three published
-  packs are in this state. #16 cannot be answered by choosing a number until they update or are
+  downloaded - **there is no version it installs on.** Across the chain's three lower packs, 21 of
+  95 distinct members are in this state, measured 2026-09-22. #16 cannot be answered by choosing a number until they update or are
   replaced.
 - ~~`alien-biomes-hr-terrain` was dropped **assuming** 2.0 `alien-biomes` absorbed the HR terrain.~~
   **Checked 2026-09-21: recommended to stay dropped, and the assumption's mechanism was wrong.**
@@ -186,10 +186,11 @@ missing.
   cannot be revisited.
 - Cite a mod by its **portal name** (`even-pickier-dollies`), not its title, because the name is what
   `info.json` resolves.
-- **A pack's major version tracks save compatibility**, not maturity. Major = a dependency change an
-  existing save cannot survive (a member mod of `Grado_ChangingBase` or below added or removed);
-  minor = a save-safe dependency change; patch = metadata only. Same rule as the `!` in a commit
-  subject. **`Grado_NonChanging` is not exempt** - several of its members write to the save.
+- **A pack's major version tracks save compatibility**, not maturity - with one exception, named
+  below. Major = a dependency change an existing save cannot survive (a member mod of
+  `Grado_ChangingBase` or below added or removed); minor = a save-safe dependency change; patch =
+  metadata only. Same rule as the `!` in a commit subject. **`Grado_NonChanging` is not exempt** -
+  several of its members write to the save. **The exception:**
   `0.x` to `1.0.0` is the one major that signals maturity rather than a broken save, and a pack's
   version does not move at all before its first release. Reasoning in
   `docs/adr/0002-any-pack-can-go-major-and-1-0-0-signals-maturity.md`, which supersedes

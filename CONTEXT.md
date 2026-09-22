@@ -41,3 +41,15 @@ The `title` field in `info.json`, e.g. `Grado ABCS: Angel's, Bob's, MadClown, Sp
 only - shown in the in-game mod list and on the pack's portal entry, and freely changed in any
 release.
 _Avoid_: name, display name
+
+**Promise**:
+What a pack guarantees about what it will do to a game. Each pack has one, and it is the test a
+candidate member has to pass. `Grado_NonChanging`'s, settled 2026-09-22: it **adds no content** -
+no craftable item, entity or recipe - it may tune vanilla prototypes, it may store data of its
+own in the save, and it changes the built factory only when the player asks it to.
+`Grado_ChangingBase`'s: it may add content, but not content that competes with an overhaul for the
+same ground, because all three overhaul packs inherit it.
+_Avoid_: "does not change save state or the factory", which was the original wording and is false
+under any reading that lets the pack do its job - `Tapeline`, `Todo-List`, `YARM` and
+`SpeedControl` all write to the save, and half the pack exists to change the factory on request.
+Also avoid: guarantee, contract, rule (all used for this and for three other things)

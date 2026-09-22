@@ -24,9 +24,10 @@ unconfirmed until a survey has re-checked it that way.
 ### Dropped - no 2.0 release, no replacement found
 
 **Re-checked 2026-09-21 by the `Grado_NonChanging` survey: three of these four now have
-coverage identified, and only `PickerInventoryTools` leaves a real gap.** See
-`docs/catalogue/Grado_NonChanging.md`. The heading below describes the original port search, not the
-current state.
+coverage identified, and only `PickerInventoryTools` leaves a real gap. Closed 2026-09-22 by #7:
+there is no gap - all four stay dropped and the pack lost no feature.** The requester-chest-from-
+blueprint trick is base-game in 2.0. See `docs/catalogue/Grado_NonChanging.md`. The heading below
+describes the original port search, not the current state.
 
 - `PickerAtheneum`
 - `PickerBeltTools`
@@ -272,10 +273,14 @@ for. A title is display only and can be changed in any release, unlike the name.
 - **`RealisticFusionPower` is among the drops.** It is the mod the separate
   *realistic-fusion-refreshed* project exists to succeed; that mod is a candidate to add here once it
   ships.
-- **The Picker family lost seven of nine - and for `Grado_NonChanging` that is now answered.**
-  Its four drops cost that pack one feature, not four mods: `kry-picker-extended` and
-  `BlueprintTools` are already members and cover the belt, planner and sorting features, and only
-  `PickerInventoryTools`' requester-chest-from-blueprint has no successor found. See
+- **The Picker family lost seven of nine - and for `Grado_NonChanging` that is now closed.**
+  **#7 settled it on 2026-09-22: the four drops cost that pack nothing.** `kry-picker-extended` and
+  `BlueprintTools` are already members and cover the belt, planner and sorting features, and the one
+  feature thought to be missing - `PickerInventoryTools`' requester-chest-from-blueprint - turned out
+  to be base-game. Dropping a blueprint on a requester chest's "Add section" button is vanilla 2.0;
+  the suggestion asking for it was closed Implemented, and a sweep of every 2.x mod by title and
+  summary found nothing reproducing it because nothing needs to. The sentence below, that only
+  `PickerInventoryTools`' requester-chest-from-blueprint has no successor found, is superseded. See
   `docs/catalogue/Grado_NonChanging.md`. **The three in `Grado_ChangingBase` were assessed on
   2026-09-21 and reach the same place from a different direction:** `PickerTweaks` is recommended to
   stay dropped on its own merits - a mod that adjusts base item values does not belong under an
@@ -286,6 +291,10 @@ for. A title is display only and can be changed in any release, unlike the name.
   successor found. That is the second pack to arrive at the same modpack question, from a different
   direction. **Adoption is pack membership and splits by pack: `Grado_NonChanging`'s share is #7 and
   `Grado_ChangingBase`'s is #8.** No ticket owns it for the chain, and one answer would serve both.
+  **#7 declined it for `Grado_NonChanging` on 2026-09-22** - out of that ticket's scope as an
+  addition, and it carries `EvenDistributionLite` as a mandatory member, which would have overruled
+  the decision to keep `even-distribution`. Its individual members are ticketed separately.
+  `Grado_ChangingBase`'s share is still #8's and is not settled by that.
   See `docs/catalogue/Grado_ChangingBase.md`. Original note follows.
 - **The Picker family lost seven of nine - and that is now disputed.** The name-only search found
   replacements for `PickerDollies` (`even-pickier-dollies`) and `PickerExtended`

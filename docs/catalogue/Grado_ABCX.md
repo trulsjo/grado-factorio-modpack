@@ -163,10 +163,17 @@ optional, gives 14 and misses the four Angel's graphics packages and `reskins-sp
 
 **19 is the chain's closure and is not the same number as `docs/catalogue/Grado_ABC.md`'s fifteen.**
 That file counts ABC's *share* — the closure of its 45 members minus what the two lower packs
-already pull in — and names the four it subtracts. Fifteen plus those four is nineteen, and the two
-numbers agree. One entry in that file's subtraction list, `+FluidWagonColorMask`, is a named member
-of `Grado_NonChanging` rather than a hidden dependency of anything; that is issue **#39** and it does
-not move either total.
+already pull in — and it names **five** subtracted mods: `flib`, `alien-biomes-graphics`,
+`kry_stdlib`, `stdlib2` and `+FluidWagonColorMask`. On those five it says counting them "would have
+made the number twenty".
+
+**Four of the five are real, and fifteen plus four is this file's nineteen.** The fifth,
+`+FluidWagonColorMask`, is a named member of `Grado_NonChanging` rather than a hidden dependency of
+anything — the `+` belongs to `Automatic_Train_Painter`, which declares it mandatory against a mod
+the pack already lists. So it was never in the closure to be subtracted from it, and ABC's twenty is
+one too many for exactly that reason. That is issue **#39**, and it moves ABC's stated twenty to
+nineteen; it moves neither the fifteen nor this file's nineteen, which are the two numbers that have
+to agree.
 
 This is issue #15's measurement for this pack. The number to declare instead is issue #16 and is
 Truls's to set; no `info.json` was modified.

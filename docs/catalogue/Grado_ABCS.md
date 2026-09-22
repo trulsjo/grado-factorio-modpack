@@ -108,11 +108,12 @@ subsection was written to describe is part of why: five tiers past express, stac
 `boblogistics`' own tiers with no compatibility handling on any side, is content competing with an
 overhaul for the same ground, which `Grado_ChangingBase`'s promise forbids.
 
-**What survives on this branch is a two-way overlap that needs no comparison**: Space Age's belt
-tier past express, and `boblogistics`' tiers in `Grado_ABC`. `miniloader-redux` serves both — its
-own page says "three tiers in the base game ("Vanilla", Fast and Express) and four when playing
-Space Age (adds Turbo mode)", and it declares optional support for `boblogistics`. The tier it could
-not serve was the one that left.
+**What survives on this branch is a tier adjacency rather than a recorded overlap**: Space Age adds
+one tier past express and `boblogistics` adds its own, and `miniloader-redux` serves both — its own
+page says "three tiers in the base game ("Vanilla", Fast and Express) and four when playing Space
+Age (adds Turbo mode)", and it declares optional support for `boblogistics`. Nothing is duplicated
+in the sense *Two kinds of duplication* uses, so no **Overlaps** row is added and the live tally
+stays at three. The tier that could not be served was the one that left.
 
 **Issue #38 is moot** and was closed with the reason. It existed to write this subsection under the
 `UltimateBeltsSpaceAge` entry in `docs/catalogue/Grado_ChangingBase.md`, and that entry is now under
@@ -141,7 +142,7 @@ not a Bob's mod and so fell outside the frame #4 counted in; the remaining six a
 `reverse-factory` and `underground-pipe-pack`, and `Grado_NonChanging`'s `FactorySearch`. *(Read
 2026-09-22, before #8 changed that pack the same day: `StoneWaterWell-ActuallyUpdated` is no longer
 a member, and the incoming `cybersyn2` and `Waterfill_v17` were not in the frame. The count is left
-as measured; re-deriving it is #10's.)* But an
+as measured; re-deriving it needs a ticket nobody has filed.)* But an
 overhaul that replaces the ore-to-plate chain and an expansion that adds four planets with
 their own ores are not integrated by resolving; they are integrated by somebody writing the bridge.
 `Grado_ABCX` has no equivalent gap, because the fork declares direct Bob's integration and is

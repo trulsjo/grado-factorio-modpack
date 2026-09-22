@@ -147,7 +147,7 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   `kry-picker-complete` is declined for this pack too** — an addition of a mod never in the 1.1
   pack, plus the structural objection to a pack depending on a pack. The bundle's members are
   ticketed for assessment one at a time. **`PickerPipeTools`' pipe clamps are the one feature in
-  that pack's drops with **no successor found** - a name, title and summary sweep of the 2.x list,
+  that pack's drops with no successor found - a name, title and summary sweep of the 2.x list,
   which is a search and not a proof.**
 
   `Grado_ABC`'s three core drops broke that pattern: two have no successor of any kind and stay

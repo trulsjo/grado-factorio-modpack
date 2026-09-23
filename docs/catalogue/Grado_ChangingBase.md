@@ -400,7 +400,8 @@ after a release.
 
 **It raises the pack's Factorio floor to `base >= 2.1.12`, the highest in the project** — above
 `Grado_ABCX`'s 2.1.9 — and `Grado_ABC`, `Grado_ABCX` and `Grado_ABCS` all inherit it. That is
-evidence for #15; the declaration is #16's.
+evidence for #15; the declaration is #16's. **Superseded 2026-09-23 by #15:** no longer the project high, which is the
+hidden `kry_stdlib` `2.2.21`, released that day, asks `base >= 2.1.20`; see *Effective Factorio floor* in `docs/porting-notes.md`, which also says why that number rests on one release.
 
 **It pulls `0-things >= 0.6.1`**, *Things* (`The_LORD_thy_GOD`, `0.6.3`, 2.1, 2026-09-20, 3,292
 downloads, `base >= 2.1.12`), a mandatory library by the same author which this pack's list does not
@@ -1371,7 +1372,7 @@ floor twice over**, to a number no pack in the project had reached:
 
 | Floor | Members |
 |---|---|
-| `base >= 2.1.12` | `cybersyn2` — **added 2026-09-22 (#8)**, and the highest floor in the project |
+| `base >= 2.1.12` | `cybersyn2` — **added 2026-09-22 (#8)**, and the highest floor in the project until #15 found `kry_stdlib` `2.2.21` at `>= 2.1.20` (2026-09-23) |
 | `base >= 2.1.8` | `WideChests` |
 | `base >= 2.1.7` | `alien-biomes`, `miniloader-redux`, `textplates` |
 | `base >= 2.1.0` / `>= 2.1` | `AdditionalPasteSettings`, `EditorExtensions`, `ModuleInserterEx`, `UltimateResearchQueue2`, `Waterfill_v17`, `bobinserters` |

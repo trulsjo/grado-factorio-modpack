@@ -1962,7 +1962,8 @@ below `Grado_ChangingBase`'s `>= 2.1.8` from `WideChests`. But
 both — **the effective minimum for anyone installing this pack is `base >= 2.1.8`**, and none of that
 comes from this pack's own members. **Raised to `base >= 2.1.12` on 2026-09-22 by #8**, which added
 `cybersyn2` to `Grado_ChangingBase`; the point of this paragraph — that the floor is inherited and
-none of it comes from this pack — is unchanged, and the number is not.
+none of it comes from this pack — is unchanged, and the number is not. **Superseded 2026-09-23 by #15:** the
+inherited floor is `base >= 2.1.20` on a latest-release reading, from the hidden `kry_stdlib` `2.2.21`, released that day, asks `base >= 2.1.20`; see *Effective Factorio floor* in `docs/porting-notes.md`, which also says why that number rests on one release.
 
 The mechanism is the members' `base` requirements, not the `factorio_version` field — the field
 declares which game version the pack is *for*, and Factorio will not install a mod whose dependencies

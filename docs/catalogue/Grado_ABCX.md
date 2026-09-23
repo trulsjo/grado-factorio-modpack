@@ -25,7 +25,9 @@ Four findings, and the first is the one #6 was asked to check:
   project** when this was read, above the `2.1.8` `WideChests` sets for `Grado_ChangingBase`.
   **Overtaken later the same day by #8**: `cybersyn2`, added to `Grado_ChangingBase`, requires
   `base >= 2.1.12`, so this pack's effective minimum is that and the fork's 2.1.9 is no longer what
-  decides it. That answers issue #15 for this
+  decides it. **Superseded 2026-09-23 by #15:** the effective minimum is `base >= 2.1.20` on a latest-release
+  reading, from the hidden `kry_stdlib` `2.2.21`; see *Effective Factorio floor* in
+  `docs/porting-notes.md`. That answers issue #15 for this
   pack, and it makes the pack's declared `factorio_version` `2.0` wrong for the fourth time in four
   surveys. See *The pack cannot load on the Factorio version it declares*.
 - **The fork is maintained, but thinly and by hand-off.** Last release 2026-07-10, two and a half
@@ -166,7 +168,8 @@ version. So the effective minimum for a `Grado_ABCX` install was **`base >= 2.1.
 on 2.0.x cannot satisfy the pack. **Read again after #8 settled `Grado_ChangingBase` later on
 2026-09-22: the minimum is `base >= 2.1.12`**, from `cybersyn2` and the `0-things` library it pulls,
 both of which this pack inherits. The count above is left as measured; the conclusion the section
-draws is unchanged and the number it draws it from is higher.
+draws is unchanged and the number it draws it from is higher. **Superseded 2026-09-23 by #15:** the minimum is now
+`base >= 2.1.20` on a latest-release reading, from the hidden `kry_stdlib` `2.2.21`, released that day, asks `base >= 2.1.20`; see *Effective Factorio floor* in `docs/porting-notes.md`, which also says why that number rests on one release.
 
 Two things about that count, because both are easy to get wrong and this survey got both wrong first
 time round. **98 is distinct mods, not declarations**: the three lists hold 99 entries and

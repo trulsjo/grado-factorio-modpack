@@ -872,7 +872,8 @@ remaining members were re-read rather than trusted. Five still demand it - `Blue
 `Tapeline`, `even-distribution`, `even-pickier-dollies`, `helmod` - so removing `blueprint-sandboxes`,
 which was the sixth, does not lower it. Both incoming mods enter under the ceiling at `base >= 2.1.0`,
 and neither brings a transitive dependency the pack did not already carry. #15's measurement for this
-pack survives the edit.
+pack survives the edit. **Superseded 2026-09-23 by #15:** 2.1.7 is still the highest of the named members, but the
+pack's effective floor is higher: the hidden `kry_stdlib` `2.2.21`, released that day, asks `base >= 2.1.20`; see *Effective Factorio floor* in `docs/porting-notes.md`, which also says why that number rests on one release.
 
 ## Six members cannot be downloaded
 

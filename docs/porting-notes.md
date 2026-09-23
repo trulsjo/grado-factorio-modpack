@@ -286,6 +286,85 @@ Bob's, MadClown, SpaceX`. The initialisms are the vocabulary the docs and commit
 but they mean nothing to someone browsing, and the descriptor names the mods people actually search
 for. A title is display only and can be changed in any release, unlike the name.
 
+## Effective Factorio floor, measured 2026-09-23 (#15)
+
+What each pack declares against what it needs, for all five at once and against the memberships as
+settled by #7-#10. **This table supersedes the per-pack readings under *Open questions* below**,
+whose member counts predate those settlements. It is evidence for #16 and decides nothing.
+
+**The mechanism.** `factorio_version` decides which game a mod is *served* to; a `base >=` in a
+dependency list decides which game it *installs* on. They fail separately. On a 2.0 game the
+member floor bites first: a pack can declare 2.0 and be fine, or declare 2.0 and be uninstallable,
+depending on its members. On a 2.1 game the pack's own declaration bites first. Every pack below declares `factorio_version` `2.0` and `base >= 2.0.0`. The `base`
+line never constrains anything. The `factorio_version` does: as declared, each pack is served to 2.0
+games only, so the newest-2.0 column is what the packs as they stand would meet, and the latest-2.x
+column is what a 2.1 declaration would.
+
+**Method, so it can be re-run.** Each pack's named members from its `info.json`, plus the lower
+packs' members, walked to the full mandatory closure (every dependency without `?`, `(?)` or `!`)
+through `https://mods.factorio.com/api/mods/<name>/full`, and each mod's `base >=` read. Done twice:
+from each mod's **latest 2.x release**, which is what a 2.1 game would be served (where that
+release declares 2.0, a 2.1 game is served nothing - see the last list below), and from its
+**newest release declaring `factorio_version` 2.0**, which is what a 2.0 game would be served. The
+closure is 29 mods for `Grado_NonChanging`, 52 for `Grado_ChangingBase`, 107 for `Grado_ABC` and
+`Grado_ABCS`, and 108 for `Grado_ABCX`, one of each count being `Automatic_Train_Painter`'s
+`+FluidWagonColorMask`, which is not a portal name. It is almost certainly a mangled prefix on
+`FluidWagonColorMask`, already a named `Grado_NonChanging` member: `Automatic_Train_Painter`'s newest
+2.0 release, `2.0.1`, lists `?FluidWagonColorMask`. Whether the game accepts the `+` is checkable
+only in game. Every other mod in every closure has a 2.0 release. The 2.0 closure is one smaller for
+the two lower packs (that entry) and four smaller for the three above them (that entry and three
+Artisanal Reskins libraries, `reskins-assets-base`, `reskins-assets-bobs` and
+`reskins-sprite-utils`, that the older releases do not pull).
+
+| Pack | Declares | Highest own member, latest 2.x | Effective floor, latest 2.x | Effective floor, newest 2.0 | Honours `base >= 2.0.0`? |
+|---|---|---|---|---|---|
+| `Grado_NonChanging` | `2.0`, `>= 2.0.0` | `>= 2.1.7` | `>= 2.1.20` | `>= 2.0.67` | **No** |
+| `Grado_ChangingBase` | `2.0`, `>= 2.0.0` | `>= 2.1.12` | `>= 2.1.20` | `>= 2.0.74` | **No** |
+| `Grado_ABC` | `2.0`, `>= 2.0.0` | `>= 2.1.0` | `>= 2.1.20` | `>= 2.0.74` | **No** |
+| `Grado_ABCX` | `2.0`, `>= 2.0.0` | `>= 2.1.9` | `>= 2.1.20` | `>= 2.0.74` | **No** |
+| `Grado_ABCS` | `2.0`, `>= 2.0.0` | unreadable (`space-age`) | `>= 2.1.20`, plus the expansion | `>= 2.0.74` | **No** |
+
+**No pack honours its declaration on either reading.** The members responsible:
+
+- **`Grado_NonChanging`.** Five members at `>= 2.1.7`: `BlueprintTools`, `Tapeline`,
+  `even-distribution`, `even-pickier-dollies` and `helmod`. Eleven of its 26 require `>= 2.1`. Above
+  them is the hidden `kry_stdlib`, pulled by `kry-picker-extended`, at `>= 2.1.20` - see below. On
+  the 2.0 reading, `helmod`'s newest 2.0 release asks `>= 2.0.67`.
+- **`Grado_ChangingBase`.** `cybersyn2` `0.4.0` and the hidden `0-things` it pulls, both
+  `>= 2.1.12`. Eleven of its 20 require `>= 2.1`. On the 2.0 reading, `miniloader-redux`'s newest
+  2.0 release asks `>= 2.0.74`, the highest in the project on that reading.
+- **`Grado_ABC`.** Nothing of its own above `>= 2.1.0`: 22 named members and the hidden `boblibrary`
+  sit there, 25 of its 41 require `>= 2.1`. Its floor is inherited.
+- **`Grado_ABCX`.** `SpaceModFeorasFork` `1.3.4`, `>= 2.1.9`, below what it inherits.
+- **`Grado_ABCS`.** `space-age` is not a portal mod, so this method cannot read it. Its `2.0.77`
+  build, read from the installed game for #10, asks `base >= 2.0.0` and raises nothing on the 2.0
+  reading; a 2.1 build is unread and is #29's.
+
+**`Grado_NonChanging`'s known answer, re-derived.** #2 found six members at `>= 2.1.7` out of 29,
+and #43 found five after #7. This run finds the same five by name, which proves the method on the
+case with a known result. The ten-of-29 count at `>= 2.1` is now eleven of 26, on a membership #7
+changed by five; `BottleneckLite` and `RateCalculator`, both in with #7, are two of the eleven.
+
+**The 2.1.20 rests on one release, published the day of this measurement.** `kry_stdlib` `2.2.21`
+(2026-09-23) is the first 2.2.x release of that library to declare a floor, and the first of any to
+ask for more than `2.0.0`; `2.2.20` (2026-09-22) and everything back to `2.2.13` declare a bare
+`base`. `kry-picker-extended` `1.2.4` asks only
+`kry_stdlib >= 2.2.13`, so a resolver that picked an older release would leave the project high at
+`cybersyn2`'s `>= 2.1.12`, which is the previous reading, and `Grado_NonChanging` at `>= 2.1.7`. Which release the game's mod manager
+actually installs is not something the portal says, and is checkable only in game.
+
+**Not served to a 2.1 game**, because the member's latest release declares `factorio_version` 2.0 -
+the other half of the same question, and #43's rather than this table's: six in `Grado_NonChanging`
+(`CleanFloor`, `PipeVisualizer-Updated`, `SpeedControl`, `WhereIsMyBody`, `YARM`, `solar-calc`),
+three in `Grado_ChangingBase` (`Nanobots2`, `qol_research` and the hidden `stdlib2`) and eight in
+`Grado_ABC` (`RealisticFusionPowerPort`, `RealisticReactorsReborn`, `True-Nukes-Graphics_Continued`,
+`True-Nukes_Continued`, `WideChestsBobs`, `angels-smelting-extended`,
+`spidertrontiers-community-updates` and the hidden `Warheads_Continued`).
+
+Not checked: whether the version constraints the members place on each other are satisfiable
+together on the 2.0 reading. Every closure member but the bad name has a 2.0 release, but a mod
+asking for a library `>= x` whose newest 2.0 release is below `x` would not show up here.
+
 ## Open questions
 
 - **`alien-biomes-hr-terrain` was dropped on the assumption that 2.0 `alien-biomes` absorbed the
@@ -308,7 +387,9 @@ for. A title is display only and can be changed in any release, unlike the name.
   expect this and should walk the closure rather than one level. See
   `docs/catalogue/Grado_ABC.md`.
 - **`factorio_version` is declared `2.0`** on all five packs, while several member mods (Bob's,
-  Angel's, MadClown) have moved to `2.1`. **The member counts below are each pack as it stood when
+  Angel's, MadClown) have moved to `2.1`. **Re-measured for all five on 2026-09-23 against the
+  settled memberships (#15): see *Effective Factorio floor* above, which supersedes the readings in
+  this entry.** **The member counts below are each pack as it stood when
   it was measured**: #7 and #8 then took the three lower lists to 26, 20 and 44 members, #9 took the third to 41
   on 2026-09-23, and the
   numerators have not been re-derived against them. **Answered for `Grado_NonChanging` on

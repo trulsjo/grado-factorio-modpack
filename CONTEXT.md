@@ -49,7 +49,12 @@ no craftable item, entity or recipe - it may tune vanilla prototypes, it may sto
 own in the save, and it changes the built factory only when the player asks it to.
 `Grado_ChangingBase`'s: it may add content, but not content that competes with an overhaul for the
 same ground, because all three overhaul packs inherit it.
-_Avoid_: "does not change save state or the factory", which was the original wording and is false
-under any reading that lets the pack do its job - `Tapeline`, `Todo-List`, `YARM` and
-`SpeedControl` all write to the save, and half the pack exists to change the factory on request.
+`Grado_ABC`'s, settled 2026-09-23 (#9): it is Truls's own Angel's, Bob's and MadClown setup, so a
+member need not be *about* the overhaul - it may extend the overhaul mods or add content of its own,
+but it must not conflict with them. Because both end-games build on it, nothing in it may declare
+`! space-age`.
+_Avoid_: "does not change save state or the factory", which was the original wording of
+`Grado_NonChanging`'s promise and is false under any reading that lets that pack do its job -
+`Tapeline`, `Todo-List`, `YARM` and `SpeedControl` all write to the save, and half the pack exists
+to change the factory on request.
 Also avoid: guarantee, contract, rule (all used for this and for three other things)

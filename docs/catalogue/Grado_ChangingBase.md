@@ -65,7 +65,9 @@ ruling inline. **25 members to 20.**
    except in entries the survey had already marked `reconsider:`, where it broke the tie.
    `safefill` and `UltimateBeltsSpaceAge` are the two it touched.
 
-**A `2.0`-declaring member is unreachable, not merely stale.** Of the six, three leave the pack
+**A `2.0`-declaring member is unreachable, not merely stale** - *at a 2.1 target. Qualified
+2026-09-23 (#9): every member has a 2.0 release with a `base` floor below 2.1, so on a 2.0 target
+these are served; see #43 and #16.* Of the six, three leave the pack
 outright - `LTN_Content_Reader_Updated`, `StoneWaterWell-ActuallyUpdated` and `UltimateBeltsSpaceAge` -
 and one is fixed by the `Waterfill_v17` swap. **`Nanobots2` and `qol_research` remain unreachable
 and stay in the pack**, which is #43's, not this ticket's.

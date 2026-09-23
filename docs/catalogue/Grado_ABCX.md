@@ -168,6 +168,8 @@ mandatory — they only decline to constrain load order. Walking one level, or r
 optional, gives 14 and misses the four Angel's graphics packages and `reskins-sprite-utils`.
 
 **19 is the chain's closure and is not the same number as `docs/catalogue/Grado_ABC.md`'s fifteen.**
+*(Both were measured before #9, which on 2026-09-23 removed the only two mods pulling in
+`rusty-locale`. `Grado_ABC`'s fifteen is fourteen after it. #39 reconciles the two.)*
 That file counts ABC's *share* — the closure of its 45 members minus what the two lower packs
 already pull in — and it names **five** subtracted mods: `flib`, `alien-biomes-graphics`,
 `kry_stdlib`, `stdlib2` and `+FluidWagonColorMask`. On those five it says counting them "would have

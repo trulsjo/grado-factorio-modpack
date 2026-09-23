@@ -48,6 +48,10 @@ replacement but for the integration layer between the expansion and the overhaul
 that search is under *Pressure on the one-mod-per-branch rule* below rather than here, because what
 it found is not a substitute for this member — it is a candidate second member.
 
+**Ruled 2026-09-23 (#10): kept, as the pack's only member.** The pack is `Grado_ABC` beside Space
+Age, not integrated with it (`CONTEXT.md`, *Promise*), so no bridge was added; reasons in
+`docs/porting-notes.md`.
+
 **Recommendation: keep.** It is what the pack is. The recommendation is forced and the entry is not
 the interesting part of this file.
 
@@ -86,10 +90,14 @@ end — is not merely the last check on this pack; it is the first check on its 
 One consequence is worth naming rather than leaving implicit. Space Age ships as three mods, not
 one: `space-age`, `quality` and `elevated-rails` are distinct names, which the portal's three
 separate reservations confirm and which `angelbob-spaceage-rebalance` demonstrates by declaring all
-three as mandatory dependencies. Whether `space-age` alone pulls the other two in, or whether this
-pack's dependency list should name them, **cannot be answered from the portal** and is not answered
-here. It is the same shape as the fifteen hidden mandatory dependencies `docs/catalogue/Grado_ABC.md`
-found, with the difference that this one cannot be measured without the game.
+three as mandatory dependencies. Whether `space-age` alone pulls the other two in cannot be answered
+from the portal.
+
+**It can from the game, and it does.** `data/space-age/info.json` in the installed game, version
+`2.0.77`, read 2026-09-23, declares `base >= 2.0.0`, `elevated-rails >= 2.0.0` and
+`quality >= 2.0.0`, with `factorio_version` `2.0`. So the other two are hidden mandatory dependencies
+of this member, the same shape as the ones `docs/catalogue/Grado_ABC.md` found, and #10 ruled not to
+name them in the pack's list. This is a reading of 2.0.77; a 2.1 build was not available to read.
 
 #### Against `SpaceModFeorasFork`
 
@@ -173,9 +181,9 @@ mandatory-dependency count that makes the cost concrete.
   is not a one-mod addition. Its ten mandatory extras, plus itself and `space-age`, would make
   `Grado_ABCS` a **twelve-member pack** against `Grado_ABCX`'s one. Seven of the ten are community
   planet content and its graphics, an eighth, `PlanetsLib`, is the library they share, and those are
-  content decisions nobody has taken. The last two are `quality` and `elevated-rails`: they count as
-  extras only because *What the portal actually returns* above cannot establish whether `space-age`
-  pulls them in, so if it does the figures are eight and ten instead. It also requires
+  content decisions nobody has taken. The last two are `quality` and `elevated-rails`, which `space-age`
+  turned out to pull in itself (read from the game on 2026-09-23), so the real figures are **eight**
+  extras and a **ten-member pack**. It also requires
   `angelsbioprocessing`, `angelspetrochem`,
   `angelsrefining`, `angelssmelting` and seven Bob's mods at specific minimum versions, all of which
   `Grado_ABC` already carries, so the ABC side costs nothing extra.
@@ -193,3 +201,8 @@ mandatory-dependency count that makes the cost concrete.
 holds, is pack membership, which is Truls's under `CLAUDE.md` and belongs to issues #10 and #31.
 What this survey settles is that the rule cannot be assumed to hold on this branch merely because it
 holds on the other.
+
+**Decided 2026-09-23 (#10): doing nothing.** The rule holds on this branch. The pack's promise makes
+it `Grado_ABC` beside Space Age rather than merged with it, so a bridge is an addition, and additions
+stay out. #31 stays open as the place to revisit that, best after #29 shows whether the unintegrated
+pack is playable; taking a bridge would mean changing the promise first.

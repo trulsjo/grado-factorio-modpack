@@ -57,6 +57,11 @@ fork, no rewrite, and no unrelated mod covering the same ground. The one near-mi
 returned, `ERPC-K2-integration`, is a Krastorio 2 bridge for Expanded Rocket Payloads and does not
 do this job.
 
+**Ruled 2026-09-23 (#10): kept, as the pack's only member**, and the pack's own `! space-age` line
+kept beside the fork's. The pack's promise is in `CONTEXT.md`; the reasons are in
+`docs/porting-notes.md`. Because the pack's line would mask the fork dropping its `!`, re-reading the
+fork's dependency list - *The incompatibility, re-verified* below - is the only tripwire for that.
+
 **Recommendation: keep.** It is the only way to reach this branch's end-game, it is current within
 two and a half months, and the incompatibility the whole project is built around is intact. The
 download gap against `SpaceMod` — 6,330 against 105,773 — measures how long each has existed and

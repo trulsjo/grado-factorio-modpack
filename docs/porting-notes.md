@@ -295,10 +295,11 @@ whose member counts predate those settlements. It is evidence for #16 and decide
 **The mechanism.** `factorio_version` decides which game a mod is *served* to; a `base >=` in a
 dependency list decides which game it *installs* on. They fail separately. On a 2.0 game the
 member floor bites first: a pack can declare 2.0 and be fine, or declare 2.0 and be uninstallable,
-depending on its members. On a 2.1 game the pack's own declaration bites first. Every pack below declares `factorio_version` `2.0` and `base >= 2.0.0`. The `base`
-line never constrains anything. The `factorio_version` does: as declared, each pack is served to 2.0
-games only, so the newest-2.0 column is what the packs as they stand would meet, and the latest-2.x
-column is what a 2.1 declaration would.
+depending on its members. On a 2.1 game the pack's own declaration bites first. Every pack below
+declares `factorio_version` `2.0` and `base >= 2.0.0`. The `base` line never constrains anything.
+The `factorio_version` does: as declared, each pack is served to 2.0 games only, so the newest-2.0
+column is what the packs as they stand would meet, and the latest-2.x column is what a 2.1
+declaration would.
 
 **Method, so it can be re-run.** Each pack's named members from its `info.json`, plus the lower
 packs' members, walked to the full mandatory closure (every dependency without `?`, `(?)` or `!`)
@@ -333,8 +334,9 @@ Artisanal Reskins libraries, `reskins-assets-base`, `reskins-assets-bobs` and
 - **`Grado_ChangingBase`.** `cybersyn2` `0.4.0` and the hidden `0-things` it pulls, both
   `>= 2.1.12`. Eleven of its 20 require `>= 2.1`. On the 2.0 reading, `miniloader-redux`'s newest
   2.0 release asks `>= 2.0.74`, the highest in the project on that reading.
-- **`Grado_ABC`.** Nothing of its own above `>= 2.1.0`: 22 named members and the hidden `boblibrary`
-  sit there, 25 of its 41 require `>= 2.1`. Its floor is inherited.
+- **`Grado_ABC`.** Nothing of its own above `>= 2.1.0`. 25 of its 41 require `>= 2.1`: 22 write it
+  `2.1.0`, and `angelsaddons-storage`, `pump` and `rso-mod` write `2.1`. The hidden `boblibrary` is
+  at `2.1.0` too. Its floor is inherited.
 - **`Grado_ABCX`.** `SpaceModFeorasFork` `1.3.4`, `>= 2.1.9`, below what it inherits.
 - **`Grado_ABCS`.** `space-age` is not a portal mod, so this method cannot read it. Its `2.0.77`
   build, read from the installed game for #10, asks `base >= 2.0.0` and raises nothing on the 2.0
@@ -348,10 +350,10 @@ changed by five; `BottleneckLite` and `RateCalculator`, both in with #7, are two
 **The 2.1.20 rests on one release, published the day of this measurement.** `kry_stdlib` `2.2.21`
 (2026-09-23) is the first 2.2.x release of that library to declare a floor, and the first of any to
 ask for more than `2.0.0`; `2.2.20` (2026-09-22) and everything back to `2.2.13` declare a bare
-`base`. `kry-picker-extended` `1.2.4` asks only
-`kry_stdlib >= 2.2.13`, so a resolver that picked an older release would leave the project high at
-`cybersyn2`'s `>= 2.1.12`, which is the previous reading, and `Grado_NonChanging` at `>= 2.1.7`. Which release the game's mod manager
-actually installs is not something the portal says, and is checkable only in game.
+`base`. `kry-picker-extended` `1.2.4` asks only `kry_stdlib >= 2.2.13`, so a resolver that picked
+an older release would leave the project high at `cybersyn2`'s `>= 2.1.12`, which is the previous
+reading, and `Grado_NonChanging` at `>= 2.1.7`. Which release the game's mod manager actually
+installs is not something the portal says, and is checkable only in game.
 
 **Not served to a 2.1 game**, because the member's latest release declares `factorio_version` 2.0 -
 the other half of the same question, and #43's rather than this table's: six in `Grado_NonChanging`

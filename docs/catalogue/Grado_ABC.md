@@ -8,7 +8,8 @@ core forecloses either end-game.
 
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
 **2026-09-21** and is reproduced from the fetched data rather than retyped, except those carrying a
-**Read on** of **2026-09-23** and the readings inside #9's rulings, which #9 took. The **Read on** row
+**Read on** of **2026-09-23** and the readings inside #9's rulings, which #9 took, and the notes
+marked *Superseded 2026-09-23 by #15*, which #15 took. The **Read on** row
 is authoritative where it disagrees with this sentence.
 
 The dependency list holds 46 entries: `base >= 2.0.0`, `Grado_ChangingBase` — a pack, catalogued in
@@ -1962,8 +1963,10 @@ below `Grado_ChangingBase`'s `>= 2.1.8` from `WideChests`. But
 both — **the effective minimum for anyone installing this pack is `base >= 2.1.8`**, and none of that
 comes from this pack's own members. **Raised to `base >= 2.1.12` on 2026-09-22 by #8**, which added
 `cybersyn2` to `Grado_ChangingBase`; the point of this paragraph — that the floor is inherited and
-none of it comes from this pack — is unchanged, and the number is not. **Superseded 2026-09-23 by #15:** the
-inherited floor is `base >= 2.1.20` on a latest-release reading, from the hidden `kry_stdlib` `2.2.21`, released that day, asks `base >= 2.1.20`; see *Effective Factorio floor* in `docs/porting-notes.md`, which also says why that number rests on one release.
+none of it comes from this pack — is unchanged, and the number is not. **Superseded 2026-09-23 by
+#15:** the inherited floor is `base >= 2.1.20` on a latest-release reading, set by the hidden
+`kry_stdlib` `2.2.21`, released that day. See *Effective Factorio floor* in `docs/porting-notes.md`,
+which also says why that number rests on one release.
 
 The mechanism is the members' `base` requirements, not the `factorio_version` field — the field
 declares which game version the pack is *for*, and Factorio will not install a mod whose dependencies

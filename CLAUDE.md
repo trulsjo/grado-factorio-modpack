@@ -96,76 +96,22 @@ Settled so far, recorded here so nobody reopens them by accident:
 
 Listed in full with their evidence in `docs/porting-notes.md`. Do not close one silently.
 
-- `factorio_version` is declared `2.0` on all five packs while several members have moved to `2.1`.
-  **Answered for `Grado_NonChanging`, `Grado_ChangingBase` and `Grado_ABC`, and the answer is no** —
-  10 of 29 members, 11 of 25, and 26 of 45 declare `base >= 2.1` directly — the last now measured
-  across the whole pack rather than half of it. **Those denominators are each pack as it stood when
-  it was measured**; after #7 and #8 the three lists hold 26, 20 and 44, and the numerators have not
-  been re-derived. `WideChests` needs `>= 2.1.8`.
-  **`Grado_ABCX` needs `base >= 2.1.9` via `SpaceModFeorasFork`, which was the project high until
-  #8. The project high is now `base >= 2.1.12`** (2026-09-22): `cybersyn2` and the `0-things`
-  library it pulls both require it, and `Grado_ABC`, `Grado_ABCX` and `Grado_ABCS` all inherit it
-  through `Grado_ChangingBase`. **`Grado_ABCS` is the one pack
-  that cannot be answered this way** — from the portal it inherits `>= 2.1.12`, but its own member
-  `space-age` is not a portal mod, so whether the expansion raises that is unreadable until the pack
-  is loaded (#29). So the measurement, which is #15, is complete for four packs and not completable
-  for the fifth. The number to declare instead is #16.
-  **And on 2026-09-22 #7 found the other end of the same problem, which no declaration can fix.**
-  Six members of `Grado_NonChanging` declare `factorio_version: 2.0` and the portal does not serve
-  them to a 2.1 game at all: `CleanFloor`, `SpeedControl`, `WhereIsMyBody`, `YARM`,
-  `PipeVisualizer-Updated`, `solar-calc`. The modding docs are explicit that `"2.0"` means "this
-  major version and no other", with no 2.0-to-2.1 exception. The pack's effective floor is 2.1.7,
-  so on a 2.0 game five members cannot be satisfied and on a 2.1 game these six cannot be
-  downloaded - **there is no version it installs on.** Across the chain's three lower packs, 21 of
-  95 distinct members are in this state, measured 2026-09-22 - **17 of 90 after #8 settled
-  `Grado_ChangingBase` the same day**, which took three of them out of the packs and fixed a fourth
-  by replacement. #16 cannot be answered by choosing a number until they update or are
-  replaced.
-- ~~`alien-biomes-hr-terrain` was dropped **assuming** 2.0 `alien-biomes` absorbed the HR terrain.~~
-  **Checked 2026-09-21 and ruled 2026-09-22 (#8): stays dropped, and the assumption's mechanism was
-  wrong.**
-  The graphics moved into `alien-biomes-graphics`, a mandatory dependency of `alien-biomes`, rather
-  than being absorbed by it — so a third mod nobody names is pinned into the chain. The drop is now
-  settled rather than recommended. See `docs/catalogue/Grado_ChangingBase.md`.
-- Twenty mods are dropped with no replacement found, including seven of the nine Picker mods,
-  `angelsexploration`, `angelsindustries` and `Clowns-Science`. **All twenty have now been
-  re-checked**, the last seven on 2026-09-21 by #5, so "no replacement found" no longer means "not
-  yet checked" anywhere. They divide 4 + 6 + 3 + 7.
-
-  `Grado_NonChanging`'s four and `Grado_ChangingBase`'s six: **neither survey recommends adding any
-  of the ten back as itself, and almost none stayed dropped for the reason originally recorded** —
-  features turned out to be covered by mods already in the packs, by `kry-picker-complete`, or by
-  the base game. Three of the ten ended in `reconsider:` rather than `stay dropped` — two against
-  `kry-picker-complete`, and `PickerInventoryTools` over whether its one feature is still wanted.
-  **`PickerInventoryTools` is closed as of 2026-09-22 (#7): stay dropped, because the feature is
-  base-game.** Dropping a blueprint on a requester chest's "Add section" button is vanilla 2.0 -
-  the suggestion asking for it was closed Implemented, and a sweep of all 2.x mods by title and
-  summary found nothing reproducing the chest-slot form because nothing needs to. So
-  `Grado_NonChanging`'s four Picker drops cost that pack **no feature at all**, where the survey
-  had said one. ~~The two `kry-picker-complete` ones are `Grado_ChangingBase`'s and stay open.~~
-  **Closed 2026-09-22 (#8): `PickerPipeTools` and `PickerVehicles` stay dropped, and
-  `kry-picker-complete` is declined for this pack too** — an addition of a mod never in the 1.1
-  pack, plus the structural objection to a pack depending on a pack. The bundle's members are
-  ticketed for assessment one at a time. **`PickerPipeTools`' pipe clamps are the one feature in
-  that pack's drops with no successor found - a name, title and summary sweep of the 2.x list,
-  which is a search and not a proof.**
-
-  `Grado_ABC`'s three core drops broke that pattern: two have no successor of any kind and stay
-  dropped, `angelsindustries` being the largest single loss in the project, and `Clowns-Science`
-  is `reconsider:` against
-  `ScienceCostTweakerM`. Of the seven add-on drops, four stay dropped, `RealisticFusionPower` stays
-  dropped with no slot held for the sibling project, and the two Deadlock stacking bridges are
-  `reconsider:` **as one question together with the three Deadlock mods still in the pack**,
-  because the only 2.x candidate replaces the whole family's recipes rather than filling either
-  gap. Across the project, a drop is far more often an author's choice not to port than an
-  ecosystem failing. See `docs/catalogue/Grado_ABC.md`. (Sixteen is the number of *replacements*;
-  this line carried it by mistake until 2026-09-20.)
-- ~~Two dependencies the 1.1 `Grado_ChangingBase` declared optional, `? reverse-factory` and
-  `? Squeak Through`, are mandatory in the 2.0 pack. Nobody decided that.~~ **Closed 2026-09-22
-  (#8, settling #11): both stay mandatory, by decision.** An optional dependency installs nothing —
-  it only orders load if the player already has the mod — so a pack whose members are optional hands
-  the player less than its list implies. `squeak-through-2` was confirmed the right replacement for
-  `Squeak Through`.
+- `factorio_version` is declared `2.0` on all five packs while most members need `2.1`. The members'
+  own floors answer it for four packs: the project high is `base >= 2.1.12` (`cybersyn2`, #8), which
+  the three overhaul packs inherit. `Grado_ABCS` cannot be answered until the pack is loaded, because
+  `space-age` is not a portal mod (#29). The measurement is #15; the number to declare is #16.
+  **#16 cannot be answered by choosing a number yet.** A member declaring `factorio_version: 2.0` is
+  not served to a 2.1 game at all, and six of `Grado_NonChanging`'s do, so that pack installs on no
+  version of Factorio (#43). 17 of the 90 distinct members of the three lower packs are in that state
+  (2026-09-22). Per-pack evidence is in `docs/porting-notes.md`.
+- Twenty mods were dropped with no replacement found, all re-checked by 2026-09-21 (4 + 6 + 3 + 7).
+  `Grado_NonChanging`'s four and `Grado_ChangingBase`'s six are closed and all stay dropped (#7, #8);
+  **`PickerPipeTools`' pipe clamps are the one feature among them with no successor found** — a
+  search, not a proof. `Grado_ABC`'s ten await #9: `angelsindustries` is the largest single loss in
+  the project, `Clowns-Science` is `reconsider:` against `ScienceCostTweakerM`,
+  `RealisticFusionPower` stays dropped with no slot held for the sibling project, and the two Deadlock
+  stacking bridges are `reconsider:` as one question with the three Deadlock mods still in the pack.
+  See `docs/catalogue/Grado_ABC.md`.
 
 ## Factorio specifics
 
@@ -289,14 +235,9 @@ lets the commit through, instead of passing everything quietly — which is the 
 [ADR 0001](https://github.com/trulsjo/grado-factorio-tools/blob/main/docs/adr/0001-siblings-consume-this-repo-as-a-submodule.md)
 requires, and what makes the second step safe to ask for.
 
-The check came from `realistic-fusion-refreshed` and was **adopted through the tooling repo on
-2026-09-21**; before that this repo carried its own byte-identical copy of both files. The rule
-rotted here as it had there: on 2026-09-20 all three commits in this repo failed, on 14 body lines
-over 72 and one subject with no gitmoji at all — including a commit written minutes after the rule
-was recorded. History is left alone; the hook stops it growing. `-Range origin/main..HEAD` checks a
-branch before a push, and `-SelfTest` proves the check can still fail.
-
-The first commit `3ab917c` predates this section and does not follow it.
+Old commits that fail the check are left alone — the three from 2026-09-20, `3ab917c` among them,
+predate it. The hook stops the failures growing; `-Range origin/main..HEAD` checks a branch before a
+push, and `-SelfTest` proves the check can still fail.
 
 ## Agent skills
 

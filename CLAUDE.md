@@ -96,14 +96,16 @@ Settled so far, recorded here so nobody reopens them by accident:
 
 Listed in full with their evidence in `docs/porting-notes.md`. Do not close one silently.
 
-- `factorio_version` is declared `2.0` on all five packs while most members need `2.1`. The members'
-  own floors answer it for four packs: the project high is `base >= 2.1.12` (`cybersyn2`, #8), which
-  the three overhaul packs inherit. `Grado_ABCS` cannot be answered until the pack is loaded, because
-  `space-age` is not a portal mod (#29). The measurement is #15; the number to declare is #16.
-  **#16 cannot be answered by choosing a number yet.** A member declaring `factorio_version: 2.0` is
-  not served to a 2.1 game at all, and six of `Grado_NonChanging`'s do, so that pack installs on no
-  version of Factorio (#43). 17 of the 90 distinct members of the three lower packs are in that state
-  (2026-09-22). Per-pack evidence is in `docs/porting-notes.md`.
+- `factorio_version` is declared `2.0` on all five packs while several members have moved to `2.1`.
+  The members' own floors answer it for four packs: the project high is `base >= 2.1.12`
+  (`cybersyn2`, #8), which the three overhaul packs inherit. `Grado_ABCS` cannot be answered until
+  the pack is loaded, because `space-age` is not a portal mod (#29). The measurement is #15; the
+  number to declare is #16. **#16 cannot be answered by choosing a number yet.** A member declaring
+  `factorio_version: 2.0` is not served to a 2.1 game at all, and six of `Grado_NonChanging`'s do,
+  so that pack installs on no version of Factorio (#43). 17 of the 90 distinct members of the three
+  lower packs are in that state (2026-09-22). Floor evidence per pack is in `docs/porting-notes.md`,
+  whose member counts predate #7 and #8; the unserved members are named in
+  `docs/catalogue/Grado_NonChanging.md`.
 - Twenty mods were dropped with no replacement found, all re-checked by 2026-09-21 (4 + 6 + 3 + 7).
   `Grado_NonChanging`'s four and `Grado_ChangingBase`'s six are closed and all stay dropped (#7, #8);
   **`PickerPipeTools`' pipe clamps are the one feature among them with no successor found** — a

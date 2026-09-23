@@ -276,8 +276,11 @@ for. A title is display only and can be changed in any release, unlike the name.
   expect this and should walk the closure rather than one level. See
   `docs/catalogue/Grado_ABC.md`.
 - **`factorio_version` is declared `2.0`** on all five packs, while several member mods (Bob's,
-  Angel's, MadClown) have moved to `2.1`. **Answered for `Grado_NonChanging` on 2026-09-21, and the
-  answer is no:** ten of its 29 members require `base >= 2.1`, six of them `>= 2.1.7`, so a player on
+  Angel's, MadClown) have moved to `2.1`. **The member counts below are each pack as it stood when
+  it was measured**: #7 and #8 then took the three lower lists to 26, 20 and 44 members, and the
+  numerators have not been re-derived against them. **Answered for `Grado_NonChanging` on
+  2026-09-21, and the answer is no:** ten of its 29 members require `base >= 2.1`, six of them
+  `>= 2.1.7`, so a player on
   2.0.x cannot satisfy the pack. See `docs/catalogue/Grado_NonChanging.md`. The mechanism is the
   members' own `base` requirements rather than the `factorio_version` field. **Answered the same way
   for `Grado_ChangingBase` on 2026-09-21, and it raises the floor:** eleven of its 25 members require

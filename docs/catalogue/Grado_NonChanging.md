@@ -902,6 +902,12 @@ the six, verified against a filter that returns 9,710 mods at 2.0 and 4,186 at 2
 members; on a 2.0 game those five cannot be satisfied, and on a 2.1 game these six cannot be
 downloaded. Both ends are closed.
 
+**Overstated - corrected 2026-09-23 (#9).** The 2.1.7 floor reads each member's *latest* release.
+On a 2.0 game the portal serves each mod its newest 2.0 release, and every member of the three lower
+packs has one whose `base` floor is below 2.1. So a 2.1 target is closed and a 2.0 target is
+unproven, not closed. Whether those old releases' floors on each other are consistent is not yet
+checked. See #43 and #16.
+
 **#7's edit improves this without fixing it**, taking the unserved count from ten to six by removing
 `Bottleneck`, `MaxRateCalculator`, `blueprint_flip_and_turn` and `AfraidOfTheDark`.
 
@@ -922,6 +928,11 @@ pack, and `safefill` was replaced by `Waterfill_v17`, which the portal does serv
 becomes 17 of 90** — the list above is left as measured, since re-deriving it across the chain is
 #43's. `Nanobots2` and `qol_research` are the two that remain unserved in that pack and were kept
 anyway, on the same precedent #7 set here. None of this touches this pack's own six.
+
+**#9 changed it again on 2026-09-23, by settling `Grado_ABC`: 17 of 90 becomes 15 of 87.**
+`deadlock-beltboxes-loaders`, `DeadlockStackingForBobs` and `DeadlockStackingForVanilla` left the
+pack, `signalstrings` (served) left with them, and `RealisticFusionPowerPort` came in unserved. The
+list above is still left as measured.
 
 **Not confirmed:** whether a mod declaring `factorio_version: 2.0` would *run* correctly if installed
 by hand on 2.1. The docs say it is unsupported and the portal will not serve it; nothing here has been

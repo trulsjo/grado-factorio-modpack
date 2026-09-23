@@ -87,6 +87,16 @@ Settled so far, recorded here so nobody reopens them by accident:
   **swaps in, additions out** (as #7); **the promise is the membership test**; and
   **unreachability breaks a tie but does not decide alone**. Reasons per mod in
   `docs/catalogue/Grado_ChangingBase.md`.
+- **`Grado_ABC`'s membership is settled** (2026-09-23, #9). 44 mods to 41. The pack gained a
+  promise (`CONTEXT.md`): **Truls's own Angel's, Bob's and MadClown setup**, where a member may extend
+  the overhaul or add content of its own but must not conflict with it. The whole Deadlock stacking
+  family is out, as is `signalstrings`. `RealisticFusionPower` is replaced by `RealisticFusionPowerPort`,
+  **a comparison slot for `realistic-fusion-refreshed`**, which may take the slot later.
+  `angels-smelting-extended` is kept for now, pending #50. #8's three rules carried up unchanged,
+  with **a partial replacement counted as an addition**, which is why `ScienceCostTweakerM` and the
+  others went to #49. A 2.x `angelsindustries` port reopens the question rather than adding it
+  back. All ten of this pack's drops are closed. The hidden mandatory members stay unnamed. Reasons
+  per mod in `docs/catalogue/Grado_ABC.md`.
 - **A pack version does not move before its first release** (2026-09-22). All five stay at
   `0.1.0` through any number of dependency edits; the major/minor rule under *Conventions* starts
   applying at the first published release. `0.x` to `1.0.0` is the one major that signals
@@ -101,19 +111,17 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   (`cybersyn2`, #8), which the three overhaul packs inherit. `Grado_ABCS` cannot be answered until
   the pack is loaded, because `space-age` is not a portal mod (#29). The measurement is #15; the
   number to declare is #16. **#16 cannot be answered by choosing a number yet.** A member declaring
-  `factorio_version: 2.0` is not served to a 2.1 game at all, and six of `Grado_NonChanging`'s do,
-  so that pack installs on no version of Factorio (#43). 17 of the 90 distinct members of the three
-  lower packs are in that state (2026-09-22). Floor evidence per pack is in `docs/porting-notes.md`,
-  whose member counts predate #7 and #8; the unserved members are named in
-  `docs/catalogue/Grado_NonChanging.md`.
-- Twenty mods were dropped with no replacement found, all re-checked by 2026-09-21 (4 + 6 + 3 + 7).
-  `Grado_NonChanging`'s four and `Grado_ChangingBase`'s six are closed and all stay dropped (#7, #8);
-  **`PickerPipeTools`' pipe clamps are the one feature among them with no successor found** — a
-  search, not a proof. `Grado_ABC`'s ten await #9: `angelsindustries` is the largest single loss in
-  the project, `Clowns-Science` is `reconsider:` against `ScienceCostTweakerM`,
-  `RealisticFusionPower` stays dropped with no slot held for the sibling project, and the two Deadlock
-  stacking bridges are `reconsider:` as one question with the three Deadlock mods still in the pack.
-  See `docs/catalogue/Grado_ABC.md`.
+  `factorio_version: 2.0` is not served to a 2.1 game at all, and several are members of every
+  lower pack (#43). **Those floors are latest-release readings, and they overstate the case**
+  (2026-09-23, #9): every one of the 87 members of the three lower packs has at least one
+  release declaring 2.0 whose `base` floor is below 2.1. So a 2.0 target may resolve, while a 2.1
+  target strands the 2.0-only members. That makes "installs on no version of Factorio" unproven
+  rather than true, and the choice between the two targets is #16's. The hidden members pass too.
+  Not yet checked: whether the old releases' floors on each other are consistent. Floor evidence per
+  pack is in `docs/porting-notes.md`, and its member counts predate the settlements.
+- **`PickerPipeTools`' pipe clamps are the one feature lost in the port with no successor found** —
+  a search, not a proof. All twenty port drops are now closed (#7, #8, #9): nineteen stay dropped
+  and `RealisticFusionPower` was replaced by `RealisticFusionPowerPort`.
 
 ## Factorio specifics
 

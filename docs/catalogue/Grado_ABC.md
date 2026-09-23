@@ -7,13 +7,18 @@ question running through every entry below that did not exist lower down: whethe
 core forecloses either end-game.
 
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
-**2026-09-21** and is reproduced from the fetched data rather than retyped.
+**2026-09-21** and is reproduced from the fetched data rather than retyped, except those carrying a
+**Read on** of **2026-09-23** and the readings inside #9's rulings, which #9 took. The **Read on** row
+is authoritative where it disagrees with this sentence.
 
 The dependency list holds 46 entries: `base >= 2.0.0`, `Grado_ChangingBase` — a pack, catalogued in
 `docs/catalogue/Grado_ChangingBase.md` — and **44 mods**. It read 47 and 45 until 2026-09-22, when
 #8 removed the duplicate `bobinserters` line; the mod is still installed by every player of this
 pack, through `Grado_ChangingBase`, and still has an entry below. Ten more were dropped during the
 port.
+**#9 took the pack from 44 mods to 41 on 2026-09-23**: four out, one in. Its ledger is *Decisions,
+2026-09-23 (#9)* below, and the four removed members are now under *Ruled out after the port*. The
+survey text, including the four findings below, is left as it was measured over 45.
 **The pack is now catalogued in full**: #4 surveyed 29 members and 3 drops on 2026-09-21, #5 the
 other 16 and 7 the same day. Which ticket took which is *The split between #4 and #5* below, kept
 because two tickets writing one file is the only way a mod falls through.
@@ -35,6 +40,51 @@ Four findings hold across all 45:
   sixteen add-ons are staler than every one of the 29 core mods** — the oldest core release is
   2026-06-29, and those ten run from 2024-11-16 to 2026-06-26. The overhaul the pack is named for
   is its healthiest part; the things bolted around it are not.
+
+## Decisions, 2026-09-23 (#9)
+
+Truls ruled on every recommendation from both survey halves. The survey text below is left as
+written, and each affected entry carries its ruling inline. **44 mods to 41.**
+
+| mod | ruling |
+|---|---|
+| `DeadlockStackingForBobs`, `DeadlockStackingForVanilla`, `deadlock-beltboxes-loaders` | **out**: the stacking feature is dropped entirely (option 3 of *The Deadlock stacking family is one question*) |
+| `signalstrings` | **out**: a library that nothing depends on, and no reason for it on record |
+| `RealisticFusionPower` | **replaced** by `RealisticFusionPowerPort`, as a comparison slot for `realistic-fusion-refreshed`. The port is not served at 2.1 (#43) |
+| `angels-smelting-extended` | **kept for now**; `angelsextended-remelting` is not accepted as an alternative until #50 compares them. Not served at 2.1 (#43) |
+| `RealisticReactorsReborn`, `True-Nukes_Continued`, `True-Nukes-Graphics_Continued`, `WideChestsBobs`, `spidertrontiers-community-updates` | kept, and tracked under #43 as not served at 2.1 |
+| `angelsindustries` | stays dropped; a 2.x port **reopens** the question rather than adding it back automatically |
+| `Clowns-Science` | stays dropped; `ScienceCostTweakerM` deferred to #49 |
+| `DeadlockStackingForAngels`, `DeadlockStackingForMadclown` | stay dropped, with the family |
+| `angelsexploration`, `DeadlockCrating`, `MilesBobsExpansion`, `baron-turrets`, `beautiful_bridge_railway_bob_fix_updated_new` | stay dropped, as recommended |
+| the hidden mandatory members (fifteen as surveyed, fourteen after #9) | **not named** in the list |
+| `bobclasses`, `angelsaddons-bots` | deferred to #49 |
+| everything else | kept, as recommended: the 34 members on 2.1 whose recommendation was a plain `keep` |
+
+**Four rulings came first, and they decided most of the rest.**
+
+1. **#8's three rules carry up unchanged**: *swaps in, additions out*; *the promise is the membership
+   test*; *unreachability breaks a tie but does not decide alone*. #9 kept rule 1 strict: **a partial
+   replacement is an addition**. That is what sends `ScienceCostTweakerM`, `deadlock-compat-AngelBobPlus`
+   and the two suite mods to #49.
+2. **`Grado_ABC` has a promise now** (`CONTEXT.md`, *Promise*). It is Truls's own Angel's, Bob's and
+   MadClown setup, so a member need not be about the overhaul. It may extend the overhaul mods or add
+   content of its own, but it must not conflict with them, and nothing in it may declare
+   `! space-age`.
+3. **"Unreachable" is conditional, and this file now says "not served at 2.1" instead.** Truls
+   challenged the word, and the portal agrees with him. On 2026-09-23, **every one of 91 named mods
+   had at least one release declaring `factorio_version` 2.0**, and no such newest 2.0 release asked
+   for `base >= 2.1`. The 91 are the three lower packs' lists before #9's removals plus
+   `RealisticFusionPowerPort`, which is a superset of the 87 members they hold after it. So the seven
+   2.0-declaring members here (six surveyed, plus `RealisticFusionPowerPort`) cannot be installed
+   only if the packs target 2.1, which is #16's decision. The hidden mandatory members pass the same
+   check: this pack's fourteen, plus `flib`, `alien-biomes-graphics`, `kry_stdlib`, `stdlib2` and
+   `0-things`. What was not checked is whether those old releases' version floors on each other are
+   consistent. The correction was posted to #43 and #16.
+   The Deadlock drop was ruled *after* this correction, on the half-coverage argument alone rather
+   than on the tie-break.
+4. **The version stays `0.1.0`.** The survey's references to major and minor bumps cite ADR 0001,
+   and ADR 0002 superseded it: a pack's version does not move before its first release.
 
 ## The split between #4 and #5
 
@@ -131,50 +181,6 @@ ahead of it at 27,050 — and the one the others lean on: `Clowns-AngelBob-Nucle
 **Recommendation: keep.** Current on 2.1, load-bearing for the rest of the Clowns set, and the
 largest single block of content in the pack that is neither Angel's nor Bob's.
 
-### `DeadlockStackingForBobs`
-
-| | |
-|---|---|
-| **Title** | Deadlock Stacking For Bobs |
-| **Does** | The bridge between Deadlock's beltboxes and Bob's content: adds stacked variants of Bob's plates, ores and intermediates so they can be compressed onto belts like the base-game items |
-| **Latest** | `2.0.2`, `factorio_version` **2.0**, 2025-07-17 |
-| **Downloads** | 13,178 |
-| **Owner** | `billbo99` |
-| **Read on** | 2026-09-21 |
-
-**Alternatives considered.** One, and it is the same candidate that bears on the whole family:
-`deadlock-compat-AngelBobPlus`. It is assessed once, under *The Deadlock stacking family is one
-question*, because choosing it is a decision about all five Deadlock mods at once rather than about
-this one.
-
-It requires `rusty-locale`, which the dependency list does not name; see *The fifteen mandatory
-dependencies the list does not name*. Its eighteen optional dependencies cover **fifteen of the
-pack's sixteen Bob's mods** — all but `bobvehicleequipment`, which adds no items to stack — plus
-`reskins-bobs`, so it is built for close to exactly this configuration.
-
-**Recommendation: keep**, subject to the family question. Nothing is wrong with it on its own terms
-— it is current for what it does and its author still ships it. What is unresolved is whether the
-pack wants three of five Deadlock mods or a different arrangement entirely.
-
-### `DeadlockStackingForVanilla`
-
-| | |
-|---|---|
-| **Title** | Deadlock Stacking for Vanilla |
-| **Does** | The same bridge for base-game items, adding stacked variants of vanilla plates, ores and intermediates |
-| **Latest** | `2.0.3`, `factorio_version` **2.0**, 2025-10-18 |
-| **Downloads** | 18,166 |
-| **Owner** | `billbo99` |
-| **Read on** | 2026-09-21 |
-
-**Alternatives considered.** As above — the family question covers it.
-
-Its only dependencies are `base`, `rusty-locale` and `deadlock-beltboxes-loaders >= 2.5.0`. It knows
-nothing about Angel's or Bob's, which is what makes it the one member of the family that would
-survive any decision about the others.
-
-**Recommendation: keep**, subject to the family question.
-
 ### `PlutoniumEnergy`
 
 | | |
@@ -192,6 +198,34 @@ touching the nuclear chain, which is a question about the subsystem rather than 
 
 **Recommendation: keep.** Current on 2.1, the best-maintained of the pack's four nuclear add-ons by
 both recency and downloads, and the only one of them requiring `base >= 2.1` on its own account.
+
+### `RealisticFusionPowerPort`
+
+| | |
+|---|---|
+| **Title** | Realistic Fusion Power Port |
+| **Does** | A port of `RealisticFusionPower` to Factorio 2.0: fusion power as an alternative endgame to fission |
+| **Latest** | `1.9.2`, `factorio_version` **2.0**, 2025-12-13 |
+| **Downloads** | 1,863 |
+| **Owner** | `Durikkan` |
+| **Supersedes** | `RealisticFusionPower` by `Romner_set`, last `1.8.18` on 2024-10-25, 29,430 downloads |
+| **Read on** | 2026-09-23 |
+
+**Added 2026-09-23 by #9, as a comparison slot.** Truls wants it next to his own
+`realistic-fusion-refreshed`, which may take the slot once it is published. The two can be installed
+together: the sibling project shares no prototype names with this one, and says so in its own
+description.
+
+**It ignores the overhaul it sits in.** `1.9.0` (2025-01-02) declared optional support for
+`angelspetrochem`, `angelssmelting`, `angelsindustries`, `bobelectronics`, `bobplates` and `bobpower`,
+among others. `1.9.2` removed all of them, and its only dependency is `base >= 2.0`. So neither
+fusion mod in view integrates with Angel's or Bob's today. That passes `Grado_ABC`'s promise, which
+asks a member not to conflict with the overhaul mods rather than to extend them.
+
+It declares `factorio_version` **2.0**, so it is not served to a 2.1 game, and is tracked under #43
+with the other six members here that do the same. It declares nothing about Space Age.
+
+**Ruled 2026-09-23 (#9): in**, replacing `RealisticFusionPower`. Not yet loaded in game.
 
 ### `RealisticReactorsReborn`
 
@@ -224,6 +258,12 @@ so the Clowns nuclear chain already knows about it.
 replaces it, and the pack's nuclear content is built around it; that is an argument for keeping it
 and also the reason its staleness matters.
 
+**Ruled 2026-09-23 (#9): kept.** It declares `factorio_version` **2.0**, so it is not served to a 2.1 game — the portal serves it only at 2.0. Under #8's
+third rule that breaks a tie only in an entry already marked `reconsider:`, and this one was not, so
+it stays and is tracked under #43. Whether it can be installed at all turns on #16: every named
+member of the three lower packs has at least one 2.0 release (measured 2026-09-23), so on a 2.0
+target this mod is served.
+
 ### `True-Nukes-Graphics_Continued`
 
 | | |
@@ -249,6 +289,12 @@ in the dependency list is doing real work: without it the pack would not pull th
 problem below: a graphics package that *is* named in the list, precisely because its parent does not
 require it.
 
+**Ruled 2026-09-23 (#9): kept.** It declares `factorio_version` **2.0**, so it is not served to a 2.1 game — the portal serves it only at 2.0. Under #8's
+third rule that breaks a tie only in an entry already marked `reconsider:`, and this one was not, so
+it stays and is tracked under #43. Whether it can be installed at all turns on #16: every named
+member of the three lower packs has at least one 2.0 release (measured 2026-09-23), so on a 2.0
+target this mod is served.
+
 ### `True-Nukes_Continued`
 
 | | |
@@ -271,6 +317,12 @@ all three in this pack, so three of the six nuclear mods are wired together by t
 **Recommendation: keep.** Current within eight months of this reading and the successor is real
 rather than nominal — `0.3.36` against the original's last `0.3.33` is continued development, not a
 republish.
+
+**Ruled 2026-09-23 (#9): kept.** It declares `factorio_version` **2.0**, so it is not served to a 2.1 game — the portal serves it only at 2.0. Under #8's
+third rule that breaks a tie only in an entry already marked `reconsider:`, and this one was not, so
+it stays and is tracked under #43. Whether it can be installed at all turns on #16: every named
+member of the three lower packs has at least one 2.0 release (measured 2026-09-23), so on a 2.0
+target this mod is served.
 
 ### `WideChestsBobs`
 
@@ -302,6 +354,12 @@ this file, under *Overlaps*. The four-mod cross-pack half is #30's, against
 and inherits whatever #30 concludes about the family's cost. Under
 `docs/catalogue/Grado_ChangingBase.md`'s finding that the merging mods' load cost scales with the
 number of chest types above them, this is the mod that adds those types.
+
+**Ruled 2026-09-23 (#9): kept.** It declares `factorio_version` **2.0**, so it is not served to a 2.1 game — the portal serves it only at 2.0. Under #8's
+third rule that breaks a tie only in an entry already marked `reconsider:`, and this one was not, so
+it stays and is tracked under #43. Whether it can be installed at all turns on #16: every named
+member of the three lower packs has at least one 2.0 release (measured 2026-09-23), so on a 2.0
+target this mod is served.
 
 ### `angels-smelting-extended`
 
@@ -337,6 +395,14 @@ mandatory member of the core both end-games build on, and if so whether `angelse
 covers enough of it. Not a recommendation to drop — the compression and Ironworks features have no
 substitute found — but it is the member of this half most likely to be the first thing that breaks
 when the pack is first loaded, and the only one where that can be said from the portal alone.
+
+**Ruled 2026-09-23 (#9): kept for now.** The rule 3 tie-break was available, since the entry is
+`reconsider:` and the mod declares `factorio_version` 2.0, and it was not taken. The reason is the
+alternative: from the two mods' descriptions, **Truls does not read `angelsextended-remelting` as
+an alternative to this mod.** They seem to extend different parts of the melting process, with
+mixing, compression and the Ironworks here, and remelting and the Alloy Mixer there. The survey's
+"a genuine alternative" above is therefore not accepted as written. **#50** assesses the two side by
+side, and this ruling is revisited when it lands.
 
 ### `angelsaddons-cab`
 
@@ -848,33 +914,6 @@ performance note from the author, not a compatibility claim, and it is unmeasure
 
 **Recommendation: keep.** Current on 2.1.
 
-### `deadlock-beltboxes-loaders`
-
-| | |
-|---|---|
-| **Title** | Deadlock's Stacking Beltboxes & Compact Loaders |
-| **Does** | The mechanism the whole stacking family is built on: 1x1 loaders, and beltboxes that compress five items into one stack for transport and unstack them at the far end |
-| **Latest** | `2.6.0`, `factorio_version` **2.0**, 2025-01-06 |
-| **Downloads** | 126,788 |
-| **Owner** | `shanemadden` |
-| **Overlaps** | `miniloader-redux` (`Grado_ChangingBase`) |
-| **Read on** | 2026-09-21 |
-
-**Alternatives considered.** None as a replacement — it is the base mod the other Deadlock members
-require, so replacing it means replacing the family. The family question itself is below.
-
-The overlap is with `miniloader-redux` in `Grado_ChangingBase`, on the loader half of what this mod
-does. That pack is the lower one and **the comparison is already written there**, in
-`docs/catalogue/Grado_ChangingBase.md` under that mod's entry, reached from the other side on
-2026-09-21. Nothing is added here. It declares `? space-age`, so it neither requires nor forbids
-Space Age.
-
-**Recommendation: keep.** It is the third-most-downloaded member of this half at 126,788, behind
-`rso-mod` and `reskins-bobs`, and the foundation of the stacking feature. Its last release,
-2025-01-06, makes it the second-stalest member
-of the whole pack, which is a fact about the family's maintenance rather than about this mod's
-correctness — see below.
-
 ### `extendedangels`
 
 | | |
@@ -1023,49 +1062,6 @@ settings decide what the other three's ore actually looks like on a map.
 **Recommendation: keep.** Current, maintained, and the member with the strongest claim to being
 load-bearing for how an ABC game opens.
 
-### `signalstrings`
-
-| | |
-|---|---|
-| **Title** | Signal Strings Library |
-| **Does** | A library, not content: converts between Lua strings and virtual-signal strings for other mods to call. It adds nothing a player can see, build or research |
-| **Latest** | `2.1.0`, `factorio_version` **2.1**, 2026-06-23 |
-| **Downloads** | 4,176 |
-| **Owner** | `justarandomgeek` |
-| **Read on** | 2026-09-21 |
-
-**Alternatives considered.** Not applicable — the question is not what could replace it but why it
-is here at all.
-
-**Nothing in any of the five packs depends on it.** Enumerated rather than assumed: the dependency
-lists of **136 mods** were searched for any reference to `signalstrings`, mandatory or optional,
-and there are none. Those 136 are the 114 that make up the chain — 45 `Grado_ABC` members, 25
-`Grado_ChangingBase`, 29 `Grado_NonChanging` and the 15 hidden mandatory ones — plus the 22
-further mods the two ABC surveys fetched as candidates, superseded originals and second-level
-dependencies. The search was wider than the chain, not narrower. It is the only member of this
-pack that is a pure library with no dependent, and libraries are normally pulled in by the mod that
-needs them rather than listed by a pack.
-
-Two readings, and the evidence does not choose between them. It may be a deliberate inclusion for a
-player who writes combinator scripts — the mod is current on 2.1 and costs essentially nothing. Or
-it may be a leftover: a mod that was once required by something the 1.1 pack carried and was never
-removed when that something went. This survey cannot tell which, because the 1.1 dependency lists
-are recorded but the reason for each line is not.
-
-**Recommendation: reconsider:** whether `signalstrings` is wanted on its own merits. It is the only
-in-pack entry in this half that does not end in `keep`, and the reason is not that anything is wrong
-with the mod — it is that a pack listing a library nothing uses is either making a choice worth
-stating or carrying a line nobody meant to keep, and `CLAUDE.md` is clear that a dependency which
-vanishes silently cannot be revisited.
-
-Removing it is save-safe and costs a **minor** bump, and that is worth showing the working on.
-`docs/adr/0001-version-major-tracks-save-compatibility.md` glosses major as "a member mod of
-`Grado_ChangingBase` or below added or removed", and on the gloss alone removing any `Grado_ABC`
-member would be major. The ADR's actual criterion is "a dependency change an existing save cannot
-survive", and this mod adds no entity, recipe or item for a save to hold. It is the one member of
-the pack where the gloss and the criterion come apart, which is worth recording for whoever writes
-the next version bump. Keeping it costs a download.
-
 ### `spidertrontiers-community-updates`
 
 | | |
@@ -1091,6 +1087,12 @@ hard incompatibilities and both correct — the first is the mod it replaces. It
 else offers spidertron tiers on 2.x, so there is no action to take today; the entry exists so that
 when something breaks, the pack's oldest unmaintained member is already identified rather than
 discovered.
+
+**Ruled 2026-09-23 (#9): kept.** It declares `factorio_version` **2.0**, so it is not served to a 2.1 game — the portal serves it only at 2.0. Under #8's
+third rule that breaks a tie only in an entry already marked `reconsider:`, and this one was not, so
+it stays and is tracked under #43. Whether it can be installed at all turns on #16: every named
+member of the three lower packs has at least one 2.0 release (measured 2026-09-23), so on a 2.0
+target this mod is served.
 
 ## Dropped during the port
 
@@ -1134,6 +1136,8 @@ recorded — "no 2.0 release, no replacement found" — is confirmed exactly as 
 this the one of the thirteen drops re-checked across three surveys — four, six and three — where
 the original record held up unchanged. **Reopen this only if `angelsindustries` ports**, because
 that is the gate.
+
+**Ruled 2026-09-23 (#9): stays dropped**, as recommended.
 
 ### `angelsindustries`
 
@@ -1186,6 +1190,12 @@ whether `Grado_ABC` should be described to players as an Angel's-and-Bob's pack 
 overhaul, and whether a future port would be added back on sight. Both are Truls's, and neither has
 to be answered now.
 
+**Ruled 2026-09-23 (#9): stays dropped, and a 2.x port reopens the question instead of adding the
+mod back automatically.** Bringing back a dropped member would be a swap under rule 1, so it is
+allowed, but this one replaces the whole tech tree and changes every save, so it gets a ruling of
+its own when the port exists. The first of the survey's two open questions is answered in the
+pack's `description`, which now says Angel's Industries is not included.
+
 ### `Clowns-Science`
 
 | | |
@@ -1226,6 +1236,11 @@ pack. And it is a tech-tree change layered on a pack that already lost its tech 
 `angelsindustries`, so the two questions are really one question about what ABC's research
 progression should be, and answering them separately risks answering them inconsistently.
 
+**Ruled 2026-09-23 (#9): stays dropped.** `ScienceCostTweakerM` would be an addition: a different
+mod that overlaps in part, not a successor. #9 kept rule 1 strict about that, so the question moves
+to **#49**, the `Grado_ABC` additions survey, where it is read together with the lost
+`angelsindustries` tech overhaul as the survey above recommends.
+
 ### `DeadlockCrating`
 
 | | |
@@ -1251,6 +1266,8 @@ across the project: `Grado_ChangingBase`'s `alien-biomes-hr-terrain` last shippe
 a larger-ratio version of what `deadlock-beltboxes-loaders` already provides, and that mod is
 present and working. This is the one Deadlock drop that costs a *degree* rather than a *kind* of
 coverage.
+
+**Ruled 2026-09-23 (#9): stays dropped**, as recommended.
 
 ### `DeadlockStackingForAngels`
 
@@ -1278,6 +1295,9 @@ has no successor under its own name, and the only 2.x candidate covering the gro
 rather than fill this one gap. The argument is below, because answering it per-mod is how a pack
 ends up with three compatible halves of a feature and no policy.
 
+**Ruled 2026-09-23 (#9): stays dropped**, with the rest of the family. See *The Deadlock stacking
+family is one question*.
+
 ### `DeadlockStackingForMadclown`
 
 | | |
@@ -1300,6 +1320,9 @@ all five Clowns mods and on both of the other stacking bridges. At 1,102 downloa
 dropped — 1,102 downloads, `0.0.9`, and a third-party bridge to a third-party bridge — but its
 coverage is part of what a family-wide answer has to account for.
 
+**Ruled 2026-09-23 (#9): stays dropped**, with the rest of the family. See *The Deadlock stacking
+family is one question*.
+
 ### `MilesBobsExpansion`
 
 | | |
@@ -1321,6 +1344,8 @@ ladder this mod extended rather than created.
 ladder the pack still has in full, at 1,583 downloads, last released 2022-06-21 — before Factorio
 2.0 was announced. Nothing about the pack's progression breaks without it; the top of the machine
 ladder is simply Bob's top rather than one step past it.
+
+**Ruled 2026-09-23 (#9): stays dropped**, as recommended.
 
 ### `RealisticFusionPower`
 
@@ -1370,6 +1395,17 @@ because the first without it would give `Grado_ABC` a fusion mod that ignores th
 in. When it does land it will arrive as three mods, so adding it is a three-line change or a
 one-line change with two more hidden members, which is the pattern described below.
 
+**Ruled 2026-09-23 (#9): replaced by `RealisticFusionPowerPort`**, Durikkan's 2.0 port. The survey
+did not find it: its search looked for fusion chains that integrate with Angel's or Bob's, and the
+port's current release declares no such hooks. It is taken for a reason the survey could not weigh.
+**Truls wants to compare it against his own `realistic-fusion-refreshed`**, and the two do not
+conflict, because the sibling project shares no prototype names with it and its own description says
+the port "can stay installed beside this one if you want to compare them". **This is a comparison
+slot, and it is recorded as one.** `realistic-fusion-refreshed` may replace the port once it
+publishes, and that would be a membership change for a later ticket, not something this ruling
+commits to. The survey's "do not hold a slot" still holds for the sibling project itself. See the
+port's entry under *In the pack*.
+
 ### `baron-turrets`
 
 | | |
@@ -1393,6 +1429,8 @@ by the same author, who has shipped neither.
 
 **Recommendation: stay dropped.** 1,658 downloads, no 2.x release, a dead mandatory library beneath
 it, and a feature the pack covers differently through `bobwarfare`.
+
+**Ruled 2026-09-23 (#9): stays dropped**, as recommended.
 
 ### `beautiful_bridge_railway_bob_fix_updated_new`
 
@@ -1418,6 +1456,139 @@ It is the only drop in the project whose disposal is decided entirely by another
 if #8 ever reinstates `beautiful_bridge_railway`, this line comes back into question for
 `Grado_ABC`, and if it does not, this mod can never return. Recorded so the dependency between the
 two decisions is visible from this side.
+
+**Ruled 2026-09-23 (#9): stays dropped**, as recommended.
+
+## Ruled out after the port
+
+Members that survived the 1.1 -> 2.0 port and were removed by #9 on 2026-09-23. The survey text is
+kept as written, and each entry ends with its ruling.
+
+### `DeadlockStackingForBobs`
+
+| | |
+|---|---|
+| **Title** | Deadlock Stacking For Bobs |
+| **Does** | The bridge between Deadlock's beltboxes and Bob's content: adds stacked variants of Bob's plates, ores and intermediates so they can be compressed onto belts like the base-game items |
+| **Latest** | `2.0.2`, `factorio_version` **2.0**, 2025-07-17 |
+| **Downloads** | 13,178 |
+| **Owner** | `billbo99` |
+| **Read on** | 2026-09-21 |
+
+**Alternatives considered.** One, and it is the same candidate that bears on the whole family:
+`deadlock-compat-AngelBobPlus`. It is assessed once, under *The Deadlock stacking family is one
+question*, because choosing it is a decision about all five Deadlock mods at once rather than about
+this one.
+
+It requires `rusty-locale`, which the dependency list does not name; see *The fifteen mandatory
+dependencies the list does not name*. Its eighteen optional dependencies cover **fifteen of the
+pack's sixteen Bob's mods** — all but `bobvehicleequipment`, which adds no items to stack — plus
+`reskins-bobs`, so it is built for close to exactly this configuration.
+
+**Recommendation: keep**, subject to the family question. Nothing is wrong with it on its own terms
+— it is current for what it does and its author still ships it. What is unresolved is whether the
+pack wants three of five Deadlock mods or a different arrangement entirely.
+
+**Ruled 2026-09-23 (#9): out**, with the whole Deadlock family. See *The Deadlock stacking family is
+one question*.
+
+### `DeadlockStackingForVanilla`
+
+| | |
+|---|---|
+| **Title** | Deadlock Stacking for Vanilla |
+| **Does** | The same bridge for base-game items, adding stacked variants of vanilla plates, ores and intermediates |
+| **Latest** | `2.0.3`, `factorio_version` **2.0**, 2025-10-18 |
+| **Downloads** | 18,166 |
+| **Owner** | `billbo99` |
+| **Read on** | 2026-09-21 |
+
+**Alternatives considered.** As above — the family question covers it.
+
+Its only dependencies are `base`, `rusty-locale` and `deadlock-beltboxes-loaders >= 2.5.0`. It knows
+nothing about Angel's or Bob's, which is what makes it the one member of the family that would
+survive any decision about the others.
+
+**Recommendation: keep**, subject to the family question.
+
+**Ruled 2026-09-23 (#9): out**, with the whole Deadlock family.
+
+### `deadlock-beltboxes-loaders`
+
+| | |
+|---|---|
+| **Title** | Deadlock's Stacking Beltboxes & Compact Loaders |
+| **Does** | The mechanism the whole stacking family is built on: 1x1 loaders, and beltboxes that compress five items into one stack for transport and unstack them at the far end |
+| **Latest** | `2.6.0`, `factorio_version` **2.0**, 2025-01-06 |
+| **Downloads** | 126,788 |
+| **Owner** | `shanemadden` |
+| **Overlaps** | `miniloader-redux` (`Grado_ChangingBase`) |
+| **Read on** | 2026-09-21 |
+
+**Alternatives considered.** None as a replacement — it is the base mod the other Deadlock members
+require, so replacing it means replacing the family. The family question itself is below.
+
+The overlap is with `miniloader-redux` in `Grado_ChangingBase`, on the loader half of what this mod
+does. That pack is the lower one and **the comparison is already written there**, in
+`docs/catalogue/Grado_ChangingBase.md` under that mod's entry, reached from the other side on
+2026-09-21. Nothing is added here. It declares `? space-age`, so it neither requires nor forbids
+Space Age.
+
+**Recommendation: keep.** It is the third-most-downloaded member of this half at 126,788, behind
+`rso-mod` and `reskins-bobs`, and the foundation of the stacking feature. Its last release,
+2025-01-06, makes it the second-stalest member
+of the whole pack, which is a fact about the family's maintenance rather than about this mod's
+correctness — see below.
+
+**Ruled 2026-09-23 (#9): out**, and the stacking feature goes with it. The loader half of what it
+did is covered by `miniloader-redux` in `Grado_ChangingBase`.
+
+### `signalstrings`
+
+| | |
+|---|---|
+| **Title** | Signal Strings Library |
+| **Does** | A library, not content: converts between Lua strings and virtual-signal strings for other mods to call. It adds nothing a player can see, build or research |
+| **Latest** | `2.1.0`, `factorio_version` **2.1**, 2026-06-23 |
+| **Downloads** | 4,176 |
+| **Owner** | `justarandomgeek` |
+| **Read on** | 2026-09-21 |
+
+**Alternatives considered.** Not applicable — the question is not what could replace it but why it
+is here at all.
+
+**Nothing in any of the five packs depends on it.** Enumerated rather than assumed: the dependency
+lists of **136 mods** were searched for any reference to `signalstrings`, mandatory or optional,
+and there are none. Those 136 are the 114 that make up the chain — 45 `Grado_ABC` members, 25
+`Grado_ChangingBase`, 29 `Grado_NonChanging` and the 15 hidden mandatory ones — plus the 22
+further mods the two ABC surveys fetched as candidates, superseded originals and second-level
+dependencies. The search was wider than the chain, not narrower. It is the only member of this
+pack that is a pure library with no dependent, and libraries are normally pulled in by the mod that
+needs them rather than listed by a pack.
+
+Two readings, and the evidence does not choose between them. It may be a deliberate inclusion for a
+player who writes combinator scripts — the mod is current on 2.1 and costs essentially nothing. Or
+it may be a leftover: a mod that was once required by something the 1.1 pack carried and was never
+removed when that something went. This survey cannot tell which, because the 1.1 dependency lists
+are recorded but the reason for each line is not.
+
+**Recommendation: reconsider:** whether `signalstrings` is wanted on its own merits. It is the only
+in-pack entry in this half that does not end in `keep`, and the reason is not that anything is wrong
+with the mod — it is that a pack listing a library nothing uses is either making a choice worth
+stating or carrying a line nobody meant to keep, and `CLAUDE.md` is clear that a dependency which
+vanishes silently cannot be revisited.
+
+Removing it is save-safe and costs a **minor** bump, and that is worth showing the working on.
+`docs/adr/0001-version-major-tracks-save-compatibility.md` glosses major as "a member mod of
+`Grado_ChangingBase` or below added or removed", and on the gloss alone removing any `Grado_ABC`
+member would be major. The ADR's actual criterion is "a dependency change an existing save cannot
+survive", and this mod adds no entity, recipe or item for a save to hold. It is the one member of
+the pack where the gloss and the criterion come apart, which is worth recording for whoever writes
+the next version bump. Keeping it costs a download.
+
+**Ruled 2026-09-23 (#9): out**, as recommended. Nobody could name a reason it was in the list, and a
+library with no dependent reads as a leftover. The version-bump reasoning above is moot: it cites ADR
+0001, which ADR 0002 supersedes, and a pack's version does not move before its first release.
 
 ## The three Angel's and Clowns drops are one event
 
@@ -1474,6 +1645,9 @@ not recommend either. Two facts bear on it if it is ever asked. `angelsaddons-bo
 `Grado_ABC` member on any reading. `bobclasses` would not obviously be — like `bobinserters` it needs
 no Bob's content, only `boblibrary`, so if it were ever wanted the layer question from
 *`bobinserters` sits in two packs* applies to it too.
+
+**Deferred 2026-09-23 (#9) to #49.** Both are additions, and #9 applied rule 1, *swaps in, additions
+out*, unchanged from #8.
 
 ## The fifteen mandatory dependencies the list does not name
 
@@ -1536,6 +1710,12 @@ Whether the pack should name them explicitly is not this survey's to settle: it 
 player's install and would make the list self-describing, and it is a dependency-list edit either
 way, so it belongs to #9.
 
+**Ruled 2026-09-23 (#9): not named.** The list holds what the pack *chose*, and this table is where
+the rest is recorded. `True-Nukes-Graphics_Continued` stays named, because its parent declares it
+only optionally. **The fifteen are fourteen after #9**: `rusty-locale` was pulled in only by the two
+`DeadlockStacking*` mods, and both are out. The table above is left as measured. #39's reconciliation
+against the chain-wide nineteen predates this change.
+
 ## The Deadlock stacking family is one question
 
 The pack carries three of the five Deadlock mods the 1.1 pack had, and the two it lost are the two
@@ -1595,6 +1775,13 @@ pack membership, so it is **#9's**. Two of the three drops' entries above end in
 pointing here rather than proposing an answer; `DeadlockCrating` ends in `stay dropped`, because
 its feature is a higher-ratio version of one the pack still has and its disposal does not turn on
 this question.
+
+**Ruled 2026-09-23 (#9): option 3, drop the stacking feature entirely.** All three members are out
+and the two dropped bridges stay dropped. Option 2 is an addition under rule 1 and is deferred to
+**#49**, where it would reintroduce stacking rather than complete it, and Truls is "not sure I want
+the deadlock mod". It declares `factorio_version` 2.0 as well. The hidden `rusty-locale` leaves the
+install with the family. The survey's "major bump" is moot, because no version moves before the
+first release (ADR 0002).
 
 ## Six mods on one nuclear chain
 

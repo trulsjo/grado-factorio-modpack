@@ -6,16 +6,15 @@
   "contact": "",
   "homepage": "https://github.com/trulsjo/grado-factorio-modpack",
   "factorio_version": "2.0",
-  "description": "Angel's, Bob's and MadClown overhaul, on top of Grado Changing Base. The shared core for the ABCX and ABCS end-game packs.",
+  "description": "Angel's, Bob's and MadClown overhaul, on top of Grado Changing Base. The shared core for the ABCX and ABCS end-game packs. Does not include Angel's Industries (angelsindustries): its tech overhaul and components layer are absent.",
   "dependencies": [
     "base >= 2.0.0",
     "Grado_ChangingBase",
     "Clowns-AngelBob-Nuclear",
     "Clowns-Extended-Minerals",
     "Clowns-Processing",
-    "DeadlockStackingForBobs",
-    "DeadlockStackingForVanilla",
     "PlutoniumEnergy",
+    "RealisticFusionPowerPort",
     "RealisticReactorsReborn",
     "True-Nukes-Graphics_Continued",
     "True-Nukes_Continued",
@@ -45,14 +44,12 @@
     "bobvehicleequipment",
     "bobwarfare",
     "botReplacer",
-    "deadlock-beltboxes-loaders",
     "extendedangels",
     "pump",
     "reskins-angels",
     "reskins-bobs",
     "reskins-compatibility",
     "rso-mod",
-    "signalstrings",
     "spidertrontiers-community-updates"
   ]
 }

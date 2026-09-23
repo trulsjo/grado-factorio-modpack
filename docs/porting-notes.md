@@ -117,6 +117,27 @@ The 1.1 `Grado_ABCX` held 56 mods and is split here between `Grado_ABC` and `Gra
 pack takes **41 carried over, 4 replaced** -> **45 in the 2.0 pack**. The **10 dropped** below are
 the whole branch's.
 
+**Changed again after the port, 2026-09-23 (#9): 44 mods to 41.** The figures above describe the
+1.1 -> 2.0 port and are left as they were (the 45 counted `bobinserters`, whose line #8 removed on
+2026-09-22). #9 made these changes:
+
+- **Out:** the three Deadlock mods (`deadlock-beltboxes-loaders`, `DeadlockStackingForBobs`,
+  `DeadlockStackingForVanilla`). The stacking feature is dropped entirely, because it covered vanilla
+  and Bob's items and not Angel's or Clowns ones, and Truls is not sure he wants it at all.
+- **Out:** `signalstrings`, a library nothing depends on, with no reason for it on record.
+- **In:** `RealisticFusionPowerPort` (`Durikkan`, `1.9.2`), replacing `RealisticFusionPower` as a
+  **comparison slot**. Truls wants it beside his own `realistic-fusion-refreshed`, which may replace
+  it once published. The two share no prototype names, so they do not conflict.
+- **Kept for now:** `angels-smelting-extended`. #50 assesses `angelsextended-remelting`, which #9
+  did not accept as an alternative.
+- **Deferred to #49**, the additions survey: `ScienceCostTweakerM`, `deadlock-compat-AngelBobPlus`,
+  `angelsaddons-bots` and `bobclasses`.
+
+`angelsindustries` stays dropped, and a 2.x port would reopen the question rather than add it back
+automatically. The pack's `description` now says it is not included. The pack also gained a promise
+(`CONTEXT.md`). Per-mod reasons are in `docs/catalogue/Grado_ABC.md` under *Decisions, 2026-09-23
+(#9)*.
+
 ### Replaced
 
 | 1.1 mod | 2.0 replacement |
@@ -125,6 +146,7 @@ the whole branch's.
 | `spidertrontiers` | `spidertrontiers-community-updates` |
 | `True-Nukes` | `True-Nukes_Continued` |
 | `True-Nukes-Graphics` | `True-Nukes-Graphics_Continued` |
+| `RealisticFusionPower` | `RealisticFusionPowerPort`, **added after the port** (2026-09-23, #9). It was listed as dropped below until then |
 
 ### Dropped - no 2.0 release, no replacement found
 
@@ -154,6 +176,10 @@ the mod it succeeds declared six optional hooks. The remaining two -
 question with the three Deadlock mods still in the pack**, because the only 2.x candidate replaces
 the whole family's stacking recipes rather than filling either gap. See
 `docs/catalogue/Grado_ABC.md`.
+
+**Ruled 2026-09-23 (#9).** Nine of the ten stay dropped. `RealisticFusionPower` is replaced by
+`RealisticFusionPowerPort` (see *Replaced* above). The Deadlock question was answered by dropping
+the whole family, including the three members still in the pack.
 
 The heading below describes the original port search, not the current state.
 
@@ -277,7 +303,8 @@ for. A title is display only and can be changed in any release, unlike the name.
   `docs/catalogue/Grado_ABC.md`.
 - **`factorio_version` is declared `2.0`** on all five packs, while several member mods (Bob's,
   Angel's, MadClown) have moved to `2.1`. **The member counts below are each pack as it stood when
-  it was measured**: #7 and #8 then took the three lower lists to 26, 20 and 44 members, and the
+  it was measured**: #7 and #8 then took the three lower lists to 26, 20 and 44 members, #9 took the third to 41
+  on 2026-09-23, and the
   numerators have not been re-derived against them. **Answered for `Grado_NonChanging` on
   2026-09-21, and the answer is no:** ten of its 29 members require `base >= 2.1`, six of them
   `>= 2.1.7`, so a player on
@@ -309,9 +336,19 @@ for. A title is display only and can be changed in any release, unlike the name.
   after #8. See `docs/catalogue/Grado_ABCX.md` and
   `docs/catalogue/Grado_ABCS.md`. **So the measurement is complete for four packs and not completable
   for the fifth without the game**, which is issue #29. The number itself is Truls's to set.
+  **Every reading above is of each member's *latest* release, and that turns out to matter
+  (2026-09-23, #9).** All 91 named mods checked (the three lower packs' lists before #9's removals,
+  plus `RealisticFusionPowerPort`, so a superset of the 87 members after it) have at least one
+  release declaring `factorio_version` 2.0, and none of those newest 2.0
+  releases asks for `base >= 2.1`. On a 2.0 game the portal serves each mod its newest 2.0 release,
+  so the 2.1 floor measured here is a floor for a 2.1 target and not a proof that 2.0 is
+  impossible. The hidden mandatory members pass the same check: `Grado_ABC`'s fourteen after #9, plus `flib`,
+  `alien-biomes-graphics`, `kry_stdlib`, `stdlib2` and `0-things`. Not checked: whether the
+  old releases' version floors on each other are consistent. See #43 and #16.
 - **`RealisticFusionPower` is among the drops.** It is the mod the separate
   *realistic-fusion-refreshed* project exists to succeed; that mod is a candidate to add here once it
-  ships.
+  ships. **Answered in part 2026-09-23 (#9):** `RealisticFusionPowerPort` holds the slot for now, as a
+  comparison against the sibling project, which may replace it once published.
 - **The Picker family lost seven of nine - and for `Grado_NonChanging` that is now closed.**
   **#7 settled it on 2026-09-22: the four drops cost that pack nothing.** `kry-picker-extended` and
   `BlueprintTools` are already members and cover the belt, planner and sorting features, and the one

@@ -97,6 +97,12 @@ Settled so far, recorded here so nobody reopens them by accident:
   others went to #49. A 2.x `angelsindustries` port reopens the question rather than adding it
   back. All ten of this pack's drops are closed. The hidden mandatory members stay unnamed. Reasons
   per mod in `docs/catalogue/Grado_ABC.md`.
+- **`Grado_ABCX`'s and `Grado_ABCS`'s membership is settled** (2026-09-23, #10). Neither list
+  changed: one member each. Both gained a promise (`CONTEXT.md`). **`Grado_ABCS` is ABC *beside*
+  Space Age, not merged with it**, so no bridge mod; #31 stays open to revisit that. ABCX keeps its
+  own `! space-age` beside the fork's. `quality` and `elevated-rails` go unnamed, because
+  `space-age` requires both (read from the installed game, 2.0.77). Reasons in
+  `docs/porting-notes.md`.
 - **A pack version does not move before its first release** (2026-09-22). All five stay at
   `0.1.0` through any number of dependency edits; the major/minor rule under *Conventions* starts
   applying at the first published release. `0.x` to `1.0.0` is the one major that signals

@@ -205,25 +205,16 @@ The heading below describes the original port search, not the current state.
 |---|---|
 | `SpaceMod` | `SpaceModFeorasFork` |
 
-**Ruled on 2026-09-23 (#10): unchanged.** `SpaceModFeorasFork` stays the only member - it is the only
-Space Extension on 2.x, and nothing in `Grado_ABC` conflicts with it or belongs here instead. The
-pack's own `! space-age` line stays too, even though the fork declares the same thing: the
-exclusion is a decision about the packs, so the pack states it rather than borrowing the fork's.
-The cost is that the line would mask the fork ever dropping its `!`, the event that reopens the
-five-pack structure; watching for that is the catalogue's job, not the dependency list's.
+**Ruled on 2026-09-23 (#10): unchanged.** `SpaceModFeorasFork` stays the only member, and the
+pack's own `! space-age` line stays. Reasons in `docs/catalogue/Grado_ABCX.md`.
 
 ## Grado_ABCS
 
 **1 mod, and it is new.** `Grado_ABCS` did not exist in 1.1, so nothing here was carried over,
 replaced or dropped.
 
-**Ruled on 2026-09-23 (#10): unchanged.** The pack is `Grado_ABC` *beside* Space Age, not
-integrated with it (`CONTEXT.md`, *Promise*). So no bridge mod: `angelbob-spaceage-rebalance` would
-bring eight mandatory extras, seven of them third-party planet content nobody chose, and
-`BobsAngelsSpaceAge` is a second addition on weak evidence; both are additions, and #8's rule keeps
-additions out. #31 stays open as the place to revisit that, best after #29 shows whether the
-unintegrated pack is playable. `quality` and `elevated-rails` are not listed, because `space-age`
-requires both itself - read from `data/space-age/info.json` in the installed game, `2.0.77`.
+**Ruled on 2026-09-23 (#10): unchanged.** `space-age` stays the only member: no bridge mod, and
+`quality` and `elevated-rails` not named. Reasons in `docs/catalogue/Grado_ABCS.md`.
 
 ## Verified against the portal, 2026-09-20
 

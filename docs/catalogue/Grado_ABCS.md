@@ -6,7 +6,8 @@ as a DLC and installed with it. That makes this the one pack whose contents cann
 the method every other entry in this catalogue uses.
 
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
-**2026-09-22** and is reproduced from the fetched data rather than retyped.
+**2026-09-22** and is reproduced from the fetched data rather than retyped, except the one
+re-read on 2026-09-23 (#10), which carries its own date.
 
 The dependency list holds 3 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, catalogued in
 `docs/catalogue/Grado_ABC.md` — and `space-age`. **The pack is new**, so nothing was carried over,
@@ -48,12 +49,12 @@ replacement but for the integration layer between the expansion and the overhaul
 that search is under *Pressure on the one-mod-per-branch rule* below rather than here, because what
 it found is not a substitute for this member — it is a candidate second member.
 
-**Ruled 2026-09-23 (#10): kept, as the pack's only member.** The pack is `Grado_ABC` beside Space
-Age, not integrated with it (`CONTEXT.md`, *Promise*), so no bridge was added; reasons in
-`docs/porting-notes.md`.
-
 **Recommendation: keep.** It is what the pack is. The recommendation is forced and the entry is not
 the interesting part of this file.
+
+**Ruled 2026-09-23 (#10): kept, as the pack's only member.** The pack is `Grado_ABC` beside Space
+Age, not integrated with it (`CONTEXT.md`, *Promise*), so no bridge was added; the reasons are under
+*Pressure on the one-mod-per-branch rule* below.
 
 **Every row above is degraded evidence and should be read as such.** The **Latest**, **Downloads**
 and **Owner** rows describe the placeholder, not the expansion; **Does** is a description of the
@@ -84,7 +85,8 @@ which is a curiosity rather than a fact this pack depends on.
 for this one member they return nothing usable. Three things the other 100-odd entries state as read
 cannot be stated here at all: the expansion's own dependency list, its `factorio_version`, and its
 `base` floor. They are readable from `data/space-age/info.json` in an installed game and from
-nowhere else this project currently has. **Issue #29 — load `Grado_ABCS` in Factorio once, end to
+nowhere else this project currently has. *(Partly read 2026-09-23, #10: the installed game's
+`2.0.77` build is read below. A 2.1 build is not.)* **Issue #29 — load `Grado_ABCS` in Factorio once, end to
 end — is not merely the last check on this pack; it is the first check on its only member.**
 
 One consequence is worth naming rather than leaving implicit. Space Age ships as three mods, not
@@ -158,7 +160,9 @@ their own ores are not integrated by resolving; they are integrated by somebody 
 `Grado_ABCX` has no equivalent gap, because the fork declares direct Bob's integration and is
 designed to sit on Nauvis.
 
-**Two mods on 2.x attempt the bridge, and they are mutually exclusive.** Both were read 2026-09-22.
+**Two mods on 2.x attempt the bridge, and they are mutually exclusive.** Both were read 2026-09-22;
+`angelbob-spaceage-rebalance` was re-read at `1.2.17` on 2026-09-23 with its mandatory list
+unchanged.
 
 | | `angelbob-spaceage-rebalance` | `BobsAngelsSpaceAge` |
 |---|---|---|
@@ -202,6 +206,6 @@ What this survey settles is that the rule cannot be assumed to hold on this bran
 holds on the other.
 
 **Decided 2026-09-23 (#10): doing nothing.** The rule holds on this branch. The pack's promise makes
-it `Grado_ABC` beside Space Age rather than merged with it, so a bridge is an addition, and additions
-stay out. #31 stays open as the place to revisit that, best after #29 shows whether the unintegrated
+it `Grado_ABC` beside Space Age rather than merged with it, and a mod whose job is to merge them
+fails that promise, whichever of the two it is. #31 stays open as the place to revisit that, best after #29 shows whether the unintegrated
 pack is playable; taking a bridge would mean changing the promise first.

@@ -211,7 +211,7 @@ both recency and downloads, and the only one of them requiring `base >= 2.1` on 
 | **Supersedes** | `RealisticFusionPower` by `Romner_set`, last `1.8.18` on 2024-10-25, 29,430 downloads |
 | **Read on** | 2026-09-23 |
 
-**Added 2026-09-23 by #9, as a comparison slot.** Truls wants it next to his own
+**A comparison slot.** Truls wants it next to his own
 `realistic-fusion-refreshed`, which may take the slot once it is published. The two can be installed
 together: the sibling project shares no prototype names with this one, and says so in its own
 description.
@@ -225,7 +225,8 @@ asks a member not to conflict with the overhaul mods rather than to extend them.
 It declares `factorio_version` **2.0**, so it is not served to a 2.1 game, and is tracked under #43
 with the other six members here that do the same. It declares nothing about Space Age.
 
-**Ruled 2026-09-23 (#9): in**, replacing `RealisticFusionPower`. Not yet loaded in game.
+**Recommendation: keep.** Added by #9 on 2026-09-23, replacing `RealisticFusionPower`, as a
+comparison slot for `realistic-fusion-refreshed`. Not yet loaded in game.
 
 ### `RealisticReactorsReborn`
 
@@ -1474,6 +1475,7 @@ kept as written, and each entry ends with its ruling.
 | **Downloads** | 13,178 |
 | **Owner** | `billbo99` |
 | **Read on** | 2026-09-21 |
+| **Status** | dropped 2026-09-23 (#9) |
 
 **Alternatives considered.** One, and it is the same candidate that bears on the whole family:
 `deadlock-compat-AngelBobPlus`. It is assessed once, under *The Deadlock stacking family is one
@@ -1502,6 +1504,7 @@ one question*.
 | **Downloads** | 18,166 |
 | **Owner** | `billbo99` |
 | **Read on** | 2026-09-21 |
+| **Status** | dropped 2026-09-23 (#9) |
 
 **Alternatives considered.** As above — the family question covers it.
 
@@ -1524,6 +1527,7 @@ survive any decision about the others.
 | **Owner** | `shanemadden` |
 | **Overlaps** | `miniloader-redux` (`Grado_ChangingBase`) |
 | **Read on** | 2026-09-21 |
+| **Status** | dropped 2026-09-23 (#9) |
 
 **Alternatives considered.** None as a replacement — it is the base mod the other Deadlock members
 require, so replacing it means replacing the family. The family question itself is below.
@@ -1553,6 +1557,7 @@ did is covered by `miniloader-redux` in `Grado_ChangingBase`.
 | **Downloads** | 4,176 |
 | **Owner** | `justarandomgeek` |
 | **Read on** | 2026-09-21 |
+| **Status** | dropped 2026-09-23 (#9) |
 
 **Alternatives considered.** Not applicable — the question is not what could replace it but why it
 is here at all.

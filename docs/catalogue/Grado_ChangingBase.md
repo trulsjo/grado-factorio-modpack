@@ -435,7 +435,7 @@ in Factorio.
 | **Downloads** | 22,505 |
 | **Owner** | `hgschmie` |
 | **Supersedes** | `miniloader` by `therax`, last `1.15.7` on 2023-09-11, 193,085 downloads |
-| **Overlaps** | `deadlock-beltboxes-loaders` (`Grado_ABC`) |
+| **Overlaps** | ~~`deadlock-beltboxes-loaders` (`Grado_ABC`)~~ - resolved 2026-09-23 (#9), that mod is in no pack |
 | **Read on** | 2026-09-21 |
 
 **Alternatives considered.** No other 2.x mod offers one-tile full-throughput loaders as its whole
@@ -443,6 +443,9 @@ job, searching name, title and summary. `berbcorp-loaders` and `quantum-belts` b
 their own belt tiers rather than serving the game's.
 
 #### Against `deadlock-beltboxes-loaders`
+
+**Resolved 2026-09-23 by #9, which dropped the whole Deadlock family from `Grado_ABC`.** An ABC
+player now has one 1x1 loader family, this one. The comparison below is kept as written.
 
 `Grado_ABC` carries **`deadlock-beltboxes-loaders`** (`2.6.0`, `factorio_version` **2.0**,
 2025-01-06, 126,788 downloads), which also "Adds minimalist 1x1 loaders" alongside its stacking
@@ -469,7 +472,8 @@ to `UltimateBeltsSpaceAge` above rather than here.
 | **Owner** | `justarandomgeek` |
 | **Read on** | 2026-09-21 |
 
-**Alternatives considered.** None needed. `Grado_ABC` carries `signalstrings` by the same author,
+**Alternatives considered.** None needed. `Grado_ABC` carried `signalstrings` by the same author
+until #9 removed it on 2026-09-23,
 whose name makes it look like a rival display mod; it is not — its summary describes "a library for
 converting between lua strings and virtual signal strings", so it is infrastructure, not a readout.
 Checked and not recorded as an overlap.

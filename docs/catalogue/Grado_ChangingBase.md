@@ -7,8 +7,9 @@ from doing. The second has its own section, *What constrains an overhaul on top*
 
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
 **2026-09-21**, except those carrying a **Read on** of **2026-09-22**, which #8 took — the three
-entries it added and the readings inside its rulings. Each is reproduced from the fetched data
-rather than retyped; the **Read on** row is authoritative where it disagrees with this sentence.
+entries it added and the readings inside its rulings — and the notes marked *Superseded 2026-09-23
+by #15*, which #15 took. Each is reproduced from the fetched data rather than retyped; the **Read
+on** row is authoritative where it disagrees with this sentence.
 
 The dependency list holds 22 entries: `base >= 2.0.0`, `Grado_NonChanging` — a pack, catalogued in
 `docs/catalogue/Grado_NonChanging.md` — and the **20 mods** below. The survey read 25; #8 took the
@@ -400,8 +401,9 @@ after a release.
 
 **It raises the pack's Factorio floor to `base >= 2.1.12`, the highest in the project** — above
 `Grado_ABCX`'s 2.1.9 — and `Grado_ABC`, `Grado_ABCX` and `Grado_ABCS` all inherit it. That is
-evidence for #15; the declaration is #16's. **Superseded 2026-09-23 by #15:** no longer the project high, which is the
-hidden `kry_stdlib` `2.2.21`, released that day, asks `base >= 2.1.20`; see *Effective Factorio floor* in `docs/porting-notes.md`, which also says why that number rests on one release.
+evidence for #15; the declaration is #16's. **Superseded 2026-09-23 by #15:** no longer the project
+high. The hidden `kry_stdlib` `2.2.21`, released that day, asks `base >= 2.1.20`; see *Effective
+Factorio floor* in `docs/porting-notes.md`, which also says why that number rests on one release.
 
 **It pulls `0-things >= 0.6.1`**, *Things* (`The_LORD_thy_GOD`, `0.6.3`, 2.1, 2026-09-20, 3,292
 downloads, `base >= 2.1.12`), a mandatory library by the same author which this pack's list does not
@@ -1403,7 +1405,9 @@ answer is no for four of them: `Grado_ABC` inherits this pack's floor, `Grado_AB
 `>= 2.1.9` on its own account, and `Grado_ABCS` cannot be measured from the portal at all because
 its only member is not a portal mod. That measurement is **#15**, and **#8 changed its inputs on
 2026-09-22**: `Grado_ABCX`'s own 2.1.9 is no longer the project high, because `Grado_ABC`,
-`Grado_ABCX` and `Grado_ABCS` all now inherit `>= 2.1.12` through this pack.
+`Grado_ABCX` and `Grado_ABCS` all now inherit `>= 2.1.12` through this pack. **Superseded
+2026-09-23 by #15:** every pack now inherits `>= 2.1.20` on a latest-release reading, from the hidden
+`kry_stdlib` `2.2.21`; see *Effective Factorio floor* in `docs/porting-notes.md`.
 **The number to declare instead is Truls's to set** and is **#16**; this section supplies the
 evidence for this pack, not the decision.
 

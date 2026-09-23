@@ -7,7 +7,8 @@ described here as one that "does not change save state or the factory" until tha
 promise* below is where that wording was measured against the members and found false.
 
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
-**2026-09-20** and is reproduced from the fetched data rather than retyped.
+**2026-09-20** and is reproduced from the fetched data rather than retyped, except where a later
+date is given inline, such as the notes marked *Superseded 2026-09-23 by #15*.
 
 **All 26 current members have a 2.x release.** None is stranded on 1.1 — nor were the 29 the
 survey read on 2026-09-20, before #7 removed three of them. That is not the same as being
@@ -872,8 +873,10 @@ remaining members were re-read rather than trusted. Five still demand it - `Blue
 `Tapeline`, `even-distribution`, `even-pickier-dollies`, `helmod` - so removing `blueprint-sandboxes`,
 which was the sixth, does not lower it. Both incoming mods enter under the ceiling at `base >= 2.1.0`,
 and neither brings a transitive dependency the pack did not already carry. #15's measurement for this
-pack survives the edit. **Superseded 2026-09-23 by #15:** 2.1.7 is still the highest of the named members, but the
-pack's effective floor is higher: the hidden `kry_stdlib` `2.2.21`, released that day, asks `base >= 2.1.20`; see *Effective Factorio floor* in `docs/porting-notes.md`, which also says why that number rests on one release.
+pack survives the edit. **Superseded 2026-09-23 by #15:** 2.1.7 is still the highest of the named
+members, but the pack's effective floor is higher: the hidden `kry_stdlib` `2.2.21`, released that
+day, asks `base >= 2.1.20`. See *Effective Factorio floor* in `docs/porting-notes.md`, which also
+says why that number rests on one release.
 
 ## Six members cannot be downloaded
 

@@ -219,7 +219,7 @@ replaced or dropped.
 
 **Ruled on 2026-09-23 (#10): unchanged.** The pack is `Grado_ABC` *beside* Space Age, not
 integrated with it (`CONTEXT.md`, *Promise*). So no bridge mod: `angelbob-spaceage-rebalance` would
-bring ten mandatory extras, seven of them third-party planet content nobody chose, and
+bring eight mandatory extras, seven of them third-party planet content nobody chose, and
 `BobsAngelsSpaceAge` is a second addition on weak evidence; both are additions, and #8's rule keeps
 additions out. #31 stays open as the place to revisit that, best after #29 shows whether the
 unintegrated pack is playable. `quality` and `elevated-rails` are not listed, because `space-age`
@@ -351,6 +351,9 @@ for. A title is display only and can be changed in any release, unlike the name.
   after #8. See `docs/catalogue/Grado_ABCX.md` and
   `docs/catalogue/Grado_ABCS.md`. **So the measurement is complete for four packs and not completable
   for the fifth without the game**, which is issue #29. The number itself is Truls's to set.
+  *(Partly read 2026-09-23, #10: `space-age` `2.0.77` in the installed game declares
+  `base >= 2.0.0`, below the inherited `2.1.12`, so on 2.0.77 it does not raise the floor. A 2.1
+  build is unread. See `docs/catalogue/Grado_ABCS.md`, What the portal actually returns.)*
   **Every reading above is of each member's *latest* release, and that turns out to matter
   (2026-09-23, #9).** All 91 named mods checked (the three lower packs' lists before #9's removals,
   plus `RealisticFusionPowerPort`, so a superset of the 87 members after it) have at least one

@@ -25,7 +25,7 @@ Three findings:
   Silence is not compatibility, and this pack is where that gets tested.
 - **This is where the one-mod-per-branch rule is under real pressure.** Adding `space-age` enables
   the expansion beside Angel's and Bob's; it does not make them work together. The two mods on 2.x
-  that attempt that job would each be a second addition, and one of them brings ten more mods with
+  that attempt that job would each be a second addition, and one of them brings eight more mods with
   it. See *Pressure on the one-mod-per-branch rule*.
 
 ## In the pack
@@ -164,9 +164,9 @@ designed to sit on Nauvis.
 |---|---|---|
 | **Title** | AngelBob Space Age Rebalance | Bobs Angels Space Age Strategic |
 | **Owner** | `Troublesim` | `mantrucker88` |
-| **Latest** | `1.2.16`, `factorio_version` **2.1**, 2026-09-19 | `0.0.3`, `factorio_version` **2.0**, 2026-02-10 |
+| **Latest** | `1.2.16`, `factorio_version` **2.1**, 2026-09-19; re-read at `1.2.17` on 2026-09-23, mandatory list unchanged | `0.0.3`, `factorio_version` **2.0**, 2026-02-10 |
 | **Downloads** | 3,706 | 251 |
-| **Mandatory deps the chain does not already supply** | **ten**: `PlanetsLib`, `Paracelsin`, `Paracelsin-Graphics`, `planet-muluna`, `muluna-graphics`, `planetaris-dyes`, `planetaris-arig`, `planetaris-hyarion`, and `quality` and `elevated-rails`, which it names explicitly where this pack names only `space-age` | **none** |
+| **Mandatory deps the chain does not already supply** | **eight**: `PlanetsLib`, `Paracelsin`, `Paracelsin-Graphics`, `planet-muluna`, `muluna-graphics`, `planetaris-dyes`, `planetaris-arig`, `planetaris-hyarion`. *Ten until 2026-09-23 (#10), counting `quality` and `elevated-rails`, which `space-age` turned out to pull in itself* | **none** |
 | **Approach** | A full integration overhaul merging Angel's and Bob's with Space Age across a set of community planets | Distributes Bob's and Angel's ores across Vulcanus, Fulgora and Gleba to force interplanetary logistics |
 
 `angelbob-spaceage-rebalance` declares `! BobsAngelsSpaceAge`, so the choice is genuinely between
@@ -178,12 +178,11 @@ mandatory-dependency count that makes the cost concrete.
 
 - **`angelbob-spaceage-rebalance` breaks the rule outright.** It is the more serious mod by every
   measure — current within three days of this reading, fifteen times the downloads, on 2.1 — and it
-  is not a one-mod addition. Its ten mandatory extras, plus itself and `space-age`, would make
-  `Grado_ABCS` a **twelve-member pack** against `Grado_ABCX`'s one. Seven of the ten are community
-  planet content and its graphics, an eighth, `PlanetsLib`, is the library they share, and those are
-  content decisions nobody has taken. The last two are `quality` and `elevated-rails`, which `space-age`
-  turned out to pull in itself (read from the game on 2026-09-23), so the real figures are **eight**
-  extras and a **ten-member pack**. It also requires
+  is not a one-mod addition. Its eight mandatory extras, plus itself and `space-age`, would make
+  `Grado_ABCS` a **ten-member pack** against `Grado_ABCX`'s one. Seven of the eight are community
+  planet content and its graphics, the eighth, `PlanetsLib`, is the library they share, and those are
+  content decisions nobody has taken. *(Ten extras and twelve members until 2026-09-23 (#10), when
+  the game showed that `space-age` pulls in `quality` and `elevated-rails` itself.)* It also requires
   `angelsbioprocessing`, `angelspetrochem`,
   `angelsrefining`, `angelssmelting` and seven Bob's mods at specific minimum versions, all of which
   `Grado_ABC` already carries, so the ABC side costs nothing extra.

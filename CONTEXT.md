@@ -56,8 +56,8 @@ but it must not conflict with them. Because both end-games build on it, nothing 
 `Grado_ABCX`'s, settled 2026-09-23 (#10): `Grado_ABC` plus the SpaceX end-game and nothing else;
 the pack is never installed beside Space Age.
 `Grado_ABCS`'s, settled 2026-09-23 (#10): `Grado_ABC` *beside* Space Age, not integrated with it -
-the planets and the overhaul run side by side, so a mod whose job is to merge the two is an
-addition and fails the test.
+the planets and the overhaul run side by side, so a mod whose job is to merge the two fails
+the test.
 _Avoid_: "does not change save state or the factory", which was the original wording of
 `Grado_NonChanging`'s promise and is false under any reading that lets that pack do its job -
 `Tapeline`, `Todo-List`, `YARM` and `SpeedControl` all write to the save, and half the pack exists

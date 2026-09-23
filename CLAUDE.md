@@ -115,16 +115,17 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
 - `factorio_version` is declared `2.0` on all five packs while several members have moved to `2.1`.
   The members' own floors answer it for four packs: the project high is `base >= 2.1.12`
   (`cybersyn2`, #8), which the three overhaul packs inherit. `Grado_ABCS` cannot be answered until
-  the pack is loaded, because `space-age` is not a portal mod (#29). The measurement is #15; the
-  number to declare is #16. **#16 cannot be answered by choosing a number yet.** A member declaring
-  `factorio_version: 2.0` is not served to a 2.1 game at all, and several are members of every
-  lower pack (#43). **Those floors are latest-release readings, and they overstate the case**
-  (2026-09-23, #9): every one of the 87 members of the three lower packs has at least one
-  release declaring 2.0 whose `base` floor is below 2.1. So a 2.0 target may resolve, while a 2.1
-  target strands the 2.0-only members. That makes "installs on no version of Factorio" unproven
-  rather than true, and the choice between the two targets is #16's. The hidden members pass too.
-  Not yet checked: whether the old releases' floors on each other are consistent. Floor evidence per
-  pack is in `docs/porting-notes.md`, and its member counts predate the settlements.
+  the pack is loaded, because `space-age` is not a portal mod (#29); its 2.0.77 build, read from
+  disk on 2026-09-23, requires only `base >= 2.0.0`, and a 2.1 build is unread. The measurement is
+  #15; the number to declare is #16. **#16 cannot be answered by choosing a number yet.** A member
+  declaring `factorio_version: 2.0` is not served to a 2.1 game at all, and several are members of
+  every lower pack (#43). **Those floors are latest-release readings, and they overstate the case**
+  (2026-09-23, #9): every one of the 87 members of the three lower packs has at least one release
+  declaring 2.0 whose `base` floor is below 2.1. So a 2.0 target may resolve, while a 2.1 target
+  strands the 2.0-only members. That makes "installs on no version of Factorio" unproven rather than
+  true, and the choice between the two targets is #16's. The hidden members pass too. Not yet
+  checked: whether the old releases' floors on each other are consistent. Floor evidence per pack is
+  in `docs/porting-notes.md`, and its member counts predate the settlements.
 - **`PickerPipeTools`' pipe clamps are the one feature lost in the port with no successor found** —
   a search, not a proof. All twenty port drops are now closed (#7, #8, #9): nineteen stay dropped
   and `RealisticFusionPower` was replaced by `RealisticFusionPowerPort`.

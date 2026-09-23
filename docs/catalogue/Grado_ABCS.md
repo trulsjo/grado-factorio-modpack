@@ -136,8 +136,10 @@ them one game. Issue #4 established the load-order half of this on 2026-09-21 â€
 `Grado_ABC`'s members or their hidden dependencies declares `! space-age`, and ten of the Bob's mods
 declare it optionally â€” and this survey extends that check to the whole chain with the same result.
 It also refines the count: **seventeen of the 117 declare `space-age` optionally, and eleven of the
-seventeen are `Grado_ABC` members, not ten.** The eleventh is `deadlock-beltboxes-loaders` - **removed by #9 on 2026-09-23, so ten again
-after it** - which is not a Bob's mod and so fell outside the frame #4 counted in; the remaining six are
+seventeen are `Grado_ABC` members, not ten.** *(All three figures predate #9, which on 2026-09-23
+removed `deadlock-beltboxes-loaders` and three other members and added one: after it the
+`space-age`-optional counts are sixteen and ten, and the 117 is not re-derived.)* The eleventh is
+`deadlock-beltboxes-loaders`, which is not a Bob's mod and so fell outside the frame #4 counted in; the remaining six are
 `Grado_ChangingBase`'s `EditorExtensions`, `StoneWaterWell-ActuallyUpdated`, `alien-biomes`,
 `reverse-factory` and `underground-pipe-pack`, and `Grado_NonChanging`'s `FactorySearch`. *(Read
 2026-09-22, before #8 changed that pack the same day: `StoneWaterWell-ActuallyUpdated` is no longer

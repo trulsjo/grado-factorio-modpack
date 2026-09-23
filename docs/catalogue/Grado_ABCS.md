@@ -86,8 +86,9 @@ for this one member they return nothing usable. Three things the other 100-odd e
 cannot be stated here at all: the expansion's own dependency list, its `factorio_version`, and its
 `base` floor. They are readable from `data/space-age/info.json` in an installed game and from
 nowhere else this project currently has. *(Partly read 2026-09-23, #10: the installed game's
-`2.0.77` build is read below. A 2.1 build is not.)* **Issue #29 — load `Grado_ABCS` in Factorio once, end to
-end — is not merely the last check on this pack; it is the first check on its only member.**
+`2.0.77` build is read below. A 2.1 build is not.)* **Issue #29 — load `Grado_ABCS` in Factorio
+once, end to end — is not merely the last check on this pack; it is the first check on its only
+member.**
 
 One consequence is worth naming rather than leaving implicit. Space Age ships as three mods, not
 one: `space-age`, `quality` and `elevated-rails` are distinct names, which the portal's three
@@ -207,5 +208,6 @@ holds on the other.
 
 **Decided 2026-09-23 (#10): doing nothing.** The rule holds on this branch. The pack's promise makes
 it `Grado_ABC` beside Space Age rather than merged with it, and a mod whose job is to merge them
-fails that promise, whichever of the two it is. #31 stays open as the place to revisit that, best after #29 shows whether the unintegrated
-pack is playable; taking a bridge would mean changing the promise first.
+fails that promise, whichever of the two it is. #31 stays open as the place to revisit that, best
+after #29 shows whether the unintegrated pack is playable; taking a bridge would mean changing the
+promise first.

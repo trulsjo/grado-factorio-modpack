@@ -12,8 +12,9 @@ session start.
 **Skeleton.** Five `info.json` files with resolved dependency lists, a README and
 `docs/porting-notes.md`. First commit `3ab917c`, 2026-09-20.
 
-**Nothing has been launched in Factorio.** No pack has been loaded, no member mod downloaded, no
-compatibility Lua written or shown to be needed. Every dependency list is a portal-API reading, not a
+**Nothing has been launched in Factorio.** No pack has been loaded, no
+compatibility Lua written or shown to be needed. *Members can now be downloaded:
+`scripts/stage-pack.ps1` (#24) fetches them. Recording a load is #17's.* Every dependency list is a portal-API reading, not a
 tested configuration. Treat "it resolves on the portal" and "it loads in the game" as different
 claims, because right now only the first is true.
 
@@ -111,7 +112,8 @@ Settled so far, recorded here so nobody reopens them by accident:
   the same entries once factorio.com's stable release is 2.1.x. Minimums: `base >= 2.0.67` for
   `Grado_NonChanging`, `>= 2.0.74` for the other four. **Not yet applied**: the `info.json` edits
   wait on the resolver (trulsjo/grado-factorio-tools#14) re-measuring the minimums, so #16 stays
-  open until they land.
+  open until they land. *The resolver is built and pinned here since 2026-09-24 (#24); the
+  re-measurement is not yet recorded.*
 
 ## Decisions still open
 

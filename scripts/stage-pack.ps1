@@ -20,7 +20,13 @@
 
     STAGING TWICE IS SAFE. A pack's previous zip or directory in -ModsDirectory -- any version --
     is removed before the new zip takes its place, so Factorio never has two to choose between.
-    A member is replaced by fetch-mods.ps1 in the same way.
+    A member is fetched as a directory named <name>, which fetch-mods.ps1 replaces; any
+    <name>_<version>.zip or <name>_<version> directory of that member is removed before the fetch,
+    as the mod manager installs them that way.
+
+    A FACTORIO MODS DIRECTORY AS THE TARGET IS UNTESTED. fetch-mods.ps1 keeps its downloaded zips
+    in a .zips subdirectory of the target, and whether the game passes over a directory with no
+    info.json in it has not been checked.
 
     IT REFUSES A MALFORMED PACK. Every info.json in the chain is checked as strict JSON before
     anything is fetched: a comment or a trailing comma fails here, not inside the game.
@@ -73,6 +79,8 @@ $ErrorActionPreference = 'Stop'
 
 $ROOT  = Split-Path $PSScriptRoot -Parent
 $TOOLS = Join-Path $ROOT 'vendor/grado-factorio-tools/scripts'
+# ponytail: copied from resolve-modpack.ps1, which is a script and cannot be dot-sourced; share
+# it from the tools repo if a second copy ever has to change with it.
 $GAME_MODS = @('base', 'space-age', 'quality', 'elevated-rails')
 
 Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -101,8 +109,10 @@ function Read-PackInfo {
         throw "$path is not valid JSON, so it is not staged: Factorio would refuse it. Strict JSON -- no comments, no trailing commas."
     }
     $info = $text | ConvertFrom-Json
-    if ($info.name -ne $Name) { throw "$path names itself '$($info.name)', not '$Name'." }
-    if ($info.version -notmatch '^\d+\.\d+\.\d+$') { throw "$path has no version of the form x.y.z." }
+    $field = { param($n) $info.PSObject.Properties[$n]?.Value }
+    if ((& $field 'name') -ne $Name) { throw "$path names itself '$(& $field 'name')', not '$Name'." }
+    if ((& $field 'version') -notmatch '^\d+\.\d+\.\d+$') { throw "$path has no version of the form x.y.z." }
+    if (-not (& $field 'factorio_version')) { throw "$path has no factorio_version." }
     $info
 }
 
@@ -124,6 +134,16 @@ function Get-PackChain {
         }
     }
     @($chain.Values)
+}
+
+function Remove-VersionedCopy {
+    <#  Remove every <name>_<x.y.z>.zip and <name>_<x.y.z> directory of one mod from $Directory,
+        and with -Bare its <name> directory too. A neighbour whose name only starts the same stays.  #>
+    param([Parameter(Mandatory)] [string] $Directory, [Parameter(Mandatory)] [string] $Name, [switch] $Bare)
+
+    $pattern = '^' + [regex]::Escape($Name) + $(if ($Bare) { '(_\d+\.\d+\.\d+(\.zip)?)?$' } else { '_\d+\.\d+\.\d+(\.zip)?$' })
+    Get-ChildItem -LiteralPath $Directory | Where-Object { $_.Name -match $pattern } |
+        ForEach-Object { Remove-Item -LiteralPath $_.FullName -Recurse -Force }
 }
 
 function Publish-PackZip {
@@ -148,9 +168,7 @@ function Publish-PackZip {
     }
     finally { $archive.Dispose() }
 
-    $pattern = '^' + [regex]::Escape($name) + '(_\d+\.\d+\.\d+(\.zip)?)?$'
-    Get-ChildItem -LiteralPath $ModsDirectory | Where-Object { $_.Name -match $pattern } |
-        ForEach-Object { Remove-Item -LiteralPath $_.FullName -Recurse -Force }
+    Remove-VersionedCopy -Directory $ModsDirectory -Name $name -Bare
     Move-Item -LiteralPath $partial -Destination $zip
     $zip
 }
@@ -172,6 +190,7 @@ function Invoke-SelfTest {
     & $write 'Commented' "{`"name`":`"Commented`",`"version`":`"0.1.0`" /* no */}"
     & $write 'Trailing' '{"name":"Trailing","version":"0.1.0",}'
     & $write 'Liar' '{"name":"Other","version":"0.1.0"}'
+    & $write 'Lineless' '{"name":"Lineless","version":"0.1.0"}'
     New-Item -ItemType Directory -Path $mods -Force | Out-Null
     # What a previous stage and a neighbour leave behind.
     Set-Content (Join-Path $mods 'Mid_0.0.9.zip') 'old'
@@ -194,6 +213,14 @@ function Invoke-SelfTest {
             & $refuses 'Trailing' 'is not valid JSON' } }
         @{ Name = 'an info.json naming another pack is refused'; Test = {
             & $refuses 'Liar' "names itself 'Other'" } }
+        @{ Name = 'an info.json with no factorio_version is refused by name, not by StrictMode'; Test = {
+            & $refuses 'Lineless' 'has no factorio_version' } }
+        @{ Name = 'a member''s versioned zips and directories go before a fetch; its fetched directory and neighbours stay'; Test = {
+            $d = Join-Path $temp 'member'
+            New-Item -ItemType Directory -Path (Join-Path $d 'flib'), (Join-Path $d 'flib_0.16.1') -Force | Out-Null
+            'x' | Set-Content (Join-Path $d 'flib_0.16.2.zip'); 'x' | Set-Content (Join-Path $d 'flibX_1.0.0.zip')
+            Remove-VersionedCopy -Directory $d -Name 'flib'
+            (@(Get-ChildItem -LiteralPath $d | ForEach-Object Name | Sort-Object) -join ',') -eq 'flib,flibX_1.0.0.zip' } }
         @{ Name = 'the zip is named from info.json and holds <name>_<version>/info.json'; Test = {
             $zip = Publish-PackZip -Pack (Get-PackChain -Root $root -Name 'High')[0] -ModsDirectory $mods
             $a = [IO.Compression.ZipFile]::OpenRead($zip)
@@ -239,11 +266,19 @@ if (-not (Test-Path -LiteralPath (Join-Path $TOOLS 'resolve-modpack.ps1'))) {
 
 $chain = @(Get-PackChain -Root $ROOT -Name $Pack)
 $line = $chain[0].Info.factorio_version
+$offLine = @($chain | Where-Object { $_.Info.factorio_version -ne $line } | ForEach-Object { "$($_.Name) ($($_.Info.factorio_version))" })
+if ($offLine) { throw "$Pack declares factorio_version $line, but packs under it do not: $($offLine -join ', ')." }
 if (-not $ModsDirectory) { $ModsDirectory = Join-Path $ROOT ".mod-cache/$Pack" }
+# Absolute once, so the zip written through .NET and the moves through PowerShell agree on where.
+$ModsDirectory = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($ModsDirectory)
 if (-not $Build) {
     . (Join-Path $TOOLS 'load-harness-lib.ps1')
     $data = Get-FactorioDataDirectory -FactorioExe (Resolve-FactorioExe -Path $FactorioExe)
     $Build = (Get-Content -LiteralPath (Join-Path $data 'base/info.json') -Raw | ConvertFrom-Json).version
+}
+# A 2.1 game does not load a mod declaring 2.0, so a set resolved across lines could never load.
+if (-not $Build.StartsWith("$line.")) {
+    throw "$Pack declares factorio_version $line, and build $Build is not on that line. Pass -Build $line.<n>, or run against a $line install."
 }
 $pinFile = Join-Path $ROOT ".mod-cache/$Pack.pins.psd1"
 New-Item -ItemType Directory -Path (Split-Path $pinFile) -Force | Out-Null
@@ -251,17 +286,23 @@ New-Item -ItemType Directory -Path (Split-Path $pinFile) -Force | Out-Null
 Write-Host "stage-pack: $Pack $($chain[0].Info.version), chain $(($chain | ForEach-Object Name) -join ' > '), line $line on build $Build"
 Write-Host "  into $ModsDirectory"
 
-& (Join-Path $TOOLS 'resolve-modpack.ps1') -Line $line -Build $Build -PinFile $pinFile @($chain | ForEach-Object { Join-Path $_.Directory 'info.json' })
+# Both tools fail by throwing, and resolve-modpack.ps1 also by exit 1, so both are checked.
+$global:LASTEXITCODE = 0
+try { & (Join-Path $TOOLS 'resolve-modpack.ps1') -Line $line -Build $Build -PinFile $pinFile @($chain | ForEach-Object { Join-Path $_.Directory 'info.json' }) }
+catch { Write-Host "  $($_.Exception.Message)"; $global:LASTEXITCODE = 1 }
 if ($LASTEXITCODE) { Write-Host ''; Write-Host "FAILED - $Pack did not resolve on $Build; nothing fetched or staged."; exit 1 }
 
-& (Join-Path $TOOLS 'fetch-mods.ps1') -PinFile $pinFile -Set $Pack -CacheDirectory $ModsDirectory
-if ($LASTEXITCODE) { Write-Host ''; Write-Host "FAILED - the members of $Pack could not all be fetched; the packs were not staged."; exit 1 }
+New-Item -ItemType Directory -Path $ModsDirectory -Force | Out-Null
+foreach ($m in @((Import-PowerShellDataFile -LiteralPath $pinFile).Sets[$Pack])) { Remove-VersionedCopy -Directory $ModsDirectory -Name $m.Name }
+try { & (Join-Path $TOOLS 'fetch-mods.ps1') -PinFile $pinFile -Set $Pack -CacheDirectory $ModsDirectory }
+catch { Write-Host "  $($_.Exception.Message)"; Write-Host ''; Write-Host "FAILED - the members of $Pack could not all be fetched; the packs were not staged."; exit 1 }
 
 foreach ($p in $chain) { Write-Host "  staged $(Publish-PackZip -Pack $p -ModsDirectory $ModsDirectory)" }
 
 $bundled = @($chain | ForEach-Object { Get-RequiredName $_.Info } | Where-Object { $_ -in $GAME_MODS -and $_ -ne 'base' } | Sort-Object -Unique)
 $with = if ($bundled) { " -With $($bundled -join ',')" } else { '' }
+$exe = if ($FactorioExe) { " -FactorioExe `"$FactorioExe`"" } else { '' }
 Write-Host ''
 Write-Host "OK - $Pack staged with every member at its resolved release. To load it:"
-Write-Host "  pwsh -File vendor/grado-factorio-tools/scripts/load-harness.ps1$with `"$ModsDirectory`""
+Write-Host "  pwsh -File vendor/grado-factorio-tools/scripts/load-harness.ps1$exe$with `"$ModsDirectory`""
 exit 0

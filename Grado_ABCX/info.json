@@ -8,7 +8,7 @@
   "factorio_version": "2.0",
   "description": "Grado ABC plus Space Extension (SpaceX), via the Feoras fork. Not compatible with Space Age - use Grado ABCS for that.",
   "dependencies": [
-    "base >= 2.0.0",
+    "base >= 2.0.74",
     "Grado_ABC",
     "SpaceModFeorasFork",
     "! space-age"

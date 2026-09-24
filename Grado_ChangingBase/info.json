@@ -8,7 +8,7 @@
   "factorio_version": "2.0",
   "description": "Mods that may change saves or the factory, but stay compatible with most overhaul mods. Includes Grado Non-Changing.",
   "dependencies": [
-    "base >= 2.0.0",
+    "base >= 2.0.74",
     "Grado_NonChanging",
     "AdditionalPasteSettings",
     "EditorExtensions",

@@ -297,6 +297,8 @@ dependency list decides which game it *installs* on. They fail separately. On a 
 member floor bites first: a pack can declare 2.0 and be fine, or declare 2.0 and be uninstallable,
 depending on its members. On a 2.1 game the pack's own declaration bites first. Every pack below
 declares `factorio_version` `2.0` and `base >= 2.0.0`. The `base` line never constrains anything.
+*(Since 2026-09-24, #58, each pack declares its newest-2.0 floor from the table below, so on a
+2.0 game the `base` line now states what the members need.)*
 The `factorio_version` does: as declared, each pack is served to 2.0 games only, so the newest-2.0
 column is what the packs as they stand would meet, and the latest-2.x column is what a 2.1
 declaration would.
@@ -429,11 +431,12 @@ above:
 when factorio.com's stable release is 2.1.x. Each mod still missing then is Truls's to wait on,
 replace or drop. The first release declares line `2.0`, with `base >= 2.0.67` for
 `Grado_NonChanging` and `>= 2.0.74` for the other four - applied once the committed resolver
-(trulsjo/grado-factorio-tools#14) re-measures them. *The resolver is pinned here since 2026-09-24
-(#24); the re-measurement is not yet recorded.*
+(trulsjo/grado-factorio-tools#14) re-measures them. *Applied 2026-09-24 (#58): the pinned
+resolver re-measured all five on 2.0.77 and read the same two floors, and each `info.json` now
+declares its floor.*
 
 Upstream 2.1 plans and served replacements were not researched for these. They matter only at a
-2.1 target, and whether to target 2.1 is #16's choice (*Ruled 2026-09-24 (#16), not yet applied.*);
+2.1 target, and whether to target 2.1 is #16's choice (*Ruled 2026-09-24 (#16), applied 2026-09-24 (#58).*);
 Truls closed #43 on the 2.0.77 result with this list kept as a watch list rather than a sweep.
 
 ## Open questions
@@ -494,11 +497,12 @@ Truls closed #43 on the 2.0.77 result with this list kept as a watch list rather
   after #8. See `docs/catalogue/Grado_ABCX.md` and
   `docs/catalogue/Grado_ABCS.md`. **So the measurement is complete for four packs and not completable
   for the fifth without the game**, which is issue #29. The number itself is Truls's to set.
-  **Ruled 2026-09-24 (#16), not yet applied:** declared line `2.0` for the first release, with
+  **Ruled 2026-09-24 (#16), applied 2026-09-24 (#58):** declared line `2.0` for the first release, with
   `base >= 2.0.67` for `Grado_NonChanging` and `>= 2.0.74` for the other four, and a 2.1 release
   once factorio.com's stable release is 2.1.x. What remains open is applying it - the `info.json`
   edits wait on the resolver (trulsjo/grado-factorio-tools#14) re-measuring them, and it is
-  pinned here since 2026-09-24 (#24) - and #29's `space-age` reading.
+  pinned here since 2026-09-24 (#24) - and #29's `space-age` reading. *The edits landed
+  2026-09-24 (#58), on a re-measurement that read the same floors; #29's reading stays open.*
   *(Partly read 2026-09-23, #10: `space-age` `2.0.77` in the installed game declares
   `base >= 2.0.0`, below the inherited `2.1.12`, so on 2.0.77 it does not raise the floor. A 2.1
   build is unread. See `docs/catalogue/Grado_ABCS.md`, What the portal actually returns.)*

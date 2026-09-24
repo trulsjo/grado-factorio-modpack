@@ -21,7 +21,7 @@ replaced, not removed: `cybersyn2` carries its `Supersedes` row.
 **All 20 current members have a 2.x release.** None is stranded on 1.1. **Eleven of the twenty
 require `base >= 2.1`**, which is the same finding the `Grado_NonChanging` survey reached and is fatal to
 this pack's declared `factorio_version` for the same reason; see *The pack cannot load on the
-Factorio version it declares*. #8 raised the floor again, to `base >= 2.1.12`, by adopting
+Factorio version it declares* *(At a 2.1 target. On stable 2.0.77 the pack resolves; #43, 2026-09-24.)*. #8 raised the floor again, to `base >= 2.1.12`, by adopting
 `cybersyn2`.
 
 ## Decisions, 2026-09-22 (#8)
@@ -71,7 +71,9 @@ ruling inline. **25 members to 20.**
 these are served; see #43 and #16.* Of the six, three leave the pack
 outright - `LTN_Content_Reader_Updated`, `StoneWaterWell-ActuallyUpdated` and `UltimateBeltsSpaceAge` -
 and one is fixed by the `Waterfill_v17` swap. **`Nanobots2` and `qol_research` remain unreachable
-and stay in the pack**, which is #43's, not this ticket's.
+and stay in the pack**, which is #43's, not this ticket's. *#43 found on 2026-09-24 that the whole
+chain resolves on stable 2.0.77, so both are served today and matter only at a 2.1 target; see
+`docs/porting-notes.md`, Resolves on stable 2.0.77.*
 
 Two questions were deferred rather than answered: candidate additions that were never in the 1.1
 pack, which needs a ticket of its own, and `kry-picker-complete`'s members assessed one at a time
@@ -236,6 +238,7 @@ day later, on 2026-09-12. What it does lead on is reach: it declares `base >= 2.
 **Recommendation: keep.** Added by #8 on 2026-09-22, replacing `safefill`, which declares `factorio_version: 2.0` and is
 therefore not served to a 2.1 game at all — see *The pack cannot load on the Factorio version it
 declares*. This pack's floor is well above 2.0, so the member it replaces installs on nothing.
+*(That is the 2.1 reading. On stable 2.0.77 `safefill` would have been served; #43, 2026-09-24.)*
 
 **Two things this swap does not do, stated so they are not assumed.** It does not answer whether a
 waterfill mod survives the overhaul layers: `safefill`'s author declined to claim compatibility with
@@ -517,7 +520,8 @@ default needs settings-stage Lua, which these packs do not carry.
 
 **It remains unreachable** — `factorio_version` **2.0**, against a 2.1 floor — and stays in the pack
 under #8's third rule, which leaves such members alone outside entries already marked `reconsider:`.
-That is #43's, not this ticket's.
+That is #43's, not this ticket's. *#43, 2026-09-24: served on stable 2.0.77; unreachable only at a
+2.1 target.*
 
 ### `reverse-factory`
 
@@ -1367,6 +1371,11 @@ the pack's Factorio floor at `base >= 2.1.12` and every pack above inherits it. 
 compatibility constraint in the sense used here; it is recorded under the section below.
 
 ## The pack cannot load on the Factorio version it declares
+
+*#43, 2026-09-24: this section reads each member's latest release, which is the 2.1 case. On stable
+2.0.77 the pack resolves: each member's newest 2.0 release installs, and they satisfy each other.
+The declared `base >= 2.0.0` is still not honoured - on that reading the floor is `>= 2.0.74`. See
+`docs/porting-notes.md`, Resolves on stable 2.0.77.*
 
 `info.json` declares `"factorio_version": "2.0"` and `base >= 2.0.0`. Most members require
 `base >= 2.1`, so a player on 2.0.x cannot satisfy this pack. **#8's membership changes raised the

@@ -12,7 +12,8 @@ date is given inline, such as the notes marked *Superseded 2026-09-23 by #15*.
 
 **All 26 current members have a 2.x release.** None is stranded on 1.1 — nor were the 29 the
 survey read on 2026-09-20, before #7 removed three of them. That is not the same as being
-installable: see *Six members cannot be downloaded* below, found on 2026-09-22.
+installable: see *Six members cannot be downloaded* below, found on 2026-09-22 - at a 2.1 target
+only. *On stable 2.0.77 the pack resolves (2026-09-24, #43).*
 
 ## Decisions, 2026-09-22 (#7)
 
@@ -843,6 +844,11 @@ pack and the ones dropped from it, so none of these was assessed. Adding a mod t
 
 ## The pack cannot load on the Factorio version it declares
 
+*#43, 2026-09-24: this section reads each member's latest release, which is the 2.1 case. On stable
+2.0.77 the pack resolves: each member's newest 2.0 release installs, and they satisfy each other.
+The declared `base >= 2.0.0` is still not honoured - on that reading the floor is `>= 2.0.67`. See
+`docs/porting-notes.md`, Resolves on stable 2.0.77.*
+
 Found while checking `EditorExtensions`, whose `info.json` requires `base >= 2.1.0`. That prompted
 the same check across this pack, and the result is not a nuance.
 
@@ -912,6 +918,12 @@ packs has one whose `base` floor is below 2.1. So a 2.1 target is closed and a 2
 unproven, not closed. Whether those old releases' floors on each other are consistent is not yet
 checked. See #43 and #16.
 
+**Settled 2026-09-24 (#43): the 2.0 end is open.** Stable Factorio is 2.0.77 and 2.1.20 is
+experimental. On 2.0.77 every member of every pack has a release it is served, and those releases
+satisfy each other with zero conflicts. So this pack installs on stable, on portal metadata; the
+six above matter only at a 2.1 target. Method and the chain-wide watch list are in
+`docs/porting-notes.md`, *Resolves on stable 2.0.77*.
+
 **#7's edit improves this without fixing it**, taking the unserved count from ten to six by removing
 `Bottleneck`, `MaxRateCalculator`, `blueprint_flip_and_turn` and `AfraidOfTheDark`.
 
@@ -924,7 +936,7 @@ above are `Grado_NonChanging`'s share; the other fifteen are `Nanobots2`, `WideC
 `angels-smelting-extended`, `RealisticReactorsReborn`, `True-Nukes_Continued`,
 `True-Nukes-Graphics_Continued`, `spidertrontiers-community-updates` and `UltimateBeltsSpaceAge`.
 This is #16's to act on: it cannot be answered by choosing a number until those members update or
-are replaced.
+are replaced - *true of a 2.1 target only; on stable 2.0.77 the chain resolves (#43, 2026-09-24).*
 
 **#8 took four off that list on 2026-09-22, by settling `Grado_ChangingBase`.**
 `LTN_Content_Reader_Updated`, `StoneWaterWell-ActuallyUpdated` and `UltimateBeltsSpaceAge` left the

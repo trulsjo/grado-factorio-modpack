@@ -30,7 +30,7 @@ Four findings hold across all 45:
   2.1 and nine declare 2.0** — and the nine are not spread evenly: eight of them are add-ons from
   #5's half, against one from the overhaul core.
 - **The pack requires `base >= 2.1`**, which is fatal to its declared `factorio_version` for the
-  third time in three surveys. All 29 of the core mods require it, 22 saying so themselves; the
+  third time in three surveys *(At a 2.1 target. On stable 2.0.77 the pack resolves; #43, 2026-09-24.)*. All 29 of the core mods require it, 22 saying so themselves; the
   add-ons mostly declare no floor at all, which changes nothing because one member is enough. See
   *The pack cannot load on the Factorio version it declares*.
 - **Fifteen mandatory dependencies are not named in the dependency list**, and every one is a real
@@ -81,7 +81,8 @@ written, and each affected entry carries its ruling inline. **44 mods to 41.**
    only if the packs target 2.1, which is #16's decision. The hidden mandatory members pass the same
    check: this pack's fourteen, plus `flib`, `alien-biomes-graphics`, `kry_stdlib`, `stdlib2` and
    `0-things`. What was not checked is whether those old releases' version floors on each other are
-   consistent. The correction was posted to #43 and #16.
+   consistent. The correction was posted to #43 and #16. *Checked 2026-09-24 (#43): consistent
+   on stable 2.0.77, zero conflicts across all five packs; see `docs/porting-notes.md`.*
    The Deadlock drop was ruled *after* this correction, on the half-coverage argument alone rather
    than on the tie-break.
 4. **The version stays `0.1.0`.** The survey's references to major and minor bumps cite ADR 0001,
@@ -1925,6 +1926,11 @@ adopting it means adopting a set of community planet mods with it. It declares
 it changes anything in `Grado_ABC`.
 
 ## The pack cannot load on the Factorio version it declares
+
+*#43, 2026-09-24: this section reads each member's latest release, which is the 2.1 case. On stable
+2.0.77 the pack resolves: each member's newest 2.0 release installs, and they satisfy each other.
+The declared `base >= 2.0.0` is still not honoured - on that reading the floor is `>= 2.0.74`. See
+`docs/porting-notes.md`, Resolves on stable 2.0.77.*
 
 `info.json` declares `"factorio_version": "2.0"` and `base >= 2.0.0`. **All 29 of the overhaul-core
 members require `base >= 2.1`**, so a player on 2.0.x cannot satisfy this pack. One member would be

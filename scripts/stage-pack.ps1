@@ -29,9 +29,10 @@
     in the pack's resolved set or its chain goes, so a reused directory never loads a mod the pack
     no longer has. A -ModsDirectory you name is never pruned: it may be a player's mods directory.
 
-    A FACTORIO MODS DIRECTORY AS THE TARGET WORKS. fetch-mods.ps1 keeps its downloaded zips in a
-    .zips subdirectory of the target, and the game passes over it without a word: no log line, no
-    mod-list.json entry (2.0.77 headless, Grado_NonChanging, 2026-09-24, #59).
+    FACTORIO TAKES THE TARGET AS ITS MODS DIRECTORY, on the one run checked (2.0.77 headless,
+    Grado_NonChanging, 2026-09-24, #59). fetch-mods.ps1 keeps its downloaded zips in a .zips
+    subdirectory, and the game passed over it without a word: no log line, no mod-list.json entry.
+    It then enabled every mod it found, and space-age, quality and elevated-rails with them.
 
     IT REFUSES A MALFORMED PACK. Every info.json in the chain is checked as strict JSON before
     anything is fetched: a comment or a trailing comma fails here, not inside the game.
@@ -160,7 +161,8 @@ function Remove-DroppedMod {
         dot-entries and other files, such as mod-list.json, stay.  #>
     param([Parameter(Mandatory)] [string] $Directory, [Parameter(Mandatory)] [string[]] $Keep)
 
-    Get-ChildItem -LiteralPath $Directory, (Join-Path $Directory '.zips') -Force -ErrorAction SilentlyContinue |
+    $zips = Join-Path $Directory '.zips'
+    Get-ChildItem -LiteralPath @($Directory; if (Test-Path -LiteralPath $zips) { $zips }) -Force |
         Where-Object { $_.Name -notlike '.*' -and ($_.PSIsContainer -or $_.Extension -eq '.zip') } |
         Where-Object { ($_.Name -replace '(_\d+\.\d+\.\d+)?(\.zip)?$') -notin $Keep } |
         ForEach-Object { Remove-Item -LiteralPath $_.FullName -Recurse -Force }

@@ -370,21 +370,22 @@ asking for a library `>= x` whose newest 2.0 release is below `x` would not show
 
 ## Resolves on stable 2.0.77, measured 2026-09-24 (#43)
 
-**Factorio's stable release is 2.0.77; 2.1.20 is experimental** (`https://factorio.com/api/latest-releases`,
-read 2026-09-24). So the question that decides whether a pack installs today is the 2.0 one, and
-on portal metadata **all five packs resolve on 2.0.77 with no conflict**. This retires #43's
-premise, that `Grado_NonChanging` "installs on no version of Factorio": the 2.1 end is closed, the
-2.0 end is open. It does not choose the packs' declared target, which stays #16's.
+**Factorio's stable release is 2.0.77; 2.1.20 is experimental**
+(`https://factorio.com/api/latest-releases`, read 2026-09-24). So the question that decides whether
+a pack installs today is the 2.0 one, and on portal metadata **all five packs resolve on 2.0.77 with
+no conflict**. This retires #43's premise, that `Grado_NonChanging` "installs on no version of
+Factorio": the 2.1 end is closed, the 2.0 end is open. It does not choose the packs' declared
+target, which stays #16's.
 
 **Method, so it can be re-run.** For each mod, take its newest release that declares
-`factorio_version` 2.0 and whose `base` floor 2.0.77 satisfies - the release a 2.0.77 game is
-served. Walk the mandatory closure of all five packs from those releases, then check every
-dependency line of every picked release against the other picks: mandatory version constraints,
-`!` incompatibilities, and version ranges on optional dependencies whose mod is in the closure.
-The union of all five packs is checked at once, which is stricter than checking each pack alone.
-The game's own mods (`space-age`, `quality`, `elevated-rails`) are left out of the walk: the fork's
-`! space-age` is the designed ABCX/ABCS exclusion, and the optional `space-age >= 2.0.0` lines
-elsewhere are met by 2.0.77.
+`factorio_version` 2.0 and whose `base` floor 2.0.77 satisfies - the release a 2.0.77 game is both
+served and able to install. Walk the mandatory closure of all five packs from those releases, then
+check every dependency line of every picked release against the other picks: mandatory version
+constraints, `!` incompatibilities, and version ranges on optional dependencies whose mod is in the
+closure. The union of all five packs is checked at once, which is stricter than checking each pack
+alone. The game's own mods (`space-age`, `quality`, `elevated-rails`) are left out of the walk: the
+fork's `! space-age` is the designed ABCX/ABCS exclusion, and the optional `space-age >= 2.0.0`
+lines elsewhere are met by 2.0.77.
 
 **Result.** The closure is 104 mods, 88 of them named members; the 108 of the 2.1 reading
 (`Grado_ABCX`'s closure, which is the five-pack union because `space-age` is not counted) less
@@ -394,7 +395,8 @@ includes the case #9 left open, `WideChestsBobs` asking `WideChests >= 6.0.0`.
 
 **What this does not prove.** It assumes the mod manager picks the newest qualifying release,
 which is what the portal serves - and for all 104, the newest 2.0 release already satisfies the
-2.0.77 floor, so the filter changed no pick. It reads metadata, and nothing has been loaded in game. `space-age`
+2.0.77 floor, so the filter changed no pick. It reads metadata, and nothing has been loaded in game.
+`space-age`
 is not a portal mod, and its 2.0.77 build asks only `base >= 2.0.0` (#10).
 
 **Not served at 2.1: seventeen, kept as a watch list for when 2.1 goes stable.** Their newest

@@ -9,8 +9,8 @@ core forecloses either end-game.
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
 **2026-09-21** and is reproduced from the fetched data rather than retyped, except those carrying a
 **Read on** of **2026-09-23** and the readings inside #9's rulings, which #9 took, and the notes
-marked *Superseded 2026-09-23 by #15*, which #15 took. The **Read on** row
-is authoritative where it disagrees with this sentence.
+marked *Superseded 2026-09-23 by #15*, which #15 took, and the notes dated 2026-09-24 (#43), which
+#43 took. The **Read on** row is authoritative where it disagrees with this sentence.
 
 The dependency list holds 46 entries: `base >= 2.0.0`, `Grado_ChangingBase` — a pack, catalogued in
 `docs/catalogue/Grado_ChangingBase.md` — and **44 mods**. It read 47 and 45 until 2026-09-22, when
@@ -30,7 +30,8 @@ Four findings hold across all 45:
   2.1 and nine declare 2.0** — and the nine are not spread evenly: eight of them are add-ons from
   #5's half, against one from the overhaul core.
 - **The pack requires `base >= 2.1`**, which is fatal to its declared `factorio_version` for the
-  third time in three surveys *(At a 2.1 target. On stable 2.0.77 the pack resolves; #43, 2026-09-24.)*. All 29 of the core mods require it, 22 saying so themselves; the
+  third time in three surveys *(At a 2.1 target. On stable 2.0.77 the pack resolves; #43, 2026-09-
+  2026-09-24.)*. All 29 of the core mods require it, 22 saying so themselves; the
   add-ons mostly declare no floor at all, which changes nothing because one member is enough. See
   *The pack cannot load on the Factorio version it declares*.
 - **Fifteen mandatory dependencies are not named in the dependency list**, and every one is a real

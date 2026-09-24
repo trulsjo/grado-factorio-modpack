@@ -8,8 +8,9 @@ from doing. The second has its own section, *What constrains an overhaul on top*
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
 **2026-09-21**, except those carrying a **Read on** of **2026-09-22**, which #8 took — the three
 entries it added and the readings inside its rulings — and the notes marked *Superseded 2026-09-23
-by #15*, which #15 took. Each is reproduced from the fetched data rather than retyped; the **Read
-on** row is authoritative where it disagrees with this sentence.
+by #15*, which #15 took, and the notes dated 2026-09-24 (#43), which #43 took. Each is reproduced
+from the fetched data rather than retyped; the **Read on** row is authoritative where it disagrees
+with this sentence.
 
 The dependency list holds 22 entries: `base >= 2.0.0`, `Grado_NonChanging` — a pack, catalogued in
 `docs/catalogue/Grado_NonChanging.md` — and the **20 mods** below. The survey read 25; #8 took the
@@ -21,8 +22,8 @@ replaced, not removed: `cybersyn2` carries its `Supersedes` row.
 **All 20 current members have a 2.x release.** None is stranded on 1.1. **Eleven of the twenty
 require `base >= 2.1`**, which is the same finding the `Grado_NonChanging` survey reached and is fatal to
 this pack's declared `factorio_version` for the same reason; see *The pack cannot load on the
-Factorio version it declares* *(At a 2.1 target. On stable 2.0.77 the pack resolves; #43, 2026-09-24.)*. #8 raised the floor again, to `base >= 2.1.12`, by adopting
-`cybersyn2`.
+Factorio version it declares* *(at a 2.1 target; on stable 2.0.77 the pack resolves - #43,
+2026-09-24)*. #8 raised the floor again, to `base >= 2.1.12`, by adopting `cybersyn2`.
 
 ## Decisions, 2026-09-22 (#8)
 

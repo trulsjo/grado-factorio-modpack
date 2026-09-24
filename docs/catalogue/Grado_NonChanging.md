@@ -154,6 +154,13 @@ In dependency-list order.
 
 **Recommendation: keep.** Purely cosmetic and the largest download count of the cosmetic members.
 
+*Checked 2026-09-24 (#25): holds.* The file never defines "the cosmetic members", so it was checked
+against every member that could be counted as one - `Automatic_Train_Painter` (131,257),
+`FluidWagonColorMask` (93,231), `automatic-station-painter` (31,472), `Brighter-Lamps` (22,821)
+and, while it was a member, `AfraidOfTheDark` (207,551), all read 2026-09-20. `DiscoScience` is
+above all of them, and on 2026-09-24 still leads the next, `Automatic_Train_Painter`, 330,812 to
+131,422.
+
 ### `FNEI`
 
 | | |
@@ -397,7 +404,12 @@ In dependency-list order.
 
 **Alternatives considered.** `MaxRateCalculator` overlaps on throughput but measures rather than plans. Not compared against `factoryplanner`.
 
-**Recommendation: keep.** Current on 2.1 and the second most downloaded member.
+**Recommendation: keep.** Current on 2.1 and the most downloaded member.
+
+**Corrected 2026-09-24 (#25): this read "the second most downloaded member".** It is first of the
+26, and was first of the 29 the survey read: 543,689 against `even-distribution`'s 525,156 in the
+table above (2026-09-20), 543,866 against 525,364 on 2026-09-21, and 544,227 against 525,774 on
+2026-09-24. No member has been above it on any reading.
 
 ### `ixuAutoSave`
 
@@ -410,7 +422,7 @@ In dependency-list order.
 | **Owner** | `ixu` |
 | **Read on** | 2026-09-20 |
 
-**Alternatives considered.** **Searched, nothing better found.** At 657 downloads this is by a wide margin the least used mod in the pack — the next lowest has over five times as many. That is a bus-factor observation, not a quality one.
+**Alternatives considered.** **Searched, nothing better found.** At 657 downloads this is by a wide margin the least used mod in the pack — the next lowest has over five times as many. That is a bus-factor observation, not a quality one. *Checked 2026-09-24 (#25): holds.* The next lowest of the 26 is `kry-picker-extended`, 4,127 against 657 on 2026-09-20 and 4,177 against 658 on 2026-09-24 - 6.3 times on both.
 
 **Recommendation: keep**, and know what it is: current on 2.1, but a one-author mod with almost no users. If it goes quiet, base-game autosave settings cover most of what it does.
 
@@ -649,6 +661,14 @@ Which layer it belongs in is pack membership, so it is #7's and #8's jointly. Re
 **Ruled 2026-09-22 (#7): out.** `EditorExtensions` does the job alone, and a mod that creates whole surfaces belongs at the tier whose promise permits save changes. `Grado_NonChanging`-only players get no sandbox; that is the accepted cost.
 
 **One consequence lands outside this pack.** `blueprint-sandboxes` has been force-disabling the `EditorExtensions` lab setting since 2023-11-06. Removing it *restores* that lab for `Grado_ChangingBase` and every pack above it - four packs change behaviour, none of them this one. Recorded for #8.
+
+**Checked 2026-09-24 (#25): "the pack with the most users" is not what the portal shows.** The
+recommendation above is left as written. Of the three existing entries, `Grado_NonChanging` has the
+fewest downloads - 20, against `Grado_ChangingBase`'s 21 and `Grado_ABCX`'s 23 - and a gap of one
+to three proves nothing either way. Every player of every pack installs it, so it has the most
+installs by construction. The number the sentence needs is how many play this pack alone, and no
+reading measures that. So the claim is unmeasured rather than false. It did not decide the ruling:
+#7 took the feature away from this pack as an accepted cost.
 
 ### `blueprint_flip_and_turn`
 

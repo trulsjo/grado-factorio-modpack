@@ -662,13 +662,14 @@ Which layer it belongs in is pack membership, so it is #7's and #8's jointly. Re
 
 **One consequence lands outside this pack.** `blueprint-sandboxes` has been force-disabling the `EditorExtensions` lab setting since 2023-11-06. Removing it *restores* that lab for `Grado_ChangingBase` and every pack above it - four packs change behaviour, none of them this one. Recorded for #8.
 
-**Checked 2026-09-24 (#25): "the pack with the most users" is not what the portal shows.** The
-recommendation above is left as written. Of the three existing entries, `Grado_NonChanging` has the
-fewest downloads - 20, against `Grado_ChangingBase`'s 21 and `Grado_ABCX`'s 23 - and a gap of one
-to three proves nothing either way. Every player of every pack installs it, so it has the most
-installs by construction. The number the sentence needs is how many play this pack alone, and no
-reading measures that. So the claim is unmeasured rather than false. It did not decide the ruling:
-#7 took the feature away from this pack as an accepted cost.
+**Checked 2026-09-24 (#25): "the pack with the most users" is unmeasured.** The recommendation
+above is left as written. The portal does not support it: of the three existing entries,
+`Grado_NonChanging` has the fewest downloads - 20, against `Grado_ChangingBase`'s 21 and
+`Grado_ABCX`'s 23 - though a gap of one to three proves nothing either way. Nor does it refute it:
+every player of every pack gets this pack as a dependency, and whether the portal counts a
+dependency the mod manager fetches as a download of it is not known. The number the sentence needs
+is how many play this pack alone, and nothing measures that. It did not decide the ruling: #7 took
+the feature away from this pack as an accepted cost.
 
 ### `blueprint_flip_and_turn`
 
@@ -902,7 +903,9 @@ and neither brings a transitive dependency the pack did not already carry. #15's
 pack survives the edit. **Superseded 2026-09-23 by #15:** 2.1.7 is still the highest of the named
 members, but the pack's effective floor is higher: the hidden `kry_stdlib` `2.2.21`, released that
 day, asks `base >= 2.1.20`. See *Effective Factorio floor* in `docs/porting-notes.md`, which also
-says why that number rests on one release.
+says why that number rests on one release. *Checked 2026-09-24 (#25): still holds. Of the 26
+named members' latest releases, five ask `base >= 2.1.7` - `BlueprintTools`, `Tapeline`,
+`even-distribution`, `even-pickier-dollies`, `helmod` - and none asks more.*
 
 ## Six members cannot be downloaded
 
@@ -984,7 +987,8 @@ extend to `blueprint_flip_and_turn`, which is why that one is flagged rather tha
 
 **`blueprint_flip_and_turn` may be redundant.** Modern Factorio flips blueprints natively and the
 mod's own summary already describes itself as a workaround for base versions that do. This is the
-single most likely removal in the pack and it was not settled.
+single most likely removal in the pack and it was not settled. *Settled 2026-09-22 (#7): it was
+redundant and is out - see its entry under* Ruled out after the port.
 
 **Overlapping members were not compared feature by feature.** `Bottleneck` against `BottleneckLite`,
 `even-distribution` against `EvenDistributionLite`, `helmod` against `MaxRateCalculator`, `FNEI`

@@ -202,8 +202,13 @@ set by this mod itself. The resolve found every member and no constraint violate
 
 **Does `Grado_ABC` need any change to accommodate it? No.** With it added, no pick anywhere in the
 lower closure moved version, no constraint between the picks was violated, and every requirement it
-places on the ABC side is already met. Its `? reskins-angels`, `? reskins-bobs` and
-`? reskins-library` name ABC members, and the resolve checked their ranges too. What it would
+places on the ABC side is already met. **25 of its 52 optional dependencies are already in the
+chain's closure**, and the resolve checked each range. Twenty are named members: `alien-biomes`,
+`angelsaddons-cab`, `angelsaddons-mobility`, `angelsaddons-storage`, `angelsinfiniteores`,
+`bobenemies`, `bobequipment`, `bobgreenhouse`, `bobinserters`, `bobmining`, `bobores`,
+`bobvehicleequipment`, `bobwarfare`, `DiscoScience`, `FNEI`, `helmod`, `RateCalculator`,
+`reskins-angels`, `reskins-bobs` and `Todo-List`. Five are hidden: the three
+`angelsaddons-mobility-graphics-*` packages, `alien-biomes-graphics` and `reskins-library`. What it would
 change is this pack, not the one below.
 
 **What was not measured.** The 2.1 line: `1.2.17` names the same eight at higher minimums
@@ -216,8 +221,9 @@ checked against a mod that redistributes ores across planets.
 (`! BobsAngelsSpaceAge >= 0.0.3`), and doing nothing, which #10 chose. No third bridge was found;
 #6's search and #4's before it are the ones behind that claim, not a new one.
 
-**Recommendation: reconsider:** after #29 shows whether the unintegrated pack plays, and only
-together with the promise. #10's ruling stands until then. If the bridge is ever wanted, this is
+**Recommendation: reconsider:** whether this pack should carry a bridge at all, once #29 shows
+whether the unintegrated pack plays - and only together with the promise, which a bridge fails.
+#10's ruling stands until then. If the bridge is ever wanted, this is
 the stronger mod by every measure taken: current on both lines within two days of this reading, 72
 releases, nearly fifteen times the other's downloads. Its cost is eighteen third-party mods, most of them
 planets and planet content. How it pushes on the one-mod-per-branch rule depends on what the rule
@@ -258,8 +264,9 @@ would strand this pack at a 2.1 target the way #16's watch list describes.
 **Alternatives considered.** `angelbob-spaceage-rebalance`, above, which excludes it, and doing
 nothing.
 
-**Recommendation: reconsider:** only if the bridge is wanted and the heavier mod's eighteen
-extras are not. It is the one option that keeps the rule by any count: one member, no extras.
+**Recommendation: reconsider:** this mod as the bridge, only if a bridge is wanted and the heavier
+mod's eighteen extras are not. It is the one bridge that keeps the rule by any count: one member,
+no extras. Doing nothing keeps it too.
 Against it: 253 downloads, `0.0.x`, two releases on one day and none since, no source, 2.0 only,
 and a narrower job - it moves ores between planets rather than merging the two progressions. The
 `!` is the other mod's declaration, not this one's; this mod declares nothing about it.

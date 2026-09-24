@@ -141,7 +141,9 @@ requires prose to go with it; the third and fourth also move the entry and const
 **Recommendation** may say. The third and fourth differ only in *when* the mod left: during the
 1.1 -> 2.0 port, or by a decision taken afterwards. The fifth and sixth were added on 2026-09-22,
 for mods that arrived after the port or lost a dependency-list line without leaving the chain. The
-seventh was added on 2026-09-24, for a mod assessed for a pack that was never in it.
+seventh was added on 2026-09-24, for a mod assessed for a pack that was never in it: like the third
+and fourth it adds a **Status** row, moves the entry to a section of its own and constrains the
+**Recommendation**, which takes verdicts of its own in place of the template's.
 
 - **A mod that replaced a 1.1 mod** adds one row, `| **Supersedes** | `old-name`, last 1.1 release |`,
   and changes nothing else. The heading is the mod that is in the pack now, not the one it replaced

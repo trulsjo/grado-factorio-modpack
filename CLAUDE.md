@@ -16,7 +16,9 @@ session start.
 compatibility Lua written or shown to be needed. *Members can now be downloaded:
 `scripts/stage-pack.ps1` (#24) fetches them. Recording a load is #17's.* Every dependency list is a portal-API reading, not a
 tested configuration. Treat "it resolves on the portal" and "it loads in the game" as different
-claims, because right now only the first is true.
+claims, because right now only the first is true. *2026-09-24 (#59): a headless 2.0.77 run
+against a staged `Grado_NonChanging` started and created a map, exit 0 - with `space-age`,
+`quality` and `elevated-rails` auto-enabled beside it, so it is not the load #17 records.*
 
 ## What a modpack is here
 

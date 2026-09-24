@@ -31,6 +31,29 @@ per mod, recording what each mod does, how current it is and whether it should s
 packs have now been surveyed**, the last two on 2026-09-22 - which is a claim about the portal, not
 about the game.
 
+## Staging a pack
+
+One command puts a pack, and every mod it needs, into one mods directory:
+
+```
+git submodule update --init
+pwsh -File scripts/stage-pack.ps1 Grado_ABC
+```
+
+It resolves the pack's closure to exact releases for the pack's `factorio_version` and the
+installed game's build, fetches those releases, and zips the pack and every pack under it as
+`<name>_<version>.zip`, the version read from each `info.json`. Staging again replaces the old
+zips. The default target is `.mod-cache/<pack>/`, which is git-ignored; the command prints the
+`load-harness.ps1` line that loads it. The options:
+
+- `-ModsDirectory <dir>` puts the set somewhere else, such as a Factorio mods directory.
+- `-Build 2.0.77` resolves for a build other than the installed one.
+- `-FactorioExe <path>` names the install, when it is not where `load-harness.ps1` looks.
+
+It needs PowerShell 7, and fetching needs the mod-portal login Factorio stores once you sign in
+in the game. `pwsh -File scripts/stage-pack.ps1 -SelfTest` checks the staging half without the
+network. The tools it runs live in `vendor/grado-factorio-tools`.
+
 ## Publishing
 
 `Grado_NonChanging`, `Grado_ChangingBase` and `Grado_ABCX` already exist on the portal under

@@ -2,6 +2,9 @@
 /dist/
 *.zip
 
+# Staged packs, their fetched members and pin files -- scripts/stage-pack.ps1
+/.mod-cache/
+
 # Personal, never committed
 CLAUDE.local.md
 

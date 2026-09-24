@@ -203,7 +203,8 @@ missing.
   `docs/adr/0002-any-pack-can-go-major-and-1-0-0-signals-maturity.md`, which supersedes
   `docs/adr/0001-version-major-tracks-save-compatibility.md`.
 - **Re-run the resolve before every pack release** (#16, 2026-09-24), with the resolver in
-  `vendor/grado-factorio-tools` - *not yet built: trulsjo/grado-factorio-tools#14*. If a pack's
+  `vendor/grado-factorio-tools` - `scripts/resolve-modpack.ps1` there, which
+  `scripts/stage-pack.ps1` runs (#24). If a pack's
   `base >=` minimum moved, raise it: metadata only, so a patch. The packs name members without
   versions, so a member's new release can make a declared minimum false without any change here.
 - **Packs version independently.** A bump means that pack's dependency list changed, so do not

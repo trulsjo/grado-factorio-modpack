@@ -24,6 +24,11 @@
     <name>_<version>.zip or <name>_<version> directory of that member is removed before the fetch,
     as the mod manager installs them that way.
 
+    A MEMBER THE PACK HAS DROPPED IS REMOVED, from the default directory only (#60). Before the
+    fetch, any mod in .mod-cache/<Pack> -- directory or zip, and its zip in .zips -- that is not
+    in the pack's resolved set or its chain goes, so a reused directory never loads a mod the pack
+    no longer has. A -ModsDirectory you name is never pruned: it may be a player's mods directory.
+
     A FACTORIO MODS DIRECTORY AS THE TARGET IS UNTESTED. fetch-mods.ps1 keeps its downloaded zips
     in a .zips subdirectory of the target, and whether the game passes over a directory with no
     info.json in it has not been checked.
@@ -32,18 +37,19 @@
     anything is fetched: a comment or a trailing comma fails here, not inside the game.
 
     WHAT IT DOES NOT DO. It modifies no info.json. It never loads the game. It does not remove a
-    member a pack has since dropped from a -ModsDirectory reused across membership changes; delete
-    the directory to start clean. Fetching needs the mod-portal credentials Factorio stores in
-    player-data.json -- fetch-mods.ps1 names the cause if they are missing.
+    member a pack has since dropped from a -ModsDirectory you named and reuse across membership
+    changes; delete that directory to start clean. Fetching needs the mod-portal credentials
+    Factorio stores in player-data.json -- fetch-mods.ps1 names the cause if they are missing.
 
 .PARAMETER Pack
     The pack to stage, by name: one of the Grado_* directories at the repository root.
 
 .PARAMETER ModsDirectory
     Where the set goes. Defaults to .mod-cache/<Pack> under the repository root, which is
-    git-ignored. Point it at a Factorio mods directory to install there instead. One directory
-    per pack: staging a second pack into the same directory leaves the first pack's members there
-    too, which for Grado_ABCX and Grado_ABCS is a set that must never exist.
+    git-ignored, and the only directory pruned of mods the pack has dropped. A directory named
+    here is never pruned. Point it at a Factorio mods directory to install there instead. One
+    directory per pack: staging a second pack into the same directory leaves the first pack's
+    members there too, which for Grado_ABCX and Grado_ABCS is a set that must never exist.
 
 .PARAMETER Build
     The game build to resolve for, e.g. 2.0.77. Defaults to the version of the installed game's
@@ -148,6 +154,18 @@ function Remove-VersionedCopy {
         ForEach-Object { Remove-Item -LiteralPath $_.FullName -Recurse -Force }
 }
 
+function Remove-DroppedMod {
+    <#  Remove from $Directory, and from fetch-mods.ps1's download cache in its .zips, every mod not
+        named in $Keep: a directory, or a .zip, whose name less any _<x.y.z> is not kept. Other
+        dot-entries and other files, such as mod-list.json, stay.  #>
+    param([Parameter(Mandatory)] [string] $Directory, [Parameter(Mandatory)] [string[]] $Keep)
+
+    Get-ChildItem -LiteralPath $Directory, (Join-Path $Directory '.zips') -Force -ErrorAction SilentlyContinue |
+        Where-Object { $_.Name -notlike '.*' -and ($_.PSIsContainer -or $_.Extension -eq '.zip') } |
+        Where-Object { ($_.Name -replace '(_\d+\.\d+\.\d+)?(\.zip)?$') -notin $Keep } |
+        ForEach-Object { Remove-Item -LiteralPath $_.FullName -Recurse -Force }
+}
+
 function Publish-PackZip {
     <#  Zip one pack into $ModsDirectory as <name>_<version>.zip, holding <name>_<version>/, which
         is the shape the portal and the game take. Any earlier zip or directory of the pack there
@@ -225,6 +243,15 @@ function Invoke-SelfTest {
             'x' | Set-Content (Join-Path $d 'flib_0.16.2.zip'); 'x' | Set-Content (Join-Path $d 'flibX_1.0.0.zip')
             Remove-VersionedCopy -Directory $d -Name 'flib'
             (@(Get-ChildItem -LiteralPath $d | ForEach-Object Name | Sort-Object) -join ',') -eq 'flib,flibX_1.0.0.zip' } }
+        @{ Name = 'a mod the pack has dropped goes, in every shape; members, packs and non-mods stay'; Test = {
+            $d = Join-Path $temp 'dropped'
+            New-Item -ItemType Directory -Path (Join-Path $d 'flib'), (Join-Path $d 'Gone'), (Join-Path $d 'Gone_0.9.0'), (Join-Path $d '.zips') -Force | Out-Null
+            'x' | Set-Content (Join-Path $d 'Gone_1.0.0.zip'); 'x' | Set-Content (Join-Path $d 'Mid_0.1.0.zip')
+            'x' | Set-Content (Join-Path $d 'Some_Mod_2.0.1.zip'); '{}' | Set-Content (Join-Path $d 'mod-list.json')
+            'x' | Set-Content (Join-Path $d '.zips/Gone_1.0.0.zip'); 'x' | Set-Content (Join-Path $d '.zips/flib_0.16.5.zip')
+            Remove-DroppedMod -Directory $d -Keep 'flib', 'Some_Mod', 'Mid'
+            (@(Get-ChildItem -LiteralPath $d -Force | ForEach-Object Name | Sort-Object) -join ',') -eq '.zips,flib,Mid_0.1.0.zip,mod-list.json,Some_Mod_2.0.1.zip' -and
+                (@(Get-ChildItem -LiteralPath (Join-Path $d '.zips') | ForEach-Object Name) -join ',') -eq 'flib_0.16.5.zip' } }
         @{ Name = 'the zip is named from info.json and holds <name>_<version>/info.json'; Test = {
             $zip = Publish-PackZip -Pack (Get-PackChain -Root $root -Name 'High')[0] -ModsDirectory $mods
             $a = [IO.Compression.ZipFile]::OpenRead($zip)
@@ -272,7 +299,9 @@ $chain = @(Get-PackChain -Root $ROOT -Name $Pack)
 $line = $chain[0].Info.factorio_version
 $offLine = @($chain | Where-Object { $_.Info.factorio_version -ne $line } | ForEach-Object { "$($_.Name) ($($_.Info.factorio_version))" })
 if ($offLine) { throw "$Pack declares factorio_version $line, but packs under it do not: $($offLine -join ', ')." }
-if (-not $ModsDirectory) { $ModsDirectory = Join-Path $ROOT ".mod-cache/$Pack" }
+# Only the default directory is pruned: a directory the user names may hold mods of their own.
+$prune = -not $ModsDirectory
+if ($prune) { $ModsDirectory = Join-Path $ROOT ".mod-cache/$Pack" }
 # Absolute once, so the zip written through .NET and the moves through PowerShell agree on where.
 $ModsDirectory = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($ModsDirectory)
 if (-not $Build) {
@@ -297,7 +326,9 @@ catch { Write-Host "  $($_.Exception.Message)"; $global:LASTEXITCODE = 1 }
 if ($LASTEXITCODE) { Write-Host ''; Write-Host "FAILED - $Pack did not resolve on $Build; nothing fetched or staged."; exit 1 }
 
 New-Item -ItemType Directory -Path $ModsDirectory -Force | Out-Null
-foreach ($m in @((Import-PowerShellDataFile -LiteralPath $pinFile).Sets[$Pack])) { Remove-VersionedCopy -Directory $ModsDirectory -Name $m.Name }
+$members = @((Import-PowerShellDataFile -LiteralPath $pinFile).Sets[$Pack])
+if ($prune) { Remove-DroppedMod -Directory $ModsDirectory -Keep @($members.Name; $chain.Name) }
+foreach ($m in $members) { Remove-VersionedCopy -Directory $ModsDirectory -Name $m.Name }
 try { & (Join-Path $TOOLS 'fetch-mods.ps1') -PinFile $pinFile -Set $Pack -CacheDirectory $ModsDirectory }
 catch { Write-Host "  $($_.Exception.Message)"; Write-Host ''; Write-Host "FAILED - the members of $Pack could not all be fetched; the packs were not staged."; exit 1 }
 

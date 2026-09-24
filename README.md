@@ -44,10 +44,12 @@ It resolves the pack's closure to exact releases for the pack's `factorio_versio
 installed game's build, fetches those releases, and zips the pack and every pack under it as
 `<name>_<version>.zip`, the version read from each `info.json`. Staging again replaces the old
 zips, and removes any other `<name>_<version>` copy of a member first. The default target is
-`.mod-cache/<pack>/`, which is git-ignored; the command prints the `load-harness.ps1` line that
+`.mod-cache/<pack>/`, which is git-ignored, and staging there again also removes any mod the pack
+has since dropped; the command prints the `load-harness.ps1` line that
 loads it. The options:
 
-- `-ModsDirectory <dir>` puts the set somewhere else. A Factorio mods directory as the target is
+- `-ModsDirectory <dir>` puts the set somewhere else, and is never pruned: a mod the pack drops
+  stays there until you remove it. A Factorio mods directory as the target is
   untested: the fetch leaves a `.zips` subdirectory there. Use one directory per pack: a second
   pack staged into the same one joins the first pack's members, and `Grado_ABCX` beside
   `Grado_ABCS` is a set that must never exist.

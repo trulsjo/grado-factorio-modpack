@@ -136,7 +136,10 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   still have no 2.1 release; that list is a watch list for when 2.1 goes stable, under *Resolves on
   stable 2.0.77* in `docs/porting-notes.md`. The five-pack table, dated
   2026-09-23 and against the settled memberships, is *Effective Factorio floor* in
-  `docs/porting-notes.md` (#15).
+  `docs/porting-notes.md` (#15). **Ruled 2026-09-24 (#16), not yet applied:** declared line `2.0`
+  for the first release, with a 2.1 release on the same entries once factorio.com's stable
+  release is 2.1.x; `base >= 2.0.67` for `Grado_NonChanging` and `>= 2.0.74` for the other four.
+  The `info.json` edits wait on the resolver (trulsjo/grado-factorio-tools#14) re-measuring them.
 - **`PickerPipeTools`' pipe clamps are the one feature lost in the port with no successor found** —
   a search, not a proof. All twenty port drops are now closed (#7, #8, #9): nineteen stay dropped
   and `RealisticFusionPower` was replaced by `RealisticFusionPowerPort`.
@@ -195,6 +198,10 @@ missing.
   version does not move at all before its first release. Reasoning in
   `docs/adr/0002-any-pack-can-go-major-and-1-0-0-signals-maturity.md`, which supersedes
   `docs/adr/0001-version-major-tracks-save-compatibility.md`.
+- **Re-run the resolve before every pack release** (#16, 2026-09-24), with the resolver in
+  `vendor/grado-factorio-tools`. If a pack's `base >=` minimum moved, raise it: metadata only, so a
+  patch. The packs name members without versions, so a member's new release can make a declared
+  minimum false without any change here.
 - **Packs version independently.** A bump means that pack's dependency list changed, so do not
   bump the other four to match.
 - **A title is short identity, colon, descriptor** — `Grado ABC: Angel's, Bob's, MadClown`. Keep
@@ -202,8 +209,8 @@ missing.
   mods a player would search for; the initialism alone means nothing to someone browsing.
 - **`name` and `title` are not the same field.** The name is permanent and resolves dependencies;
   the title is display only. `CONTEXT.md` is the glossary: six terms, these two among them, each
-  of which has been used here to mean two things. *Eight since 2026-09-24: `Promise` had already
-  made it seven, and #43 added `Resolve`.*
+  of which has been used here to mean two things. *Nine since 2026-09-24: `Promise` had already
+  made it seven, and #43 added `Resolve` and #16 `Declared line`.*
 
 ## Commit messages
 

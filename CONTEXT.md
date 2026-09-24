@@ -16,6 +16,14 @@ A mod named in a pack's `dependencies`. Written by someone else, published separ
 vendored into this repo. A pack that depends on another pack depends on it as a member.
 _Avoid_: dependency (true but wider - it also covers `base` and optional entries), child mod
 
+**Declared line**:
+The Factorio release line a pack's `factorio_version` names - `2.0` or `2.1` - and so the games the
+portal serves it to. All five packs share one, because a pack cannot depend on a pack its game is
+not served. One portal entry can carry a release on each line.
+_Avoid_: target (that word is taken - "Space Age is a target" means an expansion the packs support),
+Factorio version (ambiguous with the `base >=` floor, which decides which builds of the line it
+installs on)
+
 **Lower / higher**:
 Position in the chain, measured by dependency. `Grado_NonChanging` is the lowest and `Grado_ABCX`
 and `Grado_ABCS` are the highest; a pack is higher than every pack it depends on, and loads all of

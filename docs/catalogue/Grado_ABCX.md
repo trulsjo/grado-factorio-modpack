@@ -14,7 +14,10 @@ The dependency list holds 4 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, ca
 `docs/catalogue/Grado_ABC.md` — `SpaceModFeorasFork`, and the `! space-age` line the pack declares
 itself. **One mod, and nothing was dropped during the port**; the 1.1 `Grado_ABCX` held 56 mods and
 the other 55 are accounted for under `Grado_ABC` — 45 of them as members, 10 as its drops — which
-`docs/porting-notes.md` records.
+`docs/porting-notes.md` records. *The `base` line is `base >= 2.0.74` since 2026-09-24 (#58).*
+*Superseded 2026-09-22 by #8 and 2026-09-23 by #9: 40 of the 55 are `Grado_ABC` members now,
+`bobinserters` is `Grado_ChangingBase`'s, four are under* Ruled out after the port *there, and
+`RealisticFusionPowerPort`, replacing one of the 10 drops, is ABC's 41st member.*
 
 Four findings, and the first is the one #6 was asked to check:
 
@@ -185,7 +188,7 @@ that number rests on one release.
 Two things about that count, because both are easy to get wrong and this survey got both wrong first
 time round. **98 is distinct mods, not declarations**: the three lists hold 99 entries and
 `bobinserters` is named in two of them, which `docs/mod-catalogue.md` records as the only such
-collision. And **the closure is transitive and includes `~`-prefixed dependencies**, which are
+collision. *#8 removed the second line on 2026-09-22.* And **the closure is transitive and includes `~`-prefixed dependencies**, which are
 mandatory — they only decline to constrain load order. Walking one level, or reading `~` as
 optional, gives 14 and misses the four Angel's graphics packages and `reskins-sprite-utils`.
 
@@ -212,7 +215,10 @@ Truls's to set; no `info.json` was modified.
 
 **None.** The 1.1 `Grado_ABCX` held 56 mods; 55 of them are accounted for under `Grado_ABC` and
 catalogued there, as its 45 members and its 10 drops, and the 56th, `SpaceMod`, was replaced rather
-than dropped — it is the **Supersedes** row above. `docs/porting-notes.md` records the split. This
+than dropped — it is the **Supersedes** row above. `docs/porting-notes.md` records the split.
+*Superseded 2026-09-22 by #8 and 2026-09-23 by #9: 40 of the 55 are `Grado_ABC` members now,
+`bobinserters` is `Grado_ChangingBase`'s, four are under* Ruled out after the port *there, and
+`RealisticFusionPowerPort`, replacing one of the 10 drops, is ABC's 41st member.* This
 section is empty as a claim, not as an omission.
 
 ## Pressure on the one-mod-per-branch rule
@@ -227,6 +233,9 @@ release of all 117 mods in the chain's closure, **not one declares `! SpaceMod`,
 declares sixteen hard incompatibilities in total — fifteen from named members and one from
 `reskins-library` in the hidden set — and every one of them names a mod that is in no pack. So no
 member of `Grado_ABC` is SpaceX-specific by declaration, and none is forbidden here.
+*Superseded 2026-09-22 by #7 and #8 and 2026-09-23 by #9, which changed the three lower lists to
+87 named members. Re-read 2026-09-24 (#61) for those 87: none declares a `!` against this branch,
+and every `!` among them names a mod in no pack. The hidden members were not re-read.*
 
 **Nothing this branch needs is missing from `Grado_ABC`.** The fork's mandatory dependency list is
 `base >= 2.1.9` and nothing else. Its 22 optional entries are satisfied seven-for-seven on the Bob's

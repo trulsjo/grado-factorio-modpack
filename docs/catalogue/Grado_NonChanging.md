@@ -886,7 +886,9 @@ refuse to load below 2.1, and six of those require `base >= 2.1.7`:**
 
 A player on Factorio 2.0.x cannot satisfy those dependencies, so the pack's declared floor of 2.0.0
 is not a floor it can honour. **The effective requirement is 2.1.7**, and `base >= 2.0.0` advertises
-something the pack cannot deliver.
+something the pack cannot deliver. *Superseded 2026-09-22 by #7: eleven of the 26, re-read
+2026-09-24 (#61) from each member's latest release. `blueprint-sandboxes` left the list above;
+`BottleneckLite` and `RateCalculator` joined it.*
 
 `docs/porting-notes.md` carries this as an open question, worded as *"Confirm a `2.0` pack still
 loads them"* and marked unverified. It is no longer unverified for this pack: it does not, and the

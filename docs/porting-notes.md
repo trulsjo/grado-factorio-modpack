@@ -13,6 +13,12 @@ unconfirmed until a survey has re-checked it that way.
 
 33 mods in the 1.1 pack: **26 carried over, 3 replaced, 4 dropped** -> **29 in the 2.0 pack**.
 
+**Changed again after the port, 2026-09-22 (#7): 29 members to 26.** The figures above describe
+the 1.1 -> 2.0 port and are left as they were. #7 removed `AfraidOfTheDark`, `blueprint-sandboxes`
+and `blueprint_flip_and_turn`, and replaced `Bottleneck` with `BottleneckLite` and
+`MaxRateCalculator` with `RateCalculator`. 29 - 3 = 26. Per-mod reasons are in
+`docs/catalogue/Grado_NonChanging.md`.
+
 ### Replaced
 
 | 1.1 mod | 2.0 replacement |

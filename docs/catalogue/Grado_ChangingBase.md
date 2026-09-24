@@ -17,7 +17,8 @@ The dependency list holds 22 entries: `base >= 2.0.0`, `Grado_NonChanging` — a
 pack to 20 on 2026-09-22 and the section after this one is its ledger. **Fourteen mods are no longer
 members**: the six lost in the port, reassessed at the end, and the eight under *Ruled out after the
 port* - **five** #8 removed outright and **three** it replaced. `LogisticTrainNetwork` counts as
-replaced, not removed: `cybersyn2` carries its `Supersedes` row.
+replaced, not removed: `cybersyn2` carries its `Supersedes` row. *The `base` line is
+`base >= 2.0.74` since 2026-09-24 (#58).*
 
 **All 20 current members have a 2.x release.** None is stranded on 1.1. **Eleven of the twenty
 require `base >= 2.1`**, which is the same finding the `Grado_NonChanging` survey reached and is fatal to
@@ -891,7 +892,8 @@ mandatory member and had no `crafting_combinator` and no `Squeak Through`; `0.0.
 The 31-and-29 split in `docs/porting-notes.md` checks out against `0.0.2`, and **its 31 counts mods,
 not dependency entries** — `0.0.2` declares 33 lines in all, of which `base >= 1.1.0` and
 `Grado_NonChanging` are not mods, leaving 31 mods, 29 of them mandatory. That is the opposite
-convention to the "27 entries" at the top of this file, which counts every line. Both numbers are
+convention to the "27 entries" at the top of this file, which counts every line. *Superseded
+2026-09-22 by #8: the top of this file now reads 22 entries, on the same every-line convention.* Both numbers are
 right and neither is comparable to the other without saying which is being counted, which is how the
 brain page got a "31" it could not reconcile.
 

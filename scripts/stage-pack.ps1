@@ -29,9 +29,9 @@
     in the pack's resolved set or its chain goes, so a reused directory never loads a mod the pack
     no longer has. A -ModsDirectory you name is never pruned: it may be a player's mods directory.
 
-    A FACTORIO MODS DIRECTORY AS THE TARGET IS UNTESTED. fetch-mods.ps1 keeps its downloaded zips
-    in a .zips subdirectory of the target, and whether the game passes over a directory with no
-    info.json in it has not been checked.
+    A FACTORIO MODS DIRECTORY AS THE TARGET WORKS. fetch-mods.ps1 keeps its downloaded zips in a
+    .zips subdirectory of the target, and the game passes over it without a word: no log line, no
+    mod-list.json entry (2.0.77 headless, Grado_NonChanging, 2026-09-24, #59).
 
     IT REFUSES A MALFORMED PACK. Every info.json in the chain is checked as strict JSON before
     anything is fetched: a comment or a trailing comma fails here, not inside the game.

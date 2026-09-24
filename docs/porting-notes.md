@@ -425,6 +425,12 @@ above:
 | | `spidertrontiers-community-updates` | `0.3.1`, 2024-11-16 |
 
 `Grado_ABCX` and `Grado_ABCS` add none: `SpaceModFeorasFork` is 2.1, and `space-age` is the game's.
+**Ruled 2026-09-24 (#16):** this list is what the 2.1 release waits on, and that release starts
+when factorio.com's stable release is 2.1.x. Each mod still missing then is Truls's to wait on,
+replace or drop. The first release declares line `2.0`, with `base >= 2.0.67` for
+`Grado_NonChanging` and `>= 2.0.74` for the other four - applied once the committed resolver
+(trulsjo/grado-factorio-tools#14) re-measures them.
+
 Upstream 2.1 plans and served replacements were not researched for these. They matter only at a
 2.1 target, and whether to target 2.1 is #16's choice; Truls closed #43 on the 2.0.77 result with
 this list kept as a watch list rather than a sweep.

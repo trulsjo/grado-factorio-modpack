@@ -916,13 +916,11 @@ downloaded. Both ends are closed.
 On a 2.0 game the portal serves each mod its newest 2.0 release, and every member of the three lower
 packs has one whose `base` floor is below 2.1. So a 2.1 target is closed and a 2.0 target is
 unproven, not closed. Whether those old releases' floors on each other are consistent is not yet
-checked. See #43 and #16.
+checked. See #43 and #16. *#43, 2026-09-24: checked - they are consistent on stable 2.0.77.*
 
-**Settled 2026-09-24 (#43): the 2.0 end is open.** Stable Factorio is 2.0.77 and 2.1.20 is
-experimental. On 2.0.77 every member of every pack has a release it is served, and those releases
-satisfy each other with zero conflicts. So this pack installs on stable, on portal metadata; the
-six above matter only at a 2.1 target. Method and the chain-wide watch list are in
-`docs/porting-notes.md`, *Resolves on stable 2.0.77*.
+**Settled 2026-09-24 (#43): the 2.0 end is open.** On stable 2.0.77 this pack resolves, on portal
+metadata; the six above matter only at a 2.1 target. The measurement, which covers all five packs,
+is in `docs/porting-notes.md`, *Resolves on stable 2.0.77*.
 
 **#7's edit improves this without fixing it**, taking the unserved count from ten to six by removing
 `Bottleneck`, `MaxRateCalculator`, `blueprint_flip_and_turn` and `AfraidOfTheDark`.

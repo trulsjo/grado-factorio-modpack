@@ -127,10 +127,12 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   declaring 2.0 whose `base` floor is below 2.1, and the whole closure read that way asks
   `base >= 2.0.74` (`miniloader-redux`, #15). So a 2.0 target may resolve, while a 2.1 target
   strands the 2.0-only members. That makes "installs on no version of Factorio" unproven rather than
-  true, and the choice between the two targets is #16's. The hidden members pass too. **Stable
-  Factorio is 2.0.77; 2.1.20 is experimental** (read 2026-09-24). **On 2.0.77 all five packs
-  resolve on portal metadata, with zero conflicts between the releases a 2.0.77 game is served** (#43, closed
-  2026-09-24) - so the 2.0 target is no longer "may resolve". Seventeen members, two of them hidden,
+  true, and the choice between the two targets is #16's. The hidden members pass too. Not yet
+  checked: whether the old releases' floors on each other are consistent. *Checked 2026-09-24
+  (#43): they are.* **Stable Factorio is 2.0.77; 2.1.20 is experimental** (read 2026-09-24). **On
+  2.0.77 all five packs resolve on portal metadata, with zero conflicts between the releases a
+  2.0.77 game would install** (#43, closed 2026-09-24) - so the 2.0 target is no longer "may
+  resolve". Seventeen members, two of them hidden,
   still have no 2.1 release; that list is a watch list for when 2.1 goes stable, under *Resolves on
   stable 2.0.77* in `docs/porting-notes.md`. The five-pack table, dated
   2026-09-23 and against the settled memberships, is *Effective Factorio floor* in
@@ -200,7 +202,8 @@ missing.
   mods a player would search for; the initialism alone means nothing to someone browsing.
 - **`name` and `title` are not the same field.** The name is permanent and resolves dependencies;
   the title is display only. `CONTEXT.md` is the glossary: six terms, these two among them, each
-  of which has been used here to mean two things.
+  of which has been used here to mean two things. *Eight since 2026-09-24: `Promise` had already
+  made it seven, and #43 added `Resolve`.*
 
 ## Commit messages
 

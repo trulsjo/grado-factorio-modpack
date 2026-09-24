@@ -36,6 +36,14 @@ The `name` field in `info.json`, e.g. `Grado_ABCS`. What another mod's `dependen
 what the portal URL carries. Permanent once published - changing it means a new entry.
 _Avoid_: mod name, id, directory name (the directory happens to match, but it is not the name)
 
+**Resolve**:
+Two senses, kept apart by what the subject is. A dependency line *resolves* to the mod whose name
+it carries (see *Name*). A pack *resolves* on a game version when every mod in its mandatory closure
+has a release that version is served (`factorio_version`) and can install (`base >=`), and those
+releases satisfy each other's version constraints. Added 2026-09-24 (#43), where "all five packs
+resolve on 2.0.77" is the second sense.
+_Avoid_: "installs" for the second sense on portal evidence alone - nothing has been loaded in game
+
 **Title**:
 The `title` field in `info.json`, e.g. `Grado ABCS: Angel's, Bob's, MadClown, Space Age`. Display
 only - shown in the in-game mod list and on the pack's portal entry, and freely changed in any

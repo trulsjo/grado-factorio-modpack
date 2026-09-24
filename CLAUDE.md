@@ -107,6 +107,11 @@ Settled so far, recorded here so nobody reopens them by accident:
   `0.1.0` through any number of dependency edits; the major/minor rule under *Conventions* starts
   applying at the first published release. `0.x` to `1.0.0` is the one major that signals
   maturity rather than a broken save - see ADR 0002.
+- **The declared line is `2.0` for the first release** (2026-09-24, #16), with a 2.1 release on
+  the same entries once factorio.com's stable release is 2.1.x. Minimums: `base >= 2.0.67` for
+  `Grado_NonChanging`, `>= 2.0.74` for the other four. **Not yet applied**: the `info.json` edits
+  wait on the resolver (trulsjo/grado-factorio-tools#14) re-measuring the minimums, so #16 stays
+  open until they land.
 
 ## Decisions still open
 
@@ -120,26 +125,25 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   the pack is loaded, because `space-age` is not a portal mod (#29); its 2.0.77 build, read from
   disk on 2026-09-23, requires only `base >= 2.0.0`, and a 2.1 build is unread. The measurement is
   #15; the number to declare is #16. **#16 cannot be answered by choosing a number yet** - *true
-  of a 2.1 target only; see the 2.0.77 result below (2026-09-24).* A member
+  of a 2.1 target only; see the 2.0.77 result below (2026-09-24). Ruled 2026-09-24 (#16): see
+  Settled so far.* A member
   declaring `factorio_version: 2.0` is not served to a 2.1 game at all, and several are members of
   every lower pack (#43). **Those floors are latest-release readings, and they overstate the case**
   (2026-09-23, #9): every one of the 87 members of the three lower packs has at least one release
   declaring 2.0 whose `base` floor is below 2.1, and the whole closure read that way asks
   `base >= 2.0.74` (`miniloader-redux`, #15). So a 2.0 target may resolve, while a 2.1 target
   strands the 2.0-only members. That makes "installs on no version of Factorio" unproven rather than
-  true, and the choice between the two targets is #16's. The hidden members pass too. Not yet
-  checked: whether the old releases' floors on each other are consistent. *Checked 2026-09-24
-  (#43): they are.* **Stable Factorio is 2.0.77; 2.1.20 is experimental** (read 2026-09-24). **On
-  2.0.77 all five packs resolve on portal metadata, with zero conflicts between the releases a
-  2.0.77 game would install** (#43, closed 2026-09-24) - so the 2.0 target is no longer "may
-  resolve". Seventeen members, two of them hidden,
-  still have no 2.1 release; that list is a watch list for when 2.1 goes stable, under *Resolves on
-  stable 2.0.77* in `docs/porting-notes.md`. The five-pack table, dated
-  2026-09-23 and against the settled memberships, is *Effective Factorio floor* in
-  `docs/porting-notes.md` (#15). **Ruled 2026-09-24 (#16), not yet applied:** declared line `2.0`
-  for the first release, with a 2.1 release on the same entries once factorio.com's stable
-  release is 2.1.x; `base >= 2.0.67` for `Grado_NonChanging` and `>= 2.0.74` for the other four.
-  The `info.json` edits wait on the resolver (trulsjo/grado-factorio-tools#14) re-measuring them.
+  true, and the choice between the two targets is #16's (*Ruled 2026-09-24 (#16), not yet applied.*)
+  The hidden members pass too. Not yet checked: whether the old releases' floors on each other are
+  consistent. *Checked 2026-09-24 (#43): they are.* **Stable Factorio is 2.0.77; 2.1.20 is
+  experimental** (read 2026-09-24). **On 2.0.77 all five packs resolve on portal metadata, with zero
+  conflicts between the releases a 2.0.77 game would install** (#43, closed 2026-09-24) - so the 2.0
+  target is no longer "may resolve". Seventeen members, two of them hidden, still have no 2.1
+  release; that list is a watch list for when 2.1 goes stable, under *Resolves on stable 2.0.77* in
+  `docs/porting-notes.md`. The five-pack table, dated 2026-09-23 and against the settled
+  memberships, is *Effective Factorio floor* in `docs/porting-notes.md` (#15). **Ruled 2026-09-24
+  (#16) - see *Settled so far*.** What stays open is applying it: the `info.json` edits wait on the
+  resolver re-measuring the minimums.
 - **`PickerPipeTools`' pipe clamps are the one feature lost in the port with no successor found** —
   a search, not a proof. All twenty port drops are now closed (#7, #8, #9): nineteen stay dropped
   and `RealisticFusionPower` was replaced by `RealisticFusionPowerPort`.
@@ -199,9 +203,9 @@ missing.
   `docs/adr/0002-any-pack-can-go-major-and-1-0-0-signals-maturity.md`, which supersedes
   `docs/adr/0001-version-major-tracks-save-compatibility.md`.
 - **Re-run the resolve before every pack release** (#16, 2026-09-24), with the resolver in
-  `vendor/grado-factorio-tools`. If a pack's `base >=` minimum moved, raise it: metadata only, so a
-  patch. The packs name members without versions, so a member's new release can make a declared
-  minimum false without any change here.
+  `vendor/grado-factorio-tools` - *not yet built: trulsjo/grado-factorio-tools#14*. If a pack's
+  `base >=` minimum moved, raise it: metadata only, so a patch. The packs name members without
+  versions, so a member's new release can make a declared minimum false without any change here.
 - **Packs version independently.** A bump means that pack's dependency list changed, so do not
   bump the other four to match.
 - **A title is short identity, colon, descriptor** — `Grado ABC: Angel's, Bob's, MadClown`. Keep

@@ -20,9 +20,8 @@ _Avoid_: dependency (true but wider - it also covers `base` and optional entries
 The Factorio release line a pack's `factorio_version` names - `2.0` or `2.1` - and so the games the
 portal serves it to. All five packs share one, because a pack cannot depend on a pack its game is
 not served. One portal entry can carry a release on each line.
-_Avoid_: target (that word is taken - "Space Age is a target" means an expansion the packs support),
-Factorio version (ambiguous with the `base >=` floor, which decides which builds of the line it
-installs on)
+_Avoid_: target (that word is taken - "Space Age is a target" means an expansion the packs support,
+while "a 2.0 target" and "a 2.1 target" have meant a line)
 
 **Lower / higher**:
 Position in the chain, measured by dependency. `Grado_NonChanging` is the lowest and `Grado_ABCX`

@@ -41,7 +41,9 @@
 
 .PARAMETER ModsDirectory
     Where the set goes. Defaults to .mod-cache/<Pack> under the repository root, which is
-    git-ignored. Point it at a Factorio mods directory to install there instead.
+    git-ignored. Point it at a Factorio mods directory to install there instead. One directory
+    per pack: staging a second pack into the same directory leaves the first pack's members there
+    too, which for Grado_ABCX and Grado_ABCS is a set that must never exist.
 
 .PARAMETER Build
     The game build to resolve for, e.g. 2.0.77. Defaults to the version of the installed game's
@@ -89,7 +91,7 @@ function Get-RequiredName {
     <#  The mod names an info.json requires: bare and `~` lines, not `?`, `(?)` or `!`.  #>
     param([Parameter(Mandatory)] $Info)
     foreach ($d in @($Info.PSObject.Properties['dependencies']?.Value)) {
-        if ($d -match '^\s*(\?|!|\(\?\))') { continue }
+        if (-not $d -or $d -match '^\s*(\?|!|\(\?\))') { continue }
         ($d -replace '^\s*~\s*' -split '\s*(<=|>=|<|>|=)')[0].Trim()
     }
 }
@@ -149,7 +151,7 @@ function Remove-VersionedCopy {
 function Publish-PackZip {
     <#  Zip one pack into $ModsDirectory as <name>_<version>.zip, holding <name>_<version>/, which
         is the shape the portal and the game take. Any earlier zip or directory of the pack there
-        is removed first, whatever its version.  #>
+        is removed, whatever its version, once the new zip is built and before it takes its place.  #>
     param([Parameter(Mandatory)] [hashtable] $Pack, [Parameter(Mandatory)] [string] $ModsDirectory)
 
     $name = $Pack.Name
@@ -205,6 +207,8 @@ function Invoke-SelfTest {
     $cases = @(
         @{ Name = 'the chain walks required and ~ packs down, not ?, ! or game mods'; Test = {
             (@(Get-PackChain -Root $root -Name 'High') | ForEach-Object Name) -join ',' -eq 'High,Mid,Low' } }
+        @{ Name = 'an info.json with no dependencies requires nothing, not one empty name'; Test = {
+            @(Get-RequiredName ('{"name":"Bare","version":"0.1.0"}' | ConvertFrom-Json)).Count -eq 0 } }
         @{ Name = 'an unknown pack is refused, naming the packs there are'; Test = {
             & $refuses 'Nope' "No pack 'Nope'\. Packs: .*High" } }
         @{ Name = 'an info.json with a comment is refused as not valid JSON'; Test = {

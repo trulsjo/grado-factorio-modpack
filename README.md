@@ -48,7 +48,9 @@ zips, and removes any other `<name>_<version>` copy of a member first. The defau
 loads it. The options:
 
 - `-ModsDirectory <dir>` puts the set somewhere else. A Factorio mods directory as the target is
-  untested: the fetch leaves a `.zips` subdirectory there.
+  untested: the fetch leaves a `.zips` subdirectory there. Use one directory per pack: a second
+  pack staged into the same one joins the first pack's members, and `Grado_ABCX` beside
+  `Grado_ABCS` is a set that must never exist.
 - `-Build 2.0.77` resolves for a build other than the installed one. It has to be on the pack's
   `factorio_version` line, or the command refuses.
 - `-FactorioExe <path>` names the install, when it is not where `load-harness.ps1` looks.

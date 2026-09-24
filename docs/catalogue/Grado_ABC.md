@@ -16,7 +16,8 @@ The dependency list holds 46 entries: `base >= 2.0.0`, `Grado_ChangingBase` — 
 `docs/catalogue/Grado_ChangingBase.md` — and **44 mods**. It read 47 and 45 until 2026-09-22, when
 #8 removed the duplicate `bobinserters` line; the mod is still installed by every player of this
 pack, through `Grado_ChangingBase`, and still has an entry below. Ten more were dropped during the
-port.
+port. *Superseded 2026-09-23 by #9, and the `base` line 2026-09-24 by #58: the list now holds 43
+entries - `base >= 2.0.74`, `Grado_ChangingBase` and 41 mods.*
 **#9 took the pack from 44 mods to 41 on 2026-09-23**: four out, one in. Its ledger is *Decisions,
 2026-09-23 (#9)* below, and the four removed members are now under *Ruled out after the port*. The
 survey text, including the four findings below, is left as it was measured over 45.
@@ -113,7 +114,9 @@ The drops split the same way: **#4 took `angelsexploration`, `angelsindustries` 
 **Both halves are done and the result was checked rather than assumed.** The 45 entries under *In
 the pack* are in exact dependency-list order and match `Grado_ABC/info.json` name for name, with no
 mod missing, duplicated or invented; the 10 under *Dropped during the port* match
-`docs/porting-notes.md`. That is the acceptance criterion both tickets shared, and it is verifiable
+`docs/porting-notes.md`. *Superseded 2026-09-23 by #9: *In the pack* now holds 42 entries, the 41
+members and `bobinserters`, whose line #8 moved to `Grado_ChangingBase`; the four #9 removed are
+under *Ruled out after the port*.* That is the acceptance criterion both tickets shared, and it is verifiable
 by re-running the comparison rather than by reading.
 
 ## In the pack
@@ -1886,7 +1889,11 @@ The ticket's standing constraint, checked directly rather than carried over. **N
 incompatibility with it.** The pack therefore leaves `Grado_ABCS` open, which is what it has to do.
 #4 established this for the 29 core mods and #5 for the 16 add-ons, and the add-ons add one positive
 signal: `deadlock-beltboxes-loaders` declares `? space-age`, so the stacking mechanism already
-adapts to it.
+adapts to it. *Superseded 2026-09-23 by #9, which took the 45 to 41 and the fifteen to fourteen.
+Re-read 2026-09-24 (#61): none of the 41 named members' latest releases declares `! space-age`,
+`RealisticFusionPowerPort` among them. The six declarations over five mods below are unchanged,
+and the Bob's count is ten of fifteen, `bobinserters` having gone to `Grado_ChangingBase`. The
+hidden fourteen were not re-read.*
 
 Six hard incompatibility declarations exist across the 45, over five mods, and **not one of them
 is Space Age**:
@@ -1951,6 +1958,11 @@ anyway: the three `reskins-*` mods reach it through `reskins-library` → `flib`
 `base >= 2.1.0`, and `WideChestsBobs` requires `WideChests >= 6.0.0` from the pack below. So the
 pack-wide count is
 **twenty-six of the 45 declaring `base >= 2.1` directly**, and the rest neutral or inheriting.
+*Superseded 2026-09-22 by #8 and 2026-09-23 by #9: 25 of the 41, re-read 2026-09-24 (#61). The
+one that left is `bobinserters`, one of the sixteen Bob's mods in the table below, whose line #8
+moved to `Grado_ChangingBase` - so the core is now twenty-eight, not twenty-nine, twenty-one of
+them saying so themselves. #9's four removals and `RealisticFusionPowerPort` are all add-ons, and
+none of the five declares `base >= 2.1`.*
 
 Of the core twenty-nine, twenty-two say so in their own dependency list:
 

@@ -12,7 +12,8 @@ re-read on 2026-09-23 (#10), which carries its own date, and *Candidates, not me
 
 The dependency list holds 3 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, catalogued in
 `docs/catalogue/Grado_ABC.md` — and `space-age`. **The pack is new**, so nothing was carried over,
-replaced or dropped; `docs/porting-notes.md` records that.
+replaced or dropped; `docs/porting-notes.md` records that. *The `base` line is `base >= 2.0.74`
+since 2026-09-24 (#58).*
 
 Three findings:
 
@@ -24,7 +25,11 @@ Three findings:
   Checked across all 117 mods in the chain's closure — 98 distinct named members of the three lower
   packs and 19 hidden mandatory dependencies: no `! space-age` anywhere, and no mandatory
   `space-age` anywhere. **Seventeen declare it *optionally***, eleven of them `Grado_ABC` members.
-  Silence is not compatibility, and this pack is where that gets tested.
+  Silence is not compatibility, and this pack is where that gets tested. *Superseded 2026-09-22 by
+  #7 and #8 and 2026-09-23 by #9, which changed the three lower lists to 87 named members.
+  Re-read 2026-09-24 (#61) for those 87, latest release each: still no `! space-age` and no
+  mandatory `space-age`; sixteen declare it optionally, ten of them `Grado_ABC` members. The
+  hidden members were not re-read.*
 - **This is where the one-mod-per-branch rule is under real pressure.** Adding `space-age` enables
   the expansion beside Angel's and Bob's; it does not make them work together. The two mods on 2.x
   that attempt that job would each be a second addition, and one of them brings eight more mods with

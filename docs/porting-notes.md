@@ -429,7 +429,8 @@ above:
 when factorio.com's stable release is 2.1.x. Each mod still missing then is Truls's to wait on,
 replace or drop. The first release declares line `2.0`, with `base >= 2.0.67` for
 `Grado_NonChanging` and `>= 2.0.74` for the other four - applied once the committed resolver
-(trulsjo/grado-factorio-tools#14) re-measures them.
+(trulsjo/grado-factorio-tools#14) re-measures them. *The resolver is pinned here since 2026-09-24
+(#24); the re-measurement is not yet recorded.*
 
 Upstream 2.1 plans and served replacements were not researched for these. They matter only at a
 2.1 target, and whether to target 2.1 is #16's choice (*Ruled 2026-09-24 (#16), not yet applied.*);
@@ -496,7 +497,8 @@ Truls closed #43 on the 2.0.77 result with this list kept as a watch list rather
   **Ruled 2026-09-24 (#16), not yet applied:** declared line `2.0` for the first release, with
   `base >= 2.0.67` for `Grado_NonChanging` and `>= 2.0.74` for the other four, and a 2.1 release
   once factorio.com's stable release is 2.1.x. What remains open is applying it - the `info.json`
-  edits wait on the resolver (trulsjo/grado-factorio-tools#14) - and #29's `space-age` reading.
+  edits wait on the resolver (trulsjo/grado-factorio-tools#14) re-measuring them, and it is
+  pinned here since 2026-09-24 (#24) - and #29's `space-age` reading.
   *(Partly read 2026-09-23, #10: `space-age` `2.0.77` in the installed game declares
   `base >= 2.0.0`, below the inherited `2.1.12`, so on 2.0.77 it does not raise the floor. A 2.1
   build is unread. See `docs/catalogue/Grado_ABCS.md`, What the portal actually returns.)*

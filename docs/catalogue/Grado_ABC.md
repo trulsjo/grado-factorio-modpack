@@ -1889,7 +1889,8 @@ The ticket's standing constraint, checked directly rather than carried over. **N
 incompatibility with it.** The pack therefore leaves `Grado_ABCS` open, which is what it has to do.
 #4 established this for the 29 core mods and #5 for the 16 add-ons, and the add-ons add one positive
 signal: `deadlock-beltboxes-loaders` declares `? space-age`, so the stacking mechanism already
-adapts to it. *Superseded 2026-09-23 by #9, which took the 45 to 41 and the fifteen to fourteen.
+adapts to it. *Superseded 2026-09-22 by #8 and 2026-09-23 by #9, which took the 45 to 41 and the fifteen to
+fourteen.
 Re-read 2026-09-24 (#61): none of the 41 named members' latest releases declares `! space-age`,
 `RealisticFusionPowerPort` among them. The six declarations over five mods below are unchanged,
 and the Bob's count is ten of fifteen, `bobinserters` having gone to `Grado_ChangingBase`. The
@@ -2012,7 +2013,8 @@ Stated plainly so the gaps are not mistaken for clean results.
 - **Nothing was loaded in Factorio.** No pack, no member mod, no combination. Every claim above is a
   portal reading or a reading of a mod's own page. This is the pack where that gap is widest,
   because 45 mods and 15 unnamed dependencies all modifying one recipe tree is exactly the
-  situation a portal cannot speak to.
+  situation a portal cannot speak to. *Superseded 2026-09-22 by #8 and 2026-09-23 by #9: 41 and
+  fourteen. The gap stands, narrowed only by #59's start of `Grado_NonChanging` (2026-09-24).*
 - **`angels-smelting-extended` was not tested against Angel's 2.1.** The concern in its entry —
   a 2.0-declared mod with unversioned dependencies, modifying recipes of mods that moved to 2.1 after
   its last release — is derived from version numbers and release dates alone. It may work perfectly.

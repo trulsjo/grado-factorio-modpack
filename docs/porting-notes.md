@@ -333,7 +333,9 @@ Artisanal Reskins libraries, `reskins-assets-base`, `reskins-assets-bobs` and
 | `Grado_ABCX` | `2.0`, `>= 2.0.0` | `>= 2.1.9` | `>= 2.1.20` | `>= 2.0.74` | **No** |
 | `Grado_ABCS` | `2.0`, `>= 2.0.0` | unreadable (`space-age`) | `>= 2.1.20`, plus the expansion | `>= 2.0.74` | **No** |
 
-**No pack honours its declaration on either reading.** The members responsible:
+**No pack honours its declaration on either reading.** *(Since 2026-09-24, #58, every pack
+honours it on the newest-2.0 reading: each declares the floor in that column. The latest-2.x
+reading is unchanged.)* The members responsible:
 
 - **`Grado_NonChanging`.** Five members at `>= 2.1.7`: `BlueprintTools`, `Tapeline`,
   `even-distribution`, `even-pickier-dollies` and `helmod`. Eleven of its 26 require `>= 2.1`. Above

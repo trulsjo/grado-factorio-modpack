@@ -119,15 +119,20 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   `kry_stdlib`, which the constraint allows. `Grado_ABCS` cannot be answered until
   the pack is loaded, because `space-age` is not a portal mod (#29); its 2.0.77 build, read from
   disk on 2026-09-23, requires only `base >= 2.0.0`, and a 2.1 build is unread. The measurement is
-  #15; the number to declare is #16. **#16 cannot be answered by choosing a number yet.** A member
+  #15; the number to declare is #16. **#16 cannot be answered by choosing a number yet** - *true
+  of a 2.1 target only; see the 2.0.77 result below (2026-09-24).* A member
   declaring `factorio_version: 2.0` is not served to a 2.1 game at all, and several are members of
   every lower pack (#43). **Those floors are latest-release readings, and they overstate the case**
   (2026-09-23, #9): every one of the 87 members of the three lower packs has at least one release
   declaring 2.0 whose `base` floor is below 2.1, and the whole closure read that way asks
   `base >= 2.0.74` (`miniloader-redux`, #15). So a 2.0 target may resolve, while a 2.1 target
   strands the 2.0-only members. That makes "installs on no version of Factorio" unproven rather than
-  true, and the choice between the two targets is #16's. The hidden members pass too. Not yet
-  checked: whether the old releases' floors on each other are consistent. The five-pack table, dated
+  true, and the choice between the two targets is #16's. The hidden members pass too. **Stable
+  Factorio is 2.0.77; 2.1.20 is experimental** (read 2026-09-24). **On 2.0.77 all five packs
+  resolve on portal metadata, with zero conflicts between the releases a 2.0.77 game is served** (#43, closed
+  2026-09-24) - so the 2.0 target is no longer "may resolve". Seventeen members, two of them hidden,
+  still have no 2.1 release; that list is a watch list for when 2.1 goes stable, under *Resolves on
+  stable 2.0.77* in `docs/porting-notes.md`. The five-pack table, dated
   2026-09-23 and against the settled memberships, is *Effective Factorio floor* in
   `docs/porting-notes.md` (#15).
 - **`PickerPipeTools`' pipe clamps are the one feature lost in the port with no successor found** —

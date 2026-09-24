@@ -366,6 +366,66 @@ three in `Grado_ChangingBase` (`Nanobots2`, `qol_research` and the hidden `stdli
 Not checked: whether the version constraints the members place on each other are satisfiable
 together on the 2.0 reading. Every closure member but the bad name has a 2.0 release, but a mod
 asking for a library `>= x` whose newest 2.0 release is below `x` would not show up here.
+*Checked 2026-09-24 (#43): they are satisfiable on 2.0.77 - see the next section.*
+
+## Resolves on stable 2.0.77, measured 2026-09-24 (#43)
+
+**Factorio's stable release is 2.0.77; 2.1.20 is experimental** (`https://factorio.com/api/latest-releases`,
+read 2026-09-24). So the question that decides whether a pack installs today is the 2.0 one, and
+on portal metadata **all five packs resolve on 2.0.77 with no conflict**. This retires #43's
+premise, that `Grado_NonChanging` "installs on no version of Factorio": the 2.1 end is closed, the
+2.0 end is open. It does not choose the packs' declared target, which stays #16's.
+
+**Method, so it can be re-run.** For each mod, take its newest release that declares
+`factorio_version` 2.0 and whose `base` floor 2.0.77 satisfies - the release a 2.0.77 game is
+served. Walk the mandatory closure of all five packs from those releases, then check every
+dependency line of every picked release against the other picks: mandatory version constraints,
+`!` incompatibilities, and version ranges on optional dependencies whose mod is in the closure.
+The union of all five packs is checked at once, which is stricter than checking each pack alone.
+The game's own mods (`space-age`, `quality`, `elevated-rails`) are left out of the walk: the fork's
+`! space-age` is the designed ABCX/ABCS exclusion, and the optional `space-age >= 2.0.0` lines
+elsewhere are met by 2.0.77.
+
+**Result.** The closure is 104 mods, 88 of them named members; the 108 of the 2.1 reading
+(`Grado_ABCX`'s closure, which is the five-pack union because `space-age` is not counted) less
+`+FluidWagonColorMask` and the three Artisanal Reskins libraries, as in the section above. Every
+one has a qualifying release. **Zero constraint violations** of any of the three kinds. That
+includes the case #9 left open, `WideChestsBobs` asking `WideChests >= 6.0.0`.
+
+**What this does not prove.** It assumes the mod manager picks the newest qualifying release,
+which is what the portal serves - and for all 104, the newest 2.0 release already satisfies the
+2.0.77 floor, so the filter changed no pick. It reads metadata, and nothing has been loaded in game. `space-age`
+is not a portal mod, and its 2.0.77 build asks only `base >= 2.0.0` (#10).
+
+**Not served at 2.1: seventeen, kept as a watch list for when 2.1 goes stable.** Their newest
+release declares `factorio_version` 2.0, and `?version=2.1&namelist=` returns none of them
+(2026-09-24). Fifteen are named members and two are hidden, the same set as the list in the section
+above:
+
+| Introduced by | Mod | Newest release |
+|---|---|---|
+| `Grado_NonChanging` | `CleanFloor` | `2.0.0`, 2024-10-20 |
+| | `SpeedControl` | `2.0.1`, 2024-10-27 |
+| | `WhereIsMyBody` | `2.0.15`, 2024-11-19 |
+| | `YARM` | `1.0.5`, 2025-01-01 |
+| | `PipeVisualizer-Updated` | `2.4.4`, 2025-11-16 |
+| | `solar-calc` | `0.5.72`, 2025-12-21 |
+| `Grado_ChangingBase` | `Nanobots2` | `3.3.2`, 2025-03-12 |
+| | `qol_research` | `3.4.2`, 2025-05-04 |
+| | `stdlib2` (hidden, via `Nanobots2`) | `2.0.1`, 2024-10-29 |
+| `Grado_ABC` | `RealisticFusionPowerPort` | `1.9.2`, 2025-12-13 |
+| | `RealisticReactorsReborn` | `2.0.27`, 2025-08-01 |
+| | `True-Nukes_Continued` | `0.3.36`, 2026-01-17 |
+| | `True-Nukes-Graphics_Continued` | `0.0.3`, 2025-12-29 |
+| | `Warheads_Continued` (hidden, via `True-Nukes_Continued`) | `0.0.21`, 2025-12-29 |
+| | `WideChestsBobs` | `2.0.0`, 2025-07-27 |
+| | `angels-smelting-extended` | `2.0.01`, 2026-08-22 |
+| | `spidertrontiers-community-updates` | `0.3.1`, 2024-11-16 |
+
+`Grado_ABCX` and `Grado_ABCS` add none: `SpaceModFeorasFork` is 2.1, and `space-age` is the game's.
+Upstream 2.1 plans and served replacements were not researched for these. They matter only at a
+2.1 target, and whether to target 2.1 is #16's choice; Truls closed #43 on the 2.0.77 result with
+this list kept as a watch list rather than a sweep.
 
 ## Open questions
 
@@ -436,7 +496,9 @@ asking for a library `>= x` whose newest 2.0 release is below `x` would not show
   so the 2.1 floor measured here is a floor for a 2.1 target and not a proof that 2.0 is
   impossible. The hidden mandatory members pass the same check: `Grado_ABC`'s fourteen after #9, plus `flib`,
   `alien-biomes-graphics`, `kry_stdlib`, `stdlib2` and `0-things`. Not checked: whether the
-  old releases' version floors on each other are consistent. See #43 and #16.
+  old releases' version floors on each other are consistent. See #43 and #16. *(Checked
+  2026-09-24, #43: consistent on stable 2.0.77, zero violations across all five packs - see
+  *Resolves on stable 2.0.77* above.)*
 - **`RealisticFusionPower` is among the drops.** It is the mod the separate
   *realistic-fusion-refreshed* project exists to succeed; that mod is a candidate to add here once it
   ships. **Answered in part 2026-09-23 (#9):** `RealisticFusionPowerPort` holds the slot for now, as a

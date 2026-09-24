@@ -30,7 +30,7 @@ Four findings, and the first is the one #6 was asked to check:
   latest-release reading, set by the hidden `kry_stdlib` `2.2.21`; see *Effective Factorio floor*
   in `docs/porting-notes.md`. That answers issue #15 for this pack, and it makes the pack's
   declared `factorio_version` `2.0` wrong for the fourth time in four
-  surveys. See *The pack cannot load on the Factorio version it declares*.
+  surveys. See *The pack cannot load on the Factorio version it declares*. *(At a 2.1 target. On stable 2.0.77 the pack resolves; #43, 2026-09-24.)*
 - **The fork is maintained, but thinly and by hand-off.** Last release 2026-07-10, two and a half
   months before this reading; its last three releases credit three different contributors — `pla`,
   `progger` and `Sectoid` — and none of them is the portal owner.
@@ -157,6 +157,11 @@ an optional dependency simply goes unmet and the mod ships less than it would ha
 evidence for issue #9 rather than a question this pack can answer.
 
 #### The pack cannot load on the Factorio version it declares
+
+*#43, 2026-09-24: this section reads each member's latest release, which is the 2.1 case. On stable
+2.0.77 the pack resolves: each member's newest 2.0 release installs, and they satisfy each other.
+The declared `base >= 2.0.0` is still not honoured - on that reading the floor is `>= 2.0.74`. See
+`docs/porting-notes.md`, Resolves on stable 2.0.77.*
 
 `Grado_ABCX/info.json` declares `factorio_version` `2.0` and `base >= 2.0.0`. Its one member requires
 `base >= 2.1.9`.

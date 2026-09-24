@@ -110,10 +110,10 @@ Settled so far, recorded here so nobody reopens them by accident:
   maturity rather than a broken save - see ADR 0002.
 - **The declared line is `2.0` for the first release** (2026-09-24, #16), with a 2.1 release on
   the same entries once factorio.com's stable release is 2.1.x. Minimums: `base >= 2.0.67` for
-  `Grado_NonChanging`, `>= 2.0.74` for the other four. **Not yet applied**: the `info.json` edits
-  wait on the resolver (trulsjo/grado-factorio-tools#14) re-measuring the minimums, so #16 stays
-  open until they land. *The resolver is built and pinned here since 2026-09-24 (#24); the
-  re-measurement is not yet recorded.*
+  `Grado_NonChanging`, `>= 2.0.74` for the other four. **Applied 2026-09-24 (#58)**: the pinned
+  resolver re-measured all five on line `2.0`, build `2.0.77`, and read the same floors - `2.0.67`
+  from `helmod` `2.2.14`, `2.0.74` from `miniloader-redux` `1.2.0` - and each `info.json` now
+  declares its floor. Versions stay `0.1.0`.
 
 ## Decisions still open
 
@@ -135,7 +135,7 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   declaring 2.0 whose `base` floor is below 2.1, and the whole closure read that way asks
   `base >= 2.0.74` (`miniloader-redux`, #15). So a 2.0 target may resolve, while a 2.1 target
   strands the 2.0-only members. That makes "installs on no version of Factorio" unproven rather than
-  true, and the choice between the two targets is #16's (*Ruled 2026-09-24 (#16), not yet applied.*)
+  true, and the choice between the two targets is #16's (*Ruled 2026-09-24 (#16), applied 2026-09-24 (#58).*)
   The hidden members pass too. Not yet checked: whether the old releases' floors on each other are
   consistent. *Checked 2026-09-24 (#43): they are.* **Stable Factorio is 2.0.77; 2.1.20 is
   experimental** (read 2026-09-24). **On 2.0.77 all five packs resolve on portal metadata, with zero
@@ -145,8 +145,8 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   `docs/porting-notes.md`. The five-pack table, dated 2026-09-23 and against the settled
   memberships, is *Effective Factorio floor* in `docs/porting-notes.md` (#15). **Ruled 2026-09-24
   (#16) - see *Settled so far*.** What stays open is applying it: the `info.json` edits wait on the
-  resolver re-measuring the minimums. *The resolver is pinned here since 2026-09-24 (#24); the
-  re-measurement is not yet recorded.*
+  resolver re-measuring the minimums. *Applied 2026-09-24 (#58): re-measured on 2.0.77, same
+  floors, and the five `info.json` files declare them.*
 - **`PickerPipeTools`' pipe clamps are the one feature lost in the port with no successor found** —
   a search, not a proof. All twenty port drops are now closed (#7, #8, #9): nineteen stay dropped
   and `RealisticFusionPower` was replaced by `RealisticFusionPowerPort`.

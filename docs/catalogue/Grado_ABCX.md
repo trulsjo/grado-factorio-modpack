@@ -163,7 +163,8 @@ evidence for issue #9 rather than a question this pack can answer.
 *#43, 2026-09-24: this section reads each member's latest release, which is the 2.1 case. On stable
 2.0.77 the pack resolves: each member's newest 2.0 release installs, and they satisfy each other.
 The declared `base >= 2.0.0` is still not honoured - on that reading the floor is `>= 2.0.74`. See
-`docs/porting-notes.md`, Resolves on stable 2.0.77.*
+`docs/porting-notes.md`, Resolves on stable 2.0.77. Honoured since 2026-09-24 (#58), when the
+declaration was raised to `base >= 2.0.74`.*
 
 `Grado_ABCX/info.json` declares `factorio_version` `2.0` and `base >= 2.0.0`. Its one member requires
 `base >= 2.1.9`.

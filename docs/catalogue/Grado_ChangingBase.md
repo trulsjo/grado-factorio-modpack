@@ -1376,7 +1376,8 @@ compatibility constraint in the sense used here; it is recorded under the sectio
 *#43, 2026-09-24: this section reads each member's latest release, which is the 2.1 case. On stable
 2.0.77 the pack resolves: each member's newest 2.0 release installs, and they satisfy each other.
 The declared `base >= 2.0.0` is still not honoured - on that reading the floor is `>= 2.0.74`. See
-`docs/porting-notes.md`, Resolves on stable 2.0.77.*
+`docs/porting-notes.md`, Resolves on stable 2.0.77. Honoured since 2026-09-24 (#58), when the
+declaration was raised to `base >= 2.0.74`.*
 
 `info.json` declares `"factorio_version": "2.0"` and `base >= 2.0.0`. Most members require
 `base >= 2.1`, so a player on 2.0.x cannot satisfy this pack. **#8's membership changes raised the

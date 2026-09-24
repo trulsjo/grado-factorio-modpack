@@ -869,7 +869,8 @@ pack and the ones dropped from it, so none of these was assessed. Adding a mod t
 *#43, 2026-09-24: this section reads each member's latest release, which is the 2.1 case. On stable
 2.0.77 the pack resolves: each member's newest 2.0 release installs, and they satisfy each other.
 The declared `base >= 2.0.0` is still not honoured - on that reading the floor is `>= 2.0.67`. See
-`docs/porting-notes.md`, Resolves on stable 2.0.77.*
+`docs/porting-notes.md`, Resolves on stable 2.0.77. Honoured since 2026-09-24 (#58), when the
+declaration was raised to `base >= 2.0.67`.*
 
 Found while checking `EditorExtensions`, whose `info.json` requires `base >= 2.1.0`. That prompted
 the same check across this pack, and the result is not a nuance.

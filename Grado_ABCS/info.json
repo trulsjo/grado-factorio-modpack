@@ -8,7 +8,7 @@
   "factorio_version": "2.0",
   "description": "Grado ABC plus the Space Age expansion. Not compatible with SpaceX - use Grado ABCX for that.",
   "dependencies": [
-    "base >= 2.0.0",
+    "base >= 2.0.74",
     "Grado_ABC",
     "space-age"
   ]

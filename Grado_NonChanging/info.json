@@ -8,7 +8,7 @@
   "factorio_version": "2.0",
   "description": "Quality-of-life mods: no new content, and nothing changes your factory unless you ask it to.",
   "dependencies": [
-    "base >= 2.0.0",
+    "base >= 2.0.67",
     "Automatic_Train_Painter",
     "BlueprintTools",
     "BottleneckLite",

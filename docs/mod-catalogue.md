@@ -17,7 +17,8 @@ sessions appending to one file collide on every write.
 Each pack file has two sections: **In the pack**, one entry per mod in its dependency list in list
 order, and **Dropped during the port**, one entry per mod that was in the 1.1 pack and is not here
 now. Every mod, not only the interesting ones — an absent entry and a boring entry are different
-claims, and only one of them is verifiable.
+claims, and only one of them is verifiable. Two more sections appear when a pack has entries for
+them: **Ruled out after the port** and **Candidates, not members**, both under the variants below.
 
 ## Two kinds of duplication
 
@@ -135,11 +136,12 @@ and the search that was run.
 **Recommendation: keep | replace with `x` | drop | reconsider: `<what>`.** The reason, in prose.
 ````
 
-Six variants. The first adds one row and changes nothing else; the second adds a row and
+Seven variants. The first adds one row and changes nothing else; the second adds a row and
 requires prose to go with it; the third and fourth also move the entry and constrain what its
 **Recommendation** may say. The third and fourth differ only in *when* the mod left: during the
 1.1 -> 2.0 port, or by a decision taken afterwards. The fifth and sixth were added on 2026-09-22,
-for mods that arrived after the port or lost a dependency-list line without leaving the chain.
+for mods that arrived after the port or lost a dependency-list line without leaving the chain. The
+seventh was added on 2026-09-24, for a mod assessed for a pack that was never in it.
 
 - **A mod that replaced a 1.1 mod** adds one row, `| **Supersedes** | `old-name`, last 1.1 release |`,
   and changes nothing else. The heading is the mod that is in the pack now, not the one it replaced
@@ -195,6 +197,16 @@ instead. Use it sparingly — a survey where several entries reconsider has not 
   deleting a line from `Grado_ABC` whose entry then had no licensed shape. The lesson is the same one
   the variant above records — the format assumed the port was the only thing that ever moved a mod,
   and it is not.
+
+- **A candidate assessed for a pack and not in it** sits in a *Candidates, not members* section
+  and adds `| **Status** | candidate, not a member (#<issue>) |`. **Its Recommendation is `add`,
+  `do not add` or `reconsider:`** followed by what is to be reconsidered, and it is a
+  recommendation only: whether a mod joins a pack is Truls's. When a ruling exists it is appended
+  below as its own paragraph, as for a mod ruled out after the port.
+
+  Added 2026-09-24 by #31, which had to assess two mods for `Grado_ABCS` that neither were members
+  nor had ever been: the heading rule forbids them under *In the pack*, and the other variants
+  all describe a mod that was in a list at some point.
 
 Field notes, where the name does not carry the meaning:
 

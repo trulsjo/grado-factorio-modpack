@@ -1924,7 +1924,9 @@ dependencies. It would be a `Grado_ABCS` member, never a `Grado_ABC` one, and it
 requires `Paracelsin`, `planet-muluna`, three `planetaris-*` mods and `PlanetsLib` as mandatory, so
 adopting it means adopting a set of community planet mods with it. It declares
 `! BobsAngelsSpaceAge`, a rival with 251 downloads. Issue **#31** carries this to #6; nothing about
-it changes anything in `Grado_ABC`.
+it changes anything in `Grado_ABC`. *Confirmed 2026-09-24 (#31) by resolve: with either candidate
+added to `Grado_ABCS`, no pick in this pack's closure moves and no constraint is violated. Both
+entries are in* `docs/catalogue/Grado_ABCS.md`*, under* Candidates, not members.
 
 ## The pack cannot load on the Factorio version it declares
 

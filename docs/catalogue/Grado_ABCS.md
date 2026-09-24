@@ -7,7 +7,8 @@ the method every other entry in this catalogue uses.
 
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
 **2026-09-22** and is reproduced from the fetched data rather than retyped, except the one
-re-read on 2026-09-23 (#10), which carries its own date.
+re-read on 2026-09-23 (#10), which carries its own date, and *Candidates, not members*, read
+2026-09-24 (#31).
 
 The dependency list holds 3 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, catalogued in
 `docs/catalogue/Grado_ABC.md` — and `space-age`. **The pack is new**, so nothing was carried over,
@@ -27,7 +28,8 @@ Three findings:
 - **This is where the one-mod-per-branch rule is under real pressure.** Adding `space-age` enables
   the expansion beside Angel's and Bob's; it does not make them work together. The two mods on 2.x
   that attempt that job would each be a second addition, and one of them brings eight more mods with
-  it. See *Pressure on the one-mod-per-branch rule*.
+  it. See *Pressure on the one-mod-per-branch rule*. *Eight it names, eighteen once theirs are
+  counted: resolved 2026-09-24 (#31), under* Candidates, not members.
 
 ## In the pack
 
@@ -136,6 +138,132 @@ stays at three. The tier that could not be served was the one that left.
 list for anything to be dropped from; `docs/porting-notes.md` records the pack as new. This is a
 different claim from `Grado_ABCX`'s empty section, which is a 1.1 pack that dropped nothing.
 
+## Candidates, not members
+
+The two mods that attempt the bridge *Pressure on the one-mod-per-branch rule* describes, assessed
+by #31. **Neither is a member, and nothing here changes that**: #10 ruled on 2026-09-23 that the
+pack is `Grado_ABC` *beside* Space Age, and #31 is where that is revisited. Every reading in this
+section was taken on **2026-09-24**. A closure is what `resolve-modpack.ps1` picks on line `2.0`,
+build `2.0.77`, for a copy of the chain with the one candidate added to this pack's list.
+
+### `angelbob-spaceage-rebalance`
+
+| | |
+|---|---|
+| **Title** | AngelBob Space Age Rebalance |
+| **Does** | Merges Angel's and Bob's progression with Space Age: Nauvis stays Angel's and Bob's, and each planet - the expansion's four, plus Muluna, Paracelsin, Arig, Hyarion and optionally Maraxsis - becomes a specialised industrial layer on top of it |
+| **Latest** | `1.2.17`, `factorio_version` **2.1**, 2026-09-22. The 2.0 line is kept in parallel: `1.1.42`, `factorio_version` **2.0**, the same day, which is what a 2.0.77 game installs |
+| **Downloads** | 3,746 |
+| **Owner** | `Troublesim` |
+| **Status** | candidate, not a member (#31) |
+| **Read on** | 2026-09-24 |
+
+72 releases since 2026-05-19, 54 on the 2.0 line and 18 on 2.1. No source repository is linked,
+so everything below is from its `info_json` and its description, not its code.
+
+**What it requires from `Grado_ABC`: nothing the chain lacks.** On `1.1.42` that is
+`angelsbioprocessing`, `angelspetrochem`, `angelsrefining`, `angelssmelting` and their four
+graphics packages, `bobassembly`, `boblibrary`, `boblogistics`, `bobmodules`, `bobplates`,
+`bobpower`, `bobrevamp`, `bobtech` and `flib`, all at minimums the chain's picks meet. It also
+names `space-age`, `quality` and `elevated-rails` at `>= 2.0.76`, which the installed game
+supplies.
+
+**What it requires from outside the chain: eighteen mods, not the eight recorded above.** The
+eight it names pull in ten more of their own. Nine of those ten are ones it lists itself as
+*optional*, so its own dependency list understates what a player installs:
+
+| Mod | Pulled in by | Picked on 2.0.77 | Latest | Downloads | Owner |
+|---|---|---|---|---|---|
+| `PlanetsLib` | this mod, `Paracelsin`, `planet-muluna`, `planetaris-arig`, `planetaris-hyarion` | `1.18.0`, 2026-05-31 | `1.26.7`, 2.1, 2026-09-21 | 118,747 | `thesixthroc` |
+| `Paracelsin` | this mod | `1.7.7`, 2026-06-05 | `1.10.3`, 2.1, 2026-09-22 | 42,399 | `AndreusAxolotl` |
+| `Paracelsin-Graphics` | this mod, `Paracelsin` | `1.7.7`, 2026-06-05 | `1.10.0`, 2.1, 2026-08-18 | 42,453 | `AndreusAxolotl` |
+| `planet-muluna` | this mod | `2.2.107`, 2026-08-13 | `2.7.27`, 2.1, 2026-09-23 | 60,666 | `MeteorSwarm` |
+| `muluna-graphics` | this mod, `planet-muluna` | `1.1.6`, 2026-06-23 | `1.1.17`, 2.1, 2026-08-24 | 58,701 | `MeteorSwarm` |
+| `planetaris-dyes` | this mod | `1.0.5`, 2026-06-24 | `1.0.6`, 2.1, 2026-07-15 | 19,969 | `Syen_ce` |
+| `planetaris-arig` | this mod | `1.1.46`, 2026-08-16 | `1.1.46`, 2.0, 2026-08-16 | 30,253 | `Syen_ce` |
+| `planetaris-hyarion` | this mod | `1.3.22`, 2026-09-16 | `1.3.23`, 2.1, 2026-09-16 | 25,887 | `Syen_ce` |
+| `Accumulator-V2` | `Paracelsin` | `1.0.7`, 2026-04-30 | `1.0.8`, 2.1, 2026-06-23 | 52,082 | `Sacredanarchy` |
+| `SolarMatrix` | `Paracelsin` | `1.0.8`, 2026-05-26 | `1.0.9`, 2.1, 2026-06-23 | 51,382 | `Sacredanarchy` |
+| `elevated-pipes` | `Paracelsin` | `1.4.7`, 2026-01-08 | `1.5.0`, 2.1, 2026-07-13 | 60,477 | `Redotix99` |
+| `enhanced-shadows` | `planet-muluna` | `1.0.5`, 2026-06-02 | `1.0.6`, 2.1, 2026-06-23 | 60,346 | `MeteorSwarm` |
+| `muluna-utility-constants` | `planet-muluna` | `1.0.2`, 2026-06-02 | `1.0.2`, 2.0, 2026-06-02 | 57,433 | `MeteorSwarm` |
+| `space-exploration-graphics` | `planet-muluna` | `0.7.5`, 2025-09-22 | `0.7.7`, 2.1, 2026-08-07 | 545,591 | `Earendel` |
+| `space-exploration-graphics-4` | `planet-muluna` | `0.7.2`, 2025-09-22 | `0.7.3`, 2.1, 2026-06-28 | 535,244 | `Earendel` |
+| `tile-upgrade-planner-muluna` | `planet-muluna` | `1.0.6`, 2025-12-08 | `1.0.9`, 2.1, 2026-08-12 | 60,166 | `MeteorSwarm` |
+| `condensing-agricultural-tower` | `planetaris-arig` | `1.1.1`, 2026-02-24 | `1.1.2`, 2.1, 2026-07-15 | 31,552 | `Syen_ce` |
+| `lamp-post` | `planetaris-hyarion` | `1.0.5`, 2026-09-05 | `1.0.6`, 2.1, 2026-09-05 | 22,399 | `Syen_ce` |
+
+The first eight are the ones this mod names; the last ten arrive through them. `muluna-utility-constants` is the one
+of the ten it does not list at all. None of the eighteen was assessed as a mod - each would need an
+entry of its own if the pack took them, and several of the ten are buildings or content in their
+own right, by their titles. **With it, this pack's closure is 122 mods against 103 without**, and
+the pack's effective floor rises from `base >= 2.0.74` (`miniloader-redux`) to **`>= 2.0.76`**,
+set by this mod itself. The resolve found every member and no constraint violated.
+
+**Does `Grado_ABC` need any change to accommodate it? No.** With it added, no pick anywhere in the
+lower closure moved version, no constraint between the picks was violated, and every requirement it
+places on the ABC side is already met. Its `? reskins-angels`, `? reskins-bobs` and
+`? reskins-library` name ABC members, and the resolve checked their ranges too. What it would
+change is this pack, not the one below.
+
+**What was not measured.** The 2.1 line: `1.2.17` names the same eight at higher minimums
+(`Paracelsin >= 1.9.2`, `PlanetsLib >= 1.21.3` among them), but the chain does not resolve on a
+2.1 target yet, so its 2.1 closure is unread. Whether it loads beside the chain is #29's kind of
+question, and it has not been asked. `rso-mod`, an ABC member that controls ore placement, was not
+checked against a mod that redistributes ores across planets.
+
+**Alternatives considered.** `BobsAngelsSpaceAge`, below, which this mod declares incompatible
+(`! BobsAngelsSpaceAge >= 0.0.3`), and doing nothing, which #10 chose. No third bridge was found;
+#6's search and #4's before it are the ones behind that claim, not a new one.
+
+**Recommendation: reconsider:** after #29 shows whether the unintegrated pack plays, and only
+together with the promise. #10's ruling stands until then. If the bridge is ever wanted, this is
+the stronger mod by every measure taken: current on both lines within two days of this reading, 72
+releases, nearly fifteen times the other's downloads. Its cost is eighteen third-party mods, most of them
+planets and planet content. How it pushes on the one-mod-per-branch rule depends on what the rule
+counts. Named the way #10 named `quality` and `elevated-rails` - hidden mandatory members stay
+unnamed - the pack would list two members. Counted by what a player installs, it adds nineteen.
+Which reading the rule means is Truls's.
+
+### `BobsAngelsSpaceAge`
+
+| | |
+|---|---|
+| **Title** | Bobs Angels Space Age Strategic |
+| **Does** | Adds Angel's six ores - saphirite, stiratite, rubyte, jivolite, bobmonium, crotinnium - to the map generation of Vulcanus, Fulgora and Gleba, split so that no one planet has all of them. By its own description, Nauvis keeps enough to reach a rocket and a first platform |
+| **Latest** | `0.0.3`, `factorio_version` **2.0**, 2026-02-10 |
+| **Downloads** | 253 |
+| **Owner** | `mantrucker88` |
+| **Status** | candidate, not a member (#31) |
+| **Read on** | 2026-09-24 |
+
+Two releases, `0.0.2` and `0.0.3`, both on 2026-02-10, the day the mod was created. The summary and
+description are in German; the **Does** row is a translation of the description. There is no
+source link and no homepage.
+
+**What it requires: nothing the chain lacks.** Its whole list is `base >= 2.0.0`, `space-age`,
+`angelsrefining` and `bobplates`, and the last two are `Grado_ABC` members. With it added, this
+pack's closure is 104 mods against 103 - itself - and the floor stays `base >= 2.0.74`. No
+constraint was violated. Its description asks for "Bob's Ores / Plates", but only `bobplates` is
+declared.
+
+**Does `Grado_ABC` need any change to accommodate it? No,** on the same resolve. It touches map
+generation, so the ABC members that also do - `rso-mod` and `angelsinfiniteores` - are where a
+conflict would show, and nothing here checks that. Only a load would.
+
+**What was not measured.** Whether it works: no source to read, no load, and a mod seven months
+without a release written against a 2.0 that has since moved. It declares no 2.1 release, so it
+would strand this pack at a 2.1 target the way #16's watch list describes.
+
+**Alternatives considered.** `angelbob-spaceage-rebalance`, above, which excludes it, and doing
+nothing.
+
+**Recommendation: reconsider:** only if the bridge is wanted and the heavier mod's eighteen
+extras are not. It is the one option that keeps the rule by any count: one member, no extras.
+Against it: 253 downloads, `0.0.x`, two releases on one day and none since, no source, 2.0 only,
+and a narrower job - it moves ores between planets rather than merging the two progressions. The
+`!` is the other mod's declaration, not this one's; this mod declares nothing about it.
+
 ## Pressure on the one-mod-per-branch rule
 
 `CLAUDE.md` says anything both branches need lives in `Grado_ABC` and each branch adds exactly one
@@ -178,6 +306,12 @@ unchanged.
 them and not a question of adding both. It is already filed as issue **#31** with the full reading;
 what this survey adds to that issue is the second candidate, which #31 does not have, and the
 mandatory-dependency count that makes the cost concrete.
+
+**Superseded 2026-09-24 by #31: the count was the mods it names, not the mods it brings.** The eight
+pull in ten more of their own, so on the 2.0 line it adds eighteen mods besides itself, and the
+closure grows from 103 to 122. Each is read, with the mod that pulls it in, under *Candidates, not
+members*, which also holds both mods' own entries. The table and bullets here are left as #6 read
+them.
 
 **How each one pushes on the rule, stated without resolving it:**
 

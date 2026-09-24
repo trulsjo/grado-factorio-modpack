@@ -404,12 +404,13 @@ above all of them, and on 2026-09-24 still leads the next, `Automatic_Train_Pain
 
 **Alternatives considered.** `MaxRateCalculator` overlaps on throughput but measures rather than plans. Not compared against `factoryplanner`.
 
-**Recommendation: keep.** Current on 2.1 and the most downloaded member.
+**Recommendation: keep.** Current on 2.1 and the second most downloaded member.
 
-**Corrected 2026-09-24 (#25): this read "the second most downloaded member".** It is first of the
-26, and was first of the 29 the survey read: 543,689 against `even-distribution`'s 525,156 in the
-table above (2026-09-20), 543,866 against 525,364 on 2026-09-21, and 544,227 against 525,774 on
-2026-09-24. No member has been above it on any reading.
+**Corrected 2026-09-24 (#25): it is the most downloaded member, not the second.** The recommendation
+above is left as the survey wrote it. `helmod` is first of the 26, and was first of the 29 the
+survey read: 543,689 against `even-distribution`'s 525,156 in the table above (2026-09-20),
+543,866 against 525,364 on 2026-09-21 (the reading issue #25 was filed with), and 544,227 against
+525,774 on 2026-09-24. No member has been above it on any reading.
 
 ### `ixuAutoSave`
 

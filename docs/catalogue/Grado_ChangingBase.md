@@ -8,7 +8,8 @@ from doing. The second has its own section, *What constrains an overhaul on top*
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
 **2026-09-21**, except those carrying a **Read on** of **2026-09-22**, which #8 took — the three
 entries it added and the readings inside its rulings — and the notes marked *Superseded 2026-09-23
-by #15*, which #15 took, and the notes dated 2026-09-24 (#43), which #43 took. Each is reproduced
+by #15*, which #15 took, and the notes dated 2026-09-24 (#43) and (#58), which those two took.
+Each is reproduced
 from the fetched data rather than retyped; the **Read on** row is authoritative where it disagrees
 with this sentence.
 

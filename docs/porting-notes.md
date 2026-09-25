@@ -507,9 +507,9 @@ Truls closed #43 on the 2.0.77 result with this list kept as a watch list rather
   for the fifth without the game**, which is issue #29. The number itself is Truls's to set.
   **Ruled 2026-09-24 (#16), applied 2026-09-24 (#58):** declared line `2.0` for the first release, with
   `base >= 2.0.67` for `Grado_NonChanging` and `>= 2.0.74` for the other four, and a 2.1 release
-  once factorio.com's stable release is 2.1.x. What remains open is applying it - the `info.json`
-  edits wait on the resolver (trulsjo/grado-factorio-tools#14) re-measuring them, and it is
-  pinned here since 2026-09-24 (#24) - and #29's `space-age` reading. *The edits landed
+  once factorio.com's stable release is 2.1.x. What remained open until #58 was applying it - the
+  `info.json` edits waited on the resolver (trulsjo/grado-factorio-tools#14) re-measuring them,
+  and it is pinned here since 2026-09-24 (#24) - and #29's `space-age` reading. *The edits landed
   2026-09-24 (#58), on a re-measurement that read the same floors; #29's reading stays open.*
   *(Partly read 2026-09-23, #10: `space-age` `2.0.77` in the installed game declares
   `base >= 2.0.0`, below the inherited `2.1.12`, so on 2.0.77 it does not raise the floor. A 2.1

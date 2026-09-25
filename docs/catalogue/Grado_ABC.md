@@ -10,7 +10,9 @@ Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below w
 **2026-09-21** and is reproduced from the fetched data rather than retyped, except those carrying a
 **Read on** of **2026-09-23** and the readings inside #9's rulings, which #9 took, and the notes
 marked *Superseded 2026-09-23 by #15*, which #15 took, and the notes dated 2026-09-24 (#43), which
-#43 took, and the note dated 2026-09-24 (#31), which #31 took. The **Read on** row is authoritative where it disagrees with this sentence.
+#43 took, and the note dated 2026-09-24 (#31), which #31 took, and the notes dated 2026-09-24
+(#58) and (#61), which those two took. The **Read on** row is authoritative where it disagrees
+with this sentence.
 
 The dependency list holds 46 entries: `base >= 2.0.0`, `Grado_ChangingBase` — a pack, catalogued in
 `docs/catalogue/Grado_ChangingBase.md` — and **44 mods**. It read 47 and 45 until 2026-09-22, when
@@ -1965,7 +1967,8 @@ moved to `Grado_ChangingBase` - so the core is now twenty-eight, not twenty-nine
 them saying so themselves. #9's four removals and `RealisticFusionPowerPort` are all add-ons, and
 none of the five declares `base >= 2.1`.*
 
-Of the core twenty-nine, twenty-two say so in their own dependency list:
+Of the core twenty-nine, twenty-two say so in their own dependency list *(twenty-eight and
+twenty-one, and 15 Bob's mods, since `bobinserters` left with #8 - see the note above)*:
 
 | Floor | Members |
 |---|---|

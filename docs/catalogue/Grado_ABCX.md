@@ -8,7 +8,7 @@ therefore what forced the shared overhaul out into `Grado_ABC`.
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
 **2026-09-22** and is reproduced from the fetched data rather than retyped, except the notes marked
 *Superseded 2026-09-23 by #15*, which #15 took, and the notes dated 2026-09-24 (#43), which #43
-took.
+took, and the notes dated 2026-09-24 (#58) and (#61), which those two took.
 
 The dependency list holds 4 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, catalogued in
 `docs/catalogue/Grado_ABC.md` — `SpaceModFeorasFork`, and the `! space-age` line the pack declares
@@ -188,7 +188,9 @@ that number rests on one release.
 Two things about that count, because both are easy to get wrong and this survey got both wrong first
 time round. **98 is distinct mods, not declarations**: the three lists hold 99 entries and
 `bobinserters` is named in two of them, which `docs/mod-catalogue.md` records as the only such
-collision. *#8 removed the second line on 2026-09-22.* And **the closure is transitive and includes `~`-prefixed dependencies**, which are
+collision. *#8 removed the second line on 2026-09-22, and #7 to #9 have since taken the three
+lists to 87 entries for 87 distinct named members, with no collision left.* And **the closure is
+transitive and includes `~`-prefixed dependencies**, which are
 mandatory — they only decline to constrain load order. Walking one level, or reading `~` as
 optional, gives 14 and misses the four Angel's graphics packages and `reskins-sprite-utils`.
 

@@ -146,9 +146,9 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   release; that list is a watch list for when 2.1 goes stable, under *Resolves on stable 2.0.77* in
   `docs/porting-notes.md`. The five-pack table, dated 2026-09-23 and against the settled
   memberships, is *Effective Factorio floor* in `docs/porting-notes.md` (#15). **Ruled 2026-09-24
-  (#16) - see *Settled so far*.** What stays open is applying it: the `info.json` edits wait on the
-  resolver re-measuring the minimums. *Applied 2026-09-24 (#58): re-measured on 2.0.77, same
-  floors, and the five `info.json` files declare them.*
+  (#16) - see *Settled so far*.** What stayed open until #58 was applying it: the `info.json` edits
+  waited on the resolver re-measuring the minimums. *Applied 2026-09-24 (#58): re-measured on
+  2.0.77, same floors, and the five `info.json` files declare them.*
 - **`PickerPipeTools`' pipe clamps are the one feature lost in the port with no successor found** —
   a search, not a proof. All twenty port drops are now closed (#7, #8, #9): nineteen stay dropped
   and `RealisticFusionPower` was replaced by `RealisticFusionPowerPort`.

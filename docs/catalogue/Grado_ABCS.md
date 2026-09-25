@@ -7,8 +7,8 @@ the method every other entry in this catalogue uses.
 
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
 **2026-09-22** and is reproduced from the fetched data rather than retyped, except the one
-re-read on 2026-09-23 (#10), which carries its own date, and *Candidates, not members*, read
-2026-09-24 (#31).
+re-read on 2026-09-23 (#10), which carries its own date, *Candidates, not members*, read
+2026-09-24 (#31), and the notes dated 2026-09-24 (#58) and (#61), which those two took.
 
 The dependency list holds 3 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, catalogued in
 `docs/catalogue/Grado_ABC.md` — and `space-age`. **The pack is new**, so nothing was carried over,

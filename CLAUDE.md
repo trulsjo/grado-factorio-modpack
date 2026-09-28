@@ -19,6 +19,10 @@ tested configuration. Treat "it resolves on the portal" and "it loads in the gam
 claims, because right now only the first is true. *2026-09-24 (#59): a headless 2.0.77 run
 against a staged `Grado_NonChanging` started and created a map, exit 0 - with `space-age`,
 `quality` and `elevated-rails` auto-enabled beside it, so it is not the load #17 records.*
+*2026-09-28 (#64): staged again, the pack zipped by the shared packer (tools `d09fba3`) and
+loaded through the load harness on 2.0.77 with base only - 29 mods validated (the 28 resolved
+members and the pack; `base` not counted) and a map created.
+Still not #17's recording.*
 
 ## What a modpack is here
 

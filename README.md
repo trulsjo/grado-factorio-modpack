@@ -42,8 +42,12 @@ pwsh -File scripts/stage-pack.ps1 Grado_ABC
 
 It resolves the pack's closure to exact releases for the pack's `factorio_version` and the
 installed game's build, fetches those releases, and zips the pack and every pack under it as
-`<name>_<version>.zip`, the version read from each `info.json`. Staging again replaces the old
-zips, and removes any other `<name>_<version>` copy of a member first. The default target is
+`<name>_<version>.zip`, the version read from each `info.json`. Resolving, fetching and
+packing are the shared tools', as is the load the printed line runs: the zip is
+`pack-mods.ps1`'s, which packs the files git tracks under the pack directory and warns of any
+untracked file it leaves out - a git-ignored one is left out without a word. Staging again
+replaces the old zips and any unpacked directory of a pack, and removes any other
+`<name>_<version>` copy of a member first. The default target is
 `.mod-cache/<pack>/`, which is git-ignored, and staging there again also removes any mod the pack
 has since dropped; the command prints the `load-harness.ps1` line that
 loads it. The options:

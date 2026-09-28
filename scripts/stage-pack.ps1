@@ -7,19 +7,24 @@
 .DESCRIPTION
     THE INSTALL STEP OF EVERY LOAD (#24), so it is the same each time and a failed load is a
     dependency failure rather than an install mistake. It writes no code of its own for the
-    members: resolving, fetching and loading are the shared tools', ruled on #16.
+    members or the packs: resolving, fetching, packing and loading are the shared tools', ruled
+    on #16 and, for packing, #64.
 
       resolve   vendor/grado-factorio-tools/scripts/resolve-modpack.ps1 picks the exact release of
                 every member of the pack's closure, for the pack's own factorio_version and the
                 game build, and writes the picks to a pin file.
       fetch     fetch-mods.ps1 there downloads those releases, and only those, into -ModsDirectory.
-      stage     This script zips the pack, and every pack under it in the chain, as
-                <name>_<version>.zip beside them. The version is read from the pack's info.json.
+      stage     pack-mods.ps1 there zips the pack, and every pack under it in the chain, as
+                <name>_<version>.zip beside them, holding <name>/. The version is read from the
+                pack's info.json; the files are git's tracked set under the pack directory, so an
+                untracked file is left out and reported.
 
     The result goes to the harness unchanged: load-harness.ps1 <ModsDirectory>, printed at the end.
 
     STAGING TWICE IS SAFE. A pack's previous zip or directory in -ModsDirectory -- any version --
-    is removed before the new zip takes its place, so Factorio never has two to choose between.
+    is removed once the new zip is written, so Factorio never has two to choose between: the packer
+    removes the zips, and this script the <name> and <name>_<version> directories, which the
+    packer leaves alone.
     A member is fetched as a directory named <name>, which fetch-mods.ps1 replaces; any
     <name>_<version>.zip or <name>_<version> directory of that member is removed before the fetch,
     as the mod manager installs them that way.
@@ -92,6 +97,7 @@ $TOOLS = Join-Path $ROOT 'vendor/grado-factorio-tools/scripts'
 # it from the tools repo if a second copy ever has to change with it.
 $GAME_MODS = @('base', 'space-age', 'quality', 'elevated-rails')
 
+# For the self-test's reading of the zips; the packing is pack-mods.ps1's.
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 function Get-RequiredName {
@@ -146,11 +152,11 @@ function Get-PackChain {
 }
 
 function Remove-VersionedCopy {
-    <#  Remove every <name>_<x.y.z>.zip and <name>_<x.y.z> directory of one mod from $Directory,
-        and with -Bare its <name> directory too. A neighbour whose name only starts the same stays.  #>
-    param([Parameter(Mandatory)] [string] $Directory, [Parameter(Mandatory)] [string] $Name, [switch] $Bare)
+    <#  Remove every <name>_<x.y.z>.zip and <name>_<x.y.z> directory of one mod from $Directory.
+        A neighbour whose name only starts the same stays.  #>
+    param([Parameter(Mandatory)] [string] $Directory, [Parameter(Mandatory)] [string] $Name)
 
-    $pattern = '^' + [regex]::Escape($Name) + $(if ($Bare) { '(_\d+\.\d+\.\d+(\.zip)?)?$' } else { '_\d+\.\d+\.\d+(\.zip)?$' })
+    $pattern = '^' + [regex]::Escape($Name) + '_\d+\.\d+\.\d+(\.zip)?$'
     Get-ChildItem -LiteralPath $Directory | Where-Object { $_.Name -match $pattern } |
         ForEach-Object { Remove-Item -LiteralPath $_.FullName -Recurse -Force }
 }
@@ -168,31 +174,21 @@ function Remove-DroppedMod {
         ForEach-Object { Remove-Item -LiteralPath $_.FullName -Recurse -Force }
 }
 
-function Publish-PackZip {
-    <#  Zip one pack into $ModsDirectory as <name>_<version>.zip, holding <name>_<version>/, which
-        is the shape the portal and the game take. Any earlier zip or directory of the pack there
-        is removed, whatever its version, once the new zip is built and before it takes its place.  #>
-    param([Parameter(Mandatory)] [hashtable] $Pack, [Parameter(Mandatory)] [string] $ModsDirectory)
+function Install-PackZip {
+    <#  Zip each pack into $ModsDirectory with the shared packer, pack-mods.ps1, which also deletes
+        each pack's other <name>_<x.y.z>.zip there. It leaves directories alone, so an unpacked
+        <name> or <name>_<x.y.z> directory of a pack -- which the game would see beside the zip --
+        is removed here, once the zips are written.  #>
+    [CmdletBinding()]
+    param([Parameter(Mandatory)] [hashtable[]] $Chain, [Parameter(Mandatory)] [string] $ModsDirectory)
 
-    $name = $Pack.Name
-    $folder = "$($name)_$($Pack.Info.version)"
-    New-Item -ItemType Directory -Path $ModsDirectory -Force | Out-Null
-    $zip = Join-Path $ModsDirectory "$folder.zip"
-    $partial = "$zip.partial"
-    if (Test-Path -LiteralPath $partial) { Remove-Item -LiteralPath $partial -Force }
-
-    $archive = [IO.Compression.ZipFile]::Open($partial, 'Create')
-    try {
-        foreach ($f in Get-ChildItem -LiteralPath $Pack.Directory -Recurse -File) {
-            $rel = [IO.Path]::GetRelativePath($Pack.Directory, $f.FullName) -replace '\\', '/'
-            [void] [IO.Compression.ZipFileExtensions]::CreateEntryFromFile($archive, $f.FullName, "$folder/$rel")
-        }
+    & (Join-Path $TOOLS 'pack-mods.ps1') -OutputDirectory $ModsDirectory @($Chain | ForEach-Object Directory)
+    foreach ($name in $Chain.Name) {
+        # -cmatch, as the packer's one-copy rule: Factorio compares mod names case-sensitively.
+        $pattern = '^' + [regex]::Escape($name) + '(_\d+\.\d+\.\d+)?$'
+        Get-ChildItem -LiteralPath $ModsDirectory -Directory | Where-Object { $_.Name -cmatch $pattern } |
+            ForEach-Object { Remove-Item -LiteralPath $_.FullName -Recurse -Force }
     }
-    finally { $archive.Dispose() }
-
-    Remove-VersionedCopy -Directory $ModsDirectory -Name $name -Bare
-    Move-Item -LiteralPath $partial -Destination $zip
-    $zip
 }
 
 function Invoke-SelfTest {
@@ -213,13 +209,20 @@ function Invoke-SelfTest {
     & $write 'Trailing' '{"name":"Trailing","version":"0.1.0",}'
     & $write 'Liar' '{"name":"Other","version":"0.1.0"}'
     & $write 'Lineless' '{"name":"Lineless","version":"0.1.0"}'
+    # The shared packer zips git's tracked set, so the fixture packs are tracked, and one file
+    # beside them is not.
+    git -C $root init --quiet
+    if ($LASTEXITCODE -ne 0) { throw 'git init failed; the self-test needs git.' }
+    git -C $root add -A
+    Set-Content -LiteralPath (Join-Path $root 'High/notes.txt') -Value 'untracked'
     New-Item -ItemType Directory -Path $mods -Force | Out-Null
     # What a previous stage and a neighbour leave behind.
     Set-Content (Join-Path $mods 'Mid_0.0.9.zip') 'old'
-    New-Item -ItemType Directory -Path (Join-Path $mods 'Mid') -Force | Out-Null
+    New-Item -ItemType Directory -Path (Join-Path $mods 'Mid'), (Join-Path $mods 'Mid_0.0.8') -Force | Out-Null
     Set-Content (Join-Path $mods 'Mid/info.json') '{"name":"Mid","version":"0.0.1"}'
     Set-Content (Join-Path $mods 'MidX_0.1.0.zip') 'a neighbour'
-    $infoHash = { Get-ChildItem -LiteralPath $root -Recurse -File | Get-FileHash | ForEach-Object Hash }
+    # info.json only, since git keeps its own files under $root/.git now.
+    $infoHash = { Get-ChildItem -LiteralPath $root -Recurse -File -Filter info.json | Get-FileHash | ForEach-Object Hash }
     $before = @(& $infoHash)
 
     $refuses = { param($name, $pattern) try { Get-PackChain -Root $root -Name $name; $false } catch { $_.Exception.Message -match $pattern } }
@@ -254,15 +257,15 @@ function Invoke-SelfTest {
             Remove-DroppedMod -Directory $d -Keep 'flib', 'Some_Mod', 'Mid'
             (@(Get-ChildItem -LiteralPath $d -Force | ForEach-Object Name | Sort-Object) -join ',') -eq '.zips,flib,Mid_0.1.0.zip,mod-list.json,Some_Mod_2.0.1.zip' -and
                 (@(Get-ChildItem -LiteralPath (Join-Path $d '.zips') | ForEach-Object Name) -join ',') -eq 'flib_0.16.5.zip' } }
-        @{ Name = 'the zip is named from info.json and holds <name>_<version>/info.json'; Test = {
-            $zip = Publish-PackZip -Pack (Get-PackChain -Root $root -Name 'High')[0] -ModsDirectory $mods
-            $a = [IO.Compression.ZipFile]::OpenRead($zip)
+        @{ Name = 'the zip is named from info.json and holds <name>/info.json; an untracked file is reported and left out'; Test = {
+            Install-PackZip -Chain (Get-PackChain -Root $root -Name 'High')[0] -ModsDirectory $mods -WarningVariable w -WarningAction SilentlyContinue 6>$null
+            $a = [IO.Compression.ZipFile]::OpenRead((Join-Path $mods 'High_1.4.2.zip'))
             try { $entries = @($a.Entries | ForEach-Object FullName) } finally { $a.Dispose() }
-            (Split-Path $zip -Leaf) -eq 'High_1.4.2.zip' -and ($entries -join ',') -eq 'High_1.4.2/info.json' } }
+            ($entries -join ',') -eq 'High/info.json' -and ($w -join ' ') -match 'notes\.txt' } }
         @{ Name = 'staging twice leaves one copy: old zips and directories go, neighbours stay'; Test = {
             $mid = (Get-PackChain -Root $root -Name 'Mid')[0]
-            Publish-PackZip -Pack $mid -ModsDirectory $mods | Out-Null
-            Publish-PackZip -Pack $mid -ModsDirectory $mods | Out-Null
+            Install-PackZip -Chain $mid -ModsDirectory $mods 6>$null
+            Install-PackZip -Chain $mid -ModsDirectory $mods 6>$null
             $left = @(Get-ChildItem -LiteralPath $mods | ForEach-Object Name | Sort-Object)
             ($left -join ',') -eq 'High_1.4.2.zip,Mid_0.1.0.zip,MidX_0.1.0.zip' } }
         @{ Name = 'the load harness reads the staged zips as they stand'; Test = {
@@ -334,7 +337,8 @@ foreach ($m in $members) { Remove-VersionedCopy -Directory $ModsDirectory -Name 
 try { & (Join-Path $TOOLS 'fetch-mods.ps1') -PinFile $pinFile -Set $Pack -CacheDirectory $ModsDirectory }
 catch { Write-Host "  $($_.Exception.Message)"; Write-Host ''; Write-Host "FAILED - the members of $Pack could not all be fetched; the packs were not staged."; exit 1 }
 
-foreach ($p in $chain) { Write-Host "  staged $(Publish-PackZip -Pack $p -ModsDirectory $ModsDirectory)" }
+try { Install-PackZip -Chain $chain -ModsDirectory $ModsDirectory }
+catch { Write-Host "  $($_.Exception.Message)"; Write-Host ''; Write-Host "FAILED - the packs may be partly staged; the members of $Pack are fetched."; exit 1 }
 
 $bundled = @($chain | ForEach-Object { Get-RequiredName $_.Info } | Where-Object { $_ -in $GAME_MODS -and $_ -ne 'base' } | Sort-Object -Unique)
 $with = if ($bundled) { " -With $($bundled -join ',')" } else { '' }

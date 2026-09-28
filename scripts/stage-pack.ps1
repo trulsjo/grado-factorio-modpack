@@ -17,7 +17,8 @@
       stage     pack-mods.ps1 there zips the pack, and every pack under it in the chain, as
                 <name>_<version>.zip beside them, holding <name>/. The version is read from the
                 pack's info.json; the files are git's tracked set under the pack directory, so an
-                untracked file is left out and reported.
+                untracked file is left out and reported, and a pack directory outside a git work
+                tree is refused.
 
     The result goes to the harness unchanged: load-harness.ps1 <ModsDirectory>, printed at the end.
 
@@ -262,17 +263,20 @@ function Invoke-SelfTest {
             $a = [IO.Compression.ZipFile]::OpenRead((Join-Path $mods 'High_1.4.2.zip'))
             try { $entries = @($a.Entries | ForEach-Object FullName) } finally { $a.Dispose() }
             ($entries -join ',') -eq 'High/info.json' -and ($w -join ' ') -match 'notes\.txt' } }
-        @{ Name = 'staging twice leaves one copy: old zips and directories go, neighbours stay'; Test = {
-            $mid = (Get-PackChain -Root $root -Name 'Mid')[0]
-            Install-PackZip -Chain $mid -ModsDirectory $mods 6>$null
-            Install-PackZip -Chain $mid -ModsDirectory $mods 6>$null
+        @{ Name = 'staging a chain twice leaves one copy of each pack: old zips and directories go, neighbours stay'; Test = {
+            # The whole chain in one call, as a real stage makes it, with a stale directory of the
+            # second pack too, so the cleanup is proven past the first.
+            New-Item -ItemType Directory -Path (Join-Path $mods 'Low') -Force | Out-Null
+            $chain = @(Get-PackChain -Root $root -Name 'Mid')
+            Install-PackZip -Chain $chain -ModsDirectory $mods 6>$null
+            Install-PackZip -Chain $chain -ModsDirectory $mods 6>$null
             $left = @(Get-ChildItem -LiteralPath $mods | ForEach-Object Name | Sort-Object)
-            ($left -join ',') -eq 'High_1.4.2.zip,Mid_0.1.0.zip,MidX_0.1.0.zip' } }
+            ($left -join ',') -eq 'High_1.4.2.zip,Low_0.2.0.zip,Mid_0.1.0.zip,MidX_0.1.0.zip' } }
         @{ Name = 'the load harness reads the staged zips as they stand'; Test = {
             . (Join-Path $TOOLS 'load-harness-lib.ps1')
             Remove-Item -LiteralPath (Join-Path $mods 'MidX_0.1.0.zip')
             $rows = @(Get-HarnessMods -Path $mods)
-            (($rows | ForEach-Object { "$($_.Name) $($_.Version)" }) -join ',') -eq 'High 1.4.2,Mid 0.1.0' } }
+            (($rows | ForEach-Object { "$($_.Name) $($_.Version)" }) -join ',') -eq 'High 1.4.2,Low 0.2.0,Mid 0.1.0' } }
         @{ Name = 'no info.json was modified'; Test = {
             -not (Compare-Object $before @(& $infoHash)) } }
     )

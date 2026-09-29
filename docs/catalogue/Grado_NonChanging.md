@@ -237,6 +237,10 @@ above all of them, and on 2026-09-24 still leads the next, `Automatic_Train_Pain
 
 **Recommendation: keep.** Read-only overlay; last touched 2025-11-16.
 
+*Seen in play 2026-09-29 (#17): its default `Alt+Y` clashes with `YARM`'s, and `PipeVisualizer-Updated`
+wins. A player can rebind the key. Whether the pack changes a default is open. See
+`docs/loads/Grado_NonChanging-2026-09-29.md`, *Key bindings*.*
+
 ### `RateCalculator`
 
 | | |
@@ -342,6 +346,10 @@ above all of them, and on 2026-09-24 still leads the next, `Automatic_Train_Pain
 **Alternatives considered.** None needed. Last touched 2025-01-01.
 
 **Recommendation: keep.** Stores monitored sites in the save; changes nothing in the factory.
+
+*Seen in play 2026-09-29 (#17): its default `Alt+Y` clashes with `PipeVisualizer-Updated`'s, and `PipeVisualizer-Updated`
+wins. A player can rebind the key. Whether the pack changes a default is open. See
+`docs/loads/Grado_NonChanging-2026-09-29.md`, *Key bindings*.*
 
 ### `automatic-station-painter`
 

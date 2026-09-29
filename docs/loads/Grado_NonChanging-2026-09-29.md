@@ -1,8 +1,9 @@
 # Load record: `Grado_NonChanging`, 2026-09-29
 
 The first recorded **load** of any pack (`CONTEXT.md`, *Load*), for #17. Two loads, both clean. The
-**play session** has not been run yet. Until it is, this record says the pack's prototypes and
-start-up scripts work together on 2.0.77, and nothing about how the members behave in play.
+**play session** is partly run (items 1-3 of 7). It found one key-binding clash, `Alt+Y`, between
+`YARM` and `PipeVisualizer-Updated` - see *Conflicts*. Until the session is finished, this record
+says little about how the members behave in play.
 
 ## Configuration
 
@@ -77,26 +78,83 @@ The times are from one machine (i7-9850H) and one run each. They are context, no
 
 ## Conflicts
 
-**None found.** Neither load showed a failure or a warning between any two members. Compatibility
-Lua is not needed on this evidence.
+**None found in the loads.** Neither load showed a failure or a warning between any two members.
+Compatibility Lua is not needed on this evidence. The play session found one key-binding clash, below.
 
 That verdict covers only what a load can see: the prototype stages and `on_init`. Clashing key
 bindings, GUIs drawn over each other, two mods handling the same event, and anything that shows up
 after the first tick are the play session's to find.
 
+### Key bindings
+
+**One clash confirmed in play: `Alt+Y`.** `YARM`'s selector and `PipeVisualizer-Updated`'s mouse-over
+toggle both default to it. Pressed in the play session, it toggled the pipe visualizer and did not
+give the YARM selector. Rebinding YARM's key in the Controls menu fixed it. **Compatibility Lua is not
+needed to make the pack usable**, because a player can rebind. Whether the pack should change a
+default anyway is open: it would be the first Lua any pack carries, and that decision is Truls's.
+
+**How the list was made.** The game's Controls menu does not mark clashes, because two bindings
+on one key are often meant for different situations. So the list comes from the data stage
+instead. A `--dump-data` run through the harness's `Invoke-HarnessDump`, with the pack enabled
+(base only), gave 85 `custom-input` prototypes. A second dump with every member disabled gave
+base's own 14. Each of the other 71 was attributed by finding its name in a member's Lua. Seven keys
+are bound by default by more than one:
+
+| Default key | Bound by (`custom-input` name) | Seen in play |
+|---|---|---|
+| `Alt+Y` | `YARM` (`get-yarm-selector`), `PipeVisualizer-Updated` (`pv-toggle-mouseover`), base (`give-discharge-defense-remote`, a Space Age item) | **clash** - YARM does not fire |
+| `Shift+C` | `even-distribution` (`inventory-cleanup`), `BlueprintTools` (`bpt-swap-wire-colors`), `kry-picker-extended` (`picker-copy-chest`) | not tried |
+| `Shift+V` | `VehicleSnap` (`VehicleSnap-toggle`), `kry-picker-extended` (`picker-paste-chest`) | not tried |
+| `Shift+G` | `BlueprintTools` (`bpt-quick-grid`), `kry-picker-extended` (`toggle-ghost-revive`) | not tried |
+| `Shift+T` | `Todo-List` (`todolist-toggle-ui`), `BlueprintTools` (`bpt-set-tiles`) | Todo-List opens; BlueprintTools not seen |
+| `Ctrl+R` | `Fill4Me` (`fill4me-keybind-reload`), `kry-picker-extended` (`picker-reverse-belts`) | not tried |
+| `Y` | `helmod` (`helmod-recipe-explorer-open`), `PipeVisualizer-Updated` (`pv-visualize-selected`) | not tried |
+
+A shared default is not automatically a clash. Several of these act only in one situation:
+`BlueprintTools` with a blueprint in hand, `VehicleSnap` in a vehicle, the Picker chest keys with
+a chest under the cursor. Only `Alt+Y` has been seen to fail.
+
+**The list does not cover vanilla controls.** The game's own bindings are not `custom-input`
+prototypes, so a member key that collides with a vanilla default does not appear in the dump.
+
 ## Play session
 
-**Not yet run.** Truls runs it in the client, base only, against the same stage directory
-(`.mod-cache/Grado_NonChanging`, staged 2026-09-29), so it uses the release versions in the table
-above. The checklist below is written in advance, so what was tried is recorded rather than
-remembered. `/editor` is fine for getting items.
+**Partly run, 2026-09-29, by Truls.** In the client (Steam, 2.0.77), base only, against the same
+stage directory (`.mod-cache/Grado_NonChanging`, staged 2026-09-29). Its prototype list checksum,
+`169335276`, is the same as load 1's, so the play session ran the configuration recorded above. A
+hand-written `mod-list.json` in the stage directory turned `space-age`, `quality` and
+`elevated-rails` off - without one the game enables them. Items 1-3 are done and 4-7 are still to
+run. The checklist was written in advance, so what was tried is recorded rather than remembered.
+`/editor` is fine for getting items.
 
-1. **Settings → Controls:** note any binding the game marks as conflicting, and the two mods behind
-   it.
-2. **Settings → Mod settings:** open each tab once.
+1. **Key bindings.** *As planned:* "Settings → Controls: note any binding the game marks as
+   conflicting". *Could not be done that way:* the game marks no clashes. It was done from the data
+   dump instead - see *Key bindings* under *Conflicts*.
+2. **Settings → Mod settings:** open each tab once. *Done:* all three tabs, from the main menu and
+   again when starting a new game. Nothing unusual.
 3. **Open each GUI or tool once:** `helmod`, `FNEI`, `RateCalculator`, `FactorySearch`, `Todo-List`,
    `YARM` (place a resource monitor), `Tapeline`, `solar-calc`, `BlueprintTools`, `SpeedControl`,
-   `PipeVisualizer-Updated`.
+   `PipeVisualizer-Updated`. *Done:*
+   - `helmod`: opens with `U` or `I`, closes with `U` or `Esc`.
+   - `FNEI`: opens and closes with `Ctrl+E`, or closes with `Esc`.
+   - `RateCalculator`: the selection tool comes with `Alt+X` and goes with `Q`.
+   - `FactorySearch`: opens and closes with `Shift+F`.
+   - `Todo-List`: opens and closes with `Shift+T`.
+   - `Tapeline`: opens and closes with `Alt+M`.
+   - `solar-calc`: no default key. Opens from its button.
+   - **`YARM`: `Alt+Y` does not give the selector.** It toggles `PipeVisualizer-Updated`'s mouse-over
+     instead. With a custom binding, the selector works. See *Key bindings*.
+   - `PipeVisualizer-Updated`: `Shift+Y` works - one colour per fluid system. `Alt+Y` (mouse-over
+     toggle) made no visible difference: networks looked the same with it on or off. That may be
+     the toggle working with nothing to show, or not working. Not settled.
+   - `SpeedControl`: works, on keys that read oddly on a Norwegian layout. Its bindings are
+     `MINUS` and `EQUALS`, which Factorio names by US key position. On a Norwegian keyboard those are
+     `+` (slower) and `\` (faster), each also with `Shift` and `Alt`. It is a layout quirk, not a
+     clash.
+   - `BlueprintTools`: **no effect seen**, and not every binding was tried. Three of its keys are
+     shared (`Shift+G`, `Shift+T`, `Shift+C`), and `Shift+T` opened Todo-List. Its other defaults
+     are `Shift+B` (configure), `Alt+I` (import string), and middle-click with `Shift`, `Ctrl` or
+     `Shift+Alt` (pipette add, remove, downgrade). Not settled.
 4. **Use each in-world mod once:**
    - move an entity with `even-pickier-dollies`
    - drag-distribute items with `even-distribution`

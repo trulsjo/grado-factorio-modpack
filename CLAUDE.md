@@ -204,6 +204,10 @@ missing.
   a mod goes in its catalogue entry. *A third since 2026-09-29 (#17):* `docs/loads/<pack>-<date>.md`
   records one load and its play session - the build, the bundled mods and every resolved member
   version, so the next load can be compared with it. The first one is the template.
+- **`<pack>/README.md` is the player's page** (2026-09-29, #17), and the text meant for the pack's
+  portal description. It ships inside the pack zip, because the packer takes every tracked file in
+  the pack directory. It is written for players, so no ticket numbers and no project vocabulary.
+  `Grado_NonChanging` has the first one.
 - **Record what was dropped and why**, never just remove a line. A dependency that silently vanishes
   cannot be revisited.
 - Cite a mod by its **portal name** (`even-pickier-dollies`), not its title, because the name is what

@@ -1001,7 +1001,10 @@ against `factoryplanner`. Each pair is known to overlap; none was measured.
 
 **Nothing has been loaded in Factorio.** No mod here has been downloaded or run, and no compatibility
 between any two of them has been tested. Every judgement above is from portal metadata and mod
-descriptions.
+descriptions. *Superseded 2026-09-29 (#17): every member was downloaded and **loaded** on 2.0.77,
+base only and with Space Age, and both loads were clean. Starting together is now checked. Working
+together in play is not - that is the play session's, still to run. The judgements above are
+still portal and description readings. See `docs/loads/Grado_NonChanging-2026-09-29.md`.*
 
 **Download counts are context, not evidence.** `ixuAutoSave` at 657 is flagged for bus factor, not
 for quality.

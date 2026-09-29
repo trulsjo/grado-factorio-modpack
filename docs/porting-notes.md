@@ -584,3 +584,9 @@ Truls closed #43 on the 2.0.77 result with this list kept as a watch list rather
   been written or shown to be needed. **This now matters more than it did**: as of 2026-09-22
   `Grado_ChangingBase`, and therefore the three packs above it, depend on a mod whose author
   describes it as having "known issues, bugs, missing features, and even the occasional crash".
+  *2026-09-29 (#17): `Grado_NonChanging` has been **loaded** (`CONTEXT.md`, *Load*) on 2.0.77,
+  base only and with `space-age`, `quality` and `elevated-rails`. Both loads were clean: no error
+  or warning in the log, and no conflict between members, so no compatibility Lua was shown to be
+  needed. Not tested: play (the play session is still to run), a build below 2.0.77, multiplayer,
+  and the other four packs, including `Grado_ChangingBase` and the alpha above. Record, with every
+  resolved member version: `docs/loads/Grado_NonChanging-2026-09-29.md`.*

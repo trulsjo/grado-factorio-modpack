@@ -49,7 +49,28 @@ it carries (see *Name*). A pack *resolves* on a game version when every mod in i
 has a release that version is served (`factorio_version`) and can install (`base >=`), and those
 releases satisfy each other's version constraints. Added 2026-09-24 (#43), where "all five packs
 resolve on 2.0.77" is the second sense.
-_Avoid_: "installs" for the second sense on portal evidence alone - nothing has been loaded in game
+_Avoid_: "installs" for the second sense on portal evidence alone - a pack that resolves has not
+thereby been loaded (see *Load*)
+
+**Load**:
+Factorio run with exactly a pack's resolved closure enabled, plus any bundled mods named explicitly,
+and nothing else: the prototypes load, a map is created, and the run exits clean. Scripted and
+repeatable. A load is recorded with its build, its resolved member versions and its bundled mods, or
+it cannot be compared with the next one. It runs no ticks and loads no sprites, so it says nothing
+about how a mod behaves in play. Added 2026-09-29 (#17).
+_Avoid_: "loaded" for a *Start*; "launched" and "play-tested" as loose synonyms for any of the three
+
+**Start**:
+Factorio run with a pack enabled but the set of mods not controlled - #59's run on 2026-09-24, with
+`space-age`, `quality` and `elevated-rails` auto-enabled beside `Grado_NonChanging`, is one. Weaker
+evidence than a *Load*, and it does not count as one. Added 2026-09-29 (#17).
+_Avoid_: load
+
+**Play session**:
+A person playing with a pack in the client - ticks run and the mods are used - and writing down what
+they did. The only one of the three that says anything about how the members behave together.
+Added 2026-09-29 (#17).
+_Avoid_: play-test (used here for "any of the three" before 2026-09-29), playthrough
 
 **Title**:
 The `title` field in `info.json`, e.g. `Grado ABCS: Angel's, Bob's, MadClown, Space Age`. Display

@@ -12,17 +12,21 @@ session start.
 **Skeleton.** Five `info.json` files with resolved dependency lists, a README and
 `docs/porting-notes.md`. First commit `3ab917c`, 2026-09-20.
 
-**Nothing has been launched in Factorio.** No pack has been loaded, no
-compatibility Lua written or shown to be needed. *Members can now be downloaded:
-`scripts/stage-pack.ps1` (#24) fetches them. Recording a load is #17's.* Every dependency list is a portal-API reading, not a
-tested configuration. Treat "it resolves on the portal" and "it loads in the game" as different
-claims, because right now only the first is true. *2026-09-24 (#59): a headless 2.0.77 run
-against a staged `Grado_NonChanging` started and created a map, exit 0 - with `space-age`,
-`quality` and `elevated-rails` auto-enabled beside it, so it is not the load #17 records.*
-*2026-09-28 (#64): staged again, the pack zipped by the shared packer (tools `d09fba3`) and
-loaded through the load harness on 2.0.77 with base only - 29 mods validated (the 28 resolved
-members and the pack; `base` not counted) and a map created.
-Still not #17's recording.*
+**One pack has been loaded; none has had a play session.** `Grado_NonChanging` loaded on 2.0.77,
+base only and again with Space Age, on 2026-09-29 (#17): clean, no conflict found, no
+compatibility Lua shown to be needed. See `docs/loads/Grado_NonChanging-2026-09-29.md`. *Load*,
+*Start* and *Play session* are glossary terms (`CONTEXT.md`), and they are not interchangeable. A
+load says the prototypes and start-up scripts work together, and nothing about play. The other
+four packs are still portal readings only. Treat "it resolves on the portal" and "it loads in the
+game" as different claims: for those four, only the first is true. *Until 2026-09-29 this line read
+"Nothing has been launched in Factorio", which the two runs below had already made false. #65
+settled its wording through #17.* Earlier runs, kept as history rather than as the record:
+*2026-09-24 (#59): a **start**. A headless 2.0.77 run against a staged `Grado_NonChanging` created a
+map, exit 0, with `space-age`, `quality` and `elevated-rails` auto-enabled beside it.*
+*2026-09-28 (#64): an unrecorded load. The pack was zipped by the shared packer (tools `d09fba3`) and
+loaded through the load harness on 2.0.77, base only: 29 mods validated (the 28 resolved members
+and the pack; `base` not counted) and a map created. No member versions were written down, which
+is why #17 re-ran it.*
 
 ## What a modpack is here
 
@@ -197,7 +201,9 @@ missing.
 - **Two documents, two jobs.** `docs/porting-notes.md` records what happened to the 1.1 packs;
   `docs/catalogue/<pack>.md` records what is in each pack now and why, one entry per mod.
   `docs/mod-catalogue.md` is the entry format. A fact about the port goes in the notes, a fact about
-  a mod goes in its catalogue entry.
+  a mod goes in its catalogue entry. *A third since 2026-09-29 (#17):* `docs/loads/<pack>-<date>.md`
+  records one load and its play session - the build, the bundled mods and every resolved member
+  version, so the next load can be compared with it. The first one is the template.
 - **Record what was dropped and why**, never just remove a line. A dependency that silently vanishes
   cannot be revisited.
 - Cite a mod by its **portal name** (`even-pickier-dollies`), not its title, because the name is what
@@ -224,7 +230,8 @@ missing.
 - **`name` and `title` are not the same field.** The name is permanent and resolves dependencies;
   the title is display only. `CONTEXT.md` is the glossary: six terms, these two among them, each
   of which has been used here to mean two things. *Nine since 2026-09-24: `Promise` had already
-  made it seven, and #43 added `Resolve` and #16 `Declared line`.*
+  made it seven, and #43 added `Resolve` and #16 `Declared line`. Twelve since 2026-09-29: #17
+  added `Load`, `Start` and `Play session`.*
 
 ## Commit messages
 

@@ -12,7 +12,7 @@ Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below w
 marked *Superseded 2026-09-23 by #15*, which #15 took, and the notes dated 2026-09-24 (#43), which
 #43 took, and the note dated 2026-09-24 (#31), which #31 took, and the notes dated 2026-09-24
 (#58) and (#61), which those two took. The **Read on** row is authoritative where it disagrees
-with this sentence.
+with this sentence. *Candidates, not members* was read on 2026-09-30 (#50).
 
 The dependency list holds 46 entries: `base >= 2.0.0`, `Grado_ChangingBase` — a pack, catalogued in
 `docs/catalogue/Grado_ChangingBase.md` — and **44 mods**. It read 47 and 45 until 2026-09-22, when
@@ -412,6 +412,11 @@ an alternative to this mod.** They seem to extend different parts of the melting
 mixing, compression and the Ironworks here, and remelting and the Alloy Mixer there. The survey's
 "a genuine alternative" above is therefore not accepted as written. **#50** assesses the two side by
 side, and this ruling is revisited when it lands.
+
+*#50, 2026-09-30: the comparison is under* Candidates, not members, *read from both mods' 2.x
+code. They are complements. In `2.0.01` this mod no longer mixes molten metals at all; its
+changelog removed that. No name collision was found. The "almost word for word" above held only
+for `1.0.14`'s off-by-default setting.*
 
 ### `angelsaddons-cab`
 
@@ -1602,6 +1607,112 @@ the next version bump. Keeping it costs a download.
 **Ruled 2026-09-23 (#9): out**, as recommended. Nobody could name a reason it was in the list, and a
 library with no dependent reads as a leftover. The version-bump reasoning above is moot: it cites ADR
 0001, which ADR 0002 supersedes, and a pack's version does not move before its first release.
+
+## Candidates, not members
+
+Mods assessed for this pack that are not in it. **Nothing here changes the dependency list**: whether
+a mod joins is Truls's.
+
+### `angelsextended-remelting`
+
+| | |
+|---|---|
+| **Title** | Angel's Extended - Remelting |
+| **Does** | Extends Angel's Smelting at the molten stage: recipes that remelt plates back into molten metal, and a four-tier Alloy Mixer that mixes molten metals into alloys without going through ingots |
+| **Latest** | `2.0.0`, `factorio_version` **2.0**, 2026-02-27 |
+| **Downloads** | 1,227 |
+| **Owner** | `Aragas` |
+| **Status** | candidate, not a member (#50) |
+| **Read on** | 2026-09-30 |
+
+Assessed against **`angels-smelting-extended`**, the member it was first recorded as an alternative
+to (#4, 2026-09-21). #9 did not accept that reading on 2026-09-23, on the two mods' descriptions.
+This entry compares their code. Every portal reading here was taken on **2026-09-30**. The source
+is the two 2.x release zips, fetched from the portal that day: `angelsextended-remelting` `2.0.0`
+and `angels-smelting-extended` `2.0.01`. Anything below not marked as coming from a description was
+read in that code. The remelting mod links its source at `Aragas/angelsextended-remelting` on
+GitHub, and `angels-smelting-extended` at `Pezzawinkle/PezsMods`. Neither repository was read; the
+zips are what a player installs.
+
+**Releases, all of them.** Neither mod has a 2.1 release, so on the 2.1 line both would strand
+beside the watch list under *Resolves on stable 2.0.77* in `docs/porting-notes.md`.
+
+| Mod | Factorio lines with a release | 2.x releases |
+|---|---|---|
+| `angelsextended-remelting` | 0.17 (eleven releases, 2019-09-06 to 2019-09-28), 2.0 | `2.0.0`, 2026-02-27 |
+| `angels-smelting-extended` | 0.17, 0.18, 1.0, 1.1 (last `1.0.14`, 2024-05-28), 2.0 | `2.0.01`, 2026-08-22 |
+
+The remelting mod had no release for 0.18, 1.0 or 1.1: it went from 2019 straight to 2.0, six
+years later. Its `2.0.0` requires `angelssmelting >= 2.0.0`, with `bobplates >= 2.0.0` and
+`Clowns-Processing >= 2.0.0` optional and `SeaBlock` hidden-optional. `angelssmelting` meets that
+floor on both lines: `2.0.5` (2026-06-03) is its newest 2.0 release and `2.1.1` (2026-07-27) its
+newest overall.
+
+**Feature by feature.** Every row was read in the 2.x code.
+
+| Feature | `angels-smelting-extended` `2.0.01` | `angelsextended-remelting` `2.0.0` |
+|---|---|---|
+| Mixing molten metals into an alloy, skipping ingots | **No.** Its changelog for `2.0.01`: "removed the molten blending recipes which were impossible to balance". In `1.0.14` they were a startup setting, `ASE-angels-molten-recipes`, off by default | **Yes.** `alloy-mixer` to `alloy-mixer-4`, four recipe categories `molten-alloy-mixing` to `-4`. Solder, bronze and brass in three tiers each. Three steel recipes, plus manganese-, silicon-, cobalt-nickel- and chrome-nickel-iron. With `bobplates`: cobalt-steel, nitinol, gunmetal (not under SeaBlock) and invar |
+| Remelting plates back to molten metal | No | **Yes.** 19 Angel's Smelting products, glass, solder and steel among them, plus the six Bob's alloys and Clowns magnesium. Runs in Angel's own `angels-induction-smelting` category |
+| Alloy technologies and recipe order | **Yes.** `angels-alloys-smelting-1` to `-3` (with `bobplates`), and moves Angel's own alloy recipes into per-alloy subgroups. With `bobplates` it also replaces Angel's alloy plates by Bob's everywhere | No techs of its own under the default *Smooth integration* setting: it adds unlocks to Angel's existing smelting and casting techs. Setting off: `remelting-tier-0` to `-6` |
+| Compression: alloy rolls | **Yes.** Rolls of brass, bronze, cobalt-steel, gunmetal, invar, nitinol and tungsten, plus insulated-wire coils | No |
+| Ironworks: gears, pipes and underground pipes cast from molten metal | **Yes.** `angels-ironworks-1` to `-5`, with sand and metal dies | No |
+| Girder stacks and shielding coils | Defined, but unlocked only when `angelsindustries` components are on. `angelsindustries` is not in the chain (dropped during the port) | No |
+| Unhiding Angel's molten metals | No | **Yes.** In `data-final-fixes` it unhides molten chrome, manganese and cobalt, and their recipes, when Angel's has hidden them, and adds their unlocks to Angel's techs |
+
+**What "metal mixing" means in each.** `angels-smelting-extended`'s portal summary still offers
+"all metal mixing recipes to metallurgy (Brass, Bronze, etc)". In `2.0.01` that is the alloy
+techs and recipe grouping above, built around Angel's ingot-route recipes: molten brass from
+copper and zinc *ingots* is Angel's own (`angelssmelting` `2.0.5`, `smelting-alloy-brass.lua`).
+Mixing at the fluid stage left the mod in `2.0.01`. The remelting mod is now the only one of the
+two that does it. So #4's reading, that the Alloy Mixer "is this mod's alloy feature almost word for
+word", was true of the `1.0.14` setting, which was off by default, and is not true of any 2.x
+release. #9's reading is the one the code supports.
+
+**Can they be installed together.**
+
+- **Declared incompatibilities: none between them.** `angels-smelting-extended` `2.0.01` declares
+  only `! angelssmelting-extended-upgradet >= 0.0.1`. `angelsextended-remelting` `2.0.0` declares
+  none; its 0.17 releases from `0.17.4` on declared `! Better_Strand_Casting`, which `2.0.0`
+  removed.
+- **Prototype names: no collision.** Every prototype each mod defines by a literal name was listed,
+  by type and name, from its `data:extend` calls: 83 for the remelting mod, 48 for the other. No
+  pair shares a type and a name. `angels-smelting-extended` also builds names in loops, as
+  `angels-roll-<metal>-…`, `angels-<metal>-pipe-…`, `angels-<metal>-gear-wheel-casting`, `ASE-…`
+  and `<item>-casting`. The remelting mod builds none, and none of its literal names fits those
+  patterns. They share no recipe category, item subgroup or technology either. The remelting
+  mod's own names are all prefixed `alloy-mixer`, `molten-…-remelting`, `molten-…-alloy-mixing`,
+  `aragas-` or `remelting-`.
+- **Where they touch: the same Angel's objects, from different sides.** The remelting mod's
+  mixers produce `angels-liquid-molten-brass` and the other alloy fluids, and its remelting recipes
+  consume Angel's and Bob's plates. `angels-smelting-extended` re-groups the recipes that make
+  those same fluids, and with `bobplates` swaps Angel's alloy plates for Bob's. Both add unlocks to
+  Angel's technologies through Angel's own override helper, `angelsmods.functions.OV`. Nothing in
+  either mod removes or renames what the other uses, and the remelting mod already targets Bob's
+  plate names (`bob-brass-alloy` and the rest). That is a reading of code, not a load.
+- **A side finding about `angels-smelting-extended`, not the pair.** With `bobplates` it defines
+  the fluid `angels-liquid-molten-invar`, which `angelssmelting` `2.0.5` also defines. `data:extend`
+  replaces the earlier definition without an error, so this is a redefinition of an Angel's
+  prototype rather than a clash, but it is the member mod overriding the overhaul.
+
+**Not checked.** Neither mod has been loaded here, alone or together, so none of the above says
+they work in game. The remelting mod was not read on 2.1 `angelssmelting`, and it has no 2.1
+release to read. Its recipe balance against Angel's ingot route was not assessed.
+
+**Recommendation: do not add, as things stand.** The two mods are **complements, not alternatives
+and not in conflict**. On 2.x they share no feature. `angels-smelting-extended` owns compression,
+the Ironworks and the alloy techs. The remelting mod owns remelting and fluid-stage alloy mixing.
+No declared incompatibility or name collision was found. That rules out the one route by which
+this mod could have entered the pack, as a replacement: it replaces nothing. Adding it would be an
+addition, which #8 and #9's rules keep out, and would put a second mod declaring 2.0 with no 2.1
+release into the core both end-games share. What it offers is new content: the fluid-stage mixing
+that `angels-smelting-extended` offered only behind an off-by-default setting and has now removed.
+Whether the pack wants that is Truls's.
+
+It also bears on the member. #9 kept `angels-smelting-extended` "for now" because it did not read
+this mod as an alternative, and the code agrees. So the alternative no longer weighs against the
+member. The concerns about the member itself stand: a single 2.x release, on 2.0 only, after two
+years dormant. What the member provides has no substitute here either.
 
 ## The three Angel's and Clowns drops are one event
 

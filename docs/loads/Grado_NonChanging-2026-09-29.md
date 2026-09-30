@@ -125,7 +125,7 @@ stage directory (`.mod-cache/Grado_NonChanging`, staged 2026-09-29). Its prototy
 hand-written `mod-list.json` in the stage directory turned `space-age`, `quality` and
 `elevated-rails` off - without one the game enables them. The second sitting reloaded the first's
 save against the same stage directory, and the checksum was the same. Items 1-3 and 6 are done, and
-item 4 is done in part. Item 5 and the rest of item 4 are still to run. The checklist was written in advance, so what was tried is recorded rather than remembered.
+item 4 is done for all but three mods. Item 5 and those three are still to run. The checklist was written in advance, so what was tried is recorded rather than remembered.
 `/editor` is fine for getting items.
 
 1. **Key bindings.** *As planned:* "Settings → Controls: note any binding the game marks as
@@ -167,15 +167,19 @@ item 4 is done in part. Item 5 and the rest of item 4 are still to run. The chec
    - `ixuAutoSave`: not tried on purpose. The first sitting's first autosave was named
      `_autosave-nonchanging-test` and the later ones `_autosave1`-`3`, which looks like its prefix
      at work. Not confirmed.
-   - *Still to run:* paste modules (`CopyPasteModules`), deconstruct floor tiles (`CleanFloor`),
-     a stalled assembler's light (`BottleneckLite`), a running lab (`DiscoScience`), a lamp
-     (`Brighter-Lamps`), a fluid wagon (`FluidWagonColorMask`), die once (`WhereIsMyBody`).
+   - `CopyPasteModules`: pasting machine settings brought the modules too.
+   - `CleanFloor`: deconstructing floor tiles works.
+   - `BottleneckLite`: a stalled assembler shows a red light.
+   - `DiscoScience`: a running lab flashes in the science colours.
+   - *Still to run:* a lamp (`Brighter-Lamps`), a fluid wagon (`FluidWagonColorMask`), die once
+     (`WhereIsMyBody`).
 5. **One blueprint round trip:** capture, flip, place.
 6. **Save, quit to the menu, load the save.** This is the only item that exercises `on_load` and the
    data members keep in the save. *Done (2026-09-30):* the first sitting's save loaded in a new game
    process with no error and no mod-mismatch prompt. The session then saved again and reloaded a
    second time. Survived the reload: `YARM` sites, `Todo-List` entries, `SpeedControl`'s game
-   speed, and the train and station colours. Not reported: `Tapeline`'s persistent measurements.
+   speed, the train and station colours, and `Tapeline`'s measurements (these last "seem to have
+   survived", in Truls's words).
 7. **Anything else that looked wrong**, with the mod if it can be told. *So far:* nothing reported.
    Neither sitting's `factorio-current.log` has an error or a script message from any mod. The one
    warning, `Time to sync storage to the game state: 2.095 sec`, comes from the game's own blueprint

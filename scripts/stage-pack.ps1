@@ -35,6 +35,12 @@
     in the pack's resolved set or its chain goes, so a reused directory never loads a mod the pack
     no longer has. A -ModsDirectory you name is never pruned: it may be a player's mods directory.
 
+    NAMES ARE COMPARED CASE-SENSITIVELY, in every step that removes something (#68): the packer's
+    one-copy rule, the pack-directory cleanup, a member's versioned copies and the dropped mods.
+    Factorio does the same -- on 2.0.77 a zip or directory named Alpha holding a mod named alpha is
+    refused "(case sensitive!)" -- and so does the portal, so Alpha and alpha are two mods, and
+    staging one must neither remove the other's copies nor keep the other as if it were a member.
+
     FACTORIO TAKES THE TARGET AS ITS MODS DIRECTORY, on the one run checked (2.0.77 headless,
     Grado_NonChanging, 2026-09-24, #59). fetch-mods.ps1 keeps its downloaded zips in a .zips
     subdirectory, and the game passed over it without a word: no log line, no mod-list.json entry.
@@ -154,24 +160,25 @@ function Get-PackChain {
 
 function Remove-VersionedCopy {
     <#  Remove every <name>_<x.y.z>.zip and <name>_<x.y.z> directory of one mod from $Directory.
-        A neighbour whose name only starts the same stays.  #>
+        A neighbour whose name only starts the same, or differs only in case, stays.  #>
     param([Parameter(Mandatory)] [string] $Directory, [Parameter(Mandatory)] [string] $Name)
 
     $pattern = '^' + [regex]::Escape($Name) + '_\d+\.\d+\.\d+(\.zip)?$'
-    Get-ChildItem -LiteralPath $Directory | Where-Object { $_.Name -match $pattern } |
+    Get-ChildItem -LiteralPath $Directory | Where-Object { $_.Name -cmatch $pattern } |
         ForEach-Object { Remove-Item -LiteralPath $_.FullName -Recurse -Force }
 }
 
 function Remove-DroppedMod {
     <#  Remove from $Directory, and from fetch-mods.ps1's download cache in its .zips, every mod not
         named in $Keep: a directory, or a .zip, whose name less any _<x.y.z> is not kept. Other
-        dot-entries and other files, such as mod-list.json, stay.  #>
+        dot-entries and other files, such as mod-list.json, stay. A mod whose name differs from a
+        kept one only in case is not kept.  #>
     param([Parameter(Mandatory)] [string] $Directory, [Parameter(Mandatory)] [string[]] $Keep)
 
     $zips = Join-Path $Directory '.zips'
     Get-ChildItem -LiteralPath @($Directory; if (Test-Path -LiteralPath $zips) { $zips }) -Force |
         Where-Object { $_.Name -notlike '.*' -and ($_.PSIsContainer -or $_.Extension -eq '.zip') } |
-        Where-Object { ($_.Name -replace '(_\d+\.\d+\.\d+)?(\.zip)?$') -notin $Keep } |
+        Where-Object { ($_.Name -replace '(_\d+\.\d+\.\d+)?(\.zip)?$') -cnotin $Keep } |
         ForEach-Object { Remove-Item -LiteralPath $_.FullName -Recurse -Force }
 }
 
@@ -257,6 +264,22 @@ function Invoke-SelfTest {
             'x' | Set-Content (Join-Path $d '.zips/Gone_1.0.0.zip'); 'x' | Set-Content (Join-Path $d '.zips/flib_0.16.5.zip')
             Remove-DroppedMod -Directory $d -Keep 'flib', 'Some_Mod', 'Mid'
             (@(Get-ChildItem -LiteralPath $d -Force | ForEach-Object Name | Sort-Object) -join ',') -eq '.zips,flib,Mid_0.1.0.zip,mod-list.json,Some_Mod_2.0.1.zip' -and
+                (@(Get-ChildItem -LiteralPath (Join-Path $d '.zips') | ForEach-Object Name) -join ',') -eq 'flib_0.16.5.zip' } }
+        # Names differing only in case are two mods to Factorio, so each step is case-sensitive.
+        # Distinct versions, since NTFS would take Flib_1.0.0.zip and flib_1.0.0.zip as one file.
+        @{ Name = 'a member''s versioned copies go; a case-only neighbour''s stay'; Test = {
+            $d = Join-Path $temp 'member-case'
+            New-Item -ItemType Directory -Path (Join-Path $d 'Flib_0.9.0') -Force | Out-Null
+            'x' | Set-Content (Join-Path $d 'flib_0.16.2.zip'); 'x' | Set-Content (Join-Path $d 'Flib_1.0.0.zip')
+            Remove-VersionedCopy -Directory $d -Name 'flib'
+            (@(Get-ChildItem -LiteralPath $d | ForEach-Object Name | Sort-Object) -join ',') -eq 'Flib_0.9.0,Flib_1.0.0.zip' } }
+        @{ Name = 'a dropped mod whose name differs from a kept one only in case goes'; Test = {
+            $d = Join-Path $temp 'dropped-case'
+            New-Item -ItemType Directory -Path (Join-Path $d 'flib'), (Join-Path $d '.zips') -Force | Out-Null
+            'x' | Set-Content (Join-Path $d 'Flib_1.0.0.zip'); 'x' | Set-Content (Join-Path $d '.zips/Flib_1.0.0.zip')
+            'x' | Set-Content (Join-Path $d '.zips/flib_0.16.5.zip')
+            Remove-DroppedMod -Directory $d -Keep 'flib'
+            (@(Get-ChildItem -LiteralPath $d -Force | ForEach-Object Name | Sort-Object) -join ',') -eq '.zips,flib' -and
                 (@(Get-ChildItem -LiteralPath (Join-Path $d '.zips') | ForEach-Object Name) -join ',') -eq 'flib_0.16.5.zip' } }
         @{ Name = 'the zip is named from info.json and holds <name>/info.json; an untracked file is reported and left out'; Test = {
             Install-PackZip -Chain (Get-PackChain -Root $root -Name 'High')[0] -ModsDirectory $mods -WarningVariable w -WarningAction SilentlyContinue 6>$null

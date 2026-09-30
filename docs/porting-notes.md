@@ -589,4 +589,7 @@ Truls closed #43 on the 2.0.77 result with this list kept as a watch list rather
   or warning in the log, and no conflict between members, so no compatibility Lua was shown to be
   needed. Not tested: play (the play session is still to run), a build below 2.0.77, multiplayer,
   and the other four packs, including `Grado_ChangingBase` and the alpha above. Record, with every
-  resolved member version: `docs/loads/Grado_NonChanging-2026-09-29.md`.*
+  resolved member version: `docs/loads/Grado_NonChanging-2026-09-29.md`.* *2026-09-30 (#17): its
+  play session is complete. Every member was seen working, the save survived a reload with the
+  members' data, and the only conflict found is a key binding: `YARM` and `PipeVisualizer-Updated`
+  both default to `Alt+Y`. Whether that earns the first compatibility Lua is #73's.*

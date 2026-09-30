@@ -12,9 +12,13 @@ session start.
 **Skeleton.** Five `info.json` files with resolved dependency lists, a README and
 `docs/porting-notes.md`. First commit `3ab917c`, 2026-09-20.
 
-**One pack has been loaded; none has had a play session.** `Grado_NonChanging` loaded on 2.0.77,
-base only and again with Space Age, on 2026-09-29 (#17): clean, no conflict found, no
-compatibility Lua shown to be needed. See `docs/loads/Grado_NonChanging-2026-09-29.md`. *Load*,
+**One pack has been loaded and played; the other four have not.** `Grado_NonChanging` loaded
+on 2.0.77, base only and again with Space Age, on 2026-09-29 (#17). Both loads were clean. Its
+play session (2026-09-29 to 2026-09-30) saw every member working, and the save survived a reload
+with the members' data. It found one clash, the `Alt+Y` key shared by `YARM` and
+`PipeVisualizer-Updated`, which players can rebind. Whether the pack should carry Lua to change the
+default is #73's. See `docs/loads/Grado_NonChanging-2026-09-29.md`. *Until 2026-09-30 this line
+read "One pack has been loaded; none has had a play session."* *Load*,
 *Start* and *Play session* are glossary terms (`CONTEXT.md`), and they are not interchangeable. A
 load says the prototypes and start-up scripts work together, and nothing about play. The other
 four packs are still portal readings only. Treat "it resolves on the portal" and "it loads in the

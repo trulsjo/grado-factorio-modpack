@@ -1,9 +1,9 @@
 # Load record: `Grado_NonChanging`, 2026-09-29
 
 The first recorded **load** of any pack (`CONTEXT.md`, *Load*), for #17. Two loads, both clean. The
-**play session** is mostly run: items 1-3 and 6 in full, item 4 in part. It found one key-binding clash, `Alt+Y`, between
-`YARM` and `PipeVisualizer-Updated` - see *Conflicts*. Until the session is finished, this record
-says little about how the members behave in play.
+**play session** is complete (2026-09-30). Every member that does something visible was seen
+doing it, the save survived a reload with the members' data, and one key-binding clash turned up:
+`Alt+Y`, between `YARM` and `PipeVisualizer-Updated` - see *Conflicts*.
 
 ## Configuration
 
@@ -119,13 +119,13 @@ prototypes, so a member key that collides with a vanilla default does not appear
 
 ## Play session
 
-**Mostly run, by Truls, in two sittings: 2026-09-29 (about two hours) and 2026-09-30.** In the client (Steam, 2.0.77), base only, against the same
+**Complete, run by Truls in three sittings: 2026-09-29 (about two hours), and two on 2026-09-30.** In the client (Steam, 2.0.77), base only, against the same
 stage directory (`.mod-cache/Grado_NonChanging`, staged 2026-09-29). Its prototype list checksum,
 `169335276`, is the same as load 1's, so the play session ran the configuration recorded above. A
 hand-written `mod-list.json` in the stage directory turned `space-age`, `quality` and
 `elevated-rails` off - without one the game enables them. The second sitting reloaded the first's
-save against the same stage directory, and the checksum was the same. Items 1-3 and 6 are done, and
-item 4 is done for every mod on its list. Item 5 is still to run. The checklist was written in advance, so what was tried is recorded rather than remembered.
+save against the same stage directory, and the checksum was the same. The third was a side run,
+described under item 3's `BlueprintTools`. All seven items are done. The checklist was written in advance, so what was tried is recorded rather than remembered.
 `/editor` is fine for getting items.
 
 1. **Key bindings.** *As planned:* "Settings → Controls: note any binding the game marks as
@@ -152,10 +152,21 @@ item 4 is done for every mod on its list. Item 5 is still to run. The checklist 
      `MINUS` and `EQUALS`, which Factorio names by US key position. On a Norwegian keyboard those are
      `+` (slower) and `\` (faster), each also with `Shift` and `Alt`. It is a layout quirk, not a
      clash.
-   - `BlueprintTools`: **no effect seen**, and not every binding was tried. Three of its keys are
-     shared (`Shift+G`, `Shift+T`, `Shift+C`), and `Shift+T` opened Todo-List. Its other defaults
-     are `Shift+B` (configure), `Alt+I` (import string), and middle-click with `Shift`, `Ctrl` or
-     `Shift+Alt` (pipette add, remove, downgrade). Not settled.
+   - `BlueprintTools`: **no effect seen** at first. Three of its keys are shared (`Shift+G`,
+     `Shift+T`, `Shift+C`), and `Shift+T` opened Todo-List. *Settled 2026-09-30: it works.* With a
+     blueprint in hand, `Shift+B` opens the configuration window and `Shift+G` sets a quick grid,
+     both in the full pack - so `Shift+G` goes to `BlueprintTools` over `kry-picker-extended`'s
+     ghost reviver. Its buttons were there all along, beside the held blueprint and in the library,
+     in a spot Truls did not expect and among other mods' buttons. They were first noticed in a
+     side run with only `BlueprintTools` and `flib` enabled. Its README still lists grid nudging
+     (`Shift+arrows`), but release `1.5.0`'s changelog removed it as "now built into vanilla
+     Factorio", so it has no clash with `even-pickier-dollies`' `Shift+arrows`. `Shift+C` and
+     `Shift+T` were not retried.
+
+     *The side run changed its own directory.* Loading the #17 save in it made the game's "sync
+     mods with save" download all the other members into that directory, at the same releases as
+     the table above, and restart with them. The reload in that run was therefore the full member
+     set without the pack's own zip. Nothing was saved while any member was missing.
 4. **Use each in-world mod once.** *Done in part (2026-09-30):*
    - `even-pickier-dollies`: moving an entity works.
    - `even-distribution`: drag-distribution works.
@@ -174,7 +185,9 @@ item 4 is done for every mod on its list. Item 5 is still to run. The checklist 
    - `FluidWagonColorMask`: a fluid wagon takes a colour.
    - `Brighter-Lamps`: a lamp lights a wider area than vanilla.
    - `WhereIsMyBody`: after a death, a line points to the corpse.
-5. **One blueprint round trip:** capture, flip, place.
+5. **One blueprint round trip:** capture, flip, place. *Done (2026-09-30):* the round trip works,
+   with the members loaded. Flipping is vanilla (`H`/`V`), so this checks that no member breaks
+   ordinary blueprint handling. `BlueprintTools` is item 3's.
 6. **Save, quit to the menu, load the save.** This is the only item that exercises `on_load` and the
    data members keep in the save. *Done (2026-09-30):* the first sitting's save loaded in a new game
    process with no error and no mod-mismatch prompt. The session then saved again and reloaded a

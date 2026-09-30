@@ -125,7 +125,7 @@ stage directory (`.mod-cache/Grado_NonChanging`, staged 2026-09-29). Its prototy
 hand-written `mod-list.json` in the stage directory turned `space-age`, `quality` and
 `elevated-rails` off - without one the game enables them. The second sitting reloaded the first's
 save against the same stage directory, and the checksum was the same. Items 1-3 and 6 are done, and
-item 4 is done for all but one mod. Item 5 and `WhereIsMyBody` are still to run. The checklist was written in advance, so what was tried is recorded rather than remembered.
+item 4 is done for every mod on its list. Item 5 is still to run. The checklist was written in advance, so what was tried is recorded rather than remembered.
 `/editor` is fine for getting items.
 
 1. **Key bindings.** *As planned:* "Settings → Controls: note any binding the game marks as
@@ -173,7 +173,7 @@ item 4 is done for all but one mod. Item 5 and `WhereIsMyBody` are still to run.
    - `DiscoScience`: a running lab flashes in the science colours.
    - `FluidWagonColorMask`: a fluid wagon takes a colour.
    - `Brighter-Lamps`: a lamp lights a wider area than vanilla.
-   - *Still to run:* die once (`WhereIsMyBody`).
+   - `WhereIsMyBody`: after a death, a line points to the corpse.
 5. **One blueprint round trip:** capture, flip, place.
 6. **Save, quit to the menu, load the save.** This is the only item that exercises `on_load` and the
    data members keep in the save. *Done (2026-09-30):* the first sitting's save loaded in a new game

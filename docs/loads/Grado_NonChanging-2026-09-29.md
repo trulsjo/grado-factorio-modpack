@@ -105,7 +105,7 @@ are bound by default by more than one:
 
 | Default key | Bound by (`custom-input` name) | Seen in play |
 |---|---|---|
-| `Alt+Y` | `YARM` (`get-yarm-selector`), `PipeVisualizer-Updated` (`pv-toggle-mouseover`), base (`give-discharge-defense-remote`, a Space Age item) | **clash** - YARM does not fire |
+| `Alt+Y` | `YARM` (`get-yarm-selector`), `PipeVisualizer-Updated` (`pv-toggle-mouseover`), base (`give-discharge-defense-remote`) | **clash** - YARM does not fire |
 | `Shift+C` | `even-distribution` (`inventory-cleanup`), `BlueprintTools` (`bpt-swap-wire-colors`), `kry-picker-extended` (`picker-copy-chest`) | not tried |
 | `Shift+V` | `VehicleSnap` (`VehicleSnap-toggle`), `kry-picker-extended` (`picker-paste-chest`) | not tried |
 | `Shift+G` | `BlueprintTools` (`bpt-quick-grid`), `kry-picker-extended` (`toggle-ghost-revive`) | `BlueprintTools` fires (quick grid, 2026-09-30); the ghost reviver not checked |
@@ -119,6 +119,67 @@ a chest under the cursor. Only `Alt+Y` has been seen to fail.
 
 **The list does not cover vanilla controls.** The game's own bindings are not `custom-input`
 prototypes, so a member key that collides with a vanilla default does not appear in the dump.
+
+#### `Alt+Y` measured for the decision (2026-09-30, #71)
+
+What #73 needs, measured rather than read off the one release pair the play session resolved.
+Nothing here changes a pack; #73 decides.
+
+**The clash survives upstream, because neither mod has a 2.1 release.** Portal, read 2026-09-30:
+
+| Mod | Newest 2.0 release | Newest 2.1 release | Input | `key_sequence` | `alternative_key_sequence` |
+|---|---|---|---|---|---|
+| `YARM` | `1.0.5` (2025-01-01) | none | `get-yarm-selector` (`prototypes/prototypes.lua`) | `ALT + Y` | not set |
+| `PipeVisualizer-Updated` | `2.4.4` (2025-11-16) | none | `pv-toggle-mouseover` (`data.lua`) | `ALT + Y` | not set |
+
+Both newest 2.0 releases are the ones a 2.0.77 game resolves, and were read from the staged
+copies. With no 2.1 release of either, moving the declared line to 2.1 does not end the clash:
+it strands both mods, which are already on the 2.1 watch list in `docs/porting-notes.md`.
+
+**Space Age does not widen it: the third claim is base's, and it is live without Space Age.**
+*The table above called the discharge-defense remote "a Space Age item" until 2026-09-30. It is
+not.* `give-discharge-defense-remote` (`custom-input`, `ALT + Y`, `consuming = "game-only"`,
+`action = "spawn-item"`), the `discharge-defense-remote` capsule, its toolbar shortcut and the
+`discharge-defense-equipment` technology are all defined in `base` (2.0.77,
+`data/base/prototypes/custom-inputs.lua`, `item.lua`, `shortcuts.lua`, `technology.lua`).
+`space-age` touches only the equipment's recipe category (`space-age/base-data-updates.lua`), and
+neither `space-age`, `quality` nor `elevated-rails` defines a `custom-input`. Two `--dump-data`
+runs through `Invoke-HarnessDump`, 2.0.77, against `.mod-cache/Grado_NonChanging`, one base only
+and one with `space-age` (so `quality` and `elevated-rails` too), each gave 85 `custom-input`
+prototypes and the same three on `ALT + Y`: `give-discharge-defense-remote`,
+`get-yarm-selector` and `pv-toggle-mouseover`. So it is a three-way default on every pack from
+`Grado_NonChanging` up, with or without Space Age.
+
+What the dump does not say is which fires. `consuming = "game-only"` blocks game events on the
+same key and lets other custom inputs fire (API 2.0.77, `ConsumingType`), so base's claim should not
+be what stops YARM - but why `pv-toggle-mouseover` wins over `get-yarm-selector`, both
+`consuming` unset, was not measured. The base remote's shortcut is `unavailable_until_unlocked`
+behind `discharge-defense-equipment`; whether the key spawns the remote before that research, or
+after it beside a mod's action, was not tried in play.
+
+**A pack-level override.** Against the pinned docs,
+<https://lua-api.factorio.com/2.0.77/prototypes/CustomInputPrototype.html>: "The key associated
+with the custom input can be changed in the options. This means that `key_sequence` is simply the
+default key binding."
+
+- *Stage.* Prototype stage: set `data.raw["custom-input"]["<name>"].key_sequence` in the pack's
+  own data file. The load order "takes into account their dependencies first" (2.0.77,
+  `auxiliary/data-lifecycle.html`), so a pack that requires both mods already runs after them.
+  Neither mod touches its input after `data.lua`, so `data-updates.lua` would do;
+  `data-final-fixes.lua` also would, if a later member were ever to move it again.
+- *Which one.* Either is a single field. `YARM`'s is the one that loses today, and the one
+  Truls rebound in play. `pv-toggle-mouseover` is also the `associated_control_input` of
+  `PipeVisualizer-Updated`'s toolbar shortcut, so moving it changes the key that shortcut shows;
+  `YARM`'s shortcut has no associated input. Moving either leaves base's claim on `ALT + Y`. The new
+  key would need checking against the dump's list, since seven keys already carry two defaults.
+- *Does a player's rebinding survive?* The docs do not say. The evidence is how the binding is
+  stored: `%APPDATA%\Factorio\config\config.ini`, `[controls]`, one entry per input name. A key
+  left at its default is written commented out, with the default as its value
+  (`; get-yarm-selector=ALT + Y`); the one Truls set in play is written live
+  (`get-yarm-selector-alternative=CONTROL + SHIFT + ALT + Y`). A player's own key is therefore stored
+  by name and apart from the default, which suggests a changed default moves only the commented
+  line. That is an inference from the file, not a test: nobody has changed a default under a saved
+  rebinding and looked.
 
 ## Play session
 

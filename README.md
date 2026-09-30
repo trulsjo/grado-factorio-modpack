@@ -84,6 +84,8 @@ network. The tools it runs live in `vendor/grado-factorio-tools`.
 place, and a player still on 1.1 keeps a working install. `Grado_ABC` and `Grado_ABCS` are new
 entries.
 
-All five start at `0.1.0` and version independently from there. A pack's major version tracks save
-compatibility rather than maturity: a major bump means a dependency change an existing save cannot
-survive. See [docs/adr/0001-version-major-tracks-save-compatibility.md](docs/adr/0001-version-major-tracks-save-compatibility.md).
+All five start at `0.1.0` and version independently from there, and a pack's version does not move
+before its first release. A pack's major version tracks save compatibility: a major bump means a
+dependency change an existing save cannot survive, a minor a save-safe one, a patch metadata only.
+The one exception is `0.x` to `1.0.0`, which signals maturity instead - the pack has been loaded in
+Factorio and works. See [docs/adr/0002-any-pack-can-go-major-and-1-0-0-signals-maturity.md](docs/adr/0002-any-pack-can-go-major-and-1-0-0-signals-maturity.md).

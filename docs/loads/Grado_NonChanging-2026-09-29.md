@@ -1,7 +1,7 @@
 # Load record: `Grado_NonChanging`, 2026-09-29
 
 The first recorded **load** of any pack (`CONTEXT.md`, *Load*), for #17. Two loads, both clean. The
-**play session** is partly run (items 1-3 of 7). It found one key-binding clash, `Alt+Y`, between
+**play session** is mostly run: items 1-3 and 6 in full, item 4 in part. It found one key-binding clash, `Alt+Y`, between
 `YARM` and `PipeVisualizer-Updated` - see *Conflicts*. Until the session is finished, this record
 says little about how the members behave in play.
 
@@ -119,12 +119,13 @@ prototypes, so a member key that collides with a vanilla default does not appear
 
 ## Play session
 
-**Partly run, 2026-09-29, by Truls.** In the client (Steam, 2.0.77), base only, against the same
+**Mostly run, by Truls, in two sittings: 2026-09-29 (about two hours) and 2026-09-30.** In the client (Steam, 2.0.77), base only, against the same
 stage directory (`.mod-cache/Grado_NonChanging`, staged 2026-09-29). Its prototype list checksum,
 `169335276`, is the same as load 1's, so the play session ran the configuration recorded above. A
 hand-written `mod-list.json` in the stage directory turned `space-age`, `quality` and
-`elevated-rails` off - without one the game enables them. Items 1-3 are done and 4-7 are still to
-run. The checklist was written in advance, so what was tried is recorded rather than remembered.
+`elevated-rails` off - without one the game enables them. The second sitting reloaded the first's
+save against the same stage directory, and the checksum was the same. Items 1-3 and 6 are done, and
+item 4 is done in part. Item 5 and the rest of item 4 are still to run. The checklist was written in advance, so what was tried is recorded rather than remembered.
 `/editor` is fine for getting items.
 
 1. **Key bindings.** *As planned:* "Settings → Controls: note any binding the game marks as
@@ -155,23 +156,30 @@ run. The checklist was written in advance, so what was tried is recorded rather 
      shared (`Shift+G`, `Shift+T`, `Shift+C`), and `Shift+T` opened Todo-List. Its other defaults
      are `Shift+B` (configure), `Alt+I` (import string), and middle-click with `Shift`, `Ctrl` or
      `Shift+Alt` (pipette add, remove, downgrade). Not settled.
-4. **Use each in-world mod once:**
-   - move an entity with `even-pickier-dollies`
-   - drag-distribute items with `even-distribution`
-   - place a burner entity and watch `Fill4Me` fuel it
-   - paste modules with `CopyPasteModules`
-   - drive a car (`VehicleSnap`)
-   - deconstruct floor tiles (`CleanFloor`)
-   - watch a stalled assembler's light (`BottleneckLite`)
-   - run a lab (`DiscoScience`)
-   - place a lamp (`Brighter-Lamps`)
-   - build a train, a fluid wagon and a station (`Automatic_Train_Painter`,
-     `automatic-station-painter`, `FluidWagonColorMask`)
-   - die once (`WhereIsMyBody`)
+4. **Use each in-world mod once.** *Done in part (2026-09-30):*
+   - `even-pickier-dollies`: moving an entity works.
+   - `even-distribution`: drag-distribution works.
+   - `Fill4Me`: a placed burner mining drill was fuelled.
+   - `VehicleSnap`: steering snaps when driving a car.
+   - `Automatic_Train_Painter`, `automatic-station-painter`: trains and stations were coloured, and
+     the colours survived a reload (item 6). That the mods did the painting is inferred from the
+     colours, not watched.
+   - `ixuAutoSave`: not tried on purpose. The first sitting's first autosave was named
+     `_autosave-nonchanging-test` and the later ones `_autosave1`-`3`, which looks like its prefix
+     at work. Not confirmed.
+   - *Still to run:* paste modules (`CopyPasteModules`), deconstruct floor tiles (`CleanFloor`),
+     a stalled assembler's light (`BottleneckLite`), a running lab (`DiscoScience`), a lamp
+     (`Brighter-Lamps`), a fluid wagon (`FluidWagonColorMask`), die once (`WhereIsMyBody`).
 5. **One blueprint round trip:** capture, flip, place.
 6. **Save, quit to the menu, load the save.** This is the only item that exercises `on_load` and the
-   data members keep in the save.
-7. **Anything else that looked wrong**, with the mod if it can be told.
+   data members keep in the save. *Done (2026-09-30):* the first sitting's save loaded in a new game
+   process with no error and no mod-mismatch prompt. The session then saved again and reloaded a
+   second time. Survived the reload: `YARM` sites, `Todo-List` entries, `SpeedControl`'s game
+   speed, and the train and station colours. Not reported: `Tapeline`'s persistent measurements.
+7. **Anything else that looked wrong**, with the mod if it can be told. *So far:* nothing reported.
+   Neither sitting's `factorio-current.log` has an error or a script message from any mod. The one
+   warning, `Time to sync storage to the game state: 2.095 sec`, comes from the game's own blueprint
+   library, not from a member.
 
 Record for each item: what was done, what happened, and a verdict on compatibility Lua for any
 conflict.

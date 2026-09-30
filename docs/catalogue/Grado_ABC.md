@@ -1699,6 +1699,10 @@ release. #9's reading is the one the code supports.
 they work in game. The remelting mod was not read on 2.1 `angelssmelting`, and it has no 2.1
 release to read. Its recipe balance against Angel's ingot route was not assessed.
 
+**Alternatives considered.** `angels-smelting-extended`'s own fluid-stage blending, the
+`ASE-angels-molten-recipes` setting, which `1.0.14` had and `2.0.01` removed. No search for any
+other 2.x remelting or alloy-mixing mod was run for this entry: not checked.
+
 **Recommendation: do not add, as things stand.** The two mods are **complements, not alternatives
 and not in conflict**. On 2.x they share no feature. `angels-smelting-extended` owns compression,
 the Ironworks and the alloy techs. The remelting mod owns remelting and fluid-stage alloy mixing.

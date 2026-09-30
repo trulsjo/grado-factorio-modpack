@@ -238,7 +238,7 @@ above all of them, and on 2026-09-24 still leads the next, `Automatic_Train_Pain
 **Recommendation: keep.** Read-only overlay; last touched 2025-11-16.
 
 *Seen in play 2026-09-29 (#17): its default `Alt+Y` clashes with `YARM`'s, and `PipeVisualizer-Updated`
-wins. A player can rebind the key. Whether the pack changes a default is open. See
+wins. A player can rebind the key. Whether the pack changes a default is open (#73). See
 `docs/loads/Grado_NonChanging-2026-09-29.md`, *Key bindings*.*
 
 ### `RateCalculator`
@@ -348,7 +348,7 @@ wins. A player can rebind the key. Whether the pack changes a default is open. S
 **Recommendation: keep.** Stores monitored sites in the save; changes nothing in the factory.
 
 *Seen in play 2026-09-29 (#17): its default `Alt+Y` clashes with `PipeVisualizer-Updated`'s, and `PipeVisualizer-Updated`
-wins. A player can rebind the key. Whether the pack changes a default is open. See
+wins. A player can rebind the key. Whether the pack changes a default is open (#73). See
 `docs/loads/Grado_NonChanging-2026-09-29.md`, *Key bindings*.*
 
 ### `automatic-station-painter`
@@ -1013,8 +1013,9 @@ descriptions. *Superseded 2026-09-29 (#17): every member was downloaded and **lo
 base only and with Space Age, and both loads were clean. Starting together is now checked. Working
 together in play is not - that is the play session's, still to run. The judgements above are
 still portal and description readings. See `docs/loads/Grado_NonChanging-2026-09-29.md`.*
-*Superseded again 2026-09-30 (#17): the play session is complete. Every member was seen working,
-and the save survived a reload with the members' data. One clash was found, `Alt+Y` between
+*Superseded again 2026-09-30 (#17): the play session is complete. 24 of the 26 members were seen
+working (`ixuAutoSave` and `kry-picker-extended` not confirmed), and the save survived a reload
+with the members' data that was checked. One clash was found, `Alt+Y` between
 `YARM` and `PipeVisualizer-Updated`, noted in both entries. "Working together in play" is now
 checked for one player, one build and default settings.*
 

@@ -25,8 +25,8 @@ lives there, and each branch adds exactly one thing.
 
 **Skeleton only.** The dependency lists are resolved from the 1.1 packs against the mod portal, but
 **one pack has been loaded and played: `Grado_NonChanging`**, on Factorio 2.0.77 (2026-09-29 to
-2026-09-30). Every member worked, the save reloaded with the members' data, and one key-binding
-clash turned up - see
+2026-09-30). 24 of its 26 named members were seen working, the save reloaded with the members'
+data that was checked, and one key-binding clash turned up - see
 [docs/loads/Grado_NonChanging-2026-09-29.md](docs/loads/Grado_NonChanging-2026-09-29.md). The
 other four packs have not been loaded. See
 [docs/porting-notes.md](docs/porting-notes.md) for what was kept, replaced and dropped, and for the

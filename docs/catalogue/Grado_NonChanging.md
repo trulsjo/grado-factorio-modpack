@@ -1013,6 +1013,10 @@ descriptions. *Superseded 2026-09-29 (#17): every member was downloaded and **lo
 base only and with Space Age, and both loads were clean. Starting together is now checked. Working
 together in play is not - that is the play session's, still to run. The judgements above are
 still portal and description readings. See `docs/loads/Grado_NonChanging-2026-09-29.md`.*
+*Superseded again 2026-09-30 (#17): the play session is complete. Every member was seen working,
+and the save survived a reload with the members' data. One clash was found, `Alt+Y` between
+`YARM` and `PipeVisualizer-Updated`, noted in both entries. "Working together in play" is now
+checked for one player, one build and default settings.*
 
 **Download counts are context, not evidence.** `ixuAutoSave` at 657 is flagged for bus factor, not
 for quality.

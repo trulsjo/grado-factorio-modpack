@@ -1,9 +1,12 @@
 # Load record: `Grado_NonChanging`, 2026-09-29
 
 The first recorded **load** of any pack (`CONTEXT.md`, *Load*), for #17. Two loads, both clean. The
-**play session** is complete (2026-09-30). Every member that does something visible was seen
-doing it, the save survived a reload with the members' data, and one key-binding clash turned up:
-`Alt+Y`, between `YARM` and `PipeVisualizer-Updated` - see *Conflicts*.
+**play session** is complete (2026-09-30). 24 of the 26 named members were seen working - the two
+train painters inferred from the colours, and `PipeVisualizer-Updated`'s `Alt+Y` toggle not
+settled. `ixuAutoSave` and `kry-picker-extended` were not confirmed. The save survived a reload
+with `YARM`'s, `Todo-List`'s, `SpeedControl`'s and the painters' data, and seemingly `Tapeline`'s.
+One key-binding clash turned up: `Alt+Y`, between `YARM` and `PipeVisualizer-Updated` - see
+*Conflicts*.
 
 ## Configuration
 
@@ -105,7 +108,7 @@ are bound by default by more than one:
 | `Alt+Y` | `YARM` (`get-yarm-selector`), `PipeVisualizer-Updated` (`pv-toggle-mouseover`), base (`give-discharge-defense-remote`, a Space Age item) | **clash** - YARM does not fire |
 | `Shift+C` | `even-distribution` (`inventory-cleanup`), `BlueprintTools` (`bpt-swap-wire-colors`), `kry-picker-extended` (`picker-copy-chest`) | not tried |
 | `Shift+V` | `VehicleSnap` (`VehicleSnap-toggle`), `kry-picker-extended` (`picker-paste-chest`) | not tried |
-| `Shift+G` | `BlueprintTools` (`bpt-quick-grid`), `kry-picker-extended` (`toggle-ghost-revive`) | not tried |
+| `Shift+G` | `BlueprintTools` (`bpt-quick-grid`), `kry-picker-extended` (`toggle-ghost-revive`) | `BlueprintTools` fires (quick grid, 2026-09-30); the ghost reviver not checked |
 | `Shift+T` | `Todo-List` (`todolist-toggle-ui`), `BlueprintTools` (`bpt-set-tiles`) | Todo-List opens; BlueprintTools not seen |
 | `Ctrl+R` | `Fill4Me` (`fill4me-keybind-reload`), `kry-picker-extended` (`picker-reverse-belts`) | not tried |
 | `Y` | `helmod` (`helmod-recipe-explorer-open`), `PipeVisualizer-Updated` (`pv-visualize-selected`) | not tried |
@@ -125,7 +128,9 @@ stage directory (`.mod-cache/Grado_NonChanging`, staged 2026-09-29). Its prototy
 hand-written `mod-list.json` in the stage directory turned `space-age`, `quality` and
 `elevated-rails` off - without one the game enables them. The second sitting reloaded the first's
 save against the same stage directory, and the checksum was the same. The third was a side run,
-described under item 3's `BlueprintTools`. All seven items are done. The checklist was written in advance, so what was tried is recorded rather than remembered.
+described under item 3's `BlueprintTools`. All seven items are done, though not every member
+within them was confirmed - see the intro. The checklist was written in advance, so what was tried
+is recorded rather than remembered.
 `/editor` is fine for getting items.
 
 1. **Key bindings.** *As planned:* "Settings → Controls: note any binding the game marks as
@@ -167,7 +172,7 @@ described under item 3's `BlueprintTools`. All seven items are done. The checkli
      mods with save" download all the other members into that directory, at the same releases as
      the table above, and restart with them. The reload in that run was therefore the full member
      set without the pack's own zip. Nothing was saved while any member was missing.
-4. **Use each in-world mod once.** *Done in part (2026-09-30):*
+4. **Use each in-world mod once.** *Done (2026-09-30), `ixuAutoSave` excepted:*
    - `even-pickier-dollies`: moving an entity works.
    - `even-distribution`: drag-distribution works.
    - `Fill4Me`: a placed burner mining drill was fuelled.

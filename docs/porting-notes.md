@@ -276,7 +276,8 @@ pack targets 2.1. Continuing each entry's own line (`0.0.2` / `0.0.3` / `0.0.3`)
 it left the largest change these packs will ever have looking like a patch. Lockstep versioning was
 rejected with it - a pack's version answers "did this pack's dependency list change", and lockstep
 would publish four no-op releases every time one mod is swapped. What a bump *means* is a standing
-rule, not a port fact: see `CLAUDE.md` and `docs/adr/0001-version-major-tracks-save-compatibility.md`.
+rule, not a port fact: see `CLAUDE.md` and `docs/adr/0002-any-pack-can-go-major-and-1-0-0-signals-maturity.md`.
+*Until 2026-09-30 this pointed at ADR 0001, which 0002 supersedes (#70).*
 
 **The name is `Grado_ABCS`, with the underscore.** `GradoABCS` was the alternative. A name is what
 `info.json` resolves and what the portal URL carries, and it cannot be changed without abandoning the

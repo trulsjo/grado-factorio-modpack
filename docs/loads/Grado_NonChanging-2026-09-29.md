@@ -171,7 +171,7 @@ default key binding."
   Truls rebound in play. `pv-toggle-mouseover` is also the `associated_control_input` of
   `PipeVisualizer-Updated`'s toolbar shortcut, so moving it changes the key that shortcut shows;
   `YARM`'s shortcut has no associated input. Moving either leaves base's claim on `ALT + Y`. The new
-  key would need checking against the dump's list, since seven keys already carry two defaults.
+  key would need checking against the dump's list, since seven keys already carry more than one default.
 - *Does a player's rebinding survive?* The docs do not say. The evidence is how the binding is
   stored: `%APPDATA%\Factorio\config\config.ini`, `[controls]`, one entry per input name. A key
   left at its default is written commented out, with the default as its value

@@ -9,6 +9,10 @@ Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below w
 **2026-09-21**, except those carrying a **Read on** of **2026-09-22**, which #8 took — the three
 entries it added and the readings inside its rulings — and the notes marked *Superseded 2026-09-23
 by #15*, which #15 took, and the notes dated 2026-09-24 (#43) and (#58), which those two took.
+*Candidates, not members* was read on 2026-10-01 (#46). Searches described below as over "the 2.x
+list" ran over the `version=2.0` listing
+only, which misses mods released for 2.1 alone (#44, 2026-10-01); only those carrying a
+*Checked 2026-10-01 (#44)* note were re-run over the union of both listings.
 Each is reproduced
 from the fetched data rather than retyped; the **Read on** row is authoritative where it disagrees
 with this sentence.
@@ -1380,7 +1384,10 @@ it moves nothing. In `Grado_NonChanging` it would raise that pack's `2.0.67`. Se
 **Already in the chain?** No. Construction robots carry out its orders, and nothing in the three
 lower packs places them.
 
-**Recommendation: add, here, if Truls's ruling on #41 keeps it out of `Grado_NonChanging`.** It is
+**Alternatives considered.** None beyond the chain, where nothing does this: not checked.
+
+**Recommendation: reconsider:** which layer it belongs in, which turns on Truls's ruling on #41.
+If that ruling keeps it out of `Grado_NonChanging`, add it here. It is
 the one member of the bundle whose layer depends on a reading of a promise rather than on the mod.
 If *the player asks* is read as *the player installed it*, it belongs one layer down, with every
 other quality-of-life tool. If not, this pack's promise admits it, its floor fits here without
@@ -1409,8 +1416,12 @@ already a hidden member of the chain.
 fluid network on demand. This mod marks individual connections all the time, and covers inserters
 and drills as well.
 
-**Recommendation: a candidate for `Grado_NonChanging`, not for this pack**, where #41 recommends
-`add`. It passes the lower pack's promise, so putting it here would only withhold it from that
+**Alternatives considered.** `PipeVisualizer-Updated`, above. No wider search was run for this
+entry: not checked.
+
+**Recommendation: do not add** here. It is a candidate for `Grado_NonChanging`, where #41
+recommends `add`. It passes the lower pack's promise, so putting it here would only withhold it from
+that
 pack's players. If `Grado_NonChanging` declines it, the reason will not be promise-shaped, and it
 should be declined here too.
 
@@ -1442,8 +1453,12 @@ key. `Shift+O` is also `bobinserters`' default (this pack).
 **Already in the chain?** No. `PipeVisualizer-Updated` shows undergrounds but does not flag
 unpaired ones, and it does nothing for belts.
 
-**Recommendation: a candidate for `Grado_NonChanging`, not for this pack**, where #41 recommends
-`add`. With it and `fluid-connection-indicators`, two of `PickerPipeTools`' features come back by
+**Alternatives considered.** `PipeVisualizer-Updated`, above. No wider search was run for this
+entry: not checked.
+
+**Recommendation: do not add** here. It is a candidate for `Grado_NonChanging`, where #41
+recommends `add`. With it and `fluid-connection-indicators`, two of `PickerPipeTools`' features come
+back by
 two separate mods. **The pipe clamps still have no successor**, and nothing here changes that. The
 `Shift+O` overlap with `bobinserters` is for #73.
 
@@ -1469,8 +1484,10 @@ vehicles in `Grado_ABC` need nothing special. `Shift+V` is already bound by `Veh
 
 **Already in the chain?** No.
 
-**Recommendation: a candidate for `Grado_NonChanging`, not for this pack**, where #41 recommends
-`add`.
+**Alternatives considered.** None searched beyond the chain: not checked.
+
+**Recommendation: do not add** here. It is a candidate for `Grado_NonChanging`, where #41
+recommends `add`.
 
 ### `Honk`
 
@@ -1494,8 +1511,12 @@ with no dependency except `base`.
 **Already in the chain?** No. `Shortcuts-ick`, a candidate for `Grado_NonChanging`, also has a
 train manual-mode toggle.
 
-**Recommendation: a candidate for `Grado_NonChanging`, not for this pack**, where #41 recommends
-`add`. If it and `car-finder` are both taken, every feature of `PickerVehicles` has a home in the
+**Alternatives considered.** `Shortcuts-ick`'s toggle, above, which covers one of its features.
+No wider search was run for this entry: not checked.
+
+**Recommendation: do not add** here. It is a candidate for `Grado_NonChanging`, where #41
+recommends `add`. If it and `car-finder` are both taken, every feature of `PickerVehicles` has a
+home in the
 chain, with `VehicleSnap` covering the driving controls. The cost is two additions to restore one
 dropped mod. #8 named that cost on 2026-09-22 as three additions; `Honk`'s toggle saves the third.
 
@@ -1512,8 +1533,9 @@ dropped mod. #8 named that cost on 2026-09-22 as three additions; `Honk`'s toggl
 | **Read on** | 2026-10-01 |
 
 **Why it is here.** #41 found it fails `Grado_NonChanging`'s promise: it adds a craftable speed
-booster, with its own recipe and technology. Failing that test is what sends it here. #8 had
-already named it, on 2026-09-21, as the successor to `PickerTweaks`' vehicle grids.
+booster, with its own recipe and technology. Failing that test is what sends it here. #3 had
+already named it, on 2026-09-21 in this file's `PickerTweaks` entry, as the successor to
+`PickerTweaks`' vehicle grids.
 
 **Reachability: fine.** Its 2.0 release asks `base >= 2.0`, below this pack's `2.0.74`, and
 `kry_stdlib >= 2.1.1`, which the chain's hidden `kry_stdlib` `2.1.2` meets. It is served at 2.1,
@@ -1552,6 +1574,9 @@ in all three overhaul packs. That is the shape of the two promise failures #8 re
 Angel's water.
 
 **Already in the chain?** For the packs above this one, yes: `bobvehicleequipment` (`Grado_ABC`).
+
+**Alternatives considered.** `bobvehicleequipment`, above, for the overhaul packs. For this pack
+alone no other vehicle-grid mod was searched: not checked.
 
 **Recommendation: do not add. A candidate for no pack.** It fails `Grado_NonChanging`'s promise on
 content, and this pack's promise on ground, because three of the four packs that would inherit it

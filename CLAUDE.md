@@ -24,7 +24,10 @@ players can rebind. Whether the pack should carry Lua to change the default is #
 and *Play session* are glossary terms (`CONTEXT.md`), and they are not interchangeable. A load says
 the prototypes and start-up scripts work together, and nothing about play. The other four packs are
 still portal readings only. Treat "it resolves on the portal" and "it loads in the game" as
-different claims: for those four, only the first is true. *Until 2026-09-29 this line read "Nothing
+different claims: for those four, only the first is true. *Qualified 2026-10-01 (#80, #81): a
+`--dump-data` run of a staged `Grado_ABC` on 2.0.77 failed in the data stage, in the hidden member
+`Warheads_Continued` `0.0.21`. It is not a recorded load, and it is #81's.* *Until 2026-09-29 this
+line read "Nothing
 has been launched in Factorio", which the two runs below had already made false. #65 settled its
 wording through #17.* Earlier runs, kept as history rather than as the record: *2026-09-24 (#59): a
 **start**. A headless 2.0.77 run against a staged `Grado_NonChanging` created a map, exit 0, with

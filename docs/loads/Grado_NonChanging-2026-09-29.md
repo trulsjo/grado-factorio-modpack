@@ -95,7 +95,9 @@ after the first tick are the play session's to find.
 
 **One clash confirmed in play: `Alt+Y`.** `YARM`'s selector and `PipeVisualizer-Updated`'s mouse-over
 toggle both default to it. Pressed in the play session, it toggled the pipe visualizer and did not
-give the YARM selector. Rebinding YARM's key in the Controls menu fixed it. **Compatibility Lua is not
+give the YARM selector. Rebinding YARM's key in the Controls menu fixed it (a second key, in its
+alternative slot -
+see the 2026-10-01 note under *Does a player's rebinding survive?*). **Compatibility Lua is not
 needed to make the pack usable**, because a player can rebind. Whether the pack should change a
 default anyway is open: it would be the first Lua any pack carries, and that decision is Truls's.
 
@@ -171,7 +173,8 @@ default key binding."
   Neither mod touches its input after `data.lua`, so `data-updates.lua` would do;
   `data-final-fixes.lua` also would, if a later member were ever to move it again.
 - *Which one.* Either is a single field. `YARM`'s is the one that loses today, and the one
-  Truls rebound in play. `pv-toggle-mouseover` is also the `associated_control_input` of
+  Truls gave a second key in play (its alternative slot; 2026-10-01, #77). `pv-toggle-mouseover` is
+  also the `associated_control_input` of
   `PipeVisualizer-Updated`'s toolbar shortcut, so moving it changes the key that shortcut shows;
   `YARM`'s shortcut has no associated input. Moving either leaves base's claim on `ALT + Y`. The new
   key would need checking against the dump's list, since seven keys already carry more than one default.

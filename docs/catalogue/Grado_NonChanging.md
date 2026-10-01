@@ -577,6 +577,8 @@ In former dependency-list order.
 
 **Alternatives searched 2026-09-22, none adopted.** Seven candidates, and no clean replacement among them. `realistic-flashlight-fixed` (`0.2.7`, fv 2.0, 2025-10-05, 2,772 downloads) is the closest and the only one verified craftable-free **from source**; it overshoots two knobs (`minimum_darkness` 0.1, cone intensity 0.9) but **does not cover the halo at all** - by default it writes `character.light = {flashlight}`, deleting vanilla's omni light, and even with `rf-enable-light-halo` gives intensity 0.3 at size 40 against 0.7 at size 100. Its 2.1 fork `realistic-flashlight-fixed-fork` (`1.0.0`, 2026-08-13) has 34 downloads. `light-overhaul` (Earendel, 37,337 downloads, `0.3.0`, fv 2.1, 2026-06-24) is categorically larger - global LUT lighting, darker nights, nightvision no longer desaturating, a standalone extract of AAI Industry's lighting - not a like-for-like swap. `adjustable_flashlight` (`0.1.0`, fv 2.0, 2024-10-16, 1,116), `EvenMoreLight` (`0.2.0`, fv 2.0, 2024-10-21, 7,208) and `Pro-Flashlight` (`1.5.9`, fv 2.1, 2026-08-22, 5,941) publish no reachable source, so "adds no craftables" is inferred from their descriptions - which is the inference that was just wrong about this mod.
 
+*Superseded 2026-10-01 (#42): every candidate above, and two new ones, was read from its portal release zip, which is source enough; none adds content. No portal mod reproduces this tune by default, and the recommendation is to ship vanilla night lighting. See* Night lighting: what replaces AfraidOfTheDark's tune *under* Candidates, not members.
+
 ### `Bottleneck`
 
 | | |
@@ -1339,6 +1341,399 @@ only on the 2.1 line. No member binds it.
 **Recommendation: add.** It passes the promise, overlaps no member, is current on both lines and
 has no dependency except `base`. If `belt-visualizer` is added as well, the two need different
 keys at 2.1.
+
+### Night lighting: what replaces AfraidOfTheDark's tune (#42)
+
+#7 dropped `AfraidOfTheDark` on 2026-09-22 for its craftable content. Its other half, a prototype
+tune, was wanted, and #42 asks what replaces it, or for a recorded decision that the pack ships
+vanilla night lighting. Each candidate below is measured against what the tune set, not against
+"does it do lighting". The five knobs are the four in #42 plus the lamp `fast_replaceable_group`.
+Vanilla values were read on 2026-10-01 from the installed game, 2.0.77, in
+`data/base/prototypes/entity/entities.lua`:
+
+| knob | vanilla 2.0.77 | where | `AfraidOfTheDark` `1.0.31` |
+|---|---|---|---|
+| `minimum_darkness` (when lights come on) | 0.3 | character lights, lines 948 and 955 | 0.2 |
+| cone intensity | 0.6 | character cone, line 966 | 0.8 |
+| personal halo intensity | 0.4 | character omni light, line 949 | 0.7 |
+| personal halo size | 25 | same light, line 950 | **100** |
+| lamp `fast_replaceable_group` | `"lamp"` | `small-lamp`, line 2871 | `"lamps"` on every lamp |
+
+**There is a new reading: the tune was wider than #42's table.** `data-updates.lua` in `1.0.31`
+does three more things. It runs the same function over every `car`, which in vanilla means `car`
+and `tank`. Those have two cones and no omni light (`entities.lua` 4033-4068), so each one gains a
+**0.7 / size 100 halo** and 0.8 cones. It runs it over every `locomotive`'s `front_light` too, with
+the same result. And it gives every locomotive's `stand_by_light` an extra omni light of 0.35 /
+size 20. The stand-by and back lights carry `add_perspective = true` in vanilla
+(`trains.lua` 48-66), so the tune leaves their intensity alone and only lowers their
+`minimum_darkness`. A replacement that covers the character alone restores less than the pack lost.
+
+**The fifth knob does nothing in this pack.** Base 2.0.77 defines one lamp, `small-lamp`.
+Renaming its group to `"lamps"` only matters once a mod adds another lamp, and
+`AfraidOfTheDark`'s reason was its own balloon lights. `Grado_NonChanging` adds no content, so no
+member adds a lamp. Whether any lamp in the overhaul packs would want the group was not checked.
+`Brighter-Lamps`, already a member, does not touch the group either. Its `2.0.0` and `2.1.0`
+releases are identical code: they set `small-lamp`'s `light.size` from a startup setting,
+default 70 against vanilla's 40, and nothing else.
+
+**Search, 2026-10-01.** The 2.0 listing returns 9,791 mods and the 2.1 listing 4,334. Their union
+is 10,845, so 1,054 mods are served only at 2.1, and the search ran over the union. Name, title and
+summary were matched against `flashlight`, `night vision`, `darkness`, `dark`, `night`,
+`nighttime`, `personal light`, `light radius`, `brighter`, `headlight`, `lighting` and
+`light cone`, which returned 65 mods. A second pass on `light` alone and a third on
+`fast replace`, `halo`, `omni`, `character light` and `player light` turned up no further
+candidate. Two candidates are new against #42: `afraid-of-the-dark` and `anti-gloom`. Both get
+entries below. Every candidate's source was read from the portal release zip, downloaded with
+SHA-1 checked against the portal. So every content verdict below comes **from source**, including
+the four #42 had to infer. Reachability was read three ways for each: `/api/mods/<name>/full` for
+the release list, then `namelist=<name>` at `version=2.0` and again at `version=2.1`.
+
+**`AfraidOfTheDark` itself.** Its entry is under *Ruled out after the port*; this is the new reading
+against it, kept here rather than as a second heading.
+
+| | |
+|---|---|
+| **Title** | Afraid Of The Dark (enforced personal lights + more) |
+| **Does** | Tunes character, car, tank and locomotive light prototypes, and adds craftable balloon lights and tinted night-vision glasses |
+| **Latest** | `1.0.31`, `factorio_version` **2.0**, 2024-10-30 |
+| **Downloads** | 207,859 |
+| **Owner** | `binbinhfr` |
+| **Status** | candidate, not a member (#42); ruled out of this pack 2026-09-22 (#7) |
+| **Read on** | 2026-10-01 |
+
+What is new since 2026-09-22:
+
+- **Reachability.** It is served at 2.0 (`1.0.31`) and not at 2.1, read 2026-10-01, which is
+  unchanged. What *has* changed is the declared line. #16 set it to `2.0` for the first release
+  (applied by #58 on 2026-09-24), and the `Grado_ChangingBase` floor is now `base >= 2.0.74`, no
+  longer the 2.1.7 the 2026-09-22 ruling measured against. **The objection that sank the move to
+  `Grado_ChangingBase` does not hold on the 2.0 line.** It comes back when the 2.1 release does.
+- **The GitHub "Update for Factorio 2.1" is a pull request, not an issue.** It is
+  `StephanSteinert/AfraidOfTheDark#8`, by `pla`, opened 2026-08-19, still open with no comments on
+  2026-10-01. It changes `factorio_version` to 2.1, bumps the version to `1.0.32` and adds a
+  changelog line, and does nothing else. The repository's last push was 2024-11-01. An open issue,
+  #7, *"Mod is incompatible with Factorio v2"* (2026-01-05), has an empty body.
+
+**Alternatives considered.** The rest of this subsection.
+
+**Recommendation: do not add** to `Grado_NonChanging`. The content half still fails the promise,
+and nothing about that has changed. The new reading belongs to `Grado_ChangingBase`'s membership:
+the reachability reason for leaving it out is void on the declared 2.0 line, and the collision
+check was already clean. That is #8's pack and a decision for Truls, so this entry only names it.
+
+#### `realistic-flashlight-fixed`
+
+| | |
+|---|---|
+| **Title** | Realistic Flashlight Fixed |
+| **Does** | Replaces the character's and vehicles' light cones with a longer, brighter cone sprite, and by default removes the character's halo |
+| **Latest** | `0.2.7`, `factorio_version` **2.0**, 2025-10-05 |
+| **Downloads** | 2,781 |
+| **Owner** | `actioninja` |
+| **Status** | candidate, not a member (#42) |
+| **Read on** | 2026-10-01 |
+
+**Against the knobs**, from `script/realistic-flashlight.lua`:
+
+- `minimum_darkness` is 0.1, so the lights come on before `AfraidOfTheDark`'s 0.2.
+- Cone intensity is 0.9 against 0.8.
+- **The halo is off by default.** `character.light = {flashlight}` deletes vanilla's 0.4 / 25
+  omni light. With the startup setting `rf-enable-light-halo` it comes back at 0.3 / 40, which is
+  still below vanilla's intensity and nowhere near 0.7 / 100.
+- The lamp group is untouched.
+
+Vehicles get a 1.0 cone, and a 0.2 / 30 halo only behind `rf-enable-vehicle-light-halo`. Car,
+tank, spidertron and locomotive lights are all *replaced*. **No content**: there is no
+`data:extend` outside `settings.lua`.
+
+**Reachability.** Served at 2.0 (`0.2.7`). Not served at 2.1: there is no 2.1 release.
+
+**Alternatives considered.** `realistic-flashlight-fixed-fork`, below.
+
+**Recommendation: do not add.** By default it makes the character's surroundings darker than
+vanilla, which is the opposite of the tune. The setting that softens this cannot be shipped by a
+pack, because startup settings live in each player's `mod-settings.dat`.
+
+#### `realistic-flashlight-fixed-fork`
+
+| | |
+|---|---|
+| **Title** | Realistic Flashlight Fixed Fork |
+| **Does** | The same as `realistic-flashlight-fixed`, rebuilt for 2.1 |
+| **Latest** | `1.0.0`, `factorio_version` **2.1**, 2026-08-13 |
+| **Downloads** | 40 |
+| **Owner** | `NOiZE` |
+| **Status** | candidate, not a member (#42) |
+| **Read on** | 2026-10-01 |
+
+**Against the knobs.** The same as `realistic-flashlight-fixed`. A `diff` of the two release zips
+shows the Lua differing only in the two `__mod-name__` graphics paths, plus `info.json` and the
+changelog. **No content.**
+
+**Reachability.** Served at 2.1 only, with a single release. Not served at 2.0, which is the
+declared line.
+
+**Alternatives considered.** `realistic-flashlight-fixed`, above.
+
+**Recommendation: do not add.** It has the same knob problem as its parent, and is unreachable on
+the line the pack declares.
+
+#### `light-overhaul`
+
+| | |
+|---|---|
+| **Title** | Light Overhaul |
+| **Does** | Replaces the night colour lookup tables with darker, higher-contrast ones, widens the character's and cars' flashlight sprite, and stops night vision desaturating |
+| **Latest** | `0.3.0`, `factorio_version` **2.1**, 2026-06-24 |
+| **Downloads** | 37,617 |
+| **Owner** | `Earendel` |
+| **Status** | candidate, not a member (#42) |
+| **Read on** | 2026-10-01 |
+
+**Against the knobs**, from `prototypes/light.lua`:
+
+- `minimum_darkness` stays at 0.3.
+- Cone intensity stays at 0.6. Only the sprite changes, to a 512-pixel torch at scale 1.5 against
+  vanilla's 200-pixel cone at scale 2, so the cone is wider but no brighter.
+- **The halo is replaced**, by an oriented "pin" sprite light, intensity 0.4. It is a different
+  kind of light, not a larger omni light.
+- The lamp group is untouched.
+
+The default `night-lut-set` is `"Dark"`, so **nights get darker**, as the mod's summary says. It
+writes the global `daytime_color_lookup`. **No content.** This was inferred on 2026-09-22 and is
+now read from source: there is no `data:extend` outside `settings.lua`.
+
+**Reachability.** Served at 2.0 (`0.2.2`, 2024-11-02, `base >= 2.0.0`) and at 2.1 (`0.3.0`,
+`base >= 2.1.7`). `0.2.2` and `0.3.0` contain the same Lua.
+
+**Alternatives considered.** The rest of this subsection.
+
+**Recommendation: do not add.** It is well kept and reachable on both lines, but it moves the
+night the other way, and it changes how every surface looks rather than how far the player sees.
+
+#### `EvenMoreLight`
+
+| | |
+|---|---|
+| **Title** | EvenMoreLight |
+| **Does** | Replaces the character's, car's, tank's and locomotive's lights with a single large omni light each |
+| **Latest** | `0.2.0`, `factorio_version` **2.0**, 2024-10-21 |
+| **Downloads** | 7,227 |
+| **Owner** | `Woetoo` |
+| **Status** | candidate, not a member (#42) |
+| **Read on** | 2026-10-01 |
+
+**Against the knobs**, from `data.lua`, which is the whole mod at 63 lines:
+
+- `minimum_darkness` stays at 0.3.
+- **There is no cone at all.** `character.light` is overwritten with one omni light, so the
+  flashlight disappears.
+- The halo is 0.9 / size 60.
+- The lamp group is untouched.
+
+`car`, `tank` and `locomotive` lose their cones the same way, and each gets a 0.9 / 60 omni light,
+two of them on the locomotive's front light. **No content.** This was inferred on 2026-09-22 and
+is now read from source.
+
+**Reachability.** Served at 2.0 (`0.2.0`). Not served at 2.1: there is no 2.1 release.
+
+**Alternatives considered.** The rest of this subsection.
+
+**Recommendation: do not add.** It trades the cone for the halo and has no 2.1 release.
+
+#### `adjustable_flashlight`
+
+| | |
+|---|---|
+| **Title** | Adjustable Flashlight |
+| **Does** | Rebuilds the character's halo and cone from four startup settings |
+| **Latest** | `0.1.0`, `factorio_version` **2.0**, 2024-10-16 |
+| **Downloads** | 1,123 |
+| **Owner** | `_CodeGreen` |
+| **Status** | candidate, not a member (#42; routed here by #41) |
+| **Read on** | 2026-10-01 |
+
+**Against the knobs**, from `data-updates.lua` and `settings.lua`:
+
+- `minimum_darkness` is hardcoded at 0.3, the vanilla value.
+- Cone intensity is a setting, `cone-intensity`, default 0.6.
+- Halo intensity is a setting, `area-intensity`, default 0.4.
+- Halo size is a setting, `area-size`, default 25.
+- The lamp group is untouched.
+
+**Every default is vanilla**, the cone's shift included: `-6.5 * cone-size` gives -13 at the
+default size 2, which is vanilla's `{0, -13}`. Only `data.raw.character.character` is touched, so
+cars and locomotives stay vanilla. **No content.** This was inferred on 2026-09-22 and is now read
+from source.
+
+**Reachability.** Served at 2.0 (`0.1.0`). Not served at 2.1: there is no 2.1 release. It has not
+been touched since 2024-10-16.
+
+**Alternatives considered.** The rest of this subsection. It is the only candidate whose knobs
+reach `AfraidOfTheDark`'s character values: 0.8, 0.7 and 100, with `minimum_darkness` staying at
+0.3.
+
+**Recommendation: reconsider:** whether a member that does nothing until a player changes its
+settings is worth carrying. As a pack member it is invisible: the pack cannot ship setting values,
+so every player starts at vanilla and has to set 0.8 / 0.7 / 100 themselves. Getting those values
+by default would take a `settings-updates.lua` in the pack that rewrites the mod's
+`default_value`s. That is Lua which is not glue between two members, and *What a modpack is here*
+in `CLAUDE.md` rules that out. It would also be an 18th member on the 2.1 watch list.
+
+#### `Pro-Flashlight`
+
+| | |
+|---|---|
+| **Title** | Pro Flashlight |
+| **Does** | Turns the standing character to face the entity under the cursor, adds a flashlight toggle key, and turns the flashlight off in map view |
+| **Latest** | `1.5.9`, `factorio_version` **2.1**, 2026-08-22 |
+| **Downloads** | 5,973 |
+| **Owner** | `MrAlwaysAwesome` |
+| **Status** | candidate, not a member (#42) |
+| **Read on** | 2026-10-01 |
+
+**Against the knobs.** It turns none of them. `data.lua` defines only a `custom-input`,
+`flashlight-toggle` on `SEMICOLON`, and a `sound`. Everything else happens at runtime in
+`control.lua`. **No content.** This was inferred on 2026-09-22 and is now read from source.
+
+**A defect, read from source and not tested in game.** `control.lua` keeps per-player state in a
+Lua variable named `global`. 2.0 renamed the saved table to `storage`, so that state is not saved
+with the game. `control.lua` also loops over every player on every tick.
+
+**Reachability.** Served at 2.0 (`1.5.8`, 2025-10-07) and at 2.1 (`1.5.9`). The two releases have
+the same Lua.
+
+**Alternatives considered.** `flashlight-pointer` (`1.3.2`, fv 2.0, 2026-06-17, 462 downloads)
+does the facing half alone. It is 24 lines of `control.lua`, read from source.
+
+**Recommendation: do not add.** It is not a lighting tune, so it cannot replace one.
+
+#### `afraid-of-the-dark`
+
+| | |
+|---|---|
+| **Title** | Bright Universe |
+| **Does** | Swaps each planet's day/night colour lookup for a brighter preset, one startup setting per planet |
+| **Latest** | `3.0.0`, `factorio_version` **2.1**, 2026-07-01 |
+| **Downloads** | 8,545 |
+| **Owner** | `RedRafe` |
+| **Status** | candidate, not a member (#42) |
+| **Read on** | 2026-10-01 |
+
+**Not `AfraidOfTheDark`.** The portal name differs only in case and hyphens, and a dependency
+line typed from memory could resolve to the wrong mod.
+
+**Against the knobs.** It turns none of them. `data-updates.lua` writes
+`planet.surface_render_parameters.day_night_cycle_color_lookup` for `nauvis`, `vulcanus`,
+`fulgora`, `gleba` and `aquilo`, wherever the planet exists. The default for each is `"bright"`,
+which uses the sunset lookup at night. **No content.**
+
+**Reachability.** Served at 2.0 (`2.1.0`, 2024-10-30) and at 2.1 (`3.0.0`). The two releases have
+the same Lua.
+
+**Alternatives considered.** `anti-gloom`, below.
+
+**Recommendation: do not add** as a replacement. It changes how night looks, not how far the
+player sees, and its name is a trap beside the mod it would be replacing.
+
+#### `anti-gloom`
+
+| | |
+|---|---|
+| **Title** | AntiGloom: Brighter, Less Dark Nights |
+| **Does** | Replaces the global night colour lookups (normal view, zoom-to-world, night vision) with lookups 0-100% of the way from night to day, in steps of 10, default 30% |
+| **Latest** | `2.1.0`, `factorio_version` **2.1**, 2026-06-23 |
+| **Downloads** | 6,165 |
+| **Owner** | `jeff.s` |
+| **Status** | candidate, not a member (#42) |
+| **Read on** | 2026-10-01 |
+
+**Against the knobs.** It turns none of them. It writes `daytime_color_lookup` and
+`zoom_to_world_daytime_color_lookup` in `utility-constants`, plus the night-vision lookup.
+**No content.**
+
+**Reachability.** Served at 2.0 (`2.0.0`, 2024-10-21) and at 2.1 (`2.1.0`). The diff between them
+is `info.json`, the changelog and one added `luts/core` directory.
+
+**Alternatives considered.** `afraid-of-the-dark`, above. Two more mods brighten night by colour
+lookup alone and are also set aside: `light-overhaul` with its `"Bright"` set, and
+`Rohlinheatagtmuf_Hdhaotaotfnllsape-atnsasri` (`3.210.1`, fv 2.1, 3,033 downloads), which works
+per planet with a night-vision lookup.
+
+**Recommendation: do not add** as a replacement for the tune: it answers a different question. If
+the goal is "nights less dark" rather than "restore `AfraidOfTheDark`", this is the cleanest mod
+found. It is content-free, configurable, current on both lines, and its effect is graphical only.
+
+#### Searched and set aside
+
+These are read from source, one line each, because none comes near the knobs or the promise:
+
+- `rd-antidark` (`1.1.0`, fv 2.0, 177 downloads) adds `ad-area-light`, `ad-solar-light`, a
+  technology and recipes. It is content.
+- `NightvisionOverhaulSpaceAge` (`1.1.1`, fv 2.1; `0.8.3` at 2.0; 2,064 downloads) adds night
+  vision MK2 and MK3 as items and recipes. It is content.
+- `nocturnal` (`0.0.3`, fv 2.0, 213 downloads) sets `freeze_daytime` for permanent night. That
+  changes the game, not the lighting.
+- `PerfectNightvision` (`1.0.1`, fv 2.0, 358 downloads) retunes the night-vision equipment only.
+- `JKIL-CarLight` (`0.4.0`, fv 2.0, 2,759 downloads) doubles the `car` cone only.
+- `BigLight` (`0.3.1`, fv 2.1, 9,083 downloads) enlarges the lights of train stops, drills and
+  similar entities.
+
+#### Shipping vanilla night lighting
+
+This is the status quo since #7, and it is a real option rather than a fallback:
+
+- **What it costs.** The halo goes from 0.7 / 100 to 0.4 / 25, which is the knob a player
+  notices. The cone goes from 0.8 to 0.6, and lights come on at 0.3 rather than 0.2. Cars, tanks
+  and locomotives lose the large halo the tune gave them. The lamp group costs nothing in this
+  pack.
+- **What it keeps.** Lamps stay brighter than vanilla, because `Brighter-Lamps` remains
+  (radius 70 against 40). Vanilla's own answer to darkness is the night-vision equipment, which
+  is already in the game.
+- **What it risks: nothing.** No member, no reachability on either line, no promise question, no
+  settings a player has to find. Going back to vanilla does not touch a save, because the tune
+  only edited prototypes.
+- **What it leaves open.** If `AfraidOfTheDark` merges its 2.1 pull request, the content half
+  still keeps it out of this pack, so its return would be a `Grado_ChangingBase` question. On the
+  2.0 line that question is open now; see its entry above.
+
+**Recommendation: ship vanilla night lighting, as a recorded decision.** Nothing found restores
+the tune without either content or Lua in the pack, and the vanilla option costs only the halo.
+The decision is Truls's.
+
+**No portal mod is a pure prototype tune that reproduces `AfraidOfTheDark`'s values by default.**
+The search covered both listings on 2026-10-01. The only one whose knobs can reach them,
+`adjustable_flashlight`, starts at vanilla and stops at the character. A tune that matches by
+default would take Lua in the pack, which *What a modpack is here* rules out.
+
+#### Comparison
+
+Read 2026-10-01. "Served" means a release is returned for that game version. "Content" is read
+from source in every row. The knob columns are given as character values: `min` is
+`minimum_darkness`, then cone intensity, halo intensity / size.
+
+| portal name | min | cone | halo | lamp group | vehicles | content | served 2.0 | served 2.1 |
+|---|---|---|---|---|---|---|---|---|
+| *vanilla 2.0.77* | 0.3 | 0.6 | 0.4 / 25 | `lamp` | cones only | - | - | - |
+| `AfraidOfTheDark` | 0.2 | 0.8 | 0.7 / 100 | `lamps` | + 0.7 / 100 halo | **yes** | `1.0.31` | no (PR #8 open) |
+| `realistic-flashlight-fixed` | 0.1 | 0.9 | **none** (0.3 / 40 by setting) | - | replaced | no | `0.2.7` | no |
+| `realistic-flashlight-fixed-fork` | 0.1 | 0.9 | **none** (0.3 / 40 by setting) | - | replaced | no | no | `1.0.0` |
+| `light-overhaul` | 0.3 | 0.6, wider | pin sprite 0.4 | - | cone widened | no | `0.2.2` | `0.3.0` |
+| `EvenMoreLight` | 0.3 | **none** | 0.9 / 60 | - | cones removed | no | `0.2.0` | no |
+| `adjustable_flashlight` | 0.3 | 0.6 by setting | 0.4 / 25 by setting | - | untouched | no | `0.1.0` | no |
+| `Pro-Flashlight` | - | - | - | - | - | no | `1.5.8` | `1.5.9` |
+| `afraid-of-the-dark` | - | - | - | - | - | no | `2.1.0` | `3.0.0` |
+| `anti-gloom` | - | - | - | - | - | no | `2.0.0` | `2.1.0` |
+
+A `-` in a knob column means the mod leaves that knob at vanilla. Every portal figure was re-read
+on 2026-10-01. Against #42's table of 2026-09-22, downloads moved and nothing else did:
+`realistic-flashlight-fixed` 2,772 to 2,781, the fork 34 to 40, `light-overhaul` 37,337 to 37,617,
+`EvenMoreLight` 7,208 to 7,227, `Pro-Flashlight` 5,941 to 5,973, `adjustable_flashlight` 1,116 to
+1,123 and `AfraidOfTheDark` 207,551 to 207,859. #42's "latest" column gives each mod's newest
+release. For three of them that release is a 2.1 one, which a 2.0 game is not served:
+`light-overhaul` (a 2.0 game gets `0.2.2`), `Pro-Flashlight` (`1.5.8`) and
+`realistic-flashlight-fixed-fork` (nothing at all). That is why the table above has separate
+served columns.
 
 ## The promise, and why it needs a ruling
 

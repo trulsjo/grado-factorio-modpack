@@ -91,6 +91,8 @@ chain resolves on stable 2.0.77, so both are served today and matter only at a 2
 Two questions were deferred rather than answered: candidate additions that were never in the 1.1
 pack, which needs a ticket of its own, and `kry-picker-complete`'s members assessed one at a time
 for whichever pack each fits, which is **#46**. *Assessed 2026-10-01: see* Candidates, not members.
+*The first went to #84, which assessed three candidates on 2026-10-01; see* Outside the bundle *under
+the same section.*
 
 ## In the pack
 
@@ -481,9 +483,10 @@ in Factorio.
 job, searching name, title and summary. `berbcorp-loaders` and `quantum-belts` bundle loaders with
 their own belt tiers rather than serving the game's. *Checked 2026-10-01 (#44, #83): the terms were
 not recorded. Re-run over the union for "loader": two 1×1 loader mods whose whole job is loaders are
-in the 2.1 listing alone, so "no other" is false at 2.1. Two more there bundle loaders with
-something else or extend another loader mod: `deadlock-beltboxes-loaders-continued` and
-`aai-loaders-stacking-filtering-paules`. `wuastbude-miniloader` (`wuast94`, 2.1, 2026-09-28, 52 downloads) is
+in the 2.1 listing alone, `wuastbude-miniloader` and `advanced-industrial-loaders`, so "no other"
+is false at 2.1. Two more there bundle loaders with something else or extend another loader mod:
+`deadlock-beltboxes-loaders-continued` and `aai-loaders-stacking-filtering-paules`.
+`wuastbude-miniloader` (`wuast94`, 2.1, 2026-09-28, 52 downloads) is
 a fork of this mod and declares `! miniloader-redux`; `advanced-industrial-loaders` (`CoDavis3`,
 2.1, 2026-09-06, 33 downloads) adds powered, circuit-controlled loaders. Neither is served on the
 declared 2.0 line, and this mod is current on 2.1 itself (`2.2.3`, 2026-09-16), so neither changes

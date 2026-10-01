@@ -12,7 +12,12 @@ Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below w
 marked *Superseded 2026-09-23 by #15*, which #15 took, and the notes dated 2026-09-24 (#43), which
 #43 took, and the note dated 2026-09-24 (#31), which #31 took, and the notes dated 2026-09-24
 (#58) and (#61), which those two took. The **Read on** row is authoritative where it disagrees
-with this sentence. *Candidates, not members* was read on 2026-09-30 (#50).
+with this sentence. *Candidates, not members* was read on 2026-09-30 (#50). The notes dated
+2026-10-01 (#39), (#44)
+and (#80) were taken by those three. Searches described below as over "the 2.x list" ran over the
+`version=2.0` listing
+only, which misses mods released for 2.1 alone (#44, 2026-10-01); only those carrying a
+*Checked 2026-10-01 (#44)* note were re-run over the union of both listings.
 
 The dependency list holds 46 entries: `base >= 2.0.0`, `Grado_ChangingBase` — a pack, catalogued in
 `docs/catalogue/Grado_ChangingBase.md` — and **44 mods**. It read 47 and 45 until 2026-09-22, when
@@ -492,11 +497,15 @@ read from the dump, not seen. A save made before this mod was added would hold t
 and receive it at 100. Factorio mixes the two by averaging, and with no recipe testing the
 temperature that should be harmless, but it was not tried.
 
-**Recommendation: no conflict.** The redefinition changes how the fluid looks and where it sorts,
+**What the measurement recommends: no conflict.** The entry's **Recommendation** above stands as
+written; whether this changes it is Truls's. The redefinition changes how the fluid looks and where
+it sorts,
 not what any recipe does, so it does not break the pack's promise. Nothing needs doing for the
 pack. If a fix is wanted, it is upstream: this mod's `alloys-extended.lua` could change the fields
 it wants in `data.raw` instead of replacing the prototype, which would keep Angel's `subgroup` and
-`order`. The `Warheads_Continued` failure is a separate and larger finding, and not this entry's.
+`order`. The `Warheads_Continued` failure is a separate and larger finding, and not this entry's: it
+is
+#81.
 
 ### `angelsaddons-cab`
 

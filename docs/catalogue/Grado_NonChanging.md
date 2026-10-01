@@ -711,8 +711,10 @@ Every mod #41 names as a candidate addition to this pack, assessed against the p
 list.** Every recommendation is only that; membership is Truls's. Every reading in this section was
 taken on **2026-10-01**.
 
-**23 distinct mods are named across #41's three sets**: seven by `raiguard`, seven mandatory and
-nine optional members of `kry-picker-complete`, and `ghost-counter`. That makes 24 names, but
+**23 distinct mods are named across #41's three sets**: seven by `raiguard`, seven of the nine
+mandatory members of `kry-picker-complete` `1.1.0` (the other two, `kry-picker-extended` and
+`even-pickier-dollies`, are members already), its nine optional members, and `ghost-counter`.
+That makes 24 names, but
 `CursorEnhancements` is in both of the first two sets, so it gets one entry, under the raiguard set.
 **Four get one sentence each here, not an entry of their own:** three because they already have
 an entry in this catalogue, and one because #42 is assessing it.
@@ -1093,8 +1095,8 @@ and was kept, but it only changes colour. This mod removes entities. That is a r
 promise, and the ruling is Truls's. If it is admitted, the mod is the most downloaded of the 19,
 current on both lines, and a natural fit for the pack.
 
-If it is not admitted here, #46 recommends it for `Grado_ChangingBase`, whose promise has no
-"player asks" clause; see that pack's *Candidates, not members* (2026-10-01).
+If it is not admitted here, #46 recommends adding it to `Grado_ChangingBase`, whose promise has
+no "player asks" clause; see that pack's *Candidates, not members* (2026-10-01).
 
 ### `fluid-connection-indicators`
 
@@ -1397,20 +1399,9 @@ SHA-1 checked against the portal. So every content verdict below comes **from so
 the four #42 had to infer. Reachability was read three ways for each: `/api/mods/<name>/full` for
 the release list, then `namelist=<name>` at `version=2.0` and again at `version=2.1`.
 
-**`AfraidOfTheDark` itself.** Its entry is under *Ruled out after the port*; this is the new reading
-against it, kept here rather than as a second heading.
-
-| | |
-|---|---|
-| **Title** | Afraid Of The Dark (enforced personal lights + more) |
-| **Does** | Tunes character, car, tank and locomotive light prototypes, and adds craftable balloon lights and tinted night-vision glasses |
-| **Latest** | `1.0.31`, `factorio_version` **2.0**, 2024-10-30 |
-| **Downloads** | 207,859 |
-| **Owner** | `binbinhfr` |
-| **Status** | candidate, not a member (#42); ruled out of this pack 2026-09-22 (#7) |
-| **Read on** | 2026-10-01 |
-
-What is new since 2026-09-22:
+**`AfraidOfTheDark` itself.** Its entry is under *Ruled out after the port*, and #7's ruling
+stands. These are new readings against it, read 2026-10-01, kept here rather than as a
+second entry. What is new since 2026-09-22:
 
 - **Reachability.** It is served at 2.0 (`1.0.31`) and not at 2.1, read 2026-10-01, which is
   unchanged. What *has* changed is the declared line. #16 set it to `2.0` for the first release
@@ -1423,9 +1414,7 @@ What is new since 2026-09-22:
   changelog line, and does nothing else. The repository's last push was 2024-11-01. An open issue,
   #7, *"Mod is incompatible with Factorio v2"* (2026-01-05), has an empty body.
 
-**Alternatives considered.** The rest of this subsection.
-
-**Recommendation: do not add** to `Grado_NonChanging`. The content half still fails the promise,
+**For this pack, nothing changes.** The content half still fails the promise,
 and nothing about that has changed. The new reading belongs to `Grado_ChangingBase`'s membership:
 the reachability reason for leaving it out is void on the declared 2.0 line, and the collision
 check was already clean. That is #8's pack and a decision for Truls, so this entry only names it.

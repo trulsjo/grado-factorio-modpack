@@ -35,15 +35,17 @@
     in the pack's resolved set or its chain goes, so a reused directory never loads a mod the pack
     no longer has. A -ModsDirectory you name is never pruned: it may be a player's mods directory.
 
-    NAMES ARE COMPARED CASE-SENSITIVELY, in every step that removes something (#68): the packer's
-    one-copy rule, the pack-directory cleanup, a member's versioned copies and the dropped mods.
-    And in the pack-name check (#78): the name asked for -- -Pack, or a pack's dependency line --,
-    the name in info.json and the directory must agree in case, so a pack whose info.json names it
-    grado_abc inside Grado_ABC/ is refused, and so is a dependency line naming grado_abc. Factorio does the same -- on 2.0.77 a zip or directory named Alpha holding a mod
-    named alpha is refused "(case sensitive!)" -- and so does the portal, which on 2026-10-01
-    answered /api/mods/Krastorio2 with 200 and /api/mods/krastorio2 with 404. So Alpha and alpha
-    are two mods, and staging one must neither remove the other's copies nor keep the other as if
-    it were a member. The one exception is the game-mod list (base, space-age, ...), compared
+    NAMES ARE COMPARED CASE-SENSITIVELY, as Factorio compares them -- on 2.0.77 a zip or directory
+    named Alpha holding a mod named alpha is refused "(case sensitive!)" -- and as the portal does,
+    which on 2026-10-01 answered /api/mods/Krastorio2 with 200 and /api/mods/krastorio2 with 404.
+    So Alpha and alpha are two mods. Every step that removes something compares this way (#68): the
+    packer's one-copy rule, the pack-directory cleanup, a member's versioned copies and the dropped
+    mods, so staging one must neither remove the other's copies nor keep the other as a member. So
+    does the pack-name check (#78): the name asked for, the name in info.json and the directory must
+    agree in case, so grado_abc inside Grado_ABC/ is refused. On Windows that also refuses -Pack or
+    a dependency line naming grado_abc. A case-sensitive filesystem does not find that directory at
+    all, so there -Pack is refused as an unknown pack and the dependency line is not taken for a
+    pack. The one exception is the game-mod list (base, space-age, ...), compared
     case-insensitively as resolve-modpack.ps1 compares it, so the two cannot disagree on what is
     bundled; that changes in the tools repo or not at all.
 
@@ -52,8 +54,9 @@
     subdirectory, and the game passed over it without a word: no log line, no mod-list.json entry.
     It then enabled every mod it found, and space-age, quality and elevated-rails with them.
 
-    IT REFUSES A MALFORMED PACK. Every info.json in the chain is checked as strict JSON before
-    anything is fetched: a comment or a trailing comma fails here, not inside the game.
+    IT REFUSES A MALFORMED PACK. Every info.json in the chain is checked as strict JSON, and for a
+    name that matches its directory in case, before anything is fetched: a comment or a trailing
+    comma fails here, not inside the game.
 
     WHAT IT DOES NOT DO. It modifies no info.json. It never loads the game. It does not remove a
     member a pack has since dropped from a -ModsDirectory you named and reuse across membership
@@ -264,11 +267,12 @@ function Invoke-SelfTest {
         @{ Name = 'an info.json naming its pack in another case only is refused, naming both'; Test = {
             & $refuses 'Cased' "names itself 'cased'.*'Cased'" } }
         # What a dependency line or -Pack in the wrong case asks for. Windows finds the directory
-        # anyway; a case-sensitive filesystem does not, and refuses as an unknown pack.
+        # anyway, so the name checks must refuse it; a case-sensitive filesystem does not, and
+        # refuses it as an unknown pack. Each platform expects its own refusal.
         @{ Name = 'a pack asked for in another case than its directory is refused, though its info.json agrees'; Test = {
-            & $refuses 'cased' "directory is not named 'cased'|No pack 'cased'" } }
+            & $refuses 'cased' $(if ($IsWindows) { "directory is not named 'cased'" } else { "No pack 'cased'" }) } }
         @{ Name = 'a pack asked for in another case than its info.json is refused'; Test = {
-            & $refuses 'high' "names itself 'High', not 'high'|No pack 'high'" } }
+            & $refuses 'high' $(if ($IsWindows) { "names itself 'High', not 'high'" } else { "No pack 'high'" }) } }
         @{ Name = 'an info.json with no factorio_version is refused by name, not by StrictMode'; Test = {
             & $refuses 'Lineless' 'has no factorio_version' } }
         @{ Name = 'a member''s versioned zips and directories go before a fetch; its fetched directory and neighbours stay'; Test = {

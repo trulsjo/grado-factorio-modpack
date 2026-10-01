@@ -420,6 +420,80 @@ code. They are complements. In `2.0.01` this mod no longer mixes molten metals a
 changelog removed that. No name collision was found. The "almost word for word" above held only
 for `1.0.14`'s off-by-default setting.*
 
+#### The `angels-liquid-molten-invar` redefinition, measured (2026-10-01, #80)
+
+#50 found that with `bobplates` this mod defines the fluid `angels-liquid-molten-invar`, which
+Angel's already defines, and left it unmeasured. Measured here at the releases a 2.0.77 game
+resolves, read from `.mod-cache/Grado_ABC.pins.psd1` on 2026-10-01: `angelssmelting` `2.0.5`,
+`angels-smelting-extended` `2.0.01`, `bobplates` `2.1.1`, `angelsrefining` `2.0.4`.
+
+**The two definitions, field by field.** Angel's is
+`angelssmelting/prototypes/items/angels-alloy-invar.lua:5-18`; this mod's is
+`angels-smelting-extended/prototypes/items/alloys-extended.lua:7-19`. Both sit behind
+`if mods["bobplates"]`.
+
+| Field | `angelssmelting` `2.0.5` | `angels-smelting-extended` `2.0.01` |
+|---|---|---|
+| `icon`, `icon_size` | `molten-invar.png`, 64 | the same |
+| `icon_mipmaps` | absent | `4` (line 12) |
+| `subgroup` | `"angels-alloys-casting"` (line 10) | absent |
+| `order` | `"d[invar]-a[liquid-molten-invar]"` (line 11) | absent |
+| `default_temperature` | `0` (line 12) | `100` (line 13) |
+| `max_temperature` | `0` (line 16) | `100` (line 17) |
+| `heat_capacity` | `"0kJ"` | the same |
+| `base_color` | 95/256, 125/256, 122/256 (line 14) | the same values, from `ASE.tables.coil_metals["invar"].tint` (`prototypes/data-tables.lua:9`) |
+| `flow_color` | the same as `base_color` (line 15) | `angelsmods.functions.fluid_color("Fe2Ni")` (line 16), an orange-brown |
+| `auto_barrel` | `false` | the same |
+
+Neither sets `fuel_value`, `gas_temperature` or `hidden`.
+
+**Which wins: this mod's, whole.** `data:extend` replaces a prototype rather than merging it, and
+this mod depends on `angelssmelting`, so its `data.lua` runs second. A `--dump-data` run on
+Factorio 2.0.77 (build 84539, win64, Steam), base only, read the fluid back as this mod's
+definition: `default_temperature` 100, `max_temperature` 100, `icon_mipmaps` 4, no `subgroup` and
+no `order`, `flow_color` {r 0.592, g 0.432, b 0.117}. Nothing later in the data stage puts Angel's
+fields back. The run went through the shared harness's `New-LoadHarness` and
+`Invoke-HarnessDump`, which use a temp mod directory and their own write-data directory, so the
+player's mods and data were not touched. **It was not a load of the whole pack.** The first dump,
+with every staged mod enabled, failed in the data stage on `Warheads_Continued` `0.0.21`
+(`prototypes/weapontype-sanitise.lua:344`, "attempt to index field 'ammo_type' (a nil value)"), a
+hidden member pulled in by `True-Nukes_Continued` `0.3.36`. The dump that is read here disabled
+`Warheads_Continued`, `True-Nukes_Continued`, `True-Nukes-Graphics_Continued` and the pack itself,
+which requires them. **So the dump is not of `Grado_ABC`'s full
+closure.** None of the four mentions the fluid, so the reading of it should not depend on them,
+but that is a reading of their code, not a measurement.
+
+**What depends on it.** Six recipes in the dump make or use the fluid, and none sets a
+`temperature`, `minimum_temperature` or `maximum_temperature` on it:
+
+| Recipe | From | Role |
+|---|---|---|
+| `angels-liquid-molten-invar` | `angelssmelting`, `prototypes/recipes/smelting-alloy-invar.lua:5-21` | makes 360 from steel and nickel ingots |
+| `angels-plate-invar` | the same file, lines 23-44 | uses 40, makes 4 `bob-invar-alloy` |
+| `angels-roll-invar-casting` | this mod, `prototypes/recipes/compressing-extended.lua:24` | uses 80 |
+| `angels-roll-invar-casting-fast` | the same file, line 79 | uses 140 |
+| `angels-roll-invar-casting-rfp-ddw` | `RealisticFusionPowerPort` `1.9.2`, a copy of the roll casting made in `data-final-fixes.lua:168-239` | uses 80 |
+| `rf-angels-liquid-molten-invar` | `reverse-factory` `9.1.5`, `func.lua:136` | uses 360, returns the ingots |
+
+So the temperature change reaches no recipe: the fluid is made at 100 instead of 0, and nothing
+asks what temperature it is. With `heat_capacity` `0kJ` in both, it carries no heat either way.
+What a player can see is all display: the colour of the fluid in pipes and machine windows, and,
+with no `subgroup`, where the fluid sorts in Factoriopedia and the signal picker - the game's
+default fluid subgroup instead of Angel's invar casting row. `icon_mipmaps` was removed in 2.0
+and is ignored. This mod's `prototypes/override.lua:55-63` also moves the invar *recipes* into its
+own `angels-invar-casting` subgroup, which is the mod doing its job, not the redefinition.
+
+**Not checked.** Nothing here ran a tick or opened the game, so the colour and sorting above are
+read from the dump, not seen. A save made before this mod was added would hold the fluid at 0
+and receive it at 100. Factorio mixes the two by averaging, and with no recipe testing the
+temperature that should be harmless, but it was not tried.
+
+**Recommendation: no conflict.** The redefinition changes how the fluid looks and where it sorts,
+not what any recipe does, so it does not break the pack's promise. Nothing needs doing for the
+pack. If a fix is wanted, it is upstream: this mod's `alloys-extended.lua` could change the fields
+it wants in `data.raw` instead of replacing the prototype, which would keep Angel's `subgroup` and
+`order`. The `Warheads_Continued` failure is a separate and larger finding, and not this entry's.
+
 ### `angelsaddons-cab`
 
 | | |
@@ -1725,7 +1799,9 @@ years dormant. To those add the side finding above: with `bobplates` it redefine
 `angels-liquid-molten-invar`, which sits against this pack's promise that a member must not
 conflict with the overhaul (`CONTEXT.md`). Whether a redefinition of one fluid is a conflict in
 that sense was not measured: nothing here compared the two definitions in a load. What the member
-provides has no substitute here either.
+provides has no substitute here either. *Measured 2026-10-01 (#80): the difference is display
+only and reaches no recipe, so the recommendation there is no conflict - see* The
+`angels-liquid-molten-invar` redefinition, measured *under the member's entry.*
 
 ## The three Angel's and Clowns drops are one event
 

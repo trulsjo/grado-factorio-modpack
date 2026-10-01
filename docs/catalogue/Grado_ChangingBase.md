@@ -80,7 +80,7 @@ chain resolves on stable 2.0.77, so both are served today and matter only at a 2
 
 Two questions were deferred rather than answered: candidate additions that were never in the 1.1
 pack, which needs a ticket of its own, and `kry-picker-complete`'s members assessed one at a time
-for whichever pack each fits, which is **#46**.
+for whichever pack each fits, which is **#46**. *Assessed 2026-10-01: see* Candidates, not members.
 
 ## In the pack
 
@@ -785,7 +785,7 @@ deciding about once rather than assembling by hand.
 train-toggle mod and `Honk`, which is three additions to restore one dropped mod.
 
 **Its members are not abandoned, though.** #8 opened a ticket to assess `kry-picker-complete`'s
-mandatory and optional members one at a time, for whichever pack each fits, rather than as a bundle.
+mandatory and optional members one at a time, for whichever pack each fits, rather than as a bundle. *Done 2026-10-01 (#46): see* Candidates, not members.
 
 ### `alien-biomes-hr-terrain`
 
@@ -1254,6 +1254,310 @@ overhauls either way, which is less evidence than `anachrony`'s explicit boundar
 evidence. This remains the entry to bring to the first load of `Grado_ABC`, under its successor's
 name. The unverified feature delta — six water types, blueprintability, the survival guarantee — is
 recorded under `Waterfill_v17` in *In the pack*.
+
+## Candidates, not members
+
+`kry-picker-complete`'s members, assessed **one at a time** for whichever pack each fits, by #46.
+**The bundle itself is not reopened.** #7 declined it for `Grado_NonChanging` and #8 declined it for
+this pack, both on 2026-09-22. Entry format: `docs/mod-catalogue.md`, *a candidate assessed for a
+pack and not in it*, whose place in the format #62 has still to confirm. **None of these mods is a
+member, and nothing here changes a dependency list.** Every recommendation is only that; membership
+is Truls's. Every reading in this section was taken on **2026-10-01**.
+
+**#41 did the survey, and this section does not repeat it.** #41 read every member's source, its
+reachability and its key bindings, and wrote an entry for each under *Candidates, not members* in
+`docs/catalogue/Grado_NonChanging.md`. **Those entries are the evidence here.** This section asks
+the one question #41 could not: where a mod does not belong in `Grado_NonChanging`, does it belong
+in this pack instead?
+
+**The tests, as they stand today:**
+
+- **The promise** (`CONTEXT.md`, *Promise*): this pack may add content, but not content that
+  competes with an overhaul for the same ground, because `Grado_ABC`, `Grado_ABCX` and `Grado_ABCS`
+  all inherit it. It has no clause like `Grado_NonChanging`'s *changes the built factory only when
+  the player asks*.
+- **Reachability.** #46 gives this pack's floor as `base >= 2.1.12`. That is stale: #16 ruled the
+  declared line is **2.0**, and this pack declares `base >= 2.0.74` (#58). Each candidate's 2.0
+  release is checked against that floor, and whether it is served at 2.1 at all is recorded too.
+- **Already in the chain?** Checked against the members of all three lower packs.
+
+**One rule decides most rows, and it is a reading, not a ruling: a mod that passes
+`Grado_NonChanging`'s promise is a candidate for that pack, not this one.** Every player of this
+pack also gets `Grado_NonChanging`, so putting such a mod here would only take it away from players
+of the lower pack. This is the same reasoning as `CLAUDE.md`'s *anything both branches need goes
+in ABC*. It follows that if `Grado_NonChanging` declines such a mod, it is declined here too,
+unless the reason was that pack's promise. Only a mod that fails or strains *that* promise needs
+reasoning of its own here.
+
+### Every member, and the pack it is a candidate for
+
+`kry-picker-complete` `1.1.0`, `factorio_version` 2.1, 2026-07-24: nine mandatory members and nine
+optional.
+
+| member | in `1.1.0` as | candidate for | why, and where |
+|---|---|---|---|
+| `kry-picker-extended` | mandatory | already a member | `Grado_NonChanging` |
+| `even-pickier-dollies` | mandatory | already a member | `Grado_NonChanging` |
+| `BottleneckLite` | mandatory | already a member | `Grado_NonChanging`, added by #7 |
+| `EvenDistributionLite` | mandatory | **none** | #7 kept `even-distribution` over it in `Grado_NonChanging`, so every player of this pack already has the fuller mod |
+| `belt-visualizer` | mandatory | `Grado_NonChanging` | passes its promise; #41 recommends `add` there |
+| `CursorEnhancements` | mandatory | `Grado_NonChanging` | passes its promise; #41 recommends `add` there |
+| `Shortcuts-ick` | mandatory | `Grado_NonChanging` | passes its promise; #41 recommends `add` there |
+| `AutoDeconstruct` | mandatory | **`Grado_NonChanging` or this pack** | content-free, but it acts without being asked; **entry below** |
+| `fluid-connection-indicators` | mandatory | `Grado_NonChanging` | one of the four #8 surfaced; **entry below** |
+| `WireShortcutX` | optional | **none** | #41: `kry-picker-extended` absorbed it on the 2.1 line, and it is not served at 2.1. That reason holds here too |
+| `Renamer` | optional | **none** | #41: the same as `WireShortcutX`, and `Ctrl+R` is already bound by `bobinserters`, a member of this pack |
+| `Honk` | optional | `Grado_NonChanging` | one of the four #8 surfaced; **entry below** |
+| `car-finder` | optional | `Grado_NonChanging` | one of the four #8 surfaced; **entry below** |
+| `Orphan Finder` | optional | `Grado_NonChanging` | one of the four #8 surfaced; **entry below** |
+| `adjustable_flashlight` | optional | `Grado_NonChanging`, under #42 | night lighting; see *Night lighting: what replaces AfraidOfTheDark's tune (#42)* in `docs/catalogue/Grado_NonChanging.md` |
+| `ore-eraser-2` | optional | **none** | #41 declined it for a `storage` defect and as free, irreversible ore deletion. Neither is about that pack's promise, and the second weighs more here, over the ground `rso-mod` and `angelsinfiniteores` lay out in `Grado_ABC` |
+| `squeak-through-2` | optional | already a member | this pack, mandatory (#8, #11) |
+| `kry-vehicle-grids` | optional | **none** | it fails `Grado_NonChanging`'s promise, and it competes with `bobvehicleequipment` here; **entry below** |
+
+**Tally: 4 already members. 9 candidates for `Grado_NonChanging`**: `belt-visualizer`,
+`CursorEnhancements`, `Shortcuts-ick`, the four #8 surfaced, `adjustable_flashlight` and
+`AutoDeconstruct`. **`AutoDeconstruct` is the only one that is also a candidate for this pack.
+5 are candidates for none**: `EvenDistributionLite`, `WireShortcutX`, `Renamer`, `ore-eraser-2` and
+`kry-vehicle-grids`. **No member of the bundle is a candidate for this pack alone.**
+
+**`FluidMustFlow` is not a member of the bundle**, so it is outside #46. It is one of #41's raiguard
+set. #41 found it fails `Grado_NonChanging`'s promise, and its entry there carries the evidence a
+`Grado_ChangingBase` assessment would start from: duct recipes rewritten to Bob's items, and ducts
+on `boblogistics`' pipe and storage-tank ground. It belongs to the candidate-additions ticket #8
+said this pack needs. That ticket is the counterpart of #41, and it is not yet filed.
+
+### The five `1.0.1` named and `1.1.0` dropped
+
+A 2.0.77 game installs `kry-picker-complete` `1.0.1` (2025-03-19), not `1.1.0`. That release names
+five mods `1.1.0` does not. **None was assessed from source here.** What the portal and the chain
+say, read 2026-10-01:
+
+| mod | 2.0 release | served at 2.1 | what is known |
+|---|---|---|---|
+| `yemtositemcount` | `0.7.2`, 2026-03-23 | yes | `kry-picker-extended`'s *Held Item Count* adapts it and switches itself off when it is present, so a member already covers it |
+| `beltbrush2` | `0.2.1`, 2025-02-11 | yes | the same for *Belt Brush* |
+| `belt-reverser-space-age` | `2.0.1`, 2024-11-06 | **no** | the same for *Belt Reverser*, which steps aside for "any of the other belt reverser forks" |
+| `Kux-BlueprintExtensions` | `3.3.16`, 2025-06-29 | yes | blueprint tools; it would bring a new mandatory dependency, `Kux-CoreLib`, and overlaps `BlueprintTools` (`Grado_NonChanging`), itself a successor to Blueprint Extensions |
+| `packing-tape` | `20.0.9`, 2026-06-28 | yes | mining a chest picks it up with its contents, and the same for vehicles and accumulators. That changes save state, and whether it adds item prototypes was not read |
+
+The first three are the bundle's author handing features to their own `kry-picker-extended`, which
+explains why `1.1.0` dropped them. The last two would need a full assessment before any
+recommendation. Neither was ever in a 1.1 pack, so they belong to the candidate-additions tickets
+(#41 for `Grado_NonChanging`, and the unfiled one for this pack), not to #46.
+
+### `AutoDeconstruct`
+
+| | |
+|---|---|
+| **Title** | Auto Deconstruct |
+| **Does** | When a drill's resources run out, marks it for deconstruction. By default it also marks the chest it fed and the beacons around it, and places pipe ghosts where a fluid-mining drill stood |
+| **Latest** | `1.1.2`, `factorio_version` **2.1**, 2026-07-30. On the 2.0 line: `1.0.14`, the same day, `base >= 2.0.68` |
+| **Downloads** | 364,741 |
+| **Owner** | `mindmix` |
+| **Status** | candidate, not a member (#46) |
+| **Read on** | 2026-10-01 |
+
+**Evidence.** It is #41's, read from source; see its entry in
+`docs/catalogue/Grado_NonChanging.md`. It adds no content. It acts on `on_resource_depleted`, with
+no player action and no per-player switch. That is why #41 recommended `reconsider:` there.
+
+**Against this pack's promise: passes.** It adds nothing, so there is no content to compete. Acting
+unasked is not something this pack's promise addresses, and this pack's own catalogue opens by
+calling it *"the pack that may change saves and the factory"*. Against the overhaul packs above it,
+nothing competes for ground:
+
+- **Drills and beacons are matched by prototype type** (`mining-drill`, `beacon`), not by name, so
+  Bob's and Angel's machines are handled the same as vanilla ones. Read from
+  `script/autodeconstruct.lua`.
+- **`angelsinfiniteores` (`Grado_ABC`) puts down infinite resources, and the mod leaves them
+  alone.** `autodeconstruct.on_resource_depleted` returns at once for any resource whose prototype
+  has `infinite_resource` set, or that is on its ore blacklist. Read from source.
+
+**Reachability.** Its 2.0 release asks `base >= 2.0.68`, which is below this pack's `2.0.74`. Here
+it moves nothing. In `Grado_NonChanging` it would raise that pack's `2.0.67`. Served at 2.1.
+
+**Already in the chain?** No. Construction robots carry out its orders, and nothing in the three
+lower packs places them.
+
+**Recommendation: add, here, if Truls's ruling on #41 keeps it out of `Grado_NonChanging`.** It is
+the one member of the bundle whose layer depends on a reading of a promise rather than on the mod.
+If *the player asks* is read as *the player installed it*, it belongs one layer down, with every
+other quality-of-life tool. If not, this pack's promise admits it, its floor fits here without
+moving, and it is the most downloaded mod in the bundle.
+
+### `fluid-connection-indicators`
+
+| | |
+|---|---|
+| **Title** | Connection Indicators |
+| **Does** | Draws indicators on fluid connections, inserters and mining drills: connected, unconnected, or blocked by another entity |
+| **Latest** | `0.2.9`, `factorio_version` **2.1**, 2026-07-01. On the 2.0 line: `0.2.7`, 2025-09-23, `base >= 2.0`, `flib >= 0.13.0` |
+| **Downloads** | 3,193, against 3,172 on 2026-09-21 |
+| **Owner** | `Soul-Burn` |
+| **Status** | candidate, not a member (#46) |
+| **Read on** | 2026-10-01 |
+
+**Why it is here.** #8 surfaced it as the successor to `PickerPipeTools`' connection verification
+(see that entry, under *Dropped during the port*). It is a mandatory member of the bundle.
+
+**Evidence.** #41's, from source: two sprites, with the indicators drawn at runtime. **It adds no
+content**, so it passes both packs' promises. Served at 2.0 and 2.1. Its only dependency, `flib`, is
+already a hidden member of the chain.
+
+**Already in the chain?** Partly. `PipeVisualizer-Updated` (`Grado_NonChanging`) draws a whole
+fluid network on demand. This mod marks individual connections all the time, and covers inserters
+and drills as well.
+
+**Recommendation: a candidate for `Grado_NonChanging`, not for this pack**, where #41 recommends
+`add`. It passes the lower pack's promise, so putting it here would only withhold it from that
+pack's players. If `Grado_NonChanging` declines it, the reason will not be promise-shaped, and it
+should be declined here too.
+
+### `Orphan Finder`
+
+| | |
+|---|---|
+| **Title** | Orphan Finder |
+| **Does** | `Shift+O` marks underground belts and pipes near the player that have no connected other end |
+| **Latest** | `1.2.2`, `factorio_version` **2.0**, 2025-01-25, no dependencies |
+| **Downloads** | 25,905, against 25,770 on 2026-09-21 |
+| **Owner** | `GotLag` |
+| **Status** | candidate, not a member (#46) |
+| **Read on** | 2026-10-01 |
+
+**Why it is here.** It is the closest single successor to `PickerPipeTools`' orphan finder. #8 set
+it aside on 2026-09-22 as **unreachable "at this pack's floor"**, which was then a 2.1 floor.
+
+**That reason has gone.** #16 made the declared line 2.0. A 2.0.77 game installs `1.2.2`, which
+declares no `base` floor at all, so this pack's `2.0.74` accepts it. It is still **not served at
+2.1** (`?version=2.1&namelist=Orphan%20Finder` returns nothing), so it would go on the 2.1 watch
+list.
+
+**Evidence.** #41's, from source: a `custom-input` and a script-placed copy of the vanilla `arrow`
+marker. It has no item and no recipe, so **it adds no content** and passes both promises. Its page
+names `underground-pipe-pack` (this pack) as compatible, with one caveat about that mod's rotation
+key. `Shift+O` is also `bobinserters`' default (this pack).
+
+**Already in the chain?** No. `PipeVisualizer-Updated` shows undergrounds but does not flag
+unpaired ones, and it does nothing for belts.
+
+**Recommendation: a candidate for `Grado_NonChanging`, not for this pack**, where #41 recommends
+`add`. With it and `fluid-connection-indicators`, two of `PickerPipeTools`' features come back by
+two separate mods. **The pipe clamps still have no successor**, and nothing here changes that. The
+`Shift+O` overlap with `bobinserters` is for #73.
+
+### `car-finder`
+
+| | |
+|---|---|
+| **Title** | Car/Tank/Spidertron Locator Button (Find / Locate My Lost Car / Car Finder) |
+| **Does** | A toolbar button and `Shift+V` that show where the player left their car, tank, spidertron or modded vehicle |
+| **Latest** | `2.1.0`, `factorio_version` **2.1**, 2026-06-23. On the 2.0 line: `2.0.0`, 2024-10-21, no `base` floor |
+| **Downloads** | 47,036, against 46,952 on 2026-09-21 |
+| **Owner** | `jeff.s` |
+| **Status** | candidate, not a member (#46) |
+| **Read on** | 2026-10-01 |
+
+**Why it is here.** It is `PickerVehicles`' *find my car* (see that entry, under *Dropped during
+the port*).
+
+**Evidence.** #41's, from source: a sound, a `custom-input` and a `shortcut`. **It adds no
+content.** It is served at 2.0 and 2.1, and finds modded vehicles generically, so Bob's and Angel's
+vehicles in `Grado_ABC` need nothing special. `Shift+V` is already bound by `VehicleSnap` and
+`kry-picker-extended`, both in `Grado_NonChanging`, which is for #73.
+
+**Already in the chain?** No.
+
+**Recommendation: a candidate for `Grado_NonChanging`, not for this pack**, where #41 recommends
+`add`.
+
+### `Honk`
+
+| | |
+|---|---|
+| **Title** | Honk |
+| **Does** | Trains sound a horn when they start and stop, `H` honks from a locomotive, there is a train manual-mode toggle, and the horns can be added as a programmable-speaker instrument |
+| **Latest** | `5.2.1`, `factorio_version` **2.1**, 2026-06-30. On the 2.0 line: `5.1.1`, 2025-03-16, no `base` floor |
+| **Downloads** | 120,932, against 120,655 on 2026-09-21 |
+| **Owner** | `GotLag`, with source kept by `robot256` |
+| **Status** | candidate, not a member (#46) |
+| **Read on** | 2026-10-01 |
+
+**Why it is here.** It is `PickerVehicles`' train horns, and its manual-mode toggle is a second of
+that mod's features.
+
+**Evidence.** #41's, from source: `sound` and `custom-input` prototypes, plus an optional instrument
+appended to the vanilla programmable speaker. **It adds no content.** It is served at 2.0 and 2.1,
+with no dependency except `base`.
+
+**Already in the chain?** No. `Shortcuts-ick`, a candidate for `Grado_NonChanging`, also has a
+train manual-mode toggle.
+
+**Recommendation: a candidate for `Grado_NonChanging`, not for this pack**, where #41 recommends
+`add`. If it and `car-finder` are both taken, every feature of `PickerVehicles` has a home in the
+chain, with `VehicleSnap` covering the driving controls. The cost is two additions to restore one
+dropped mod. #8 named that cost on 2026-09-22 as three additions; `Honk`'s toggle saves the third.
+
+### `kry-vehicle-grids`
+
+| | |
+|---|---|
+| **Title** | Vehicle Equipment Grids |
+| **Does** | Gives cars, tanks, trains and modded vehicles equipment grids sized per vehicle, opens personal equipment to vehicle grids, and adds a craftable vehicle-only speed booster in place of exoskeletons |
+| **Latest** | `2.3.2`, `factorio_version` **2.1**, 2026-09-23, `kry_stdlib >= 2.2.21`. On the 2.0 line: `2.2.0`, 2026-06-09, `base >= 2.0`, `kry_stdlib >= 2.1.1` |
+| **Downloads** | 8,247 |
+| **Owner** | `Kryzeth` |
+| **Status** | candidate, not a member (#46) |
+| **Read on** | 2026-10-01 |
+
+**Why it is here.** #41 found it fails `Grado_NonChanging`'s promise: it adds a craftable speed
+booster, with its own recipe and technology. Failing that test is what sends it here. #8 had
+already named it, on 2026-09-21, as the successor to `PickerTweaks`' vehicle grids.
+
+**Reachability: fine.** Its 2.0 release asks `base >= 2.0`, below this pack's `2.0.74`, and
+`kry_stdlib >= 2.1.1`, which the chain's hidden `kry_stdlib` `2.1.2` meets. It is served at 2.1,
+where its `kry_stdlib >= 2.2.21` is the release that already sets the project's highest 2.1 floor.
+
+**On this pack alone it would pass.** With no overhaul loaded, it gives vanilla vehicles grids and
+adds one craftable booster per exoskeleton technology. Nothing in this pack or below holds that
+ground.
+
+**Under `Grado_ABC` it competes with `bobvehicleequipment` for the same ground**, read from both
+mods' source and not loaded:
+
+- **The booster steps aside.** `data.lua` skips `prototypes/equipment.lua` when
+  `bobvehicleequipment` is present, so no craftable item reaches the overhaul packs. That part
+  cooperates.
+- **The grids do not.** `prototypes/vehicle-grid.lua` gives the vanilla car, tank, locomotive and
+  three wagons grids of its own in `data.lua`. `bobvehicleequipment`'s `data-updates.lua` then
+  assigns its own `bob-*` grids to the same six vehicles. After that, `prototypes/default-grid.lua`,
+  from this mod's `data-updates.lua`, rewrites the categories of any grid not borrowed from power
+  armour, removing `armor` and merging in its own. Which assignment survives depends on load order.
+  Neither mod declares a dependency on the other, so the order is not fixed by either.
+- **Both mods define an `equipment-category` named `vehicle`.** `bobvehicleequipment`'s
+  `prototypes/category.lua` puts `vehicle` in its grids and on its own vehicle equipment.
+  `prototypes/category-updates.lua` here adds `vehicle` to **every equipment prototype not on its
+  blacklist**. With Bob's loaded, the blacklist covers belt immunity, shields, batteries, solar
+  panels, fission reactors and anything named `personal`. It does not cover night-vision
+  equipment, vanilla or Bob's, which `equipment_types` maps to `vehicle`. So personal equipment
+  would fit Bob's vehicle grids, which
+  `bobvehicleequipment` exists to keep apart with vehicle-specific equipment in up to six tiers.
+
+The blacklist shows the author planned for Bob's, and the mod's own summary claims compatibility
+with Bob's Equipment. But compatible is not the same as not competing. Who decides what goes in a
+vehicle's grid is `bobvehicleequipment`'s whole job, and this mod would take part of that decision
+in all three overhaul packs. That is the shape of the two promise failures #8 recorded:
+`UltimateBeltsSpaceAge` on `boblogistics`' belt tiers, and `StoneWaterWell-ActuallyUpdated` on
+Angel's water.
+
+**Already in the chain?** For the packs above this one, yes: `bobvehicleequipment` (`Grado_ABC`).
+
+**Recommendation: do not add. A candidate for no pack.** It fails `Grado_NonChanging`'s promise on
+content, and this pack's promise on ground, because three of the four packs that would inherit it
+are the overhaul packs it competes in. What it would give this pack's own players, grids for
+vanilla vehicles, is not enough to set against that. The load-order and category reading above is
+from source; a load of `Grado_ABC` with it added (#27) would turn it into a measurement.
 
 ## `bobinserters` sits in two packs
 

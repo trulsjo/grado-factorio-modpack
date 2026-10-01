@@ -6,7 +6,10 @@ train painters inferred from the colours, and `PipeVisualizer-Updated`'s `Alt+Y`
 settled. `ixuAutoSave` and `kry-picker-extended` were not confirmed. The save survived a reload
 with `YARM`'s, `Todo-List`'s, `SpeedControl`'s and the painters' data, and seemingly `Tapeline`'s.
 One key-binding clash turned up: `Alt+Y`, between `YARM` and `PipeVisualizer-Updated` - see
-*Conflicts*.
+*Conflicts*. It was measured for the decision on 2026-09-30 (#71): base's
+`give-discharge-defense-remote` defaults to `Alt+Y` too, with or without Space Age, and neither
+mod has a 2.1 release - see *`Alt+Y` measured for the decision* under *Key bindings*. *That
+pointer added 2026-10-01 (#77).*
 
 ## Configuration
 
@@ -181,6 +184,15 @@ default key binding."
   line. That is an inference from the file, not a test: nobody has changed a default under a saved
   rebinding and looked.
 
+  *Qualified 2026-10-01 (#77).* The live line is **`YARM`'s alternative slot**
+  (`-alternative`, the input's second binding), not its primary `key_sequence`. The primary line
+  is the commented one above, so the primary was still at its default, `ALT + Y`, and Truls's fix
+  added a second key rather than moving the first. What the file shows is that a key a player sets
+  is stored live under its own name; it was shown for the alternative slot only. It does not show
+  how a rebound **primary** is written, and a pack override would change the primary
+  (`key_sequence`), not this slot. Whether a player's rebound primary survives a changed default
+  is therefore less supported than the paragraph above reads, and it stays untested.
+
 ## Play session
 
 **Complete, run by Truls in three sittings: 2026-09-29 (about two hours), and two on 2026-09-30.** In the client (Steam, 2.0.77), base only, against the same
@@ -277,3 +289,14 @@ conflict.
 - **The 2.1 line.** These are 2.0 releases on a 2.0 build. The 17-mod watch list in
   `docs/porting-notes.md` is untouched.
 - **Mod settings other than the defaults.**
+
+*Added 2026-10-01 (#77): three things #71 left untried, each detailed in the subsection on `Alt+Y`
+measured for the decision.*
+
+- **Which of the three `Alt+Y` inputs fires, and why.** `pv-toggle-mouseover` won over
+  `get-yarm-selector` in play, both with `consuming` unset; why was not measured.
+- **Whether base's key spawns the discharge-defense remote before its research.** Its shortcut is
+  `unavailable_until_unlocked` behind `discharge-defense-equipment`; the key was not pressed
+  before or after that research.
+- **Whether a player's rebinding survives a changed default.** Inferred from `config.ini`, and
+  from the alternative slot only; no default was changed under a saved rebinding.

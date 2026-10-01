@@ -756,7 +756,8 @@ That leaves **19 entries**, below.
   `resolve-modpack.ps1` picked for `Grado_ABC` on line 2.0, build 2.0.77. That is less rigorous
   than the `--dump-data` method in the load record, and like that method it misses vanilla
   controls. Shared keys are recorded in each entry for #73. A shared key is not necessarily a
-  clash: the load record found that only one of its seven shared keys failed in play.
+  clash: of the load record's seven shared keys, only `Alt+Y` has been seen to fail, and four
+  were not tried in play.
 
 **Which releases #41's lists come from.** #41's two `kry-picker-complete` lists are its `1.1.0`
 release, `factorio_version` 2.1, 2026-07-24. A 2.0.77 game installs `1.0.1` instead, 2025-03-19, and
@@ -952,7 +953,7 @@ members only; that ticket is not yet filed. Two findings, both from source:
   every duct recipe to use `bob-silicon-nitride`, `bob-titanium-plate` and `bob-pump-2`. All three
   mods are `Grado_ABC` members. Whether those three item names still exist in the 2.x Bob's
   releases was not checked. There is no Angel's handling.
-- **It claims ground an overlay already holds.** `boblogistics` (`3.0.2`, 2.1, 2026-09-27)
+- **It claims ground an overhaul already holds.** `boblogistics` (`3.0.2`, 2.1, 2026-09-27)
   describes itself as adding *"many new pipes made from many different materials, spanning 5
   tiers"* and storage tank tiers 2 to 4. Six of the ten duct entities are storage tanks by prototype type. A large
   fluid-transport tier is exactly what `Grado_ChangingBase`'s promise asks that assessment to weigh.
@@ -1171,8 +1172,8 @@ stops, at least, have a name field in vanilla. **Shared key:** `Ctrl+R` is alrea
 (`Grado_ChangingBase`). This would be a fourth.
 
 **Recommendation: do not add.** Its feature reaches the pack through a member at 2.1, it cannot be
-installed there itself, and at 2.0 it would add a fourth binding to the most crowded key in the
-chain.
+installed there itself, and at 2.0 it would add a fourth binding to `Ctrl+R`, already bound three
+times in the chain.
 
 ### `Honk`
 
@@ -1706,7 +1707,8 @@ This is the status quo since #7, and it is a real option rather than a fallback:
   2.0 line that question is open now; see its entry above.
 
 **Recommendation: ship vanilla night lighting, as a recorded decision.** Nothing found restores
-the tune without either content or Lua in the pack, and the vanilla option costs only the halo.
+the tune without either content or Lua in the pack. The vanilla option costs the halo most
+visibly, and the cone, the earlier switch-on and the vehicles' halo with it, as listed above.
 The decision is Truls's.
 
 **No portal mod is a pure prototype tune that reproduces `AfraidOfTheDark`'s values by default.**

@@ -45,9 +45,9 @@
     agree in case, so grado_abc inside Grado_ABC/ is refused. On Windows that also refuses -Pack or
     a dependency line naming grado_abc. A case-sensitive filesystem does not find that directory at
     all, so there -Pack is refused as an unknown pack and the dependency line is not taken for a
-    pack. The one exception is the game-mod list (base, space-age, ...), compared
-    case-insensitively as resolve-modpack.ps1 compares it, so the two cannot disagree on what is
-    bundled; that changes in the tools repo or not at all.
+    pack. Every mod name is compared this way, the game mods (base, space-age, ...) included:
+    a dependency line naming Space-Age is not taken as bundled and is not passed to the harness,
+    as resolve-modpack.ps1 has not taken it since trulsjo/grado-factorio-tools#28 (#88).
 
     FACTORIO TAKES THE TARGET AS ITS MODS DIRECTORY, on the one run checked (2.0.77 headless,
     Grado_NonChanging, 2026-09-24, #59). fetch-mods.ps1 keeps its downloaded zips in a .zips
@@ -392,7 +392,7 @@ catch { Write-Host "  $($_.Exception.Message)"; Write-Host ''; Write-Host "FAILE
 try { Install-PackZip -Chain $chain -ModsDirectory $ModsDirectory }
 catch { Write-Host "  $($_.Exception.Message)"; Write-Host ''; Write-Host "FAILED - the packs may be partly staged; the members of $Pack are fetched."; exit 1 }
 
-$bundled = @($chain | ForEach-Object { Get-RequiredName $_.Info } | Where-Object { $_ -in $GAME_MODS -and $_ -ne 'base' } | Sort-Object -Unique)
+$bundled = @($chain | ForEach-Object { Get-RequiredName $_.Info } | Where-Object { $_ -cin $GAME_MODS -and $_ -cne 'base' } | Sort-Object -Unique -CaseSensitive)
 $with = if ($bundled) { " -With $($bundled -join ',')" } else { '' }
 $exe = if ($FactorioExe) { " -FactorioExe `"$FactorioExe`"" } else { '' }
 Write-Host ''

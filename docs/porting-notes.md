@@ -448,6 +448,25 @@ declares its floor.*
 Upstream 2.1 plans and served replacements were not researched for these. They matter only at a
 2.1 target, and whether to target 2.1 is #16's choice (*Ruled 2026-09-24 (#16), applied 2026-09-24 (#58).*);
 Truls closed #43 on the 2.0.77 result with this list kept as a watch list rather than a sweep.
+*Qualified 2026-10-01 (#90): #83's union re-run found served 2.1 successors for one row and for one
+candidate, named below. The others are still not researched.*
+
+**2.1-only successors found so far (#83, named here by #90).** Each is served at 2.1 only, so none
+is served on the declared 2.0 line, and each follows a mod that is not served at 2.1. Read on the
+portal 2026-10-01. Whether to swap any of them in is #86's; this list makes no swap.
+
+| Follows | Successor | Owner | Newest release |
+|---|---|---|---|
+| `Nanobots2` (row above) | `Nanobots2-continued` | `goakiller900` | `3.4.4`, 2026-08-28 |
+| `Orphan Finder` (a `Grado_NonChanging` candidate, not a member) | `orphan-finder-v21` | `ElderAxe` | `1.4.0`, 2026-07-01 |
+| | `OrphanPin` | `Hellrespawn` | `1.0.2`, 2026-07-14 |
+
+`Nanobots2-continued` declares `! Nanobots2` and requires `kry_stdlib >= 2.2.4` where `Nanobots2`
+requires `stdlib2`, so it is also the route off the hidden `stdlib2` row. `kry_stdlib` is already a
+hidden member of `Grado_NonChanging`. `OrphanPin` drops map pins on the orphans rather than marking
+them with arrows. The evidence is in `docs/catalogue/Grado_ChangingBase.md`, in `Nanobots2`'s
+entry and in `Orphan Finder`'s under *Candidates, not members*; `Orphan Finder`'s entry in
+`docs/catalogue/Grado_NonChanging.md` does not name the two successors.
 
 ## Open questions
 

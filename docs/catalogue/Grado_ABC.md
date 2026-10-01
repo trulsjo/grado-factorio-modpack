@@ -164,6 +164,8 @@ siblings, which are already here.
 It declares `! angelsaddons-refiningthorium`, a hard incompatibility. That mod has **no 2.x
 release** — it does not appear in the 9,708-entry 2.x list — so the clash cannot be triggered by
 anything a player on 2.x can install, and it is worth recording only so nobody re-derives it.
+*Checked 2026-10-01 (#44): that list was the `version=2.0` listing only, which misses mods released
+for 2.1 alone; the mod is not in the `version=2.1` listing either.*
 
 **Recommendation: keep.** Current on 2.1, and it is one of the three mods that make this an ABC pack
 rather than an AB one.
@@ -1134,7 +1136,9 @@ is the finding that ties them together. Read that before the individual verdicts
 "angelsexploration", "angel's exploration" and "angels exploration": **zero results of any kind.**
 Nothing forked it, nothing claims to replace it, and no successor exists under a different name.
 Its own mandatory dependency `angelsindustries` is also 1.1-only, so even a hypothetical port would
-be blocked behind that one.
+be blocked behind that one. *Checked 2026-10-01 (#44): that list was the `version=2.0` listing
+only, which misses mods released for 2.1 alone; the same three terms against the 1,054 mods in the
+2.1 listing only return nothing.*
 
 **What is lost.** Less than the download count suggests, and the mod's own title is the reason: it
 never left ALPHA in ten years, and its last release was 2024-02-21. The enemy content it added has a

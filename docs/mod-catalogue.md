@@ -240,8 +240,10 @@ The rules are in `CLAUDE.md`. Two of them decide whether an entry is finished:
 
 **Search titles and summaries, not just names**, governs **Alternatives considered**. This is the
 expensive one, and the worked example below is what it found the first time it was properly applied.
-The full list is one call — the `version=2.0` parameter means "2.0 and later", so the 9,642 entries
-it returns include the 2.1 mods. Match against `name`, `title` *and* `summary`.
+The full list is two calls, `version=2.0` and `version=2.1`, taken as a union — `CLAUDE.md` has the
+counts. Match against `name`, `title` *and* `summary`. *Corrected 2026-10-01 (#44): this read "one
+call — the `version=2.0` parameter means "2.0 and later", so the 9,642 entries it returns include the
+2.1 mods". It does not: on 2026-10-01, 1,054 mods were in the 2.1 listing only.*
 
 A successor can be a fork, a rewrite, or a different mod covering the same ground; do not require
 the name to look related. `PickerExtended` became `kry-picker-extended`, `WaterWell` became

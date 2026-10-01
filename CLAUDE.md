@@ -187,7 +187,16 @@ The portal API is the primary source for what exists and at what version. No key
 - `https://mods.factorio.com/api/mods/<name>` — one mod, with its release list.
 - `https://mods.factorio.com/api/mods/<name>/full` — adds each release's `info_json`, which is where
   `factorio_version` and the dependency list live.
-- `https://mods.factorio.com/api/mods?page_size=max&version=2.0` — every 2.0 mod, about 9,600 entries.
+- `https://mods.factorio.com/api/mods?page_size=max&version=2.0` — 9,791 entries — and
+  `&version=2.1` — 4,334. **The full sweep is the union of both, 10,845 distinct mods**; neither
+  listing alone is complete. 1,054 mods are in the 2.1 listing only, so a sweep of the 2.0 listing
+  misses them. Counts read 2026-10-01; they move. (#44, which measured 977 missed on 2026-09-22.)
+
+**A mod is served only to the major version it declares.** `factorio_version: "2.0"` means every
+2.0 release and no other major version, with no 2.0-to-2.1 exception
+([mod structure](https://lua-api.factorio.com/2.0.77/auxiliary/mod-structure.html), 2.0.77), so a
+2.0-only mod is not served to a 2.1 game at all. A pack can therefore list a mod that resolves on
+the portal and still be uninstallable on the other line (#43).
 
 **A mod missing under one name is not a mod that does not exist.** Learned the expensive way on
 2026-09-20: `SpaceMod` has no 2.0 release, and reporting "SpaceX is dead" from that was wrong —

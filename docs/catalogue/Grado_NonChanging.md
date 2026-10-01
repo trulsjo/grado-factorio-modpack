@@ -704,8 +704,8 @@ the feature away from this pack as an accepted cost.
 
 ## Candidates, not members
 
-Every mod #41 names as a candidate addition to this pack, assessed against the pack's promise
-(`CONTEXT.md`, *Promise*): **no craftable item, entity or recipe**. Entry format:
+Every mod #41 names as a candidate addition to this pack, and the two #89 added, assessed against
+the pack's promise (`CONTEXT.md`, *Promise*): **no craftable item, entity or recipe**. Entry format:
 `docs/mod-catalogue.md`, *a candidate assessed for a pack and not in it*, whose place in the format
 #62 has still to confirm. **None of these mods is a member, and nothing here changes a dependency
 list.** Every recommendation is only that; membership is Truls's. Every reading in this section was
@@ -747,7 +747,7 @@ That leaves **19 entries**, below.
   2.1 game at all, read from `?version=2.1&namelist=<name>`. All 19 have a 2.0 release. **Five are
   not served at 2.1:** `StatsGui`, `QuickbarTemplates`, `WireShortcutX`, `Renamer` and
   `Orphan Finder`.
-- **No candidate adds a mandatory dependency the chain does not already have.** The mandatory
+- **None of the 19 adds a mandatory dependency the chain does not already have.** The mandatory
   dependencies beyond `base` are `flib` (five candidates) and `kry_stdlib` (`kry-vehicle-grids`),
   and both are already hidden members of this pack. A 2.0.77 game resolves them to `flib` `0.16.5`
   and `kry_stdlib` `2.1.2` (`docs/loads/Grado_NonChanging-2026-09-29.md`), and every candidate's
@@ -766,7 +766,9 @@ release, `factorio_version` 2.1, 2026-07-24. A 2.0.77 game installs `1.0.1` inst
 that release names five mods `1.1.0` does not: `yemtositemcount`, `beltbrush2`,
 `belt-reverser-space-age`, `Kux-BlueprintExtensions` and `packing-tape`. They are outside #41 and
 were not assessed. *#84 assessed the last two from source on 2026-10-01, under* Outside the bundle
-*in `docs/catalogue/Grado_ChangingBase.md`: both are candidates for this pack.* `kry-picker-extended` says it switches off its own copies of the first three
+*in `docs/catalogue/Grado_ChangingBase.md`: both are candidates for this pack. #89 assessed both in
+this pack's terms on 2026-10-01: their entries follow `ghost-counter`, after #41's 19, and the
+table below has a row for each.* `kry-picker-extended` says it switches off its own copies of the first three
 features when the standalone mod is present.
 
 **One question is not this survey's to answer.** Five candidates have no 2.1 release. Adding one
@@ -796,8 +798,11 @@ it as written.
 | `ore-eraser-2` | picker optional | no | `0.2.4` | yes | do not add |
 | `kry-vehicle-grids` | picker optional | **yes** | `2.2.0` | yes | do not add |
 | `ghost-counter` | loose find | no | `2.0.2` | yes | add |
+| `Kux-BlueprintExtensions` | picker `1.0.1` only (#89) | no | `3.3.16` | yes | do not add |
+| `packing-tape` | picker `1.0.1` only (#89) | no | `20.0.9` | yes | do not add |
 
-**Eleven `add`, six `do not add`, two `reconsider`.** **Two fail the promise**:
+**Of #41's 19: eleven `add`, six `do not add`, two `reconsider`. #89's two: both `do not add`,
+and both pass the promise.** **Two fail the promise**:
 `FluidMustFlow` and `kry-vehicle-grids`. **Failing this pack's promise does not decline a mod
 for `Grado_ChangingBase`.** Each entry records what that pack's assessment will need.
 #46 assessed `kry-vehicle-grids` there on 2026-10-01 (`docs/catalogue/Grado_ChangingBase.md`,
@@ -805,7 +810,7 @@ for `Grado_ChangingBase`.** Each entry records what that pack's assessment will 
 cover it. #84 assessed it for `Grado_ChangingBase` on 2026-10-01, under *Outside the bundle* in
 that file: a candidate for `Grado_ABC`, not for that pack.
 
-In the order of the sets in #41.
+In the order of the sets in #41, then #89's two.
 
 ### `CursorEnhancements`
 
@@ -1201,7 +1206,8 @@ toggle defaults to `J` in `5.1.1` and to no key in `5.2.1`. Its page still says 
 **Alternatives considered.** `Shortcuts-ick`, above, also has a train manual-mode toggle. **Shared
 keys:** no member binds `H`, `Shift+H` or `J`. `H` is also base's flip-horizontal key (see
 `blueprint_flip_and_turn`). Base keys are outside the text search, and the two apply in different
-situations.
+situations. *`J` is also the default of `packing-tape`, a candidate since #89 (2026-10-01); see its
+entry.*
 
 **Recommendation: add**, as a cosmetic member in the same class as `DiscoScience`. Every train in
 the save honks by default. That is a taste question its settings answer, not a promise one.
@@ -1223,7 +1229,8 @@ releases. Served at 2.0 and 2.1.
 
 **Alternatives considered.** No member finds vehicles; `WhereIsMyBody` does the same job for
 corpses. **Shared key:** `Shift+V` is already bound by `VehicleSnap` and `kry-picker-extended`.
-The load record lists that pair, and this would make three.
+The load record lists that pair, and this would make three. *`Kux-BlueprintExtensions`, a
+candidate since #89 (2026-10-01), binds it too; see its entry.*
 
 **Recommendation: add.** It is read-only, current and well used. It restores one of the three
 features of the dropped `PickerVehicles` (`Grado_ChangingBase`) that no member covers; `Honk` and a
@@ -1356,6 +1363,161 @@ only on the 2.1 line. No member binds it.
 **Recommendation: add.** It passes the promise, overlaps no member, is current on both lines and
 has no dependency except `base`. If `belt-visualizer` is added as well, the two need different
 keys at 2.1.
+
+### `Kux-BlueprintExtensions`
+
+| | |
+|---|---|
+| **Title** | Blueprint Extensions (Kux Edition) |
+| **Does** | Blueprint tools: flip and rotate a held blueprint, including fluid-mod buildings; clone a blueprint into a new one with a numbered label; swap its wire colours; add or remove landfill under it; snap and nudge its alignment on the number pad |
+| **Latest** | `4.3.18`, `factorio_version` **2.1**, 2026-08-14, `Kux-CoreLib >= 4.17.10`. On the 2.0 line: `3.3.16`, 2025-06-29, `Kux-CoreLib >= 3.15.0`, no `base` floor |
+| **Downloads** | 11,308 |
+| **Owner** | `kuxynator` |
+| **Status** | candidate, not a member (#89) |
+| **Read on** | 2026-10-01 |
+
+**Content: none craftable, read from source.** Read from `3.3.16`, the zip #84 fetched, whose SHA-1
+matches the portal's. `data.lua` declares `custom-input`s, `shortcut`s and sprites, and
+`prototypes/items.lua` one `selection-tool`, `Kux-BlueprintExtensions_cloned-blueprint`, with no
+recipe. Its state is its own: per-player data in `storage`, and the blueprint being cloned, which
+`modules/util.lua` parks as an item on the ground of a 1x1 surface, `surface_of_holding`. It creates
+that surface on first use and nothing in the mod deletes it. The promise allows data of the mod's
+own in the save, but a surface is more than a `storage` table. `blueprint-sandboxes`, which #7
+removed, also created surfaces. Read, not run. It has a 2.1 release.
+
+**It brings a new mandatory dependency, `Kux-CoreLib`** (105,092 downloads, same owner, in no
+pack). Its newest 2.0 release, `3.17.8` (2025-06-14), asks `base >= 2.0.55`, below this pack's
+`2.0.67`. Its newest release, `4.17.11` (2026-09-15, 2.1), asks `base >= 2.1.12`, below the
+project's 2.1 high of `2.1.20`. Beyond `base` it declares only hidden optionals:
+`factorissimo-2-notnotmelon`, `even-pickier-dollies` (a member) and `PickerDollies`. They set load
+order and pull nothing in, so the chain grows by this one library. Read from `3.17.8`: its data
+stage adds no prototype, its settings stage adds one runtime-global logging setting, and its
+`control.lua` returns on its first line. Its portal summary tells players not to update it before
+the mods that depend on it.
+
+**What it adds over this pack and the base game**, read from `3.3.16`:
+
+- **Already covered.** Flipping a held blueprint has been a base control since 1.1.0, and rotating
+  one is too, which is why #7 dropped `blueprint_flip_and_turn`. This mod binds them again, on `Shift+X`, `Shift+V`
+  and `Ctrl+Alt+R`. Swapping wire colours is `BlueprintTools`' `Shift+C`, and landfill under a
+  blueprint is its `Shift+T` *Set tiles*, whose default tile is `landfill` (`1.5.0`,
+  `scripts/player-data.lua`).
+- **Fluid-mod flipping, with nothing to act on in this pack.** It flips fluid inputs and outputs
+  correctly only for its optional fluid mods. None is a member here. `underground-pipe-pack` is a
+  member of `Grado_ChangingBase`, and `FluidMustFlow` a candidate for `Grado_ABC` (#84).
+- **Clone.** `Shift+U` with a blueprint in hand gives a selection tool. The selected area becomes a
+  new blueprint with the old label and icons, and a version suffix counted up (`v2` to `v3`) or
+  added (`actions/updater.lua`). Base 2.0.77 can already re-record a blueprint in place: its core
+  locale has *Select new contents for the blueprint* (`reassign-blueprint`). What the clone adds is
+  keeping the original and numbering the copy.
+- **Snap and nudge.** The number pad snaps the blueprint's anchor to an edge, a corner or the
+  centre, and `Ctrl` with the number pad shifts its contents one tile. Whether base 2.0 does either
+  was not checked. **Whether the keys bind on 2.0 was not checked either.** `3.3.16` spells them
+  `PAD 1` to `PAD 9`. `4.3.18` rewrote them as `KP_1` to `KP_9`, which its changelog records only
+  as "Keyboard shortcuts". The one member that binds the number pad, `even-pickier-dollies`, spells
+  it `KP_0`.
+- **Landfill removal** (`Ctrl+Shift+Alt+L`). Whether `BlueprintTools`' *Set tiles* can also clear
+  tiles was not checked.
+
+**Shared keys.** Compared as text, like #41's entries above: against the members' 2.0-line
+releases staged for the 2026-09-29 load (`.mod-cache/Grado_NonChanging`), and against the newest
+2.0 and 2.1 releases of the other 27 candidates in this section, fetched for #89 by the shared
+`fetch-mods.ps1`. **`Shift+V` is bound by two members, `VehicleSnap` and `kry-picker-extended`
+(`picker-paste-chest`), and by the candidate `car-finder`.** This mod would make three bindings in
+the pack as it stands, four with `car-finder`. Its flip acts with a blueprint in hand, `VehicleSnap`
+in a vehicle and the Picker paste with a chest under the cursor. The load record did not try
+`Shift+V` in play. This is #73's ground. None of its other keys matched. Not covered: vanilla controls,
+which a text search cannot see, and `fluid-connection-indicators` `0.2.9`, which the fetch script
+could not read. Its `0.2.7` binds no key.
+
+**Alternatives considered.** `BlueprintTools`, a member, above. No wider search: not checked.
+
+**Recommendation: do not add.** It passes the promise. What it would add is at the edge of what
+the pack has. The fluid-mod flipping has nothing to act on here. The clone is a variant of a base
+action. The number-pad keys, its main new feature, may not bind on the declared line. Against that
+it brings a mandatory library no pack has, a second blueprint mod beside `BlueprintTools`, a
+persistent surface in the save, and a third binding on `Shift+V`.
+
+### `packing-tape`
+
+| | |
+|---|---|
+| **Title** | Packing Tape |
+| **Does** | Mining a chest, logistic chest, storage tank, car, tank, spidertron, locomotive, wagon or accumulator puts it in the player's inventory as one item that keeps its contents, fluid, charge, filters and requests, and placing that item rebuilds it |
+| **Latest** | `21.0.4`, `factorio_version` **2.1**, 2026-08-14. On the 2.0 line: `20.0.9`, 2026-06-28. Both depend on `base` with no floor, with hidden optionals `quality`, `railloader` and `Transport_Drones` |
+| **Downloads** | 15,093 |
+| **Owner** | `calcwizard` |
+| **Status** | candidate, not a member (#89) |
+| **Read on** | 2026-10-01 |
+
+**Content: none craftable, read from source.** Read from `20.0.9`, the zip #84 fetched, whose
+SHA-1 matches the portal's. #84 read `21.0.4` as well. `data-updates.lua` adds, for every
+player-placeable prototype of the nine types above, a hidden `packing-tape-<item>` with no recipe:
+an `item-with-inventory` for chests and logistic chests, an `item-with-tags` for the rest. It sets
+`placeable_by` on each source entity and flags the source item `primary-place-result`, which tunes
+vanilla prototypes. `data.lua` adds one `custom-input`, `J`, and a toggle `shortcut`. There is one
+startup setting, *Allow in rockets cheat*. It has a 2.1 release, no `base` floor and no mandatory
+dependency. **It passes the promise as written.**
+
+**What it does in play**, read from `20.0.9`'s `control.lua` and migration, not run:
+
+- **It is on by default, for every player.** `on_player_created` switches the shortcut on for each
+  new player. `migrations/18.2.0-shortcuts.lua` switches it on for every player already in the save,
+  and the 2.0.77 migrations page says all of a mod's migrations run when it is added to a save.
+  `J` toggles it.
+- **While it is on, mining a chest that holds anything gives the packed item.** In vanilla the
+  contents go to the player's inventory. The same goes for a vehicle or wagon with cargo, a tank
+  with fluid and an accumulator with charge. An empty one is mined as normal. Robots pack too, when
+  the player who marked the entity for deconstruction had the shortcut on.
+- **A chest's contents go into the packed item's own inventory**, so a steel chest's 48 slots take
+  one slot of the player's, and a robot carries the lot as one item. Each packed chest weighs
+  1,000 t unless the startup setting is on, which keeps it off rockets.
+- **Vehicle and wagon cargo goes into a script inventory** (`game.create_inventory`) that only the
+  mod's `storage.items` refers to. Fluid and charge go into the item's tags.
+- **A packed chest emptied in the inventory turns back into an ordinary chest** (`on_gui_closed`,
+  changelog `20.0.4`).
+- **The README says packed chests nest**: "Because these chests are items, they can be nested
+  infinitely and as such this likely isn't balanced." Not tested. Whether the engine lets one
+  item-with-inventory hold another was not checked.
+
+**Quality of life or a rule change: a rule change, on this reading.** Vanilla already lets a player
+take a chest's contents by mining it, so what is new is not access but capacity. One inventory
+slot holds a whole chest, and the README says even that bound nests away. That changes the rule
+the inventory size sets, not the player's interface to it. The promise does not rule it out, and
+that is said here so the recommendation below is not mistaken for a promise ruling.
+
+**Removing it from a save: not measured.** No save was made with it and then loaded without it.
+What the source suggests, inferred:
+
+- **Every packed item would go.** Their prototypes exist only while this mod is loaded. That the
+  game deletes items whose prototype is gone is its general behaviour, not checked here for these
+  types. The 2.0.77 migrations page says only that references in `storage` to a removed prototype
+  become invalid.
+- **A packed chest's contents would go with it**, because they are in its own inventory. So would
+  a packed tank's fluid and an accumulator's charge, which are in its tags.
+- **Packed vehicle and wagon cargo would become unreachable.** It is in script inventories that
+  only this mod's `storage` refers to, and `storage` goes with the mod. The 2.0.77 runtime API gives
+  a script inventory a `mod_owner`. What the game does with one whose owner is removed is not
+  documented on the pages read.
+- **Unpacked entities are ordinary entities** and would not be affected. So the loss would be what
+  is packed when the mod is removed, and a player who unpacked everything first would lose nothing.
+
+**Shared key: `J`.** No member binds it, by the same text search as
+`Kux-BlueprintExtensions` above. **`Honk` `5.1.1`, the 2.0-line release of another candidate,
+defaults its `toggle-train-control` to `J`.** `5.2.1` leaves it unbound. Taking both would put two
+toggles on one key on the declared line. This is #73's ground. Vanilla controls are not covered.
+
+**Overhaul fit**, #84's reading: its `blacklist.lua` excludes every entity matching `^WideChests`,
+and other modded chests, including those of `angelsaddons-storage` and `boblogistics`
+(`Grado_ABC`), are packed generically. Not loaded.
+
+**Alternatives considered.** None searched: not checked.
+
+**Recommendation: do not add.** It passes the promise as written, but it changes how much an
+inventory holds rather than how the player handles it. It is on for every player, its own
+author calls it likely unbalanced, and removing it is inferred to delete whatever is packed at the
+time. If it is taken anyway, `Honk` `5.1.1` needs a different key for its train toggle, or this mod
+does.
 
 ### Night lighting: what replaces AfraidOfTheDark's tune (#42)
 

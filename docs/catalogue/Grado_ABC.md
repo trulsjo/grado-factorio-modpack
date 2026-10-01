@@ -1204,8 +1204,9 @@ discovered.
 it does not hold. Re-run over the union of both listings as read that day - 9,795 in `version=2.0`,
 4,344 in `version=2.1`, 10,854 in the union, 1,059 of them in the 2.1 listing alone - matching
 name, title and summary, case-insensitive, for `spidertron` (92 mods), `spider` (104) and
-`spider.*\b(tiers?|mk ?\d*|mark)\b` or the same terms before `spider` (9). Read by hand, seven
-besides this one offer spidertron tiers, and every one's latest release predates this entry's
+`spider.*\b(tiers?|mk ?\d*|mark)\b` or the same terms before `spider` (9). Read by hand over all
+the `spider` hits, seven besides this one offer spidertron tiers - six of them among the narrow
+pattern's nine, and `5dim_vehicles` from the broad pass alone - and every one's latest release predates this entry's
 2026-09-21 reading:*
 
 | Mod | Owner | Latest | `factorio_version` | Downloads | What it is |
@@ -2238,7 +2239,11 @@ than assessed here. `angels_space_age_galore` (`JTnadrooi`, `0.9.0`, 2.1, first 
 and `angels_galore`. `industrial-worlds` (`Szentigrade`, `0.0.10`, 2.1, 2026-10-01, 46 downloads)
 runs Angel's and Bob's, and Pyanodon's, as separate worlds under Space Age, with every Angel's and
 Bob's dependency optional. It requires `base >= 2.1.20`, and declares
-`! angelbob-spaceage-rebalance` and `! BobsAngelsSpaceAge`. Neither touches `Grado_ABC`.*
+`! angelbob-spaceage-rebalance` and `! BobsAngelsSpaceAge`. Neither touches `Grado_ABC`.* *Qualified
+2026-10-01 (#91): `angels_space_age_galore` does. It requires `angels_galore`, which declares `!`
+against six members of this pack (`bobores`, `bobassembly`, `bobelectronics`, `bobtech`,
+`bobrevamp`, `extendedangels`), so it cannot be installed beside it. See its entry in
+`docs/catalogue/Grado_ABCS.md`.*
 
 ## The pack cannot load on the Factorio version it declares
 

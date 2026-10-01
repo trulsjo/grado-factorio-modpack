@@ -302,7 +302,7 @@ and a narrower job - it moves ores between planets rather than merging the two p
 | | |
 |---|---|
 | **Title** | Angel's+Space Age Galore |
-| **Does** | A light overhaul, by its summary, that integrates Angel's four core mods with Space Age, built on the author's modified Angel's Special Vanilla from `angels_galore` and requiring the author's three other Galore mods. Its description says it leaves out Angel's eight extra metals and is designed without Bob's mods |
+| **Does** | A light overhaul, by its summary, that integrates Angel's four core mods with Space Age, built on the author's modified Angel's Special Vanilla from `angels_galore` and requiring three of the author's other Galore mods and the author's library. Its description says it leaves out Angel's eight extra metals and is designed without Bob's mods |
 | **Latest** | `0.9.0`, `factorio_version` **2.1**, 2026-09-30, its only release. Nothing declares 2.0, so a 2.0.77 game is not served it |
 | **Downloads** | 9 |
 | **Owner** | `JTnadrooi` |
@@ -425,8 +425,8 @@ requires `base >= 2.1.20` and `space-age >= 2.1.20`, against the `2.0.77` build 
 on 2026-09-23. On a 2.1 line, `base >= 2.1.20` equals the project high `CLAUDE.md` records for a 2.1
 target (`kry_stdlib` `2.2.21`), so it would not raise that floor.
 
-**Against the promise: the one of the four that does not merge, by its own account - but it moves
-the overhaul.** Its stated goal is to "install multiple large overhaul ecosystems without turning
+**Against the promise: one of the two of the four that do not merge, by their own accounts - but it
+moves the overhaul.** Its stated goal is to "install multiple large overhaul ecosystems without turning
 Nauvis into an uncontrolled mixture of all of them", and "the goal is not to flatten the overhaul
 packs into vanilla Space Age". That is separation, and on its face it is nearer "the planets and the
 overhaul run side by side" than the unintegrated pack, where Angel's and Bob's rewrite Nauvis
@@ -537,8 +537,9 @@ How the two new ones push on the rule, stated without resolving it:
   extras are the author's own Galore mods and library.
 - **`industrial-worlds` bends the rule less than the heavier #31 candidate and tests the promise
   more.** Two libraries come with it, so the pack would list two members and a player installs
-  three more mods than now. It is the one bridge whose job is separation rather than merging, which
-  makes it the one candidate the promise's wording does not rule out on its face. It is also 2.1
+  three more mods than now. Its job, like `BobsAngelsSpaceAge`'s, is separation rather than merging, and it
+  separates further, keeping the whole overhaul on a world of its own. #10 read any bridge as
+  failing the promise; this one tests that reading hardest. It is also 2.1
   only, `0.0.x`, and has 46 downloads.
 
 So the options #31 holds are four bridges or none, and one of the four is out on the metadata

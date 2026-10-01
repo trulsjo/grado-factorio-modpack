@@ -728,7 +728,8 @@ an entry in this catalogue, and one because #42 is assessing it.
 - **`adjustable_flashlight`** is a night-lighting candidate, so #42 assesses it. See *Night
   lighting: what replaces AfraidOfTheDark's tune (#42)*.
 
-That leaves **19 entries**, below.
+That leaves **19 entries**, below. *#89 added two more on 2026-10-01, `Kux-BlueprintExtensions` and
+`packing-tape`, so the section holds 21.*
 
 **How each one was read:**
 
@@ -1252,7 +1253,11 @@ train manual-mode toggle are the other two. Note the
 **Content: none craftable, read from source.** It declares a `custom-input` and an `orphan-arrow`,
 a copy of the vanilla `arrow` prototype used as a marker. An `arrow` is an entity type, but this
 one has no item or recipe and is placed only by the script. **It is not served at 2.1.** The name
-has a space in it, which is also how `info.json` has to spell it.
+has a space in it, which is also how `info.json` has to spell it. *2026-10-01 (#83, named here by
+#90): the function is served at 2.1 under two other names, both 2.1 only. `orphan-finder-v21`
+(`ElderAxe`, `1.4.0`, 2026-07-01) is a fork of this mod; `OrphanPin` (`Hellrespawn`, `1.0.2`,
+2026-07-14) drops map pins on the orphans instead. Read in `docs/catalogue/Grado_ChangingBase.md`'s
+entry for this mod. Which, if either, follows it to the 2.1 release is #86's.*
 
 **Alternatives considered.** `PipeVisualizer-Updated`, a member, shows undergrounds but does not
 flag unpaired ones, and does nothing for belts. `fluid-connection-indicators`, above, is a different
@@ -1421,7 +1426,7 @@ the mods that depend on it.
 
 **Shared keys.** Compared as text, like #41's entries above: against the members' 2.0-line
 releases staged for the 2026-09-29 load (`.mod-cache/Grado_NonChanging`), and against the newest
-2.0 and 2.1 releases of the other 27 candidates in this section, fetched for #89 by the shared
+2.0 and 2.1 releases of #41's 19 and #42's 8 night-lighting candidates, and against `packing-tape`, fetched for #89 by the shared
 `fetch-mods.ps1`. **`Shift+V` is bound by two members, `VehicleSnap` and `kry-picker-extended`
 (`picker-paste-chest`), and by the candidate `car-finder`.** This mod would make three bindings in
 the pack as it stands, four with `car-finder`. Its flip acts with a blueprint in hand, `VehicleSnap`

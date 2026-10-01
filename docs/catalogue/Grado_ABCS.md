@@ -32,7 +32,7 @@ Three findings:
   hidden members were not re-read.*
 - **This is where the one-mod-per-branch rule is under real pressure.** Adding `space-age` enables
   the expansion beside Angel's and Bob's; it does not make them work together. The two mods on 2.x
-  that attempt that job would each be a second addition, and one of them brings eight more mods with
+  that attempt that job (four, counting two in the 2.1 listing alone; #83, 2026-10-01) would each be a second addition, and one of them brings eight more mods with
   it. See *Pressure on the one-mod-per-branch rule*. *Eight it names, eighteen once theirs are
   counted: resolved 2026-09-24 (#31), under* Candidates, not members.
 
@@ -303,7 +303,12 @@ designed to sit on Nauvis.
 
 **Two mods on 2.x attempt the bridge, and they are mutually exclusive.** Both were read 2026-09-22;
 `angelbob-spaceage-rebalance` was re-read at `1.2.17` on 2026-09-23 with its mandatory list
-unchanged.
+unchanged. *Checked 2026-10-01 (#44, #83): that reading used the `version=2.0` listing only. Over
+the union of both listings, two more attempts are in the 2.1 listing alone, and neither has been
+assessed: `angels_space_age_galore` (`JTnadrooi`, `0.9.0`, 2.1, first released 2026-09-30, 9
+downloads) and `industrial-worlds` (`Szentigrade`, `0.0.10`, 2.1, 2026-10-01, 46 downloads), which
+declares `! angelbob-spaceage-rebalance` and `! BobsAngelsSpaceAge`. So "two" is four at 2.1. Both
+are #31's; see the #83 note under the AngelBob finding in* `docs/catalogue/Grado_ABC.md`.
 
 | | `angelbob-spaceage-rebalance` | `BobsAngelsSpaceAge` |
 |---|---|---|

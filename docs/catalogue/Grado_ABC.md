@@ -14,10 +14,12 @@ marked *Superseded 2026-09-23 by #15*, which #15 took, and the notes dated 2026-
 (#58) and (#61), which those two took. The **Read on** row is authoritative where it disagrees
 with this sentence. *Candidates, not members* was read on 2026-09-30 (#50). The notes dated
 2026-10-01 (#39), (#44)
-and (#80) were taken by those three. Searches described below as over "the 2.x list" ran over the
-`version=2.0` listing
-only, which misses mods released for 2.1 alone (#44, 2026-10-01); only those carrying a
-*Checked 2026-10-01 (#44)* note were re-run over the union of both listings.
+and (#80) were taken by those three. Searches described below as over "the 2.x list" first ran over
+the `version=2.0` listing only, which misses mods released for 2.1 alone (#44). **Every one has since
+been re-run over the union of both listings** and carries a *Checked 2026-10-01* note: four by #44,
+against a union of 10,845, and the rest by #83, against the listings as read later that day - 9,794
+in `version=2.0`, 4,341 in `version=2.1`, 10,850 in the union, 1,056 of them in the 2.1 listing
+alone. A new hit is named in its entry; none changes a ruling here.
 
 The dependency list holds 46 entries: `base >= 2.0.0`, `Grado_ChangingBase` — a pack, catalogued in
 `docs/catalogue/Grado_ChangingBase.md` — and **44 mods**. It read 47 and 45 until 2026-09-22, when
@@ -400,7 +402,11 @@ from the other direction: remelting plates back to molten metal, and a four-tier
 feature almost word for word. It also declares optional support for `bobplates` and
 `Clowns-Processing`, both of which are here. It is not obviously better — 1,206 downloads against
 18,573, and no compression or Ironworks — but it is a genuine alternative and the first one recorded
-for this pack.
+for this pack. *Checked 2026-10-01 (#44, #83): the terms were not recorded beyond "the AngelBob
+ecosystem". Re-run over the union by name, title and summary for "angel", "alloy" and "remelt":
+thirteen hits are in the 2.1 listing alone, and none is an alternative. The nearest,
+`angelsqualitysmelting` (`usafphoenix`, 2.1, 2026-09-10, 8 downloads), adds quality-chaining
+recipes to Angel's smelting, not alloy mixing, compression or casting.*
 
 **This is the entry to distrust in this survey, and the reason is its release history.** Its 2.x
 release is a single one: `2.0.01` on 2026-08-22, the first release of any kind since `1.0.14` on
@@ -1335,7 +1341,11 @@ end in science without ending in an assembler — has no successor on 2.x.
 
 Nothing else came close. The 2.x science field is large but is almost entirely Space-Age-facing,
 vanilla-rebalance or cosmetic; `SeaBlockContinued-SCT` is the only other AngelBob-adjacent entry and
-is a SeaBlock-specific science tweak.
+is a SeaBlock-specific science tweak. *Checked 2026-10-01 (#44, #83): the same four terms over the
+union of both listings. "science pack" adds 22 mods from the 2.1 listing alone and the other three
+add none. None generates science from fluids or power, and none reworks science for Angel's or
+Bob's: they are quality-science tweaks, single new packs, planet and recipe reworks for Space Age,
+research tools and cosmetics.*
 
 **Recommendation: reconsider:** whether `ScienceCostTweakerM` is wanted in `Grado_ABC` as a partial
 replacement. Three things make this a real question rather than a formality. It is a *different* mod
@@ -1449,7 +1459,11 @@ family is one question*.
 **Alternatives considered.** Searched the 2.x list by name and by the feature — higher machine
 tiers on top of Bob's. Nothing found that extends Bob's tiers specifically. `bobassembly` already
 provides assemblers 4, 5 and 6 and matching tiers of the other crafting machines, which is the
-ladder this mod extended rather than created.
+ladder this mod extended rather than created. *Checked 2026-10-01 (#44, #83): the feature terms were
+not recorded. Re-run over the union for the name and for "bob's", "bobs" and "tier": the name returns
+nothing, and no hit in the 2.1 listing alone adds machine tiers on top of Bob's. The Bob's-specific
+hits among them are a compatibility patch (`bobpower-neighbor-fix`), a pollution rebalance
+(`bobangel-pollution`) and a modpack (`5dim_modpack`).*
 
 **Recommendation: stay dropped.** The smallest loss of the ten drops. It added a tier on top of a
 ladder the pack still has in full, at 1,583 downloads, last released 2022-06-21 — before Factorio
@@ -1473,6 +1487,9 @@ ladder is simply Bob's top rather than one step past it.
 **Alternatives considered.** One candidate, and it is not available today. No 2.x mod was found
 offering a fusion chain that integrates with Angel's or Bob's, searching the 2.x list by name and
 by "fusion" in title and summary; the only thing in view is the sibling project below.
+*Checked 2026-10-01 (#44, #83): the name and "fusion" over the union of both listings. The name adds
+nothing; "fusion" adds 12 mods from the 2.1 listing alone, and none describes an Angel's or Bob's
+integration - they are fusion equipment, locomotives, Space Exploration ports and reactor tweaks.*
 
 **The author said so himself.** The mod's portal summary ends "Unmaintained since 2024-10-25",
 which is also the date of its last release. This is the only one
@@ -1532,7 +1549,10 @@ port's entry under *In the pack*.
 **Alternatives considered.** Searched by name and by feature. Nothing on 2.x offers this turret
 set. `bobwarfare`, which is in the pack, supplies turret tiers including laser and plasma, so the
 pack is not left without turret progression — what it lacks is this mod's specifically
-non-tiered design.
+non-tiered design. *Checked 2026-10-01 (#44, #83): the terms were not recorded beyond the name and
+the feature. Re-run over the union for "baron" and "turret": "baron" returns nothing, and "turret"
+adds 29 mods from the 2.1 listing alone - single turrets, ammunition tweaks and integration ports.
+None is a turret set.*
 
 **It is blocked twice over.** Its mandatory dependency `baron-library` also has no 2.x release, last
 shipped `1.1.26` on 2023-12-18. So even a port of the turrets would need the library ported first,
@@ -1836,6 +1856,7 @@ pattern; see *The Deadlock stacking family is one question*.) The portal says so
 | `MadClown01` | 4 mods — `Clowns-Nuclear`, `Clowns-Processing`, `Clowns-Extended-Minerals`, `Clowns-AngelBob-Nuclear` — all released 2026-07-26 | `Clowns-Science` |
 
 Read against the whole 2.x list, `Arch666Angel` has sixteen live mods and `MadClown01` has four.
+*Checked 2026-10-01 (#44, #83) against the union of both listings: still sixteen and four.*
 Neither author has gone quiet, which is the failure mode `docs/mod-catalogue.md` records the
 **Owner** field to catch, and it is the opposite of what happened to the Picker family. These three
 are the mods their authors chose not to bring forward — the two Angel's ones are the beta and the
@@ -2007,6 +2028,14 @@ recipes come from one heuristic mod at 391 downloads instead of two maintained p
 displaced in substance even if left in the list. It also declares `boblogistics` mandatory, so it
 could never sit in a pack below `Grado_ABC`.
 
+*Checked 2026-10-01 (#44, #83): the terms were not recorded. Re-run over the union for "deadlock",
+"beltbox", "stacking" and "crating". Two Deadlock mods are in the 2.1 listing alone:
+`deadlock-beltboxes-loaders-continued` (`goakiller900`, `7.0.9`, 2.1, 2026-09-29, 429 downloads), a
+community continuation of `deadlock-beltboxes-loaders` for 2.1, and
+`DeadlocksStackingForPyanadon-continued`, the Pyanodon bridge. Neither is an Angel's or Clowns
+bridge, so the half coverage #9 ruled on is unchanged. The continuation matters only if the family
+is reopened, which would be an addition and #49's.*
+
 **Three options, and none is this survey's to choose.**
 
 1. **Leave it.** Stacking covers vanilla and Bob's; Angel's and Clowns go uncompressed. Costs
@@ -2173,6 +2202,15 @@ adopting it means adopting a set of community planet mods with it. It declares
 it changes anything in `Grado_ABC`. *Confirmed 2026-09-24 (#31) by resolve: with either candidate
 added to `Grado_ABCS`, no pick in this pack's closure moves and no constraint is violated. Both
 entries are in* `docs/catalogue/Grado_ABCS.md`*, under* Candidates, not members.
+
+*Checked 2026-10-01 (#44, #83): the terms were not recorded. Re-run over the union for "angelbob",
+"angel's", "angels" and "angel/bob". Two hits in the 2.1 listing alone bear on #31, and are named for it rather
+than assessed here. `angels_space_age_galore` (`JTnadrooi`, `0.9.0`, 2.1, first released 2026-09-30,
+9 downloads) integrates the four Angel's core mods with Space Age and requires `space_age_galore`
+and `angels_galore`. `industrial-worlds` (`Szentigrade`, `0.0.10`, 2.1, 2026-10-01, 46 downloads)
+runs Angel's and Bob's, and Pyanodon's, as separate worlds under Space Age, with every Angel's and
+Bob's dependency optional. It requires `base >= 2.1.20`, and declares
+`! angelbob-spaceage-rebalance` and `! BobsAngelsSpaceAge`. Neither touches `Grado_ABC`.*
 
 ## The pack cannot load on the Factorio version it declares
 

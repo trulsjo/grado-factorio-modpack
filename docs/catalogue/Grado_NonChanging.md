@@ -433,7 +433,7 @@ survey read: 543,689 against `even-distribution`'s 525,156 in the table above (2
 | **Owner** | `ixu` |
 | **Read on** | 2026-09-20 |
 
-**Alternatives considered.** **Searched, nothing better found.** At 657 downloads this is by a wide margin the least used mod in the pack — the next lowest has over five times as many. That is a bus-factor observation, not a quality one. *Checked 2026-09-24 (#25): holds.* The next lowest of the 26 is `kry-picker-extended`, 4,127 against 657 on 2026-09-20 and 4,177 against 658 on 2026-09-24 - 6.3 times on both.
+**Alternatives considered.** **Searched, nothing better found.** *Checked 2026-10-01 (#44, #83): the terms were not recorded. "autosave" and "auto save" over the union of both listings return no mod in the 2.1 listing alone.* At 657 downloads this is by a wide margin the least used mod in the pack — the next lowest has over five times as many. That is a bus-factor observation, not a quality one. *Checked 2026-09-24 (#25): holds.* The next lowest of the 26 is `kry-picker-extended`, 4,127 against 657 on 2026-09-20 and 4,177 against 658 on 2026-09-24 - 6.3 times on both.
 
 **Recommendation: keep**, and know what it is: current on 2.1, but a one-author mod with almost no users. If it goes quiet, base-game autosave settings cover most of what it does.
 
@@ -538,7 +538,7 @@ Four mods, and they are one question, not four. See *The Picker family* below.
 
 **Ruled 2026-09-22 (#7): stay dropped, and the gap does not exist.** The question was never resolved as "is the feature wanted" because it did not need to be: base 2.0 does it. A suggestion asking for exactly it - *"provide a blueprint to a request chest and it automatically request all items in the blueprint"*, 2024-12-13 - was answered the same day by a moderator with *"just drop a blueprint on the 'add section' button"* and moved to Implemented Suggestions; the player-side equivalent is marked *"Implemented in 2.0"*. The wiki confirms requests travel in a blueprint: *"If an entity which uses a logistics group is captured in a blueprint, all of the requests in that group will be stored in the blueprint."*
 
-**A sweep of all 2.x mods by title and summary found nothing reproducing the chest-slot form**, because nothing needs to - `BlueprintRequester`'s own summary reads *"THIS IS A VANILLA MECHANIC! hold the blueprint in hand while clicking 'Add section'"*, and `folk-janitor`'s author heads a section "LOL" conceding the same. Read 2026-09-22.
+**A sweep of all 2.x mods by title and summary found nothing reproducing the chest-slot form**, because nothing needs to - `BlueprintRequester`'s own summary reads *"THIS IS A VANILLA MECHANIC! hold the blueprint in hand while clicking 'Add section'"*, and `folk-janitor`'s author heads a section "LOL" conceding the same. Read 2026-09-22. *Checked 2026-10-01 (#44, #83): the terms were not recorded. "requester", "request chest" and "blueprint request" over the union add six mods from the 2.1 listing alone, and none fills a requester from a blueprint. The nearest, `craft-anything`, generates a blueprint that includes a requester chest.*
 
 **What was not checked, named so absence is not read as evidence.** There is no base 2.0.x *changelog* line for this; it rests on the moderator's Implemented ruling plus the wiki. Two residual gaps in the base mechanic are filled by nothing found: blueprint *books* are unsupported, and item-requests nested inside blueprinted entities (turret ammo) can be missed. Neither is what `PickerInventoryTools` did. Separately, a named logistic group that already exists in the world is not overwritten on paste - the entity adopts the existing one.
 
@@ -801,7 +801,8 @@ it as written.
 for `Grado_ChangingBase`.** Each entry records what that pack's assessment will need.
 #46 assessed `kry-vehicle-grids` there on 2026-10-01 (`docs/catalogue/Grado_ChangingBase.md`,
 *Candidates, not members*). `FluidMustFlow` is not a `kry-picker-complete` member, so #46 does not
-cover it; it waits for a `Grado_ChangingBase` candidate-additions ticket, not yet filed.
+cover it. #84 assessed it for `Grado_ChangingBase` on 2026-10-01, under *Outside the bundle* in
+that file: a candidate for `Grado_ABC`, not for that pack.
 
 In the order of the sets in #41.
 
@@ -948,13 +949,15 @@ ten items and ten recipes, and `prototypes/technologies.lua` adds a `ducts` tech
 chemical science that unlocks them. Both releases do this. Served at 2.0 and 2.1.
 
 **For a `Grado_ChangingBase` assessment** - not #46's, which covers `kry-picker-complete`'s
-members only; that ticket is not yet filed. Two findings, both from source:
+members only; #84 took it up on 2026-10-01, in `docs/catalogue/Grado_ChangingBase.md`. Two
+findings, both from source:
 
 - **It integrates with Bob's, but only when three Bob's mods are present.** When `bobelectronics`,
   `bobplates` and `boblogistics` are all loaded, `prototypes/compatibility/bobs-mods.lua` rewrites
   every duct recipe to use `bob-silicon-nitride`, `bob-titanium-plate` and `bob-pump-2`. All three
   mods are `Grado_ABC` members. Whether those three item names still exist in the 2.x Bob's
-  releases was not checked. There is no Angel's handling.
+  releases was not checked. *Checked 2026-10-01 (#84): all three exist in the `2.1.1` releases a
+  2.0.77 game installs.* There is no Angel's handling.
 - **It claims ground an overhaul already holds.** `boblogistics` (`3.0.2`, 2.1, 2026-09-27)
   describes itself as adding *"many new pipes made from many different materials, spanning 5
   tiers"* and storage tank tiers 2 to 4. Six of the ten duct entities are storage tanks by prototype type. A large

@@ -9,10 +9,14 @@ Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below w
 **2026-09-21**, except those carrying a **Read on** of **2026-09-22**, which #8 took — the three
 entries it added and the readings inside its rulings — and the notes marked *Superseded 2026-09-23
 by #15*, which #15 took, and the notes dated 2026-09-24 (#43) and (#58), which those two took.
-*Candidates, not members* was read on 2026-10-01 (#46). Searches described below as over "the 2.x
-list" ran over the `version=2.0` listing
-only, which misses mods released for 2.1 alone (#44, 2026-10-01); only those carrying a
-*Checked 2026-10-01 (#44)* note were re-run over the union of both listings.
+*Candidates, not members* was read on 2026-10-01 (#46, #84). Searches described below as over "the
+2.x list" first ran over the `version=2.0` listing only, which misses mods released for 2.1 alone
+(#44), and the two over "the 2.1 list" miss mods released for 2.0 alone. **Every one has since been
+re-run over the union of both listings** by #83 and carries a *Checked 2026-10-01 (#44, #83)* note
+(#44 found the gap; #83 ran every re-run in this file),
+against the listings as read that day - 9,794 in `version=2.0`, 4,341 in `version=2.1`, 10,850 in
+the union, 1,056 of them in the 2.1 listing alone. A new hit that could change a recommendation is
+named in its entry and left to #86.
 Each is reproduced
 from the fetched data rather than retyped; the **Read on** row is authoritative where it disagrees
 with this sentence.
@@ -61,7 +65,8 @@ ruling inline. **25 members to 20.**
 1. **Swaps in, additions out.** Replacing a member with a successor is porting; adding a mod the 1.1
    pack never had is a new feature nobody asked for. Same rule #7 applied one layer down. It is what
    declines `kry-picker-complete` here, and it defers every candidate addition to a ticket still to
-   be filed for this pack, the counterpart of #41.
+   be filed for this pack, the counterpart of #41. *Filed as #84, which assessed three candidates on
+   2026-10-01; see* Outside the bundle *under* Candidates, not members.
 2. **The promise is the membership test, and it had never been run on this pack.** #7 wrote
    `Grado_ChangingBase`'s promise on 2026-09-22 — *may add content, but not content that competes
    with an overhaul for the same ground* — one day after this survey was read, and said in as many
@@ -189,6 +194,19 @@ returns `early_construction`, `spiderbots`, `disposable-construction-robots` and
 replace the mechanic rather than continue it. This mod is the direct 2.0 continuation and says so:
 "Fixed and reuploaded for 2.0. Thank you Nexela."
 
+*Checked 2026-10-01 (#44, #83): the terms were not recorded beyond "early-construction". Re-run over
+the union for "early construction", "nanobot" and "construction robot". **One new hit could change
+this entry: [`Nanobots2-continued`](https://mods.factorio.com/mod/Nanobots2-continued)**, *Nanobots:
+Early Bots Continued* by `goakiller900` - `3.4.4`, `factorio_version` 2.1 and no other line,
+2026-08-28, 305 downloads, a "community-maintained continuation for Factorio 2.1". It declares
+`! Nanobots2` and needs `kry_stdlib >= 2.2.4`, already a hidden member of `Grado_NonChanging`, in
+place of `stdlib2`. It is not served on the declared 2.0 line, and this mod is not served at 2.1,
+so it is a successor for the 2.1 release rather than this one, and "the only successor that
+preserves the mechanic" below is true on 2.0 only. Whether to swap is #86's. The other new hits are
+`early_construction_unofficial_2_1`, a 2.1 build of `early_construction`; `Construction_Drones`
+(`Klonan`), ground-based personal construction robots, which replaces the mechanic rather than
+continuing it; robot tiers, quality upgrades and a ghost reader; and starting-kit mods.*
+
 **Recommendation: keep.** Another `Nexela` mod rescued by someone else, the same pattern the Picker
 family shows — see *The raiguard pattern* in `docs/catalogue/Grado_NonChanging.md` for the other
 half of the authorship story. Last touched 2025-03-12, which is quiet rather than abandoned, and it
@@ -240,7 +258,14 @@ a fork restricting placement to tiles beside existing water; and `Waterbomb`, wh
 water by explosion rather than by placement. This one is the largest by more than threefold over the
 next, `RitnWaterfill`, and **not** the most recently released — `RitnWaterfill` shipped `1.6.0` one
 day later, on 2026-09-12. What it does lead on is reach: it declares `base >= 2.1.0` and
-`? space-age >= 2.1.0` and pulls no library, where `RitnWaterfill` needs `RitnLib`.
+`? space-age >= 2.1.0` and pulls no library, where `RitnWaterfill` needs `RitnLib`. *Checked
+2026-10-01 (#44, #83): the 2.1 list misses mods released for 2.0 alone, which a 2.0.77 game is
+served. Re-run over the union for "waterfill", "water fill" and "landfill": four more place water,
+all in the 2.0 listing alone - `safefill` (36,408 downloads, the mod #8 replaced with this one),
+`Noxys_Waterfill` (`0.5.0`, 2024-11-03, 30,850), `CanalBuilderMAV` (26,574), which digs shallow
+canals, and `chens-waterfill-mod` (210). `Wetlandfill` and `Yumako_and_Jellynut_swampfill`, also
+2.0 only, place Gleba wetland tiles rather than water. None changes the comparison: this mod still leads on
+downloads, at 303,648, and on reach.*
 
 **Recommendation: keep.** Added by #8 on 2026-09-22, replacing `safefill`, which declares `factorio_version: 2.0` and is
 therefore not served to a 2.1 game at all — see *The pack cannot load on the Factorio version it
@@ -453,7 +478,15 @@ in Factorio.
 
 **Alternatives considered.** No other 2.x mod offers one-tile full-throughput loaders as its whole
 job, searching name, title and summary. `berbcorp-loaders` and `quantum-belts` bundle loaders with
-their own belt tiers rather than serving the game's.
+their own belt tiers rather than serving the game's. *Checked 2026-10-01 (#44, #83): the terms were
+not recorded. Re-run over the union for "loader": two 1×1 loader mods whose whole job is loaders are
+in the 2.1 listing alone, so "no other" is false at 2.1. Two more there bundle loaders with
+something else or extend another loader mod: `deadlock-beltboxes-loaders-continued` and
+`aai-loaders-stacking-filtering-paules`. `wuastbude-miniloader` (`wuast94`, 2.1, 2026-09-28, 52 downloads) is
+a fork of this mod and declares `! miniloader-redux`; `advanced-industrial-loaders` (`CoDavis3`,
+2.1, 2026-09-06, 33 downloads) adds powered, circuit-controlled loaders. Neither is served on the
+declared 2.0 line, and this mod is current on 2.1 itself (`2.2.3`, 2026-09-16), so neither changes
+the recommendation.*
 
 #### Against `deadlock-beltboxes-loaders`
 
@@ -598,7 +631,10 @@ whole 2.1 list by name, title and summary returns **one** other candidate, and i
 `Exteros-QoL-System` (`Exteros`, `0.4.2`, 2.1, 2026-09-12, 3,923 downloads), a bundle whose summary
 offers "Even Distribution, Squeak Through, Auto Deconstruct & more" as one mod. It is declined as an
 addition under this ticket's first rule, which is a different statement from nothing existing. It declares no `base` floor,
-so it adds nothing to the pack's.
+so it adds nothing to the pack's. *Checked 2026-10-01 (#44, #83): the 2.1 list misses mods released
+for 2.0 alone. "squeak" over the union adds three from the 2.0 listing alone, none a rival: `jump`
+(1,084 downloads) offers a jump button as an "alternative to squeak through", `go-around` is "the
+opposite of Squeak Through", and `silent-belts-5` mutes belt sounds.*
 
 The `kry-picker-complete` note above is now moot: #8 declined that bundle for this pack, as #7 did
 for `Grado_NonChanging`.
@@ -716,6 +752,10 @@ closer to an addition than a replacement.
 **The pipe clamps are recorded as a genuine loss**, the only one in this pack's drops with no
 successor found. That is a search result, not a proof: name, title and summary across the 2.x list,
 which is what turned up `kry-picker-complete` where a name-only search had missed it.
+*Checked 2026-10-01 (#44, #83): the terms were not recorded. Re-run over the union for "clamp" and
+"pipe": "clamp" returns three unrelated mods, none in the 2.1 listing alone, and no new "pipe" hit
+clamps pipes. Two new hits do bear on the orphan finder above: `orphan-finder-v21` and `OrphanPin`
+are 2.1 successors of `Orphan Finder`; see that mod's entry under* Candidates, not members.
 
 ### `PickerTweaks`
 
@@ -840,7 +880,9 @@ and neither is a fork:
   on water." The other half, by the author of this pack's `squeak-through-2`.
 
 What neither provides is the bridge *look*, which is what the mod's own title leads with. Searching
-the 2.x list for rails over water returns nothing that draws a bridge.
+the 2.x list for rails over water returns nothing that draws a bridge. *Checked 2026-10-01 (#44,
+#83): the terms were not recorded. Re-run over the union for "bridge": five hits in the 2.1 listing
+alone, none a rail bridge - chat and agent bridges, and compatibility bridges between mods.*
 
 **Recommendation: stay dropped**, and record why the successors were not taken rather than leaving
 the line blank. The two mods above are a functional replacement, not an equivalent: the original was
@@ -882,7 +924,9 @@ and, for the reading half:
 That is this mod's two headline features, in the base game, with a version stamp on the second.
 Searching the 2.x list by title and summary returns `recipe_combinator` and `Recipe_Combinator_2_0`,
 which look out recipe data as a lookup rather than driving a machine, and `lo-recipe-combinator`,
-which is a 1×1 assembler used as one. None is a continuation, and none needs to be.
+which is a 1×1 assembler used as one. None is a continuation, and none needs to be. *Checked
+2026-10-01 (#44, #83): the terms were not recorded. "recipe combinator" and "crafting combinator"
+over the union return no hit in the 2.1 listing alone.*
 
 **Recommendation: stay dropped.** The only one of the six absorbed by the game itself rather than by
 another mod. Worth remembering as a pattern: the 1.1→2.0 break moved features into the base game as
@@ -968,7 +1012,8 @@ not enough, adding the mod later is a save-safe minor and `fcore` will have a tr
 `miniloader-redux`. More current, but not the same mod: it emits *delivery* signals — what trains
 are carrying where — while this one reports *network contents*, what the providers and requesters
 hold. Not a replacement. Searching the 2.x list by title and summary for "LTN" returns no other
-content reader.
+content reader. *Checked 2026-10-01 (#44, #83): "LTN" and "content reader" over the union return no
+hit in the 2.1 listing alone.*
 
 **The mod that would fix this one is on the other side of issue #23.**
 **[`Cybersyn-Content-Reader`](https://mods.factorio.com/mod/Cybersyn-Content-Reader) by `danbopes`**
@@ -992,7 +1037,9 @@ the one axis on which Cybersyn beat LTN outright — CS2 is the branch that does
 survey called this the pack's weakest member on every axis at once and it was also unreachable
 (`factorio_version` **2.0** against a 2.1 floor), so nothing here argued for keeping it; but it
 leaves as a loss, not as a tidy-up: `Cybersyn-Content-Reader` is CS1's, and a name, title and
-summary sweep of the 2.x list returns no CS2 equivalent.
+summary sweep of the 2.x list returns no CS2 equivalent. *Checked 2026-10-01 (#44, #83): the terms
+were not recorded. "cybersyn" and "content reader" over the union return no hit in the 2.1 listing
+alone.*
 
 ### `LogisticTrainNetwork`
 
@@ -1009,7 +1056,11 @@ summary sweep of the 2.x list returns no CS2 equivalent.
 **Alternatives considered.** The other three LTN mods in this pack exist only to serve it, so
 replacing it means replacing four members at once. The 2.x list carries several successors of the
 genre — `yet_another_train_manager`, `RailLogisticsDispatcher`, `precise-train-logistics`, and
-**Project Cybersyn**, which is the serious one.
+**Project Cybersyn**, which is the serious one. *Checked 2026-10-01 (#44, #83): the terms were not
+recorded. "train manager", "logistic train", "train dispatch" and "dispatcher" over the union add
+two from the 2.1 listing alone: `yatm-fork-unofficial`, a temporary 2.1 fork of
+`yet_another_train_manager`, and `UTLogistics` (`Marcel171297`, `0.0.10`, 2.1, first released
+2026-09-19, 63 downloads). #23 is closed and `cybersyn2` is the member, so neither reopens it.*
 
 **That comparison is now open as issue #23**, raised on 2026-09-21, and the evidence lives there
 rather than being summarised twice. The short of it: the two cores are equally maintained, 19
@@ -1329,7 +1380,8 @@ optional.
 set. #41 found it fails `Grado_NonChanging`'s promise, and its entry there carries the evidence a
 `Grado_ChangingBase` assessment would start from: duct recipes rewritten to Bob's items, and ducts
 on `boblogistics`' pipe and storage-tank ground. It belongs to the candidate-additions ticket #8
-said this pack needs. That ticket is the counterpart of #41, and it is not yet filed.
+said this pack needs. That ticket is #84, the counterpart of #41, and its entry is under *Outside
+the bundle* below.
 
 ### The five `1.0.1` named and `1.1.0` dropped
 
@@ -1348,7 +1400,8 @@ say, read 2026-10-01:
 The first three are the bundle's author handing features to their own `kry-picker-extended`, which
 explains why `1.1.0` dropped them. The last two would need a full assessment before any
 recommendation. Neither was ever in a 1.1 pack, so they belong to the candidate-additions tickets
-(#41 for `Grado_NonChanging`, and the unfiled one for this pack), not to #46.
+(#41 for `Grado_NonChanging`, and #84 for this pack), not to #46. #84 assessed both from source on
+2026-10-01; see *Outside the bundle* below.
 
 ### `AutoDeconstruct`
 
@@ -1443,7 +1496,12 @@ it aside on 2026-09-22 as **unreachable "at this pack's floor"**, which was then
 **That reason has gone.** #16 made the declared line 2.0. A 2.0.77 game installs `1.2.2`, which
 declares no `base` floor at all, so this pack's `2.0.74` accepts it. It is still **not served at
 2.1** (`?version=2.1&namelist=Orphan%20Finder` returns nothing), so it would go on the 2.1 watch
-list.
+list. *2026-10-01 (#83): the name query is true, but the function is served at 2.1 under two other
+names, found by #83's union re-run. `orphan-finder-v21` (`ElderAxe`, `1.4.0`, 2.1 only,
+2026-07-01, 200 downloads, `base >= 2.1`) describes itself as a "Factorio 2.1 fork for Orphan
+Finder"; `OrphanPin` (`Hellrespawn`, `1.0.2`, 2.1 only, 2026-07-14, 36 downloads,
+`base >= 2.1.10`) drops map pins on the orphans instead, on the same `Shift+O`. Neither was read
+from source. Which, if either, follows this mod to the 2.1 release is #86's.*
 
 **Evidence.** #41's, from source: a `custom-input` and a script-placed copy of the vanilla `arrow`
 marker. It has no item and no recipe, so **it adds no content** and passes both promises. Its page
@@ -1583,6 +1641,185 @@ content, and this pack's promise on ground, because three of the four packs that
 are the overhaul packs it competes in. What it would give this pack's own players, grids for
 vanilla vehicles, is not enough to set against that. The load-order and category reading above is
 from source; a load of `Grado_ABC` with it added (#27) would turn it into a measurement.
+
+### Outside the bundle: the three #84 assessed
+
+#41 and #46 routed three mods here that no ticket owned: `FluidMustFlow`, which failed
+`Grado_NonChanging`'s promise, and `Kux-BlueprintExtensions` and `packing-tape`, which only
+`kry-picker-complete` `1.0.1` names. #84 assessed them on 2026-10-01 under the same placement
+reading as #46: a mod that passes `Grado_NonChanging`'s promise is a candidate there, not here.
+**Each was read from source**: the newest release on each line, downloaded with SHA-1 checked by the
+shared `fetch-mods.ps1`. Member source was read from the `Grado_ABC` closure staged in
+`.mod-cache/`, which holds the 2.0-line releases. Nothing was loaded. Reachability is read against
+this pack's declared line, `2.0` with `base >= 2.0.74`, and whether the mod is served at 2.1.
+
+| mod | candidate for | in one line |
+|---|---|---|
+| `FluidMustFlow` | **`Grado_ABC`** | content that fails this pack's promise on Bob's fluid ground, but extends Bob's rather than conflicting with it |
+| `Kux-BlueprintExtensions` | **`Grado_NonChanging`** | no craftable content; overlaps `BlueprintTools` and the base game, and brings `Kux-CoreLib` |
+| `packing-tape` | **`Grado_NonChanging`** | passes that pack's promise as written; whether it is quality of life or a rule change is the question |
+
+**No mod here is a candidate for this pack.**
+
+### `FluidMustFlow`
+
+| | |
+|---|---|
+| **Title** | Fluid Must Flow |
+| **Does** | Adds ducts: very large pipes for moving large volumes of fluid over long distances, with curves, T-junctions, crosses, undergrounds, a non-return duct, intakes and exhausts |
+| **Latest** | `1.5.0`, `factorio_version` **2.1**, 2026-06-25, `base >= 2.1`. On the 2.0 line: `1.4.4`, 2025-09-22, `base >= 2.0` |
+| **Downloads** | 250,559 |
+| **Owner** | `raiguard` |
+| **Status** | candidate, not a member (#84) |
+| **Read on** | 2026-10-01 |
+
+**Why it is here.** #41 found it adds content, so it fails `Grado_NonChanging`'s promise. Its entry
+there (`docs/catalogue/Grado_NonChanging.md`) has the content reading, which is not repeated here.
+
+**Reachability: fine on both lines.** `1.4.4` asks `base >= 2.0`, below this pack's `2.0.74`, and
+has no other dependency. `1.5.0` is served at 2.1. #41 found both releases add the same content.
+
+**On this pack alone it would pass.** With no overhaul loaded, the ducts sit above the vanilla pipe
+and pump. Nothing in this pack or below holds that ground.
+
+**Under `Grado_ABC` it competes with `boblogistics` for the same ground**, read from both mods'
+source:
+
+- **The Bob's recipes cooperate.** #41's reading, in that entry: with three Bob's mods loaded, every
+  duct recipe is rewritten to Bob's items, which #84 confirmed exist on the 2.0 line.
+- **The throughput does not.** The `non-return-duct`, `duct-intake` and `duct-exhaust` pump at `120` per tick.
+  `boblogistics`' `prototypes/entity/pump.lua` tops its pump ladder at `bob-pump-4`, `80` per tick,
+  and halves the whole ladder to `40` when `quality` is loaded. `Grado_ABCS` requires it, and on an
+  install that owns the expansion the game enables it beside any pack (#59). So a duct
+  unlocked at chemical science, from `bob-pump-2`s, outpumps Bob's fourth tier by half again, or
+  threefold with `quality`. The smallest duct holds `400` and the straight `duct` `800`, against `100` for every
+  `boblogistics` pipe.
+  It does not touch any Bob's prototype. It adds a tier above Bob's ladder rather than rewriting it.
+- **Neither mod names the other in its dependencies.** The recipe rewrite is keyed on `mods[]`
+  alone.
+
+That is this pack's promise failing: content that competes with an overhaul for its ground, in
+every overhaul pack that would inherit it. **`Grado_ABC`'s promise reads differently**
+(`CONTEXT.md`): a member there may extend the overhaul mods or add content of its own, provided it
+does not conflict with them. A tier above Bob's that is built from Bob's items, and overwrites none
+of Bob's prototypes, is an extension under that reading. Whether it unbalances Bob's fluid
+progression enough to count as a conflict is the judgement that placement would rest on.
+
+**Already in the chain?** For the packs above this one, `boblogistics`' pipes, pumps and tanks
+(`Grado_ABC`). The chain is ready for it: `PipeVisualizer-Updated` (`Grado_NonChanging`) ships
+`compatibility/fmf_ducts.lua` for the ducts, and the mod carries its own
+`compatibility/squeak-through-2.lua` for this pack's `squeak-through-2`.
+
+**Alternatives considered.** None searched: the promise decides this pack, and a substitute would
+fail it the same way. Not checked.
+
+**Recommendation: do not add** here. **A candidate for `Grado_ABC`**, which is #49's survey and
+not this one's.
+
+### `Kux-BlueprintExtensions`
+
+| | |
+|---|---|
+| **Title** | Blueprint Extensions (Kux Edition) |
+| **Does** | Blueprint tools: flip and rotate a held blueprint, including fluid-mod buildings; clone a blueprint; swap its wire colours; add or remove landfill under it; snap and nudge its alignment on the number pad |
+| **Latest** | `4.3.18`, `factorio_version` **2.1**, 2026-08-14, `Kux-CoreLib >= 4.17.10`. On the 2.0 line: `3.3.16`, 2025-06-29, `Kux-CoreLib >= 3.15.0`, no `base` floor |
+| **Downloads** | 11,308 |
+| **Owner** | `kuxynator` |
+| **Status** | candidate, not a member (#84) |
+| **Read on** | 2026-10-01 |
+
+**Why it is here.** `kry-picker-complete` `1.0.1` names it, and #46 did not assess it from source.
+It republishes `BlueprintExtensions`, whose `!` it declares, and is based on that mod's `0.5.0`.
+
+**Reachability: fine on both lines, at the cost of a new mandatory dependency.** `3.3.16` declares no
+`base` floor and needs `Kux-CoreLib >= 3.15.0`. The newest 2.0 `Kux-CoreLib` is `3.17.8`,
+2025-06-14, `base >= 2.0.55`, below this pack's `2.0.74`. At 2.1, `4.3.18` needs `Kux-CoreLib
+>= 4.17.10`; the newest, `4.17.11` (2026-09-15), asks `base >= 2.1.12`, which is below the project's 2.1 high of `2.1.20`. `Kux-CoreLib`
+(105,092 downloads, same owner) is in no pack. Its summary warns players not to update it before
+its dependents.
+
+**Content: none craftable, read from source.** `data.lua` adds `custom-input`s, `shortcut`s and
+sprites for its actions. `prototypes/items.lua` adds one `selection-tool`,
+`Kux-BlueprintExtensions_cloned-blueprint`, which no recipe makes. `Kux-CoreLib`'s own data stage
+adds nothing. Its `data:extend` calls are library functions for its dependents. **It passes
+`Grado_NonChanging`'s promise**, so it is a candidate there and not here.
+
+**What it would add over the chain:**
+
+- **Already covered.** Flipping and rotating a blueprint are base-game actions since 1.1.0. #7
+  dropped `blueprint_flip_and_turn` for that. Wire swapping and tile setting are `BlueprintTools`'
+  job (`Grado_NonChanging`), and `BlueprintTools` is the other successor to Blueprint Extensions.
+- **New.** Cloning a blueprint, number-pad snapping and nudging, flipping fluid-mod buildings
+  correctly (`FluidMustFlow`, `underground-pipe-pack` and the GDIW and Fluid Permutations family,
+  all optional), and landfill removal.
+- **Keys.** `actions.lua` binds `Shift+X`, `Shift+V`, `Ctrl+Alt+R`, `Shift+U`, `Ctrl+Alt+W`,
+  `Ctrl+Alt+L`, `Ctrl+Shift+Alt+L`, and the number pad with and without `Ctrl`. **`Shift+V` is already
+  bound by `VehicleSnap`** (`Grado_NonChanging`), which is #73's ground. No other `key_sequence` in
+  the staged `Grado_ABC` closure matches the strings above. That is a text search, so it misses
+  base keys.
+
+**Already in the chain?** In part: `BlueprintTools` and the base game, above.
+
+**Alternatives considered.** `BlueprintTools`, which is a member. No wider search: not checked.
+
+**Recommendation: do not add** here. **A candidate for `Grado_NonChanging`**, where nothing has
+assessed it yet. That assessment would weigh a second blueprint mod, a third-party core library,
+and a `Shift+V` clash, against clone and number-pad alignment. Whether it is taken up is for
+`Grado_NonChanging`'s decide ticket, #85, or a ticket after it.
+
+### `packing-tape`
+
+| | |
+|---|---|
+| **Title** | Packing Tape |
+| **Does** | Mining a chest, logistic chest, storage tank, car, tank, spidertron, locomotive, wagon or accumulator puts it in the player's inventory as one item that keeps its contents, fluid, charge, filters and requests, and placing that item rebuilds it |
+| **Latest** | `21.0.4`, `factorio_version` **2.1**, 2026-08-14. On the 2.0 line: `20.0.9`, 2026-06-28. Both depend on `base` with no floor, and optionally on `quality`, `railloader` and `Transport_Drones` |
+| **Downloads** | 15,093 |
+| **Owner** | `calcwizard` |
+| **Status** | candidate, not a member (#84) |
+| **Read on** | 2026-10-01 |
+
+**Why it is here.** `kry-picker-complete` `1.0.1` names it, and #46 recorded that it changes save
+state and that whether it adds item prototypes had not been read.
+
+**Reachability: fine on both lines.** No `base` floor on either release, and no mandatory
+dependency.
+
+**It adds item prototypes, and none is craftable.** Read from `20.0.9` and `21.0.4`. In
+`data-updates.lua`, for every player-placeable prototype of the nine types above, it adds a hidden
+`packing-tape-<item>` of type `item-with-inventory` (chests) or `item-with-tags` (the rest), with no
+recipe. It also sets `placeable_by` on each source entity and flags the source item
+`primary-place-result`. `data.lua` adds one `custom-input`, `J`, and a toggle `shortcut`. The only
+setting is a startup *Allow in rockets cheat*. `21.0.4` adds an accumulator-charge threshold. No
+technology.
+
+**So it passes `Grado_NonChanging`'s promise as written** (`CONTEXT.md`): no craftable item, entity
+or recipe. It changes the factory only when the player mines, or marks for deconstruction, while
+the shortcut is on. `control.lua` turns the shortcut on for every new player in
+`on_player_created`. It keeps the packed contents in `storage.items`. By #46's reading it is a
+candidate there, not here.
+
+**What the promise does not settle.** A chest becomes one inventory slot that carries its whole
+contents, and the items nest. The mod's own README says "this likely isn't balanced". **Removing it
+from a save would delete every packed item and what it holds.** Factorio drops items whose prototype
+is gone, and the contents live only in the packed item's inventory or in this mod's `storage`. That
+is a reading, not a measurement. It is what `Grado_NonChanging`'s assessment would weigh, beside the
+fact that it changes the factory's rules rather than the player's interface.
+
+**Overhaul fit.** No ground to compete for, and nothing here holds it. Its `blacklist.lua` excludes
+every entity matching `^WideChests`, so this pack's `WideChests` family is never packed. Other
+modded chests are packed generically, including the storage of `angelsaddons-storage` and
+`boblogistics` in `Grado_ABC`. That was not loaded. `J` is not a `key_sequence` anywhere in the
+staged `Grado_ABC` closure, by the same text search as above.
+
+**Already in the chain?** No.
+
+**Alternatives considered.** None searched: not checked.
+
+**Recommendation: do not add** here. **A candidate for `Grado_NonChanging`**, where nothing has
+assessed it yet. That assessment would weigh whether picking up a full chest is quality of life or
+a rule change, given the author's own balance warning and the data loss on removal. Like
+`Kux-BlueprintExtensions`, it is for #85 or a ticket after it.
 
 ## `bobinserters` sits in two packs
 

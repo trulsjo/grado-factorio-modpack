@@ -37,9 +37,14 @@
 
     NAMES ARE COMPARED CASE-SENSITIVELY, in every step that removes something (#68): the packer's
     one-copy rule, the pack-directory cleanup, a member's versioned copies and the dropped mods.
-    Factorio does the same -- on 2.0.77 a zip or directory named Alpha holding a mod named alpha is
-    refused "(case sensitive!)" -- and so does the portal, so Alpha and alpha are two mods, and
-    staging one must neither remove the other's copies nor keep the other as if it were a member.
+    And in the pack-name check (#78): a pack whose info.json names it grado_abc inside Grado_ABC/
+    is refused. Factorio does the same -- on 2.0.77 a zip or directory named Alpha holding a mod
+    named alpha is refused "(case sensitive!)" -- and so does the portal, which on 2026-10-01
+    answered /api/mods/Krastorio2 with 200 and /api/mods/krastorio2 with 404. So Alpha and alpha
+    are two mods, and staging one must neither remove the other's copies nor keep the other as if
+    it were a member. The one exception is the game-mod list (base, space-age, ...), compared
+    case-insensitively as resolve-modpack.ps1 compares it, so the two cannot disagree on what is
+    bundled; that changes in the tools repo or not at all.
 
     FACTORIO TAKES THE TARGET AS ITS MODS DIRECTORY, on the one run checked (2.0.77 headless,
     Grado_NonChanging, 2026-09-24, #59). fetch-mods.ps1 keeps its downloaded zips in a .zips
@@ -133,6 +138,11 @@ function Read-PackInfo {
     $info = $text | ConvertFrom-Json
     $field = { param($n) $info.PSObject.Properties[$n]?.Value }
     if ((& $field 'name') -ne $Name) { throw "$path names itself '$(& $field 'name')', not '$Name'." }
+    # The directory as it is on disk, since Windows finds Grado_ABC when asked for grado_abc.
+    $dir = (Get-ChildItem -LiteralPath $Root -Directory | Where-Object Name -eq $Name).Name
+    if ((& $field 'name') -cne $dir) {
+        throw "$path names itself '$(& $field 'name')', and its directory is '$dir': Factorio compares mod names case-sensitively."
+    }
     if ((& $field 'version') -notmatch '^\d+\.\d+\.\d+$') { throw "$path has no version of the form x.y.z." }
     if (-not (& $field 'factorio_version')) { throw "$path has no factorio_version." }
     $info
@@ -216,6 +226,7 @@ function Invoke-SelfTest {
     & $write 'Commented' "{`"name`":`"Commented`",`"version`":`"0.1.0`" /* no */}"
     & $write 'Trailing' '{"name":"Trailing","version":"0.1.0",}'
     & $write 'Liar' '{"name":"Other","version":"0.1.0"}'
+    & $write 'Cased' '{"name":"cased","version":"0.1.0","factorio_version":"2.0"}'
     & $write 'Lineless' '{"name":"Lineless","version":"0.1.0"}'
     # The shared packer zips git's tracked set, so the fixture packs are tracked, and one file
     # beside them is not.
@@ -233,7 +244,7 @@ function Invoke-SelfTest {
     $infoHash = { Get-ChildItem -LiteralPath $root -Recurse -File -Filter info.json | Get-FileHash | ForEach-Object Hash }
     $before = @(& $infoHash)
 
-    $refuses = { param($name, $pattern) try { Get-PackChain -Root $root -Name $name; $false } catch { $_.Exception.Message -match $pattern } }
+    $refuses = { param($name, $pattern) try { $null = Get-PackChain -Root $root -Name $name; $false } catch { $_.Exception.Message -match $pattern } }
 
     $cases = @(
         @{ Name = 'the chain walks required and ~ packs down, not ?, ! or game mods'; Test = {
@@ -248,6 +259,8 @@ function Invoke-SelfTest {
             & $refuses 'Trailing' 'is not valid JSON' } }
         @{ Name = 'an info.json naming another pack is refused'; Test = {
             & $refuses 'Liar' "names itself 'Other'" } }
+        @{ Name = 'an info.json naming its pack in another case only is refused, naming both'; Test = {
+            & $refuses 'Cased' "names itself 'cased'.*'Cased'" } }
         @{ Name = 'an info.json with no factorio_version is refused by name, not by StrictMode'; Test = {
             & $refuses 'Lineless' 'has no factorio_version' } }
         @{ Name = 'a member''s versioned zips and directories go before a fetch; its fetched directory and neighbours stay'; Test = {

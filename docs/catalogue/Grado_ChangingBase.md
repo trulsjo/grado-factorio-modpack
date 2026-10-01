@@ -8,7 +8,8 @@ from doing. The second has its own section, *What constrains an overhaul on top*
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
 **2026-09-21**, except those carrying a **Read on** of **2026-09-22**, which #8 took — the three
 entries it added and the readings inside its rulings — and the notes marked *Superseded 2026-09-23
-by #15*, which #15 took, and the notes dated 2026-09-24 (#43) and (#58), which those two took.
+by #15*, which #15 took, and the notes dated 2026-09-24 (#43) and (#58), which those two took, and the notes dated
+2026-10-01 (#44, #83) and (#83), which #83 took.
 *Candidates, not members* was read on 2026-10-01 (#46, #84). Searches described below as over "the
 2.x list" first ran over the `version=2.0` listing only, which misses mods released for 2.1 alone
 (#44), and the two over "the 2.1 list" miss mods released for 2.0 alone. **Every one has since been
@@ -265,7 +266,7 @@ all in the 2.0 listing alone - `safefill` (36,408 downloads, the mod #8 replaced
 `Noxys_Waterfill` (`0.5.0`, 2024-11-03, 30,850), `CanalBuilderMAV` (26,574), which digs shallow
 canals, and `chens-waterfill-mod` (210). `Wetlandfill` and `Yumako_and_Jellynut_swampfill`, also
 2.0 only, place Gleba wetland tiles rather than water. None changes the comparison: this mod still leads on
-downloads, at 303,648, and on reach.*
+downloads, at 303,648 on 2026-10-01 (303,064 in the table, read 2026-09-22), and on reach.*
 
 **Recommendation: keep.** Added by #8 on 2026-09-22, replacing `safefill`, which declares `factorio_version: 2.0` and is
 therefore not served to a 2.1 game at all — see *The pack cannot load on the Factorio version it
@@ -632,7 +633,7 @@ whole 2.1 list by name, title and summary returns **one** other candidate, and i
 offers "Even Distribution, Squeak Through, Auto Deconstruct & more" as one mod. It is declined as an
 addition under this ticket's first rule, which is a different statement from nothing existing. It declares no `base` floor,
 so it adds nothing to the pack's. *Checked 2026-10-01 (#44, #83): the 2.1 list misses mods released
-for 2.0 alone. "squeak" over the union adds three from the 2.0 listing alone, none a rival: `jump`
+for 2.0 alone. "squeak" over the union adds three from the 2.0 listing alone, none a successor: `jump`
 (1,084 downloads) offers a jump button as an "alternative to squeak through", `go-around` is "the
 opposite of Squeak Through", and `silent-belts-5` mutes belt sounds.*
 
@@ -1319,6 +1320,10 @@ pack and not in it*, whose place in the format #62 has still to confirm. **None 
 member, and nothing here changes a dependency list.** Every recommendation is only that; membership
 is Truls's. Every reading in this section was taken on **2026-10-01**.
 
+*Since 2026-10-01 the section also holds three mods outside the bundle, which #84 assessed from
+source rather than from #41's entries; see* Outside the bundle *below. The rest of this intro is
+about #46's members.*
+
 **#41 did the survey, and this section does not repeat it.** #41 read every member's source, its
 reachability and its key bindings, and wrote an entry for each under *Candidates, not members* in
 `docs/catalogue/Grado_NonChanging.md`. **Those entries are the evidence here.** This section asks
@@ -1689,8 +1694,9 @@ source:
   duct recipe is rewritten to Bob's items, which #84 confirmed exist on the 2.0 line.
 - **The throughput does not.** The `non-return-duct`, `duct-intake` and `duct-exhaust` pump at `120` per tick.
   `boblogistics`' `prototypes/entity/pump.lua` tops its pump ladder at `bob-pump-4`, `80` per tick,
-  and halves the whole ladder to `40` when `quality` is loaded. `Grado_ABCS` requires it, and on an
-  install that owns the expansion the game enables it beside any pack (#59). So a duct
+  and halves the whole ladder to `40` when `quality` is loaded. `Grado_ABCS` loads it through
+  `space-age`, which requires it (#10), and on an install that owns the expansion the game enabled
+  it beside `Grado_NonChanging` too (#59, the one pack measured). So a duct
   unlocked at chemical science, from `bob-pump-2`s, outpumps Bob's fourth tier by half again, or
   threefold with `quality`. The smallest duct holds `400` and the straight `duct` `800`, against `100` for every
   `boblogistics` pipe.
@@ -1713,7 +1719,7 @@ progression enough to count as a conflict is the judgement that placement would 
 **Alternatives considered.** None searched: the promise decides this pack, and a substitute would
 fail it the same way. Not checked.
 
-**Recommendation: do not add** here. **A candidate for `Grado_ABC`**, which is #49's survey and
+**Recommendation: do not add** here. It is a candidate for `Grado_ABC`, which is #49's survey and
 not this one's.
 
 ### `Kux-BlueprintExtensions`
@@ -1762,7 +1768,7 @@ adds nothing. Its `data:extend` calls are library functions for its dependents. 
 
 **Alternatives considered.** `BlueprintTools`, which is a member. No wider search: not checked.
 
-**Recommendation: do not add** here. **A candidate for `Grado_NonChanging`**, where nothing has
+**Recommendation: do not add** here. It is a candidate for `Grado_NonChanging`, where nothing has
 assessed it yet. That assessment would weigh a second blueprint mod, a third-party core library,
 and a `Shift+V` clash, against clone and number-pad alignment. Whether it is taken up is for
 `Grado_NonChanging`'s decide ticket, #85, or a ticket after it.
@@ -1810,13 +1816,16 @@ fact that it changes the factory's rules rather than the player's interface.
 every entity matching `^WideChests`, so this pack's `WideChests` family is never packed. Other
 modded chests are packed generically, including the storage of `angelsaddons-storage` and
 `boblogistics` in `Grado_ABC`. That was not loaded. `J` is not a `key_sequence` anywhere in the
-staged `Grado_ABC` closure, by the same text search as above.
+staged `Grado_ABC` closure, by the same text search as above. **But `Honk`, another
+`Grado_NonChanging` candidate, defaults its manual-mode toggle to `J` in `5.1.1`**, the 2.0-line
+release (no key in `5.2.1`; see its entry in `docs/catalogue/Grado_NonChanging.md`). Taking both
+would clash on the declared line, which is #73's ground.
 
 **Already in the chain?** No.
 
 **Alternatives considered.** None searched: not checked.
 
-**Recommendation: do not add** here. **A candidate for `Grado_NonChanging`**, where nothing has
+**Recommendation: do not add** here. It is a candidate for `Grado_NonChanging`, where nothing has
 assessed it yet. That assessment would weigh whether picking up a full chest is quality of life or
 a rule change, given the author's own balance warning and the data loss on removal. Like
 `Kux-BlueprintExtensions`, it is for #85 or a ticket after it.

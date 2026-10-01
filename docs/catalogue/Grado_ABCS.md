@@ -8,7 +8,8 @@ the method every other entry in this catalogue uses.
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
 **2026-09-22** and is reproduced from the fetched data rather than retyped, except the one
 re-read on 2026-09-23 (#10), which carries its own date, *Candidates, not members*, read
-2026-09-24 (#31), and the notes dated 2026-09-24 (#58) and (#61), which those two took.
+2026-09-24 (#31), and the notes dated 2026-09-24 (#58) and (#61), which those two took, and the notes dated
+2026-10-01 (#44, #83), which #83 took over the union of both portal listings as read that day.
 
 The dependency list holds 3 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, catalogued in
 `docs/catalogue/Grado_ABC.md` — and `space-age`. **The pack is new**, so nothing was carried over,
@@ -32,8 +33,10 @@ Three findings:
   hidden members were not re-read.*
 - **This is where the one-mod-per-branch rule is under real pressure.** Adding `space-age` enables
   the expansion beside Angel's and Bob's; it does not make them work together. The two mods on 2.x
-  that attempt that job (four, counting two in the 2.1 listing alone; #83, 2026-10-01) would each be a second addition, and one of them brings eight more mods with
-  it. See *Pressure on the one-mod-per-branch rule*. *Eight it names, eighteen once theirs are
+  that attempt that job, both assessed by #31, would each be a second addition, and one of them,
+  `angelbob-spaceage-rebalance`, brings eight more mods with it. *Two more, served at 2.1 only and
+  not assessed, were found 2026-10-01 (#83).* See *Pressure on the one-mod-per-branch rule*.
+  *Eight it names, eighteen once theirs are
   counted: resolved 2026-09-24 (#31), under* Candidates, not members.
 
 ## In the pack
@@ -146,7 +149,7 @@ different claim from `Grado_ABCX`'s empty section, which is a 1.1 pack that drop
 ## Candidates, not members
 
 The two mods that attempt the bridge *Pressure on the one-mod-per-branch rule* describes, assessed
-by #31. **Neither is a member, and nothing here changes that**: #10 ruled on 2026-09-23 that the
+by #31. *The two more found at 2.1 on 2026-10-01 (#83) are not assessed here; they are #31's.* **Neither is a member, and nothing here changes that**: #10 ruled on 2026-09-23 that the
 pack is `Grado_ABC` *beside* Space Age, and #31 is where that is revisited. Every reading in this
 section was taken on **2026-09-24**. A closure is what `resolve-modpack.ps1` picks on line `2.0`,
 build `2.0.77`, for a copy of the chain with the one candidate added to this pack's list.

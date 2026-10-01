@@ -765,7 +765,8 @@ That leaves **19 entries**, below.
 release, `factorio_version` 2.1, 2026-07-24. A 2.0.77 game installs `1.0.1` instead, 2025-03-19, and
 that release names five mods `1.1.0` does not: `yemtositemcount`, `beltbrush2`,
 `belt-reverser-space-age`, `Kux-BlueprintExtensions` and `packing-tape`. They are outside #41 and
-were not assessed. `kry-picker-extended` says it switches off its own copies of the first three
+were not assessed. *#84 assessed the last two from source on 2026-10-01, under* Outside the bundle
+*in `docs/catalogue/Grado_ChangingBase.md`: both are candidates for this pack.* `kry-picker-extended` says it switches off its own copies of the first three
 features when the standalone mod is present.
 
 **One question is not this survey's to answer.** Five candidates have no 2.1 release. Adding one

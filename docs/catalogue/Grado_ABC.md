@@ -1793,9 +1793,27 @@ The set was computed rather than spotted: the mandatory closure of all 45 member
 the two lower packs — `Grado_NonChanging` and `Grado_ChangingBase` — already pull in. That
 subtraction matters. **`flib` is the clearest case** — it
 is a mandatory dependency of `reskins-library` here, but it is *already* pulled into every install
-by four `Grado_NonChanging` members, so it is not ABC's to claim. Four more are the lower packs':
-`alien-biomes-graphics`, `kry_stdlib`, `stdlib2` and `+FluidWagonColorMask`. Counting those would
-have made the number twenty and the finding weaker.
+by four `Grado_NonChanging` members, so it is not ABC's to claim. Three more are the lower packs':
+`alien-biomes-graphics`, `kry_stdlib` and `stdlib2`. Counting those four would have made the number
+nineteen and the finding weaker.
+
+**That nineteen is the chain's closure** - the nineteen hidden mandatory dependencies #6 measured
+across all three lower packs on 2026-09-22 (`docs/catalogue/Grado_ABCX.md`, *The pack cannot load
+on the Factorio version it declares*). **ABC's fifteen plus the lower packs' four is the chain's
+nineteen**, and the fifteen is a strict subset of the nineteen, the difference being exactly those
+four - checked by set comparison on 2026-09-22.
+
+*Corrected 2026-10-01 (#39).* This paragraph named a fifth subtracted mod, `+FluidWagonColorMask`,
+and said counting the five "would have made the number twenty". `FluidWagonColorMask` is not a
+hidden dependency of anything: it is a named member of `Grado_NonChanging`, declared in that pack's
+`info.json`, and reached here only because `Automatic_Train_Painter` - another member of the same
+pack - declares it as `+FluidWagonColorMask`, a mandatory line against a mod the pack already lists
+(the `+` prefix is discussed in `docs/porting-notes.md`, *Effective Factorio floor*). It was never in
+the hidden closure, so it was never subtracted from it, and the twenty was one too many. Both
+readings predate #8 and #9, which moved the closure since - #8 added `0-things`, through
+`cybersyn2`, to `Grado_ChangingBase`'s share, and #9 removed both mods that pulled in
+`rusty-locale` - so the nineteen is a reading of 2026-09-22, not a fixed set. The table below is
+that reading, unchanged.
 
 | Hidden member | Pulled in by | Latest | Downloads |
 |---|---|---|---|

@@ -208,7 +208,8 @@ anything — the `+` belongs to `Automatic_Train_Painter`, which declares it man
 the pack already lists. So it was never in the closure to be subtracted from it, and ABC's twenty is
 one too many for exactly that reason. That is issue **#39**, and it moves ABC's stated twenty to
 nineteen; it moves neither the fifteen nor this file's nineteen, which are the two numbers that have
-to agree.
+to agree. *Applied 2026-10-01 (#39): `docs/catalogue/Grado_ABC.md` now names four subtracted mods
+and states fifteen plus four as this file's nineteen.*
 
 This is issue #15's measurement for this pack. The number to declare instead is issue #16 and is
 Truls's to set; no `info.json` was modified.

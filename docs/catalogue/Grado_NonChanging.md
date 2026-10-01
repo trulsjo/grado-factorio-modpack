@@ -795,7 +795,10 @@ it as written.
 
 **Eleven `add`, six `do not add`, two `reconsider`.** **Two fail the promise**:
 `FluidMustFlow` and `kry-vehicle-grids`. **Failing this pack's promise does not decline a mod
-for `Grado_ChangingBase`.** #46 assesses both there, and each entry records what it will need.
+for `Grado_ChangingBase`.** Each entry records what that pack's assessment will need.
+#46 assessed `kry-vehicle-grids` there on 2026-10-01 (`docs/catalogue/Grado_ChangingBase.md`,
+*Candidates, not members*). `FluidMustFlow` is not a `kry-picker-complete` member, so #46 does not
+cover it; it waits for a `Grado_ChangingBase` candidate-additions ticket, not yet filed.
 
 In the order of the sets in #41.
 
@@ -941,7 +944,8 @@ defines ten entities: six `storage-tank`s, three `pump`s and one `pipe-to-ground
 ten items and ten recipes, and `prototypes/technologies.lua` adds a `ducts` technology costing
 chemical science that unlocks them. Both releases do this. Served at 2.0 and 2.1.
 
-**For #46, which assesses it for `Grado_ChangingBase`.** Two findings, both from source:
+**For a `Grado_ChangingBase` assessment** - not #46's, which covers `kry-picker-complete`'s
+members only; that ticket is not yet filed. Two findings, both from source:
 
 - **It integrates with Bob's, but only when three Bob's mods are present.** When `bobelectronics`,
   `bobplates` and `boblogistics` are all loaded, `prototypes/compatibility/bobs-mods.lua` rewrites
@@ -951,7 +955,7 @@ chemical science that unlocks them. Both releases do this. Served at 2.0 and 2.1
 - **It claims ground an overlay already holds.** `boblogistics` (`3.0.2`, 2.1, 2026-09-27)
   describes itself as adding *"many new pipes made from many different materials, spanning 5
   tiers"* and storage tank tiers 2 to 4. Six of the ten duct entities are storage tanks by prototype type. A large
-  fluid-transport tier is exactly what `Grado_ChangingBase`'s promise asks #46 to weigh.
+  fluid-transport tier is exactly what `Grado_ChangingBase`'s promise asks that assessment to weigh.
 
 **Alternatives considered.** Not searched; the promise decides this pack.
 
@@ -1087,6 +1091,9 @@ operates. The nearest precedent is `Automatic_Train_Painter`, which also acts wi
 and was kept, but it only changes colour. This mod removes entities. That is a reading of the
 promise, and the ruling is Truls's. If it is admitted, the mod is the most downloaded of the 19,
 current on both lines, and a natural fit for the pack.
+
+If it is not admitted here, #46 recommends it for `Grado_ChangingBase`, whose promise has no
+"player asks" clause; see that pack's *Candidates, not members* (2026-10-01).
 
 ### `fluid-connection-indicators`
 
@@ -1296,7 +1303,8 @@ content. Both releases have the same `data.lua`. Served at 2.0 and 2.1. Its 2.1 
 `kry_stdlib >= 2.2.21`, the release that already sets the project's highest 2.1 floor
 (`CLAUDE.md`), so it moves nothing. A 2.0.77 game's `kry_stdlib` `2.1.2` meets its 2.0 floor.
 
-**For #46, which assesses it for `Grado_ChangingBase`.** Its content is conditional, read from
+**For #46, which assessed it for `Grado_ChangingBase`** on 2026-10-01 and recommends *do not add*
+there either; see that pack's *Candidates, not members*. Its content is conditional, read from
 `data.lua`:
 
 - **It holds back its own booster when `bobvehicleequipment` or Krastorio 2 is loaded.**

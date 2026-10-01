@@ -64,8 +64,8 @@ mod and nothing else. `SpaceModFeorasFork` is the only Space Extension on 2.x; t
 fork, no rewrite, and no unrelated mod covering the same ground. The one near-miss the search
 returned, `ERPC-K2-integration`, is a Krastorio 2 bridge for Expanded Rocket Payloads and does not
 do this job. *Checked 2026-10-01 (#44): that list was the `version=2.0` listing only, which misses
-mods released for 2.1 alone; the same four terms against the 1,054 mods in the 2.1 listing only
-return nothing.*
+mods released for 2.1 alone. The same four terms over the union of both listings as read that day,
+10,845 mods, return the same two.*
 
 **Recommendation: keep.** It is the only way to reach this branch's end-game, it is current within
 two and a half months, and the incompatibility the whole project is built around is intact. The

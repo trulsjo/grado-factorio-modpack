@@ -37,8 +37,9 @@
 
     NAMES ARE COMPARED CASE-SENSITIVELY, in every step that removes something (#68): the packer's
     one-copy rule, the pack-directory cleanup, a member's versioned copies and the dropped mods.
-    And in the pack-name check (#78): a pack whose info.json names it grado_abc inside Grado_ABC/
-    is refused. Factorio does the same -- on 2.0.77 a zip or directory named Alpha holding a mod
+    And in the pack-name check (#78): the name asked for -- -Pack, or a pack's dependency line --,
+    the name in info.json and the directory must agree in case, so a pack whose info.json names it
+    grado_abc inside Grado_ABC/ is refused, and so is a dependency line naming grado_abc. Factorio does the same -- on 2.0.77 a zip or directory named Alpha holding a mod
     named alpha is refused "(case sensitive!)" -- and so does the portal, which on 2026-10-01
     answered /api/mods/Krastorio2 with 200 and /api/mods/krastorio2 with 404. So Alpha and alpha
     are two mods, and staging one must neither remove the other's copies nor keep the other as if
@@ -137,11 +138,12 @@ function Read-PackInfo {
     }
     $info = $text | ConvertFrom-Json
     $field = { param($n) $info.PSObject.Properties[$n]?.Value }
-    if ((& $field 'name') -ne $Name) { throw "$path names itself '$(& $field 'name')', not '$Name'." }
-    # The directory as it is on disk, since Windows finds Grado_ABC when asked for grado_abc.
-    $dir = (Get-ChildItem -LiteralPath $Root -Directory | Where-Object Name -eq $Name).Name
-    if ((& $field 'name') -cne $dir) {
-        throw "$path names itself '$(& $field 'name')', and its directory is '$dir': Factorio compares mod names case-sensitively."
+    # Case-sensitive, as Factorio compares mod names: the name asked for, the info.json and the
+    # directory on disk must all agree. Windows finds Grado_ABC when asked for grado_abc, so the
+    # directory is matched by its name as it is on disk.
+    if ((& $field 'name') -cne $Name) { throw "$path names itself '$(& $field 'name')', not '$Name'." }
+    if (-not @(Get-ChildItem -LiteralPath $Root -Directory | Where-Object Name -ceq $Name)) {
+        throw "$path is found, but its directory is not named '$Name' in that case: Factorio compares mod names case-sensitively."
     }
     if ((& $field 'version') -notmatch '^\d+\.\d+\.\d+$') { throw "$path has no version of the form x.y.z." }
     if (-not (& $field 'factorio_version')) { throw "$path has no factorio_version." }
@@ -261,6 +263,12 @@ function Invoke-SelfTest {
             & $refuses 'Liar' "names itself 'Other'" } }
         @{ Name = 'an info.json naming its pack in another case only is refused, naming both'; Test = {
             & $refuses 'Cased' "names itself 'cased'.*'Cased'" } }
+        # What a dependency line or -Pack in the wrong case asks for. Windows finds the directory
+        # anyway; a case-sensitive filesystem does not, and refuses as an unknown pack.
+        @{ Name = 'a pack asked for in another case than its directory is refused, though its info.json agrees'; Test = {
+            & $refuses 'cased' "directory is not named 'cased'|No pack 'cased'" } }
+        @{ Name = 'a pack asked for in another case than its info.json is refused'; Test = {
+            & $refuses 'high' "names itself 'High', not 'high'|No pack 'high'" } }
         @{ Name = 'an info.json with no factorio_version is refused by name, not by StrictMode'; Test = {
             & $refuses 'Lineless' 'has no factorio_version' } }
         @{ Name = 'a member''s versioned zips and directories go before a fetch; its fetched directory and neighbours stay'; Test = {

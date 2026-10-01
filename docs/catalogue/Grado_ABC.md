@@ -13,13 +13,16 @@ marked *Superseded 2026-09-23 by #15*, which #15 took, and the notes dated 2026-
 #43 took, and the note dated 2026-09-24 (#31), which #31 took, and the notes dated 2026-09-24
 (#58) and (#61), which those two took. The **Read on** row is authoritative where it disagrees
 with this sentence. *Candidates, not members* was read on 2026-09-30 (#50). The notes dated
-2026-10-01 (#39), (#44), (#80) and (#44, #83) were taken by #39, #44, #80 and #83. Searches described below as over "the 2.x list" first ran over
+2026-10-01 (#39), (#44), (#80), (#44, #83) and (#93) were taken by #39, #44, #80, #83 and #93. Searches described below as over "the 2.x list" first ran over
 the `version=2.0` listing only, which misses mods released for 2.1 alone (#44). **Every search so
 described has since been re-run over the union of both listings** and carries a *Checked
 2026-10-01* note: four by #44, against a union of 10,845, and the rest by #83, against the listings as read later that day - 9,794
 in `version=2.0`, 4,341 in `version=2.1`, 10,850 in the union, 1,056 of them in the 2.1 listing
-alone. A new hit is named in its entry; none changes a ruling here. Two
-entries say "none found" on 2.x without recording a search, and were not re-run:
+alone. A new hit is named in its entry; none changes a ruling here. Three
+entries say "none found" on 2.x without recording a search. `spidertrontiers-community-updates`
+was re-run by #93 against the listings as read later still that day - 9,795, 4,344 and 10,854,
+1,059 of them in the 2.1 listing alone - and its claim did not hold; the hits are named in the
+entry and left to #49, and no ruling changed. The other two were not re-run:
 `RealisticReactorsReborn` and `extendedangels`.
 
 The dependency list holds 46 entries: `base >= 2.0.0`, `Grado_ChangingBase` — a pack, catalogued in
@@ -1197,6 +1200,30 @@ hard incompatibilities and both correct — the first is the mod it replaces. It
 else offers spidertron tiers on 2.x, so there is no action to take today; the entry exists so that
 when something breaks, the pack's oldest unmaintained member is already identified rather than
 discovered.
+*Checked 2026-10-01 (#93): "nothing else offers spidertron tiers on 2.x" recorded no search, and
+it does not hold. Re-run over the union of both listings as read that day - 9,795 in `version=2.0`,
+4,344 in `version=2.1`, 10,854 in the union, 1,059 of them in the 2.1 listing alone - matching
+name, title and summary, case-insensitive, for `spidertron` (92 mods), `spider` (104) and
+`spider.*\b(tiers?|mk ?\d*|mark)\b` or the same terms before `spider` (9). Read by hand, seven
+besides this one offer spidertron tiers, and every one's latest release predates this entry's
+2026-09-21 reading:*
+
+| Mod | Owner | Latest | `factorio_version` | Downloads | What it is |
+|---|---|---|---|---|---|
+| `spidertron-extended` | `charleans` | `0.4.4`, 2026-06-25 | 2.1 | 79,076 | Spidertron MK2 and MK3 plus role variants |
+| `SchallArachnidPlatoon` | `Schallfalke` | `2.0.0`, 2024-11-27 | 2.0 | 6,247 | Classes and tiers of spidertron; requires `SchallTankPlatoon`, not in any pack |
+| `Insectitron` | `DemonX3` | `2.2.1`, 2026-08-31 | 2.1 | 4,263 | Four early-to-mid-game spider vehicles, each with an advanced tier |
+| `spidertrontiers-cu-fix` | `Returner_org` | `26.3.3`, 2026-04-09 | 2.0 | 194 | A fork of this mod that its page says is for one event and not for general modpacks; declares `! spidertrontiers-community-updates` |
+| `spidertrontiers-sa` | `PyW0W` | `26.4.0`, 2026-05-31 | 2.0 | 128 | A fork of this mod with Space Age support; declares `! spidertrontiers-community-updates` |
+| `5dim_vehicles` | `McGuten` | `2.1.1`, 2026-08-05 | 2.1 | 120 | Tiers of tanks and spidertrons; requires `5dim_core`; in the 2.1 listing alone |
+| `actual-spidertron-tiers` | `What42` | `0.1.0`, 2025-07-30 | 2.0 | 89 | Spidertron Mk 2 to Mk 10 |
+
+*The narrow pattern's other two hits are not tiers: `patchwork-compat-fixes` is a set of
+compatibility fixes and `StephsMegaStart` a quick start. The rest of the `spider` hits are single
+spidertron variants, automation, recipes, equipment, locators and cosmetics. Owner, version,
+`factorio_version` and downloads were read from `/api/mods/<name>/full` that day. None was loaded
+or compared feature by feature. `spidertron-extended` has a 2.1 release and this mod does not, see
+#43. Whether any of them changes **keep** is #49's, and the recommendation above is unchanged.*
 
 **Ruled 2026-09-23 (#9): kept.** It declares `factorio_version` **2.0**, so it is not served to a 2.1 game — the portal serves it only at 2.0. Under #8's
 third rule that breaks a tie only in an entry already marked `reconsider:`, and this one was not, so

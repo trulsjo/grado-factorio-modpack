@@ -12,26 +12,26 @@ session start.
 **Skeleton.** Five `info.json` files with resolved dependency lists, a README and
 `docs/porting-notes.md`. First commit `3ab917c`, 2026-09-20.
 
-**One pack has been loaded and played; the other four have not.** `Grado_NonChanging` loaded
-on 2.0.77, base only and again with Space Age, on 2026-09-29 (#17). Both loads were clean. Its
-play session (2026-09-29 to 2026-09-30) saw 24 of its 26 named members working. `ixuAutoSave`
-and `kry-picker-extended` were not confirmed. The save survived a reload with the members' data
-that was checked. It found one clash, the `Alt+Y` key shared by `YARM` and
-`PipeVisualizer-Updated`, which players can rebind. Whether the pack should carry Lua to change the
-default is #73's. See `docs/loads/Grado_NonChanging-2026-09-29.md`. *Until 2026-09-30 this line
-read "One pack has been loaded; none has had a play session."* *Load*,
-*Start* and *Play session* are glossary terms (`CONTEXT.md`), and they are not interchangeable. A
-load says the prototypes and start-up scripts work together, and nothing about play. The other
-four packs are still portal readings only. Treat "it resolves on the portal" and "it loads in the
-game" as different claims: for those four, only the first is true. *Until 2026-09-29 this line read
-"Nothing has been launched in Factorio", which the two runs below had already made false. #65
-settled its wording through #17.* Earlier runs, kept as history rather than as the record:
-*2026-09-24 (#59): a **start**. A headless 2.0.77 run against a staged `Grado_NonChanging` created a
-map, exit 0, with `space-age`, `quality` and `elevated-rails` auto-enabled beside it.*
-*2026-09-28 (#64): an unrecorded load. The pack was zipped by the shared packer (tools `d09fba3`) and
-loaded through the load harness on 2.0.77, base only: 29 mods validated (the 28 resolved members
-and the pack; `base` not counted) and a map created. No member versions were written down, which
-is why #17 re-ran it.*
+**One pack has been loaded and played; the other four have not.** `Grado_NonChanging` loaded on
+2.0.77, base only and again with Space Age, on 2026-09-29 (#17). Both loads were clean. Its play
+session (2026-09-29 to 2026-09-30) saw 24 of its 26 named members working. `ixuAutoSave` and
+`kry-picker-extended` were not confirmed. The save survived a reload with the members' data that was
+checked. It found one clash, the `Alt+Y` key shared by `YARM` and `PipeVisualizer-Updated`, which
+players can rebind. Whether the pack should carry Lua to change the default is #73's. Base's
+`give-discharge-defense-remote` defaults to `Alt+Y` too, with or without Space Age (#71,
+2026-09-30); it is not what stops `YARM`. See `docs/loads/Grado_NonChanging-2026-09-29.md`. *Until
+2026-09-30 this line read "One pack has been loaded; none has had a play session."* *Load*, *Start*
+and *Play session* are glossary terms (`CONTEXT.md`), and they are not interchangeable. A load says
+the prototypes and start-up scripts work together, and nothing about play. The other four packs are
+still portal readings only. Treat "it resolves on the portal" and "it loads in the game" as
+different claims: for those four, only the first is true. *Until 2026-09-29 this line read "Nothing
+has been launched in Factorio", which the two runs below had already made false. #65 settled its
+wording through #17.* Earlier runs, kept as history rather than as the record: *2026-09-24 (#59): a
+**start**. A headless 2.0.77 run against a staged `Grado_NonChanging` created a map, exit 0, with
+`space-age`, `quality` and `elevated-rails` auto-enabled beside it.* *2026-09-28 (#64): an
+unrecorded load. The pack was zipped by the shared packer (tools `d09fba3`) and loaded through the
+load harness on 2.0.77, base only: 29 mods validated (the 28 resolved members and the pack; `base`
+not counted) and a map created. No member versions were written down, which is why #17 re-ran it.*
 
 ## What a modpack is here
 
@@ -103,16 +103,17 @@ Settled so far, recorded here so nobody reopens them by accident:
   **swaps in, additions out** (as #7); **the promise is the membership test**; and
   **unreachability breaks a tie but does not decide alone**. Reasons per mod in
   `docs/catalogue/Grado_ChangingBase.md`.
-- **`Grado_ABC`'s membership is settled** (2026-09-23, #9). 44 mods to 41. The pack gained a
-  promise (`CONTEXT.md`): **Truls's own Angel's, Bob's and MadClown setup**, where a member may extend
-  the overhaul or add content of its own but must not conflict with it. The whole Deadlock stacking
-  family is out, as is `signalstrings`. `RealisticFusionPower` is replaced by `RealisticFusionPowerPort`,
-  **a comparison slot for `realistic-fusion-refreshed`**, which may take the slot later.
-  `angels-smelting-extended` is kept for now, pending #50. #8's three rules carried up unchanged,
-  with **a partial replacement counted as an addition**, which is why `ScienceCostTweakerM` and the
-  others went to #49. A 2.x `angelsindustries` port reopens the question rather than adding it
-  back. All ten of this pack's drops are closed. The hidden mandatory members stay unnamed. Reasons
-  per mod in `docs/catalogue/Grado_ABC.md`.
+- **`Grado_ABC`'s membership is settled** (2026-09-23, #9). 44 mods to 41. The pack gained a promise
+  (`CONTEXT.md`): **Truls's own Angel's, Bob's and MadClown setup**, where a member may extend the
+  overhaul or add content of its own but must not conflict with it. The whole Deadlock stacking
+  family is out, as is `signalstrings`. `RealisticFusionPower` is replaced by
+  `RealisticFusionPowerPort`, **a comparison slot for `realistic-fusion-refreshed`**, which may take
+  the slot later. `angels-smelting-extended` is kept for now; #50 (2026-09-30) found
+  `angelsextended-remelting` a complement, not an alternative, and recommends not adding it. #8's
+  three rules carried up unchanged, with **a partial replacement counted as an addition**, which is
+  why `ScienceCostTweakerM` and the others went to #49. A 2.x `angelsindustries` port reopens the
+  question rather than adding it back. All ten of this pack's drops are closed. The hidden mandatory
+  members stay unnamed. Reasons per mod in `docs/catalogue/Grado_ABC.md`.
 - **`Grado_ABCX`'s and `Grado_ABCS`'s membership is settled** (2026-09-23, #10). Neither list
   changed: one member each. Both gained a promise (`CONTEXT.md`). **`Grado_ABCS` is ABC *beside*
   Space Age, not merged with it**, so no bridge mod; #31 stays open to revisit that. ABCX keeps its

@@ -700,6 +700,646 @@ the feature away from this pack as an accepted cost.
 
 **Ruled 2026-09-22 (#7): out.** The re-check was done and it is redundant. Base Factorio **1.1.0** (2020-11-23) shipped *"Added vertical/horizontal blueprint flipping"*; flip horizontal `H`, flip vertical `V` and rotate `R` are all vanilla keybinds, covering all three operations the mod's name advertises. FFF-442 (2026-06-12) records 2.0 widening base flipping further - pumpjacks and burner miners became flippable, inserter drop-sides flip with the blueprint. The mod claims nothing beyond "mirrors/flips a blueprint in hand" and has no post-2020 feature claims: its releases run `100.8.6` to `101.8.6` to `200.8.6`, the same feature level throughout, last functional change 2020-08, and its 2.0 changelog entry reads in full *"Try to support Factorio 2.0 (Spage Age)"*. No replacement needed and no feature lost.
 
+## Candidates, not members
+
+Every mod #41 names as a candidate addition to this pack, assessed against the pack's promise
+(`CONTEXT.md`, *Promise*): **no craftable item, entity or recipe**. Entry format:
+`docs/mod-catalogue.md`, *a candidate assessed for a pack and not in it*, whose place in the format
+#62 has still to confirm. **None of these mods is a member, and nothing here changes a dependency
+list.** Every recommendation is only that; membership is Truls's. Every reading in this section was
+taken on **2026-10-01**.
+
+**23 distinct mods are named across #41's three sets**: seven by `raiguard`, seven mandatory and
+nine optional members of `kry-picker-complete`, and `ghost-counter`. That makes 24 names, but
+`CursorEnhancements` is in both of the first two sets, so it gets one entry, under the raiguard set.
+**Four get one sentence each here, not an entry of their own:** three because they already have
+an entry in this catalogue, and one because #42 is assessing it.
+
+- **`BottleneckLite`** is a member, added by #7 on 2026-09-22. See its entry under *In the pack*.
+- **`EvenDistributionLite`** was assessed by #7 and is **not** a member: `even-distribution` was
+  kept over it, because only the incumbent has the Inventory Cleanup hotkey. #41 says it was added
+  by #7, which is wrong. See the `even-distribution` entry.
+- **`squeak-through-2`** is a mandatory member of `Grado_ChangingBase` (#8, #11), so every player of
+  that pack and above already has it. See its entry in `docs/catalogue/Grado_ChangingBase.md`.
+- **`adjustable_flashlight`** is a night-lighting candidate, so #42 assesses it. See *Night
+  lighting: what replaces AfraidOfTheDark's tune (#42)*.
+
+That leaves **19 entries**, below.
+
+**How each one was read:**
+
+- **Content is read from source for all 19.** Each mod's newest release on the 2.0 line and, where
+  there is one, on the 2.1 line was downloaded from the portal: 33 zips, 14 mods with both and 5
+  with a 2.0 release only. Their data-stage Lua was read: `data.lua`, `data-updates.lua`,
+  `data-final-fixes.lua` and whatever they require. Where runtime behaviour bears on the promise,
+  the runtime scripts were read too: `AutoDeconstruct`, `ChangeInserterDropLane`,
+  `CursorEnhancements`, `MouseOverConstruction`, `Shortcuts-ick`, `ghost-counter` and
+  `ore-eraser-2`. No content verdict below is inferred from a portal description. Where the two
+  releases differ, the entry says so.
+- **Reachability is recorded at both lines.** #41 measures it against an "effective floor 2.1.7".
+  That is stale twice over: #16 ruled on 2026-09-24 that the declared line is **2.0**, and on that
+  line the pack declares `base >= 2.0.67` (#58). Stable Factorio is 2.0.77. So each entry gives the
+  release a 2.0 game installs, with its `base` floor, and whether the portal serves the mod to a
+  2.1 game at all, read from `?version=2.1&namelist=<name>`. All 19 have a 2.0 release. **Five are
+  not served at 2.1:** `StatsGui`, `QuickbarTemplates`, `WireShortcutX`, `Renamer` and
+  `Orphan Finder`.
+- **No candidate adds a mandatory dependency the chain does not already have.** The mandatory
+  dependencies beyond `base` are `flib` (five candidates) and `kry_stdlib` (`kry-vehicle-grids`),
+  and both are already hidden members of this pack. A 2.0.77 game resolves them to `flib` `0.16.5`
+  and `kry_stdlib` `2.1.2` (`docs/loads/Grado_NonChanging-2026-09-29.md`), and every candidate's
+  2.0 release accepts those versions. **One candidate would move the pack's `base` floor:**
+  `AutoDeconstruct` `1.0.14` asks `base >= 2.0.68`, one build above the declared `2.0.67`.
+- **Key bindings were compared as text, not by a dump.** Each candidate's default `key_sequence`
+  was matched against the Lua of every member of the three lower packs, using the releases
+  `resolve-modpack.ps1` picked for `Grado_ABC` on line 2.0, build 2.0.77. That is less rigorous
+  than the `--dump-data` method in the load record, and like that method it misses vanilla
+  controls. Shared keys are recorded in each entry for #73. A shared key is not necessarily a
+  clash: the load record found that only one of its seven shared keys failed in play.
+
+**Which releases #41's lists come from.** #41's two `kry-picker-complete` lists are its `1.1.0`
+release, `factorio_version` 2.1, 2026-07-24. A 2.0.77 game installs `1.0.1` instead, 2025-03-19, and
+that release names five mods `1.1.0` does not: `yemtositemcount`, `beltbrush2`,
+`belt-reverser-space-age`, `Kux-BlueprintExtensions` and `packing-tape`. They are outside #41 and
+were not assessed. `kry-picker-extended` says it switches off its own copies of the first three
+features when the standalone mod is present.
+
+**One question is not this survey's to answer.** Five candidates have no 2.1 release. Adding one
+would put a new name on the 2.1 watch list on the same day it joined the pack. #7 and #8 kept
+*existing* members in that state, on the rule that **unreachability breaks a tie but does not
+decide alone**. Whether that rule also covers *additions* is Truls's call. The entries below apply
+it as written.
+
+| candidate | set | adds content? | 2.0 release | served at 2.1 | recommendation |
+|---|---|---|---|---|---|
+| `CursorEnhancements` | raiguard, picker mandatory | no | `2.2.2` | yes | add |
+| `StatsGui` | raiguard | no | `1.6.1` | **no** | add |
+| `QuickbarTemplates` | raiguard | no | `2.3.0` | **no** | reconsider |
+| `MouseOverConstruction` | raiguard | no | `2.0.3` | yes | do not add |
+| `BetterAlertArrows` | raiguard | no | `1.1.0` | yes | add |
+| `FluidMustFlow` | raiguard | **yes** | `1.4.4` | yes | do not add |
+| `ChangeInserterDropLane` | raiguard | no | `1.2.0` | yes | add |
+| `belt-visualizer` | picker mandatory | no | `2.0.2` | yes | add |
+| `Shortcuts-ick` | picker mandatory | no | `2.0.7` | yes | add |
+| `AutoDeconstruct` | picker mandatory | no | `1.0.14` | yes | reconsider |
+| `fluid-connection-indicators` | picker mandatory | no | `0.2.7` | yes | add |
+| `WireShortcutX` | picker optional | no | `1.3.1` | **no** | do not add |
+| `Renamer` | picker optional | no | `2.2.2` | **no** | do not add |
+| `Honk` | picker optional | no | `5.1.1` | yes | add |
+| `car-finder` | picker optional | no | `2.0.0` | yes | add |
+| `Orphan Finder` | picker optional | no | `1.2.2` | **no** | add |
+| `ore-eraser-2` | picker optional | no | `0.2.4` | yes | do not add |
+| `kry-vehicle-grids` | picker optional | **yes** | `2.2.0` | yes | do not add |
+| `ghost-counter` | loose find | no | `2.0.2` | yes | add |
+
+**Eleven `add`, six `do not add`, two `reconsider`.** **Two fail the promise**:
+`FluidMustFlow` and `kry-vehicle-grids`. **Failing this pack's promise does not decline a mod
+for `Grado_ChangingBase`.** #46 assesses both there, and each entry records what it will need.
+
+In the order of the sets in #41.
+
+### `CursorEnhancements`
+
+| | |
+|---|---|
+| **Title** | Cursor Enhancements |
+| **Does** | Swaps the cursor to a ghost when the held stack runs out and back when the item returns, hand-crafts the held or selected item with `Ctrl+Q`, recalls the last held item with `Shift+Q`, and scrolls through related items with `Shift+Alt+wheel` |
+| **Latest** | `2.3.1`, `factorio_version` **2.1**, 2026-06-29. On the 2.0 line: `2.2.2`, 2024-12-17, `base >= 2.0.0`, `flib >= 0.15.0` |
+| **Downloads** | 64,558 |
+| **Owner** | `raiguard` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: none, read from source.** The data stage only declares four `custom-input` prototypes,
+and the two releases' data stages are identical. Quick-craft calls `player.begin_crafting`, which is
+ordinary hand-crafting, started by a key the player presses. Served at 2.0 and 2.1. Its
+`(?) space-exploration` is a hidden optional and pulls in nothing.
+
+**Alternatives considered.** No member does any of the four things. `kry-picker-extended` has a
+*Quality Item Scrolling* hotkey, but it scrolls through qualities, not related items. Whether base
+2.0 already gives a ghost cursor when a stack runs out was not checked. **Shared keys:**
+`Shift+Alt+wheel` up and down are also `ModuleInserterEx`'s defaults (`Grado_ChangingBase`).
+
+**Recommendation: add.** It passes the promise, it is current on both lines, its only mandatory
+dependency is already in the pack, and it is the mod `kry-picker-extended`'s own portal page
+points players to. The one key overlap affects only the packs from `Grado_ChangingBase` up.
+
+### `StatsGui`
+
+| | |
+|---|---|
+| **Title** | Stats GUI |
+| **Does** | Adds a line of statistics beside the FPS/UPS readout: estimated time to finish research, enemy evolution, playtime, daytime, pollution and position |
+| **Latest** | `1.6.1`, `factorio_version` **2.0**, 2024-10-30 |
+| **Downloads** | 180,333 |
+| **Owner** | `raiguard` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: none, read from source.** `data.lua` defines GUI styles and nothing else. The sensors
+listed under **Does** are the files in its `scripts/sensor/` directory. On the 2.0 line it asks
+`base >= 2.0.0` and `flib >= 0.15.0`. **It is not served at 2.1.**
+
+**Alternatives considered.** No member shows any of these. None searched beyond the members.
+
+**Recommendation: add**, at the declared 2.0 line, knowing it joins the 2.1 watch list. It passes
+the promise, overlaps nothing, brings no new dependency and is the most downloaded of the five
+2.0-only candidates. Missing 2.1 is the only thing against it, and under the rule above that alone
+does not decide. One thing to watch: five of the seven raiguard candidates had a 2.1 release by
+2026-07-10, and this one did not.
+
+### `QuickbarTemplates`
+
+| | |
+|---|---|
+| **Title** | Quickbar Templates |
+| **Does** | Exports the quickbar's filters to a blueprint and imports them back, and can apply a default template to every new game |
+| **Latest** | `2.3.0`, `factorio_version` **2.0**, 2024-12-18 |
+| **Downloads** | 10,682 |
+| **Owner** | `raiguard` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: none, read from source.** The data stage declares two `sprite`s. On the 2.0 line it asks
+`base >= 2.0.23`. **It is not served at 2.1.** Its own page says blueprint and blueprint-book
+filters are left out of templates.
+
+**Alternatives considered.** No member does it. Whether base 2.0 keeps quickbar filters across
+games was not checked, and the answer decides most of the mod's value.
+
+**Recommendation: reconsider:** whether moving a quickbar layout between saves is part of how Truls
+plays. It is a setup tool, used once per game. It has 10,682 downloads, no release since
+2024-12-18 and no 2.1 release. Nothing here makes it wrong for
+the pack, and nothing makes it needed.
+
+### `MouseOverConstruction`
+
+| | |
+|---|---|
+| **Title** | Mouse-Over Construction |
+| **Does** | While toggled on (`Shift+Y`), revives ghosts, applies upgrades, repairs and deconstructs entities in reach as the cursor passes over them, using items from the player's inventory |
+| **Latest** | `2.1.1`, `factorio_version` **2.1**, 2026-07-10. On the 2.0 line: `2.0.3`, 2025-11-05, `base >= 2.0.60`, `flib >= 0.16.0` |
+| **Downloads** | 19,477 |
+| **Owner** | `raiguard` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: none, read from source.** The data stage declares a `custom-input`, a toggle `shortcut`
+and a `mod-data` list of ignored entities. In its runtime scripts, `common.build` builds nothing unless
+`common.get_item` finds the item in the player's inventory, and `orchestrator.lua` checks
+`can_reach_entity`. So it does
+what the player could do by hand, and only while they have it switched on. That is inside the
+promise. Served at 2.0 and 2.1. The pack's resolved `flib` `0.16.5` meets its 2.0 floor.
+
+**Alternatives considered.** **`kry-picker-extended`, a member, already covers the core of it.**
+Its *Automatic Ghost Reviver* places ghosts and ghost upgrades as the player hovers with the item in
+hand, toggled on `Shift+G`, and has done since its `1.0.0`, the 2.0 line. Two hover revivers acting
+on the same ghost was not tested. **Shared key:** `Shift+Y` is also `PipeVisualizer-Updated`'s
+`pv-toggle-overlay`.
+
+**Recommendation: do not add.** Its main feature is already in the pack. What it would add is
+repair and deconstruction on hover, and that is small next to a second mod competing for the same
+ghosts and a key the pack already uses.
+
+### `BetterAlertArrows`
+
+| | |
+|---|---|
+| **Title** | Better Alert Arrows |
+| **Does** | Replaces the vanilla alert arrow sprite with a redrawn one, with tint and scale as startup settings |
+| **Latest** | `1.2.0`, `factorio_version` **2.1**, 2026-07-02. On the 2.0 line: `1.1.0`, 2024-10-23, `base >= 2.0.8` |
+| **Downloads** | 28,720 |
+| **Owner** | `raiguard` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: none, read from source.** The whole data stage is one assignment, to
+`data.raw["utility-sprites"]["default"].alert_arrow`. That tunes a vanilla prototype, which the
+promise allows. One of its two Lua files differs between the releases, and neither release defines a
+prototype. Served at 2.0 and 2.1. It has no dependency except `base`.
+
+**Alternatives considered.** None needed; no member touches alerts.
+
+**Recommendation: add.** It is cosmetic in the way `DiscoScience` and `FluidWagonColorMask` are, it
+is current on both lines, and it cannot interact with anything else in the chain.
+
+### `FluidMustFlow`
+
+| | |
+|---|---|
+| **Title** | Fluid Must Flow |
+| **Does** | Adds ducts: very large pipes for moving large volumes of fluid over long distances, with curves, T-junctions, crosses, undergrounds, a non-return duct, intakes and exhausts |
+| **Latest** | `1.5.0`, `factorio_version` **2.1**, 2026-06-25. On the 2.0 line: `1.4.4`, 2025-09-22, `base >= 2.0` |
+| **Downloads** | 250,559 |
+| **Owner** | `raiguard` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: yes, read from source, so it fails this pack's promise.** `prototypes/buildings/`
+defines ten entities: six `storage-tank`s, three `pump`s and one `pipe-to-ground`. It also defines
+ten items and ten recipes, and `prototypes/technologies.lua` adds a `ducts` technology costing
+chemical science that unlocks them. Both releases do this. Served at 2.0 and 2.1.
+
+**For #46, which assesses it for `Grado_ChangingBase`.** Two findings, both from source:
+
+- **It integrates with Bob's, but only when three Bob's mods are present.** When `bobelectronics`,
+  `bobplates` and `boblogistics` are all loaded, `prototypes/compatibility/bobs-mods.lua` rewrites
+  every duct recipe to use `bob-silicon-nitride`, `bob-titanium-plate` and `bob-pump-2`. All three
+  mods are `Grado_ABC` members. Whether those three item names still exist in the 2.x Bob's
+  releases was not checked. There is no Angel's handling.
+- **It claims ground an overlay already holds.** `boblogistics` (`3.0.2`, 2.1, 2026-09-27)
+  describes itself as adding *"many new pipes made from many different materials, spanning 5
+  tiers"* and storage tank tiers 2 to 4. Six of the ten duct entities are storage tanks by prototype type. A large
+  fluid-transport tier is exactly what `Grado_ChangingBase`'s promise asks #46 to weigh.
+
+**Alternatives considered.** Not searched; the promise decides this pack.
+
+**Recommendation: do not add** to this pack. It adds craftable entities, recipes and a
+technology, which is the one thing this pack's promise forbids.
+
+### `ChangeInserterDropLane`
+
+| | |
+|---|---|
+| **Title** | Change Inserter Drop Lane |
+| **Does** | Switches which lane of a belt an inserter drops onto, with a hotkey (`Shift+L`) on the hovered inserter or ghost |
+| **Latest** | `1.3.0`, `factorio_version` **2.1**, 2026-06-25. On the 2.0 line: `1.2.0`, 2025-10-10, `base >= 2.0.0`, `flib >= 0.15.0` |
+| **Downloads** | 170,035 |
+| **Owner** | `raiguard` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: none, read from source.** `data.lua` declares a `custom-input`, a welding particle and
+sound, a sprite and a tips-and-tricks entry. `data-updates.lua` sets `allow_custom_vectors` on every
+inserter, which tunes existing prototypes. The lane changes only when the player presses the key.
+Served at 2.0 and 2.1. Its page calls it a standalone version of a Krastorio 2 feature.
+
+**It switches itself off when `bobinserters` is loaded.** `data.lua`, `data-updates.lua` and
+`control.lua` each start by returning if `bobinserters` is present, in both releases.
+`bobinserters` is a `Grado_ChangingBase` member: *"Adds hotkeys and a GUI to adjust inserter pickup
+and drop locations"*. So this mod would work only for a player on `Grado_NonChanging` alone, and do
+nothing in the other four packs. That is the clean way round, and the opposite of what
+`blueprint-sandboxes` did to `EditorExtensions` (see its entry). `Shift+L` is also bound by
+`bobinserters` and `boblogistics`, but because this mod declares no input when `bobinserters` is
+loaded, that is never a clash.
+
+**Alternatives considered.** `bobinserters`, above, which covers the feature from
+`Grado_ChangingBase` upward.
+
+**Recommendation: add.** It passes the promise and gives `Grado_NonChanging`-only players a feature
+the higher packs already get from `bobinserters`. It steps aside on its own when the two meet, and
+its only dependency is already in the pack.
+
+### `belt-visualizer`
+
+| | |
+|---|---|
+| **Title** | Belt Visualizer |
+| **Does** | Highlights every belt connected to the one selected, cycling lanes on repeated presses; ghosts get their own key, and a toggle highlights whatever the cursor hovers |
+| **Latest** | `2.1.4`, `factorio_version` **2.1**, 2026-07-07. On the 2.0 line: `2.0.2`, 2024-10-22, no dependencies |
+| **Downloads** | 130,043 |
+| **Owner** | `_CodeGreen` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: none, read from source.** `custom-input`s and one toggle `shortcut`; the highlight is
+drawn at runtime. Served at 2.0 and 2.1. Its page says 2.0's lane splitters are drawn as ordinary
+belts until the author gets back to it. `_CodeGreen` also wrote `squeak-through-2`
+(`Grado_ChangingBase`).
+
+**Alternatives considered.** No member highlights belt lines. **Shared keys:** `Shift+G` is also
+bound by `BlueprintTools` (`bpt-quick-grid`) and `kry-picker-extended` (`toggle-ghost-revive`). It
+is already shared by those two in the load record, and this would make three. `2.1.4` adds
+`Ctrl+G` for the hover toggle, which `ghost-counter` also defaults to. `2.0.2` does not have it, so
+at the declared line the two do not share a key.
+
+**Recommendation: add.** It is mandatory in `kry-picker-complete`, current, well used and
+read-only. Note the `Shift+G` three-way for #73.
+
+### `Shortcuts-ick`
+
+| | |
+|---|---|
+| **Title** | Shortcuts |
+| **Does** | Twenty toolbar shortcuts, each switchable in startup settings: flashlight, chat flare, grid overlay, rail block view, personal logistics toggle, trash unrequested, far zoom, minimap, an environment deconstruction planner, equipment on/off toggles, an artillery jammer, and seven vehicle and train settings including manual mode |
+| **Latest** | `2.1.0`, `factorio_version` **2.1**, 2026-06-25. On the 2.0 line: `2.0.7`, 2024-11-15, `base >= 2.0.18` |
+| **Downloads** | 68,914 |
+| **Owner** | `ickputzdirwech` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: none craftable, read from source.** No `recipe` or `technology` prototype appears
+anywhere in either release. It adds three kinds of non-shortcut prototype, and none is craftable:
+
+- the jammer, a `selection-tool`;
+- `tree-killer`, a copy of the deconstruction planner. Both are flagged `only-in-cursor` and
+  `spawnable`, so they come from the toolbar, not a recipe;
+- `prototypes/updates-disabled-equipment.lua` makes a `disabled-` copy of every night-vision,
+  belt-immunity and active-defense equipment prototype. Each copy has `take_result` set to the
+  original, so taking it out returns the real item.
+
+Served at 2.0 and 2.1. Five of its Lua files outside the runtime scripts differ between the two releases, and neither
+release has a recipe.
+
+**For other tickets.** Its *flashlight* toggle is relevant to #42: the `AfraidOfTheDark` entry
+records that vanilla offers no flashlight control. The equipment copy is generic, so it would
+also cover Bob's equipment in `Grado_ABC`. It skips only names starting `disabled`,
+`personal-turret-` or `nullius-`. That was read, not loaded.
+
+**Alternatives considered.** Its train manual-mode toggle overlaps `Honk`, below. Whether base 2.0
+already ships any of the twenty, such as a personal logistics toggle, was not checked.
+
+**Recommendation: add.** It passes the promise, and it is current, maintained and the most
+complete toolbar bundle among the candidates. Its custom inputs have no default keys, so it adds no
+key to #73's list.
+
+### `AutoDeconstruct`
+
+| | |
+|---|---|
+| **Title** | Auto Deconstruct |
+| **Does** | When a drill's resources run out, marks it for deconstruction. By default it also marks the chest it fed and the beacons around it, and places pipe ghosts where a fluid-mining drill stood |
+| **Latest** | `1.1.2`, `factorio_version` **2.1**, 2026-07-30. On the 2.0 line: `1.0.14`, the same day, **`base >= 2.0.68`** |
+| **Downloads** | 364,741 |
+| **Owner** | `mindmix` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: none, read from source.** The data stage is one `mod-data` blacklist, and both releases
+are identical there. Served at 2.0 and 2.1.
+
+**But it changes the built factory without being asked, every time.** `control.lua` acts on
+`on_resource_depleted`, which the game raises, not the player. `script/autodeconstruct.lua` then
+calls `order_deconstruction` on the drill. Its runtime-global settings default to also removing the
+target chest (`autodeconstruct-remove-target`) and beacons (`-remove-beacons`), and to building
+pipe ghosts (`-build-pipes`). Belts, tiles and wired entities are off by default. There is no
+per-player switch. The only consent is installing the mod.
+
+**And it would raise the pack's floor.** On the 2.0 line it asks `base >= 2.0.68`, one build above
+the `2.0.67` the pack declares (#58). That would be a metadata-only change to `info.json`.
+
+**Alternatives considered.** No member does it. None searched beyond the members.
+
+**Recommendation: reconsider:** whether "changes the built factory only when the player asks it to"
+admits a mod that acts on its own once installed. The promise was written against tools the player
+operates. The nearest precedent is `Automatic_Train_Painter`, which also acts without being asked
+and was kept, but it only changes colour. This mod removes entities. That is a reading of the
+promise, and the ruling is Truls's. If it is admitted, the mod is the most downloaded of the 19,
+current on both lines, and a natural fit for the pack.
+
+### `fluid-connection-indicators`
+
+| | |
+|---|---|
+| **Title** | Connection Indicators |
+| **Does** | Draws indicators on fluid connections, inserters and mining drills: connected, unconnected, or blocked by another entity |
+| **Latest** | `0.2.9`, `factorio_version` **2.1**, 2026-07-01. On the 2.0 line: `0.2.7`, 2025-09-23, `base >= 2.0`, `flib >= 0.13.0` |
+| **Downloads** | 3,193 |
+| **Owner** | `Soul-Burn` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: none, read from source.** Two `sprite`s; the indicators are drawn at runtime. Served at
+2.0 and 2.1.
+
+**Alternatives considered.** It partly overlaps `PipeVisualizer-Updated`, a member, which draws a
+whole fluid network on demand. This mod instead marks single connections all the time, in its
+default lightweight mode only where something needs attention, and it also covers inserters and
+drills. `Grado_ChangingBase`'s `PickerPipeTools` entry already found it to be a different feature
+from orphan-finding.
+
+**Recommendation: add.** It is read-only, current, and small next to the visualiser it complements.
+Its 3,193 downloads are the lowest of the 19, which is a bus-factor note, as for
+`ixuAutoSave`, not a quality one.
+
+### `WireShortcutX`
+
+| | |
+|---|---|
+| **Title** | Wire Shortcuts X |
+| **Does** | One shortcut and `Alt+W` to put a wire in hand, cycling red and green (and optionally copper) on repeat presses, with redrawn shortcut icons |
+| **Latest** | `1.3.1`, `factorio_version` **2.0**, 2024-11-21 |
+| **Downloads** | 9,144 |
+| **Owner** | `Xorimuth` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: none, read from source.** It declares `sprite`s, a `custom-input` and up to four
+`shortcut`s. The `spawn-item` ones give the vanilla `copper-wire`, `red-wire` and `green-wire`
+cursor items, which base 2.0 also hands out, so the wires are not free items. **It is not served
+at 2.1.**
+
+**Alternatives considered.** Covered twice. Its own page says it only *"adds some functionality
+compared to the inbuilt shortcuts in 2.0"*. **And `kry-picker-extended`, a member, absorbed it**: its
+changelog for `1.2.1` (2026-07-21) reads *"Integrated Wire Shortcuts X by Xorimuth, adds Alt+W
+hotkey to cycle between wires"*. That release is on the 2.1 line. A 2.0.77 game installs
+`kry-picker-extended` `1.1.0`, which predates it, so at 2.0 the cycle key is missing. At 2.1 it
+returns through the member, and this mod is unreachable there anyway. `Xorimuth` also owns
+`FactorySearch`, a member.
+
+**Recommendation: do not add.** At 2.0 it adds one cycling key to vanilla's wire shortcuts. At 2.1
+the member provides that and this mod cannot be installed.
+
+### `Renamer`
+
+| | |
+|---|---|
+| **Title** | Renamer |
+| **Does** | `Ctrl+R` over a roboport, lab, train station, locomotive or radar opens a box to rename it, with rich text and a random-name button |
+| **Latest** | `2.2.2`, `factorio_version` **2.0**, 2025-02-07 |
+| **Downloads** | 8,791 |
+| **Owner** | `GotLag` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: none, read from source.** One `custom-input` and one GUI style. **It is not served at
+2.1.**
+
+**Alternatives considered.** The same story as `WireShortcutX`. `kry-picker-extended` `1.2.1`
+*"Integrated Renamer by GotLag"*, on the 2.1 line only, so the member provides it at 2.1 and not at
+2.0. Whether base 2.0 can rename these five entity types without a mod was not checked; train
+stops, at least, have a name field in vanilla. **Shared key:** `Ctrl+R` is already bound by
+`Fill4Me` and `kry-picker-extended` (the load record lists both), and by `bobinserters`
+(`Grado_ChangingBase`). This would be a fourth.
+
+**Recommendation: do not add.** Its feature reaches the pack through a member at 2.1, it cannot be
+installed there itself, and at 2.0 it would add a fourth binding to the most crowded key in the
+chain.
+
+### `Honk`
+
+| | |
+|---|---|
+| **Title** | Honk |
+| **Does** | Trains sound a horn when they start (two honks) and stop (one); `H` and `Shift+H` honk from a locomotive, there is a train manual-mode toggle, and the horns can be added as a programmable-speaker instrument |
+| **Latest** | `5.2.1`, `factorio_version` **2.1**, 2026-06-30. On the 2.0 line: `5.1.1`, 2025-03-16, no `base` floor |
+| **Downloads** | 120,932 |
+| **Owner** | `GotLag`, with source kept by `robot256` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: none, read from source.** `sound` and `custom-input` prototypes. `data-final-fixes.lua`
+can append a `honk-horns` instrument to the vanilla programmable speaker, behind the startup
+setting `honk-speakers`, which tunes a vanilla prototype. Served at 2.0 and 2.1. The manual-mode
+toggle defaults to `J` in `5.1.1` and to no key in `5.2.1`. Its page still says `J`.
+
+**Alternatives considered.** `Shortcuts-ick`, above, also has a train manual-mode toggle. **Shared
+keys:** no member binds `H`, `Shift+H` or `J`. `H` is also base's flip-horizontal key (see
+`blueprint_flip_and_turn`). Base keys are outside the text search, and the two apply in different
+situations.
+
+**Recommendation: add**, as a cosmetic member in the same class as `DiscoScience`. Every train in
+the save honks by default. That is a taste question its settings answer, not a promise one.
+
+### `car-finder`
+
+| | |
+|---|---|
+| **Title** | Car/Tank/Spidertron Locator Button (Find / Locate My Lost Car / Car Finder) |
+| **Does** | A toolbar button and `Shift+V` that show where the player left their car, tank, spidertron or modded vehicle, and focus a held spidertron remote's spidertron |
+| **Latest** | `2.1.0`, `factorio_version` **2.1**, 2026-06-23. On the 2.0 line: `2.0.0`, 2024-10-21, no `base` floor |
+| **Downloads** | 47,036 |
+| **Owner** | `jeff.s` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: none, read from source.** A `sound`, a `custom-input` and a `shortcut`, identical in both
+releases. Served at 2.0 and 2.1.
+
+**Alternatives considered.** No member finds vehicles; `WhereIsMyBody` does the same job for
+corpses. **Shared key:** `Shift+V` is already bound by `VehicleSnap` and `kry-picker-extended`.
+The load record lists that pair, and this would make three.
+
+**Recommendation: add.** It is read-only, current and well used. It restores one of the three
+features of the dropped `PickerVehicles` (`Grado_ChangingBase`) that no member covers; `Honk` and a
+train manual-mode toggle are the other two. Note the
+`Shift+V` three-way for #73.
+
+### `Orphan Finder`
+
+| | |
+|---|---|
+| **Title** | Orphan Finder |
+| **Does** | `Shift+O` marks underground belts and pipes near the player that have no connected other end |
+| **Latest** | `1.2.2`, `factorio_version` **2.0**, 2025-01-25, no dependencies |
+| **Downloads** | 25,905 |
+| **Owner** | `GotLag` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: none craftable, read from source.** It declares a `custom-input` and an `orphan-arrow`,
+a copy of the vanilla `arrow` prototype used as a marker. An `arrow` is an entity type, but this
+one has no item or recipe and is placed only by the script. **It is not served at 2.1.** The name
+has a space in it, which is also how `info.json` has to spell it.
+
+**Alternatives considered.** `PipeVisualizer-Updated`, a member, shows undergrounds but does not
+flag unpaired ones, and does nothing for belts. `fluid-connection-indicators`, above, is a different
+feature (#8's reading in `Grado_ChangingBase`'s `PickerPipeTools` entry). Its page names
+`underground-pipe-pack` (`Grado_ChangingBase`) as compatible, with one caveat about that mod's
+rotation key. **Shared key:** `Shift+O` is also `bobinserters`' (`Grado_ChangingBase`).
+
+**Recommendation: add**, at the 2.0 line, and onto the 2.1 watch list. It is the closest successor
+to the orphan finder in `PickerPipeTools`, which `Grado_ChangingBase` dropped (#8). It costs
+nothing, and only the missing 2.1 release counts against it, which alone does not decide. The
+`Shift+O` overlap affects only the packs from `Grado_ChangingBase` up.
+
+### `ore-eraser-2`
+
+| | |
+|---|---|
+| **Title** | Ore Eraser |
+| **Does** | A toolbar shortcut gives a selection tool that deletes the ore under the selected area, all of it or only one ore type picked by an alt-selection |
+| **Latest** | `0.2.5`, `factorio_version` **2.1**, 2026-06-25. On the 2.0 line: `0.2.4`, 2025-04-26, no dependencies |
+| **Downloads** | 14,468 |
+| **Owner** | `No0Vad` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: none craftable, read from source.** The `ore-eraser` `selection-tool` is `hidden`,
+`only-in-cursor` and `spawnable`, has no recipe, and is handed out by a `shortcut` that needs no
+technology. `control.lua` calls `entity.destroy()` on each `resource` in the selection, returns
+nothing to the player, and deletes the tool if dropped. Served at 2.0 and 2.1. The promise does not
+exclude it: deleting ore is a map change the player asks for, like `CleanFloor`'s.
+
+**Its one piece of state is kept where the game does not save it.** The alt-select filter,
+`filterOnOnlyThis`, is a file-level Lua variable, not a field in `storage`. The runtime API keeps
+only `storage` in the save and gives it to joining players. So a filter set before a save is gone
+after a reload, and a player who joins while one is set holds different state from the others,
+which is a desync. This is the same in both releases. It was read, not reproduced in game.
+
+**Alternatives considered.** Not searched.
+
+**Recommendation: do not add.** Deleting resources for free cannot be undone, and it reaches the
+ground `Grado_ABC`'s `rso-mod` and `angelsinfiniteores` lay out, so it is a cheat as much as a
+convenience. The `storage` defect is a concrete fault in a mod with little else to recommend it.
+The promise itself does not rule it out, and that is said here so the recommendation is not
+mistaken for a promise ruling.
+
+### `kry-vehicle-grids`
+
+| | |
+|---|---|
+| **Title** | Vehicle Equipment Grids |
+| **Does** | Gives cars, tanks, trains and modded vehicles equipment grids sized per vehicle, and adds a vehicle-only speed booster in place of exoskeletons in vehicles |
+| **Latest** | `2.3.2`, `factorio_version` **2.1**, 2026-09-23, `kry_stdlib >= 2.2.21`. On the 2.0 line: `2.2.0`, 2026-06-09, `base >= 2.0`, `kry_stdlib >= 2.1.1` |
+| **Downloads** | 8,247 |
+| **Owner** | `Kryzeth` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: yes, read from source, so it fails this pack's promise.** `prototypes/equipment.lua`
+copies each exoskeleton technology's recipe, technology, item and equipment into a craftable
+vehicle speed booster: `Recipe(...):krycopy`, `Tech(...):krycopy`, `Item(...):krycopy`, at lines
+159 to 162 of `2.3.2`. The grids added to vanilla vehicles would only be tuning; the booster is
+content. Both releases have the same `data.lua`. Served at 2.0 and 2.1. Its 2.1 release asks
+`kry_stdlib >= 2.2.21`, the release that already sets the project's highest 2.1 floor
+(`CLAUDE.md`), so it moves nothing. A 2.0.77 game's `kry_stdlib` `2.1.2` meets its 2.0 floor.
+
+**For #46, which assesses it for `Grado_ChangingBase`.** Its content is conditional, read from
+`data.lua`:
+
+- **It holds back its own booster when `bobvehicleequipment` or Krastorio 2 is loaded.**
+  `bobvehicleequipment` is a `Grado_ABC` member, so in the three overhaul packs the mod adds grids
+  and no craftable item.
+- **On `Grado_ChangingBase` alone it adds the booster**, because nothing there suppresses it.
+- When `bobequipment` and `bobvehicleequipment` are both loaded, `prototypes/category-updates.lua`
+  keeps belt immunity, shields, batteries, solar panels and fission reactors out of vehicle grids,
+  vanilla and Bob's tiers both, along with anything named `personal`. It names `bobequipment` as a
+  hidden optional.
+
+`Grado_ChangingBase`'s `PickerTweaks` entry already named this mod as the successor to that
+bundle's vehicle grids.
+
+**Alternatives considered.** `bobvehicleequipment` (`Grado_ABC`), above, for the packs that have it.
+
+**Recommendation: do not add** to this pack. It adds craftable equipment, a recipe and a
+technology.
+
+### `ghost-counter`
+
+| | |
+|---|---|
+| **Title** | Ghost Counter |
+| **Does** | Lists the ghosts in a selected area or a held blueprint against what the player carries, and sets a one-time personal logistic request for the shortfall that restores the previous request once met |
+| **Latest** | `2.1.1`, `factorio_version` **2.1**, 2026-07-14. On the 2.0 line: `2.0.2`, 2026-06-25, `base >= 2.0.7` |
+| **Downloads** | 35,610 |
+| **Owner** | `InappropriatePenguin` |
+| **Status** | candidate, not a member (#41) |
+| **Read on** | 2026-10-01 |
+
+**Content: none craftable, read from source.** Its `selection-tool` is `hidden`, `only-in-cursor` and
+`spawnable` and comes from a `shortcut`. Everything else is `sprite`s and a `custom-input`. The
+logistic request is a section on the player's own requester point, added when they click for it,
+which is the player's data, not the factory. Served at 2.0 and 2.1.
+
+**Alternatives considered.** As #41 says, nothing in the pack does this. `kry-picker-extended`'s
+*Held Item Count* shows how many of the held item the player has, and does not count ghosts. **Shared
+key:** `Ctrl+G` is also `belt-visualizer` `2.1.4`'s hover toggle, a clash between two candidates and
+only on the 2.1 line. No member binds it.
+
+**Recommendation: add.** It passes the promise, overlaps no member, is current on both lines and
+has no dependency except `base`. If `belt-visualizer` is added as well, the two need different
+keys at 2.1.
+
 ## The promise, and why it needs a ruling
 
 `CLAUDE.md` and the README both said this pack "does not change save state or the factory", until
@@ -832,7 +1472,7 @@ this same ruling. **Six are not:** `belt-visualizer`, `CursorEnhancements`, `Sho
 The structural objection #1 recorded still stands on its own and is the reason not to revisit this
 lightly: **a pack depending on another pack** hands a third party control of six of this pack's
 members at once. The individual members are worth assessing on their own merits, which is a separate
-ticket.
+ticket. *Assessed for this pack on 2026-10-01 (#41): see* Candidates, not members.
 
 One reading here belongs to another ticket rather than this one: the bundle carries `squeak-through-2`
 as *optional*, where `Grado_ChangingBase` carries it as **mandatory**. That is the
@@ -872,7 +1512,8 @@ someone else forked it.
 all — `CursorEnhancements`, `StatsGui`, `QuickbarTemplates`, `MouseOverConstruction`,
 `BetterAlertArrows`, `FluidMustFlow`, `ChangeInserterDropLane`. #2 asks about the mods already in the
 pack and the ones dropped from it, so none of these was assessed. Adding a mod that was never in the
-1.1 pack is a different question and a bigger one.
+1.1 pack is a different question and a bigger one. *Assessed for this pack on 2026-10-01 (#41): see* Candidates, not
+members.
 
 ## The pack cannot load on the Factorio version it declares
 

@@ -15,11 +15,12 @@ marked *Superseded 2026-09-23 by #15*, which #15 took, and the notes dated 2026-
 with this sentence. *Candidates, not members* was read on 2026-09-30 (#50). The notes dated
 2026-10-01 (#39), (#44), (#80) and (#44, #83) were taken by #39, #44, #80 and #83. Searches described below as over "the 2.x list" first ran over
 the `version=2.0` listing only, which misses mods released for 2.1 alone (#44). **Every search so
-described has since been re-run over the union of both listings** and carries a *Checked 2026-10-01* note: four by #44,
-against a union of 10,845, and the rest by #83, against the listings as read later that day - 9,794
+described has since been re-run over the union of both listings** and carries a *Checked
+2026-10-01* note: four by #44, against a union of 10,845, and the rest by #83, against the listings as read later that day - 9,794
 in `version=2.0`, 4,341 in `version=2.1`, 10,850 in the union, 1,056 of them in the 2.1 listing
-alone. A new hit is named in its entry; none changes a ruling here. An *Alternatives considered* line
-that says only "none found" and names no listing was not re-run.
+alone. A new hit is named in its entry; none changes a ruling here. Two
+entries say "none found" on 2.x without recording a search, and were not re-run:
+`RealisticReactorsReborn` and `extendedangels`.
 
 The dependency list holds 46 entries: `base >= 2.0.0`, `Grado_ChangingBase` — a pack, catalogued in
 `docs/catalogue/Grado_ChangingBase.md` — and **44 mods**. It read 47 and 45 until 2026-09-22, when

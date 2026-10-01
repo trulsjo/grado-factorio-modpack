@@ -12,12 +12,13 @@ by #15*, which #15 took, and the notes dated 2026-09-24 (#43) and (#58), which t
 2026-10-01 (#44, #83) and (#83), which #83 took.
 *Candidates, not members* was read on 2026-10-01 (#46, #84). Searches described below as over "the
 2.x list" first ran over the `version=2.0` listing only, which misses mods released for 2.1 alone
-(#44), and the two over "the 2.1 list" miss mods released for 2.0 alone. **Every one has since been
-re-run over the union of both listings** by #83 and carries a *Checked 2026-10-01 (#44, #83)* note
+(#44), and the two over "the 2.1 list" miss mods released for 2.0 alone. **Every search so
+described has since been re-run over the union of both listings** by #83 and carries a *Checked 2026-10-01 (#44, #83)* note
 (#44 found the gap; #83 ran every re-run in this file),
 against the listings as read that day - 9,794 in `version=2.0`, 4,341 in `version=2.1`, 10,850 in
 the union, 1,056 of them in the 2.1 listing alone. A new hit that could change a recommendation is
-named in its entry and left to #86.
+named in its entry and left to #86. An entry whose *Alternatives considered* reads "none searched"
+or "none needed" recorded no search, so there was nothing to re-run.
 Each is reproduced
 from the fetched data rather than retyped; the **Read on** row is authoritative where it disagrees
 with this sentence.

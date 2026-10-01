@@ -134,8 +134,9 @@ the whole branch's.
 - **In:** `RealisticFusionPowerPort` (`Durikkan`, `1.9.2`), replacing `RealisticFusionPower` as a
   **comparison slot**. Truls wants it beside his own `realistic-fusion-refreshed`, which may replace
   it once published. The two share no prototype names, so they do not conflict.
-- **Kept for now:** `angels-smelting-extended`. #50 assesses `angelsextended-remelting`, which #9
-  did not accept as an alternative.
+- **Kept for now:** `angels-smelting-extended`. #50 assessed `angelsextended-remelting`, which #9
+  did not accept as an alternative, and found it a complement (2026-09-30); whether it joins is
+  Truls's.
 - **Deferred to #49**, the additions survey: `ScienceCostTweakerM`, `deadlock-compat-AngelBobPlus`,
   `angelsaddons-bots` and `bobclasses`.
 
@@ -594,4 +595,6 @@ Truls closed #43 on the 2.0.77 result with this list kept as a watch list rather
   play session is complete. 24 of the 26 named members were seen working (`ixuAutoSave` and
   `kry-picker-extended` not confirmed), the save survived a reload with the members' data that
   was checked, and the only conflict found is a key binding: `YARM` and `PipeVisualizer-Updated`
-  both default to `Alt+Y`. Whether that earns the first compatibility Lua is #73's.*
+  both default to `Alt+Y`. Whether that earns the first compatibility Lua is #73's.* *Base's
+  `give-discharge-defense-remote` defaults to `Alt+Y` too, with or without Space Age (#71,
+  2026-09-30).*

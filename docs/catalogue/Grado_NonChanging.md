@@ -237,8 +237,9 @@ above all of them, and on 2026-09-24 still leads the next, `Automatic_Train_Pain
 
 **Recommendation: keep.** Read-only overlay; last touched 2025-11-16.
 
-*Seen in play 2026-09-29 (#17): its default `Alt+Y` clashes with `YARM`'s, and `PipeVisualizer-Updated`
-wins. A player can rebind the key. Whether the pack changes a default is open (#73). See
+*Seen in play 2026-09-29 (#17): its default `Alt+Y` clashes with `YARM`'s, and
+`PipeVisualizer-Updated` wins. A player can rebind the key. Base's `give-discharge-defense-remote`
+defaults to `Alt+Y` too (#71, 2026-09-30). Whether the pack changes a default is open (#73). See
 `docs/loads/Grado_NonChanging-2026-09-29.md`, *Key bindings*.*
 
 ### `RateCalculator`
@@ -347,8 +348,9 @@ wins. A player can rebind the key. Whether the pack changes a default is open (#
 
 **Recommendation: keep.** Stores monitored sites in the save; changes nothing in the factory.
 
-*Seen in play 2026-09-29 (#17): its default `Alt+Y` clashes with `PipeVisualizer-Updated`'s, and `PipeVisualizer-Updated`
-wins. A player can rebind the key. Whether the pack changes a default is open (#73). See
+*Seen in play 2026-09-29 (#17): its default `Alt+Y` clashes with `PipeVisualizer-Updated`'s, and
+`PipeVisualizer-Updated` wins. A player can rebind the key. Base's `give-discharge-defense-remote`
+defaults to `Alt+Y` too (#71, 2026-09-30). Whether the pack changes a default is open (#73). See
 `docs/loads/Grado_NonChanging-2026-09-29.md`, *Key bindings*.*
 
 ### `automatic-station-painter`
@@ -1016,7 +1018,8 @@ still portal and description readings. See `docs/loads/Grado_NonChanging-2026-09
 *Superseded again 2026-09-30 (#17): the play session is complete. 24 of the 26 members were seen
 working (`ixuAutoSave` and `kry-picker-extended` not confirmed), and the save survived a reload
 with the members' data that was checked. One clash was found, `Alt+Y` between
-`YARM` and `PipeVisualizer-Updated`, noted in both entries. "Working together in play" is now
+`YARM` and `PipeVisualizer-Updated`, noted in both entries; base's discharge-defense remote
+shares the default (#71, 2026-09-30). "Working together in play" is now
 checked for one player, one build and default settings.*
 
 **Download counts are context, not evidence.** `ixuAutoSave` at 657 is flagged for bus factor, not

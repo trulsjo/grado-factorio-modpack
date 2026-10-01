@@ -843,9 +843,10 @@ the line blank. The two mods above are a functional replacement, not an equivale
 a decorative mod whose water-crossing was the side effect, and splitting it into two utility mods
 delivers the crossing and drops the reason someone installed it. Adding a member to
 `Grado_ChangingBase` is a save-breaking change under
-`docs/adr/0001-version-major-tracks-save-compatibility.md`, so this is not a cheap "might as well".
-If the crossing is wanted, the pair is what to add and this entry is the evidence; that is pack
-membership and Truls's. **Related and not this ticket's:** `Grado_ABC` dropped
+`docs/adr/0001-version-major-tracks-save-compatibility.md` (whose rule ADR 0002 keeps; it supersedes
+0001 - noted 2026-10-01, #70), so this is not a cheap "might as well". If the crossing is wanted,
+the pair is what to add and this entry is the evidence; that is pack membership and Truls's.
+**Related and not this ticket's:** `Grado_ABC` dropped
 `beautiful_bridge_railway_bob_fix_updated_new`, the Bob's-compatibility companion to this mod, so
 the same question reaches #4 and #5 from the other side. Whatever is decided here should be decided
 there.
@@ -1274,7 +1275,8 @@ reasons, in the order they matter:
    player, because every ABC install still resolves the mod through `Grado_ChangingBase`. Removing
    the `Grado_ChangingBase` line takes the mod away from everyone who plays `Grado_ChangingBase`
    without an overhaul on top — a real loss of a feature, and under
-   `docs/adr/0001-version-major-tracks-save-compatibility.md` a **major** bump, because a member of
+   `docs/adr/0001-version-major-tracks-save-compatibility.md` (whose rule ADR 0002 keeps; it
+   supersedes 0001 - noted 2026-10-01, #70) a **major** bump, because a member of
    `Grado_ChangingBase` would be leaving. The ABC removal is save-safe and costs a minor bump at
    most.
 3. **It is what this pack is for.** Adjustable pickup and drop tiles are a quality-of-life change

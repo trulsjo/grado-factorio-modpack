@@ -56,7 +56,7 @@ written, and each affected entry carries its ruling inline. **44 mods to 41.**
 | `DeadlockStackingForBobs`, `DeadlockStackingForVanilla`, `deadlock-beltboxes-loaders` | **out**: the stacking feature is dropped entirely (option 3 of *The Deadlock stacking family is one question*) |
 | `signalstrings` | **out**: a library that nothing depends on, and no reason for it on record |
 | `RealisticFusionPower` | **replaced** by `RealisticFusionPowerPort`, as a comparison slot for `realistic-fusion-refreshed`. The port is not served at 2.1 (#43) |
-| `angels-smelting-extended` | **kept for now**; `angelsextended-remelting` is not accepted as an alternative until #50 compares them. Not served at 2.1 (#43) |
+| `angels-smelting-extended` | **kept for now**; #50 (2026-09-30) found `angelsextended-remelting` a complement, not an alternative - see *Candidates, not members*. Not served at 2.1 (#43) |
 | `RealisticReactorsReborn`, `True-Nukes_Continued`, `True-Nukes-Graphics_Continued`, `WideChestsBobs`, `spidertrontiers-community-updates` | kept, and tracked under #43 as not served at 2.1 |
 | `angelsindustries` | stays dropped; a 2.x port **reopens** the question rather than adding it back automatically |
 | `Clowns-Science` | stays dropped; `ScienceCostTweakerM` deferred to #49 |
@@ -1245,10 +1245,11 @@ is a SeaBlock-specific science tweak.
 replacement. Three things make this a real question rather than a formality. It is a *different* mod
 with a different purpose that happens to overlap, not a successor — adding it is a new membership
 decision, which is Truls's. It changes the science-pack recipes, so under
-`docs/adr/0001-version-major-tracks-save-compatibility.md` adding it later is a major bump for this
-pack. And it is a tech-tree change layered on a pack that already lost its tech overhaul with
-`angelsindustries`, so the two questions are really one question about what ABC's research
-progression should be, and answering them separately risks answering them inconsistently.
+`docs/adr/0001-version-major-tracks-save-compatibility.md` (whose rule ADR 0002 keeps; it supersedes
+0001 - noted 2026-10-01, #70) adding it later is a major bump for this pack. And it is a tech-tree
+change layered on a pack that already lost its tech overhaul with `angelsindustries`, so the two
+questions are really one question about what ABC's research progression should be, and answering
+them separately risks answering them inconsistently.
 
 **Ruled 2026-09-23 (#9): stays dropped.** `ScienceCostTweakerM` would be an addition: a different
 mod that overlaps in part, not a successor. #9 kept rule 1 strict about that, so the question moves
@@ -1716,7 +1717,11 @@ Whether the pack wants that is Truls's.
 It also bears on the member. #9 kept `angels-smelting-extended` "for now" because it did not read
 this mod as an alternative, and the code agrees. So the alternative no longer weighs against the
 member. The concerns about the member itself stand: a single 2.x release, on 2.0 only, after two
-years dormant. What the member provides has no substitute here either.
+years dormant. To those add the side finding above: with `bobplates` it redefines Angel's
+`angels-liquid-molten-invar`, which sits against this pack's promise that a member must not
+conflict with the overhaul (`CONTEXT.md`). Whether a redefinition of one fluid is a conflict in
+that sense was not measured: nothing here compared the two definitions in a load. What the member
+provides has no substitute here either.
 
 ## The three Angel's and Clowns drops are one event
 
@@ -1898,11 +1903,11 @@ could never sit in a pack below `Grado_ABC`.
    half.
 
 Option 2 removes members of `Grado_ABC` in substance, and option 3 removes three of them outright:
-both are **major** bumps under `docs/adr/0001-version-major-tracks-save-compatibility.md`. That is
-pack membership, so it is **#9's**. Two of the three drops' entries above end in `reconsider:`
-pointing here rather than proposing an answer; `DeadlockCrating` ends in `stay dropped`, because
-its feature is a higher-ratio version of one the pack still has and its disposal does not turn on
-this question.
+both are **major** bumps under `docs/adr/0001-version-major-tracks-save-compatibility.md` (whose
+rule ADR 0002 keeps; it supersedes 0001 - noted 2026-10-01, #70). That is pack membership, so it is
+**#9's**. Two of the three drops' entries above end in `reconsider:` pointing here rather than
+proposing an answer; `DeadlockCrating` ends in `stay dropped`, because its feature is a higher-ratio
+version of one the pack still has and its disposal does not turn on this question.
 
 **Ruled 2026-09-23 (#9): option 3, drop the stacking feature entirely.** All three members are out
 and the two dropped bridges stay dropped. Option 2 is an addition under rule 1 and is deferred to

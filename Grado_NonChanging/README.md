@@ -63,7 +63,8 @@ The pack also installs the libraries these mods need.
 ## Known issues
 
 - **`Alt+Y` is taken by two mods.** YARM's selector and Pipe Visualizer's mouse-over toggle both
-  use it by default, and Pipe Visualizer wins. To use YARM's selector, rebind it under
+  use it by default, and Pipe Visualizer wins. The game's own discharge-defense remote key is
+  `Alt+Y` too. To use YARM's selector, rebind it under
   *Settings → Controls → Mods*.
 - **Some other keys are shared by default.** Most only act in one situation - with a blueprint in
   hand, in a vehicle, with a chest under the cursor - so they may never get in each other's way. If

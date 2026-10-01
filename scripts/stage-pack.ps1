@@ -45,9 +45,12 @@
     agree in case, so grado_abc inside Grado_ABC/ is refused. On Windows that also refuses -Pack or
     a dependency line naming grado_abc. A case-sensitive filesystem does not find that directory at
     all, so there -Pack is refused as an unknown pack and the dependency line is not taken for a
-    pack. Every mod name is compared this way, the game mods (base, space-age, ...) included:
-    a dependency line naming Space-Age is not taken as bundled and is not passed to the harness,
-    as resolve-modpack.ps1 has not taken it since trulsjo/grado-factorio-tools#28 (#88).
+    pack. The game-mod list (base, space-age, ...) is matched in exact case too, as
+    resolve-modpack.ps1 has matched it since trulsjo/grado-factorio-tools#28 (#88): a mandatory
+    line naming Space-Age fails the resolve, so the stage stops there. What this script does not
+    check is the members' own dependency lines. The resolver still matches those names without
+    regard to case inside a closure, as its header says, so a member asking for krastorio2 is
+    taken as satisfied by Krastorio2.
 
     FACTORIO TAKES THE TARGET AS ITS MODS DIRECTORY, on the one run checked (2.0.77 headless,
     Grado_NonChanging, 2026-09-24, #59). fetch-mods.ps1 keeps its downloaded zips in a .zips
@@ -392,6 +395,8 @@ catch { Write-Host "  $($_.Exception.Message)"; Write-Host ''; Write-Host "FAILE
 try { Install-PackZip -Chain $chain -ModsDirectory $ModsDirectory }
 catch { Write-Host "  $($_.Exception.Message)"; Write-Host ''; Write-Host "FAILED - the packs may be partly staged; the members of $Pack are fetched."; exit 1 }
 
+# Exact case to agree with the resolver, which has already refused a wrong-case game-mod line;
+# so -in would pass every staging run today, and no self-test case can tell the two apart.
 $bundled = @($chain | ForEach-Object { Get-RequiredName $_.Info } | Where-Object { $_ -cin $GAME_MODS -and $_ -cne 'base' } | Sort-Object -Unique -CaseSensitive)
 $with = if ($bundled) { " -With $($bundled -join ',')" } else { '' }
 $exe = if ($FactorioExe) { " -FactorioExe `"$FactorioExe`"" } else { '' }

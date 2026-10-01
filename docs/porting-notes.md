@@ -465,8 +465,8 @@ portal 2026-10-01. Whether to swap any of them in is #86's; this list makes no s
 requires `stdlib2`, so it is also the route off the hidden `stdlib2` row. `kry_stdlib` is already a
 hidden member of `Grado_NonChanging`. `OrphanPin` drops map pins on the orphans rather than marking
 them with arrows. The evidence is in `docs/catalogue/Grado_ChangingBase.md`, in `Nanobots2`'s
-entry and in `Orphan Finder`'s under *Candidates, not members*; `Orphan Finder`'s entry in
-`docs/catalogue/Grado_NonChanging.md` does not name the two successors.
+entry and in `Orphan Finder`'s under *Candidates, not members*. `Orphan Finder`'s entry in
+`docs/catalogue/Grado_NonChanging.md` names the two and points there.
 
 ## Open questions
 

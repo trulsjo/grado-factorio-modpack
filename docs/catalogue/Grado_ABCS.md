@@ -9,7 +9,9 @@ Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below w
 **2026-09-22** and is reproduced from the fetched data rather than retyped, except the one
 re-read on 2026-09-23 (#10), which carries its own date, *Candidates, not members*, read
 2026-09-24 (#31), and the notes dated 2026-09-24 (#58) and (#61), which those two took, and the notes dated
-2026-10-01 (#44, #83), which #83 took over the union of both portal listings as read that day.
+2026-10-01 (#44, #83), which #83 took over the union of both portal listings as read that day, and
+the entries for `angels_space_age_galore` and `industrial-worlds` and the notes dated 2026-10-01
+(#91), which #91 took.
 
 The dependency list holds 3 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, catalogued in
 `docs/catalogue/Grado_ABC.md` — and `space-age`. **The pack is new**, so nothing was carried over,
@@ -37,7 +39,10 @@ Three findings:
   `angelbob-spaceage-rebalance`, brings eight more mods with it. *Two more, served at 2.1 only and
   not assessed, were found 2026-10-01 (#83).* See *Pressure on the one-mod-per-branch rule*.
   *Eight it names, eighteen once theirs are
-  counted: resolved 2026-09-24 (#31), under* Candidates, not members.
+  counted: resolved 2026-09-24 (#31), under* Candidates, not members. *The two found by #83 were
+  assessed 2026-10-01 (#91), so the finding covers four bridges: `angels_space_age_galore` brings
+  four more mods and cannot be installed beside `Grado_ABC` at all, and `industrial-worlds`
+  brings two.*
 
 ## In the pack
 
@@ -148,11 +153,21 @@ different claim from `Grado_ABCX`'s empty section, which is a 1.1 pack that drop
 
 ## Candidates, not members
 
-The two mods that attempt the bridge *Pressure on the one-mod-per-branch rule* describes, assessed
-by #31. *The two more found at 2.1 on 2026-10-01 (#83) are not assessed here; they are #31's.* **Neither is a member, and nothing here changes that**: #10 ruled on 2026-09-23 that the
-pack is `Grado_ABC` *beside* Space Age, and #31 is where that is revisited. Every reading in this
-section was taken on **2026-09-24**. A closure is what `resolve-modpack.ps1` picks on line `2.0`,
-build `2.0.77`, for a copy of the chain with the one candidate added to this pack's list.
+The four mods that attempt the bridge *Pressure on the one-mod-per-branch rule* describes. #31
+assessed the first two; #91 assessed the two #83 found in the 2.1 listing alone on 2026-10-01.
+**None is a member, and nothing here changes that**: #10 ruled on 2026-09-23 that the pack is
+`Grado_ABC` *beside* Space Age, and #31 is where that is revisited.
+
+The first two entries were read on **2026-09-24**, and there a closure is what
+`resolve-modpack.ps1` picks on line `2.0`, build `2.0.77`, for a copy of the chain with the one
+candidate added to this pack's list. The last two were read on **2026-10-01**, and that method
+cannot be used for them: neither has a release declaring 2.0, so the resolver has nothing to pick
+on line `2.0`. Their closures were walked by hand instead, over each mod's latest release: every
+dependency without a prefix or with `~`, recursively, with `base`, `space-age`, `quality` and
+`elevated-rails` taken as game mods. *The chain* in those two entries is the same walk over the 87
+portal mods the four lists name - `space-age` aside, the members of the three lower packs - which
+reaches 20 mods no list names, 107 in all. That is a
+latest-release reading, so it is not the same set as #31's 2.0.77 closure.
 
 ### `angelbob-spaceage-rebalance`
 
@@ -227,7 +242,9 @@ checked against a mod that redistributes ores across planets.
 
 **Alternatives considered.** `BobsAngelsSpaceAge`, below, which this mod declares incompatible
 (`! BobsAngelsSpaceAge >= 0.0.3`), and doing nothing, which #10 chose. No third bridge was found;
-#6's search and #4's before it are the ones behind that claim, not a new one.
+#6's search and #4's before it are the ones behind that claim, not a new one. *Two more were found
+2026-10-01 (#83) in the 2.1 listing alone and are assessed below (#91). `industrial-worlds`
+declares `! angelbob-spaceage-rebalance`; this mod declares nothing about either.*
 
 **Recommendation: reconsider:** whether this pack should carry a bridge at all, once #29 shows
 whether the unintegrated pack plays - and only together with the promise, which a bridge fails.
@@ -270,7 +287,8 @@ without a release written against a 2.0 that has since moved. It declares no 2.1
 would strand this pack at a 2.1 target the way #16's watch list describes.
 
 **Alternatives considered.** `angelbob-spaceage-rebalance`, above, which excludes it, and doing
-nothing.
+nothing. *Since 2026-10-01 (#91), also `angels_space_age_galore` and `industrial-worlds`, below;
+the second excludes this mod too (`! BobsAngelsSpaceAge`).*
 
 **Recommendation: reconsider:** this mod as the bridge, only if a bridge is wanted and the heavier
 mod's eighteen extras are not. It is the one bridge that keeps the rule by any count: one member,
@@ -278,6 +296,169 @@ no extras. Doing nothing keeps it too.
 Against it: 253 downloads, `0.0.x`, two releases on one day and none since, no source, 2.0 only,
 and a narrower job - it moves ores between planets rather than merging the two progressions. The
 `!` is the other mod's declaration, not this one's; this mod declares nothing about it.
+
+### `angels_space_age_galore`
+
+| | |
+|---|---|
+| **Title** | Angel's+Space Age Galore |
+| **Does** | A light overhaul, by its summary, that integrates Angel's four core mods with Space Age, built on the author's modified Angel's Special Vanilla from `angels_galore` and requiring the author's three other Galore mods. Its description says it leaves out Angel's eight extra metals and is designed without Bob's mods |
+| **Latest** | `0.9.0`, `factorio_version` **2.1**, 2026-09-30, its only release. Nothing declares 2.0, so a 2.0.77 game is not served it |
+| **Downloads** | 9 |
+| **Owner** | `JTnadrooi` |
+| **Status** | candidate, not a member (#91) |
+| **Read on** | 2026-10-01 |
+
+Created 2026-09-30, the day of its one release. A source repository is linked,
+`https://github.com/JTnadrooi/Project-Galore`, and was not read, so everything below is from the
+`info_json` of each mod and this mod's description.
+
+**What it requires from the chain.** It names three dependencies: `base >= 2.0`,
+`space_age_galore` and `angels_galore`. Through `angels_galore` it requires `angelsbioprocessing`,
+`angelspetrochem`, `angelsrefining` and `angelssmelting`, all four named `Grado_ABC` members, with
+no version floor, and through them their four graphics packages, which are hidden members. Through
+`space_age_galore` it requires `space-age`, which the game supplies.
+
+**What it requires from outside the chain: four mods besides itself,** all by the same owner and all
+from the same repository:
+
+| Mod | Pulled in by | Latest | Releases declaring 2.0 | Downloads | Owner |
+|---|---|---|---|---|---|
+| `angels_galore` | this mod | `1.3.1`, 2.1, 2026-09-30 | 8 of 18, the last `1.1.4`, 2026-06-14 | 431 | `JTnadrooi` |
+| `space_age_galore` | this mod | `1.6.11`, 2.1, 2026-09-26 | 44 of 52, the last `1.6.3`, 2026-06-14 | 6,890 | `JTnadrooi` |
+| `vanilla_galore_continued` | `angels_galore`, `space_age_galore` | `1.4.8`, 2.1, 2026-09-15 | 44 of 50, the last `1.4.2`, 2026-06-14 | 7,631 | `JTnadrooi` |
+| `galore_lib` | `vanilla_galore_continued` | `2.5.2`, 2.1, 2026-09-27 | 22 of 31, the last `2.2.0`, 2026-06-14 | 9,420 | `JTnadrooi` |
+
+So the closure is thirteen mods besides the game's: these five, and eight already in the chain.
+The mod itself declares no optional dependencies. `angels_galore` declares eleven, and eight of them
+are named members of the chain: `reskins-angels`, `angelsaddons-mobility`, `angelsaddons-storage`,
+`angelsaddons-cab`, `angelsinfiniteores`, `bobmodules`, `boblogistics` and `DiscoScience`.
+
+**`!` conflicts: six, all against named `Grado_ABC` members, and they decide it.** `angels_galore`
+`1.3.1` declares `! bobores`, `! bobassembly`, `! bobelectronics`, `! bobtech`, `! bobrevamp` and
+`! extendedangels`, with no version ranges, and all six are in `Grado_ABC/info.json`. It is not a
+latest-release accident: all 18 releases of `angels_galore` declare `! bobores`, and every release
+from `1.1.0` (2026-05-19) on declares all six. This mod requires `angels_galore` at no minimum, so
+no release of either can be installed beside `Grado_ABC`. No mod in the chain declares `!` against
+any of the five. The description gives the reason in its own words: "ASAGAL's lack of Bob's mods
+has allowed me to make it very stable and compatible with other mods."
+
+**Reachability.** Not served on the declared 2.0 line: its one release declares 2.1. The four it
+pulls in each have 2.0 releases, but the mod that needs them does not. On a 2.1 line it would be
+served and would still be blocked by the six `!`s.
+
+**Against the promise: it fails twice.** Its job is the merge the promise rules out - "near-perfect
+integration into Space Age", by its description. And it is Angel's without Bob's, so even a promise
+that allowed a merge would not admit a bridge that excludes half of `Grado_ABC`.
+
+**Does `Grado_ABC` need any change to accommodate it? It would need six members removed** - five
+Bob's mods and `extendedangels` - from the pack both branches share, which is `Grado_ABC`'s
+membership, settled by #9, and not a question this pack can raise.
+
+**What was not measured.** No load, no read of the source, and nothing about how it plays. Its
+description says Aquilo content "has not yet been completely implemented".
+
+**Alternatives considered.** The other three bridges in this section, and doing nothing.
+`angels_galore`, which its page names as the version without Space Age, is not a bridge.
+
+**Recommendation: do not add.** It cannot be installed beside `Grado_ABC` on any release, because
+the mod it requires declares `!` against six of `Grado_ABC`'s members, and its job is the merge the
+promise rules out. Neither reason depends on the declared line or on #29.
+
+### `industrial-worlds`
+
+| | |
+|---|---|
+| **Title** | Industrial Worlds |
+| **Does** | Moves Angel's and Bob's, and Pyanodons, off Nauvis onto dedicated planets of their own inside a Space Age game - Angel's and Bob's to one it calls Angelus - each with its own resources, recipes, machines, science packs, labs and research. Nauvis keeps the vanilla and Space Age progression, and the mod restores prototypes there that the overhauls would otherwise rewrite |
+| **Latest** | `0.0.10`, `factorio_version` **2.1**, 2026-10-01. All seven releases declare 2.1, so a 2.0.77 game is not served it |
+| **Downloads** | 46 |
+| **Owner** | `Szentigrade` |
+| **Status** | candidate, not a member (#91) |
+| **Read on** | 2026-10-01 |
+
+Seven releases, from `0.0.4` on 2026-08-29 to `0.0.10` on 2026-10-01, three of them in the last
+two days of that span. No source repository is linked, and the homepage is a Discord invite. The
+description is written for `0.0.5` ("Version **0.0.5** expands the framework..."), so it lags the
+release read here by five.
+
+**Its mandatory list changed shape on the day it was read.** Through `0.0.9` (2026-09-30), the
+Angel's and Bob's mods it supports were mandatory, and from `0.0.5` so were nine Pyanodons mods and
+`pyspaceage`. `0.0.10` made every one of them optional. The closure below is `0.0.10`'s; a reading
+one day earlier would have pulled in the Pyanodons suite, and that closure was not walked.
+
+**What it requires from the chain: nothing.** Its whole mandatory list is `base >= 2.1.20`,
+`space-age >= 2.1.20`, `forgeworks-core >= 0.3.1` and `0-industrial-worlds-compat >= 0.0.5`.
+
+**What it requires from outside the chain: two mods besides itself,** both by the same owner:
+
+| Mod | Pulled in by | Latest | Releases declaring 2.0 | Downloads | Owner |
+|---|---|---|---|---|---|
+| `forgeworks-core` | this mod | `0.3.2`, 2.1, 2026-09-23 | 4 of 7, the last `0.2.8`, 2026-06-28 | 6,661 | `Szentigrade` |
+| `0-industrial-worlds-compat` | this mod | `0.0.5`, 2.1, 2026-09-01 | none of 1 | 45 | `Szentigrade` |
+
+Neither requires anything but `base` (`>= 2.1.20` and `>= 2.1.0`), so the closure is three mods.
+`forgeworks-core` describes itself as a library with "no gameplay content".
+`0-industrial-worlds-compat` has no description; its summary calls it an "early prototype-stage
+bootstrap" that "sanitizes cross-overhaul data:extend calls" and normalizes recipe and equipment
+shapes.
+
+**25 of its 39 optional dependencies are already in the chain.** Twenty-four are named members:
+`angelsrefining`, `angelspetrochem`, `angelssmelting`, `angelsbioprocessing`, `angelsinfiniteores`,
+`angelsaddons-storage`, `angelsaddons-mobility`, `angelsaddons-cab`, `bobores`, `bobplates`,
+`bobelectronics`, `boblogistics`, `bobassembly`, `bobmodules`, `bobmining`, `bobwarfare`,
+`bobenemies`, `bobequipment`, `bobvehicleequipment`, `bobinserters`, `bobpower`, `bobtech`,
+`bobrevamp` and `bobgreenhouse`. One is hidden: `boblibrary`. Each latest release meets the range it
+declares (`>= 2.1.0` for Angel's, `>= 3.0.0` for Bob's). The fourteen outside the chain are
+`angelsaddons-bots`, `bobclasses`, nine Pyanodons mods and `pyspaceage`, `Paracelsin` and
+`corrundum`. It names none of `Grado_ABC`'s MadClown members - `Clowns-AngelBob-Nuclear`,
+`Clowns-Extended-Minerals` and `Clowns-Processing` - and its description does not mention MadClown.
+
+**`!` conflicts: seven, none with the chain.** `! cargo-bays-and-unloaders`,
+`! omniab-space-age-compat`, `! angelbob-spaceage-rebalance`, `! BobsAngelsSpaceAge`,
+`! 0-auf-extend-guard`, `! AdminUnknownFixes` and `! PyCoalTBaA`. None of the seven is in the chain,
+and no mod in the chain declares `!` against any of its three. Two are the other two candidates
+above, so taking it would rule out both of #31's.
+
+**Reachability.** Not served on the declared 2.0 line: no release declares 2.0, and the latest
+requires `base >= 2.1.20` and `space-age >= 2.1.20`, against the `2.0.77` build installed and read
+on 2026-09-23. On a 2.1 line, `base >= 2.1.20` equals the project high `CLAUDE.md` records for a 2.1
+target (`kry_stdlib` `2.2.21`), so it would not raise that floor.
+
+**Against the promise: the one of the four that does not merge, by its own account - but it moves
+the overhaul.** Its stated goal is to "install multiple large overhaul ecosystems without turning
+Nauvis into an uncontrolled mixture of all of them", and "the goal is not to flatten the overhaul
+packs into vanilla Space Age". That is separation, and on its face it is nearer "the planets and the
+overhaul run side by side" than the unintegrated pack, where Angel's and Bob's rewrite Nauvis
+itself. Against that: it gets there by rewriting the overhaul. Angel's and Bob's geology is
+suppressed on Nauvis, their science recipes are rebuilt where needed, dedicated `iw-ab-*`
+prototypes stand in where the ecosystems would collide, and research milestones become
+surface-aware. Angel's and Bob's stop being the game a player starts in and become a planet they
+travel to. A mod whose job is that is a bridge in the sense this section uses, built on isolation
+rather than merging. Whether *beside* admits it is a reading of the promise, and the promise is
+Truls's.
+
+**Does `Grado_ABC` need any change to accommodate it? None on dependency metadata:** it requires
+nothing from the chain and declares no `!` against it. What would decide it is not in the metadata.
+Its description warns that a mod which "heavily modifies" map generation, science recipes or
+technologies "may" need "additional compatibility work", and `Grado_ABC` carries such mods:
+`rso-mod`, which controls ore placement, and the three MadClown members, which it does not name.
+
+**What was not measured.** No load and no source to read. Whether it supports Angel's and Bob's
+without Pyanodons: `0.0.10` made both optional, but the description, written for `0.0.5`, is
+"designed around running the supported Angel/Bob and Pyanodons suites **at the same time**" and
+does not say either alone is supported. How it treats MadClown and `rso-mod` is unread.
+
+**Alternatives considered.** The other three bridges in this section, two of which it excludes, and
+doing nothing.
+
+**Recommendation: reconsider:** whether `Grado_ABCS`'s promise reads "side by side" as "on separate
+worlds", since this is the only one of the four bridges built that way - and only once the pack has
+a 2.1 line to carry it and the mod has a history longer than a month. Against it as read: 46
+downloads, `0.0.x`, seven releases in 33 days, a mandatory list that changed shape the day it was
+read, a description five releases behind, no source, and no word on MadClown. For the rule it is
+light: named the way #10 named `quality` and `elevated-rails`, the pack would list two members;
+counted by what a player installs, it adds three.
 
 ## Pressure on the one-mod-per-branch rule
 
@@ -311,7 +492,8 @@ the union of both listings, two more attempts are in the 2.1 listing alone, and 
 assessed: `angels_space_age_galore` (`JTnadrooi`, `0.9.0`, 2.1, first released 2026-09-30, 9
 downloads) and `industrial-worlds` (`Szentigrade`, `0.0.10`, 2.1, 2026-10-01, 46 downloads), which
 declares `! angelbob-spaceage-rebalance` and `! BobsAngelsSpaceAge`. So "two" is four at 2.1. Both
-are #31's; see the #83 note under the AngelBob finding in* `docs/catalogue/Grado_ABC.md`.
+are #31's; see the #83 note under the AngelBob finding in* `docs/catalogue/Grado_ABC.md`. *Both
+were assessed 2026-10-01 (#91); see* Four bridges, not two *below.*
 
 | | `angelbob-spaceage-rebalance` | `BobsAngelsSpaceAge` |
 |---|---|---|
@@ -332,6 +514,36 @@ pull in ten more of their own, so on the 2.0 line it adds eighteen mods besides 
 closure grows from 103 to 122. Each is read, with the mod that pulls it in, under *Candidates, not
 members*, which also holds both mods' own entries. The table and bullets here are left as #6 read
 them.
+
+**Four bridges, not two: assessed 2026-10-01 (#91).** The two #83 found in the 2.1 listing alone
+have entries under *Candidates, not members*, next to #31's two. Side by side, with each row from
+the entry it summarises and dated there:
+
+| | `angelbob-spaceage-rebalance` | `BobsAngelsSpaceAge` | `angels_space_age_galore` | `industrial-worlds` |
+|---|---|---|---|---|
+| **Read on** | 2026-09-24 (#31) | 2026-09-24 (#31) | 2026-10-01 (#91) | 2026-10-01 (#91) |
+| **Served on the declared 2.0 line** | yes, `1.1.42` | yes, `0.0.3` | no, 2.1 only | no, 2.1 only |
+| **Mods it brings from outside the chain** | eighteen, on line `2.0` | none | four | two |
+| **`!` against chain members** | none | none | six, through `angels_galore` | none |
+| **Excludes** | `BobsAngelsSpaceAge` | - | - | `angelbob-spaceage-rebalance`, `BobsAngelsSpaceAge` |
+| **Approach** | merges Angel's and Bob's with Space Age across a set of community planets | adds Angel's ores to three Space Age planets | merges Angel's, without Bob's, with Space Age | moves Angel's and Bob's off Nauvis onto a planet of their own |
+| **Recommendation** | reconsider | reconsider | do not add | reconsider |
+
+How the two new ones push on the rule, stated without resolving it:
+
+- **`angels_space_age_galore` does not reach the rule.** It cannot be installed beside `Grado_ABC`:
+  `angels_galore`, which it requires, declares `!` against `bobores`, `bobassembly`,
+  `bobelectronics`, `bobtech`, `bobrevamp` and `extendedangels`, all `Grado_ABC` members. Its four
+  extras are the author's own Galore mods and library.
+- **`industrial-worlds` bends the rule less than the heavier #31 candidate and tests the promise
+  more.** Two libraries come with it, so the pack would list two members and a player installs
+  three more mods than now. It is the one bridge whose job is separation rather than merging, which
+  makes it the one candidate the promise's wording does not rule out on its face. It is also 2.1
+  only, `0.0.x`, and has 46 downloads.
+
+So the options #31 holds are four bridges or none, and one of the four is out on the metadata
+alone. **Nothing here is decided either**; #10's ruling below stands, and which option, if any, is
+Truls's.
 
 **How each one pushes on the rule, stated without resolving it:**
 

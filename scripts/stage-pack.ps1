@@ -45,12 +45,13 @@
     agree in case, so grado_abc inside Grado_ABC/ is refused. On Windows that also refuses -Pack or
     a dependency line naming grado_abc. A case-sensitive filesystem does not find that directory at
     all, so there -Pack is refused as an unknown pack and the dependency line is not taken for a
-    pack. The game-mod list (base, space-age, ...) is matched in exact case too, as
-    resolve-modpack.ps1 has matched it since trulsjo/grado-factorio-tools#28 (#88): a mandatory
-    line naming Space-Age fails the resolve, so the stage stops there, whether the pack or a
-    member declares it. What neither script checks is the case of any other name in a member's
-    dependency lines: the resolver matches those without regard to case inside a closure, as its
-    header says, so a member asking for krastorio2 is taken as satisfied by Krastorio2.
+    pack. The game-mod list (base, space-age, ...) is matched in exact case too, by the resolver's
+    own game-mods.ps1 from the tools repo (#99), as resolve-modpack.ps1 has matched it since
+    trulsjo/grado-factorio-tools#28 (#88): a mandatory line naming Space-Age fails the resolve,
+    so the stage stops there, whether the pack or a member declares it. What neither script checks
+    is the case of any other name in a member's dependency lines: the resolver matches those
+    without regard to case inside a closure, as its header says, so a member asking for krastorio2
+    is taken as satisfied by Krastorio2.
 
     FACTORIO TAKES THE TARGET AS ITS MODS DIRECTORY, on the one run checked (2.0.77 headless,
     Grado_NonChanging, 2026-09-24, #59). fetch-mods.ps1 keeps its downloaded zips in a .zips
@@ -112,10 +113,8 @@ $ErrorActionPreference = 'Stop'
 
 $ROOT  = Split-Path $PSScriptRoot -Parent
 $TOOLS = Join-Path $ROOT 'vendor/grado-factorio-tools/scripts'
-# ponytail: copied from resolve-modpack.ps1, which is a script and cannot be dot-sourced; share
-# it from the tools repo if a second copy ever has to change with it. The comparison has to
-# match the resolver's as well as the list does: exact case, below (#88).
-$GAME_MODS = @('base', 'space-age', 'quality', 'elevated-rails')
+# The game's own mods and their exact-case rule, shared with the resolver so the two agree (#99).
+. (Join-Path $TOOLS 'game-mods.ps1')
 
 # For the self-test's reading of the zips; the packing is pack-mods.ps1's.
 Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -396,9 +395,7 @@ catch { Write-Host "  $($_.Exception.Message)"; Write-Host ''; Write-Host "FAILE
 try { Install-PackZip -Chain $chain -ModsDirectory $ModsDirectory }
 catch { Write-Host "  $($_.Exception.Message)"; Write-Host ''; Write-Host "FAILED - the packs may be partly staged; the members of $Pack are fetched."; exit 1 }
 
-# Exact case to agree with the resolver, which has already refused a wrong-case game-mod line;
-# so -in would pass every staging run today, and no self-test case can tell the two apart.
-$bundled = @($chain | ForEach-Object { Get-RequiredName $_.Info } | Where-Object { $_ -cin $GAME_MODS -and $_ -cne 'base' } | Sort-Object -Unique -CaseSensitive)
+$bundled = @($chain | ForEach-Object { Get-RequiredName $_.Info } | Where-Object { (Test-GameMod $_) -and $_ -cne 'base' } | Sort-Object -Unique -CaseSensitive)
 $with = if ($bundled) { " -With $($bundled -join ',')" } else { '' }
 $exe = if ($FactorioExe) { " -FactorioExe `"$FactorioExe`"" } else { '' }
 Write-Host ''

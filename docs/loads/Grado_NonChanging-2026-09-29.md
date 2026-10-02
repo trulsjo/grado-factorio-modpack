@@ -124,6 +124,9 @@ a chest under the cursor. Only `Alt+Y` has been seen to fail.
 
 **The list does not cover vanilla controls.** The game's own bindings are not `custom-input`
 prototypes, so a member key that collides with a vanilla default does not appear in the dump.
+*Checked 2026-10-02 (#96) from the game's `config.ini`: fifteen member inputs share a default with
+an engine control, and twelve more are linked to one by design. See* Keys against base 2.0.77's own
+controls *in* `docs/catalogue/Grado_NonChanging.md`.
 
 #### `Alt+Y` measured for the decision (2026-09-30, #71)
 

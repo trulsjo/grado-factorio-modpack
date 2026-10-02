@@ -113,7 +113,8 @@ $ErrorActionPreference = 'Stop'
 $ROOT  = Split-Path $PSScriptRoot -Parent
 $TOOLS = Join-Path $ROOT 'vendor/grado-factorio-tools/scripts'
 # ponytail: copied from resolve-modpack.ps1, which is a script and cannot be dot-sourced; share
-# it from the tools repo if a second copy ever has to change with it.
+# it from the tools repo if a second copy ever has to change with it. The comparison has to
+# match the resolver's as well as the list does: exact case, below (#88).
 $GAME_MODS = @('base', 'space-age', 'quality', 'elevated-rails')
 
 # For the self-test's reading of the zips; the packing is pack-mods.ps1's.

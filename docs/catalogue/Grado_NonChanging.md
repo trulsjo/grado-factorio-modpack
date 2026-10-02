@@ -803,7 +803,8 @@ it as written.
 | `packing-tape` | picker `1.0.1` only (#89) | no | `20.0.9` | yes | do not add |
 
 **Of #41's 19: eleven `add`, six `do not add`, two `reconsider`. #89's two: both `do not add`,
-and both pass the promise.** **Two fail the promise**:
+and both pass the promise as worded, each with a reading that would fail it, named in its
+entry.** **Two fail the promise**:
 `FluidMustFlow` and `kry-vehicle-grids`. **Failing this pack's promise does not decline a mod
 for `Grado_ChangingBase`.** Each entry records what that pack's assessment will need.
 #46 assessed `kry-vehicle-grids` there on 2026-10-01 (`docs/catalogue/Grado_ChangingBase.md`,
@@ -1231,12 +1232,12 @@ releases. Served at 2.0 and 2.1.
 **Alternatives considered.** No member finds vehicles; `WhereIsMyBody` does the same job for
 corpses. **Shared key:** `Shift+V` is already bound by `VehicleSnap` and `kry-picker-extended`.
 The load record lists that pair, and this would make three. *`Kux-BlueprintExtensions`, a
-candidate since #89 (2026-10-01), binds it too; see its entry.*
+candidate since #89 (2026-10-01), binds it too, which would make four with both; see its entry.*
 
 **Recommendation: add.** It is read-only, current and well used. It restores one of the three
 features of the dropped `PickerVehicles` (`Grado_ChangingBase`) that no member covers; `Honk` and a
 train manual-mode toggle are the other two. Note the
-`Shift+V` three-way for #73.
+`Shift+V` three-way for #73, four-way if `Kux-BlueprintExtensions` is taken too (#89).
 
 ### `Orphan Finder`
 
@@ -1403,7 +1404,8 @@ the mods that depend on it.
 **What it adds over this pack and the base game**, read from `3.3.16`:
 
 - **Already covered.** Flipping a held blueprint has been a base control since 1.1.0, and rotating
-  one is too, which is why #7 dropped `blueprint_flip_and_turn`. This mod binds them again, on `Shift+X`, `Shift+V`
+  one is too, which is why #7 dropped `blueprint_flip_and_turn` (the 1.1.0 changelog line and its
+  date are cited in that entry, above). This mod binds them again, on `Shift+X`, `Shift+V`
   and `Ctrl+Alt+R`. Swapping wire colours is `BlueprintTools`' `Shift+C`, and landfill under a
   blueprint is its `Shift+T` *Set tiles*, whose default tile is `landfill` (`1.5.0`,
   `scripts/player-data.lua`).
@@ -1437,7 +1439,10 @@ could not read. Its `0.2.7` binds no key.
 
 **Alternatives considered.** `BlueprintTools`, a member, above. No wider search: not checked.
 
-**Recommendation: do not add.** It passes the promise. What it would add is at the edge of what
+**Recommendation: do not add.** It passes the promise as worded, which allows data of the mod's
+own in the save. On #7's reasoning for `blueprint-sandboxes`, that "a mod that creates whole
+surfaces belongs at the tier whose promise permits save changes", its `surface_of_holding` would
+place it in `Grado_ChangingBase` instead; which reading holds is Truls's. What it would add is at the edge of what
 the pack has. The fluid-mod flipping has nothing to act on here. The clone is a variant of a base
 action. The number-pad keys, its main new feature, may not bind on the declared line. Against that
 it brings a mandatory library no pack has, a second blueprint mod beside `BlueprintTools`, a
@@ -1462,7 +1467,9 @@ an `item-with-inventory` for chests and logistic chests, an `item-with-tags` for
 `placeable_by` on each source entity and flags the source item `primary-place-result`, which tunes
 vanilla prototypes. `data.lua` adds one `custom-input`, `J`, and a toggle `shortcut`. There is one
 startup setting, *Allow in rockets cheat*. It has a 2.1 release, no `base` floor and no mandatory
-dependency. **It passes the promise as written.**
+dependency. **It passes the promise as written**, in that nothing it adds is craftable. Its
+packed items are items the player can hold, and whether hidden items of that kind count as
+content is not something the promise's wording settles.
 
 **What it does in play**, read from `20.0.9`'s `control.lua` and migration, not run:
 

@@ -13,13 +13,16 @@ marked *Superseded 2026-09-23 by #15*, which #15 took, and the notes dated 2026-
 #43 took, and the note dated 2026-09-24 (#31), which #31 took, and the notes dated 2026-09-24
 (#58) and (#61), which those two took. The **Read on** row is authoritative where it disagrees
 with this sentence. *Candidates, not members* was read on 2026-09-30 (#50). The notes dated
-2026-10-01 (#39), (#44), (#80), (#44, #83) and (#93) were taken by #39, #44, #80, #83 and #93. Searches described below as over "the 2.x list" first ran over
+2026-10-01 (#39), (#44), (#80), (#44, #83), (#91) and (#93) were taken by #39, #44, #80, #83, #91
+and #93. Searches described below as over "the 2.x list" first ran over
 the `version=2.0` listing only, which misses mods released for 2.1 alone (#44). **Every search so
 described has since been re-run over the union of both listings** and carries a *Checked
 2026-10-01* note: four by #44, against a union of 10,845, and the rest by #83, against the listings as read later that day - 9,794
 in `version=2.0`, 4,341 in `version=2.1`, 10,850 in the union, 1,056 of them in the 2.1 listing
 alone. A new hit is named in its entry; none changes a ruling here. Three
-entries say "none found" on 2.x without recording a search. `spidertrontiers-community-updates`
+entries say "none found" on 2.x without recording a search. *Until 2026-10-01 (#93) this sentence
+said two: it missed `spidertrontiers-community-updates`, whose claim sat outside an* Alternatives
+considered *line.* `spidertrontiers-community-updates`
 was re-run by #93 against the listings as read later still that day - 9,795, 4,344 and 10,854,
 1,059 of them in the 2.1 listing alone - and its claim did not hold; the hits are named in the
 entry and left to #49, and no ruling changed. The other two were not re-run:

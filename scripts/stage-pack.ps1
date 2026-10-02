@@ -47,10 +47,10 @@
     all, so there -Pack is refused as an unknown pack and the dependency line is not taken for a
     pack. The game-mod list (base, space-age, ...) is matched in exact case too, as
     resolve-modpack.ps1 has matched it since trulsjo/grado-factorio-tools#28 (#88): a mandatory
-    line naming Space-Age fails the resolve, so the stage stops there. What this script does not
-    check is the members' own dependency lines. The resolver still matches those names without
-    regard to case inside a closure, as its header says, so a member asking for krastorio2 is
-    taken as satisfied by Krastorio2.
+    line naming Space-Age fails the resolve, so the stage stops there, whether the pack or a
+    member declares it. What neither script checks is the case of any other name in a member's
+    dependency lines: the resolver matches those without regard to case inside a closure, as its
+    header says, so a member asking for krastorio2 is taken as satisfied by Krastorio2.
 
     FACTORIO TAKES THE TARGET AS ITS MODS DIRECTORY, on the one run checked (2.0.77 headless,
     Grado_NonChanging, 2026-09-24, #59). fetch-mods.ps1 keeps its downloaded zips in a .zips

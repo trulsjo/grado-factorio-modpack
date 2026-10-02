@@ -253,7 +253,8 @@ the stronger mod by every measure taken: current on both lines within two days o
 releases, nearly fifteen times the other's downloads. Its cost is eighteen third-party mods, most of them
 planets and planet content. How it pushes on the one-mod-per-branch rule depends on what the rule
 counts. Named the way #10 named `quality` and `elevated-rails` - hidden mandatory members stay
-unnamed - the pack would list two members. Counted by what a player installs, it adds nineteen.
+unnamed - the pack would list two members, `space-age` and this mod, with the eighteen unnamed.
+Counted by what a player installs, it adds nineteen.
 Which reading the rule means is Truls's.
 
 ### `BobsAngelsSpaceAge`
@@ -461,8 +462,9 @@ worlds", since this is the only one of the four bridges built that way - and onl
 a 2.1 line to carry it and the mod has a history longer than a month. Against it as read: 46
 downloads, `0.0.x`, seven releases in 33 days, a mandatory list that changed shape the day it was
 read, a description five releases behind, no source, and no word on MadClown. For the rule it is
-light: named the way #10 named `quality` and `elevated-rails`, the pack would list two members;
-counted by what a player installs, it adds three.
+light: named the way #10 named `quality` and `elevated-rails`, the pack would list two members,
+`space-age` and this mod, with its two libraries unnamed; counted by what a player installs, it
+adds three.
 
 ## Pressure on the one-mod-per-branch rule
 
@@ -540,11 +542,11 @@ How the two new ones push on the rule, stated without resolving it:
   `bobelectronics`, `bobtech`, `bobrevamp` and `extendedangels`, all `Grado_ABC` members. Its four
   extras are the author's own Galore mods and library.
 - **`industrial-worlds` bends the rule less than the heavier #31 candidate and tests the promise
-  more.** Two libraries come with it, so the pack would list two members and a player installs
-  three more mods than now. Its job, like `BobsAngelsSpaceAge`'s, is separation rather than merging, and it
-  separates further, keeping the whole overhaul on a world of its own. #10 read any bridge as
-  failing the promise; this one tests that reading hardest. It is also 2.1
-  only, `0.0.x`, and has 46 downloads.
+  more.** Two libraries come with it, unnamed, so the pack would list two members - `space-age` and
+  `industrial-worlds` - and a player installs three more mods than now. Its job, like
+  `BobsAngelsSpaceAge`'s, is separation rather than merging, and it separates further, keeping the
+  whole overhaul on a world of its own. #10 read any bridge as failing the promise; this one tests
+  that reading hardest. It is also 2.1 only, `0.0.x`, and has 46 downloads.
 
 So the options #31 holds are four bridges or none, and one of the four is out on the metadata
 alone. **Nothing here is decided either**; #10's ruling below stands, and which option, if any, is

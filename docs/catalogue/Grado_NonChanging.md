@@ -78,6 +78,11 @@ In dependency-list order.
 
 **Recommendation: keep.** Current on 2.1 and operates on blueprints in hand, never on placed entities.
 
+*Against base 2.0.77's own controls (#96, 2026-10-02): `bpt-pipette-add` (`Shift+mouse-button-3`)
+shares its default with the map editor's `editor-previous-variation` and `editor-clone-item`, and
+`bpt-pipette-remove` (`Ctrl+mouse-button-3`) with the editor's `editor-delete-item`. Which acts
+was not tried. For #73; see* Keys against base 2.0.77's own controls.
+
 ### `BottleneckLite`
 
 | | |
@@ -175,6 +180,10 @@ above all of them, and on 2026-09-24 still leads the next, `Automatic_Train_Pain
 **Alternatives considered.** Not compared against `factoryplanner` or `Recipe Book`, which cover overlapping ground. `helmod` is in this pack and overlaps on planning but not on recipe lookup.
 
 **Recommendation: keep.** Current on 2.1.
+
+*Against base 2.0.77's own controls (#96, 2026-10-02): `pressed-fnei-back-key` (`Backspace`)
+shares its default with `previous-mod`, "Select previous mod". Which acts was not tried. For #73;
+see* Keys against base 2.0.77's own controls.
 
 ### `FactorySearch`
 
@@ -288,6 +297,15 @@ defaults to `Alt+Y` too (#71, 2026-09-30). Whether the pack changes a default is
 
 **Recommendation: keep.** Persistent measurements are stored in the save but place nothing in the factory.
 
+*Against base 2.0.77's own controls (#96, 2026-10-02): four of its keys are base defaults.
+`tl-edit-tape` (`mouse-button-2`) shares with `mine`, `use-item`, `reverse-select`, `craft-5`,
+`cancel-craft-5`, `cursor-split` and `open-item`; `tl-delete-tape` (`Shift+mouse-button-2`) with
+`alternative-use-item`, `copy-entity-settings`, `alt-reverse-select`, `stack-split`,
+`copy-inventory-filter`, `editor-set-clone-brush-source` and `editor-remove-scripting-object`;
+`tl-increase-divisor` and `tl-decrease-divisor` (`Alt+mouse-wheel-up` and `-down`) with
+`cycle-quality-up` and `cycle-quality-down`. Which acts was not tried.
+For #73; see* Keys against base 2.0.77's own controls.
+
 ### `Todo-List`
 
 | | |
@@ -302,6 +320,10 @@ defaults to `Alt+Y` too (#71, 2026-09-30). Whether the pack changes a default is
 **Alternatives considered.** None needed; current on 2.1.
 
 **Recommendation: keep.**
+
+*Against base 2.0.77's own controls (#96, 2026-10-02): `todo-search-shortcut` (`Ctrl+F`)
+shares its default with `focus-search`. Which acts was not tried.
+For #73; see* Keys against base 2.0.77's own controls.
 
 ### `VehicleSnap`
 
@@ -401,6 +423,12 @@ defaults to `Alt+Y` too (#71, 2026-09-30). Whether the pack changes a default is
 
 **Recommendation: keep.** Current on 2.1, and maintained by `hgschmie`, who also maintains `miniloader-redux` in `Grado_ChangingBase`.
 
+*Against base 2.0.77's own controls (#96, 2026-10-02): `dolly-move-north`, `-east`, `-south`
+and `-west` (`Shift+Up`, `Right`, `Down`, `Left`) share their defaults with
+`move-blueprint-entities-up`, `-right`, `-down` and `-left`, and `dolly-rotate-rectangle` (`KP_0`)
+with the map editor's `editor-toggle-pause`. Which acts was not tried.
+For #73; see* Keys against base 2.0.77's own controls.
+
 ### `helmod`
 
 | | |
@@ -421,6 +449,10 @@ above is left as the survey wrote it. `helmod` is first of the 26, and was first
 survey read: 543,689 against `even-distribution`'s 525,156 in the table above (2026-09-20),
 543,866 against 525,364 on 2026-09-21 (the reading issue #25 was filed with), and 544,227 against
 525,774 on 2026-09-24. No member has been above it on any reading.
+
+*Against base 2.0.77's own controls (#96, 2026-10-02): `helmod-close` (`Escape`) shares its
+default with `toggle-menu`, and `helmod-recipe-selector-open` (`O`) with `open-trains-gui`. Which
+acts was not tried. For #73; see* Keys against base 2.0.77's own controls.
 
 ### `ixuAutoSave`
 
@@ -452,6 +484,12 @@ survey read: 543,689 against `even-distribution`'s 525,156 in the table above (2
 **Alternatives considered.** It is the replacement for `PickerExtended`, made during the port, and states outright that it is the 2.0/2.1 update of `Nexela`'s original. `kry-picker-complete` is its companion pack.
 
 **Recommendation: keep.** Current on 2.1 and, as it turns out, the single most important member for the question below.
+
+*Against base 2.0.77's own controls (#96, 2026-10-02): none of its unlinked keys is a base
+default. `picker-select` (`Q`), `adjustment-pad-increase` and `adjustment-pad-decrease` are linked to
+`pipette`, `larger-terrain-building-area` and `smaller-terrain-building-area`, so they fire on those
+controls' keys by design, whatever they declare. For #73; see* Keys against base 2.0.77's own
+controls.
 
 ### `solar-calc`
 
@@ -758,6 +796,7 @@ That leaves **19 entries**, below. *#89 added two more on 2026-10-01, `Kux-Bluep
   was matched against the Lua of every member of the three lower packs, using the releases
   `resolve-modpack.ps1` picked for `Grado_ABC` on line 2.0, build 2.0.77. That is less rigorous
   than the `--dump-data` method in the load record, and like that method it misses vanilla
+  controls. *Vanilla controls checked 2026-10-02 (#96): see* Keys against base 2.0.77's own
   controls. Shared keys are recorded in each entry for #73. A shared key is not necessarily a
   clash: of the load record's seven shared keys, only `Alt+Y` has been seen to fail, and four
   were not tried in play.
@@ -1035,6 +1074,11 @@ at the declared line the two do not share a key.
 **Recommendation: add.** It is mandatory in `kry-picker-complete`, current, well used and
 read-only. Note the `Shift+G` three-way for #73.
 
+*Against base 2.0.77's own controls (#96, 2026-10-02): `bv-highlight-ghost` (`G`) shares its
+default with `toggle-rail-layer` and with `toggle-driving-alternative`, the second slot of
+"Enter/leave vehicle", in `2.0.2` and `2.1.4`. Which acts was not tried.
+For #73; see* Keys against base 2.0.77's own controls.
+
 ### `Shortcuts-ick`
 
 | | |
@@ -1213,6 +1257,10 @@ entry.*
 
 **Recommendation: add**, as a cosmetic member in the same class as `DiscoScience`. Every train in
 the save honks by default. That is a taste question its settings answer, not a promise one.
+
+*Against base 2.0.77's own controls (#96, 2026-10-02): `honk` (`H`) shares its default with
+`flip-horizontal` in `5.1.1` and `5.2.1`, and `toggle-train-control` (`J`, `5.1.1` only) with
+`connect-train`. Which acts was not tried. For #73; see* Keys against base 2.0.77's own controls.
 
 ### `car-finder`
 
@@ -1448,6 +1496,12 @@ action. The number-pad keys, its main new feature, may not bind on the declared 
 it brings a mandatory library no pack has, a second blueprint mod beside `BlueprintTools`, a
 persistent surface in the save, and a third binding on `Shift+V`.
 
+*Against base 2.0.77's own controls (#96, 2026-10-02): none of its keys is a base default in
+`3.3.16` or `4.3.18`. Not checked: whether 2.0.77 reads `3.3.16`'s `PAD 1` to `PAD 9` as the
+number pad, which the game's own controls spell `KP_`. The engine's number-pad defaults are `KP_0`,
+`KP_PERIOD`, `KP_PLUS`, `KP_MINUS`, and those or `KP_MULTIPLY` with a modifier, so neither
+spelling would match one. For #73; see* Keys against base 2.0.77's own controls.
+
 ### `packing-tape`
 
 | | |
@@ -1530,6 +1584,10 @@ inventory holds rather than how the player handles it. It is on for every player
 author calls it likely unbalanced, and removing it is inferred to delete whatever is packed at the
 time. If it is taken anyway, `Honk` `5.1.1` needs a different key for its train toggle, or this mod
 does.
+
+*Against base 2.0.77's own controls (#96, 2026-10-02): `packing-tape-pickup` (`J`) shares its
+default with `connect-train`, in `20.0.9` and `21.0.4`. `Honk` `5.1.1` binds `J` too. Which acts
+was not tried. For #73; see* Keys against base 2.0.77's own controls.
 
 ### Night lighting: what replaces AfraidOfTheDark's tune (#42)
 
@@ -2202,6 +2260,103 @@ list above is still left as measured.
 **Not confirmed:** whether a mod declaring `factorio_version: 2.0` would *run* correctly if installed
 by hand on 2.1. The docs say it is unsupported and the portal will not serve it; nothing here has been
 loaded in Factorio.
+
+## Keys against base 2.0.77's own controls (#96)
+
+Read **2026-10-02** on the installed 2.0.77 game. The key comparisons above, by the load record
+(#17) and by #41 and #89, matched mods against mods and could not see the game's own controls.
+This compares every member's and every candidate's default keys with them. It decides nothing
+about rebinding; that is #73's.
+
+**Engine controls** - moving, mining, the pipette, the map editor and the rest - are built into
+the game and are not prototypes, so no `--dump-data` shows them. Their defaults were read from the
+`[controls]` section of `%APPDATA%\Factorio\config\config.ini`, which the game writes with every
+control it knows: the engine's first, then the custom inputs of the mods last enabled, grouped
+roughly by mod. Linked custom inputs, below, are not written at all. A control the player
+has not rebound is written as a comment holding its default (`; connect-train=J`). The file read
+was written by the 2.0.77 game on 2026-09-30, and no engine control in it was rebound, so every
+default was read: 192 controls, each with a keyboard-and-mouse primary and alternative, of which
+163 primaries and 9 alternatives have a default. Gamepad bindings were not compared.
+
+**Base's custom inputs** - the 14 in `data/base/prototypes/custom-inputs.lua`, the `Alt+` item
+and toggle keys among them - were read from a `--dump-data` run with base alone.
+
+**Space Age adds none.** A second dump with `space-age`, `quality` and `elevated-rails` enabled
+gave the same 14 custom inputs on the same keys, and none of the three ships a `custom-input` or a
+`[controls]` locale section. Some engine controls only make sense with the expansion -
+`cycle-quality-up`, `cycle-quality-down` and `toggle-rail-layer` among those matched below - but
+they are engine controls, listed whatever is enabled, and whether one acts without the expansion
+is not readable from the files.
+
+**The mods' keys** came from one `--dump-data` per mod with base alone, each set against a
+baseline dump of base with `flib` and `kry_stdlib`, hidden members which add no custom input (and
+`Kux-CoreLib` for `Kux-BlueprintExtensions`). So each input is attributed by the game, not by a
+name search: the 26 members as staged for the load record (71 inputs, the record's count), and the
+28 candidates with a release on the 2.0 line, at the release a 2.0.77 game installs. The 21
+candidates' 2.1 releases cannot load on 2.0.77, so their keys were read from the Lua as text;
+`realistic-flashlight-fixed-fork`, which has only a 2.1 release, binds no key. Keys were matched
+exactly after putting the modifiers in one order and reading `COMMAND` as `CONTROL`, which
+is how the game writes `Todo-List`'s `COMMAND + F` on Windows; primary and alternative slots
+both.
+
+| Mod | Input | Default | Base control with the same default |
+|---|---|---|---|
+| `BlueprintTools` | `bpt-pipette-add` | `Shift+mouse-button-3` | `editor-previous-variation`, `editor-clone-item` |
+| `BlueprintTools` | `bpt-pipette-remove` | `Ctrl+mouse-button-3` | `editor-delete-item` |
+| `FNEI` | `pressed-fnei-back-key` | `Backspace` | `previous-mod` |
+| `PipeVisualizer-Updated` | `pv-toggle-mouseover` | `Alt+Y` | `give-discharge-defense-remote`, a custom input (#71) |
+| `Tapeline` | `tl-edit-tape` | `mouse-button-2` | `mine`, `use-item`, `reverse-select`, `craft-5`, `cancel-craft-5`, `cursor-split`, `open-item` |
+| `Tapeline` | `tl-delete-tape` | `Shift+mouse-button-2` | `alternative-use-item`, `copy-entity-settings`, `alt-reverse-select`, `stack-split`, `copy-inventory-filter`, `editor-set-clone-brush-source`, `editor-remove-scripting-object` |
+| `Tapeline` | `tl-increase-divisor`, `tl-decrease-divisor` | `Alt+mouse-wheel-up`, `-down` | `cycle-quality-up`, `cycle-quality-down` |
+| `Todo-List` | `todo-search-shortcut` | `Ctrl+F` | `focus-search` |
+| `YARM` | `get-yarm-selector` | `Alt+Y` | `give-discharge-defense-remote`, a custom input (#71) |
+| `even-pickier-dollies` | `dolly-move-north`, `-east`, `-south`, `-west` | `Shift+Up`, `Right`, `Down`, `Left` | `move-blueprint-entities-up`, `-right`, `-down`, `-left` |
+| `even-pickier-dollies` | `dolly-rotate-rectangle` | `KP_0` | `editor-toggle-pause` |
+| `helmod` | `helmod-close` | `Escape` | `toggle-menu` |
+| `helmod` | `helmod-recipe-selector-open` | `O` | `open-trains-gui` |
+| `Honk` (candidate) | `honk` | `H` | `flip-horizontal` |
+| `Honk` (candidate) | `toggle-train-control` | `J`, `5.1.1` only | `connect-train` |
+| `belt-visualizer` (candidate) | `bv-highlight-ghost` | `G` | `toggle-rail-layer`, `toggle-driving-alternative` |
+| `packing-tape` (candidate) | `packing-tape-pickup` | `J` | `connect-train` |
+
+Every base control in the last column is an engine control except `give-discharge-defense-remote`,
+and the two `Alt+Y` rows were already recorded. No candidate's key is a base custom input's. Every
+mod input in the table has `consuming` at `none`, set or by default, under which "the custom input
+event will happen before the internal game event" (API 2.0.77, `ConsumingType`); so both should act,
+but that was not tried in play for any row. Several act only in one situation, as the load record
+says of the mod-to-mod pairs: the map editor's controls only in the editor,
+`move-blueprint-entities-*` only with a blueprint in hand. Each row has a dated note in its mod's
+entry.
+
+**Linked inputs are left out of the table.** A custom input with `linked_game_control` "will fire
+when the linked control is pressed" and does not show in the controls settings (API 2.0.77,
+`CustomInputPrototype`), so it shares that control's key by design. Twelve member inputs are
+linked: `BlueprintTools`' `bpt-linked-confirm-gui` and `bpt-linked-clear-cursor`,
+`even-distribution`'s `fast-entity-transfer-hook` and `fast-entity-split-hook`,
+`even-pickier-dollies`' `dolly-rotate-saved` and `dolly-rotate-saved-reverse`,
+`kry-picker-extended`'s `picker-select`, `adjustment-pad-increase` and `adjustment-pad-decrease`,
+`RateCalculator`'s `rcalc-linked-focus-search` and `Tapeline`'s `tl-linked-clear-cursor`; one
+candidate's, `Kux-BlueprintExtensions_cleared_cursor_proxy`, on both lines. `picker-select` also
+declares `Q`, the pipette's own default.
+
+**Not checked.** Whether 2.0.77 reads a `PAD` spelling as the number pad, which the game writes
+`KP_`. It matters for no row: `Kux-BlueprintExtensions` `3.3.16`'s `PAD 1` to `PAD 9` match no
+engine default either way (see its entry), and `kry-picker-extended`'s `PAD +` and `PAD -` are
+linked.
+
+**To re-run on a later build:**
+
+1. Start that build once, then read `[controls]` from its `config.ini` and take every entry before
+   the first name a dump shows to be a custom input; the file does not mark the boundary. A
+   commented line holds the default; an uncommented one is a player's own binding, and its default
+   has to be read elsewhere.
+2. Dump base alone and base with the three expansion mods, through the load harness's
+   `Invoke-Factorio` with `--dump-data`, and read `custom-input` from each
+   `script-output/data-raw-dump.json`.
+3. Dump each member and candidate the same way beside a baseline, and keep the inputs the baseline
+   does not have.
+4. Compare the keys exactly, modifiers in one order and `COMMAND` read as `CONTROL`. Set linked
+   inputs aside.
 
 ## What was not checked
 

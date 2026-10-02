@@ -302,14 +302,16 @@ and a narrower job - it moves ores between planets rather than merging the two p
 | | |
 |---|---|
 | **Title** | Angel's+Space Age Galore |
-| **Does** | A light overhaul, by its summary, that integrates Angel's four core mods with Space Age, built on the author's modified Angel's Special Vanilla from `angels_galore` and requiring three of the author's other Galore mods and the author's library. Its description says it leaves out Angel's eight extra metals and is designed without Bob's mods |
+| **Does** | A light overhaul, by its summary, that integrates Angel's four core mods with Space Age, designed without Bob's mods |
 | **Latest** | `0.9.0`, `factorio_version` **2.1**, 2026-09-30, its only release. Nothing declares 2.0, so a 2.0.77 game is not served it |
 | **Downloads** | 9 |
 | **Owner** | `JTnadrooi` |
 | **Status** | candidate, not a member (#91) |
 | **Read on** | 2026-10-01 |
 
-Created 2026-09-30, the day of its one release. A source repository is linked,
+It is built on the author's modified Angel's Special Vanilla from `angels_galore` and requires
+three of the author's other Galore mods and the author's library. Its description says it leaves
+out Angel's eight extra metals. Created 2026-09-30, the day of its one release. A source repository is linked,
 `https://github.com/JTnadrooi/Project-Galore`, and was not read, so everything below is from the
 `info_json` of each mod and this mod's description.
 
@@ -370,13 +372,15 @@ promise rules out. Neither reason depends on the declared line or on #29.
 | | |
 |---|---|
 | **Title** | Industrial Worlds |
-| **Does** | Moves Angel's and Bob's, and Pyanodons, off Nauvis onto dedicated planets of their own inside a Space Age game - Angel's and Bob's to one it calls Angelus - each with its own resources, recipes, machines, science packs, labs and research. Nauvis keeps the vanilla and Space Age progression, and the mod restores prototypes there that the overhauls would otherwise rewrite |
+| **Does** | Moves Angel's and Bob's, and Pyanodons, off Nauvis onto planets of their own inside a Space Age game, each with its own resources, recipes, machines, science packs, labs and research |
 | **Latest** | `0.0.10`, `factorio_version` **2.1**, 2026-10-01. All seven releases declare 2.1, so a 2.0.77 game is not served it |
 | **Downloads** | 46 |
 | **Owner** | `Szentigrade` |
 | **Status** | candidate, not a member (#91) |
 | **Read on** | 2026-10-01 |
 
+Angel's and Bob's go to a planet it calls Angelus. Nauvis keeps the vanilla and Space Age
+progression, and the mod restores prototypes there that the overhauls would otherwise rewrite.
 Seven releases, from `0.0.4` on 2026-08-29 to `0.0.10` on 2026-10-01, three of them in the last
 two days of that span. No source repository is linked, and the homepage is a Discord invite. The
 description is written for `0.0.5` ("Version **0.0.5** expands the framework..."), so it lags the
@@ -577,4 +581,6 @@ holds on the other.
 it `Grado_ABC` beside Space Age rather than merged with it, and a mod whose job is to merge them
 fails that promise, whichever of the two it is. #31 stays open as the place to revisit that, best
 after #29 shows whether the unintegrated pack is playable; taking a bridge would mean changing the
-promise first.
+promise first. *"The two" were #31's bridges. #91 assessed two more on 2026-10-01; the ruling was
+made before they were found, and `industrial-worlds`, which separates rather than merges, is the
+one it may not cover. See* Pressure on the one-mod-per-branch rule.

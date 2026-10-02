@@ -45,13 +45,13 @@
     agree in case, so grado_abc inside Grado_ABC/ is refused. On Windows that also refuses -Pack or
     a dependency line naming grado_abc. A case-sensitive filesystem does not find that directory at
     all, so there -Pack is refused as an unknown pack and the dependency line is not taken for a
-    pack. The game-mod list (base, space-age, ...) is matched in exact case too, by the resolver's
-    own game-mods.ps1 from the tools repo (#99), as resolve-modpack.ps1 has matched it since
-    trulsjo/grado-factorio-tools#28 (#88): a mandatory line naming Space-Age fails the resolve,
-    so the stage stops there, whether the pack or a member declares it. What neither script checks
-    is the case of any other name in a member's dependency lines: the resolver matches those
-    without regard to case inside a closure, as its header says, so a member asking for krastorio2
-    is taken as satisfied by Krastorio2.
+    pack. The game-mod list (base, space-age, ...) is matched in exact case too, as
+    resolve-modpack.ps1 has matched it since trulsjo/grado-factorio-tools#28 (#88); both scripts
+    take the list and the rule from the shared game-mods.ps1 (#99). A mandatory line naming
+    Space-Age fails the resolve, so the stage stops there, whether the pack or a member declares
+    it. What neither script checks is the case of any other name in a member's dependency lines:
+    the resolver matches those without regard to case inside a closure, as its header says, so a
+    member asking for krastorio2 is taken as satisfied by Krastorio2.
 
     FACTORIO TAKES THE TARGET AS ITS MODS DIRECTORY, on the one run checked (2.0.77 headless,
     Grado_NonChanging, 2026-09-24, #59). fetch-mods.ps1 keeps its downloaded zips in a .zips
@@ -114,6 +114,10 @@ $ErrorActionPreference = 'Stop'
 $ROOT  = Split-Path $PSScriptRoot -Parent
 $TOOLS = Join-Path $ROOT 'vendor/grado-factorio-tools/scripts'
 # The game's own mods and their exact-case rule, shared with the resolver so the two agree (#99).
+# Checked first: a submodule pinned before it, or not initialised, has no game-mods.ps1.
+if (-not (Test-Path -LiteralPath (Join-Path $TOOLS 'game-mods.ps1'))) {
+    throw "The shared tools at $TOOLS are missing or out of date. Run: git submodule update --init"
+}
 . (Join-Path $TOOLS 'game-mods.ps1')
 
 # For the self-test's reading of the zips; the packing is pack-mods.ps1's.
@@ -351,9 +355,6 @@ function Invoke-SelfTest {
 
 if ($SelfTest) { Invoke-SelfTest }
 if (-not $Pack) { throw 'Name the pack to stage, e.g. Grado_ABC. Or -SelfTest.' }
-if (-not (Test-Path -LiteralPath (Join-Path $TOOLS 'resolve-modpack.ps1'))) {
-    throw "The shared tools are not at $TOOLS. Run: git submodule update --init"
-}
 
 $chain = @(Get-PackChain -Root $ROOT -Name $Pack)
 $line = $chain[0].Info.factorio_version

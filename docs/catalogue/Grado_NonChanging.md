@@ -1252,8 +1252,9 @@ toggle defaults to `J` in `5.1.1` and to no key in `5.2.1`. Its page still says 
 **Alternatives considered.** `Shortcuts-ick`, above, also has a train manual-mode toggle. **Shared
 keys:** no member binds `H`, `Shift+H` or `J`. `H` is also base's flip-horizontal key (see
 `blueprint_flip_and_turn`). Base keys are outside the text search, and the two apply in different
-situations. *`J` is also the default of `packing-tape`, a candidate since #89 (2026-10-01); see its
-entry.*
+situations. *Base keys checked 2026-10-02 (#96): `H` is `flip-horizontal` and `J` is
+`connect-train`; see the note at the end of this entry.*
+*`J` is also the default of `packing-tape`, a candidate since #89 (2026-10-01); see its entry.*
 
 **Recommendation: add**, as a cosmetic member in the same class as `DiscoScience`. Every train in
 the save honks by default. That is a taste question its settings answer, not a promise one.
@@ -1482,7 +1483,8 @@ releases staged for the 2026-09-29 load (`.mod-cache/Grado_NonChanging`), and ag
 the pack as it stands, four with `car-finder`. Its flip acts with a blueprint in hand, `VehicleSnap`
 in a vehicle and the Picker paste with a chest under the cursor. The load record did not try
 `Shift+V` in play. This is #73's ground. None of its other keys matched. Not covered: vanilla controls,
-which a text search cannot see, and `fluid-connection-indicators` `0.2.9`, which the fetch script
+which a text search cannot see (*checked 2026-10-02, #96, see the note at the end of this
+entry*), and `fluid-connection-indicators` `0.2.9`, which the fetch script
 could not read. Its `0.2.7` binds no key.
 
 **Alternatives considered.** `BlueprintTools`, a member, above. No wider search: not checked.
@@ -1572,6 +1574,8 @@ What the source suggests, inferred:
 `Kux-BlueprintExtensions` above. **`Honk` `5.1.1`, the 2.0-line release of another candidate,
 defaults its `toggle-train-control` to `J`.** `5.2.1` leaves it unbound. Taking both would put two
 toggles on one key on the declared line. This is #73's ground. Vanilla controls are not covered.
+*Superseded 2026-10-02 (#96): base's `connect-train` defaults to `J` too, so taking both would put
+three controls on it, with only this mod's two toggles new; see the note at the end of this entry.*
 
 **Overhaul fit**, #84's reading: its `blacklist.lua` excludes every entity matching `^WideChests`,
 and other modded chests, including those of `angelsaddons-storage` and `boblogistics`
@@ -2330,7 +2334,7 @@ entry.
 
 **Linked inputs are left out of the table.** A custom input with `linked_game_control` "will fire
 when the linked control is pressed" and does not show in the controls settings (API 2.0.77,
-`CustomInputPrototype`), so it shares that control's key by design. Twelve member inputs are
+`CustomInputPrototype`), so it shares that control's key by design. Eleven member inputs are
 linked: `BlueprintTools`' `bpt-linked-confirm-gui` and `bpt-linked-clear-cursor`,
 `even-distribution`'s `fast-entity-transfer-hook` and `fast-entity-split-hook`,
 `even-pickier-dollies`' `dolly-rotate-saved` and `dolly-rotate-saved-reverse`,

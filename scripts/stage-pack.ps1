@@ -48,8 +48,8 @@
     pack. The game-mod list (base, space-age, ...) is matched in exact case too, as
     resolve-modpack.ps1 has matched it since trulsjo/grado-factorio-tools#28 (#88); both scripts
     take the list and the rule from the shared game-mods.ps1 (#99). That the game itself compares
-    its own mods this way is inferred, not measured: both measurements behind the rule used an
-    ordinary mod, the misnamed Alpha above and the dependency on Alpha that game-mods.ps1 cites. A
+    its own mods this way is measured too (trulsjo/grado-factorio-tools#46, #107): Factorio 2.0.77
+    refuses a dependency on Space-Age, Base, Quality or Elevated-Rails; game-mods.ps1 has the run. A
     mandatory line naming Space-Age fails the resolve, so the stage stops there, whether the pack or
     a member declares it. Every other name in a member's dependency lines is matched in exact case
     too, as the resolver's header says: a member asking for krastorio2 is not satisfied by a

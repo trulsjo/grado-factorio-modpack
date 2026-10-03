@@ -49,9 +49,15 @@
     resolve-modpack.ps1 has matched it since trulsjo/grado-factorio-tools#28 (#88); both scripts
     take the list and the rule from the shared game-mods.ps1 (#99). A mandatory line naming
     Space-Age fails the resolve, so the stage stops there, whether the pack or a member declares
-    it. What neither script checks is the case of any other name in a member's dependency lines:
-    the resolver matches those without regard to case inside a closure, as its header says, so a
-    member asking for krastorio2 is taken as satisfied by Krastorio2.
+    it. Every other name in a member's dependency lines is matched in exact case too, as the
+    resolver's header says: a member asking for krastorio2 is not satisfied by a Krastorio2 already
+    picked. It is reported because the portal does not serve that spelling, so the stage stops
+    there as well; if the portal ever served both, it would resolve to the other mod, silently. A `?`, `(?)` or `!` line differing from a member only in case matches nothing.
+    Neither script names such a line as a wrong case; only a game mod is detected as one.
+    (Until 2026-10-03 this paragraph ended "What neither script checks is the case of any other
+    name in a member's dependency lines: the resolver matches those without regard to case inside
+    a closure, as its header says, so a member asking for krastorio2 is taken as satisfied by
+    Krastorio2." Tools 6847e8a, taken with the bump to ed3b1b2 in #101, made that false.)
 
     FACTORIO TAKES THE TARGET AS ITS MODS DIRECTORY, on the one run checked (2.0.77 headless,
     Grado_NonChanging, 2026-09-24, #59). fetch-mods.ps1 keeps its downloaded zips in a .zips
@@ -86,7 +92,9 @@
 
 .PARAMETER SelfTest
     Prove the staging half can fail and passes what it should, against fixture packs in a temp
-    directory. No network, no game.
+    directory. No network, no game, but it needs an initialised tools submodule
+    (git submodule update --init): it runs the shared packer and load-harness library, and stops
+    with that command if the submodule is missing.
 
 .EXAMPLE
     pwsh -File scripts/stage-pack.ps1 Grado_ABC

@@ -277,7 +277,10 @@ downloads is nothing - one URL per pack was.
 
 **Version `0.1.0` on all five, and packs version independently from there.** `0.1.0` sits above every
 published number, so it is legal on the reused entries, and the minor bump marks the 1.1 -> 2.0 break
-without claiming a stability nothing supports: no pack has been loaded in Factorio. `1.0.0` would
+without claiming a stability nothing supports: no pack has been loaded in Factorio. *True on
+2026-09-21, when this was decided. Since 2026-10-04 (#115 to #118) all five packs have a recorded
+load on 2.0.77, and only `Grado_NonChanging` has been played (#17); the records are in
+`docs/loads/`. The versions did not move.* `1.0.0` would
 have been a lie and `2.0.0` would have read as tracking the game version, which breaks the moment a
 pack targets 2.1. Continuing each entry's own line (`0.0.2` / `0.0.3` / `0.0.3`) was the alternative;
 it left the largest change these packs will ever have looking like a patch. Lockstep versioning was
@@ -417,7 +420,10 @@ includes the case #9 left open, `WideChestsBobs` asking `WideChests >= 6.0.0`.
 which is what the portal serves - and for all 104, the newest 2.0 release already satisfies the
 2.0.77 floor, so the filter changed no pick. It reads metadata, and nothing has been loaded in game.
 `space-age`
-is not a portal mod, and its 2.0.77 build asks only `base >= 2.0.0` (#10).
+is not a portal mod, and its 2.0.77 build asks only `base >= 2.0.0` (#10). *"Nothing has been loaded
+in game" was true of this check on 2026-09-24. Since 2026-10-04 (#115 to #118) all five packs have
+a recorded load on 2.0.77, each from a closure the same resolver picked, so the resolve has been
+borne out in the game once per pack. The records are in `docs/loads/`.*
 
 **Not served at 2.1: seventeen, kept as a watch list for when 2.1 goes stable.** Their newest
 release declares `factorio_version` 2.0, and `?version=2.1&namelist=` returns none of them

@@ -32,16 +32,17 @@ players can rebind. Whether the pack should carry Lua to change the default is #
 and *Play session* are glossary terms (`CONTEXT.md`), and they are not interchangeable. A load says
 the prototypes and start-up scripts work together, and nothing about play. The other four packs are
 still portal readings only. Treat "it resolves on the portal" and "it loads in the game" as
-different claims: for those four, only the first is true. *Superseded 2026-10-04 (#115 to #118):
-both are now true of all five, on 2.0.77. They are still different claims, and "it loads" is not
-"it plays": for those four, only the first two are true.* *Qualified 2026-10-01 (#80, #81): a
+different claims: for those four, only the first is true. *Qualified 2026-10-01 (#80, #81): a
 `--dump-data` run of a staged `Grado_ABC` on 2.0.77 failed in the data stage, in the hidden member
 `Warheads_Continued` `0.0.21`. It is not a recorded load, and it is #81's.* *Ruled 2026-10-04
 (#81): the cause is stale Bob's prototype names in `Warheads_Continued` and `True-Nukes_Continued`,
 and a list bug against `Clowns-Nuclear`. `True-Nukes_Continued` and `True-Nukes-Graphics_Continued`
 are out of `Grado_ABC`. With them out, a staged `Grado_ABC` loaded through the harness on 2.0.77,
 base only, the same day: 103 mods validated and a map created. Not a recorded load either; that is
-#27's.* *Recorded the same day (#116), again 103.* *Until 2026-09-29 this
+#27's.* *Superseded 2026-10-04 (#115 to #118): that load was recorded the same day (#116), again
+103, and "it resolves" and "it loads" are now both true of all five packs, on 2.0.77. They are
+still different claims, and "it loads" is not "it plays": for the four above, only the first two
+are true.* *Until 2026-09-29 this
 line read "Nothing
 has been launched in Factorio", which the two runs below had already made false. #65 settled its
 wording through #17.* Earlier runs, kept as history rather than as the record: *2026-09-24 (#59): a

@@ -15,7 +15,8 @@ marked *Superseded 2026-09-23 by #15*, which #15 took, and the notes dated 2026-
 with this sentence. *Candidates, not members* was read on 2026-09-30 (#50). The notes dated
 2026-10-01 (#39), (#44), (#80), (#44, #83), (#91) and (#93) were taken by #39, #44, #80, #83, #91
 and #93. The notes dated 2026-10-04 (#81) are #81's; the runs they cite are dated where they are
-cited. Searches described below as over "the 2.x list" first ran over
+cited. The notes dated 2026-10-04 (#116) are #116's, from the pack's recorded load, and those dated
+2026-10-04 (#119) are #119's. Searches described below as over "the 2.x list" first ran over
 the `version=2.0` listing only, which misses mods released for 2.1 alone (#44). **Every search so
 described has since been re-run over the union of both listings** and carries a *Checked
 2026-10-01* note: four by #44, against a union of 10,845, and the rest by #83, against the listings as read later that day - 9,794
@@ -1821,7 +1822,8 @@ target this mod is served.
 
 **Ruled 2026-10-04 (#81): out**, with `True-Nukes_Continued`. No failure was traced to this mod. It
 is art for a mod the pack no longer has, and it was not run on its own. See *Decisions, 2026-10-04 (#81)*.
-*Added 2026-10-04 (#119):* a load drop (`CONTEXT.md`), because the mod it serves is one.
+*Added 2026-10-04 (#119):* it left with a load drop (`CONTEXT.md`), `True-Nukes_Continued`, and is
+not one by the glossary's wording, since the pack was not shown to fail with it.
 
 ### `True-Nukes_Continued`
 
@@ -1853,8 +1855,8 @@ it stays and is tracked under #43. Whether it can be installed at all turns on #
 member of the three lower packs has at least one 2.0 release (measured 2026-09-23), so on a 2.0
 target this mod is served.
 
-**Ruled 2026-10-04 (#81): out.** A load drop (`CONTEXT.md`; *the term added here 2026-10-04,
-#119*). It fails in the data stage beside `bobwarfare` `2.1.0`,
+**Ruled 2026-10-04 (#81): out.** A load drop (`CONTEXT.md`, where #81 added the term; *named here
+2026-10-04, #119*). It fails in the data stage beside `bobwarfare` `2.1.0`,
 `bobelectronics` `2.1.1` and `Clowns-Nuclear` `2.0.08` on Factorio 2.0.77 (measured 2026-10-03):
 it and `Warheads_Continued` still look up Bob's prototype names from before Bob's 2.x added the
 `bob-` prefix, and its `Clowns-Nuclear` compatibility leaves a hole in a technology's `effects`
@@ -2131,8 +2133,9 @@ against the chain-wide nineteen predates this change.
 
 **Measured 2026-10-04 (#116): ten of the thirteen on 2.0.77.** The table reads latest releases,
 which are on the 2.1 line. The closure a 2.0.77 game resolves has no `reskins-assets-base`,
-`reskins-assets-bobs` or `reskins-sprite-utils`: the 2.0 releases of the `reskins-*` mods do not
-require them. The other ten were each present in the recorded load. Versions and the reason are in
+`reskins-assets-bobs` or `reskins-sprite-utils`: none of the four `reskins-*` releases that game
+resolves requires them (`reskins-library` `2.3.3`, `reskins-bobs` `2.3.8`, `reskins-angels` `2.3.5`,
+`reskins-compatibility` `2.3.10`; staged copies, read 2026-10-04). The other ten were each present in the recorded load. Versions and the reason are in
 `docs/loads/Grado_ABC-2026-10-04.md`.
 
 ## The Deadlock stacking family is one question

@@ -72,7 +72,20 @@
 
     IT REFUSES A MALFORMED PACK. Every info.json in the chain is checked as strict JSON, and for a
     name that matches its directory in case, before anything is fetched: a comment or a trailing
-    comma fails here, not inside the game.
+    comma fails here, not inside the game. So does an info.json that is JSON but not an object, a
+    version that is not x.y.z, and one with no `name`, `version` or `factorio_version` key in that
+    exact case (#111): a pack spelling a key `"Name"`, `"Version"` or `"Factorio_Version"` is
+    refused as having no such key, in a message naming the info.json and the key and saying that
+    keys match case exactly. Until 2026-10-04 this check looked its keys up without regard to
+    case, so such a pack passed it and was refused only by the packer, after the resolve and the
+    whole fetch. The game refuses a lone `"Name"` or `"Version"` (Factorio 2.0.77, measured in
+    pack-mods.ps1's header). It reads `"Factorio_Version"` as no key at all: a mod `probe-line`
+    with that key alone, and a mod with no such key, are both refused "Incompatible Factorio
+    version (current: 2.0, required: 0.12)" (Factorio 2.0.77, through load-harness.ps1,
+    2026-10-04). Two keys that differ only in case, `"Name"` beside `name`, are refused here too,
+    naming the info.json: this script reads the file into an object that cannot hold both. The
+    packer packs such a file and the game reads the lower-case key, as its header says; no pack
+    has one.
 
     WHAT IT DOES NOT DO. It modifies no info.json. It never loads the game. It does not remove a
     member a pack has since dropped from a -ModsDirectory you named and reuse across membership
@@ -162,7 +175,16 @@ function Read-PackInfo {
     if (-not (Test-Json -Json $text -ErrorAction SilentlyContinue)) {
         throw "$path is not valid JSON, so it is not staged: Factorio would refuse it. Strict JSON -- no comments, no trailing commas."
     }
-    $info = $text | ConvertFrom-Json
+    # Read with exact-case keys first, as the game reads them and as pack-mods.ps1 and the load
+    # harness do: the object below finds "Name" when asked for name, so without this a wrong-case
+    # key passed here and was refused only by the packer, after the resolve and the fetch (#111).
+    $keys = $text | ConvertFrom-Json -AsHashtable -NoEnumerate
+    if ($keys -isnot [System.Collections.IDictionary]) { throw "$path is not a JSON object." }
+    foreach ($key in 'name', 'version', 'factorio_version') {
+        if (-not $keys.ContainsKey($key)) { throw "$path has no ""$key"" key; keys match case exactly." }
+    }
+    try { $info = $text | ConvertFrom-Json }
+    catch { throw "$path cannot be read here, so it is not staged: $($_.Exception.Message)" }
     $field = { param($n) $info.PSObject.Properties[$n]?.Value }
     # Case-sensitive, as Factorio compares mod names: the name asked for, the info.json and the
     # directory on disk must all agree. Windows finds Grado_ABC when asked for grado_abc, so the
@@ -253,9 +275,16 @@ function Invoke-SelfTest {
     & $write 'Enemy' '{"name":"Enemy","version":"0.1.0","factorio_version":"2.0","dependencies":[]}'
     & $write 'Commented' "{`"name`":`"Commented`",`"version`":`"0.1.0`" /* no */}"
     & $write 'Trailing' '{"name":"Trailing","version":"0.1.0",}'
-    & $write 'Liar' '{"name":"Other","version":"0.1.0"}'
+    & $write 'Liar' '{"name":"Other","version":"0.1.0","factorio_version":"2.0"}'
     & $write 'Cased' '{"name":"cased","version":"0.1.0","factorio_version":"2.0"}'
     & $write 'Lineless' '{"name":"Lineless","version":"0.1.0"}'
+    # A key in another case than the game reads: Factorio 2.0.77 refuses a lone "Name" or
+    # "Version" (pack-mods.ps1's header has the run), and PowerShell's objects would find them.
+    & $write 'NameKey' '{"Name":"NameKey","version":"0.1.0","factorio_version":"2.0"}'
+    & $write 'VersionKey' '{"name":"VersionKey","Version":"0.1.0","factorio_version":"2.0"}'
+    & $write 'LineKey' '{"name":"LineKey","version":"0.1.0","Factorio_Version":"2.0"}'
+    & $write 'Listed' '[{"name":"Listed","version":"0.1.0","factorio_version":"2.0"}]'
+    & $write 'Paired' '{"Name":"Other","name":"Paired","version":"0.1.0","factorio_version":"2.0"}'
     # The shared packer zips git's tracked set, so the fixture packs are tracked, and one file
     # beside them is not.
     git -C $root init --quiet
@@ -297,7 +326,18 @@ function Invoke-SelfTest {
         @{ Name = 'a pack asked for in another case than its info.json is refused'; Test = {
             & $refuses 'high' $(if ($IsWindows) { "names itself 'High', not 'high'" } else { "No pack 'high'" }) } }
         @{ Name = 'an info.json with no factorio_version is refused by name, not by StrictMode'; Test = {
-            & $refuses 'Lineless' 'has no factorio_version' } }
+            & $refuses 'Lineless' 'Lineless.info\.json has no "factorio_version" key' } }
+        # The chain is read before the resolve and the fetch, so a refusal here is before both.
+        @{ Name = 'an info.json whose only name key is "Name" is refused, naming the file, the key and the case rule'; Test = {
+            & $refuses 'NameKey' 'NameKey.info\.json has no "name" key.*keys match case exactly' } }
+        @{ Name = 'an info.json whose only version key is "Version" is refused the same way'; Test = {
+            & $refuses 'VersionKey' 'VersionKey.info\.json has no "version" key.*keys match case exactly' } }
+        @{ Name = 'an info.json whose only line key is "Factorio_Version" is refused the same way'; Test = {
+            & $refuses 'LineKey' 'LineKey.info\.json has no "factorio_version" key.*keys match case exactly' } }
+        @{ Name = 'an info.json that is JSON but not an object is refused by name'; Test = {
+            & $refuses 'Listed' 'Listed.info\.json is not a JSON object' } }
+        @{ Name = 'an info.json holding "Name" beside name is refused by name, not with a bare PowerShell error'; Test = {
+            & $refuses 'Paired' 'Paired.info\.json cannot be read here' } }
         @{ Name = 'a member''s versioned zips and directories go before a fetch; its fetched directory and neighbours stay'; Test = {
             $d = Join-Path $temp 'member'
             New-Item -ItemType Directory -Path (Join-Path $d 'flib'), (Join-Path $d 'flib_0.16.1') -Force | Out-Null

@@ -125,7 +125,8 @@ That is a narrow verdict. A load sees the prototype stages and `on_init`. It doe
   science can be made from Angel's and Bob's materials. Nothing here says the game can be finished.
 - **Prototypes silently replaced.** Two mods defining one name load without a word, and the second
   wins. With an overhaul and an expansion both rewriting vanilla recipes, this is the likeliest
-  place for damage, and a load cannot show it.
+  place for damage, and a load cannot show it. *A data dump can: see the note under* Not checked
+  *(2026-10-04, #128).*
 - **Sprites**, which a headless run does not read.
 
 ## Not checked
@@ -134,6 +135,10 @@ That is a narrow verdict. A load sees the prototype stages and `on_init`. It doe
 - **Base only.** `Grado_ABCS` requires `space-age`, so there is no base-only load of this pack;
   `Grado_ABC`'s record is that run.
 - **What Space Age and the overhaul do to each other's prototypes.** No `--dump-data` run was made.
+  *Made 2026-10-04 (#128): 29 prototype names are defined by both, and 299 recipes, 148
+  technologies and 150 items of Space Age's differ in this pack. The five science packs Space Age
+  adds are untouched. See* Where the overhaul and Space Age touch *in
+  `docs/catalogue/Grado_ABCS.md`. It is a comparison of prototypes, not play.*
 - **A 2.1 build of `space-age`.** Still unread.
 - **The client's mod manager**, as said above.
 - **The floor itself.** 2.0.77 is above `base >= 2.0.74`, so this confirms only that the floor is at

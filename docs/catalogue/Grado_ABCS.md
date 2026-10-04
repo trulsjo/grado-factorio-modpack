@@ -15,7 +15,7 @@ re-read on 2026-09-23 (#10), which carries its own date, *Candidates, not member
 2026-10-01 (#44, #83), which #83 took over the union of both portal listings as read that day, and
 the entries for `angels_space_age_galore` and `industrial-worlds` and the notes dated 2026-10-01
 (#91), which #91 took, and the notes dated 2026-10-04 (#118), which #118 took from the pack's
-recorded load.
+recorded load, and the section dated 2026-10-04 (#128), which #128 took from data dumps.
 
 The dependency list holds 3 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, catalogued in
 `docs/catalogue/Grado_ABC.md` — and `space-age`. **The pack is new**, so nothing was carried over,
@@ -484,6 +484,220 @@ read, a description five releases behind, no source, and no word on MadClown. Fo
 light: named the way #10 named `quality` and `elevated-rails`, the pack would list two members,
 `space-age` and this mod, with its two libraries unnamed; counted by what a player installs, it
 adds three.
+
+## Where the overhaul and Space Age touch (2026-10-04, #128)
+
+A measurement of prototypes. It does not say whether the pack is playable, and it recommends
+nothing about a bridge mod: those are #29's and #31's.
+
+A load cannot see one mod replacing another's prototype, so this was read from data dumps. All on
+Factorio **2.0.77**, on 2026-10-04, through the shared harness's `Invoke-HarnessDump`, with
+`space-age`, `quality` and `elevated-rails` at `2.0.77` and the members at the releases in
+`docs/loads/Grado_ABC-2026-10-04.md`.
+
+### How the comparison was made
+
+Four dumps, each named by its prototype list checksum:
+
+| Dump | Mods | Checksum |
+|---|---|---|
+| base | none | `911970612` |
+| Space Age alone | `space-age`, `quality`, `elevated-rails`, no other mod | `3295867752` |
+| `Grado_ABC` | the staged pack, base only | `2195323740`, its recorded load's |
+| `Grado_ABCS` | the staged pack with the three | `2316474952`, its recorded load's |
+
+Every recipe, technology and item in the Space Age dump was compared with the prototype of the
+same name in the `Grado_ABCS` dump, on these fields:
+
+- **Recipe:** ingredients and results (name, amount, probability, temperature), category, time,
+  `enabled`, `hidden`, surface conditions, `allow_productivity`, main product.
+- **Technology:** prerequisites, science packs, count, time, research trigger, effects, `hidden`,
+  `enabled`.
+- **Item** (every prototype type that has a stack size): type, stack size, weight, fuel value and
+  category, what it places, spoiling, default import location, `hidden`, flags, launch products,
+  burnt result, subgroup.
+
+Icons, order strings and names shown to the player are not compared. The base dump says whether a
+prototype is vanilla, and whether Space Age alone or the overhaul alone changes it from base.
+"The overhaul" here is everything the pack loads, the two lower packs' members included.
+
+### Counts
+
+| | Recipes | Technologies | Items |
+|---|---|---|---|
+| In the Space Age dump | 659 | 275 | 340 |
+| Same in `Grado_ABCS` | 360 | 127 | 190 |
+| **Differ in `Grado_ABCS`** | **299** | **148** | **150** |
+| vanilla, and both rewrite it | 42 | 27 | 4 |
+| vanilla, and only the overhaul rewrites it | 100 | 102 | 130 |
+| vanilla, Space Age rewrites it and its change is gone | 5 | 0 | 0 |
+| Space Age's own, changed | 36 | 19 | 16 |
+| recycling recipes, which `quality` generates from the others | 116 | | |
+
+No recipe, technology or item of the Space Age dump is missing from `Grado_ABCS`.
+
+### Names both define
+
+**29 prototype names are defined by Space Age and, base only, by the overhaul too.** In
+`Grado_ABCS` one definition replaces the other without a log line.
+
+| Type | Names |
+|---|---|
+| item (9) | `turbo-transport-belt`, `turbo-underground-belt`, `turbo-splitter`, `battery-mk3-equipment`, `carbon`, `tungsten-ore`, `tungsten-plate`, `tungsten-carbide`, `lithium-plate` |
+| recipe (8) | the same nine less `tungsten-ore` |
+| entity (4) | `turbo-transport-belt`, `turbo-underground-belt`, `turbo-splitter`, and the equipment `battery-mk3-equipment` |
+| corpse (3) | the three turbo belt remnants |
+| recipe category (2) | `electronics`, `electronics-with-fluid` |
+| technology (1) | `battery-mk3-equipment` |
+| fluid (1) | `ammonia` |
+| particle (1) | `tungsten-ore-particle` |
+
+### A Space Age recipe the overhaul changed: 36
+
+- **The eight shared names.** `battery-mk3-equipment` has the overhaul's recipe (2
+  `battery-mk2-equipment`, 10 `bob-battery-2`; Space Age asks 5 and 10 `supercapacitor`). The
+  three turbo belts have Bob's ingredients (`bob-titanium-plate`, bearings and gear wheels, no
+  `tungsten-plate` or `lubricant`), the category `pressing` in place of `metallurgy`, and no
+  surface condition, where Space Age requires a pressure of 4000. `logistics-4` unlocks them.
+  `carbon`, `tungsten-carbide` and `tungsten-plate` are hidden and no technology unlocks them.
+  `lithium-plate` keeps Space Age's ingredient and time and moves to the category
+  `angels-petrochem-electrolyser`.
+- **`carbon` replaced by `angels-solid-carbon`, eight:** `carbon-fiber`, `space-science-pack`,
+  `thruster-fuel`, `advanced-thruster-fuel`, `coal-synthesis` as an ingredient;
+  `carbonic-asteroid-crushing`, `advanced-carbonic-asteroid-crushing`, `burnt-spoilage` as the
+  result. The item `carbon` is hidden, and no recipe makes or takes it.
+- **`ammonia` replaced by `angels-gas-ammonia`, seven:** `lithium`, `fluoroketone`,
+  `fusion-power-cell`, `ice-platform`, `solid-fuel-from-ammonia`, `ammonia-rocket-fuel`, and
+  `ammoniacal-solution-separation` as its result. `lithium` also takes 5 `angels-solid-lithium`
+  where Space Age takes 50 `lithium-brine`.
+- **Vanilla oil fractions, three:** `simple-coal-liquefaction` gives `angels-liquid-naphtha` for
+  `heavy-oil`, `electrolyte` takes it, and `superconductor` takes `angels-liquid-fuel-oil` for
+  `light-oil`. The fluids `ammonia`, `heavy-oil` and `light-oil` are hidden.
+- **`steel-plate` replaced by `bob-titanium-plate`, two:** `space-platform-foundation` and
+  `space-platform-starter-pack`.
+- **The three quality modules** have Bob's module recipes (`bob-module-case`,
+  `bob-quality-processor` and the like).
+- **Category only, five:** `lightning-rod` is in `crafting`, not `electronics`. The four
+  fluoroketone barrel recipes are in `angels-barreling-pump`.
+
+### A vanilla recipe both rewrite: 42
+
+`speed-module`, `-2`, `-3`, `productivity-module`, `-2`, `-3`, `efficiency-module`, `-2`, `-3`,
+`heavy-oil-cracking`, `light-oil-cracking`, `sulfuric-acid`, `plastic-bar`, `sulfur`,
+`personal-roboport-mk2-equipment`, `artillery-turret`, `electronic-circuit`, `transport-belt`,
+`copper-cable`, `splitter`, `underground-belt`, `fast-underground-belt`, `fast-splitter`,
+`fast-transport-belt`, `solar-panel`, `destroyer-capsule`, `atomic-bomb`, `artillery-shell`,
+`express-transport-belt`, `spidertron`, `artillery-wagon`, `power-armor-mk2`,
+`express-underground-belt`, `express-splitter`, `advanced-circuit`, `processing-unit`,
+`accumulator`, `beacon`, `explosives`, `battery`, `rocket-fuel`, `rocket-part`.
+
+In eleven the result is the overhaul's base-only recipe, so Space Age's change is not there:
+`personal-roboport-mk2-equipment`, `electronic-circuit`, `solar-panel`, `destroyer-capsule`,
+`atomic-bomb`, `spidertron`, `advanced-circuit`, `processing-unit`, `accumulator`, `beacon` and
+`rocket-fuel`. The other 31 are neither mod's own recipe. Two examples: `transport-belt` has
+Bob's ingredients in Space Age's category `pressing`; `rocket-part` takes 1 `processing-unit`, 1
+`low-density-structure` and 1 `rocket-fuel`, which is Space Age's cost, and 10
+`bob-titanium-pipe` and 10 `bob-heat-shield-tile` beside them.
+
+The five whose Space Age change is gone though the overhaul alone leaves them as base:
+`small-electric-pole`, `medium-electric-pole`, `big-electric-pole`, `substation` and
+`discharge-defense-equipment`. Space Age moves them to the category `electronics`; in
+`Grado_ABCS` they are in `crafting`. `electronics` is one of the names both define.
+
+### Science packs, rockets and planets
+
+**The five packs Space Age adds are untouched:** `metallurgic-science-pack`,
+`agricultural-science-pack`, `electromagnetic-science-pack`, `cryogenic-science-pack` and
+`promethium-science-pack` have the same recipe and the same technology as in Space Age alone.
+**`space-science-pack`'s recipe changed in one ingredient:** `angels-solid-carbon` for `carbon`.
+Its technology is the same.
+
+One step up from the packs, read from the dump and not played:
+
+- `metallurgic-science-pack` takes `tungsten-carbide` and `tungsten-plate`. Space Age's recipes
+  for both are hidden. Angel's makes them: `angels-plate-tungsten-carbide`,
+  `angels-plate-tungsten` and `angels-roll-tungsten-converting`, behind
+  `angels-tungsten-carbide-smelting-1` and `angels-tungsten-smelting-1`.
+- `electromagnetic-science-pack` takes `accumulator`, which has the overhaul's recipe (10
+  `battery`, 2 `electronic-circuit`, 2 `iron-plate`), and `electrolyte`, which takes
+  `angels-liquid-naphtha`.
+- `cryogenic-science-pack` takes `lithium-plate`, made in Angel's electrolyser category from
+  `lithium`, which no longer takes `lithium-brine`.
+- `agricultural-science-pack` and `promethium-science-pack`: every recipe for their ingredients is
+  the same as in Space Age alone.
+
+**Rocket and planet technologies.** Prerequisites or cost changed in three:
+
+- `rocket-silo`: `bob-titanium-processing` and `bob-heat-shield` added to its prerequisites.
+- `rocket-fuel`: `angels-advanced-oil-processing`, `angels-nitrogen-processing-3` and `-4` in
+  place of `advanced-oil-processing`, and `production-science-pack` and `utility-science-pack`
+  added to its cost.
+- `rocketry`: `angels-rocket-booster-1` added to its prerequisites.
+
+Three more gained recipe unlocks from `RealisticFusionPowerPort` and nothing else:
+`space-platform-thruster`, `planet-discovery-aquilo` and `advanced-asteroid-processing`.
+**The four `planet-discovery-*` technologies keep Space Age's prerequisites and cost**, and
+`space-platform`, `space-science-pack`, `asteroid-reprocessing` and `captivity` are unchanged.
+
+The recipes on that path that changed are all listed above: `rocket-part`, `rocket-fuel`,
+`space-platform-foundation`, `space-platform-starter-pack`, `thruster-fuel` and
+`advanced-thruster-fuel`.
+
+### Technologies
+
+**Space Age's own, 19 changed:**
+
+- `turbo-transport-belt` is hidden and disabled and unlocks nothing.
+- `battery-mk3-equipment` is the overhaul's: it costs `production-science-pack` and none of
+  `utility-science-pack`, `space-science-pack` and `electromagnetic-science-pack`, which Space
+  Age asks for.
+- `tungsten-carbide` no longer unlocks `carbon` or `tungsten-carbide` and unlocks
+  `bob-carbon-from-acid`. `tungsten-steel` no longer unlocks `tungsten-plate`.
+  `lithium-processing` also unlocks `bob-lithium-chloride` and `bob-lithium-perchlorate`.
+- `elevated-rail` asks for `bob-advanced-logistic-science-pack` in place of
+  `production-science-pack`, and for `railway`.
+- `quality-module` costs 50 units, not 500; `quality-module-2` and `-3` have Bob's module
+  prerequisites and counts.
+- Ten gained `*-rfp-ddw` recipe unlocks from `RealisticFusionPowerPort` and nothing else: the
+  three above, `rocket-turret`, `foundry`, `biochamber`, `bioflux-processing`, `overgrowth-soil`,
+  `fish-breeding` and `holmium-processing`.
+
+**Vanilla, both rewrite, 27:** `physical-projectile-damage-6` and `-7`, `laser-weapons-damage-5`
+to `-7`, `follower-robot-count-5`, `atomic-bomb`, `automation-3`, `cliff-explosives`,
+`power-armor-mk2`, `rocket-silo`, `logistic-system`, `worker-robots-speed-6`,
+`energy-shield-mk2-equipment`, `battery-mk2-equipment`, `personal-roboport-mk2-equipment`,
+`fluid-handling`, `coal-liquefaction`, `speed-module-2` and `-3`, `productivity-module-2` and
+`-3`, `efficiency-module-2` and `-3`, `kovarex-enrichment-process`, `artillery`, `spidertron`.
+Three end as the overhaul's base-only form: `automation-3`, `battery-mk2-equipment` and
+`fluid-handling`, so Space Age's fluoroketone barrels are unlocked by `bob-fluid-barrel-processing`.
+`coal-liquefaction` is hidden and `kovarex-enrichment-process` is disabled, and the recipes
+of those names are hidden.
+
+Going the other way, two of the overhaul's technologies cost a Space Age pack in `Grado_ABCS`:
+`bob-battery-3` (`cryogenic-science-pack`) and `miniloader-redux`'s `hps__ml-turbo-miniloader`
+(`space-science-pack` and `metallurgic-science-pack`).
+
+### Items
+
+**Space Age's own, 16 changed.** Five are shared names and have the overhaul's form: the three
+turbo belts, `battery-mk3-equipment` and `carbon`, which is hidden. The other eleven differ in
+subgroup only: `calcite`, `tungsten-ore`, `tungsten-plate`, `tungsten-carbide`, `holmium-ore`,
+`lithium-plate`, the two fluoroketone barrels and the three quality modules. **Vanilla, both
+rewrite, 4:** `raw-fish`, `cliff-explosives`, `stone-brick` and `landfill`.
+
+### Not covered
+
+- **Play.** Nothing here was crafted, researched or launched.
+- **The 100 recipes, 102 technologies and 130 items only the overhaul rewrites.** That is
+  `Grado_ABC` being itself, and the same as base only.
+- **The 116 recycling recipes**, which follow from the recipes they recycle. `Grado_ABCS` has
+  3,664 recycling recipes against 311 in Space Age alone.
+- **Entities, resources and map generation.** One thing was seen in passing: the resource
+  prototypes `iron-ore`, `copper-ore` and `uranium-ore` are in the Space Age dump and not in
+  `Grado_ABCS`. What the planets then place was not looked at.
+- **Which mod made each change.** The dumps show the result. Where a mod is named above, its
+  prototype names say so.
+- **A 2.1 build of any of it.**
 
 ## Pressure on the one-mod-per-branch rule
 

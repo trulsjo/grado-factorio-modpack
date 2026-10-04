@@ -18,7 +18,8 @@ on 2.0.77, each with its record in `docs/loads/`: `Grado_ChangingBase` (#115) cl
 with Space Age, 53 mods; `Grado_ABC` (#116) clean base only, 103 mods; `Grado_ABCX` (#117) clean
 base only, 105 mods, and refused with Space Age, the game citing the pack's `! space-age` and
 `SpaceModFeorasFork`'s; `Grado_ABCS` (#118) clean with Space Age, 104 mods. None of the four has
-had a play session (#26 to #29), and the `Grado_ABC` log has non-fatal complaints, in its record.
+had a play session (#26 to #29), and the logs of the three overhaul packs have non-fatal
+complaints, in their records.
 `Grado_NonChanging` loaded on
 2.0.77, base only and again with Space Age, on 2026-09-29 (#17). Both loads were clean. Its play
 session (2026-09-29 to 2026-09-30) saw 24 of its 26 named members working. `ixuAutoSave` and

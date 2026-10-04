@@ -75,8 +75,7 @@ created. The game's message, complete, from `factorio-current.log`:
 ```
 
 It cites **both** declarations: `Grado_ABCX`'s own `! space-age` line and the fork's. So the
-exclusion holds twice over on 2.0.77, and the pack's line is not dead weight: the game reports it
-by the pack's name. The refusal is the game's dependency check, not a prototype failure. It was
+game reads the pack's line as well as the fork's on 2.0.77. Neither was tried without the other. The refusal is the game's dependency check, not a prototype failure. It was
 seen with all three expansion mods enabled; `space-age` on its own cannot be enabled
 (`docs/loads/Grado_ABCS-2026-10-04.md`).
 

@@ -28,7 +28,7 @@ lives there, and each branch adds exactly one thing.
 2026-09-30). 24 of its 26 named members were seen working, the save reloaded with the members'
 data that was checked, and one key-binding clash turned up - see
 [docs/loads/Grado_NonChanging-2026-09-29.md](docs/loads/Grado_NonChanging-2026-09-29.md). The
-other four packs have each been loaded once, on 2026-10-04, and not played: a load shows the mods
+other four packs each have a recorded load, from 2026-10-04, and have not been played: a load shows the mods
 start together, not that the pack plays well. `Grado_ABCX` was also refused beside Space Age, as
 intended. The records are in [docs/loads/](docs/loads/). See
 [docs/porting-notes.md](docs/porting-notes.md) for what was kept, replaced and dropped, and for the

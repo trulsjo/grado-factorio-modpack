@@ -2037,7 +2037,9 @@ Three gaps are new as of 2026-09-22 and belong to #8 rather than to the survey:
 
 - **`cybersyn2` is author-declared alpha and nothing has been loaded.** "Known issues, bugs, missing
   features, and even the occasional crash" is the author's own description of the mod this pack now
-  depends on for train logistics. No part of it has been observed running.
+  depends on for train logistics. No part of it has been observed running. *2026-10-04 (#115): it
+  loaded and ran `on_init` in the pack's recorded load, at `0.1.10`. No train was dispatched.
+  `docs/loads/Grado_ChangingBase-2026-10-04.md`.*
 - **`Waterfill_v17`'s feature parity with `safefill` is unverified.** Six water types,
   blueprintability and the survival guarantee are claims made by the mod being replaced; the
   replacement's page documents an item-collision setting and tree handling. Nobody has compared them

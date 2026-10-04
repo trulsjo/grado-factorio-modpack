@@ -1955,7 +1955,10 @@ release. #9's reading is the one the code supports.
 
 **Not checked.** Neither mod has been loaded here, alone or together, so none of the above says
 they work in game. The remelting mod was not read on 2.1 `angelssmelting`, and it has no 2.1
-release to read. Its recipe balance against Angel's ingot route was not assessed.
+release to read. Its recipe balance against Angel's ingot route was not assessed. *2026-10-04
+(#116): `angels-smelting-extended` `2.0.01` has loaded since, as a member in the pack's recorded
+load, `docs/loads/Grado_ABC-2026-10-04.md`. `angelsextended-remelting` is not a member and has
+still not been loaded, so the two have not been loaded together.*
 
 **Alternatives considered.** `angels-smelting-extended`'s own fluid-stage blending, the
 `ASE-angels-molten-recipes` setting, which `1.0.14` had and `2.0.01` removed. No search for any

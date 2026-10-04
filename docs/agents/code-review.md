@@ -65,6 +65,12 @@ all. The one gate that exists — the shared check, at
 commit message and says so in its own header. Nothing reads whether a sentence agrees with the number beside it, and
 **nothing has ever been loaded in Factorio**, so the game cannot contradict a claim either.
 
+*True when this page was adopted on 2026-09-20. Since 2026-10-04 (#115 to #118) all five packs have
+a recorded load on Factorio 2.0.77, and `Grado_NonChanging` has been played (#17, 2026-09-30); the
+records are in `docs/loads/`. So the game can now contradict a claim about whether a pack starts.
+It still cannot contradict a count, a date or a portal reading, which is what the rule below is
+for.*
+
 ### The rule
 
 **Check every number in prose against a number in the diff, and do the arithmetic.** Not "does this

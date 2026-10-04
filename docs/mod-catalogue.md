@@ -179,6 +179,18 @@ instead. Use it sparingly — a survey where several entries reconsider has not 
   port, and `Grado_NonChanging` removed three mods that had survived it. Without this variant the
   entries stayed under *In the pack*, which broke the one guarantee the heading rule exists to give.
 
+  **A load drop (`CONTEXT.md`) uses this variant, unchanged** (2026-10-04, #119). It is partly
+  both things the first sentence above keeps apart: a decision, forced by a member that is broken
+  upstream. The decision is what removes it, so the entry sits in *Ruled out after the port* with
+  the same `| **Status** | dropped <date> (#<issue>) |` row; the row does not say which kind of
+  drop it is. **The ruling paragraph does**: it names the mod a load drop, and it carries the
+  failure evidence - the game build, the members and releases it failed beside, the cause and the
+  date measured - or points at the section of the pack file that has the runs. A member removed
+  only because the mod it serves is a load drop is one too; its ruling paragraph says so, names
+  that mod, and says whether any failure was traced to it. #81's two entries in
+  `docs/catalogue/Grado_ABC.md` are the first. No new variant: whether the format should have fewer
+  or more is #62's.
+
 - **A mod added after the port** is the mirror of the one above: a mod that was never in the 1.1
   pack and entered by a decision. It sits under *In the pack*, carries the `**Supersedes**` row if
   it displaced an existing member, and **its Recommendation reads `keep`, followed by "Added by

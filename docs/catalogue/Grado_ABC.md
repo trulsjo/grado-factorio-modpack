@@ -1820,6 +1820,7 @@ target this mod is served.
 
 **Ruled 2026-10-04 (#81): out**, with `True-Nukes_Continued`. No failure was traced to this mod. It
 is art for a mod the pack no longer has, and it was not run on its own. See *Decisions, 2026-10-04 (#81)*.
+*Added 2026-10-04 (#119):* a load drop (`CONTEXT.md`), because the mod it serves is one.
 
 ### `True-Nukes_Continued`
 
@@ -1851,7 +1852,8 @@ it stays and is tracked under #43. Whether it can be installed at all turns on #
 member of the three lower packs has at least one 2.0 release (measured 2026-09-23), so on a 2.0
 target this mod is served.
 
-**Ruled 2026-10-04 (#81): out.** It fails in the data stage beside `bobwarfare` `2.1.0`,
+**Ruled 2026-10-04 (#81): out.** A load drop (`CONTEXT.md`; *the term added here 2026-10-04,
+#119*). It fails in the data stage beside `bobwarfare` `2.1.0`,
 `bobelectronics` `2.1.1` and `Clowns-Nuclear` `2.0.08` on Factorio 2.0.77 (measured 2026-10-03):
 it and `Warheads_Continued` still look up Bob's prototype names from before Bob's 2.x added the
 `bob-` prefix, and its `Clowns-Nuclear` compatibility leaves a hole in a technology's `effects`

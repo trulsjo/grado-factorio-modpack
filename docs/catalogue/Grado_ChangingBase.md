@@ -217,6 +217,59 @@ family shows — see *The raiguard pattern* in `docs/catalogue/Grado_NonChanging
 half of the authorship story. Last touched 2025-03-12, which is quiet rather than abandoned, and it
 is the only successor that preserves the mechanic.
 
+#### What its Bob's integration leaves in the recipes on `Grado_ABC` (2026-10-04, #122)
+
+A measurement. Nothing was patched, and whether to report it upstream is Truls's.
+
+`Grado_ABC`'s recorded load has eight log lines from this mod, through `stdlib2`: it looks up three
+items that do not exist (`docs/loads/Grado_ABC-2026-10-04.md`, *Conflicts*). What that leaves
+behind was read from two data dumps on Factorio 2.0.77, made on 2026-10-04 through the shared
+harness's `Invoke-HarnessDump`: the staged `Grado_ABC` (prototype list checksum `2195323740`, the
+recorded load's) and the staged `Grado_ChangingBase` (`1028326153`), which has no `boblibrary` and
+so shows the recipes as the mod writes them without Bob's. Releases: `Nanobots2` `3.3.2`,
+`stdlib2` `2.0.1`, `bobelectronics` `2.1.1`, `boblogistics` `2.1.1`, `bobwarfare` `2.1.0`.
+
+`data-updates.lua` has one block that runs when `boblibrary` is loaded. Line 11 is behind the Bob's
+setting `bobmods-logistics-disableroboports`, off by default, and did not run. Lines 12 to 21 are
+nine calls. Eight of them name a Bob's item by its name from before Bob's 2.x. `stdlib2` checks the
+item first, logs `Item ... does not exist` and changes nothing. The ninth names this mod's own
+`gun-nano-emitter` and is applied.
+
+| Recipe | Meant with Bob's | In the `Grado_ABC` dump | As meant? |
+|---|---|---|---|
+| `gun-nano-emitter` | `electronic-circuit` replaced by `basic-circuit-board` | `copper-plate` 5, `iron-plate` 10, `electronic-circuit` 2 | no |
+| `ammo-nano-constructors` | the same replacement | `iron-stick` 1, `repair-pack` 1 | yes: the recipe has no `electronic-circuit` to replace, so the failed lookup costs nothing |
+| `ammo-nano-termites` | the same replacement | `iron-stick` 1, `electronic-circuit` 1 | no |
+| `equipment-bot-chip-items` | `robot-brain-construction` added | `processing-unit` 1, `battery` 1 | no |
+| `equipment-bot-chip-trees` | `robot-brain-construction` added | `processing-unit` 1, `battery` 1 | no |
+| `equipment-bot-chip-nanointerface` | `robot-brain-construction` and `gun-nano-emitter` added | `processing-unit` 1, `battery` 1, `gun-nano-emitter` 1 | no: the emitter is there, the brain is not |
+| `equipment-bot-chip-launcher` | `robot-brain-combat` added | `processing-unit` 1, `battery` 1 | no |
+| `equipment-bot-chip-feeder` | `robot-brain-combat` added | `processing-unit` 1, `battery` 1 | no |
+
+**Seven of the eight recipes differ from what the mod meant.** Six of the seven are exactly the
+recipe the mod has without Bob's, as the `Grado_ChangingBase` dump shows them. The seventh,
+`equipment-bot-chip-nanointerface`, has the emitter and not the brain. Nothing is broken: each
+recipe lists only items that exist. What a player gets is the Nanobots items at their no-Bob's
+cost in a Bob's game.
+
+The three names, against the `Grado_ABC` dump and the staged Bob's source:
+
+| Name asked for | Status | What exists |
+|---|---|---|
+| `basic-circuit-board` | renamed | `bob-basic-circuit-board`, item and recipe, `bobelectronics` `2.1.1` (`prototypes/electronics.lua`) |
+| `robot-brain-combat` | renamed | `bob-robot-brain-combat`, item and recipe, `bobwarfare` `2.1.0` (`prototypes/robot-parts.lua`) |
+| `robot-brain-construction` | removed | `boblogistics` `2.0.0` (2025-03-30): "Combined Construction and Logistics Brains and Tools #184". The combined item is `bob-robot-brain` (`boblogistics` `2.1.1`, `prototypes/robot-parts.lua`), with `-2` to `-4` above it. No prototype of any type is named `bob-robot-brain-construction` |
+
+The newest release on each line (portal, read 2026-10-04):
+
+- **2.0:** `Nanobots2` `3.3.2` (2025-03-12) is the newest and the one measured. The mod has no 2.1
+  release.
+- **2.1:** `Nanobots2-continued` `3.4.4` (2026-08-28, `goakiller900`), fetched with its SHA-1
+  checked and read, not loaded. Its `data-updates.lua` makes the same nine calls with the same
+  three old names. It uses helpers of its own that check the item exists and skip without a word
+  if it does not. So beside Bob's it would leave the same recipes and log nothing. That is read
+  from its source against Bob's 2.0-line names. Bob's on the 2.1 line was not read.
+
 ### `UltimateResearchQueue2`
 
 | | |

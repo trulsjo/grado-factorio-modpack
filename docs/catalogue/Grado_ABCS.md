@@ -679,10 +679,11 @@ Going the other way, two of the overhaul's technologies cost a Space Age pack in
 
 ### Items
 
-**Space Age's own, 16 changed.** Five are shared names and have the overhaul's form: the three
-turbo belts, `battery-mk3-equipment` and `carbon`, which is hidden. The other eleven differ in
-subgroup only: `calcite`, `tungsten-ore`, `tungsten-plate`, `tungsten-carbide`, `holmium-ore`,
-`lithium-plate`, the two fluoroketone barrels and the three quality modules. **Vanilla, both
+**Space Age's own, 16 changed.** All nine shared item names are among them. Five of the nine have
+the overhaul's form: the three turbo belts, `battery-mk3-equipment` and `carbon`, which is hidden.
+The other eleven of the 16 differ in subgroup only: the four remaining shared names,
+`tungsten-ore`, `tungsten-plate`, `tungsten-carbide` and `lithium-plate`, and `calcite`,
+`holmium-ore`, the two fluoroketone barrels and the three quality modules. **Vanilla, both
 rewrite, 4:** `raw-fish`, `cliff-explosives`, `stone-brick` and `landfill`.
 
 ### Not covered

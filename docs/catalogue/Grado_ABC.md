@@ -2128,6 +2128,12 @@ against the chain-wide nineteen predates this change.
 `True-Nukes_Continued`, and that is out. Of the two content mods among the hidden members,
 `Clowns-Nuclear` is the one left. The table above is left as measured.
 
+**Measured 2026-10-04 (#116): ten of the thirteen on 2.0.77.** The table reads latest releases,
+which are on the 2.1 line. The closure a 2.0.77 game resolves has no `reskins-assets-base`,
+`reskins-assets-bobs` or `reskins-sprite-utils`: the 2.0 releases of the `reskins-*` mods do not
+require them. The other ten were each present in the recorded load. Versions and the reason are in
+`docs/loads/Grado_ABC-2026-10-04.md`.
+
 ## The Deadlock stacking family is one question
 
 The pack carries three of the five Deadlock mods the 1.1 pack had, and the two it lost are the two

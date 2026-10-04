@@ -14,7 +14,8 @@ re-read on 2026-09-23 (#10), which carries its own date, *Candidates, not member
 2026-09-24 (#31), and the notes dated 2026-09-24 (#58) and (#61), which those two took, and the notes dated
 2026-10-01 (#44, #83), which #83 took over the union of both portal listings as read that day, and
 the entries for `angels_space_age_galore` and `industrial-worlds` and the notes dated 2026-10-01
-(#91), which #91 took.
+(#91), which #91 took, and the notes dated 2026-10-04 (#118), which #118 took from the pack's
+recorded load.
 
 The dependency list holds 3 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, catalogued in
 `docs/catalogue/Grado_ABC.md` — and `space-age`. **The pack is new**, so nothing was carried over,
@@ -125,13 +126,15 @@ from the portal.
 of this member, the same shape as the ones `docs/catalogue/Grado_ABC.md` found, and #10 ruled not to
 name them in the pack's list. This is a reading of 2.0.77; a 2.1 build was not available to read.
 
-**Measured in the game 2026-10-04 (#118): required, and not switched on by the game.** With
+**Measured in the game 2026-10-04 (#118): required, and a disabled one is refused, not switched
+on.** With
 `space-age` enabled and the other two written as disabled, Factorio 2.0.77 refuses: "Missing
 required dependency elevated-rails >= 2.0.0" and "Missing required dependency quality >= 2.0.0".
 The recorded load had all three enabled, because the load harness follows `space-age`'s
 dependencies when it writes the mod list. So "pulls the other two in" is true of the requirement
-and of the harness, and not of the game enabling a disabled mod. The message and the three
-observations are in `docs/loads/Grado_ABCS-2026-10-04.md`.
+and of the harness, and not of the game enabling a disabled mod. Left out of the mod list rather
+than disabled, the game does enable them: #59's start saw that on 2026-09-24, and it was not re-run.
+The message and the three observations are in `docs/loads/Grado_ABCS-2026-10-04.md`.
 
 #### Against `SpaceModFeorasFork`
 
@@ -576,7 +579,9 @@ Truls's.
   `Grado_ABCS` a **ten-member pack** against `Grado_ABCX`'s one. Seven of the eight are community
   planet content and its graphics, the eighth, `PlanetsLib`, is the library they share, and those are
   content decisions nobody has taken. *(Ten extras and twelve members until 2026-09-23 (#10), when
-  the game showed that `space-age` pulls in `quality` and `elevated-rails` itself.)* It also requires
+  the game showed that `space-age` pulls in `quality` and `elevated-rails` itself.)* *(Qualified
+  2026-10-04 (#118): it requires them; a disabled one is refused, not enabled. See* What the portal
+  actually returns*.)* It also requires
   `angelsbioprocessing`, `angelspetrochem`,
   `angelsrefining`, `angelssmelting` and seven Bob's mods at specific minimum versions, all of which
   `Grado_ABC` already carries, so the ABC side costs nothing extra.

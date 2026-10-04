@@ -100,8 +100,8 @@ ingredients, 20 with no results, 4 hidden, 1 manual recipe added), `alien-biomes
 trees it disables), `even-distribution` (18), `WideChests` (9), `UltimateResearchQueue2` (3),
 `cybersyn2` (2) and `0-things` (1). 100 `Script` lines in all. Load 2 has 111: `reverse-factory`
 logs 10 more, about `turbo-loader`, `copper-bacteria`, `iron-bacteria`, `quantum-processor`,
-`cryogenic-science-pack`, `heat-interface`, `infinity-chest` and `infinity-pipe`, and
-`alien-biomes` disables one more tree, `water-cane`. `UltimateResearchQueue2`'s three lines are
+`cryogenic-science-pack`, `heat-interface`, `infinity-chest` and `infinity-pipe` (the two
+`-bacteria` recipes twice each), and `alien-biomes` disables one more tree, `water-cane`. `UltimateResearchQueue2`'s three lines are
 timings and differ. The rest are the same.
 
 The times are from one machine (i7-9850H) and one run each. They are context, not a benchmark.

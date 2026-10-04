@@ -186,9 +186,10 @@ instead. Use it sparingly — a survey where several entries reconsider has not 
   drop it is. **The ruling paragraph does**: it names the mod a load drop, and it carries the
   failure evidence - the game build, the members and releases it failed beside, the cause and the
   date measured - or points at the section of the pack file that has the runs. A member removed
-  only because the mod it serves is a load drop is one too; its ruling paragraph says so, names
-  that mod, and says whether any failure was traced to it. #81's two entries in
-  `docs/catalogue/Grado_ABC.md` are the first. No new variant: whether the format should have fewer
+  only because the mod it serves is a load drop goes the same way, without being called one: the
+  glossary's term is for a member the pack does not load with. Its ruling paragraph names the load
+  drop it left with and says whether any failure was traced to it. #81's two entries in
+  `docs/catalogue/Grado_ABC.md` are the first, one of each kind. No new variant: whether the format should have fewer
   or more is #62's.
 
 - **A mod added after the port** is the mirror of the one above: a mod that was never in the 1.1

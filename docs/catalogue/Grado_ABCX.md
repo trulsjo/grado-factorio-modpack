@@ -9,7 +9,8 @@ Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below w
 **2026-09-22** and is reproduced from the fetched data rather than retyped, except the notes marked
 *Superseded 2026-09-23 by #15*, which #15 took, and the notes dated 2026-09-24 (#43), which #43
 took, and the notes dated 2026-09-24 (#58) and (#61), which those two took, and the notes dated
-2026-10-01 (#39) and (#44), which those two took.
+2026-10-01 (#39) and (#44), which those two took, and the note dated 2026-10-04 (#117), which #117
+took from the pack's recorded load.
 
 The dependency list holds 4 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, catalogued in
 `docs/catalogue/Grado_ABC.md` — `SpaceModFeorasFork`, and the `! space-age` line the pack declares

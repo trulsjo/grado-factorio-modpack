@@ -9,7 +9,8 @@ Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below w
 **2026-09-21**, except those carrying a **Read on** of **2026-09-22**, which #8 took — the three
 entries it added and the readings inside its rulings — and the notes marked *Superseded 2026-09-23
 by #15*, which #15 took, and the notes dated 2026-09-24 (#43) and (#58), which those two took, and the notes dated
-2026-10-01 (#44, #83) and (#83), which #83 took.
+2026-10-01 (#44, #83) and (#83), which #83 took, and the notes dated 2026-10-04 (#115), which #115
+took from the pack's recorded load.
 *Candidates, not members* was read on 2026-10-01 (#46, #84). Searches described below as over "the
 2.x list" first ran over the `version=2.0` listing only, which misses mods released for 2.1 alone
 (#44), and the two over "the 2.1 list" miss mods released for 2.0 alone. **Every search so
@@ -465,7 +466,9 @@ five packs. Cross-surface behaviour for Space Age was checked for CS1 on #23 and
 that reading does not transfer to CS2, which is a ground-up rewrite — see *What was not checked*.
 `miniloader-redux` detection should work by mechanism, because Cybersyn's allow-list detection is by
 prototype type and `miniloader-redux` is built from `loader-1x1` prototypes. Nothing has been loaded
-in Factorio.
+in Factorio. *2026-10-04 (#115): both mods loaded together in the pack's recorded load,
+`docs/loads/Grado_ChangingBase-2026-10-04.md`. A load runs no ticks, so the detection is still
+unobserved.*
 
 ### `miniloader-redux`
 
@@ -1243,6 +1246,8 @@ list. The gap may be worse than missing tiers: `miniloader-redux`'s normal mode 
 above 240 items/sec", and this mod's fastest tier is "equivalent to 6 express belts" — 270 items/sec
 at the base game's 45 for express. That is arithmetic off two portal pages and one base-game number,
 not a measurement; nothing has been loaded in Factorio. It is checkable the moment something is.
+*2026-10-04 (#115): the pack has a recorded load now, but this mod left the pack on 2026-09-22 (#8)
+and was not in it, so the arithmetic was not checked.*
 
 **Recommendation: reconsider:** whether the belt-tier layer belongs in this pack at all, and if it
 does, whether `more-belts` should carry it. Three findings point the same way and none of them is
@@ -2013,7 +2018,9 @@ Stated plainly so the gaps are not mistaken for clean results.
 - **Nothing was loaded in Factorio.** No pack, no member mod, no combination. Every claim above is a
   portal or documentation reading. The 240-vs-270 items/sec arithmetic under
   `UltimateBeltsSpaceAge` was the clearest case: it followed from two mod pages and was never
-  observed. That mod is now out, so the arithmetic is moot rather than resolved.
+  observed. That mod is now out, so the arithmetic is moot rather than resolved. *Superseded
+  2026-10-04 (#115): the pack has a recorded load, base only and with Space Age, 53 mods, both
+  clean. Nothing has been played. `docs/loads/Grado_ChangingBase-2026-10-04.md`.*
 - **The overhaul-compatibility flags are readings of what authors claim**, not tests. `safefill`'s
   boundary was a sentence on its page; it may have worked fine under Angel's. The point of flagging
   it is that nobody has to guess in-game which member to suspect first. **#8's promise sweep ran on

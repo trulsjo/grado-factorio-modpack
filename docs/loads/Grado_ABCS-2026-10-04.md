@@ -101,8 +101,10 @@ the 565 of `Grado_ABC`'s base-only load:
 
 - `reverse-factory` logs 10 more lines, 453 against 443, about eight recipes it will not reverse:
   `turbo-loader`, `copper-bacteria`, `iron-bacteria`, `quantum-processor`,
-  `cryogenic-science-pack`, `heat-interface`, `infinity-chest` and `infinity-pipe`. The first five
-  are Space Age's, so it is reading the expansion's recipes.
+  `cryogenic-science-pack`, `heat-interface`, `infinity-chest` and `infinity-pipe`. Ten lines for
+  eight recipes because `copper-bacteria` and `iron-bacteria` are each logged twice, once for
+  multiple results and once for a probability. The first five are defined only in `space-age`
+  (2.0.77, the game's `data/` searched for each name), so it is reading the expansion's recipes.
 - `alien-biomes` disables one more tree, `water-cane`.
 - `rso-mod` no longer reports `Resource not available: stone` (twice in the base-only load). It
   still reports `iron-ore`, `copper-ore` and `uranium-ore`.

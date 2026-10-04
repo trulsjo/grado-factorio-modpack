@@ -3,7 +3,10 @@
 `Grado_ABC` plus the Space Age expansion. The pack holds **one member**, `space-age`, and it is the
 only member of any of the five packs that is not a mod on the portal — it is part of the game, sold
 as a DLC and installed with it. That makes this the one pack whose contents cannot be verified by
-the method every other entry in this catalogue uses.
+the method every other entry in this catalogue uses. *Measured 2026-10-04 (#118), by the other
+method: the pack loaded on Factorio 2.0.77 with Space Age, 104 mods validated beside `space-age`,
+`quality` and `elevated-rails`, all `2.0.77`. A load, not a play session. See
+`docs/loads/Grado_ABCS-2026-10-04.md`.*
 
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
 **2026-09-22** and is reproduced from the fetched data rather than retyped, except the one
@@ -28,7 +31,9 @@ Three findings:
   Checked across all 117 mods in the chain's closure — 98 distinct named members of the three lower
   packs and 19 hidden mandatory dependencies: no `! space-age` anywhere, and no mandatory
   `space-age` anywhere. **Seventeen declare it *optionally***, eleven of them `Grado_ABC` members.
-  Silence is not compatibility, and this pack is where that gets tested. *Superseded 2026-09-22 by
+  Silence is not compatibility, and this pack is where that gets tested. *Tested as a load
+  2026-10-04 (#118): the chain loads beside Space Age with no error, which is still not
+  compatibility in play.* *Superseded 2026-09-22 by
   #7 and #8 and 2026-09-23 by #9, which changed the three lower lists to 87 named members.
   Re-read 2026-09-24 (#61) for those 87, latest release each: still no `! space-age` and no
   mandatory `space-age`; sixteen declare it optionally, ten of them `Grado_ABC` members. The
@@ -103,7 +108,10 @@ cannot be stated here at all: the expansion's own dependency list, its `factorio
 nowhere else this project currently has. *(Partly read 2026-09-23, #10: the installed game's
 `2.0.77` build is read below. A 2.1 build is not.)* **Issue #29 — load `Grado_ABCS` in Factorio
 once, end to end — is not merely the last check on this pack; it is the first check on its only
-member.**
+member.** *Measured 2026-10-04 (#118): that first check is made, as a load. The installed
+`space-age` `2.0.77` loaded beside the whole chain with no error. Its dependency list, line and
+floor are still the 2026-09-23 reading below, now confirmed by the game for the two mandatory
+lines. The 2.1 build is still unread, and the play session is still #29's.*
 
 One consequence is worth naming rather than leaving implicit. Space Age ships as three mods, not
 one: `space-age`, `quality` and `elevated-rails` are distinct names, which the portal's three
@@ -116,6 +124,14 @@ from the portal.
 `quality >= 2.0.0`, with `factorio_version` `2.0`. So the other two are hidden mandatory dependencies
 of this member, the same shape as the ones `docs/catalogue/Grado_ABC.md` found, and #10 ruled not to
 name them in the pack's list. This is a reading of 2.0.77; a 2.1 build was not available to read.
+
+**Measured in the game 2026-10-04 (#118): required, and not switched on by the game.** With
+`space-age` enabled and the other two written as disabled, Factorio 2.0.77 refuses: "Missing
+required dependency elevated-rails >= 2.0.0" and "Missing required dependency quality >= 2.0.0".
+The recorded load had all three enabled, because the load harness follows `space-age`'s
+dependencies when it writes the mod list. So "pulls the other two in" is true of the requirement
+and of the harness, and not of the game enabling a disabled mod. The message and the three
+observations are in `docs/loads/Grado_ABCS-2026-10-04.md`.
 
 #### Against `SpaceModFeorasFork`
 

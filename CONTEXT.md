@@ -16,6 +16,13 @@ A mod named in a pack's `dependencies`. Written by someone else, published separ
 vendored into this repo. A pack that depends on another pack depends on it as a member.
 _Avoid_: dependency (true but wider - it also covers `base` and optional entries), child mod
 
+**Hidden member**:
+A mod in a pack's mandatory closure that no pack's `dependencies` names. It is installed because a
+member mod requires it, and it arrives and leaves with that member. `Warheads_Continued` is one:
+`True-Nukes_Continued` requires it and no pack lists it. Added 2026-10-04 (#81).
+_Avoid_: unnamed dependency, transitive dependency, and "hidden" for anything in the closure that a
+lower pack does name
+
 **Declared line**:
 The Factorio release line a pack's `factorio_version` names - `2.0` or `2.1` - and so the games the
 portal serves it to. All five packs share one, because a pack cannot depend on a pack its game is

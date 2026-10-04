@@ -145,6 +145,27 @@ automatically. The pack's `description` now says it is not included. The pack al
 (`CONTEXT.md`). Per-mod reasons are in `docs/catalogue/Grado_ABC.md` under *Decisions, 2026-09-23
 (#9)*.
 
+**Load drops, 2026-10-04 (#81): 41 mods to 39.** A load drop is a member that was kept at the port
+and removed because it does not load. It is not a port drop, so the twenty port drops stay twenty,
+and the *Replaced* table below still shows what the port did. These are the first:
+
+- **Out:** `True-Nukes_Continued` (`0.3.36`) and `True-Nukes-Graphics_Continued` (`0.0.3`), and
+  with them the hidden member `Warheads_Continued` (`0.0.21`). On Factorio 2.0.77, base only, the
+  two code mods fail in the data stage beside `bobwarfare` `2.1.0`, `bobelectronics` `2.1.1` and
+  `Clowns-Nuclear` `2.0.08` (measured 2026-10-03): stale Bob's prototype names from before the
+  `bob-` prefix, and a hole left in a technology's `effects` list. Four failures were seen and
+  more are expected.
+- **No replacement.** The pack has the vanilla atomic bomb and whatever `bobwarfare` adds.
+  `StopgapNukes`, `configurable-nukes` and `RealNukes` are partial replacements and go to #49.
+- **Not patched in the pack.** Declined; the rule is in `CLAUDE.md` under *What a modpack is
+  here*.
+- **Reopened by** a release of the two code mods that passes a data stage beside the pack's Bob's
+  and Clowns members, or by the revisit when Factorio 2.1 is stable (#113).
+
+With them out, a staged `Grado_ABC` loaded through the shared harness on 2.0.77, base only, on
+2026-10-04: 103 mods validated and a map created. It is not a recorded load (#27). The runs and
+the reasons are in `docs/catalogue/Grado_ABC.md` under *Decisions, 2026-10-04 (#81)*.
+
 ### Replaced
 
 | 1.1 mod | 2.0 replacement |
@@ -373,7 +394,9 @@ the other half of the same question, and #43's rather than this table's: six in 
 three in `Grado_ChangingBase` (`Nanobots2`, `qol_research` and the hidden `stdlib2`) and eight in
 `Grado_ABC` (`RealisticFusionPowerPort`, `RealisticReactorsReborn`, `True-Nukes-Graphics_Continued`,
 `True-Nukes_Continued`, `WideChestsBobs`, `angels-smelting-extended`,
-`spidertrontiers-community-updates` and the hidden `Warheads_Continued`).
+`spidertrontiers-community-updates` and the hidden `Warheads_Continued`). *Five in `Grado_ABC`
+since 2026-10-04 (#81), which dropped the two `True-Nukes` mods and with them
+`Warheads_Continued`.*
 
 Not checked: whether the version constraints the members place on each other are satisfiable
 together on the 2.0 reading. Every closure member but the bad name has a 2.0 release, but a mod
@@ -436,6 +459,11 @@ above:
 | | `angels-smelting-extended` | `2.0.01`, 2026-08-22 |
 | | `spidertrontiers-community-updates` | `0.3.1`, 2024-11-16 |
 
+*Fourteen since 2026-10-04 (#81): `True-Nukes_Continued`, `True-Nukes-Graphics_Continued` and the
+hidden `Warheads_Continued` are no longer in any pack, which leaves twelve named and two hidden.
+The table is left as measured. The three are still to be looked at when 2.1 goes stable, for a
+different reason: #113 revisits whether nukes come back or get a replacement.*
+
 `Grado_ABCX` and `Grado_ABCS` add none: `SpaceModFeorasFork` is 2.1, and `space-age` is the game's.
 **Ruled 2026-09-24 (#16):** this list is what the 2.1 release waits on, and that release starts
 when factorio.com's stable release is 2.1.x. Each mod still missing then is Truls's to wait on,
@@ -488,13 +516,15 @@ entry and in `Orphan Finder`'s under *Candidates, not members*. `Orphan Finder`'
   worth naming: `rusty-locale` is staler than any named member of the pack, and
   `Warheads_Continued` is content rather than art. Any survey reading a dependency list should
   expect this and should walk the closure rather than one level. See
-  `docs/catalogue/Grado_ABC.md`.
+  `docs/catalogue/Grado_ABC.md`. *Fourteen after #9 (2026-09-23), which took `rusty-locale` out with
+  the Deadlock mods, and thirteen after #81 (2026-10-04), which took `Warheads_Continued` out with
+  `True-Nukes_Continued`.*
 - **`factorio_version` is declared `2.0`** on all five packs, while several member mods (Bob's,
   Angel's, MadClown) have moved to `2.1`. **Re-measured for all five on 2026-09-23 against the
   settled memberships (#15): see *Effective Factorio floor* above, which supersedes the readings in
   this entry.** **The member counts below are each pack as it stood when
   it was measured**: #7 and #8 then took the three lower lists to 26, 20 and 44 members, #9 took the third to 41
-  on 2026-09-23, and the
+  on 2026-09-23 and #81 to 39 on 2026-10-04, and the
   numerators have not been re-derived against them. **Answered for `Grado_NonChanging` on
   2026-09-21, and the answer is no:** ten of its 29 members require `base >= 2.1`, six of them
   `>= 2.1.7`, so a player on

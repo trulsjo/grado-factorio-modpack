@@ -26,7 +26,12 @@ the prototypes and start-up scripts work together, and nothing about play. The o
 still portal readings only. Treat "it resolves on the portal" and "it loads in the game" as
 different claims: for those four, only the first is true. *Qualified 2026-10-01 (#80, #81): a
 `--dump-data` run of a staged `Grado_ABC` on 2.0.77 failed in the data stage, in the hidden member
-`Warheads_Continued` `0.0.21`. It is not a recorded load, and it is #81's.* *Until 2026-09-29 this
+`Warheads_Continued` `0.0.21`. It is not a recorded load, and it is #81's.* *Ruled 2026-10-04
+(#81): the cause is stale Bob's prototype names in `Warheads_Continued` and `True-Nukes_Continued`,
+and a list bug against `Clowns-Nuclear`. `True-Nukes_Continued` and `True-Nukes-Graphics_Continued`
+are out of `Grado_ABC`. With them out, a staged `Grado_ABC` loaded through the harness on 2.0.77,
+base only, the same day: 103 mods validated and a map created. Not a recorded load either; that is
+#27's.* *Until 2026-09-29 this
 line read "Nothing
 has been launched in Factorio", which the two runs below had already made false. #65 settled its
 wording through #17.* Earlier runs, kept as history rather than as the record: *2026-09-24 (#59): a
@@ -41,6 +46,11 @@ not counted) and a map created. No member versions were written down, which is w
 A pack is an `info.json` whose `dependencies` list *is* the pack. There is no Lua unless two member
 mods need glue between them — and that is the only code these packs are expected to ever carry. If a
 change can be made by editing a dependency list, it should be.
+
+Glue is for two members that each load on their own. Patching a member that is broken against
+another is decided case by case and leans towards not doing it: report upstream and drop instead.
+It is Truls's call each time. #81 (2026-10-04) declined it for the nukes mods, where the patch list
+had at least four entries and no known end.
 
 ## The chain
 
@@ -117,6 +127,13 @@ Settled so far, recorded here so nobody reopens them by accident:
   why `ScienceCostTweakerM` and the others went to #49. A 2.x `angelsindustries` port reopens the
   question rather than adding it back. All ten of this pack's drops are closed. The hidden mandatory
   members stay unnamed. Reasons per mod in `docs/catalogue/Grado_ABC.md`.
+- **The nukes mods are out of `Grado_ABC`** (2026-10-04, #81). 41 mods to 39:
+  `True-Nukes_Continued` and `True-Nukes-Graphics_Continued`, and the hidden member
+  `Warheads_Continued` leaves with them. They fail in the data stage beside the pack's Bob's and
+  Clowns members on 2.0.77. The first **load drop**: kept at the port, removed because it does not
+  load, so the twenty port drops stay twenty. No replacement and no pack Lua. A release that passes
+  a data stage beside Bob's and Clowns reopens the question and does not add them back; #113
+  revisits it when 2.1 is stable.
 - **`Grado_ABCX`'s and `Grado_ABCS`'s membership is settled** (2026-09-23, #10). Neither list
   changed: one member each. Both gained a promise (`CONTEXT.md`). **`Grado_ABCS` is ABC *beside*
   Space Age, not merged with it**, so no bridge mod; #31 stays open to revisit that. ABCX keeps its
@@ -253,7 +270,7 @@ missing.
   the title is display only. `CONTEXT.md` is the glossary: six terms, these two among them, each
   of which has been used here to mean two things. *Nine since 2026-09-24: `Promise` had already
   made it seven, and #43 added `Resolve` and #16 `Declared line`. Twelve since 2026-09-29: #17
-  added `Load`, `Start` and `Play session`.*
+  added `Load`, `Start` and `Play session`.* *Thirteen since 2026-10-04: #81 added `Hidden member`.*
 
 ## Commit messages
 

@@ -10,7 +10,8 @@ Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below w
 *Superseded 2026-09-23 by #15*, which #15 took, and the notes dated 2026-09-24 (#43), which #43
 took, and the notes dated 2026-09-24 (#58) and (#61), which those two took, and the notes dated
 2026-10-01 (#39) and (#44), which those two took, and the note dated 2026-10-04 (#117), which #117
-took from the pack's recorded load.
+took from the pack's recorded load, and the section dated 2026-10-04 (#124), which #124 took from
+data dumps and the staged source.
 
 The dependency list holds 4 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, catalogued in
 `docs/catalogue/Grado_ABC.md` — `SpaceModFeorasFork`, and the `! space-age` line the pack declares
@@ -172,6 +173,103 @@ So on this branch, Angel's and SpaceX now meet with no declared integration betw
 same drop; **the fork is a fifth, and the first outside `Grado_ABC`.** It is the same soft failure —
 an optional dependency simply goes unmet and the mod ships less than it would have — and it is
 evidence for issue #9 rather than a question this pack can answer.
+
+#### What the fork's Bob's integration applies and skips (2026-10-04, #124)
+
+A measurement. Nothing was patched, and whether to report it upstream is Truls's.
+
+In the pack's recorded load the fork asks `boblibrary` for two technologies that do not exist, and
+its other Bob's changes log nothing (`docs/loads/Grado_ABCX-2026-10-04.md`, *Conflicts*). Every
+change was walked on 2026-10-04 against two data dumps on Factorio 2.0.77, made through the shared
+harness's `Invoke-HarnessDump`: the staged `Grado_ABCX` (prototype list checksum `1533854567`, the
+recorded load's) and the fork alone on base, which shows each recipe and technology before Bob's.
+Releases: `SpaceModFeorasFork` `1.3.3`, `boblibrary` `2.1.0`, `bobequipment` `2.1.0`.
+
+The integration is two files, `prototypes/recipe-bobs.lua` and `prototypes/technology-bobs.lua`,
+run from the fork's `data-final-fixes.lua` when the setting `SpaceX-no-bob` is off and seven Bob's
+mods are loaded: `boblibrary`, `bobplates`, `bobmodules`, `bobelectronics`, `boblogistics`,
+`bobtech` and `bobequipment`. All seven are in `Grado_ABC`. Every setting was at its default, which
+decides the branches: classic mode off, FTL ramp-up on, Bob's god modules off, and
+`bobmods-logistics-disableroboports` off.
+
+**83 library calls ran: 80 applied, 2 were skipped with a log line, 1 was skipped silently.** An
+outcome is "applied" when the dump has the new name and not the old one.
+
+Ingredients, 46 replacements, each keeping the amount:
+
+| Recipe | Replaced by | Outcome |
+|---|---|---|
+| `assembly-robot` | `bob-speed-module-5`, `bob-efficiency-module-5`, `bob-construction-robot-4` | 3 applied |
+| `space-thruster` | `bob-speed-module-5`, `bob-titanium-pipe`, `bob-advanced-processing-unit` | 3 applied |
+| `life-support` | `bob-productivity-module-5`, `bob-titanium-pipe`, `bob-advanced-processing-unit` | 3 applied |
+| `command` | the three tier-5 modules, `bob-advanced-processing-unit` | 4 applied |
+| `astrometrics` | `bob-speed-module-5`, `bob-advanced-processing-unit`, `bob-lab-2` | 3 applied |
+| `ftl-drive` | the three tier-5 modules, `bob-advanced-processing-unit` | 4 applied |
+| `drydock-assembly` | `bob-solar-panel-large-3`, `bob-advanced-processing-unit`, `bob-roboport-4` | 3 applied |
+| `fusion-reactor` | `bob-fission-reactor-equipment-4` | 1 applied |
+| `hull-component` | `bob-titanium-plate` | 1 applied |
+| `protection-field` | `bob-energy-shield-mk6-equipment` | 1 applied |
+| `fuel-cell` | `bob-titanium-plate`, `bob-advanced-processing-unit` | 2 applied |
+| `habitation` | `bob-titanium-plate`, `bob-advanced-processing-unit` | 2 applied |
+| `space-fuel-tank`, `space-water-tank`, `space-oxygen-tank` | `bob-storage-tank-4`, `bob-pump-4`, `bob-titanium-pipe` in each | 9 applied |
+| `space-ai-robot` | `bob-fission-reactor-equipment-4`, `bob-exoskeleton-equipment-3` | 2 applied |
+| `space-ai-robot` | `battery-mk2-equipment` by `bob-battery-mk6-equipment` (line 121) | **skipped silently**: the recipe still takes 50 `battery-mk2-equipment` |
+| `space-ai-robot-frame` | `bob-personal-roboport-mk4-equipment`, `bob-personal-laser-defense-equipment-6`, `bob-construction-robot-4`, `bob-logistic-robot-4` | 4 applied |
+
+Technologies, 19 prerequisite changes, 17 science-pack additions and 1 recipe unlock:
+
+| Technology | Change | Outcome |
+|---|---|---|
+| 17 technologies | `bob-advanced-logistic-science-pack` added to the cost | 17 applied |
+| `ftl-theory-D1`, `ftl-theory-D2` | prerequisite `ftl-theory-C` replaced by `ftl-theory-D` | 2 applied |
+| `space-assembly` | `bob-robots-3` and `bob-speed-module-5` added, `efficiency-module-3` replaced by `bob-efficiency-module-5` | 3 applied |
+| `ftl-propulsion`, `life-support-systems`, `spaceship-command` | `bob-productivity-module-5` added | 3 applied |
+| `drydock-assembly` | `bob-advanced-processing-unit` added (line 158) | **skipped, logged**: no such technology |
+| `astrometrics` | `bob-advanced-research` added | 1 applied |
+| `space-construction` | `bob-robo-modular-4` added, `solar-energy` replaced by `bob-solar-energy-3` | 2 applied |
+| `protection-fields` | `energy-shield-mk2-equipment` replaced by `bob-energy-shield-equipment-6`; unlocks `protection-field-goopless` | 2 applied |
+| `fusion-reactor` | `fission-reactor-equipment` replaced by `bob-fission-reactor-equipment-4` | 1 applied |
+| `laser-cannon` | `laser-turret` replaced by `bob-personal-laser-defense-equipment-6` | 1 applied |
+| `space-fluid-tanks` | `bob-fluid-handling-4` added | 1 applied |
+| `space-ai-robots` | `bob-robots-4` added, `exoskeleton-equipment` replaced by `bob-exoskeleton-equipment-3` | 2 applied |
+| `space-ai-robots` | `battery-mk2-equipment` replaced by `bob-battery-equipment-6` (line 172) | **skipped, logged**: no such technology |
+
+The 17 are `space-assembly`, `space-construction`, `space-casings`, `protection-fields`,
+`fusion-reactor`, `space-thrusters`, `fuel-cells`, `habitation`, `life-support-systems`,
+`spaceship-command`, `laser-cannon`, `astrometrics`, `ftl-propulsion`, `exploration-satellite`,
+`space-ai-robots`, `space-fluid-tanks` and `space-cartography`.
+
+Four things the two files write directly, without the library, are all in the dump: the recipe
+`protection-field-goopless`, the technology `ftl-theory-D` (90,000 units, after `ftl-theory-C`),
+`laser-cannon`'s ingredients (50 `arithmetic-combinator`, 50 `decider-combinator`, 100
+`bob-personal-laser-defense-equipment-6`), and the research counts of ten FTL and late
+technologies, which come out at the numbers the fork has without Bob's.
+
+**The two logged failures, and the silent one.**
+
+- **`drydock-assembly`.** In the fork it is an item and a recipe, the dry dock part the launch
+  asks for, and never a technology. Its recipe is unlocked by the technology `space-construction`.
+  Line 158 meant to put Bob's `bob-advanced-processing-unit` research in front of it and named the
+  recipe where a technology was needed. In the dump the recipe does take 200
+  `bob-advanced-processing-unit`, and that technology is already an ancestor of
+  `space-construction` through its other prerequisites.
+- **`bob-battery-equipment-6`.** The fork expects a sixth tier of Bob's personal battery.
+  `bobequipment` `2.1.0` stops at five: the technologies are `bob-battery-equipment-4` and `-5`,
+  and the items `bob-battery-mk4-equipment` and `bob-battery-mk5-equipment`. Its energy shields
+  and laser defences do reach tier 6, which is why the neighbouring lines apply. So
+  `space-ai-robots` keeps the vanilla `battery-mk2-equipment` as a prerequisite.
+- **`bob-battery-mk6-equipment`** is the same gap seen from the recipe file, line 121. It logs
+  nothing because `boblibrary`'s `replace_ingredient` returns without a word when the new item has
+  no type. `space-ai-robot` keeps 50 `battery-mk2-equipment`.
+
+So on the declared line the SpaceX tree is tied into Bob's at every point the fork tries, bar the
+AI robot's battery, which stays at the vanilla tier in both its recipe and its research.
+
+**`1.3.4` still asks for both names.** The fork's `1.3.4` (`factorio_version` 2.1, 2026-07-10) was
+fetched on 2026-10-04 with its SHA-1 checked, and read, not loaded. Its `data-final-fixes.lua`,
+`recipe-bobs.lua` and `technology-bobs.lua` are the same as `1.3.3`'s line for line, so lines 158
+and 172 ask for `drydock-assembly` and `bob-battery-equipment-6`, and line 121 for
+`bob-battery-mk6-equipment`. What Bob's offers on the 2.1 line was not read.
 
 #### The pack cannot load on the Factorio version it declares
 

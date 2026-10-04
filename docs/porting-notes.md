@@ -145,26 +145,11 @@ automatically. The pack's `description` now says it is not included. The pack al
 (`CONTEXT.md`). Per-mod reasons are in `docs/catalogue/Grado_ABC.md` under *Decisions, 2026-09-23
 (#9)*.
 
-**Load drops, 2026-10-04 (#81): 41 mods to 39.** A load drop is a member that was kept at the port
-and removed because it does not load. It is not a port drop, so the twenty port drops stay twenty,
-and the *Replaced* table below still shows what the port did. These are the first:
-
-- **Out:** `True-Nukes_Continued` (`0.3.36`) and `True-Nukes-Graphics_Continued` (`0.0.3`), and
-  with them the hidden member `Warheads_Continued` (`0.0.21`). On Factorio 2.0.77, base only, the
-  two code mods fail in the data stage beside `bobwarfare` `2.1.0`, `bobelectronics` `2.1.1` and
-  `Clowns-Nuclear` `2.0.08` (measured 2026-10-03): stale Bob's prototype names from before the
-  `bob-` prefix, and a hole left in a technology's `effects` list. Four failures were seen and
-  more are expected.
-- **No replacement.** The pack has the vanilla atomic bomb and whatever `bobwarfare` adds.
-  `StopgapNukes`, `configurable-nukes` and `RealNukes` are partial replacements and go to #49.
-- **Not patched in the pack.** Declined; the rule is in `CLAUDE.md` under *What a modpack is
-  here*.
-- **Reopened by** a release of the two code mods that passes a data stage beside the pack's Bob's
-  and Clowns members, or by the revisit when Factorio 2.1 is stable (#113).
-
-With them out, a staged `Grado_ABC` loaded through the shared harness on 2.0.77, base only, on
-2026-10-04: 103 mods validated and a map created. It is not a recorded load (#27). The runs and
-the reasons are in `docs/catalogue/Grado_ABC.md` under *Decisions, 2026-10-04 (#81)*.
+**Load drops, 2026-10-04 (#81): 41 mods to 39.** A load drop (`CONTEXT.md`) is not a port drop, so
+the twenty port drops stay twenty, and the *Replaced* table below still shows what the port did.
+The first two are `True-Nukes_Continued` and `True-Nukes-Graphics_Continued`, and the hidden member
+`Warheads_Continued` left with them. No replacement was added. What failed, why it was dropped and
+what reopens it are in `docs/catalogue/Grado_ABC.md` under *Decisions, 2026-10-04 (#81)*.
 
 ### Replaced
 
@@ -460,7 +445,8 @@ above:
 | | `spidertrontiers-community-updates` | `0.3.1`, 2024-11-16 |
 
 *Fourteen since 2026-10-04 (#81): `True-Nukes_Continued`, `True-Nukes-Graphics_Continued` and the
-hidden `Warheads_Continued` are no longer in any pack, which leaves twelve named and two hidden.
+hidden `Warheads_Continued` are no longer in any pack, which leaves thirteen named and one hidden,
+`stdlib2`.
 The table is left as measured. The three are still to be looked at when 2.1 goes stable, for a
 different reason: #113 revisits whether nukes come back or get a replacement.*
 

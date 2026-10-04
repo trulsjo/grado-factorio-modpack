@@ -130,8 +130,8 @@ Settled so far, recorded here so nobody reopens them by accident:
 - **The nukes mods are out of `Grado_ABC`** (2026-10-04, #81). 41 mods to 39:
   `True-Nukes_Continued` and `True-Nukes-Graphics_Continued`, and the hidden member
   `Warheads_Continued` leaves with them. They fail in the data stage beside the pack's Bob's and
-  Clowns members on 2.0.77. The first **load drop**: kept at the port, removed because it does not
-  load, so the twenty port drops stay twenty. No replacement and no pack Lua. A release that passes
+  Clowns members on 2.0.77. The first *load drop* (`CONTEXT.md`), so the twenty port drops stay
+  twenty. No replacement and no pack Lua. A release that passes
   a data stage beside Bob's and Clowns reopens the question and does not add them back; #113
   revisits it when 2.1 is stable.
 - **`Grado_ABCX`'s and `Grado_ABCS`'s membership is settled** (2026-09-23, #10). Neither list
@@ -178,7 +178,8 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   conflicts between the releases a 2.0.77 game would install** (#43, closed 2026-09-24) - so the 2.0
   target is no longer "may resolve". Seventeen members, two of them hidden, still have no 2.1
   release; that list is a watch list for when 2.1 goes stable, under *Resolves on stable 2.0.77* in
-  `docs/porting-notes.md`. The five-pack table, dated 2026-09-23 and against the settled
+  `docs/porting-notes.md`. *Fourteen, one of them hidden, since 2026-10-04 (#81) dropped the nukes
+  mods.* The five-pack table, dated 2026-09-23 and against the settled
   memberships, is *Effective Factorio floor* in `docs/porting-notes.md` (#15). **Ruled 2026-09-24
   (#16) - see *Settled so far*.** What stayed open until #58 was applying it: the `info.json` edits
   waited on the resolver re-measuring the minimums. *Applied 2026-09-24 (#58): re-measured on
@@ -270,7 +271,8 @@ missing.
   the title is display only. `CONTEXT.md` is the glossary: six terms, these two among them, each
   of which has been used here to mean two things. *Nine since 2026-09-24: `Promise` had already
   made it seven, and #43 added `Resolve` and #16 `Declared line`. Twelve since 2026-09-29: #17
-  added `Load`, `Start` and `Play session`.* *Thirteen since 2026-10-04: #81 added `Hidden member`.*
+  added `Load`, `Start` and `Play session`.* *Fourteen since 2026-10-04: #81 added `Hidden member`
+  and `Load drop`.*
 
 ## Commit messages
 

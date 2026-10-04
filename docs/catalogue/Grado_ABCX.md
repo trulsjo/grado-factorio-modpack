@@ -90,6 +90,14 @@ Both are recorded under the open question rather than settled here.
 This is the check #6 exists for, and the answer is unchanged: **`SpaceModFeorasFork` still declares
 `! space-age`.**
 
+**Observed in the game 2026-10-04 (#117).** Until then the exclusion was a reading of dependency
+lists. A staged `Grado_ABCX` run on Factorio 2.0.77 with `space-age`, `quality` and
+`elevated-rails` enabled was refused before any mod loaded, and the game cited both declarations:
+`Grado_ABCX` "Incompatible with space-age" and `SpaceModFeorasFork` "Incompatible with space-age".
+Base only, the same stage loaded clean, 105 mods. The release a 2.0.77 game resolves is the fork's
+`1.3.3`, not the `1.3.4` the table below ends on; `1.3.3` declares the line too. The message in
+full is in `docs/loads/Grado_ABCX-2026-10-04.md`.
+
 Read from `https://mods.factorio.com/api/mods/SpaceModFeorasFork/full` on 2026-09-22. Release
 `1.3.4`'s `info_json` dependency list carries three hard incompatibilities — `! SpaceMod`,
 `! space-exploration` and `! space-age` — alongside `base >= 2.1.9` and 22 optional entries.

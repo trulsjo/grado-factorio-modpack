@@ -186,9 +186,10 @@ recorded load's) and the fork alone on base, which shows each recipe and technol
 Releases: `SpaceModFeorasFork` `1.3.3`, `boblibrary` `2.1.0`, `bobequipment` `2.1.0`.
 
 The integration is two files, `prototypes/recipe-bobs.lua` and `prototypes/technology-bobs.lua`,
-run from the fork's `data-final-fixes.lua` when the setting `SpaceX-no-bob` is off and seven Bob's
-mods are loaded: `boblibrary`, `bobplates`, `bobmodules`, `bobelectronics`, `boblogistics`,
-`bobtech` and `bobequipment`. All seven are in `Grado_ABC`. Every setting was at its default, which
+run from the fork's `data-final-fixes.lua` when the setting `SpaceX-no-bob` is off, seven Bob's
+mods are loaded and the recipe `bob-advanced-processing-unit` exists. The seven are `boblibrary`,
+`bobplates`, `bobmodules`, `bobelectronics`, `boblogistics`, `bobtech` and `bobequipment`, all in
+`Grado_ABC`, and the dump has the recipe. Every setting was at its default, which
 decides the branches: classic mode off, FTL ramp-up on, Bob's god modules off, and
 `bobmods-logistics-disableroboports` off.
 
@@ -262,8 +263,9 @@ technologies, which come out at the numbers the fork has without Bob's.
   nothing because `boblibrary`'s `replace_ingredient` returns without a word when the new item has
   no type. `space-ai-robot` keeps 50 `battery-mk2-equipment`.
 
-So on the declared line the SpaceX tree is tied into Bob's at every point the fork tries, bar the
-AI robot's battery, which stays at the vanilla tier in both its recipe and its research.
+So on the declared line, 80 of the 83 changes the fork tries are made. The three that are not are
+the `drydock-assembly` prerequisite, which the tree already has by another route, and the AI
+robot's battery, which stays at the vanilla tier in both its recipe and its research.
 
 **`1.3.4` still asks for both names.** The fork's `1.3.4` (`factorio_version` 2.1, 2026-07-10) was
 fetched on 2026-10-04 with its SHA-1 checked, and read, not loaded. Its `data-final-fixes.lua`,

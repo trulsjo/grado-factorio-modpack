@@ -178,10 +178,10 @@ function Read-PackInfo {
     # Read with exact-case keys first, as the game reads them and as pack-mods.ps1 and the load
     # harness do: the object below finds "Name" when asked for name, so without this a wrong-case
     # key passed here and was refused only by the packer, after the resolve and the fetch (#111).
-    $keys = $text | ConvertFrom-Json -AsHashtable -NoEnumerate
-    if ($keys -isnot [System.Collections.IDictionary]) { throw "$path is not a JSON object." }
+    $exact = $text | ConvertFrom-Json -AsHashtable -NoEnumerate
+    if ($exact -isnot [System.Collections.IDictionary]) { throw "$path is not a JSON object." }
     foreach ($key in 'name', 'version', 'factorio_version') {
-        if (-not $keys.ContainsKey($key)) { throw "$path has no ""$key"" key; keys match case exactly." }
+        if (-not $exact.ContainsKey($key)) { throw "$path has no ""$key"" key; keys match case exactly." }
     }
     try { $info = $text | ConvertFrom-Json }
     catch { throw "$path cannot be read here, so it is not staged: $($_.Exception.Message)" }
@@ -194,7 +194,7 @@ function Read-PackInfo {
         throw "$path is found, but its directory is not named '$Name' in that case: Factorio compares mod names case-sensitively."
     }
     if ((& $field 'version') -notmatch '^\d+\.\d+\.\d+$') { throw "$path has no version of the form x.y.z." }
-    if (-not (& $field 'factorio_version')) { throw "$path has no factorio_version." }
+    if (-not (& $field 'factorio_version')) { throw "$path has an empty factorio_version." }
     $info
 }
 

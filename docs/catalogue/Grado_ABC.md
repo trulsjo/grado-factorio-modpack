@@ -144,11 +144,13 @@ names `cordite`, `bullet-casing`, `shotgun-shell-casing` and `rocket-body`. How 
 known (#110).
 
 **Two causes.** Bob's 2.x prefixed its prototype names with `bob-`, and both nukes mods still look
-up the old names. That is three of the four failures; run A confirms it for the first. The fourth
-name comes from `True-Nukes_Continued` choosing `superior-circuit-board` when `bobelectronics` is
-present. Separately, `True-Nukes_Continued`'s `Clowns-Nuclear` compatibility assigns
-`effects[1] = nil`, which leaves a hole in the list. So the two mods fail for anyone who runs them
-with current Bob's mods, with or without this pack.
+up the old names. That is three of the four failures: the baseline and run A's, both in
+`Warheads_Continued`, and run C's, where `True-Nukes_Continued` picks `superior-circuit-board` when
+`bobelectronics` is present. Run A confirms the cause for the baseline; the other two are read from
+the names. The second cause is run B's failure: `True-Nukes_Continued`'s `Clowns-Nuclear`
+compatibility assigns `effects[1] = nil`, which leaves a hole in the list. Neither cause involves
+this pack, so the two mods should fail the same way for anyone running them with these Bob's and
+Clowns releases. That is inferred from the causes; only the pack's closure was run.
 
 **Why out, not wait.** `0.0.21` (2025-12-29) and `0.3.36` (2026-01-17) are still the newest
 releases, both declare `factorio_version` 2.0 only, upstream's last commit is 2026-01-17 and its
@@ -305,7 +307,8 @@ largest single block of content in the pack that is neither Angel's nor Bob's.
 
 **Alternatives considered.** None searched as a substitute. It is one of six mods in this pack
 touching the nuclear chain, which is a question about the subsystem rather than about this mod; see
-*Six mods on one nuclear chain* below.
+*Six mods on one nuclear chain* below. *Four since 2026-10-04 (#81), which dropped the weapons
+branch.*
 
 **Recommendation: keep.** Current on 2.1, the best-maintained of the pack's four nuclear add-ons by
 both recency and downloads, and the only one of them requiring `base >= 2.1` on its own account.
@@ -361,7 +364,8 @@ accumulate 3,437 and no more. Three members sit below it —
 `True-Nukes_Continued` at 2,777, `WideChestsBobs` at 805 and `True-Nukes-Graphics_Continued` at
 346 — so it is fourth from the bottom of the 45 rather than last, and two of those three are its
 neighbours in the nuclear subsystem. Its last release was 2025-08-01, over a year before this
-reading.
+reading. *Since 2026-10-04 (#81) the two `True-Nukes` mods are out, so of those three only
+`WideChestsBobs` is still a member.*
 
 `Clowns-Nuclear` — a hidden mandatory member, see below — declares `(?) RealisticReactorsReborn`,
 so the Clowns nuclear chain already knows about it.
@@ -1649,8 +1653,8 @@ two decisions is visible from this side.
 
 Members that survived the 1.1 -> 2.0 port and were removed by #9 on 2026-09-23, or by #81 on
 2026-10-04. The survey text is kept as written, and each entry ends with its ruling. #9's four were
-removed by choice. #81's two were removed because `True-Nukes_Continued` does not load; the porting
-notes call that a load drop.
+removed by choice. #81's two were removed because `True-Nukes_Continued` does not load; that is a
+load drop (`CONTEXT.md`).
 
 ### `DeadlockStackingForBobs`
 
@@ -1814,8 +1818,8 @@ it stays and is tracked under #43. Whether it can be installed at all turns on #
 member of the three lower packs has at least one 2.0 release (measured 2026-09-23), so on a 2.0
 target this mod is served.
 
-**Ruled 2026-10-04 (#81): out**, with `True-Nukes_Continued`. Nothing is wrong with this mod on its
-own: it is art for a mod the pack no longer has. See *Decisions, 2026-10-04 (#81)*.
+**Ruled 2026-10-04 (#81): out**, with `True-Nukes_Continued`. No failure was traced to this mod. It
+is art for a mod the pack no longer has, and it was not run on its own. See *Decisions, 2026-10-04 (#81)*.
 
 ### `True-Nukes_Continued`
 
@@ -2227,11 +2231,12 @@ the whole weapons branch rest on mods with a few thousand installs each, while t
 branch does not. That is not an argument for removing any of them, since nothing replaces them; it
 is a statement about which three to suspect first.
 
-*2026-10-04 (#81): the weapons branch is gone. `True-Nukes_Continued` did fail first, in the data
-stage, against `Clowns-Nuclear` among others - so "they are not in conflict" above was a reading
-of dependency lists that a run did not bear out. Four of the six remain, three named and
-`Clowns-Nuclear` hidden, and `True-Nukes-Graphics_Continued` is out too. See* Decisions,
-2026-10-04 (#81).
+*2026-10-04 (#81): the weapons branch is gone. It was the first of the three to fail, in the data
+stage: `Warheads_Continued` first, against a Bob's name, and `True-Nukes_Continued` later, in its
+own `Clowns-Nuclear` compatibility, a failure seen only after two patches. So "nothing here is a
+defect" above was a reading of dependency lists, and a run found a defect in one of the three mods
+that name each other. Four of the six remain, three named and `Clowns-Nuclear` hidden, and
+`True-Nukes-Graphics_Continued` is out too. See* Decisions, 2026-10-04 (#81).
 
 ## Overlaps
 

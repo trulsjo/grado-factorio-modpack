@@ -249,6 +249,67 @@ than merely coexisting.
 **Recommendation: keep.** Current on 2.1 within two months of this reading, and the only mod in the
 game offering what it offers.
 
+#### `thermonuclear-bomb`: what `boblibrary`'s cleanup found (2026-10-04, #123)
+
+A measurement. Nothing was patched, and whether to report it upstream is Truls's.
+
+In the pack's recorded load, `boblibrary` reports three duplicate ingredients on
+`thermonuclear-bomb`, then two errors of its own beside the name `fission-reactor-equipment`
+(`docs/loads/Grado_ABC-2026-10-04.md`, *Conflicts*). Traced on 2026-10-04 from a data dump of the
+staged `Grado_ABC` on Factorio 2.0.77 (`Invoke-HarnessDump`, prototype list checksum
+`2195323740`, the recorded load's) and the staged source. Releases: `Clowns-Nuclear` `2.0.08`,
+`Clowns-AngelBob-Nuclear` `2.0.13`, `boblibrary` `2.1.0`, `bobmodules` `2.1.0`, `bobequipment`
+`2.1.0`.
+
+**All of it is one recipe, and this mod adds the second copy.**
+
+- `Clowns-Nuclear` defines `thermonuclear-bomb` in its `data.lua` stage
+  (`prototypes/recipes/bombs.lua`): `atomic-bomb` 1, then, with `bobmodules` loaded, lines 53 to 55
+  add `bob-speed-module-5`, `bob-productivity-module-5` and `bob-efficiency-module-5`, 3 each,
+  then `bob-fission-reactor-equipment-2` 1 and `processing-unit` 200.
+- `Clowns-AngelBob-Nuclear` inserts the same three modules again, 3 each, in its
+  `data-updates.lua` stage (`prototypes/more-overrides.lua`, lines 3 to 8). Those are the three
+  duplicates.
+- The same file then adds what its comment calls fusion cores (lines 17 to 23). It looks for an
+  item `fusion-reactor-equipment-2`, which is in no prototype type in the dump, and so inserts
+  `{ type = "name", name = "fission-reactor-equipment", amount = 1 }`. **That is the entry
+  `boblibrary` rejects**: its `type` is `"name"` where an ingredient needs `"item"` or `"fluid"`.
+  So the recipe behind the `fission-reactor-equipment` line is `thermonuclear-bomb` again.
+
+Of `boblibrary`'s two error lines only one is true. `Result.type not a valid result item type` is.
+`Result.amount variable not a number` is not: the amount is `1`, and `error-functions.lua` lines
+133 and 134 log that message when the amount *is* a number. The pair is logged twice because two
+functions on the call path each report the same entry.
+
+The cleanup runs in `boblibrary`'s `data-final-fixes.lua`, behind the setting
+`bobmods-library-recipe-cleanup`, on by default. It keeps the first copy of a duplicate, drops the
+second without adding the amounts, and drops an entry it cannot read. The recipe afterwards, from
+the dump:
+
+| Ingredient | Amount |
+|---|---|
+| `atomic-bomb` | 1 |
+| `bob-speed-module-5` | 3 |
+| `bob-productivity-module-5` | 3 |
+| `bob-efficiency-module-5` | 3 |
+| `bob-fission-reactor-equipment-2` | 1 |
+| `processing-unit` | 200 |
+
+**That is `Clowns-Nuclear`'s recipe exactly as it wrote it, and none of what this mod added.** A
+player sees a working recipe at `Clowns-Nuclear`'s cost and nothing else: no doubled cost and no
+missing ingredient. Against what this mod wrote, four insertions are gone, the three modules and
+the reactor equipment. What it meant by adding the modules a second time, the source does not say.
+Whether the game would refuse the recipe with the cleanup switched off was not tried.
+
+No other recipe is affected. Of the 5,167 recipes in the dump, none has two ingredients of one
+name, and none has an ingredient or result whose `type` is not `item` or `fluid`.
+
+One more stale name in `Clowns-Nuclear`'s `bombs.lua`, with no log line: lines 68 to 71 ask for
+200 `advanced-processing-unit` if that item exists and 200 `processing-unit` otherwise. Bob's 2.x
+calls it `bob-advanced-processing-unit`, so the recipe takes the vanilla branch. It is the cause
+#81 found in the nukes mods and #122 in `Nanobots2`
+(`docs/catalogue/Grado_ChangingBase.md`).
+
 ### `Clowns-Extended-Minerals`
 
 | | |

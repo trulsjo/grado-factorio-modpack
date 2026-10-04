@@ -12,7 +12,14 @@ session start.
 **Skeleton.** Five `info.json` files with resolved dependency lists, a README and
 `docs/porting-notes.md`. First commit `3ab917c`, 2026-09-20.
 
-**One pack has been loaded and played; the other four have not.** `Grado_NonChanging` loaded on
+**All five packs have a recorded load; one has been played.** *Until 2026-10-04 this line read
+"One pack has been loaded and played; the other four have not."* The four loads of 2026-10-04, all
+on 2.0.77, each with its record in `docs/loads/`: `Grado_ChangingBase` (#115) clean base only and
+with Space Age, 53 mods; `Grado_ABC` (#116) clean base only, 103 mods; `Grado_ABCX` (#117) clean
+base only, 105 mods, and refused with Space Age, the game citing the pack's `! space-age` and
+`SpaceModFeorasFork`'s; `Grado_ABCS` (#118) clean with Space Age, 104 mods. None of the four has
+had a play session (#26 to #29), and the `Grado_ABC` log has non-fatal complaints, in its record.
+`Grado_NonChanging` loaded on
 2.0.77, base only and again with Space Age, on 2026-09-29 (#17). Both loads were clean. Its play
 session (2026-09-29 to 2026-09-30) saw 24 of its 26 named members working. `ixuAutoSave` and
 `kry-picker-extended` were not confirmed. The save survived a reload with the members' data that was
@@ -24,14 +31,16 @@ players can rebind. Whether the pack should carry Lua to change the default is #
 and *Play session* are glossary terms (`CONTEXT.md`), and they are not interchangeable. A load says
 the prototypes and start-up scripts work together, and nothing about play. The other four packs are
 still portal readings only. Treat "it resolves on the portal" and "it loads in the game" as
-different claims: for those four, only the first is true. *Qualified 2026-10-01 (#80, #81): a
+different claims: for those four, only the first is true. *Superseded 2026-10-04 (#115 to #118):
+both are now true of all five, on 2.0.77. They are still different claims, and "it loads" is not
+"it plays": for those four, only the first two are true.* *Qualified 2026-10-01 (#80, #81): a
 `--dump-data` run of a staged `Grado_ABC` on 2.0.77 failed in the data stage, in the hidden member
 `Warheads_Continued` `0.0.21`. It is not a recorded load, and it is #81's.* *Ruled 2026-10-04
 (#81): the cause is stale Bob's prototype names in `Warheads_Continued` and `True-Nukes_Continued`,
 and a list bug against `Clowns-Nuclear`. `True-Nukes_Continued` and `True-Nukes-Graphics_Continued`
 are out of `Grado_ABC`. With them out, a staged `Grado_ABC` loaded through the harness on 2.0.77,
 base only, the same day: 103 mods validated and a map created. Not a recorded load either; that is
-#27's.* *Until 2026-09-29 this
+#27's.* *Recorded the same day (#116), again 103.* *Until 2026-09-29 this
 line read "Nothing
 has been launched in Factorio", which the two runs below had already made false. #65 settled its
 wording through #17.* Earlier runs, kept as history rather than as the record: *2026-09-24 (#59): a

@@ -106,8 +106,7 @@ the 565 of `Grado_ABC`'s base-only load:
 - `alien-biomes` disables one more tree, `water-cane`.
 - `rso-mod` no longer reports `Resource not available: stone` (twice in the base-only load). It
   still reports `iron-ore`, `copper-ore` and `uranium-ore`.
-- `WideChests`' lines are in another order, and `UltimateResearchQueue2`'s three timing lines
-  differ. Nothing else changed.
+- `UltimateResearchQueue2`'s three timing lines differ. Nothing else changed.
 
 No member logged a complaint that names a Space Age prototype.
 

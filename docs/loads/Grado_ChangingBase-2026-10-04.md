@@ -86,8 +86,8 @@ were ready at 15.5 s (checksum `3302556857`) and the run ended at 19.6 s.
 
 **`factorio-current.log`, both loads:** no error, no failure and no deprecation, and stderr was
 empty. Searched for `error`, `warn`, `fail`, `deprecat`, `does not exist`, `traceback`, `Duplicate`,
-`not a number`, `not a valid`, `missing`, `conflict` and `invalid`, without regard to case. What
-matched:
+`not a number`, `not a valid`, `missing`, `conflict`, `invalid`, `not found` and `unavailable`,
+without regard to case. What matched:
 
 - `Local player-data.json unavailable`, `Cloud player-data.json unavailable`, and
   `Blueprint storage "blueprint-storage-2.dat" was not found` (twice per run). From the harness, not
@@ -98,7 +98,11 @@ matched:
 Members that write to the log at info level, load 1: `reverse-factory` (45 lines: 20 recipes with no
 ingredients, 20 with no results, 4 hidden, 1 manual recipe added), `alien-biomes` (22, the vanilla
 trees it disables), `even-distribution` (18), `WideChests` (9), `UltimateResearchQueue2` (3),
-`cybersyn2` (2) and `0-things` (1). Load 2 has the same lines, with `WideChests`' in another order.
+`cybersyn2` (2) and `0-things` (1). 100 `Script` lines in all. Load 2 has 111: `reverse-factory`
+logs 10 more, about `turbo-loader`, `copper-bacteria`, `iron-bacteria`, `quantum-processor`,
+`cryogenic-science-pack`, `heat-interface`, `infinity-chest` and `infinity-pipe`, and
+`alien-biomes` disables one more tree, `water-cane`. `UltimateResearchQueue2`'s three lines are
+timings and differ. The rest are the same.
 
 The times are from one machine (i7-9850H) and one run each. They are context, not a benchmark.
 

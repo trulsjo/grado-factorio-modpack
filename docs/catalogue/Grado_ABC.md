@@ -189,7 +189,7 @@ summaries were read and their source was not, and none was loaded.
 (build 84539, win64, Steam), base only, on 2026-10-04: 103 mods validated and a map was created,
 exit 0. That is the first time the pack's full closure, with the pack itself enabled, has got
 through a data stage. It is not a recorded load: no member versions were written to `docs/loads/`,
-and that is #27's.
+and that is #27's. *Recorded the same day (#116), again 103: `docs/loads/Grado_ABC-2026-10-04.md`.*
 
 ## The split between #4 and #5
 
@@ -340,7 +340,8 @@ It declares `factorio_version` **2.0**, so it is not served to a 2.1 game, and i
 with the other six members here that do the same. It declares nothing about Space Age.
 
 **Recommendation: keep.** Added by #9 on 2026-09-23, replacing `RealisticFusionPower`, as a
-comparison slot for `realistic-fusion-refreshed`. Not yet loaded in game.
+comparison slot for `realistic-fusion-refreshed`. Not yet loaded in game. *Loaded 2026-10-04 (#116),
+at `1.9.2`, in the pack's recorded load. Not played.*
 
 ### `RealisticReactorsReborn`
 
@@ -2451,6 +2452,8 @@ Stated plainly so the gaps are not mistaken for clean results.
   because 45 mods and 15 unnamed dependencies all modifying one recipe tree is exactly the
   situation a portal cannot speak to. *Superseded 2026-09-22 by #8 and 2026-09-23 by #9: 41 and
   fourteen. The gap stands, narrowed only by #59's start of `Grado_NonChanging` (2026-09-24).*
+  *Superseded 2026-10-04 (#116): the pack has a recorded load, base only, 103 mods, clean. Nothing
+  has been played. `docs/loads/Grado_ABC-2026-10-04.md`.*
 - **`angels-smelting-extended` was not tested against Angel's 2.1.** The concern in its entry —
   a 2.0-declared mod with unversioned dependencies, modifying recipes of mods that moved to 2.1 after
   its last release — is derived from version numbers and release dates alone. It may work perfectly.

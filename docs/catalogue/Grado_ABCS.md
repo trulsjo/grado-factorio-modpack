@@ -32,7 +32,7 @@ Three findings:
   packs and 19 hidden mandatory dependencies: no `! space-age` anywhere, and no mandatory
   `space-age` anywhere. **Seventeen declare it *optionally***, eleven of them `Grado_ABC` members.
   Silence is not compatibility, and this pack is where that gets tested. *Tested as a load
-  2026-10-04 (#118): the chain loads beside Space Age with no error, which is still not
+  2026-10-04 (#118): the chain loads beside Space Age with no error from the game, which is still not
   compatibility in play.* *Superseded 2026-09-22 by
   #7 and #8 and 2026-09-23 by #9, which changed the three lower lists to 87 named members.
   Re-read 2026-09-24 (#61) for those 87, latest release each: still no `! space-age` and no
@@ -109,9 +109,9 @@ nowhere else this project currently has. *(Partly read 2026-09-23, #10: the inst
 `2.0.77` build is read below. A 2.1 build is not.)* **Issue #29 — load `Grado_ABCS` in Factorio
 once, end to end — is not merely the last check on this pack; it is the first check on its only
 member.** *Measured 2026-10-04 (#118): that first check is made, as a load. The installed
-`space-age` `2.0.77` loaded beside the whole chain with no error. Its dependency list, line and
-floor are still the 2026-09-23 reading below, now confirmed by the game for the two mandatory
-lines. The 2.1 build is still unread, and the play session is still #29's.*
+`space-age` `2.0.77` loaded beside the whole chain with no error from the game; members' own log
+complaints are in the record. Its dependency list, line and floor are still the 2026-09-23 reading
+below, and the game has now confirmed the `quality` and `elevated-rails` lines. The 2.1 build is still unread, and the play session is still #29's.*
 
 One consequence is worth naming rather than leaving implicit. Space Age ships as three mods, not
 one: `space-age`, `quality` and `elevated-rails` are distinct names, which the portal's three

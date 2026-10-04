@@ -14,7 +14,8 @@ marked *Superseded 2026-09-23 by #15*, which #15 took, and the notes dated 2026-
 (#58) and (#61), which those two took. The **Read on** row is authoritative where it disagrees
 with this sentence. *Candidates, not members* was read on 2026-09-30 (#50). The notes dated
 2026-10-01 (#39), (#44), (#80), (#44, #83), (#91) and (#93) were taken by #39, #44, #80, #83, #91
-and #93. Searches described below as over "the 2.x list" first ran over
+and #93. The notes dated 2026-10-04 (#81) are #81's; the runs they cite are dated where they are
+cited. Searches described below as over "the 2.x list" first ran over
 the `version=2.0` listing only, which misses mods released for 2.1 alone (#44). **Every search so
 described has since been re-run over the union of both listings** and carries a *Checked
 2026-10-01* note: four by #44, against a union of 10,845, and the rest by #83, against the listings as read later that day - 9,794
@@ -37,6 +38,11 @@ entries - `base >= 2.0.74`, `Grado_ChangingBase` and 41 mods.*
 **#9 took the pack from 44 mods to 41 on 2026-09-23**: four out, one in. Its ledger is *Decisions,
 2026-09-23 (#9)* below, and the four removed members are now under *Ruled out after the port*. The
 survey text, including the four findings below, is left as it was measured over 45.
+**#81 took the pack from 41 mods to 39 on 2026-10-04**: `True-Nukes_Continued` and
+`True-Nukes-Graphics_Continued` out, because the first does not load beside the pack's Bob's and
+Clowns members. The list now holds 41 entries - `base >= 2.0.74`, `Grado_ChangingBase` and 39
+mods. Its ledger is *Decisions, 2026-10-04 (#81)* below, and both entries are now under *Ruled out
+after the port*.
 **The pack is now catalogued in full**: #4 surveyed 29 members and 3 drops on 2026-09-21, #5 the
 other 16 and 7 the same day. Which ticket took which is *The split between #4 and #5* below, kept
 because two tickets writing one file is the only way a mod falls through.
@@ -71,12 +77,12 @@ written, and each affected entry carries its ruling inline. **44 mods to 41.**
 | `signalstrings` | **out**: a library that nothing depends on, and no reason for it on record |
 | `RealisticFusionPower` | **replaced** by `RealisticFusionPowerPort`, as a comparison slot for `realistic-fusion-refreshed`. The port is not served at 2.1 (#43) |
 | `angels-smelting-extended` | **kept for now**; #50 (2026-09-30) found `angelsextended-remelting` a complement, not an alternative - see *Candidates, not members*. Not served at 2.1 (#43) |
-| `RealisticReactorsReborn`, `True-Nukes_Continued`, `True-Nukes-Graphics_Continued`, `WideChestsBobs`, `spidertrontiers-community-updates` | kept, and tracked under #43 as not served at 2.1 |
+| `RealisticReactorsReborn`, `True-Nukes_Continued`, `True-Nukes-Graphics_Continued`, `WideChestsBobs`, `spidertrontiers-community-updates` | kept, and tracked under #43 as not served at 2.1. *The two `True-Nukes` mods were dropped 2026-10-04 (#81).* |
 | `angelsindustries` | stays dropped; a 2.x port **reopens** the question rather than adding it back automatically |
 | `Clowns-Science` | stays dropped; `ScienceCostTweakerM` deferred to #49 |
 | `DeadlockStackingForAngels`, `DeadlockStackingForMadclown` | stay dropped, with the family |
 | `angelsexploration`, `DeadlockCrating`, `MilesBobsExpansion`, `baron-turrets`, `beautiful_bridge_railway_bob_fix_updated_new` | stay dropped, as recommended |
-| the hidden mandatory members (fifteen as surveyed, fourteen after #9) | **not named** in the list |
+| the hidden mandatory members (fifteen as surveyed, fourteen after #9, thirteen after #81) | **not named** in the list |
 | `bobclasses`, `angelsaddons-bots` | deferred to #49 |
 | everything else | kept, as recommended: the 34 members on 2.1 whose recommendation was a plain `keep` |
 
@@ -105,6 +111,83 @@ written, and each affected entry carries its ruling inline. **44 mods to 41.**
    than on the tie-break.
 4. **The version stays `0.1.0`.** The survey's references to major and minor bumps cite ADR 0001,
    and ADR 0002 superseded it: a pack's version does not move before its first release.
+
+## Decisions, 2026-10-04 (#81)
+
+Truls ruled on #81, the first membership change made because a member does not load. **41 mods to
+39.** The survey text below is left as written, and each affected entry carries its ruling.
+
+| mod | ruling |
+|---|---|
+| `True-Nukes_Continued` | **out**: it fails in the data stage beside `bobwarfare`, `bobelectronics` and `Clowns-Nuclear` at the releases a 2.0.77 game resolves |
+| `True-Nukes-Graphics_Continued` | **out** with it: it is that mod's art and nothing else uses it |
+| `Warheads_Continued` (hidden member) | leaves with `True-Nukes_Continued`, the only member that required it |
+| a replacement | **none for now**. Every candidate found is a partial replacement, which #9's rule counts as an addition, so they go to #49 |
+| pack Lua that patches the two mods | **declined** |
+| a report upstream | **to be filed** (#112), whichever way the membership went |
+
+**What was measured.** A staged `Grado_ABC` was run with `--dump-data` through the shared harness on
+Factorio 2.0.77, base only, on 2026-10-03, with `True-Nukes_Continued` `0.3.36`,
+`Warheads_Continued` `0.0.21`, `bobwarfare` `2.1.0`, `bobelectronics` `2.1.1` and `Clowns-Nuclear`
+`2.0.08`. Each failure was patched in the staged copy to see the next. The staged copies were
+restored afterwards and nothing in the repository carried a patch.
+
+| Run | Patch to the staged copy | Result |
+|---|---|---|
+| Baseline | none | `Warheads_Continued/prototypes/weapontype-sanitise.lua:344: attempt to index field 'ammo_type' (a nil value)` |
+| A | `Warheads_Continued`'s Bob's compatibility reads `bob-bullet-magazine` instead of `bullet-magazine` | that error gone. Projectile `shotgun-shell-slug-atomic-0_1t`: `Key "acceleration" not found` |
+| B | plus `bob-better-shotgun-shell` and `bob-better-shotgun-projectile` | technology `dense-neutron-flux` (`True-Nukes_Continued`): `effects` "Value must be a list" |
+| C | plus `table.remove(effects, 1)` in place of `effects[1] = nil` in `True-Nukes_Continued`'s Clowns compatibility | `item with name 'superior-circuit-board' does not exist`, recipe `TN-warhead-20--1-uranium` |
+
+The check stopped at the fourth failure, which was not the last: the same compatibility file also
+names `cordite`, `bullet-casing`, `shotgun-shell-casing` and `rocket-body`. How many remain is not
+known (#110).
+
+**Two causes.** Bob's 2.x prefixed its prototype names with `bob-`, and both nukes mods still look
+up the old names. That is three of the four failures; run A confirms it for the first. The fourth
+name comes from `True-Nukes_Continued` choosing `superior-circuit-board` when `bobelectronics` is
+present. Separately, `True-Nukes_Continued`'s `Clowns-Nuclear` compatibility assigns
+`effects[1] = nil`, which leaves a hole in the list. So the two mods fail for anyone who runs them
+with current Bob's mods, with or without this pack.
+
+**Why out, not wait.** `0.0.21` (2025-12-29) and `0.3.36` (2026-01-17) are still the newest
+releases, both declare `factorio_version` 2.0 only, upstream's last commit is 2026-01-17 and its
+"update for 2.1" issue has been open since 2026-07-30 (all re-read 2026-10-04). Waiting keeps
+`Grado_ABC`, `Grado_ABCX` and `Grado_ABCS` unloadable for as long as upstream is quiet. Nothing is
+published, so the drop costs no save today.
+
+**Why not pack Lua.** It is mechanically possible for part of it. Read from the staged source and
+not run: `Warheads_Continued` does its Bob's lookups in `data.lua` into a global `weaponTypes`
+table and fails later, in `data-updates.lua`, so a pack that depends on it could repair the table
+in between. The same was not checked for `True-Nukes_Continued`'s failures. It was declined because
+it would be at least four patches to another author's compatibility code with no known end, which
+is maintaining a fork and not joining two members. The rule this set is in `CLAUDE.md` under *What
+a modpack is here*: patching a member that is broken against another is decided case by case and
+leans towards not doing it.
+
+**What reopens it.** Two triggers, and neither adds the mods back on its own.
+
+1. A `Warheads_Continued` and `True-Nukes_Continued` release that completes a data stage beside
+   the Bob's and Clowns releases the pack resolves to. That reopens the membership question. If a
+   save exists by then, re-adding is a major bump, and that is part of the question.
+2. Factorio 2.1 going stable, which is #113. First a portal check: does either mod have a release
+   declaring `factorio_version` 2.1? If it does, trigger 1 applies. Only if it does not, a person
+   looks for activity towards an update. If there is none, the replacement question opens through
+   #49.
+
+**The candidates for #49.** Read 2026-10-04 from the union of the `version=2.0` and `version=2.1`
+listings (10,890 mods), searching names, titles and summaries for nuke, warhead and atomic terms:
+76 hits. No second continuation of `True-Nukes` exists. The three nearest in kind are `StopgapNukes`
+(`Xeraster`, 4,700 downloads, 2.0, 2026-02-26), `configurable-nukes` (`TheEckelmonster`, 2,967, 2.0,
+2026-09-03) and `RealNukes` (`Firestorm253`, 1,865, 2.0, 2025-07-27, artillery shells only). Their
+summaries were read and their source was not, and none was loaded.
+
+**The pack loads without them.** After the edit, `scripts/stage-pack.ps1 -Pack Grado_ABC` staged
+100 mods and the three pack zips, and the shared `load-harness.ps1` ran them on Factorio 2.0.77
+(build 84539, win64, Steam), base only, on 2026-10-04: 103 mods validated and a map was created,
+exit 0. That is the first time the pack's full closure, with the pack itself enabled, has got
+through a data stage. It is not a recorded load: no member versions were written to `docs/loads/`,
+and that is #27's.
 
 ## The split between #4 and #5
 
@@ -293,66 +376,6 @@ it stays and is tracked under #43. Whether it can be installed at all turns on #
 member of the three lower packs has at least one 2.0 release (measured 2026-09-23), so on a 2.0
 target this mod is served.
 
-### `True-Nukes-Graphics_Continued`
-
-| | |
-|---|---|
-| **Title** | True Nukes Graphics Continued |
-| **Does** | The explosion animations for `True-Nukes_Continued`, shipped separately so a code update does not re-download the art |
-| **Latest** | `0.0.3`, `factorio_version` **2.0**, 2025-12-29 |
-| **Downloads** | 346 |
-| **Owner** | `Daimonfire` |
-| **Supersedes** | `True-Nukes-Graphics` by `BicycleEater`, last `0.0.1` on 2020-12-02, 11,805 downloads |
-| **Read on** | 2026-09-21 |
-
-**Alternatives considered.** None possible. It is one mod's art package and has no meaning apart
-from it.
-
-The portal files it under the **internal** category, which is the category for exactly this — a
-package not meant to be installed on its own. At 346 downloads it is the least-installed mod in the
-pack by a wide margin, which measures that it is an accessory rather than anything about its
-quality. Note that `True-Nukes_Continued` declares it **optionally**, not mandatorily, so this line
-in the dependency list is doing real work: without it the pack would not pull the graphics in.
-
-**Recommendation: keep**, and keep it named. This is the mirror image of the hidden-dependency
-problem below: a graphics package that *is* named in the list, precisely because its parent does not
-require it.
-
-**Ruled 2026-09-23 (#9): kept.** It declares `factorio_version` **2.0**, so it is not served to a 2.1 game — the portal serves it only at 2.0. Under #8's
-third rule that breaks a tie only in an entry already marked `reconsider:`, and this one was not, so
-it stays and is tracked under #43. Whether it can be installed at all turns on #16: every named
-member of the three lower packs has at least one 2.0 release (measured 2026-09-23), so on a 2.0
-target this mod is served.
-
-### `True-Nukes_Continued`
-
-| | |
-|---|---|
-| **Title** | True Nukes Continued |
-| **Does** | Rebuilds nuclear weapons around a blast model — scaled explosions, fallout, and a range of warhead sizes from tactical up — rather than the single vanilla atomic bomb |
-| **Latest** | `0.3.36`, `factorio_version` **2.0**, 2026-01-17 |
-| **Downloads** | 2,777 |
-| **Owner** | `Daimonfire` |
-| **Supersedes** | `True-Nukes` by `BicycleEater`, last `0.3.33` on 2023-11-27, 43,955 downloads |
-| **Read on** | 2026-09-21 |
-
-**Alternatives considered.** None searched. It is a continuation of the mod the 1.1 pack carried,
-by a new maintainer, and the original has no 2.x release.
-
-It requires `Warheads_Continued`, which the dependency list does not name — another hidden member.
-It declares optional support for `PlutoniumEnergy`, `Clowns-Nuclear` and `Clowns-AngelBob-Nuclear`,
-all three in this pack, so three of the six nuclear mods are wired together by their authors.
-
-**Recommendation: keep.** Current within eight months of this reading and the successor is real
-rather than nominal — `0.3.36` against the original's last `0.3.33` is continued development, not a
-republish.
-
-**Ruled 2026-09-23 (#9): kept.** It declares `factorio_version` **2.0**, so it is not served to a 2.1 game — the portal serves it only at 2.0. Under #8's
-third rule that breaks a tie only in an entry already marked `reconsider:`, and this one was not, so
-it stays and is tracked under #43. Whether it can be installed at all turns on #16: every named
-member of the three lower packs has at least one 2.0 release (measured 2026-09-23), so on a 2.0
-target this mod is served.
-
 ### `WideChestsBobs`
 
 | | |
@@ -518,7 +541,7 @@ pack. If a fix is wanted, it is upstream: this mod's `alloys-extended.lua` could
 it wants in `data.raw` instead of replacing the prototype, which would keep Angel's `subgroup` and
 `order`. The `Warheads_Continued` failure is a separate and larger finding, and not this entry's: it
 is
-#81.
+#81. *Ruled 2026-10-04 (#81): the nukes mods are out; see* Decisions, 2026-10-04 (#81).
 
 ### `angelsaddons-cab`
 
@@ -1624,8 +1647,10 @@ two decisions is visible from this side.
 
 ## Ruled out after the port
 
-Members that survived the 1.1 -> 2.0 port and were removed by #9 on 2026-09-23. The survey text is
-kept as written, and each entry ends with its ruling.
+Members that survived the 1.1 -> 2.0 port and were removed by #9 on 2026-09-23, or by #81 on
+2026-10-04. The survey text is kept as written, and each entry ends with its ruling. #9's four were
+removed by choice. #81's two were removed because `True-Nukes_Continued` does not load; the porting
+notes call that a load drop.
 
 ### `DeadlockStackingForBobs`
 
@@ -1756,6 +1781,81 @@ the next version bump. Keeping it costs a download.
 **Ruled 2026-09-23 (#9): out**, as recommended. Nobody could name a reason it was in the list, and a
 library with no dependent reads as a leftover. The version-bump reasoning above is moot: it cites ADR
 0001, which ADR 0002 supersedes, and a pack's version does not move before its first release.
+
+### `True-Nukes-Graphics_Continued`
+
+| | |
+|---|---|
+| **Title** | True Nukes Graphics Continued |
+| **Does** | The explosion animations for `True-Nukes_Continued`, shipped separately so a code update does not re-download the art |
+| **Latest** | `0.0.3`, `factorio_version` **2.0**, 2025-12-29 |
+| **Downloads** | 346 |
+| **Owner** | `Daimonfire` |
+| **Supersedes** | `True-Nukes-Graphics` by `BicycleEater`, last `0.0.1` on 2020-12-02, 11,805 downloads |
+| **Read on** | 2026-09-21 |
+| **Status** | dropped 2026-10-04 (#81) |
+
+**Alternatives considered.** None possible. It is one mod's art package and has no meaning apart
+from it.
+
+The portal files it under the **internal** category, which is the category for exactly this — a
+package not meant to be installed on its own. At 346 downloads it is the least-installed mod in the
+pack by a wide margin, which measures that it is an accessory rather than anything about its
+quality. Note that `True-Nukes_Continued` declares it **optionally**, not mandatorily, so this line
+in the dependency list is doing real work: without it the pack would not pull the graphics in.
+
+**Recommendation: keep**, and keep it named. This is the mirror image of the hidden-dependency
+problem below: a graphics package that *is* named in the list, precisely because its parent does not
+require it.
+
+**Ruled 2026-09-23 (#9): kept.** It declares `factorio_version` **2.0**, so it is not served to a 2.1 game — the portal serves it only at 2.0. Under #8's
+third rule that breaks a tie only in an entry already marked `reconsider:`, and this one was not, so
+it stays and is tracked under #43. Whether it can be installed at all turns on #16: every named
+member of the three lower packs has at least one 2.0 release (measured 2026-09-23), so on a 2.0
+target this mod is served.
+
+**Ruled 2026-10-04 (#81): out**, with `True-Nukes_Continued`. Nothing is wrong with this mod on its
+own: it is art for a mod the pack no longer has. See *Decisions, 2026-10-04 (#81)*.
+
+### `True-Nukes_Continued`
+
+| | |
+|---|---|
+| **Title** | True Nukes Continued |
+| **Does** | Rebuilds nuclear weapons around a blast model — scaled explosions, fallout, and a range of warhead sizes from tactical up — rather than the single vanilla atomic bomb |
+| **Latest** | `0.3.36`, `factorio_version` **2.0**, 2026-01-17 |
+| **Downloads** | 2,777 |
+| **Owner** | `Daimonfire` |
+| **Supersedes** | `True-Nukes` by `BicycleEater`, last `0.3.33` on 2023-11-27, 43,955 downloads |
+| **Read on** | 2026-09-21 |
+| **Status** | dropped 2026-10-04 (#81) |
+
+**Alternatives considered.** None searched. It is a continuation of the mod the 1.1 pack carried,
+by a new maintainer, and the original has no 2.x release.
+
+It requires `Warheads_Continued`, which the dependency list does not name — another hidden member.
+It declares optional support for `PlutoniumEnergy`, `Clowns-Nuclear` and `Clowns-AngelBob-Nuclear`,
+all three in this pack, so three of the six nuclear mods are wired together by their authors.
+
+**Recommendation: keep.** Current within eight months of this reading and the successor is real
+rather than nominal — `0.3.36` against the original's last `0.3.33` is continued development, not a
+republish.
+
+**Ruled 2026-09-23 (#9): kept.** It declares `factorio_version` **2.0**, so it is not served to a 2.1 game — the portal serves it only at 2.0. Under #8's
+third rule that breaks a tie only in an entry already marked `reconsider:`, and this one was not, so
+it stays and is tracked under #43. Whether it can be installed at all turns on #16: every named
+member of the three lower packs has at least one 2.0 release (measured 2026-09-23), so on a 2.0
+target this mod is served.
+
+**Ruled 2026-10-04 (#81): out.** It fails in the data stage beside `bobwarfare` `2.1.0`,
+`bobelectronics` `2.1.1` and `Clowns-Nuclear` `2.0.08` on Factorio 2.0.77 (measured 2026-10-03):
+it and `Warheads_Continued` still look up Bob's prototype names from before Bob's 2.x added the
+`bob-` prefix, and its `Clowns-Nuclear` compatibility leaves a hole in a technology's `effects`
+list. The optional support for `Clowns-Nuclear` named above is one of the two things that fail. The
+hidden member `Warheads_Continued` leaves with it. No replacement was added. The runs, both causes,
+what reopens the question and the candidates handed to #49 are under *Decisions, 2026-10-04 (#81)*.
+**Checked 2026-10-04 (#81):** the search this entry did not run was run - no other continuation of
+`True-Nukes` is on 2.x.
 
 ## Candidates, not members
 
@@ -2018,6 +2118,10 @@ only optionally. **The fifteen are fourteen after #9**: `rusty-locale` was pulle
 `DeadlockStacking*` mods, and both are out. The table above is left as measured. #39's reconciliation
 against the chain-wide nineteen predates this change.
 
+**Thirteen after #81 (2026-10-04).** `Warheads_Continued` was pulled in only by
+`True-Nukes_Continued`, and that is out. Of the two content mods among the hidden members,
+`Clowns-Nuclear` is the one left. The table above is left as measured.
+
 ## The Deadlock stacking family is one question
 
 The pack carries three of the five Deadlock mods the 1.1 pack had, and the two it lost are the two
@@ -2123,6 +2227,12 @@ the whole weapons branch rest on mods with a few thousand installs each, while t
 branch does not. That is not an argument for removing any of them, since nothing replaces them; it
 is a statement about which three to suspect first.
 
+*2026-10-04 (#81): the weapons branch is gone. `True-Nukes_Continued` did fail first, in the data
+stage, against `Clowns-Nuclear` among others - so "they are not in conflict" above was a reading
+of dependency lists that a run did not bear out. Four of the six remain, three named and
+`Clowns-Nuclear` hidden, and `True-Nukes-Graphics_Continued` is out too. See* Decisions,
+2026-10-04 (#81).
+
 ## Overlaps
 
 Cross-pack overlaps carry an **Overlaps** row in the entry above and are not repeated here. This
@@ -2154,7 +2264,7 @@ carries one third-party Angel's extension instead of two, that is which.
 
 **Nuclear reaches across the split.** `Clowns-AngelBob-Nuclear` and its hidden `Clowns-Nuclear` add
 thorium cycles, waste processing and reactor fuels; #5 holds `PlutoniumEnergy`,
-`RealisticReactorsReborn` and the two `True-Nukes` mods. That is six mods on one subsystem, spread
+`RealisticReactorsReborn` and the two `True-Nukes` mods *(both dropped 2026-10-04, #81)*. That is six mods on one subsystem, spread
 across both halves of this pack, and `Clowns-Nuclear` declares `(?) RealisticReactorsReborn`, so at
 least one pair is integrated by its author. **Both halves are now surveyed** and the subsystem is
 set out in *Six mods on one nuclear chain* above: the six are wired together by their own authors

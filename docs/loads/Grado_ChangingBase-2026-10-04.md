@@ -115,7 +115,65 @@ That verdict covers only what a load can see: the prototype stages and `on_init`
 one prototype name load without a word, and the harness loads no sprites. Clashing key bindings,
 GUIs drawn over each other and anything after the first tick are a play session's to find. The key
 bindings of the 20 members added here were not dumped; the first record's list covers
-`Grado_NonChanging`'s only.
+`Grado_NonChanging`'s only. *Dumped later the same day (#127): see* Key bindings *below.*
+
+### Key bindings (2026-10-04, #127)
+
+The list the play session (#26) starts from, made the way the first record's was
+(`docs/loads/Grado_NonChanging-2026-09-29.md`, *How the list was made*). **A shared default is not
+a clash**: several of these act only in one situation, and nothing here was pressed.
+
+A `--dump-data` run through the harness's `Invoke-HarnessDump`, with the pack enabled, base only,
+on 2.0.77 (prototype list checksum `1028326153`, load 1's) gave **118 `custom-input` prototypes**:
+base's own 14, the 71 of `Grado_NonChanging`'s members, which a dump of that pack shows unchanged
+here, and **33 that this pack's members add**. 30 of the 33 were attributed by finding the name in
+one member's Lua. The other three, `WideChests_rotate-blueprint-clockwise`,
+`WideChests_rotate-blueprint-couterclockwise` and `WideChests_merge-tool`, are built from a prefix
+in `WideChests`' `init.lua` and defined in its `prototypes/custom_input.lua`.
+
+| Member | Inputs | With a default key |
+|---|---|---|
+| `bobinserters` | 7 | 7 |
+| `EditorExtensions` | 5 | 1 |
+| `0-things` (hidden) | 4 | 0 |
+| `ModuleInserterEx` | 4 | 4 |
+| `underground-pipe-pack` | 4 | 4 |
+| `WideChests` | 3 | 0 |
+| `AdditionalPasteSettings` | 2 | 2 |
+| `cybersyn2` | 2 | 1 |
+| `UltimateResearchQueue2` | 2 | 0 |
+
+19 of the 33 have a default key. 11 have none and are linked to one of the game's own controls
+(`linked_game_control`), so they fire on whatever key that control has: `0-things`' four on
+rotate, reverse rotate and the two flips, `EditorExtensions`' four on open GUI, copy and paste
+entity settings and clear cursor, `cybersyn2`'s on clear cursor, and `UltimateResearchQueue2`'s
+two on focus search and open technology GUI. `WideChests`' three have no key and no link.
+
+**Six default keys are bound by an input this pack adds and by at least one other input:**
+
+| Default key | Bound by (`custom-input` name) | Seen in play |
+|---|---|---|
+| `Ctrl+R` | `bobinserters` (`bob-inserter-pickup-rotate`), `underground-pipe-pack` (`rotate-underground-pipe`), and from `Grado_NonChanging`: `Fill4Me` (`fill4me-keybind-reload`), `kry-picker-extended` (`picker-reverse-belts`) | not tried |
+| `Ctrl+Shift+R` | `bobinserters` (`bob-inserter-drop-rotate`), `underground-pipe-pack` (`reverse-rotate-underground-pipe`), and from `Grado_NonChanging`: `Fill4Me` (`fill4me-keybind-enable`) | not tried |
+| `Shift+E` | `bobinserters` (`bob-inserter-open-gui`), and from `Grado_NonChanging`: `kry-picker-extended` (`picker-manual-inventory-sort`) | not tried |
+| `Shift+Alt+left click` | `AdditionalPasteSettings` (`additional-paste-settings-hotkey-alt`), and from `Grado_NonChanging`: `FactorySearch` (`open-search-prototype`) | not tried |
+| `Numpad +` | `underground-pipe-pack` (`plus-valve`), and from `Grado_NonChanging`: `kry-picker-extended` (`adjustment-pad-increase`) | not tried |
+| `Numpad -` | `underground-pipe-pack` (`minus-valve`), and from `Grado_NonChanging`: `kry-picker-extended` (`adjustment-pad-decrease`) | not tried |
+
+Two of the six are shared inside this pack, `Ctrl+R` and `Ctrl+Shift+R`, and both also with a
+`Grado_NonChanging` member. The other four are shared with a `Grado_NonChanging` member only.
+**None is shared with one of base's own 14 inputs.** `Ctrl+R` was two inputs in the first record's
+table and is four here. The seven keys of that table are all still shared in this pack, `Alt+Y`
+with base's `give-discharge-defense-remote` among them, so the dump has twelve shared keys in all.
+
+**The list does not cover vanilla controls.** The game's own bindings are not `custom-input`
+prototypes, so a member key that is also an engine default is not in the dump. Three were seen
+while reading the game's `config.ini` (2.0.77, `[controls]`, the way #96 did for the first pack),
+which is not a full check of the 19: `additional-paste-settings-hotkey` defaults to
+`Shift+left click`, which is the engine's build ghost, paste entity settings and cancel
+deconstruction; `cybersyn2-click` to left click, which is eight engine controls; and the two
+`Numpad` keys above are the engine's larger and smaller terrain building area, which
+`kry-picker-extended`'s two inputs are also linked to.
 
 ## Not checked
 
@@ -124,6 +182,8 @@ bindings of the 20 members added here were not dumped; the first record's list c
   or below 2.0.77.
 - **`cybersyn2` doing anything.** Its author declares it alpha. It loaded and ran `on_init`; no
   train was dispatched.
-- **Key bindings** of this pack's own 20 members.
+- **Key bindings** of this pack's own 20 members. *Dumped 2026-10-04 (#127), under* Key bindings.
+  *What is still not checked is which input acts when a shared key is pressed, and the members'
+  keys against the engine's own controls.*
 - **Multiplayer**, **the 2.1 line**, and **mod settings other than the defaults**, as in the first
   record.

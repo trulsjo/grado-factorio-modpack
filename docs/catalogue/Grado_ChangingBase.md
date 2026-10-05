@@ -10,7 +10,8 @@ Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below w
 entries it added and the readings inside its rulings — and the notes marked *Superseded 2026-09-23
 by #15*, which #15 took, and the notes dated 2026-09-24 (#43) and (#58), which those two took, and the notes dated
 2026-10-01 (#44, #83) and (#83), which #83 took, and the notes dated 2026-10-04 (#115), which #115
-took from the pack's recorded load.
+took from the pack's recorded load, and the section dated 2026-10-04 (#122) under `Nanobots2`,
+which #122 took from data dumps, the staged source and a portal reading of that day.
 *Candidates, not members* was read on 2026-10-01 (#46, #84). Searches described below as over "the
 2.x list" first ran over the `version=2.0` listing only, which misses mods released for 2.1 alone
 (#44), and the two over "the 2.1 list" miss mods released for 2.0 alone. **Every search so

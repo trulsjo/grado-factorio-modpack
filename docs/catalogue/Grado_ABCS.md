@@ -634,6 +634,9 @@ One step up from the packs, read from the dump and not played:
   added to its cost.
 - `rocketry`: `angels-rocket-booster-1` added to its prerequisites.
 
+`rocket-silo` is one of the 27 both rewrite. `rocket-fuel` and `rocketry` are among the 102 only
+the overhaul rewrites, which are not listed one by one here.
+
 Three more gained recipe unlocks from `RealisticFusionPowerPort` and nothing else:
 `space-platform-thruster`, `planet-discovery-aquilo` and `advanced-asteroid-processing`.
 **The four `planet-discovery-*` technologies keep Space Age's prerequisites and cost**, and

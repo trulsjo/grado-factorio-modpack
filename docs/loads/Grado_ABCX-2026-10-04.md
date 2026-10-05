@@ -104,14 +104,15 @@ Script @__boblibrary__/error-functions.lua:19: New prerequisite technology bob-b
 Line 158 adds `bob-advanced-processing-unit` as a prerequisite of `drydock-assembly`, and line 172
 replaces `battery-mk2-equipment` with `bob-battery-equipment-6` in `space-ai-robots`. Neither
 change is made, and the load goes on. The other calls in that file log nothing, so the rest of the
-fork's Bob's technology changes are applied or skipped silently; which was not checked. *Checked
-2026-10-04 (#124), from a data dump: of 83 calls in the fork's two Bob's files, 80 applied, these
-two were skipped with their log lines, and one more was skipped silently, the `space-ai-robot`
-recipe's battery. The fork's `1.3.4` asks for the same names. The result is under
-`SpaceModFeorasFork` in `docs/catalogue/Grado_ABCX.md`.* In the
+fork's Bob's technology changes are applied or skipped silently; which was not checked. In the
 staged copies, the fork defines `drydock-assembly` as an item and a recipe and not as a technology,
 and `bobequipment` `2.1.0` defines `bob-battery-equipment-4` and `-5` and no `-6`. Compatibility
 Lua is not needed to load the pack; whether this is worth a report upstream is Truls's.
+
+*Checked 2026-10-04 (#124), from a data dump: of 83 calls in the fork's two Bob's files, 80
+applied, these two were skipped with their log lines, and one more was skipped silently, the
+`space-ai-robot` recipe's battery. The fork's `1.3.4` asks for the same names. The result is under
+`SpaceModFeorasFork` in `docs/catalogue/Grado_ABCX.md`.*
 
 That verdict covers only what a load can see: the prototype stages and `on_init`. Anything after
 the first tick, the launch tree included, is a play session's to find.

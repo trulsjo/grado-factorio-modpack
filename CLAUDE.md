@@ -172,9 +172,7 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   pack inherits - or `base >= 2.1.12` (`cybersyn2`, #8) if the game installs an older
   `kry_stdlib`, which the constraint allows. `Grado_ABCS` cannot be answered until
   the pack is loaded, because `space-age` is not a portal mod (#29); its 2.0.77 build, read from
-  disk on 2026-09-23, requires only `base >= 2.0.0`, and a 2.1 build is unread. *Dated 2026-10-04
-  (#126): the pack has loaded since, on 2.0.77 with Space Age (#118). The 2.1 build of
-  `space-age` is still unread, so for the 2.1 line the sentence stands.* The measurement is
+  disk on 2026-09-23, requires only `base >= 2.0.0`, and a 2.1 build is unread. The measurement is
   #15; the number to declare is #16. **#16 cannot be answered by choosing a number yet** - *true
   of a 2.1 target only; see the 2.0.77 result below (2026-09-24). Ruled 2026-09-24 (#16): see
   Settled so far.* A member
@@ -196,7 +194,10 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   memberships, is *Effective Factorio floor* in `docs/porting-notes.md` (#15). **Ruled 2026-09-24
   (#16) - see *Settled so far*.** What stayed open until #58 was applying it: the `info.json` edits
   waited on the resolver re-measuring the minimums. *Applied 2026-09-24 (#58): re-measured on
-  2.0.77, same floors, and the five `info.json` files declare them.*
+  2.0.77, same floors, and the five `info.json` files declare them.* *Dated 2026-10-04 (#126), on
+  "`Grado_ABCS` cannot be answered until the pack is loaded" above: the pack has loaded since, on
+  2.0.77 with Space Age (#118). The 2.1 build of `space-age` is still unread, so for the 2.1 line
+  that sentence stands.*
 - **`PickerPipeTools`' pipe clamps are the one feature lost in the port with no successor found** —
   a search, not a proof. All twenty port drops are now closed (#7, #8, #9): nineteen stay dropped
   and `RealisticFusionPower` was replaced by `RealisticFusionPowerPort`.

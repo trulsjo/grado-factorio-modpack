@@ -167,7 +167,7 @@ table and is four here. The seven keys of that table are all still shared in thi
 with base's `give-discharge-defense-remote` among them, so the dump has twelve shared keys in all.
 
 **The list does not cover vanilla controls.** The game's own bindings are not `custom-input`
-prototypes, so a member key that is also an engine default is not in the dump. Three were seen
+prototypes, so a member key that is also an engine default is not in the dump. Four inputs were seen
 while reading the game's `config.ini` (2.0.77, `[controls]`, the way #96 did for the first pack),
 which is not a full check of the 19: `additional-paste-settings-hotkey` defaults to
 `Shift+left click`, which is the engine's build ghost, paste entity settings and cancel

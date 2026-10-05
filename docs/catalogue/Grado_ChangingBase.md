@@ -12,7 +12,7 @@ by #15*, which #15 took, and the notes dated 2026-09-24 (#43) and (#58), which t
 2026-10-01 (#44, #83) and (#83), which #83 took, and the notes dated 2026-10-04 (#115), which #115
 took from the pack's recorded load, and the section dated 2026-10-04 (#122) under `Nanobots2`,
 which #122 took from data dumps, the staged source and a portal reading of that day. The notes
-dated 2026-10-05 (#136) are #136's, from data dumps.
+dated 2026-10-05 (#136) are #136's, from data dumps, their logs and the staged source.
 *Candidates, not members* was read on 2026-10-01 (#46, #84). Searches described below as over "the
 2.x list" first ran over the `version=2.0` listing only, which misses mods released for 2.1 alone
 (#44), and the two over "the 2.1 list" miss mods released for 2.0 alone. **Every search so
@@ -352,8 +352,9 @@ and the staged `Grado_ABCS` with Space Age (`2316474952`), the recorded loads' t
   `landfill`, 50 units of automation and logistic science) and the item, which places the tile
   `water`, are the same in `Grado_ABC` as in `Grado_ChangingBase`, field for field. The
   technology `landfill` is the same too. So the overhaul changes nothing about it, and nothing it
-  needs is hidden or removed. A walk of the recipe graph (`docs/catalogue/Grado_ABCS.md`,* How
-  the walk was made*) reaches the technology and the recipe in both.*
+  needs is hidden or removed. A walk of the recipe graph, described in
+  `docs/catalogue/Grado_ABCS.md` under "How the walk was made", reaches the technology and the
+  recipe in both.*
 - *With Space Age the mod takes a branch of its own (`data.lua` lines 11 to 18), which also
   checks for `alien-biomes`. In `Grado_ABCS` the recipe has a surface condition, pressure 1000 to
   2000, which is Nauvis and Gleba, and the item may be placed on a list of 214 tiles. 156 of the
@@ -1396,7 +1397,7 @@ nothing. Under #8's third rule, unreachability breaks a tie in an entry already 
 the mod. `Waterfill_v17` is also technology-unlocked; its author simply makes no claim about
 overhauls either way, which is less evidence than `anachrony`'s explicit boundary, not better
 evidence. This remains the entry to bring to the first load of `Grado_ABC`, under its successor's
-name. The unverified feature delta — six water types, blueprintability, the survival guarantee — is
+name. *Brought 2026-10-05 (#136): see the note dated that day under `Waterfill_v17`.* The unverified feature delta — six water types, blueprintability, the survival guarantee — is
 recorded under `Waterfill_v17` in *In the pack*.
 
 ## Candidates, not members
@@ -2033,8 +2034,8 @@ the opposite of every other entry above, and it is measurable the first time a p
 Factorio 2.0.77 through the shared harness's `Invoke-HarnessDump`, of the staged
 `Grado_ChangingBase`, base only, and the staged `Grado_ABCS` with `space-age`, `quality` and
 `elevated-rails`, each with `WideChestsAllTypes` `2.0.0` and `WideChestsUnlimited` `2.0.0`
-enabled and then with both disabled. `WideChests` `6.2.4`, `WideChestsLogistic` `3.1.1` and
-`WideChestsBobs` `2.0.0` stayed on, and every other member was at the release of the recorded
+enabled and then with both disabled. `WideChests` `6.2.4` and `WideChestsLogistic` `3.1.1` stayed
+on, with `WideChestsBobs` `2.0.0` in `Grado_ABCS`, where it is a member, and every other member was at the release of the recorded
 loads. The pack mods were disabled in all four, since `Grado_ChangingBase` requires the two; they
 carry no Lua, and the dumps with the two enabled have the recorded loads' checksums.*
 
@@ -2059,14 +2060,16 @@ carry no Lua, and the dumps with the two enabled have the recorded loads' checks
   prototype type changes. With the two disabled `WideChests` still merges the steel chest, in the
   same 99 shapes. That is 9% of the lower pack's prototypes and 7% of the upper pack's:
   2.7 times as many chests, in a pack 3.4 times the size.*
-- ***The time is real and small, and it is noisy.** "Data stage" is the game's clock at the line
+- ***The time is small, and it is noisy.** "Data stage" is the game's clock at the line
   `Prototype list checksum`. Five runs of each, alternating, on one machine (i7-9850H). At best
   and at the median the two members cost between one and two seconds in `Grado_ChangingBase` and
-  between two and a half and five in `Grado_ABCS`. But one run in five took 50 to 64 seconds whatever was
-  enabled: a slow run with them enabled and one without, in `Grado_ABCS`. So the difference is
+  between two and a half and five in `Grado_ABCS`. But some runs were far slower whatever was enabled. In
+  `Grado_ABCS` one run with them enabled took 64 seconds, and without them one took 55 and one
+  31. In `Grado_ChangingBase` one run with them enabled took 15. So the difference is
   inside what this machine does from run to run, and the numbers are context, not a benchmark.*
-- ***The time is not spent in the family's own Lua.** The log gives 0.03 seconds at the median to
-  the stages of `WideChests`, `WideChestsLogistic` and `WideChestsBobs` together, 0.17 at most.
+- ***The time is not spent in the family's own Lua.** Over the twenty runs the log gives 0.02 seconds at
+  the median to the stages of `WideChests`, `WideChestsLogistic` and `WideChestsBobs` together,
+  and about 0.2 at most.
   The rest is other members and the game working through more prototypes. Which was not
   attributed.*
 

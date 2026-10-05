@@ -542,7 +542,9 @@ No recipe, technology or item of the Space Age dump is missing from `Grado_ABCS`
 ### Names both define
 
 **29 prototype names are defined by Space Age and, base only, by the overhaul too.** In
-`Grado_ABCS` one definition replaces the other without a log line.
+`Grado_ABCS` one definition replaces the other without a log line. *Traced 2026-10-05 (#134):
+for about half of them it is not one or the other but a mix. See* Which member defines each
+shared name.
 
 | Type | Names |
 |---|---|
@@ -594,7 +596,7 @@ stage: `data` is `data.lua`.
 | item `lithium-plate` | `bobplates`, `prototypes/item/plates.lua` 149: the same check | mixed: Space Age's item with the overhaul's icon, order and subgroup | yes |
 | recipe `lithium-plate` | `bobplates`, `prototypes/recipe/plates-recipe.lua` 189 to 223: its own only `if not mods["space-age"]` | mixed: Space Age's recipe in Angel's category | yes |
 | fluid `ammonia` | `bobrevamp`, `prototypes/rocket-fuel.lua` 1 to 12, `data`, when Bob's hydrogen, oxygen and nitrogen exist. No check | the overhaul's: hidden, because Angel's replaces it | yes, by its changelog |
-| recipe categories `electronics`, `electronics-with-fluid` | `bobassembly`, `prototypes/assembly-electronics.lua` 30 to 39, `data`, behind its setting `bobmods-assembly-electronicmachines` | both: a category is only a name, so the two definitions are the same | **not shown**: no check and no changelog line |
+| recipe categories `electronics`, `electronics-with-fluid` | `bobassembly`, `prototypes/assembly-electronics.lua` 30 to 39, `data`, behind its setting `bobmods-assembly-electronicmachines` | both: a category is only a name, so the two definitions are the same | **not shown**: no check in the file and no changelog line. The mod does declare `? space-age` |
 
 The `tungsten-ore` row in full: `bobores` keeps the name, gives the resource no autoplace of its
 own when Space Age is loaded (`prototypes/tungsten-ore.lua` line 32, `if not mods["space-age"]`),
@@ -616,8 +618,8 @@ The changelog lines, each from the release of 2026-06-01:
 
 - **Bob's writes over Space Age on purpose**, in its `data` stage. That is the turbo belts,
   `battery-mk3-equipment`, the `carbon` item and `ammonia`. `boblogistics`, `bobequipment` and
-  `bobplates` declare `space-age` as an optional dependency, which loads them after it.
-  `bobrevamp` and `bobores` do not name it in their `info.json`, and the dump has `bobrevamp`'s
+  `bobplates` declare `space-age` as an optional dependency, which loads them after it, and so
+  does `bobassembly`. `bobrevamp` and `bobores` do not name it in their `info.json`, and the dump has `bobrevamp`'s
   `ammonia` all the same.
 - **Bob's steps aside on purpose** and edits Space Age's prototype in place. That is the tungsten
   and lithium items and recipes. `boblogistics` also folds Space Age's technology
@@ -798,7 +800,8 @@ rewrite, 4:** `raw-fish`, `cliff-explosives`, `stone-brick` and `landfill`.
   prototypes `iron-ore`, `copper-ore` and `uranium-ore` are in the Space Age dump and not in
   `Grado_ABCS`. What the planets then place was not looked at. *Looked at 2026-10-05 (#133): see*
   What each planet places. *The overhaul's ores are on Nauvis only, the other four planets list
-  what they list in Space Age alone, and `rso-mod` takes over placing all of it but `scrap`.*
+  what they list in Space Age alone, and `rso-mod`, as its source reads, takes over placing all of
+  it but `scrap`.*
 - **Which mod made each change.** The dumps show the result. Where a mod is named above, its
   prototype names say so. *Traced 2026-10-05 (#134) for the 29 shared names: see* Which member
   defines each shared name. *The other changes are still untraced.*
@@ -838,7 +841,7 @@ from the source and not run**. It is the same mechanism base only, where it is `
 
 | | Space Age alone | `Grado_ABCS`, the planet's list | `rso-mod`'s table, as read |
 |---|---|---|---|
-| Resources | 6: `coal`, `copper-ore`, `iron-ore`, `stone`, `uranium-ore`, `crude-oil` | 39: `angels-ore1` to `6`, `angels-fissure`, `angels-natural-gas`, `clowns-ore1` to `9`, `clowns-resource1` and `2`, `coal`, `crude-oil`, and 18 `infinite-` twins of the ores and of `coal` | the Angel's and Clowns ores, `angels-fissure`, `angels-natural-gas`, `coal`, `crude-oil`, and **`stone` and `tungsten-ore`** |
+| Resources | 6: `coal`, `copper-ore`, `iron-ore`, `stone`, `uranium-ore`, `crude-oil` | 39: `angels-ore1` to `6`, `angels-fissure`, `angels-natural-gas`, `clowns-ore1` to `9`, `clowns-resource1` and `2`, `coal`, `crude-oil`, and 18 `infinite-` twins: of the 15 ores, the two Clowns resources and `coal` | the Angel's and Clowns ores, `angels-fissure`, `angels-natural-gas`, `coal`, `crude-oil`, and **`stone` and `tungsten-ore`** |
 | Autoplace controls | 12 | 47: the four of `copper-ore`, `iron-ore`, `stone` and `uranium-ore` are gone and 39 are added | |
 | Other entities | `fish`, `big-rock`, `big-sand-rock`, `huge-rock` | `fish`, three Angel's fish, 31 rocks of `alien-biomes`, Angel's three gardens, three trees and the puffer nest | |
 
@@ -886,7 +889,7 @@ same in both dumps. Two things differ:
   still name them. Which member removes them from the list was not traced.
 
 What a resource gives changed in one: `crude-oil` gives `angels-liquid-multi-phase-oil`, on Aquilo
-as on Nauvis. The other seven give what they give in Space Age alone.
+as on Nauvis. The other eight give what they give in Space Age alone.
 
 ### Does anything name something that does not exist?
 
@@ -913,7 +916,7 @@ or that both use:
 - **Fulgora:** `scrap`, and `stone` and `holmium-ore` from its rocks. Its ocean is `heavy-oil`,
   which is hidden in the pack and which no recipe takes.
 - **Aquilo:** crude oil as `angels-liquid-multi-phase-oil`, the feed of Angel's oil refining.
-  `lithium-brine` is still placed, and no recipe that can be unlocked takes it.
+  `lithium-brine` is still placed, and the one recipe that takes it is hidden.
 
 Whether those are enough to build on each planet is the next section's.
 
@@ -957,6 +960,20 @@ A script reads one dump and repeats three rules until nothing new is added.
 That is a little stricter than #132 asked for, which was a recipe that is not hidden and a
 technology that is not hidden. The stricter rule is what found the one dead end below.
 
+**Where the script is looser than the game**, so that a "can be made" here is an upper bound:
+
+- A trigger that asks for mining an entity or capturing a nest, or that a script sets, is taken
+  as met. Only the triggers that ask for an item, a fluid, a built entity or a platform are
+  checked.
+- A resource counts as supplied without asking what can mine it. Space Age's `tungsten-ore`
+  needs a drill of the category `hard-solid`, and the `infinite-` ores need a fluid.
+- What an enemy drops counts whatever planet the enemy is on, and so does what an item gives
+  when launched in a rocket.
+- A machine counts as buildable when its item can be made, without its own surface condition.
+  That condition is recorded in the walks instead.
+- A captive nest, which is not built from an item, is taken as there once
+  `capture-robot-rocket` can be made.
+
 **It does not know where anything is.** An item made on one planet counts on every other. The
 recipe's surface condition and the machine's are recorded beside each step instead, and
 *From its own materials* below asks the question of place a second way.
@@ -985,14 +1002,16 @@ Of Space Age's own prototypes in `Grado_ABCS`:
 | Technologies | 275 | 268 can be researched; 6 are hidden or disabled; 1 cannot be reached |
 
 The 23 hidden recipes are vanilla's oil, plastic, sulfur, lubricant, steel and uranium recipes
-and their barrels, which the overhaul replaces, and three of Space Age's own: `carbon`,
-`tungsten-carbide` and `tungsten-plate`, as #128 found. Nothing a science pack needs is lost with
+and their barrels, which the overhaul replaces, and three under names Space Age uses: `carbon`,
+`tungsten-carbide` and `tungsten-plate`, as #128 found. The hidden `carbon` is Bob's recipe;
+Space Age's own is there as `bob-carbon-from-acid` (#134). Nothing a science pack needs is lost with
 them. The six technologies are `oil-processing`, `advanced-oil-processing`, `coal-liquefaction`,
 `sulfur-processing`, `kovarex-enrichment-process` and `turbo-transport-belt`.
 
 ### Dead ends
 
-**One, and no science pack needs it.**
+**One among Space Age's own technologies and recipes, and no science pack needs it.** The
+overhaul's own technologies were not chased; see *Not covered*.
 
 - **The technology `captive-biter-spawner` cannot be researched.** Its prerequisites are Space
   Age's: `cryogenic-science-pack`, `biter-egg-handling` and `kovarex-enrichment-process`. The
@@ -1068,7 +1087,8 @@ take it, `angels-processed-tungsten`, `angels-solid-tungsten-oxide` and
 | `nutrients` | from `spoilage`, `yumako-mash`, `bioflux`, `raw-fish` or `biter-egg` | the biochamber, three of the five also an assembling machine | same |
 
 Ends in `yumako` and `jellynut`, Gleba's plants, the first `pentapod-egg` from a nest, and
-`water`. **Nothing differs.** Of the 14 recipes in this walk 13 are as in Space Age alone, and
+`water`. **Nothing differs.** The script followed 14 recipes for this pack, the ten in the table
+and four more that make `spoilage`, `biter-egg` and the egg again. 13 are as in Space Age alone, and
 the fourteenth is `pentapod-egg-rfp-ddw`, a copy `RealisticFusionPowerPort` adds that takes its
 own water.
 
@@ -1103,7 +1123,7 @@ Ends in `scrap`, Fulgora's resource. It joins the overhaul in ten places: `accum
 
 Ends in `ammoniacal-solution`, Aquilo's ocean, `fluorine`, its vent, and the icebergs. The
 change that matters is `lithium`: its recipe no longer takes Aquilo's brine and takes
-`angels-solid-lithium`, which comes only from an ore `rso-mod` places on Nauvis. The icebergs
+`angels-solid-lithium`, which comes only from `clowns-ore2`, an ore of Nauvis. The icebergs
 still give `lithium` itself when mined. The four barrel recipes for the two fluoroketones are in
 `angels-barreling-pump`, behind `bob-fluid-barrel-processing`, as #128 found.
 
@@ -1140,8 +1160,8 @@ both.
 | Aquilo | 20 | 4 | |
 | A space platform | 169 | 87 | 12 |
 
-**The pack's own pack is still made from its planet's materials on Vulcanus, Gleba, Aquilo and a
-platform. On Fulgora it is not.**
+**In `Grado_ABCS` each surface's own science pack is still made from that surface's materials on
+Vulcanus, Gleba, Aquilo and a platform. On Fulgora it is not.**
 
 - **Wood is the gap.** Bob's `electronic-circuit` takes a `bob-wooden-board`, which takes `wood`.
   Nauvis and Gleba have trees. Vulcanus, Fulgora, Aquilo and a platform supply none, so on those
@@ -1149,14 +1169,16 @@ platform. On Fulgora it is not.**
   the starter science pack and the accumulator among the 98, 101 and 87.
 - **Fulgora also lacks an oil.** With wood brought in, 19 are still missing, and
   `electromagnetic-science-pack` is one of them, with `supercapacitor` and `superconductor`.
-  Space Age builds them on the ocean's `heavy-oil`. Here they need `angels-liquid-naphtha` and
-  `angels-liquid-fuel-oil`, which Fulgora cannot start. With crude oil brought in as well, 11 are
+  Space Age builds them on the ocean's `heavy-oil`. Here `superconductor` needs
+  `angels-liquid-fuel-oil`, which Fulgora cannot start: every recipe for it takes crude oil, a
+  nutrient pulp or a vegetable oil. `angels-liquid-naphtha`, which `electrolyte` needs, can be
+  made there, from coal that `coal-synthesis` makes. With crude oil brought in as well, 11 are
   left.
-- **What is left everywhere** is the vanilla oil fractions and their barrels, which the pack
+- **What is left after that** is the vanilla oil fractions and their barrels, which the pack
   makes nowhere, and the beacon and the modules above the first tier, which have Bob's recipes.
   `carbon` and `ammonia` are among the 7 and the 4 for the same reason as the fractions.
 
-Wood, naphtha and fuel oil can all be made on Nauvis, and Angel's has a barrel for both fluids.
+Wood and fuel oil can both be made on Nauvis, and Angel's has a barrel for the fluid.
 Whether shipping them is a nuisance or a wall is play, and it is the bridge question's evidence,
 not its answer.
 

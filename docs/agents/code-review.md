@@ -83,7 +83,8 @@ set is checked by walking the set, never by agreeing with its tone.
 
 **When a change supersedes a figure, grep the repository for the old one**, and read every hit in a
 file that records a measurement. Here that is `docs/porting-notes.md`, `docs/catalogue/`, `CLAUDE.md`
-and this file. A correction landing in three places and missing the fourth is worse than none,
+and this file. *Since 2026-10-05 `docs/loads/` too, and the superseded wording of `CLAUDE.md`'s
+State is in `docs/porting-notes.md`, so an old figure may survive there and not in `CLAUDE.md`.* A correction landing in three places and missing the fourth is worse than none,
 because the survivor then reads as deliberate.
 
 **An old figure inside a block that says what replaced it is not a defect; an unmarked one is.** The
@@ -97,7 +98,7 @@ paragraph, reads as if that text were written knowing it. Found in PR #121, PR #
 **A conclusion read from source says so wherever it is repeated.** A section may open with "read
 from the source and not run". Every later sentence that restates the conclusion, in that section
 or in a note elsewhere, carries the same qualifier, and a cause is given as what the source shows.
-Found four times in PR #138.
+Found in PR #129 and PR #138.
 
 **A portal reading is a measurement.** Every version, date, download count and `factorio_version` in
 prose here came from an API call on a particular day and goes stale silently. Treat an undated one as

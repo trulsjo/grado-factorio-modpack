@@ -126,6 +126,10 @@ That is a narrow verdict. A load sees the prototype stages and `on_init`. It doe
 
 - **Whether the overhaul's recipes are reachable on the other planets**, or whether Space Age's
   science can be made from Angel's and Bob's materials. Nothing here says the game can be finished.
+  *Walked 2026-10-05 (#132), from data dumps: every Space Age science pack has a chain of recipes
+  down to something a planet supplies. Off Nauvis and Gleba, nothing with an electronic circuit
+  in it can be made from local material, for want of wood. See* Whether each Space Age science
+  pack can be made *in `docs/catalogue/Grado_ABCS.md`. A graph, not play.*
 - **Prototypes silently replaced.** Two mods defining one name load without a word, and the second
   wins. With an overhaul and an expansion both rewriting vanilla recipes, this is the likeliest
   place for damage, and a load cannot show it. *A data dump can: see the note under* Not checked

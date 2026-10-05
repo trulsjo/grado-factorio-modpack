@@ -15,7 +15,9 @@ re-read on 2026-09-23 (#10), which carries its own date, *Candidates, not member
 2026-10-01 (#44, #83), which #83 took over the union of both portal listings as read that day, and
 the entries for `angels_space_age_galore` and `industrial-worlds` and the notes dated 2026-10-01
 (#91), which #91 took, and the notes dated 2026-10-04 (#118), which #118 took from the pack's
-recorded load, and the section dated 2026-10-04 (#128), which #128 took from data dumps.
+recorded load, and the section dated 2026-10-04 (#128), which #128 took from data dumps, and the
+section dated 2026-10-05 (#133), which #133 took from data dumps and from `rso-mod`'s staged
+source.
 
 The dependency list holds 3 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, catalogued in
 `docs/catalogue/Grado_ABC.md` — and `space-age`. **The pack is new**, so nothing was carried over,
@@ -698,9 +700,134 @@ rewrite, 4:** `raw-fish`, `cliff-explosives`, `stone-brick` and `landfill`.
   3,664 recycling recipes against 311 in Space Age alone.
 - **Entities, resources and map generation.** One thing was seen in passing: the resource
   prototypes `iron-ore`, `copper-ore` and `uranium-ore` are in the Space Age dump and not in
-  `Grado_ABCS`. What the planets then place was not looked at.
+  `Grado_ABCS`. What the planets then place was not looked at. *Looked at 2026-10-05 (#133): see*
+  What each planet places. *The overhaul's ores are on Nauvis only, the other four planets list
+  what they list in Space Age alone, and `rso-mod` takes over placing all of it but `scrap`.*
 - **Which mod made each change.** The dumps show the result. Where a mod is named above, its
   prototype names say so.
+- **A 2.1 build of any of it.**
+
+## What each planet places (2026-10-05, #133)
+
+A reading of prototypes and of one member's source. No map was generated: what a planet looks like
+is #29's play session.
+
+The overhaul replaces the vanilla ores, and Space Age's planets are generated from settings that
+name resources. This is what those settings hold. Read on 2026-10-05 from two data dumps on
+Factorio **2.0.77**, made through the shared harness's `Invoke-HarnessDump`: Space Age alone
+(prototype list checksum `3295867752`) and the staged `Grado_ABCS` (`2316474952`, the recorded
+load's), with `space-age`, `quality` and `elevated-rails` at `2.0.77` and the members at the
+releases in `docs/loads/Grado_ABC-2026-10-04.md`. `rso-mod` is `7.0.26`.
+
+### How it was read
+
+For each planet, `map_gen_settings` was compared between the two dumps: the autoplace controls,
+the entities, tiles and decoratives it lists, the cliff, the territory units and the property
+expressions. Every name in the pack's settings was then looked up in the pack's dump. A resource is
+an entity in a planet's list whose prototype type is `resource`.
+
+**The dumps alone do not answer the question, because of `rso-mod`.** Its `data-final-fixes.lua`
+sets the probability and richness of every resource's autoplace to `0` (lines 39 to 46), and
+overwrites every `entity:<name>:probability` and `:richness` property expression of every planet
+with `0` (lines 48 to 65). It skips `scrap` by name. In the pack's dump, 45 of the 47 resource
+prototypes have a probability of `0`. The other two are `scrap`, which keeps Space Age's
+expression, and `angels-sea-pump-resource`, which has no autoplace. So as the prototypes read, the
+map generator places no resource anywhere but Fulgora, and `rso-mod` places them from its control
+script instead, from a table per planet (`resourceconfigs/mainconfig.lua`, `vanilla.lua`,
+`bobores.lua`, `angelsores.lua`, `clownsores.lua`). The third column below is that table, **read
+from the source and not run**. It is the same mechanism base only, where it is `Grado_ABC`'s.
+
+### Nauvis
+
+| | Space Age alone | `Grado_ABCS`, the planet's list | `rso-mod`'s table, as read |
+|---|---|---|---|
+| Resources | 6: `coal`, `copper-ore`, `iron-ore`, `stone`, `uranium-ore`, `crude-oil` | 39: `angels-ore1` to `6`, `angels-fissure`, `angels-natural-gas`, `clowns-ore1` to `9`, `clowns-resource1` and `2`, `coal`, `crude-oil`, and 18 `infinite-` twins of the ores and of `coal` | the Angel's and Clowns ores, `angels-fissure`, `angels-natural-gas`, `coal`, `crude-oil`, and **`stone` and `tungsten-ore`** |
+| Autoplace controls | 12 | 47: the four of `copper-ore`, `iron-ore`, `stone` and `uranium-ore` are gone and 39 are added | |
+| Other entities | `fish`, `big-rock`, `big-sand-rock`, `huge-rock` | `fish`, three Angel's fish, 31 rocks of `alien-biomes`, Angel's three gardens, three trees and the puffer nest | |
+
+The planet's settings are the same as in the base-only `Grado_ABC` dump (`2195323740`), key for
+key. So on Nauvis Space Age changes nothing in the prototypes. `crude-oil` gives
+`angels-liquid-multi-phase-oil`, and the `infinite-` ores need a fluid to mine.
+
+Three things in `rso-mod`'s Nauvis table, all read from the source:
+
+- **It still names `iron-ore`, `copper-ore` and `uranium-ore`**, which are not resources in the
+  pack. Lines 583 to 585 of `mainconfig.lua` mean to remove the first two and `stone` when Angel's
+  is loaded, but they clear `config["copper-ore"]` where the entries are under `config.nauvis`. The
+  mod checks each name against the game, logs `Resource not available` and skips it. That is the
+  line the load records carry, and it is the answer to their "why".
+- **`stone` is a resource in this pack and not in `Grado_ABC`**: Space Age's, kept for Gleba. So
+  the entry that is skipped base only is valid here, and the table would place stone patches on
+  Nauvis. It agrees with the recorded loads: `Resource not available: stone` is in `Grado_ABC`'s
+  log and not in this pack's.
+- **`tungsten-ore` on Nauvis.** `bobores.lua` adds it when a resource of that name exists with an
+  autoplace (lines 120 and 121). Base only there is none, as Angel's leaves no Bob's ore on the map.
+  Here there is one, Space Age's, in the mining category `hard-solid`. So the table would place
+  Space Age's tungsten ore on Nauvis.
+
+The `infinite-` resources are in the planet's list and in none of `rso-mod`'s tables (searched for
+`infinite-` in `resourceconfigs/`: one hit, in the table for another mod). What places them, if
+anything, was not found. That is the same base only.
+
+### Vulcanus, Gleba, Fulgora and Aquilo
+
+| Planet | Space Age alone | `Grado_ABCS`, the planet's list | `rso-mod`'s table, as read |
+|---|---|---|---|
+| Vulcanus | `calcite`, `coal`, `tungsten-ore`, `sulfuric-acid-geyser` | the same four | the same four |
+| Gleba | `stone` | `stone` | `stone` |
+| Fulgora | `scrap` | `scrap` | none: no table for Fulgora, and `scrap` is skipped by name, so the map generator still places it |
+| Aquilo | `crude-oil`, `fluorine-vent`, `lithium-brine` | the same three | the same three |
+
+On all four the controls, the entity list, the tiles, the cliff and the territory units are the
+same in both dumps. Two things differ:
+
+- **The property expressions `rso-mod` zeroed**: eight on Vulcanus (probability and richness of
+  its four resources), two on Gleba (`stone`) and two on Aquilo (`crude-oil`). Fulgora has none.
+- **Gleba's decorative list** has 73 names where Space Age alone has 79. The six left out are
+  `green-bush-mini`, `green-carpet-grass`, `green-croton`, `green-hairy-grass`, `green-pita` and
+  `green-pita-mini`. All six prototypes are still in the dump, and Gleba's property expressions
+  still name them. Which member removes them from the list was not traced.
+
+What a resource gives changed in one: `crude-oil` gives `angels-liquid-multi-phase-oil`, on Aquilo
+as on Nauvis. The other seven give what they give in Space Age alone.
+
+### Does anything name something that does not exist?
+
+**In the prototypes, no.** Every entity, tile, decorative, autoplace control, cliff and territory
+unit named in the five planets' settings is in the pack's dump, and so is every name in a property
+expression. Every item or fluid a listed entity gives when mined is there too.
+
+**In `rso-mod`'s table, three**: `iron-ore`, `copper-ore` and `uranium-ore` on Nauvis, as above.
+It logs them and goes on.
+
+### Which planets can supply the overhaul's ores
+
+**Nauvis only, as the prototypes and the table read.** No Angel's or Clowns resource is in the
+list of Vulcanus, Gleba, Fulgora or Aquilo, and `rso-mod`'s tables for Vulcanus, Gleba and Aquilo
+hold Space Age's resources and nothing else.
+
+What the other planets do place are things the overhaul's recipes take, under names the two share
+or that both use:
+
+- **Vulcanus:** `tungsten-ore`, which is also the name of Bob's ore item; `coal`; and from its
+  rocks `stone`, `iron-ore`, `copper-ore` and `sulfur`. Its lichen trees give `carbon`, which is
+  hidden in the pack and which no recipe takes.
+- **Gleba:** `stone`, and `iron-ore` and `copper-ore` from the stromatolites.
+- **Fulgora:** `scrap`, and `stone` and `holmium-ore` from its rocks. Its ocean is `heavy-oil`,
+  which is hidden in the pack and which no recipe takes.
+- **Aquilo:** crude oil as `angels-liquid-multi-phase-oil`, the feed of Angel's oil refining.
+  `lithium-brine` is still placed, and no recipe that can be unlocked takes it.
+
+Whether those are enough to build on each planet is the next section's.
+
+### Not covered
+
+- **A generated map.** Nothing here was seen in the game. In particular, whether `rso-mod` places
+  `stone` and `tungsten-ore` on Nauvis is read from its source.
+- **Amounts.** Richness, patch size and frequency were not compared.
+- **Asteroids and space routes.** Each planet's asteroid list is the same in both dumps; the
+  routes between them were not read.
+- **Enemy bases**, which `rso-mod` also takes over unless `bobenemies` is loaded, as it is here.
 - **A 2.1 build of any of it.**
 
 ## Pressure on the one-mod-per-branch rule

@@ -107,7 +107,10 @@ the 565 of `Grado_ABC`'s base-only load:
   (2.0.77, the game's `data/` searched for each name), so it is reading the expansion's recipes.
 - `alien-biomes` disables one more tree, `water-cane`.
 - `rso-mod` no longer reports `Resource not available: stone` (twice in the base-only load). It
-  still reports `iron-ore`, `copper-ore` and `uranium-ore`.
+  still reports `iron-ore`, `copper-ore` and `uranium-ore`. *Read 2026-10-05 (#133): `stone` is a
+  resource here, Space Age's, so `rso-mod`'s Nauvis table would place it, and Space Age's
+  `tungsten-ore` beside it. From its source, not run. See* What each planet places *in
+  `docs/catalogue/Grado_ABCS.md`.*
 - `UltimateResearchQueue2`'s three timing lines differ. Nothing else changed.
 
 No member logged a complaint that names a Space Age prototype.

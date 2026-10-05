@@ -2532,7 +2532,7 @@ Stated plainly so the gaps are not mistaken for clean results.
   *Checked 2026-10-05 (#136), for the line the pack declares. The worry was Angel's on 2.1. On
   line 2.0 the pack resolves Angel's 2.0-line releases, `angelsrefining` `2.0.4`,
   `angelspetrochem` `2.0.3` and `angelssmelting` `2.0.5`, beside `angels-smelting-extended`
-  `2.0.01`, and there it holds:*
+  `2.0.01`. What the load and two dumps show there:*
   - *The recorded load is clean (#116), and the mod writes no line to the log.*
   - *Two data dumps on Factorio 2.0.77 through the shared harness's `Invoke-HarnessDump`: the
     staged `Grado_ABC` (prototype list checksum `2195323740`, the recorded load's) and the same
@@ -2548,8 +2548,9 @@ Stated plainly so the gaps are not mistaken for clean results.
     differs, `angels-liquid-molten-invar`, which is #80's finding. Two `EditorExtensions` chests
     differ in inventory size, which follows the number of items.*
 
-  *So beside the Angel's releases this pack loads, everything it adds is there and can be reached,
-  and it breaks nothing a dump can show. **On 2.1 it is still untested, and cannot be tested yet**: its newest
+  *So beside the Angel's releases this pack loads, what it adds is in the dump, and no existing
+  recipe's ingredients or results differ with it. The walk's "reaches" is an upper bound, as its
+  section says. This is a measurement and decides nothing about the mod. **On 2.1 it is still untested, and cannot be tested yet**: its newest
   release is `2.0.01` (2026-08-22, `factorio_version` 2.0; portal, read 2026-10-05), so a 2.1 game
   is not served it at all. Whether its casting recipes are worth having is play: #27.*
 - **The three drops were assessed by search, not by playing without them.** What

@@ -206,9 +206,10 @@ spelling. It agrees with `kry-picker-extended`, which gives `adjustment-pad-incr
 | `underground-pipe-pack` | `minus-valve` | `Numpad -` | `smaller-terrain-building-area` |
 
 They are the four the paragraph above had seen. It named three controls for the first; the full
-check finds 13. All four inputs have `consuming` at `none`, `cybersyn2-click` by default, under
-which the input's event comes before the game's own (API 2.0.77, `ConsumingType`). So both should
-act, which was not tried.
+check finds 13. All four inputs have `consuming` at `none`: three set it, and `cybersyn2-click`
+leaves it at the default. Under `none` the input's event comes before the game's own (API 2.0.77,
+`ConsumingType`). Read from that, both the input and the engine control would act. It was not
+tried.
 
 **The other 15 share with no engine control**: `bobinserters`' seven (`Ctrl+R`, `Ctrl+Shift+R`,
 `Shift+E`, `Shift+L`, `Shift+N`, `Shift+O`, `Shift+P`), `underground-pipe-pack`'s other two

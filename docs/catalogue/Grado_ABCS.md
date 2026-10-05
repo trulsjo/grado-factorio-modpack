@@ -842,7 +842,7 @@ from the source and not run**. It is the same mechanism base only, where it is `
 | | Space Age alone | `Grado_ABCS`, the planet's list | `rso-mod`'s table, as read |
 |---|---|---|---|
 | Resources | 6: `coal`, `copper-ore`, `iron-ore`, `stone`, `uranium-ore`, `crude-oil` | 39: `angels-ore1` to `6`, `angels-fissure`, `angels-natural-gas`, `clowns-ore1` to `9`, `clowns-resource1` and `2`, `coal`, `crude-oil`, and 18 `infinite-` twins: of the 15 ores, the two Clowns resources and `coal` | the Angel's and Clowns ores, `angels-fissure`, `angels-natural-gas`, `coal`, `crude-oil`, and **`stone` and `tungsten-ore`** |
-| Autoplace controls | 12 | 47: the four of `copper-ore`, `iron-ore`, `stone` and `uranium-ore` are gone and 39 are added | |
+| Autoplace controls | 12 | 47: the four of `copper-ore`, `iron-ore`, `stone` and `uranium-ore` are gone and 39 are added. Not the 39 resources: `coal` and `crude-oil` were there, and `cold` and `hot` are among the new | |
 | Other entities | `fish`, `big-rock`, `big-sand-rock`, `huge-rock` | `fish`, three Angel's fish, 31 rocks of `alien-biomes`, Angel's three gardens, three trees and the puffer nest | |
 
 The planet's settings are the same as in the base-only `Grado_ABC` dump (`2195323740`), key for
@@ -854,8 +854,10 @@ Three things in `rso-mod`'s Nauvis table, all read from the source:
 - **It still names `iron-ore`, `copper-ore` and `uranium-ore`**, which are not resources in the
   pack. Lines 583 to 585 of `mainconfig.lua` mean to remove the first two and `stone` when Angel's
   is loaded, but they clear `config["copper-ore"]` where the entries are under `config.nauvis`. The
-  mod checks each name against the game, logs `Resource not available` and skips it. That is the
-  line the load records carry, and it is the answer to their "why".
+  mod checks each name against the game, logs `Resource not available` and skips it. As the
+  source reads, that is where the line in the load records comes from, and it would answer their
+  "why". The names in the log are the ones the table keeps. It was not run with the lines
+  changed.
 - **`stone` is a resource in this pack and not in `Grado_ABC`**: Space Age's, kept for Gleba. So
   the entry that is skipped base only is valid here, and the table would place stone patches on
   Nauvis. It agrees with the recorded loads: `Resource not available: stone` is in `Grado_ABC`'s

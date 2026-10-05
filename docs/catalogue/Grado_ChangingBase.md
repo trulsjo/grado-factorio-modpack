@@ -1383,8 +1383,6 @@ author declines to claim it works there, and the waterfill recipe is unlocked by
 is precisely the part being hedged. It is the clearest case in the pack of a member whose stated
 compatibility stops short of the layer above it, and it is checkable the moment `Grado_ABC` is
 loaded. Until then it is the entry to bring to that first load.
-*Checked 2026-10-05 (#136), for the mod that replaced this one: see the note dated that day under
-`Waterfill_v17`. `safefill` itself is not in the pack and was not loaded.*
 
 **Ruled 2026-09-22 (#8): replaced by `Waterfill_v17`** — and the swap answers a different question
 from the one this entry asked. What decided it was reachability, not overhaul compatibility: this
@@ -1397,8 +1395,13 @@ nothing. Under #8's third rule, unreachability breaks a tie in an entry already 
 the mod. `Waterfill_v17` is also technology-unlocked; its author simply makes no claim about
 overhauls either way, which is less evidence than `anachrony`'s explicit boundary, not better
 evidence. This remains the entry to bring to the first load of `Grado_ABC`, under its successor's
-name. *Brought 2026-10-05 (#136): see the note dated that day under `Waterfill_v17`.* The unverified feature delta — six water types, blueprintability, the survival guarantee — is
+name. The unverified feature delta — six water types, blueprintability, the survival guarantee — is
 recorded under `Waterfill_v17` in *In the pack*.
+
+*Checked 2026-10-05 (#136), for the mod that replaced this one: see the note dated that day under
+`Waterfill_v17`. Its recipe, technology and item are unchanged beside the overhaul, as the
+prototypes read. Placing the tile in a game and the feature delta are both still open. `safefill`
+itself is not in the pack and was not loaded.*
 
 ## Candidates, not members
 

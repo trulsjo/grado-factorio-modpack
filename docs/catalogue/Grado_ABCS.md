@@ -16,8 +16,9 @@ re-read on 2026-09-23 (#10), which carries its own date, *Candidates, not member
 the entries for `angels_space_age_galore` and `industrial-worlds` and the notes dated 2026-10-01
 (#91), which #91 took, and the notes dated 2026-10-04 (#118), which #118 took from the pack's
 recorded load, and the section dated 2026-10-04 (#128), which #128 took from data dumps, and the
-sections dated 2026-10-05 (#132) and (#133), which those two took from data dumps, #133 from
-`rso-mod`'s staged source as well.
+sections dated 2026-10-05 (#132), (#133) and (#134), which those three took from data dumps,
+#133 from `rso-mod`'s staged source as well and #134 from the staged source of the Bob's and
+Angel's members.
 
 The dependency list holds 3 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, catalogued in
 `docs/catalogue/Grado_ABC.md` — and `space-age`. **The pack is new**, so nothing was carried over,
@@ -554,6 +555,100 @@ No recipe, technology or item of the Space Age dump is missing from `Grado_ABCS`
 | fluid (1) | `ammonia` |
 | particle (1) | `tungsten-ore-particle` |
 
+### Which member defines each shared name (2026-10-05, #134)
+
+#128 recorded which form the dump holds and not which mod made it. This is the member behind each
+of the 29, read on 2026-10-05 from the staged source and checked against the same three dumps
+(Space Age alone `3295867752`, base-only `Grado_ABC` `2195323740`, `Grado_ABCS` `2316474952`,
+Factorio 2.0.77). Releases: `boblogistics` `2.1.1`, `bobequipment` `2.1.0`, `bobplates` `2.1.1`,
+`bobores` `2.1.2`, `bobrevamp` `2.1.1`, `bobassembly` `2.1.0`, `boblibrary` `2.1.0`,
+`reskins-bobs` `2.3.8`, `angelspetrochem` `2.0.3`, `angelssmelting` `2.0.5`. Nothing was patched,
+and no staged mod was changed.
+
+**Every one of the 29 is a name Bob's mods use or one made from it, and for 23 of them the source
+or a changelog shows Bob's sharing it with Space Age on purpose.** Bob's `2.1.0` releases of
+2026-06-01 say so in their changelogs, quoted below. The other six are the particle, which
+follows Bob's tungsten ore and whose line was not traced, the two recipe categories, where
+nothing speaks to it, and the three remnants, which a reskin makes.
+
+"Holds" says which definition the `Grado_ABCS` dump has: **the overhaul's** when the prototype
+is the same as in the base-only dump, field for field, **Space Age's** when it is the same as in
+Space Age alone, and **mixed** when it is neither, with what differs. "Stage" is the member's own
+stage: `data` is `data.lua`.
+
+| Name | Member, file and stage | Holds | Deliberate? |
+|---|---|---|---|
+| items `turbo-transport-belt`, `turbo-underground-belt`, `turbo-splitter` | `boblogistics`, `prototypes/item/belt.lua` from line 71, `data`. Defined without a check, so it replaces Space Age's | the overhaul's | yes, by the rename below |
+| entities of the same three names | `boblogistics`, `prototypes/entity/belt.lua` from line 291, `data` | mixed: Bob's entity, with a heating energy and Space Age's frozen graphics that `boblogistics` adds itself | yes: lines 760 to 781, under `feature_flags["freezing"]` and `if mods["space-age"]` |
+| recipes of the same three names | `boblogistics`, `prototypes/recipe/belt-recipe.lua`, `data` | mixed: Bob's recipe in the category `pressing`. Which line sets the category was not traced | yes, by the rename below |
+| corpses `turbo-transport-belt-remnants`, `turbo-underground-belt-remnants`, `turbo-splitter-remnants` | `reskins-bobs`, `prototypes/entity/logistics/belt-entities.lua`, `data`, through `reskins-library`, which copies a base remnant and names it `<entity>-remnants` | the overhaul's | no check for Space Age. Line 12 picks the name `turbo` by `boblibrary`'s version, so it follows Bob's rename |
+| item, recipe, equipment and technology `battery-mk3-equipment` | `bobequipment`, `prototypes/item/equipment.lua` 128, `recipe/equipment.lua` 70, `equipment/equipment.lua` 214 and `technology/equipment.lua` 148, `data`. No check | the overhaul's, all four | yes, by its changelog |
+| item `carbon` | `bobplates`, `prototypes/item/resource.lua` 4, `data`. No check; lines 247 to 250 give it Space Age's icon `if mods["space-age"]` | the overhaul's: hidden, because Angel's replaces it | yes |
+| recipe `carbon` | `bobplates`, `prototypes/recipe/resource-recipe.lua`, `data`. Lines 1 to 12, `if mods["space-age"]`: Space Age's recipe is renamed `bob-carbon-from-acid`. Line 14 on: Bob's own `carbon` | mixed: Bob's recipe, differing from base only in `allow_productivity` | yes |
+| item `tungsten-ore` | `bobores`, `prototypes/tungsten-ore.lua`, made by `boblibrary`'s ore function from `data.lua` line 71 | mixed: Angel's icon, name and subgroup on Space Age's item | yes: see under the table |
+| particle `tungsten-ore-particle` | base only, `boblibrary`'s `create_particle` (`ore-functions.lua` 413) | **Space Age's** | not traced: which line skips Bob's particle |
+| item `tungsten-plate` | `bobplates`, `prototypes/item/plates.lua` 168: `if not data.raw.item["tungsten-plate"]`, so Space Age's is kept | mixed: Space Age's item with the overhaul's icon, name, order and subgroup | yes, by the check |
+| recipe `tungsten-plate` | `bobplates`, `prototypes/recipe/plates-recipe.lua`, `data`. Line 189, `if not mods["space-age"]`: its own. Otherwise line 225: Space Age's recipe, with `bob-powdered-tungsten` for `tungsten-ore` | mixed: Space Age's recipe with that ingredient, and hidden | yes |
+| item `tungsten-carbide` | `bobplates`, `prototypes/item/alloys.lua` 105: the same check; lines 121 to 125 move Space Age's item to Bob's subgroup | mixed, as `tungsten-plate` | yes |
+| recipe `tungsten-carbide` | `bobplates`, `prototypes/recipe/alloy-recipe.lua`, `data`. Line 124, `if not mods["space-age"]`: its own. Otherwise line 145: Space Age's, with the same ingredient swap | mixed: rewritten by Angel's, and hidden | yes |
+| item `lithium-plate` | `bobplates`, `prototypes/item/plates.lua` 149: the same check | mixed: Space Age's item with the overhaul's icon, order and subgroup | yes |
+| recipe `lithium-plate` | `bobplates`, `prototypes/recipe/plates-recipe.lua` 189 to 223: its own only `if not mods["space-age"]` | mixed: Space Age's recipe in Angel's category | yes |
+| fluid `ammonia` | `bobrevamp`, `prototypes/rocket-fuel.lua` 1 to 12, `data`, when Bob's hydrogen, oxygen and nitrogen exist. No check | the overhaul's: hidden, because Angel's replaces it | yes, by its changelog |
+| recipe categories `electronics`, `electronics-with-fluid` | `bobassembly`, `prototypes/assembly-electronics.lua` 30 to 39, `data`, behind its setting `bobmods-assembly-electronicmachines` | both: a category is only a name, so the two definitions are the same | **not shown**: no check and no changelog line |
+
+The `tungsten-ore` row in full: `bobores` keeps the name, gives the resource no autoplace of its
+own when Space Age is loaded (`prototypes/tungsten-ore.lua` line 32, `if not mods["space-age"]`),
+and puts Space Age's ore items in its subgroup (`data-updates.lua` lines 143 to 147).
+
+The changelog lines, each from the release of 2026-06-01:
+
+- `boblogistics` `2.1.0`: "Improved Turbo belt Space Age compatibility. Renamed Bob's Turbo
+  belt/splitter/underground, removing the "bob-" prefix #569".
+- `bobequipment` `2.1.0`: "Prevented duplicate Personal battery MK3 with Space Age mod #572".
+- `bobplates` `2.1.0`: "Combined Bob's Carbon and Space Age's Carbon #570", "Combined Bob's
+  Lithium and Space Age's Lithium" and "Combined Bob's Tungsten and Space Age's Tungsten", the
+  last under "Tungsten fixes (Space Age) #579", with "Updated Tungsten carbide and Tungsten plate
+  recipes to use Powdered tungsten instead of Tungsten ore".
+- `bobores` `2.1.0`: "Combined Bob's Tungsten and Space Age's Tungsten #579".
+- `bobrevamp` `2.1.0`: "Combined Bob's Ammonia and Space Age's Ammonia #573".
+
+**Why the dump holds what it does.** Three mechanisms, and none is load order alone:
+
+- **Bob's writes over Space Age on purpose**, in its `data` stage. That is the turbo belts,
+  `battery-mk3-equipment`, the `carbon` item and `ammonia`. `boblogistics`, `bobequipment` and
+  `bobplates` declare `space-age` as an optional dependency, which loads them after it.
+  `bobrevamp` and `bobores` do not name it in their `info.json`, and the dump has `bobrevamp`'s
+  `ammonia` all the same.
+- **Bob's steps aside on purpose** and edits Space Age's prototype in place. That is the tungsten
+  and lithium items and recipes. `boblogistics` also folds Space Age's technology
+  `turbo-transport-belt` into `logistics-4` and hides it (`data-final-fixes.lua` lines 49 to 62),
+  which is why #128 found it hidden and unlocking nothing.
+- **Angel's then treats the shared name as Bob's, with no check for Space Age.** It does base
+  only what it does here, and Space Age's recipes are caught by it because they use the names:
+  - `angelspetrochem` replaces the item `carbon` with `angels-solid-carbon` everywhere
+    (`prototypes/override/bobplates.lua` line 279) and hides the recipe `carbon`
+    (`prototypes/global-override/bobplates.lua`, the list from line 162). That is why eight of
+    Space Age's recipes take or give `angels-solid-carbon`.
+  - `angelspetrochem` hides the recipe `ammonia` and converts the fluid to `angels-gas-ammonia`
+    (`prototypes/global-override/bobrevamp.lua` lines 27 and 28). That is the seven recipes #128
+    lists under `ammonia`.
+  - `angelssmelting` disables the recipe `tungsten-plate` and makes the item from its own chain
+    (`prototypes/override/smelting-override-tungsten.lua` lines 64 to 67), and moves
+    `tungsten-carbide` to `angels-sintering-4` and `angels-tungsten-smelting-1` (lines 117 to
+    129). Both recipes are hidden in the base-only dump too.
+  - `angelspetrochem` moves the recipe `lithium-plate` to `angels-petrochem-electrolyser`
+    (`prototypes/global-override/bobplates.lua` lines 228 to 231), and `angelssmelting` gives it
+    a subgroup (`prototypes/override/smelting-override-lithium.lua` line 13).
+
+One change #128 listed comes from the second mechanism and is not Angel's: Space Age's `lithium`
+recipe loses `lithium-brine` and gains 5 `bob-lithium-chloride` in `bobplates`
+(`prototypes/recipe/plates-recipe.lua` lines 227 and 228). The dump has `angels-solid-lithium` in
+that place. Which line turns one into the other was not traced.
+
+Not traced, beside the three named above: the stage in which each Angel's override is applied,
+beyond that they are queued in its `data-updates.lua` and `data-final-fixes.lua`; and the Bob's
+and Angel's releases on the 2.1 line.
+
 ### A Space Age recipe the overhaul changed: 36
 
 - **The eight shared names.** `battery-mk3-equipment` has the overhaul's recipe (2
@@ -705,7 +800,8 @@ rewrite, 4:** `raw-fish`, `cliff-explosives`, `stone-brick` and `landfill`.
   What each planet places. *The overhaul's ores are on Nauvis only, the other four planets list
   what they list in Space Age alone, and `rso-mod` takes over placing all of it but `scrap`.*
 - **Which mod made each change.** The dumps show the result. Where a mod is named above, its
-  prototype names say so.
+  prototype names say so. *Traced 2026-10-05 (#134) for the 29 shared names: see* Which member
+  defines each shared name. *The other changes are still untraced.*
 - **A 2.1 build of any of it.**
 
 ## What each planet places (2026-10-05, #133)

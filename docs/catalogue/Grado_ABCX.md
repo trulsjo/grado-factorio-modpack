@@ -250,11 +250,14 @@ technologies, which come out at the numbers the fork has without Bob's.
 
 - **`drydock-assembly`.** In the fork it is an item and a recipe, the dry dock part the launch
   asks for, and never a technology. Its recipe is unlocked by the technology `space-construction`.
-  Line 158 meant to put Bob's `bob-advanced-processing-unit` research in front of it and named the
-  recipe where a technology was needed. In the dump the recipe does take 200
-  `bob-advanced-processing-unit`, and that technology is already an ancestor of
-  `space-construction` through its other prerequisites.
-- **`bob-battery-equipment-6`.** The fork expects a sixth tier of Bob's personal battery.
+  Line 158 calls `add_prerequisite("drydock-assembly", "bob-advanced-processing-unit")`, and the
+  technology that does not exist is the first name, `drydock-assembly`. The second,
+  `bob-advanced-processing-unit`, exists as a technology and as an item. Read as an inference: the
+  line names the recipe where the technology that unlocks it was needed. In the dump the recipe
+  does take 200 of the item `bob-advanced-processing-unit`, and the technology
+  `bob-advanced-processing-unit` is already an ancestor of `space-construction` through its other
+  prerequisites.
+- **`bob-battery-equipment-6`.** The name is a sixth tier of Bob's personal battery.
   `bobequipment` `2.1.0` stops at five: the technologies are `bob-battery-equipment-4` and `-5`,
   and the items `bob-battery-mk4-equipment` and `bob-battery-mk5-equipment`. Its energy shields
   and laser defences do reach tier 6, which is why the neighbouring lines apply. So

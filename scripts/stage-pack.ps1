@@ -82,7 +82,11 @@
     pack-mods.ps1's header). It reads `"Factorio_Version"` as no key at all: a mod `probe-line`
     with that key alone, and a mod with no such key, are both refused "Incompatible Factorio
     version (current: 2.0, required: 0.12)" (Factorio 2.0.77, through load-harness.ps1,
-    2026-10-04). Two keys that differ only in case, `"Name"` beside `name`, are refused here too,
+    2026-10-04). The run is kept nowhere but here. To repeat it: a directory `probe-line` holding
+    only an info.json with name `probe-line`, version `1.0.0`, title, author, `"dependencies":
+    ["base"]` and `"Factorio_Version": "2.0"`, loaded with `load-harness.ps1 -Mods <its parent>`.
+    A key that is there with an empty value is refused too, as an empty factorio_version; what
+    the game does with one was not measured. Two keys that differ only in case, `"Name"` beside `name`, are refused here too,
     naming the info.json: this script reads the file into an object that cannot hold both. The
     packer packs such a file and the game reads the lower-case key, as its header says; no pack
     has one.
@@ -162,8 +166,10 @@ function Get-RequiredName {
 }
 
 function Read-PackInfo {
-    <#  A pack's info.json, refused with a reason if it is missing, not strict JSON, or names
-        another pack than its directory.  #>
+    <#  A pack's info.json, refused with a reason if it is missing, not strict JSON, not a JSON
+        object, without a `name`, `version` or `factorio_version` key in exact case, holding two
+        keys that differ only in case, named for another pack than its directory, without an
+        x.y.z version, or with an empty factorio_version.  #>
     param([Parameter(Mandatory)] [string] $Root, [Parameter(Mandatory)] [string] $Name)
 
     $path = Join-Path $Root "$Name/info.json"
@@ -284,6 +290,7 @@ function Invoke-SelfTest {
     & $write 'VersionKey' '{"name":"VersionKey","Version":"0.1.0","factorio_version":"2.0"}'
     & $write 'LineKey' '{"name":"LineKey","version":"0.1.0","Factorio_Version":"2.0"}'
     & $write 'Listed' '[{"name":"Listed","version":"0.1.0","factorio_version":"2.0"}]'
+    & $write 'Blank' '{"name":"Blank","version":"0.1.0","factorio_version":""}'
     & $write 'Paired' '{"Name":"Other","name":"Paired","version":"0.1.0","factorio_version":"2.0"}'
     # The shared packer zips git's tracked set, so the fixture packs are tracked, and one file
     # beside them is not.
@@ -336,6 +343,8 @@ function Invoke-SelfTest {
             & $refuses 'LineKey' 'LineKey.info\.json has no "factorio_version" key.*keys match case exactly' } }
         @{ Name = 'an info.json that is JSON but not an object is refused by name'; Test = {
             & $refuses 'Listed' 'Listed.info\.json is not a JSON object' } }
+        @{ Name = 'an info.json whose factorio_version is there and empty is refused as empty, not as missing'; Test = {
+            & $refuses 'Blank' 'Blank.info\.json has an empty factorio_version' } }
         @{ Name = 'an info.json holding "Name" beside name is refused by name, not with a bare PowerShell error'; Test = {
             & $refuses 'Paired' 'Paired.info\.json cannot be read here' } }
         @{ Name = 'a member''s versioned zips and directories go before a fetch; its fetched directory and neighbours stay'; Test = {

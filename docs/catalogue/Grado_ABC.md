@@ -16,7 +16,8 @@ with this sentence. *Candidates, not members* was read on 2026-09-30 (#50). The 
 2026-10-01 (#39), (#44), (#80), (#44, #83), (#91) and (#93) were taken by #39, #44, #80, #83, #91
 and #93. The notes dated 2026-10-04 (#81) are #81's; the runs they cite are dated where they are
 cited. The notes dated 2026-10-04 (#116) are #116's, from the pack's recorded load, and those dated
-2026-10-04 (#119) are #119's. Searches described below as over "the 2.x list" first ran over
+2026-10-04 (#119) are #119's. The section dated 2026-10-04 (#123) is #123's, from a data dump and
+the staged source. Searches described below as over "the 2.x list" first ran over
 the `version=2.0` listing only, which misses mods released for 2.1 alone (#44). **Every search so
 described has since been re-run over the union of both listings** and carries a *Checked
 2026-10-01* note: four by #44, against a union of 10,845, and the rest by #83, against the listings as read later that day - 9,794
@@ -278,8 +279,9 @@ staged `Grado_ABC` on Factorio 2.0.77 (`Invoke-HarnessDump`, prototype list chec
 
 Of `boblibrary`'s two error lines only one is true. `Result.type not a valid result item type` is.
 `Result.amount variable not a number` is not: the amount is `1`, and `error-functions.lua` lines
-133 and 134 log that message when the amount *is* a number. The pair is logged twice because two
-functions on the call path each report the same entry.
+133 and 134 log that message when the amount *is* a number. The pair is logged twice. Read from
+the source, not traced: both `result_simple` and `result` in `item-functions.lua` report a failed
+entry, and both are in the log's two stack traces.
 
 The cleanup runs in `boblibrary`'s `data-final-fixes.lua`, behind the setting
 `bobmods-library-recipe-cleanup`, on by default. It keeps the first copy of a duplicate, drops the

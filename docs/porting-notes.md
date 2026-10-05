@@ -422,8 +422,10 @@ which is what the portal serves - and for all 104, the newest 2.0 release alread
 `space-age`
 is not a portal mod, and its 2.0.77 build asks only `base >= 2.0.0` (#10). *"Nothing has been loaded
 in game" was true of this check on 2026-09-24. Since 2026-10-04 (#115 to #118) all five packs have
-a recorded load on 2.0.77, each from a closure the same resolver picked, so the resolve has been
-borne out in the game once per pack. The records are in `docs/loads/`.*
+a recorded load on 2.0.77. Each loaded a closure the same resolver picked on the day of the load,
+not the 104 mods read here: the nukes mods left on 2026-10-04 (#81), and `Grado_ABC`'s resolve
+that day was 100 mods. So what the game has borne out is the resolver, once per pack, and not this
+reading. The records are in `docs/loads/`.*
 
 **Not served at 2.1: seventeen, kept as a watch list for when 2.1 goes stable.** Their newest
 release declares `factorio_version` 2.0, and `?version=2.1&namelist=` returns none of them

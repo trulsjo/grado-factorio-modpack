@@ -90,6 +90,15 @@ because the survivor then reads as deliberate.
 house style keeps the old reading with a note — a date, an issue number, or both — rather than
 erasing it, which is the same instinct as `CLAUDE.md`'s "record what was dropped and why".
 
+**A dated note goes after the older text it speaks to.** Last in its paragraph, and after the
+older dated paragraphs of its entry. A note set before older text, or in the middle of a
+paragraph, reads as if that text were written knowing it. Found in PR #121, PR #129 and PR #138.
+
+**A conclusion read from source says so wherever it is repeated.** A section may open with "read
+from the source and not run". Every later sentence that restates the conclusion, in that section
+or in a note elsewhere, carries the same qualifier, and a cause is given as what the source shows.
+Found four times in PR #138.
+
 **A portal reading is a measurement.** Every version, date, download count and `factorio_version` in
 prose here came from an API call on a particular day and goes stale silently. Treat an undated one as
 a finding.

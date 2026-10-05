@@ -175,6 +175,67 @@ deconstruction; `cybersyn2-click` to left click, which is eight engine controls;
 `Numpad` keys above are the engine's larger and smaller terrain building area, which
 `kry-picker-extended`'s two inputs are also linked to.
 
+#### Against the engine's own controls (2026-10-05, #135)
+
+The full check the paragraph above did not make, the way #96 made it for `Grado_NonChanging`
+(`docs/catalogue/Grado_NonChanging.md`, *Keys against base 2.0.77's own controls*). **A shared
+default is not a clash**, and nothing was pressed. Which input acts is #26's.
+
+**The engine's controls** were read from the `[controls]` section of
+`%APPDATA%\Factorio\config\config.ini`, the file the 2.0.77 game wrote on 2026-09-30 and #96
+read. It holds **192 engine controls** for keyboard and mouse: every control in the section that
+is not a `custom-input` in the dump. 163 have a default in the primary slot and 9 in the
+alternative. None was rebound, so every default was read from its comment line. Gamepad bindings
+were not compared. **The 33 inputs** are from a dump of the staged pack made again today, with the
+checksum of #127's, `1028326153`.
+
+**Keys were matched exactly** after putting the modifiers in one order, reading `COMMAND` as
+`CONTROL` and ignoring case, in both slots. One spelling had to be bridged: the prototypes write
+the numpad keys as `PAD +` and `PAD -`, and the game's file writes `KP_PLUS` and `KP_MINUS`. They
+were taken as the same keys. That is not measured: the file has no line written from a `PAD`
+spelling. It agrees with `kry-picker-extended`, which gives `adjustment-pad-increase` the key
+`PAD +` and links it to the control whose default the file writes as `KP_PLUS`.
+
+**Four of the 19 inputs with a default key share it with an engine control:**
+
+| Member | Input | Default | Engine controls with the same default |
+|---|---|---|---|
+| `AdditionalPasteSettings` | `additional-paste-settings-hotkey` | `Shift+left click` | 13: `build-ghost`, `paste-entity-settings`, `select-for-cancel-deconstruct`, `remove-pole-cables`, `add-station`, `fast-wait-condition`, `place-in-chat`, `craft-all`, `cancel-craft-all`, `stack-transfer`, `paste-inventory-filter`, `editor-set-clone-brush-destination`, and `move-tag` in its alternative slot |
+| `cybersyn2` | `cybersyn2-click` | `left click` | 8: `open-gui`, `build`, `select-for-blueprint`, `drag-map`, `move-tag`, `craft`, `cancel-craft`, `pick-item` |
+| `underground-pipe-pack` | `plus-valve` | `Numpad +` | `larger-terrain-building-area` |
+| `underground-pipe-pack` | `minus-valve` | `Numpad -` | `smaller-terrain-building-area` |
+
+They are the four the paragraph above had seen. It named three controls for the first; the full
+check finds 13. All four inputs have `consuming` at `none`, `cybersyn2-click` by default, under
+which the input's event comes before the game's own (API 2.0.77, `ConsumingType`). So both should
+act, which was not tried.
+
+**The other 15 share with no engine control**: `bobinserters`' seven (`Ctrl+R`, `Ctrl+Shift+R`,
+`Shift+E`, `Shift+L`, `Shift+N`, `Shift+O`, `Shift+P`), `underground-pipe-pack`'s other two
+(`Ctrl+R`, `Ctrl+Shift+R`), `ModuleInserterEx`'s four (`Shift+Alt+E`, `Ctrl+I`,
+`Shift+Alt+mouse wheel up` and `down`), `EditorExtensions`' `Ctrl+Alt+E` and
+`AdditionalPasteSettings`' `Shift+Alt+left click`.
+
+**Eleven are linked to an engine control by design**, apart from the four above. A linked input
+has no key of its own and fires on whatever key its control has. Each control named is one of the
+192:
+
+| Member | Input | Linked to | That control's default |
+|---|---|---|---|
+| `0-things` (hidden) | `things-linked-rotate` | `rotate` | `R` |
+| `0-things` (hidden) | `things-linked-reverse-rotate` | `reverse-rotate` | `Shift+R` |
+| `0-things` (hidden) | `things-linked-flip-horizontal` | `flip-horizontal` | `H` |
+| `0-things` (hidden) | `things-linked-flip-vertical` | `flip-vertical` | `V` |
+| `EditorExtensions` | `ee-linked-open-gui` | `open-gui` | `left click` |
+| `EditorExtensions` | `ee-linked-copy-entity-settings` | `copy-entity-settings` | `Shift+right click` |
+| `EditorExtensions` | `ee-linked-paste-entity-settings` | `paste-entity-settings` | `Shift+left click` |
+| `EditorExtensions` | `ee-linked-clear-cursor` | `clear-cursor` | `Q` |
+| `cybersyn2` | `cybersyn2-linked-clear-cursor` | `clear-cursor` | `Q` |
+| `UltimateResearchQueue2` | `urq-focus-search` | `focus-search` | `Ctrl+F` |
+| `UltimateResearchQueue2` | `urq-toggle-gui` | `open-technology-gui` | `T` |
+
+`WideChests`' three inputs have no key and no link, so there is nothing to compare.
+
 ## Not checked
 
 - **Play.** No play session. #26.
@@ -185,5 +246,8 @@ deconstruction; `cybersyn2-click` to left click, which is eight engine controls;
 - **Key bindings** of this pack's own 20 members. *Dumped 2026-10-04 (#127), under* Key bindings.
   *What is still not checked is which input acts when a shared key is pressed, and the members'
   keys against the engine's own controls.*
+  *Checked 2026-10-05 (#135), under* Against the engine's own controls: *four of the 19 keyed
+  inputs share a default with an engine control, and eleven are linked to one by design. Which
+  input acts is still not checked.*
 - **Multiplayer**, **the 2.1 line**, and **mod settings other than the defaults**, as in the first
   record.

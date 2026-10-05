@@ -11,7 +11,8 @@ entries it added and the readings inside its rulings — and the notes marked *S
 by #15*, which #15 took, and the notes dated 2026-09-24 (#43) and (#58), which those two took, and the notes dated
 2026-10-01 (#44, #83) and (#83), which #83 took, and the notes dated 2026-10-04 (#115), which #115
 took from the pack's recorded load, and the section dated 2026-10-04 (#122) under `Nanobots2`,
-which #122 took from data dumps, the staged source and a portal reading of that day.
+which #122 took from data dumps, the staged source and a portal reading of that day. The notes
+dated 2026-10-05 (#136) are #136's, from data dumps.
 *Candidates, not members* was read on 2026-10-01 (#46, #84). Searches described below as over "the
 2.x list" first ran over the `version=2.0` listing only, which misses mods released for 2.1 alone
 (#44), and the two over "the 2.1 list" miss mods released for 2.0 alone. **Every search so
@@ -340,6 +341,28 @@ And **feature parity is unverified**: `safefill` advertised six water types, blu
 guarantee that structures, vehicles, resources, cliffs, trees and the player all survive placement.
 This mod's page documents an item-collision setting and a change to how placement over trees works,
 which is adjacent but not the same claim. The delta is a portal reading, not a test.
+
+*Checked 2026-10-05 (#136), on "checkable the moment `Grado_ABC` is loaded": **the feature is
+intact beside the overhaul, as the prototypes read.** From data dumps on Factorio 2.0.77 made
+through the shared harness's `Invoke-HarnessDump`, with `Waterfill_v17` `2.0.5`: the staged
+`Grado_ChangingBase` (prototype list checksum `1028326153`), the staged `Grado_ABC` (`2195323740`)
+and the staged `Grado_ABCS` with Space Age (`2316474952`), the recorded loads' three.*
+
+- *Base only, the recipe `waterfill` (200 `water` for one), the technology `waterfill` (after
+  `landfill`, 50 units of automation and logistic science) and the item, which places the tile
+  `water`, are the same in `Grado_ABC` as in `Grado_ChangingBase`, field for field. The
+  technology `landfill` is the same too. So the overhaul changes nothing about it, and nothing it
+  needs is hidden or removed. A walk of the recipe graph (`docs/catalogue/Grado_ABCS.md`,* How
+  the walk was made*) reaches the technology and the recipe in both.*
+- *With Space Age the mod takes a branch of its own (`data.lua` lines 11 to 18), which also
+  checks for `alien-biomes`. In `Grado_ABCS` the recipe has a surface condition, pressure 1000 to
+  2000, which is Nauvis and Gleba, and the item may be placed on a list of 214 tiles. 156 of the
+  160 tiles Nauvis places in the pack are on it, 29 of Gleba's 41, and none of Vulcanus's,
+  Fulgora's or Aquilo's. The mod's setting `waterfill-02`, off by default, skips that branch.*
+
+*That is prototypes. Whether the tile goes down in a game, and what happens to what stands on it,
+needs play: #27 for the overhaul and #29 with Space Age. The feature parity with `safefill` is
+still unverified.*
 
 ### `WideChests`
 
@@ -1359,6 +1382,8 @@ author declines to claim it works there, and the waterfill recipe is unlocked by
 is precisely the part being hedged. It is the clearest case in the pack of a member whose stated
 compatibility stops short of the layer above it, and it is checkable the moment `Grado_ABC` is
 loaded. Until then it is the entry to bring to that first load.
+*Checked 2026-10-05 (#136), for the mod that replaced this one: see the note dated that day under
+`Waterfill_v17`. `safefill` itself is not in the pack and was not loaded.*
 
 **Ruled 2026-09-22 (#8): replaced by `Waterfill_v17`** — and the swap answers a different question
 from the one this entry asked. What decided it was reachability, not overhaul compatibility: this
@@ -2003,6 +2028,51 @@ of chest types they iterate is set by whatever is layered above — `Grado_ABC` 
 Angel's chests and carries `WideChestsBobs`, a fifth mod in the same family, on top. This is the
 member whose cost is smallest in `Grado_ChangingBase` alone and largest in `Grado_ABCS`, which is
 the opposite of every other entry above, and it is measurable the first time a pack is loaded.
+
+*Measured 2026-10-05 (#136), on "measurable the first time a pack is loaded". Data dumps on
+Factorio 2.0.77 through the shared harness's `Invoke-HarnessDump`, of the staged
+`Grado_ChangingBase`, base only, and the staged `Grado_ABCS` with `space-age`, `quality` and
+`elevated-rails`, each with `WideChestsAllTypes` `2.0.0` and `WideChestsUnlimited` `2.0.0`
+enabled and then with both disabled. `WideChests` `6.2.4`, `WideChestsLogistic` `3.1.1` and
+`WideChestsBobs` `2.0.0` stayed on, and every other member was at the release of the recorded
+loads. The pack mods were disabled in all four, since `Grado_ChangingBase` requires the two; they
+carry no Lua, and the dumps with the two enabled have the recorded loads' checksums.*
+
+| | `Grado_ChangingBase` | `Grado_ABCS` |
+|---|---|---|
+| Prototypes, the two enabled | 7,676 (`1028326153`) | 26,224 (`2316474952`) |
+| Prototypes, the two disabled | 6,983 (`3996344298`) | 24,343 (`654482574`) |
+| **Added by the two** | **693** | **1,881** |
+| of which `container` | 198 | 396 |
+| of which `logistic-container` | 495 | 1,485 |
+| Chest types merged because of them | 7 | 19 |
+| Size of the dump | 53.2 MB against 37.8 MB | 164.4 MB against 122.2 MB |
+| Data stage, the two enabled | 4.9 s at best, 5.2 s median | 22.3 s at best, 24.0 s median |
+| Data stage, the two disabled | 3.5 s at best, 4.1 s median | 17.7 s at best, 21.3 s median |
+
+*What the table says:*
+
+- ***The count is exact and it scales with the overhaul, as the sentence expected.** Every added
+  prototype is a merged chest, 99 shapes of each chest type: wooden and iron chests and the five
+  logistic chests in `Grado_ChangingBase`, and in `Grado_ABCS` Bob's brass and titanium chests
+  and its ten logistic chests as well. 7 times 99 is 693 and 19 times 99 is 1,881. No other
+  prototype type changes. With the two disabled `WideChests` still merges the steel chest, in the
+  same 99 shapes. That is 9% of the lower pack's prototypes and 7% of the upper pack's:
+  2.7 times as many chests, in a pack 3.4 times the size.*
+- ***The time is real and small, and it is noisy.** "Data stage" is the game's clock at the line
+  `Prototype list checksum`. Five runs of each, alternating, on one machine (i7-9850H). At best
+  and at the median the two members cost between one and two seconds in `Grado_ChangingBase` and
+  between two and a half and five in `Grado_ABCS`. But one run in five took 50 to 64 seconds whatever was
+  enabled: a slow run with them enabled and one without, in `Grado_ABCS`. So the difference is
+  inside what this machine does from run to run, and the numbers are context, not a benchmark.*
+- ***The time is not spent in the family's own Lua.** The log gives 0.03 seconds at the median to
+  the stages of `WideChests`, `WideChestsLogistic` and `WideChestsBobs` together, 0.17 at most.
+  The rest is other members and the game working through more prototypes. Which was not
+  attributed.*
+
+*Not measured: memory, which both mods' descriptions name; the two members apart from each other;
+loading sprites, which a headless dump does not do; and anything in play. A merged chest in a
+game is #26's.*
 
 `reverse-factory` deserves a line for not being on the list. Un-crafting every item in the game is
 the most invasive thing in the pack on paper, and it is the member with the best overhaul story:

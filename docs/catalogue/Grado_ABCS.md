@@ -16,8 +16,8 @@ re-read on 2026-09-23 (#10), which carries its own date, *Candidates, not member
 the entries for `angels_space_age_galore` and `industrial-worlds` and the notes dated 2026-10-01
 (#91), which #91 took, and the notes dated 2026-10-04 (#118), which #118 took from the pack's
 recorded load, and the section dated 2026-10-04 (#128), which #128 took from data dumps, and the
-section dated 2026-10-05 (#133), which #133 took from data dumps and from `rso-mod`'s staged
-source.
+sections dated 2026-10-05 (#132) and (#133), which those two took from data dumps, #133 from
+`rso-mod`'s staged source as well.
 
 The dependency list holds 3 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, catalogued in
 `docs/catalogue/Grado_ABC.md` — and `space-age`. **The pack is new**, so nothing was carried over,
@@ -614,7 +614,8 @@ The five whose Space Age change is gone though the overhaul alone leaves them as
 **`space-science-pack`'s recipe changed in one ingredient:** `angels-solid-carbon` for `carbon`.
 Its technology is the same.
 
-One step up from the packs, read from the dump and not played:
+One step up from the packs, read from the dump and not played. *Walked all the way down
+2026-10-05 (#132): see* Whether each Space Age science pack can be made.
 
 - `metallurgic-science-pack` takes `tungsten-carbide` and `tungsten-plate`. Space Age's recipes
   for both are hidden. Angel's makes them: `angels-plate-tungsten-carbide`,
@@ -828,6 +829,253 @@ Whether those are enough to build on each planet is the next section's.
 - **Asteroids and space routes.** Each planet's asteroid list is the same in both dumps; the
   routes between them were not read.
 - **Enemy bases**, which `rso-mod` also takes over unless `bobenemies` is loaded, as it is here.
+- **A 2.1 build of any of it.**
+
+## Whether each Space Age science pack can be made (2026-10-05, #132)
+
+A walk of the recipe graph. It reports what the prototypes allow. It does not say the pack is
+playable, and it recommends nothing about a bridge mod: those are #29's and #31's.
+
+#128 looked one step above the six science packs and stopped. This goes all the way down, from the
+same dumps as the section above: Space Age alone (`3295867752`) and the staged `Grado_ABCS`
+(`2316474952`), and the base-only `Grado_ABC` (`2195323740`) to tell what is the overhaul's. All
+Factorio **2.0.77**, read 2026-10-05, the members at the releases in
+`docs/loads/Grado_ABC-2026-10-04.md`.
+
+### How the walk was made
+
+A script reads one dump and repeats three rules until nothing new is added.
+
+- **What a surface supplies.** Whatever an entity in a planet's settings gives when mined:
+  resources, rocks, trees, fish, ruins and icebergs. The fluid of a planet's tiles. The plants.
+  The four asteroid chunks. What an enemy nest drops. The fluid of a pump that has one of its own,
+  which is how Angel's seafloor pump works. `steam` where there is `water`, since a boiler is not
+  a recipe. What an item spoils or burns into.
+- **A recipe counts** when it is not hidden, every ingredient can be had, a machine of its
+  category can be built, and it is enabled from the start or a technology that unlocks it can be
+  researched. The recycler's generated recipes are hidden, so by this rule they do not count.
+- **A technology can be researched** when it is not hidden or disabled, all its prerequisites can
+  be, and either its trigger can be met or its science packs can be made and one lab that can be
+  built takes them all.
+
+That is a little stricter than #132 asked for, which was a recipe that is not hidden and a
+technology that is not hidden. The stricter rule is what found the one dead end below.
+
+**It does not know where anything is.** An item made on one planet counts on every other. The
+recipe's surface condition and the machine's are recorded beside each step instead, and
+*From its own materials* below asks the question of place a second way.
+
+**Checked against Space Age alone first**, where the answer is known: the script researches all
+275 technologies, makes all six packs, and uses 330 of the 340 recipes that are not hidden. The
+other ten are the `parameter-` placeholders.
+
+For the walks, a step is followed down through every recipe that counts until it ends in
+something a surface supplies, or **joins the overhaul**: reaches an item or fluid that the
+base-only `Grado_ABC` dump also has. Below a join the chain is `Grado_ABC`'s own, and it is not
+listed here. The script still follows it to the ground, which is where "can be made" comes from.
+
+### Result
+
+**All six packs can be made, as the prototypes read.** All six technologies can be researched,
+with the same trigger and prerequisites as in Space Age alone, and the labs `lab`, `biolab` and
+`bob-lab-2` take all six packs.
+
+Of Space Age's own prototypes in `Grado_ABCS`:
+
+| | In Space Age alone | In `Grado_ABCS` |
+|---|---|---|
+| Recipes that are not hidden | 340 | 317 still count; 23 are hidden |
+| of those, can be made | 330 | 306: all but the ten placeholders and `captive-biter-spawner` |
+| Technologies | 275 | 268 can be researched; 6 are hidden or disabled; 1 cannot be reached |
+
+The 23 hidden recipes are vanilla's oil, plastic, sulfur, lubricant, steel and uranium recipes
+and their barrels, which the overhaul replaces, and three of Space Age's own: `carbon`,
+`tungsten-carbide` and `tungsten-plate`, as #128 found. Nothing a science pack needs is lost with
+them. The six technologies are `oil-processing`, `advanced-oil-processing`, `coal-liquefaction`,
+`sulfur-processing`, `kovarex-enrichment-process` and `turbo-transport-belt`.
+
+### Dead ends
+
+**One, and no science pack needs it.**
+
+- **The technology `captive-biter-spawner` cannot be researched.** Its prerequisites are Space
+  Age's: `cryogenic-science-pack`, `biter-egg-handling` and `kovarex-enrichment-process`. The
+  last is disabled in the pack, as it is in the base-only dump. So the recipe
+  `captive-biter-spawner`, which only that technology unlocks, cannot be unlocked. Under #132's
+  own rule it would count, since its technology is not hidden. What is lost is building a captive
+  nest from parts. `biter-egg` is still made in a nest captured with `capture-robot-rocket`,
+  which `captivity` unlocks, so `promethium-science-pack` is not affected. Which member disables
+  `kovarex-enrichment-process` was not traced, and whether the game offers a technology whose
+  prerequisite is disabled was not tried.
+
+**Three things a planet supplies that nothing takes**, which are not dead ends in a walk but are
+dead material:
+
+- `heavy-oil`, Fulgora's ocean. No recipe in the pack takes it, hidden ones included. Space Age
+  alone has six that do.
+- `lithium-brine`, Aquilo's resource. One recipe takes it, `bob-lithium-chloride`, and it is
+  hidden. `lithium` no longer does.
+- `carbon`, from Vulcanus's lichen trees. No recipe takes it.
+
+`ammonia`, `light-oil`, `petroleum-gas` and the barrels of the three vanilla oil fractions can be
+made in Space Age alone and not here. All are hidden, and Angel's fluids stand in for them.
+
+### The walks
+
+In each table, **differs** marks a step that is not as in Space Age alone, and the place is given
+where a recipe or its machine allows only one.
+
+#### `space-science-pack`
+
+| Step | Made by | Machine and place | Against Space Age alone |
+|---|---|---|---|
+| `space-science-pack` | 2 `iron-plate`, 1 `angels-solid-carbon`, 1 `ice` | `crafting`. **A space platform only** (gravity 0) | **differs**: `angels-solid-carbon` for `carbon` |
+| `ice` | `oxide-asteroid-crushing`, `advanced-oxide-asteroid-crushing` | `crushing`: the crusher, **a platform only** | same |
+| `angels-solid-carbon` | `carbonic-asteroid-crushing`, `advanced-carbonic-asteroid-crushing` | the crusher | **differs**: Space Age gives `carbon`. Joins the overhaul: 9 recipes make it |
+| `iron-plate` | joins the overhaul: 4 recipes | | **differs**, see below |
+
+Ends in the three asteroid chunks. On a platform `metallic-asteroid-crushing` still gives
+`iron-ore`. What differs is the next step: the furnace recipe `iron-plate` takes 3
+`angels-ore1-crushed` and not `iron-ore`. The recipes that turn `iron-ore` into plate are
+`molten-iron` and `casting-iron` in the foundry, unchanged, and Angel's own smelting chain.
+
+#### `metallurgic-science-pack`
+
+| Step | Made by | Machine and place | Against Space Age alone |
+|---|---|---|---|
+| `metallurgic-science-pack` | 3 `tungsten-carbide`, 2 `tungsten-plate`, 200 `molten-copper` | `metallurgy`: the foundry. **Vulcanus only** (pressure 4000) | same |
+| `molten-copper` | `molten-copper-from-lava` (500 `lava`, 1 `calcite`) or `molten-copper` (50 `copper-ore`, 1 `calcite`) | the foundry | same |
+| `tungsten-carbide` | `angels-plate-tungsten-carbide`: 12 `angels-powder-tungsten-carbide` | `angels-sintering`, no surface condition | **differs**: Space Age's recipe is hidden. Joins the overhaul |
+| `tungsten-plate` | `angels-plate-tungsten` or `angels-roll-tungsten-converting` | `angels-sintering-4`, `advanced-crafting` | **differs**: Space Age's recipe is hidden. Joins the overhaul |
+
+Ends in `lava`, Vulcanus's tiles, and `calcite`, its resource. `copper-ore` joins the overhaul and
+is also what Vulcanus's rocks give.
+
+The two tungsten steps are where this pack changed most. In Space Age alone the first tungsten
+carbide is made in an assembling machine from `tungsten-ore`, `carbon` and `sulfuric-acid`, by a
+recipe that mining a rock on Vulcanus unlocks. Here the only recipe is Angel's, behind
+`angels-tungsten-carbide-smelting-1`, which costs automation, logistic, chemical and production
+science. Its prerequisite is `angels-tungsten-smelting-1`, which has six of its own. The foundry's own recipe is unchanged: 50
+`tungsten-carbide` among its parts, made on Vulcanus only, and its technology is still triggered
+by crafting `tungsten-carbide`. Vulcanus's `tungsten-ore` does feed Angel's chain: three recipes
+take it, `angels-processed-tungsten`, `angels-solid-tungsten-oxide` and
+`angels-catalyst-metal-yellow`.
+
+#### `agricultural-science-pack`
+
+| Step | Made by | Machine and place | Against Space Age alone |
+|---|---|---|---|
+| `agricultural-science-pack` | 1 `bioflux`, 1 `pentapod-egg` | `organic`: the biochamber. **Gleba only** (pressure 2000) | same |
+| `bioflux` | 15 `yumako-mash`, 12 `jelly` | the biochamber | same |
+| `pentapod-egg` | 1 `pentapod-egg`, 30 `nutrients`, 60 `water` | the biochamber. **Gleba only** | same |
+| `yumako-mash`, `jelly` | `yumako-processing`, `jellynut-processing` | by hand, an assembling machine or the biochamber | same |
+| `nutrients` | from `spoilage`, `yumako-mash`, `bioflux`, `raw-fish` or `biter-egg` | the biochamber, three of the five also an assembling machine | same |
+
+Ends in `yumako` and `jellynut`, Gleba's plants, the first `pentapod-egg` from a nest, and
+`water`. **Nothing differs.** Of the 14 recipes in this walk 13 are as in Space Age alone, and
+the fourteenth is `pentapod-egg-rfp-ddw`, a copy `RealisticFusionPowerPort` adds that takes its
+own water.
+
+#### `electromagnetic-science-pack`
+
+| Step | Made by | Machine and place | Against Space Age alone |
+|---|---|---|---|
+| `electromagnetic-science-pack` | 1 `supercapacitor`, 1 `accumulator`, 25 `electrolyte`, 25 `holmium-solution` | `electromagnetics`: the electromagnetic plant. **Fulgora only** (magnetic field 99) | same |
+| `supercapacitor` | 2 `holmium-plate`, 2 `superconductor`, 4 `electronic-circuit`, 1 `battery`, 10 `electrolyte` | the electromagnetic plant | same |
+| `electrolyte` | 1 `stone`, 10 `angels-liquid-naphtha`, 10 `holmium-solution` | the electromagnetic plant | **differs**: `angels-liquid-naphtha` for `heavy-oil` |
+| `superconductor` | 1 `holmium-plate`, 1 `copper-plate`, 1 `plastic-bar`, 5 `angels-liquid-fuel-oil` | the electromagnetic plant | **differs**: `angels-liquid-fuel-oil` for `light-oil` |
+| `holmium-solution` | 2 `holmium-ore`, 1 `stone`, 10 `water` | `chemistry` | same |
+| `holmium-plate` | 20 `holmium-solution` | an assembling machine or the foundry | same |
+| `holmium-ore` | `scrap-recycling` | the recycler or by hand | same |
+
+Ends in `scrap`, Fulgora's resource. It joins the overhaul in ten places: `accumulator`,
+`electronic-circuit`, `battery`, `copper-plate`, `plastic-bar`, `stone`, `water`,
+`rfp-depleted-water`, and the two fluids that differ. `angels-liquid-naphtha` has 11 recipes and
+`angels-liquid-fuel-oil` 8. None of them takes `heavy-oil`, so Fulgora's ocean feeds neither.
+
+#### `cryogenic-science-pack`
+
+| Step | Made by | Machine and place | Against Space Age alone |
+|---|---|---|---|
+| `cryogenic-science-pack` | 3 `ice`, 1 `lithium-plate`, 6 `fluoroketone-cold` | `cryogenics`: the cryogenic plant. **Aquilo only** (pressure 300) | same |
+| `ice` | `ammoniacal-solution-separation`, or the icebergs | a chemical plant or the cryogenic plant | **differs** in its other result: `angels-gas-ammonia` for `ammonia` |
+| `fluoroketone-cold` | `fluoroketone-cooling`: 10 `fluoroketone-hot` | the cryogenic plant | same |
+| `fluoroketone-hot` | `fluoroketone`: 50 `fluorine`, 50 `angels-gas-ammonia`, 1 `solid-fuel`, 1 `lithium` | the cryogenic plant | **differs**: `angels-gas-ammonia` for `ammonia` |
+| `lithium-plate` | 1 `lithium` | `angels-petrochem-electrolyser` | **differs**: Angel's electrolyser in place of a furnace. One of the names both define |
+| `lithium` | 1 `holmium-plate`, 50 `angels-gas-ammonia`, 5 `angels-solid-lithium`, or the icebergs | a chemical plant or the cryogenic plant | **differs**: 5 `angels-solid-lithium` for 50 `lithium-brine` |
+| `angels-solid-lithium` | joins the overhaul: 4 recipes, all sorting `clowns-ore2` | Angel's ore sorting | not in Space Age |
+
+Ends in `ammoniacal-solution`, Aquilo's ocean, `fluorine`, its vent, and the icebergs. The
+change that matters is `lithium`: its recipe no longer takes Aquilo's brine and takes
+`angels-solid-lithium`, which comes only from an ore `rso-mod` places on Nauvis. The icebergs
+still give `lithium` itself when mined. The four barrel recipes for the two fluoroketones are in
+`angels-barreling-pump`, behind `bob-fluid-barrel-processing`, as #128 found.
+
+#### `promethium-science-pack`
+
+| Step | Made by | Machine and place | Against Space Age alone |
+|---|---|---|---|
+| `promethium-science-pack` | 25 `promethium-asteroid-chunk`, 1 `quantum-processor`, 10 `biter-egg` | the cryogenic plant. **A space platform only** (gravity 0) | same |
+| `quantum-processor` | 1 `tungsten-carbide`, 1 `processing-unit`, 1 `superconductor`, 1 `carbon-fiber`, 2 `lithium-plate`, 10 `fluoroketone-cold` | the electromagnetic plant. **Aquilo or a platform** (pressure at most 600) | same |
+| `biter-egg` | `biter-egg`, no ingredients | `captive-spawner-process`: a captive nest, **Nauvis only** | same |
+| `carbon-fiber` | 10 `yumako-mash`, 1 `angels-solid-carbon` | the biochamber | **differs**: `angels-solid-carbon` for `carbon` |
+
+The other four ingredients of `quantum-processor` are steps of the walks above:
+`tungsten-carbide`, `superconductor`, `lithium-plate` and `fluoroketone-cold`. `processing-unit`
+joins the overhaul, with Bob's recipe beside `scrap-recycling`.
+
+### From its own materials
+
+The walk above lets any item travel. This asks the opposite: what can one surface make from what
+it supplies itself, with nothing brought in? Every machine is taken as being there and every
+technology as researched, so it is a question about materials only. Here the recycler's recipes
+do count, hidden as they are, because Fulgora is built on them.
+
+Space Age alone, by this measure, makes each planet's pack on its own planet, and
+`space-science-pack` on a platform. `promethium-science-pack` needs parts from the planets in
+both.
+
+| Surface | Made from its own materials, Space Age alone | Of those, not in `Grado_ABCS` | With `wood` brought in |
+|---|---|---|---|
+| Nauvis | 211 items and fluids | 7 | |
+| Vulcanus | 202 | 98 | 12 |
+| Gleba | 206 | 7 | |
+| Fulgora | 188 | 101 | 19 |
+| Aquilo | 20 | 4 | |
+| A space platform | 169 | 87 | 12 |
+
+**The pack's own pack is still made from its planet's materials on Vulcanus, Gleba, Aquilo and a
+platform. On Fulgora it is not.**
+
+- **Wood is the gap.** Bob's `electronic-circuit` takes a `bob-wooden-board`, which takes `wood`.
+  Nauvis and Gleba have trees. Vulcanus, Fulgora, Aquilo and a platform supply none, so on those
+  nothing with an electronic circuit in it can be made from local material: assembling machines,
+  the starter science pack and the accumulator among the 98, 101 and 87.
+- **Fulgora also lacks an oil.** With wood brought in, 19 are still missing, and
+  `electromagnetic-science-pack` is one of them, with `supercapacitor` and `superconductor`.
+  Space Age builds them on the ocean's `heavy-oil`. Here they need `angels-liquid-naphtha` and
+  `angels-liquid-fuel-oil`, which Fulgora cannot start. With crude oil brought in as well, 11 are
+  left.
+- **What is left everywhere** is the vanilla oil fractions and their barrels, which the pack
+  makes nowhere, and the beacon and the modules above the first tier, which have Bob's recipes.
+  `carbon` and `ammonia` are among the 7 and the 4 for the same reason as the fractions.
+
+Wood, naphtha and fuel oil can all be made on Nauvis, and Angel's has a barrel for both fluids.
+Whether shipping them is a nuisance or a wall is play, and it is the bridge question's evidence,
+not its answer.
+
+### Not covered
+
+- **Play.** Nothing was crafted, researched, shipped or launched.
+- **Amounts and rates**, and whether a chain is practical. The overhaul can make ores from stone
+  and water, which is why a surface with little on it still counts hundreds of items.
+- **Below the joins.** `Grado_ABC`'s own chains were followed by the script and are not listed.
+- **The overhaul's own technologies.** 55 of the pack's 1,204 technologies that are not hidden or
+  disabled did not come out as researchable. One is `captive-biter-spawner`. Of the other 54, 52
+  are the same in the base-only dump, and two, `bob-quality-module-4` and `-5`, exist only with
+  Space Age. None was chased: they may be the script not knowing a source, and base only they
+  are #27's.
+- **Weights and rocket capacity**, so whether a given item can be lifted.
 - **A 2.1 build of any of it.**
 
 ## Pressure on the one-mod-per-branch rule

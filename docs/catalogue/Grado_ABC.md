@@ -2539,8 +2539,8 @@ Stated plainly so the gaps are not mistaken for clean results.
     with this mod disabled (`2949552679`; the three pack mods disabled too, since `Grado_ABC`
     requires it). **The mod adds 100 prototypes**: 75 recipes, 11 items, 8 technologies and 6
     item subgroups. 72 of the 75 recipes are not hidden; the other three are the `rf-` recipes
-    `reverse-factory` generates for its items. A walk of the recipe graph
-    (`docs/catalogue/Grado_ABCS.md`,* How the walk was made*) reaches all 72 and all 8
+    `reverse-factory` generates for its items. A walk of the recipe graph, described in
+    `docs/catalogue/Grado_ABCS.md` under "How the walk was made", reaches all 72 and all 8
     technologies.*
   - *What it changes in what was there: 13 technologies gain recipe unlocks and none loses one;
     `angels-powder-steel`, item and recipe, is no longer hidden; 31 recipes differ in order,
@@ -2548,8 +2548,8 @@ Stated plainly so the gaps are not mistaken for clean results.
     differs, `angels-liquid-molten-invar`, which is #80's finding. Two `EditorExtensions` chests
     differ in inventory size, which follows the number of items.*
 
-  *So beside the Angel's releases this pack loads, it does what it sets out to do and breaks
-  nothing a dump can show. **On 2.1 it is still untested, and cannot be tested yet**: its newest
+  *So beside the Angel's releases this pack loads, everything it adds is there and can be reached,
+  and it breaks nothing a dump can show. **On 2.1 it is still untested, and cannot be tested yet**: its newest
   release is `2.0.01` (2026-08-22, `factorio_version` 2.0; portal, read 2026-10-05), so a 2.1 game
   is not served it at all. Whether its casting recipes are worth having is play: #27.*
 - **The three drops were assessed by search, not by playing without them.** What

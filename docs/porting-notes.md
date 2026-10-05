@@ -650,7 +650,8 @@ Moved here on 2026-10-05. `CLAUDE.md` is loaded into every session, and these tw
 grown to a quarter of it by keeping each superseded sentence beside its replacement. That rule
 suits a record and this file is the record, so the text is here word for word as it stood on
 `5f00aee`, and `CLAUDE.md` now says only what is true today. A fact that changes there gets its
-old wording and a dated note here.
+old wording and a dated note here. Pointers inside the two blocks below, such as "see *Settled
+so far*" or "listed in `docs/porting-notes.md`", refer to `CLAUDE.md` as it stood.
 
 ### State, as it stood
 

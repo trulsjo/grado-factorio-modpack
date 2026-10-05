@@ -15,14 +15,17 @@ pack carries Lua.
 **All five packs have a recorded load on Factorio 2.0.77; one has been played.**
 
 - `Grado_NonChanging`: loaded, base only and with Space Age, and played (2026-09-29 to
-  2026-09-30, #17). One clash found, the `Alt+Y` key (#73).
+  2026-09-30, #17). 24 of its 26 named members were seen working; `ixuAutoSave` and
+  `kry-picker-extended` were not confirmed. One clash found: `YARM` and `PipeVisualizer-Updated`
+  share `Alt+Y`, as does a base control that is not the cause (#71). Whether the pack carries Lua
+  to change a default is Truls's (#73).
 - `Grado_ChangingBase`, `Grado_ABC`, `Grado_ABCX`, `Grado_ABCS`: loaded 2026-10-04 (#115 to
   #118). No play session yet (#26 to #29). `Grado_ABCX` is refused beside Space Age, as intended.
   The three overhaul packs log non-fatal complaints (#125).
 
 The records are in `docs/loads/`. **"It resolves on the portal", "it loads in the game" and "it
-plays" are three claims** (`CONTEXT.md`: *Resolve*, *Load*, *Start*, *Play session*). For the four
-upper packs only the first two are true.
+plays" are three claims** (`CONTEXT.md`: *Resolve*, *Load*, *Play session*). For the four upper
+packs only the first two are true. A *Start* is a fourth thing, less than a load.
 
 How this section came to read as it does, every superseded sentence kept:
 `docs/porting-notes.md`, *The trail of CLAUDE.md's State and open decisions*.
@@ -139,13 +142,18 @@ Settled so far, recorded here so nobody reopens them by accident:
 
 ## Decisions still open
 
-Listed in full with their evidence in `docs/porting-notes.md`, under *Open questions*. Do not
-close one silently.
+Listed with their evidence in `docs/porting-notes.md`. Do not close one silently.
 
 - **The 2.1 line.** The declared line is `2.0` (#16, under *Settled so far*). A 2.1 release on the
-  same entries follows once factorio.com's stable release is 2.1.x. Until then: fourteen members,
-  one of them hidden, have no 2.1 release, listed under *Resolves on stable 2.0.77* in
-  `docs/porting-notes.md`, and the 2.1 build of `space-age` is unread.
+  same entries follows once factorio.com's stable release is 2.1.x. Stable Factorio is 2.0.77 and
+  2.1.20 is experimental (read 2026-09-24). What is known for that day:
+  - On a latest-release reading the project's highest floor is `base >= 2.1.20`, from the hidden
+    member `kry_stdlib` `2.2.21` (2026-09-23), or `base >= 2.1.12` from `cybersyn2` if the game
+    installs an older `kry_stdlib`. The table is *Effective Factorio floor* in
+    `docs/porting-notes.md` (#15).
+  - Fourteen members, one of them hidden, have no 2.1 release (since 2026-10-04, #81). The list
+    is under *Resolves on stable 2.0.77* there.
+  - The 2.1 build of `space-age` is unread.
 - **`PickerPipeTools`' pipe clamps are the one feature lost in the port with no successor
   found**: a search, not a proof. All twenty port drops are closed (#7, #8, #9): nineteen stay
   dropped and `RealisticFusionPower` was replaced by `RealisticFusionPowerPort`.
@@ -195,13 +203,15 @@ missing.
 ## Conventions
 
 - Default branch `main`. Commit email is set per-repo — do not change it.
-- **A batch of tickets lands as one pull request**: a branch `batch-<first>-<last>`, one commit
-  per ticket, a review, then a rebase merge. Open the pull request when the work is committed.
+- **A batch of tickets lands as one pull request** (written down 2026-10-05; the practice since
+  PR #94): a branch named for its tickets, one commit per ticket, a review, then a rebase merge.
+  Open the pull request when the work is committed.
 - `CLAUDE.local.md` is personal and git-ignored. Never commit it, and never move its contents into a
   tracked file.
 - **`info.json` is strict JSON — no comments.** Anything that needs explaining goes in
   `docs/porting-notes.md`, next to the mod it explains.
-- **Two documents, two jobs.** `docs/porting-notes.md` records what happened to the 1.1 packs;
+- **Two documents, two jobs.** `docs/porting-notes.md` records what happened to the 1.1 packs,
+  and since 2026-10-05 the superseded wording of this file's *State* and *Decisions still open*;
   `docs/catalogue/<pack>.md` records what is in each pack now and why, one entry per mod.
   `docs/mod-catalogue.md` is the entry format. A fact about the port goes in the notes, a fact about
   a mod goes in its catalogue entry. *A third since 2026-09-29 (#17):* `docs/loads/<pack>-<date>.md`

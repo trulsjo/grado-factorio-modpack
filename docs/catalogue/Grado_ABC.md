@@ -17,7 +17,8 @@ with this sentence. *Candidates, not members* was read on 2026-09-30 (#50). The 
 and #93. The notes dated 2026-10-04 (#81) are #81's; the runs they cite are dated where they are
 cited. The notes dated 2026-10-04 (#116) are #116's, from the pack's recorded load, and those dated
 2026-10-04 (#119) are #119's. The section dated 2026-10-04 (#123) is #123's, from a data dump and
-the staged source. Searches described below as over "the 2.x list" first ran over
+the staged source. The note dated 2026-10-05 (#136) is #136's, from data dumps and a portal reading
+of that day. Searches described below as over "the 2.x list" first ran over
 the `version=2.0` listing only, which misses mods released for 2.1 alone (#44). **Every search so
 described has since been re-run over the union of both listings** and carries a *Checked
 2026-10-01* note: four by #44, against a union of 10,845, and the rest by #83, against the listings as read later that day - 9,794
@@ -2528,6 +2529,29 @@ Stated plainly so the gaps are not mistaken for clean results.
   its last release — is derived from version numbers and release dates alone. It may work perfectly.
   It is flagged because it is the cheapest thing to check first when the pack is loaded, not because
   a failure has been observed.
+  *Checked 2026-10-05 (#136), for the line the pack declares. The worry was Angel's on 2.1. On
+  line 2.0 the pack resolves Angel's 2.0-line releases, `angelsrefining` `2.0.4`,
+  `angelspetrochem` `2.0.3` and `angelssmelting` `2.0.5`, beside `angels-smelting-extended`
+  `2.0.01`, and there it holds:*
+  - *The recorded load is clean (#116), and the mod writes no line to the log.*
+  - *Two data dumps on Factorio 2.0.77 through the shared harness's `Invoke-HarnessDump`: the
+    staged `Grado_ABC` (prototype list checksum `2195323740`, the recorded load's) and the same
+    with this mod disabled (`2949552679`; the three pack mods disabled too, since `Grado_ABC`
+    requires it). **The mod adds 100 prototypes**: 75 recipes, 11 items, 8 technologies and 6
+    item subgroups. 72 of the 75 recipes are not hidden; the other three are the `rf-` recipes
+    `reverse-factory` generates for its items. A walk of the recipe graph
+    (`docs/catalogue/Grado_ABCS.md`,* How the walk was made*) reaches all 72 and all 8
+    technologies.*
+  - *What it changes in what was there: 13 technologies gain recipe unlocks and none loses one;
+    `angels-powder-steel`, item and recipe, is no longer hidden; 31 recipes differ in order,
+    subgroup, icon or name and **none in ingredients, results, category or time**; and one fluid
+    differs, `angels-liquid-molten-invar`, which is #80's finding. Two `EditorExtensions` chests
+    differ in inventory size, which follows the number of items.*
+
+  *So beside the Angel's releases this pack loads, it does what it sets out to do and breaks
+  nothing a dump can show. **On 2.1 it is still untested, and cannot be tested yet**: its newest
+  release is `2.0.01` (2026-08-22, `factorio_version` 2.0; portal, read 2026-10-05), so a 2.1 game
+  is not served it at all. Whether its casting recipes are worth having is play: #27.*
 - **The three drops were assessed by search, not by playing without them.** What
   `angelsindustries`' components layer or `Clowns-Science`'s Particle Accelerator were worth to an
   actual game is a judgement no survey can make from the portal, and the "what is lost" paragraphs

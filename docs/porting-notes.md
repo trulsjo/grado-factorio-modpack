@@ -643,3 +643,96 @@ entry and in `Orphan Finder`'s under *Candidates, not members*. `Orphan Finder`'
   2026-09-30).* *2026-10-04 (#115 to #118): the other four packs each have a recorded load on
   2.0.77, records in `docs/loads/`. Every base-only load was clean, none of the four was played,
   and `Grado_ABCX` was refused beside Space Age as intended.*
+
+## The trail of CLAUDE.md's State and open decisions
+
+Moved here on 2026-10-05. `CLAUDE.md` is loaded into every session, and these two sections had
+grown to a quarter of it by keeping each superseded sentence beside its replacement. That rule
+suits a record and this file is the record, so the text is here word for word as it stood on
+`5f00aee`, and `CLAUDE.md` now says only what is true today. A fact that changes there gets its
+old wording and a dated note here.
+
+### State, as it stood
+
+**Skeleton.** Five `info.json` files with resolved dependency lists, a README and
+`docs/porting-notes.md`. First commit `3ab917c`, 2026-09-20.
+
+**All five packs have a recorded load; one has been played.** *Until 2026-10-04 this line read
+"One pack has been loaded and played; the other four have not."* The four loads of 2026-10-04, all
+on 2.0.77, each with its record in `docs/loads/`: `Grado_ChangingBase` (#115) clean base only and
+with Space Age, 53 mods; `Grado_ABC` (#116) clean base only, 103 mods; `Grado_ABCX` (#117) clean
+base only, 105 mods, and refused with Space Age, the game citing the pack's `! space-age` and
+`SpaceModFeorasFork`'s; `Grado_ABCS` (#118) clean with Space Age, 104 mods. None of the four has
+had a play session (#26 to #29), and the logs of the three overhaul packs have non-fatal
+complaints, in their records.
+`Grado_NonChanging` loaded on
+2.0.77, base only and again with Space Age, on 2026-09-29 (#17). Both loads were clean. Its play
+session (2026-09-29 to 2026-09-30) saw 24 of its 26 named members working. `ixuAutoSave` and
+`kry-picker-extended` were not confirmed. The save survived a reload with the members' data that was
+checked. It found one clash, the `Alt+Y` key shared by `YARM` and `PipeVisualizer-Updated`, which
+players can rebind. Whether the pack should carry Lua to change the default is #73's. Base's
+`give-discharge-defense-remote` defaults to `Alt+Y` too, with or without Space Age (#71,
+2026-09-30); it is not what stops `YARM`. See `docs/loads/Grado_NonChanging-2026-09-29.md`. *Until
+2026-09-30 this line read "One pack has been loaded; none has had a play session."* *Load*, *Start*
+and *Play session* are glossary terms (`CONTEXT.md`), and they are not interchangeable. A load says
+the prototypes and start-up scripts work together, and nothing about play. The other four packs are
+still portal readings only. Treat "it resolves on the portal" and "it loads in the game" as
+different claims: for those four, only the first is true. *Qualified 2026-10-01 (#80, #81): a
+`--dump-data` run of a staged `Grado_ABC` on 2.0.77 failed in the data stage, in the hidden member
+`Warheads_Continued` `0.0.21`. It is not a recorded load, and it is #81's.* *Ruled 2026-10-04
+(#81): the cause is stale Bob's prototype names in `Warheads_Continued` and `True-Nukes_Continued`,
+and a list bug against `Clowns-Nuclear`. `True-Nukes_Continued` and `True-Nukes-Graphics_Continued`
+are out of `Grado_ABC`. With them out, a staged `Grado_ABC` loaded through the harness on 2.0.77,
+base only, the same day: 103 mods validated and a map created. Not a recorded load either; that is
+#27's.* *Superseded 2026-10-04 (#115 to #118): that load was recorded the same day (#116), again
+103, and "it resolves" and "it loads" are now both true of all five packs, on 2.0.77. They are
+still different claims, and "it loads" is not "it plays": for the four above, only the first two
+are true.* *Until 2026-09-29 this
+line read "Nothing
+has been launched in Factorio", which the two runs below had already made false. #65 settled its
+wording through #17.* Earlier runs, kept as history rather than as the record: *2026-09-24 (#59): a
+**start**. A headless 2.0.77 run against a staged `Grado_NonChanging` created a map, exit 0, with
+`space-age`, `quality` and `elevated-rails` auto-enabled beside it.* *2026-09-28 (#64): an
+unrecorded load. The pack was zipped by the shared packer (tools `d09fba3`) and loaded through the
+load harness on 2.0.77, base only: 29 mods validated (the 28 resolved members and the pack; `base`
+not counted) and a map created. No member versions were written down, which is why #17 re-ran it.*
+
+### Decisions still open, as it stood
+
+Listed in full with their evidence in `docs/porting-notes.md`. Do not close one silently.
+
+- `factorio_version` is declared `2.0` on all five packs while several members have moved to `2.1`.
+  The members' own floors answer it for four packs: the project high is `base >= 2.1.20`
+  (`kry_stdlib` `2.2.21`, a hidden member of `Grado_NonChanging`, released 2026-09-23), which every
+  pack inherits - or `base >= 2.1.12` (`cybersyn2`, #8) if the game installs an older
+  `kry_stdlib`, which the constraint allows. `Grado_ABCS` cannot be answered until
+  the pack is loaded, because `space-age` is not a portal mod (#29); its 2.0.77 build, read from
+  disk on 2026-09-23, requires only `base >= 2.0.0`, and a 2.1 build is unread. The measurement is
+  #15; the number to declare is #16. **#16 cannot be answered by choosing a number yet** - *true
+  of a 2.1 target only; see the 2.0.77 result below (2026-09-24). Ruled 2026-09-24 (#16): see
+  Settled so far.* A member
+  declaring `factorio_version: 2.0` is not served to a 2.1 game at all, and several are members of
+  every lower pack (#43). **Those floors are latest-release readings, and they overstate the case**
+  (2026-09-23, #9): every one of the 87 members of the three lower packs has at least one release
+  declaring 2.0 whose `base` floor is below 2.1, and the whole closure read that way asks
+  `base >= 2.0.74` (`miniloader-redux`, #15). So a 2.0 target may resolve, while a 2.1 target
+  strands the 2.0-only members. That makes "installs on no version of Factorio" unproven rather than
+  true, and the choice between the two targets is #16's (*Ruled 2026-09-24 (#16), applied 2026-09-24 (#58).*)
+  The hidden members pass too. Not yet checked: whether the old releases' floors on each other are
+  consistent. *Checked 2026-09-24 (#43): they are.* **Stable Factorio is 2.0.77; 2.1.20 is
+  experimental** (read 2026-09-24). **On 2.0.77 all five packs resolve on portal metadata, with zero
+  conflicts between the releases a 2.0.77 game would install** (#43, closed 2026-09-24) - so the 2.0
+  target is no longer "may resolve". Seventeen members, two of them hidden, still have no 2.1
+  release; that list is a watch list for when 2.1 goes stable, under *Resolves on stable 2.0.77* in
+  `docs/porting-notes.md`. *Fourteen, one of them hidden, since 2026-10-04 (#81) dropped the nukes
+  mods.* The five-pack table, dated 2026-09-23 and against the settled
+  memberships, is *Effective Factorio floor* in `docs/porting-notes.md` (#15). **Ruled 2026-09-24
+  (#16) - see *Settled so far*.** What stayed open until #58 was applying it: the `info.json` edits
+  waited on the resolver re-measuring the minimums. *Applied 2026-09-24 (#58): re-measured on
+  2.0.77, same floors, and the five `info.json` files declare them.* *Dated 2026-10-04 (#126), on
+  "`Grado_ABCS` cannot be answered until the pack is loaded" above: the pack has loaded since, on
+  2.0.77 with Space Age (#118). The 2.1 build of `space-age` is still unread, so for the 2.1 line
+  that sentence stands.*
+- **`PickerPipeTools`' pipe clamps are the one feature lost in the port with no successor found** —
+  a search, not a proof. All twenty port drops are now closed (#7, #8, #9): nineteen stay dropped
+  and `RealisticFusionPower` was replaced by `RealisticFusionPowerPort`.

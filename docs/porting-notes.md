@@ -654,7 +654,7 @@ Moved here on 2026-10-05. `CLAUDE.md` is loaded into every session, and these tw
 grown to a quarter of it by keeping each superseded sentence beside its replacement. That rule
 suits a record and this file is the record, so the text is here word for word as it stood on
 `5f00aee`, and `CLAUDE.md` now says only what is true today. A fact that changes there gets its
-old wording and a dated note here. Pointers inside the two blocks below, such as "see *Settled
+old wording and a dated note here. Pointers inside the first two blocks below, such as "see *Settled
 so far*" or "listed in `docs/porting-notes.md`", refer to `CLAUDE.md` as it stood. *Since
 2026-10-06 the* Settled so far *list is `docs/decisions.md`, moved word for word.*
 
@@ -770,7 +770,7 @@ sentence about this trail is a bullet of its own.
 >   version, so the next load can be compared with it. The first one is the template.
 
 **The glossary's count**, in the bullet on `name` and `title`. `CLAUDE.md` no longer counts the
-terms; `GLOSSARY.md` dates each one where it is defined.
+terms.
 
 > `GLOSSARY.md` is the glossary: six terms, these two among them, each
 > of which has been used here to mean two things. *Nine since 2026-09-24: `Promise` had already

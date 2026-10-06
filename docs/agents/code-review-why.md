@@ -153,7 +153,13 @@ and its old wording is kept here. The passages below are word for word as they s
 > Where this file said "the `/code-review` plugin" or "the `/code-review` workflow" before
 > 2026-10-06 it meant the plugin pass, and now says so.
 
-**The first rule**, three notes now out, in the order they stood:
+**The list at the head**, the end of its third item, now out:
+
+> It also changed where the first rule's filtered findings are posted, dated where it sits.
+
+**The first rule**, a clause that lost its date and three notes now out, in the order they stood:
+
+> — or, since 2026-10-06 (#151), what reaches the pull request.
 
 > *Until 2026-10-06 this said to post only what cleared the threshold, and the rest was told to the
 > person who ran the review. #151 changed it, so that the pull request holds the plugin pass's
@@ -167,6 +173,11 @@ and its old wording is kept here. The passages below are word for word as they s
 
 Before #151 the first rule's own wording was: "Post to the PR only what clears the threshold,
 exactly as the workflow says" and "Do not re-score to get a finding published."
+
+**The quantifier line**, a note that is now plain text of the rule:
+
+> *Since 2026-10-06: a fix that adds a figure re-walks every quantifier that covers the place it
+> lands. Found in PR #163, twice.*
 
 **The grep line**, whose list of files grew twice:
 

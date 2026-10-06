@@ -1371,8 +1371,6 @@ vehicle speed booster: `Recipe(...):krycopy`, `Tech(...):krycopy`, `Item(...):kr
 content. Both releases have the same `data.lua`. Served at 2.0 and 2.1. Its 2.1 release asks
 `kry_stdlib >= 2.2.21`, the release that already sets the project's highest 2.1 floor
 (`CLAUDE.md`), so it moves nothing. A 2.0.77 game's `kry_stdlib` `2.1.2` meets its 2.0 floor.
-*Noted 2026-10-06 (#158): the record of the project's highest 2.1 floor is* Effective Factorio
-floor *in `docs/porting-notes.md`, measured 2026-09-23. `CLAUDE.md` only repeats it.*
 
 **For #46, which assessed it for `Grado_ChangingBase`** on 2026-10-01 and recommends *do not add*
 there either; see that pack's *Candidates, not members*. Its content is conditional, read from
@@ -1394,6 +1392,10 @@ bundle's vehicle grids.
 
 **Recommendation: do not add** to this pack. It adds craftable equipment, a recipe and a
 technology.
+
+*Noted 2026-10-06 (#158), on "the project's highest 2.1 floor (`CLAUDE.md`)" above: the record of
+that floor is* Effective Factorio floor *in `docs/porting-notes.md`, measured 2026-09-23.
+`CLAUDE.md` only repeats it.*
 
 ### `ghost-counter`
 
@@ -2185,9 +2187,7 @@ field itself. The two are separate mechanisms and the dependency floor is the on
 
 This is one of the decisions `CLAUDE.md` lists as still open, so it is reported rather than fixed.
 The same check is worth running on the other four packs before any of them is published — #3 to #6
-each own their own. *Noted 2026-10-06 (#158): ruled 2026-09-24 (#16), the declared line is `2.0`,
-and the record is that entry in `docs/decisions.md`. What `CLAUDE.md` still lists as open is the
-2.1 release.*
+each own their own.
 
 **Re-measured 2026-09-22 after #7's edits: the floor is unchanged at `base >= 2.1.7`.** All 26
 remaining members were re-read rather than trusted. Five still demand it - `BlueprintTools`,
@@ -2200,6 +2200,10 @@ day, asks `base >= 2.1.20`. See *Effective Factorio floor* in `docs/porting-note
 says why that number rests on one release. *Checked 2026-09-24 (#25): still holds. Of the 26
 named members' latest releases, five ask `base >= 2.1.7` - `BlueprintTools`, `Tapeline`,
 `even-distribution`, `even-pickier-dollies`, `helmod` - and none asks more.*
+
+*Noted 2026-10-06 (#158), on "one of the decisions `CLAUDE.md` lists as still open" above: ruled
+2026-09-24 (#16), the declared line is `2.0`, and the record is that entry in `docs/decisions.md`.
+What `CLAUDE.md` still lists as open is the 2.1 release.*
 
 ## Six members cannot be downloaded
 

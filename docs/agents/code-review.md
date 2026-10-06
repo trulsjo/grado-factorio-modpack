@@ -68,13 +68,18 @@ comparison: each is a claim with an arithmetic answer.
 
 **Treat a quantifier as an instruction to enumerate.** "Every mod is accounted for", "the only mod
 duplicated across the five packs", "no replacement was found" — a claim about *all* or *none* of a
-set is checked by walking the set, never by agreeing with its tone.
+set is checked by walking the set, never by agreeing with its tone. *Since 2026-10-06: a fix that
+adds a figure re-walks every quantifier that covers the place it lands. Found in PR #163, twice.*
 
 **When a change supersedes a figure, grep the repository for the old one**, and read every hit in a
 file that records a measurement. Here that is `docs/porting-notes.md`, `docs/catalogue/`, `CLAUDE.md`
 and this file. *Since 2026-10-05 `docs/loads/` too, and the superseded wording of `CLAUDE.md`'s
 State is in `docs/porting-notes.md`, so an old figure may survive there and not in `CLAUDE.md`.* *Since 2026-10-06 `docs/decisions.md` and `docs/agents/code-review-why.md` too, which took the settled decisions from `CLAUDE.md` and the measurements from this file.* A correction landing in three places and missing the fourth is worse than none,
 because the survivor then reads as deliberate.
+
+**When a change alters a rule, read every sentence of that rule's section against the new
+wording.** The grep above finds a superseded figure; a sentence that still reads the old way is
+found only by reading. Found in PR #163 (2026-10-06).
 
 **An old figure inside a block that says what replaced it is not a defect; an unmarked one is.** The
 house style keeps the old reading with a note — a date, an issue number, or both — rather than

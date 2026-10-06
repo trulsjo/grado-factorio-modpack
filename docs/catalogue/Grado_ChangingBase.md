@@ -2000,7 +2000,9 @@ constraint `alien-biomes` already enforces, and pinning it ourselves could only 
 what `alien-biomes` asks for.
 
 This closes one of the four open decisions in `CLAUDE.md`. `docs/porting-notes.md` is updated with
-the answer in the same commit.
+the answer in the same commit. *Noted 2026-10-06 (#158): `CLAUDE.md` no longer lists four, and
+says only that all twenty port drops are closed. The record of this one is the
+`alien-biomes-hr-terrain` entry above, ruled 2026-09-22 (#8).*
 
 ## What constrains an overhaul on top
 

@@ -60,7 +60,8 @@ erasing it, which is the same instinct as `CLAUDE.md`'s "record what was dropped
 
 **A record cites a record, not `CLAUDE.md`.** A figure or a settled decision is cited from the
 porting notes, a load record, a catalogue entry or `docs/decisions.md`; `CLAUDE.md` is steering and
-gets slimmed, so it is cited for a rule only (2026-10-06, #158).
+gets slimmed, so it is cited for a rule only (2026-10-06, #158). It still repeats figures, which is
+why the grep above reads it.
 
 **A dated note goes after the older text it speaks to.** Last in its paragraph, and after the
 older dated paragraphs of its entry. A note set before older text, or in the middle of a

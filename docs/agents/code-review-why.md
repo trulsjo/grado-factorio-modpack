@@ -58,6 +58,13 @@ machinery:
 Three of those four are a claim stated more confidently than its evidence allowed. That is the defect
 this repository actually produces, and no gate will ever catch it.
 
+## Why a record does not cite `CLAUDE.md`
+
+`CLAUDE.md` is loaded into every session and is slimmed for that reason. PR #152 (2026-10-05) took
+out the project's highest 2.1 floor while four catalogue and load-record sentences said
+"`CLAUDE.md` records" it, and only the review found it (`1c90e4e`, which put the floor back). #158
+(2026-10-06) pointed those four and two more at the records that hold the facts.
+
 ## Why it is written here rather than fixed at source
 
 The workflow is a plugin, at `~/.claude/plugins/cache/claude-plugins-official/code-review/`. It is

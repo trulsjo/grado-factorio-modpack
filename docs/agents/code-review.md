@@ -58,6 +58,10 @@ because the survivor then reads as deliberate.
 house style keeps the old reading with a note — a date, an issue number, or both — rather than
 erasing it, which is the same instinct as `CLAUDE.md`'s "record what was dropped and why".
 
+**A record cites a record, not `CLAUDE.md`.** A figure or a settled decision is cited from the
+porting notes, a load record, a catalogue entry or `docs/decisions.md`; `CLAUDE.md` is steering and
+gets slimmed, so it is cited for a rule only (2026-10-06, #158).
+
 **A dated note goes after the older text it speaks to.** Last in its paragraph, and after the
 older dated paragraphs of its entry. A note set before older text, or in the middle of a
 paragraph, reads as if that text were written knowing it. Found in PR #121, PR #129 and PR #138.

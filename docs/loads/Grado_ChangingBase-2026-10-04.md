@@ -72,6 +72,9 @@ here, compared row by row against its table. `kry_stdlib` is still `2.1.2`, the 
 
 `cybersyn2` resolved to `0.1.10` and `0-things` to `0.2.6`. `CLAUDE.md` gives `cybersyn2`'s newest
 release a floor of `base >= 2.1.12`; these are the older releases a 2.0.77 game is served.
+*Noted 2026-10-06 (#158): the record of that floor is* Effective Factorio floor *in
+`docs/porting-notes.md`, which read it from `cybersyn2` `0.4.0` on 2026-09-23. `CLAUDE.md` only
+repeats it.*
 
 ## Loads
 

@@ -59,7 +59,9 @@ other versions.
 
 `kry_stdlib` resolved to `2.1.2`, not its newest release. `CLAUDE.md` names `2.2.21` as the
 project's highest floor (`base >= 2.1.20`), and a 2.0.77 game cannot install it. The resolver picked
-the newest release this build accepts.
+the newest release this build accepts. *Noted 2026-10-06 (#158): the record of that floor is*
+Effective Factorio floor *in `docs/porting-notes.md`, measured 2026-09-23. `CLAUDE.md` only repeats
+it.*
 
 ## Loads
 

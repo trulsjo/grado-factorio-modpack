@@ -450,7 +450,9 @@ above, so taking it would rule out both of #31's.
 **Reachability.** Not served on the declared 2.0 line: no release declares 2.0, and the latest
 requires `base >= 2.1.20` and `space-age >= 2.1.20`, against the `2.0.77` build installed and read
 on 2026-09-23. On a 2.1 line, `base >= 2.1.20` equals the project high `CLAUDE.md` records for a 2.1
-target (`kry_stdlib` `2.2.21`), so it would not raise that floor.
+target (`kry_stdlib` `2.2.21`), so it would not raise that floor. *Noted 2026-10-06 (#158): the
+record of that high is* Effective Factorio floor *in `docs/porting-notes.md`, measured 2026-09-23.
+`CLAUDE.md` only repeats it.*
 
 **Against the promise: one of the two of the four that do not merge, by their own accounts - but it
 moves the overhaul.** Its stated goal is to "install multiple large overhaul ecosystems without turning

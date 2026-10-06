@@ -742,3 +742,46 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
 - **`PickerPipeTools`' pipe clamps are the one feature lost in the port with no successor found** —
   a search, not a proof. All twenty port drops are now closed (#7, #8, #9): nineteen stay dropped
   and `RealisticFusionPower` was replaced by `RealisticFusionPowerPort`.
+
+### Conventions and commit messages, as they stood
+
+Moved here on 2026-10-06, after the retrospective of the session that ruled #151. Until then only
+*State* and *Decisions still open* sent their old wording here. Now all of `CLAUDE.md` does. The
+four passages below are word for word as they stood on `0444fa2`, each with what replaced it.
+
+**The batch line**, under *Conventions*. It now gives the order in one sentence, with no dates.
+
+> - **A batch of tickets lands as one pull request** (written down 2026-10-05; the practice since
+>   PR #94): a branch named for its tickets, one commit per ticket, a review, then a rebase merge.
+>   *Since 2026-10-06 (#151): the review is the pre-PR review, and it and one commit of its fixes
+>   come before the pull request, whose body carries its findings. The plugin pass,
+>   `code-review:code-review`, runs only when Truls asks. Until then this ended "Open the pull
+>   request when the work is committed."*
+
+**Two documents, two jobs**, under *Conventions*. It is now *Three documents, three jobs*, and the
+sentence about this trail is a bullet of its own.
+
+> - **Two documents, two jobs.** `docs/porting-notes.md` records what happened to the 1.1 packs,
+>   and since 2026-10-05 the superseded wording of this file's *State* and *Decisions still open*;
+>   `docs/catalogue/<pack>.md` records what is in each pack now and why, one entry per mod.
+>   `docs/mod-catalogue.md` is the entry format. A fact about the port goes in the notes, a fact about
+>   a mod goes in its catalogue entry. *A third since 2026-09-29 (#17):* `docs/loads/<pack>-<date>.md`
+>   records one load and its play session - the build, the bundled mods and every resolved member
+>   version, so the next load can be compared with it. The first one is the template.
+
+**The glossary's count**, in the bullet on `name` and `title`. `CLAUDE.md` no longer counts the
+terms; `GLOSSARY.md` dates each one where it is defined.
+
+> `GLOSSARY.md` is the glossary: six terms, these two among them, each
+> of which has been used here to mean two things. *Nine since 2026-09-24: `Promise` had already
+> made it seven, and #43 added `Resolve` and #16 `Declared line`. Twelve since 2026-09-29: #17
+> added `Load`, `Start` and `Play session`.* *Fourteen since 2026-10-04: #81 added `Hidden member`
+> and `Load drop`.* *Seventeen since 2026-10-06: #157 added `Measured`, `Read from source` and
+> `Inferred`, the three grades of evidence.*
+
+**What counts as a breaking change**, under *Commit messages*. The clause on the old exemption is
+out; the rule is unchanged.
+
+> chain - **`Grado_NonChanging` included**, which was written here as exempt until 2026-09-22 and is
+> not: `Tapeline`, `Todo-List`, `YARM` and `SpeedControl` all write to the save, and the removed
+> `blueprint-sandboxes` created whole surfaces.

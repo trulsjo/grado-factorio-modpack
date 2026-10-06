@@ -131,3 +131,47 @@ scored 0, and they are inside a plugin this repository does not edit.
 **Why the plugin pass's filtered findings go in a second comment.** No measurement is behind this
 half of #151. It was ruled so that the pull request holds the plugin pass's whole report, as the
 sibling ruled in realistic-fusion-refreshed#592.
+
+## Why a fix narrows before it adds, and a figure is attributed where it stands
+
+*Added 2026-10-06, from the retrospective of the session that ruled #151.* The plugin pass on PR
+#163 posted eight findings, in its first two comments. The third comment there says three of them
+were in sentences the pre-PR review's fixes had added, and that a read of the repair before it
+was pushed found three more errors, each in a sentence the repair had added. One sentence was
+false twice: "every figure in this section is quoted from #151" became "one is not from #151",
+and two were not.
+
+## What the rules said before
+
+`code-review.md` is loaded whole by every review, so since 2026-10-06 it states the live rule only
+and its old wording is kept here. The passages below are word for word as they stood on `0444fa2`.
+
+**The head of the file**, two sentences now out:
+
+> *Two rules until 2026-10-06, when #151 added the third.*
+
+> Where this file said "the `/code-review` plugin" or "the `/code-review` workflow" before
+> 2026-10-06 it meant the plugin pass, and now says so.
+
+**The first rule**, three notes now out, in the order they stood:
+
+> *Until 2026-10-06 this said to post only what cleared the threshold, and the rest was told to the
+> person who ran the review. #151 changed it, so that the pull request holds the plugin pass's
+> whole report.*
+
+> *Since 2026-10-06 (#151) "posts nothing" means the workflow's own comment carries nothing, and
+> what it filtered is said in the second comment.*
+
+> *Until 2026-10-06 this was written against re-scoring to get a finding published at all. Since
+> then "the report" is the second comment as well as what the person who ran the review is told.*
+
+Before #151 the first rule's own wording was: "Post to the PR only what clears the threshold,
+exactly as the workflow says" and "Do not re-score to get a finding published."
+
+**The grep line**, whose list of files grew twice:
+
+> Here that is `docs/porting-notes.md`, `docs/catalogue/`, `CLAUDE.md` and this file. *Since
+> 2026-10-05 `docs/loads/` too, and the superseded wording of `CLAUDE.md`'s State is in
+> `docs/porting-notes.md`, so an old figure may survive there and not in `CLAUDE.md`.* *Since
+> 2026-10-06 `docs/decisions.md` and `docs/agents/code-review-why.md` too, which took the settled
+> decisions from `CLAUDE.md` and the measurements from this file.*

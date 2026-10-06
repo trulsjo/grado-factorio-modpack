@@ -1,16 +1,14 @@
 # Code review — three rules this repository adds
 
 All three are conventions kept around the `code-review:code-review` plugin rather than changes to
-it; why, and the evidence behind each, is in `code-review-why.md`, which a review does not need to
-load. *Two rules until 2026-10-06, when #151 added the third.*
+it; why, the evidence behind each, and what each said before it last changed, is in
+`code-review-why.md`, which a review does not need to load.
 
 **`/code-review` has meant three skills, and this file names two reviews.** **The pre-PR review**
 is one fresh subagent on the branch, before a pull request exists; the third rule defines it.
 **The plugin pass** is `code-review:code-review`, the official plugin: several reviewers, then
 scorers for the candidate findings, and it needs a pull request. "The workflow" below is the plugin
-pass. `mattpocock-skills:code-review` and the built-in `code-review` are neither. Where this file
-said "the `/code-review` plugin" or "the `/code-review` workflow" before 2026-10-06 it meant the
-plugin pass, and now says so.
+pass. `mattpocock-skills:code-review` and the built-in `code-review` are neither.
 
 The first two were decided by Truls in the sibling
 [realistic-fusion-refreshed](https://github.com/trulsjo/realistic-fusion-refreshed), and adopted here
@@ -25,34 +23,31 @@ was decided by Truls here on 2026-10-06 (#151), a day after the sibling decided 
    2026-09-03, widened 2026-09-14 settling
    [realistic-fusion-refreshed#331](https://github.com/trulsjo/realistic-fusion-refreshed/issues/331).
 3. **[One review before the pull request](#one-review-before-the-pull-request)** — decided
-   2026-10-06, settling #151. It also changed where the first rule's filtered findings are posted,
-   dated where it sits.
+   2026-10-06, settling #151. It also changed where the first rule's filtered findings are posted.
 
 ## The threshold gates the comment, not the report
 
 The plugin pass scores each candidate finding and leaves anything below 80 out of its comment.
 **That filter governs what the workflow's own comment carries. It does not govern what gets told to
-the person who ran the review** — or, since 2026-10-06 (#151), what reaches the pull request.
+the person who ran the review**, or what reaches the pull request.
 
 ### The rule
 
 **Report every finding that survived verification, whatever it scored.** The workflow's own comment
 carries only what clears the threshold, exactly as the workflow says. **Every other surviving
-finding goes in a second comment on the same pull request, with its score.** *Until 2026-10-06 this
-said to post only what cleared the threshold, and the rest was told to the person who ran the
-review. #151 changed it, so that the pull request holds the plugin pass's whole report.*
+finding goes in a second comment on the same pull request, with its score**, so that the pull
+request holds the plugin pass's whole report.
 
 **A review that posts nothing must still say what it filtered.** Name each finding, its score, and
 whether it was independently verified. A silent pass and a filtered pass must never look the same.
-*Since 2026-10-06 (#151) "posts nothing" means the workflow's own comment carries nothing, and
-what it filtered is said in the second comment.*
+"Posts nothing" means the workflow's own comment carries nothing; what it filtered is said in the
+second comment.
 
 **Do not re-score to move a finding into the first comment.** The threshold is deliberately
 conservative and stays where it is. If a filtered finding matters, say so in the report and let a
 human decide; inflating a score to route around the filter destroys the only signal the score
-carries. *Until 2026-10-06 this was written against re-scoring to get a finding published at all.
-Since then "the report" is the second comment as well as what the person who ran the review is
-told.*
+carries. "The report" is the second comment as well as what the person who ran the review is
+told.
 
 ## Review the prose, not only the code
 
@@ -68,14 +63,19 @@ comparison: each is a claim with an arithmetic answer.
 
 **Treat a quantifier as an instruction to enumerate.** "Every mod is accounted for", "the only mod
 duplicated across the five packs", "no replacement was found" — a claim about *all* or *none* of a
-set is checked by walking the set, never by agreeing with its tone. *Since 2026-10-06: a fix that
-adds a figure re-walks every quantifier that covers the place it lands. Found in PR #163, twice.*
+set is checked by walking the set, never by agreeing with its tone. A fix that adds a figure
+re-walks every quantifier that covers the place it lands. Found in PR #163, twice.
+
+**Attribute a figure where it stands.** A note that vouches for the source of every figure in a
+section is a quantifier each later figure can make false, and is a finding. Found in PR #163,
+where one such note was false twice.
 
 **When a change supersedes a figure, grep the repository for the old one**, and read every hit in a
-file that records a measurement. Here that is `docs/porting-notes.md`, `docs/catalogue/`, `CLAUDE.md`
-and this file. *Since 2026-10-05 `docs/loads/` too, and the superseded wording of `CLAUDE.md`'s
-State is in `docs/porting-notes.md`, so an old figure may survive there and not in `CLAUDE.md`.* *Since 2026-10-06 `docs/decisions.md` and `docs/agents/code-review-why.md` too, which took the settled decisions from `CLAUDE.md` and the measurements from this file.* A correction landing in three places and missing the fourth is worse than none,
-because the survivor then reads as deliberate.
+file that records a measurement. Here that is `docs/porting-notes.md`, `docs/catalogue/`,
+`docs/loads/`, `docs/decisions.md`, `docs/agents/code-review-why.md`, `CLAUDE.md` and this file.
+The superseded wording of `CLAUDE.md` is in `docs/porting-notes.md`, so an old figure may survive
+there and not in `CLAUDE.md`. A correction landing in three places and missing the fourth is
+worse than none, because the survivor then reads as deliberate.
 
 **When a change alters a rule, read every sentence of that rule's section against the new
 wording.** The grep above finds a superseded figure; a sentence that still reads the old way is
@@ -84,6 +84,11 @@ found only by reading. Found in PR #163 (2026-10-06).
 **An old figure inside a block that says what replaced it is not a defect; an unmarked one is.** The
 house style keeps the old reading with a note — a date, an issue number, or both — rather than
 erasing it, which is the same instinct as `CLAUDE.md`'s "record what was dropped and why".
+
+**`CLAUDE.md` and this file are the exception.** Both are loaded whole, so each states the live
+rule only. When a line in one changes, its old wording goes, with its date, to the trail in
+`docs/porting-notes.md` for `CLAUDE.md` and to `code-review-why.md` for this file. A dated
+"since" or "until" note added to either is a finding.
 
 **A record cites a record, not `CLAUDE.md`.** A figure or a settled decision is cited from the
 porting notes, a load record, a catalogue entry or `docs/decisions.md`; `CLAUDE.md` is steering and
@@ -149,6 +154,10 @@ review.** No pull request is needed for it.
 read each fix against its own finding. That is a confirmation and not a second round. **A fix that
 adds a sentence adds a claim, and the confirmation checks it like any other.** "Confirms" here
 names this step and is not a grade of evidence; `GLOSSARY.md` avoids the word for a claim.
+
+**A fix narrows or deletes before it adds.** Where cutting a sentence or making it claim less
+repairs a finding, that is the fix, and a fix that adds a sentence in its place is a finding at
+confirmation.
 
 **The fixes are one commit of their own, after the ticket commits.** They are not folded into the
 commits they repair, so the list in the pull request's body can be read against a diff.

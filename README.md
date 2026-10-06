@@ -99,6 +99,15 @@ another set and gets a dump of its own. What it cannot see is in the script's he
 To clear the cache, delete `.dump-cache/`, or the three files of one dump. Nothing else reads it.
 `pwsh -File scripts/get-dump.ps1 -SelfTest` checks the caching without the game.
 
+## Checks
+
+Two git hooks, both wired up by `git config core.hooksPath .githooks`: `commit-msg` checks the
+shape of a commit message, and `pre-commit` runs `scripts/markdown-check.ps1` on the staged
+Markdown files. That one refuses emphasis or a code span left open at the end of its paragraph, a
+table row with another column count than its header, and a link to a file git does not track. It
+does not judge prose. `-Range origin/main..HEAD` checks the Markdown a branch changed, `-All` every
+tracked file, and `-SelfTest` proves it can fail.
+
 ## Publishing
 
 `Grado_NonChanging`, `Grado_ChangingBase` and `Grado_ABCX` already exist on the portal under

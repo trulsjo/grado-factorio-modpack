@@ -1,0 +1,17 @@
+#!/bin/sh
+# Checks the staged Markdown files for emphasis or a code span left open, a ragged table row and a
+# link to a file that is not tracked (#149). What it reads as what, and what it cannot see, is in
+# the header of scripts/markdown-check.ps1; this is only the wiring.
+#
+# INSTALL, once per clone, the same line that wires up commit-msg:
+#
+#     git config core.hooksPath .githooks
+#
+# pwsh is what every other script here needs. If it is missing, say so and let the commit through,
+# as commit-msg does, and never pass in silence.
+if ! command -v pwsh >/dev/null 2>&1; then
+    echo "pre-commit: pwsh not found, so the staged Markdown was NOT checked." >&2
+    exit 0
+fi
+
+exec pwsh -NoProfile -File "$(git rev-parse --show-toplevel)/scripts/markdown-check.ps1"

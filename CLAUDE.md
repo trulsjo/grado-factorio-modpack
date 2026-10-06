@@ -247,6 +247,10 @@ Old commits that fail the check are left alone — the three from 2026-09-20, `3
 predate it. The hook stops the failures growing; `-Range origin/main..HEAD` checks a branch before a
 push, and `-SelfTest` proves the check can still fail.
 
+**`.githooks/pre-commit` checks the staged Markdown** with `scripts/markdown-check.ps1`: emphasis
+or a code span left open, a ragged table row, a link to a file git does not track.
+`-Range origin/main..HEAD` checks what a branch changed.
+
 ## Agent skills
 
 ### Issue tracker

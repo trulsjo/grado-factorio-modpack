@@ -186,3 +186,8 @@ exactly as the workflow says" and "Do not re-score to get a finding published."
 > `docs/porting-notes.md`, so an old figure may survive there and not in `CLAUDE.md`.* *Since
 > 2026-10-06 `docs/decisions.md` and `docs/agents/code-review-why.md` too, which took the settled
 > decisions from `CLAUDE.md` and the measurements from this file.*
+
+**The head of the second rule**, before #149 added a check of the Markdown's shape (2026-10-06):
+
+> **This repository is almost entirely prose, and nothing here checks it.** The commit hook reads
+> the shape of a message, and a load can contradict only whether a pack starts.

@@ -77,7 +77,7 @@ how many players were on 1.1, not quality; the original has 36 releases going ba
 accumulate downloads from 2.x players because it does not run for them.
 
 **Ruled 2026-09-23 (#10): kept, as the pack's only member**, for the reasons in the recommendation,
-and the pack's own `! space-age` line kept beside the fork's. The pack's promise is in `CONTEXT.md`.
+and the pack's own `! space-age` line kept beside the fork's. The pack's promise is in `GLOSSARY.md`.
 The line stays even though the fork declares the same thing, because the exclusion is a decision
 about the packs, so the pack states it rather than borrowing the fork's. The cost is that it would
 mask the fork ever dropping its `!`, the event that reopens the five-pack structure, so re-reading

@@ -27,7 +27,7 @@ every pack it depends on, so a mod can be duplicated two different ways. They ar
 problem and do not get the same treatment.
 
 *Lower* and *higher* below mean position in the chain measured by dependency, not by the README
-diagram's indentation, which runs the other way. `CONTEXT.md` is the glossary entry.
+diagram's indentation, which runs the other way. `GLOSSARY.md` is the glossary entry.
 
 **The same mod in two dependency lists** is a name collision, and this file's answer was to wait:
 `bobinserters` was the only instance named as a member of two lists — `Grado_ChangingBase` and
@@ -179,7 +179,7 @@ instead. Use it sparingly — a survey where several entries reconsider has not 
   port, and `Grado_NonChanging` removed three mods that had survived it. Without this variant the
   entries stayed under *In the pack*, which broke the one guarantee the heading rule exists to give.
 
-  **A load drop (`CONTEXT.md`) uses this variant, unchanged** (2026-10-04, #119). It is partly
+  **A load drop (`GLOSSARY.md`) uses this variant, unchanged** (2026-10-04, #119). It is partly
   both things the first sentence above keeps apart: a decision, forced by a member that is broken
   upstream. The decision is what removes it, so the entry sits in *Ruled out after the port* with
   the same `| **Status** | dropped <date> (#<issue>) |` row; the row does not say which kind of

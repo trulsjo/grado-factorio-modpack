@@ -9,6 +9,10 @@ titles and summaries rather than names turns up `kry-picker-complete`, a 2.1 mod
 reassembles the Picker family; see `docs/mod-catalogue.md`. Treat every "dropped" line below as
 unconfirmed until a survey has re-checked it that way.
 
+*2026-10-06 (#154): the glossary at the repo root was renamed from `CONTEXT.md` to `GLOSSARY.md`.
+Every pointer to it, in the dated records too, was rewritten to the new name, so the old name
+appears in the history and in this line only.*
+
 ## Grado_NonChanging
 
 33 mods in the 1.1 pack: **26 carried over, 3 replaced, 4 dropped** -> **29 in the 2.0 pack**.
@@ -142,10 +146,10 @@ the whole branch's.
 
 `angelsindustries` stays dropped, and a 2.x port would reopen the question rather than add it back
 automatically. The pack's `description` now says it is not included. The pack also gained a promise
-(`CONTEXT.md`). Per-mod reasons are in `docs/catalogue/Grado_ABC.md` under *Decisions, 2026-09-23
+(`GLOSSARY.md`). Per-mod reasons are in `docs/catalogue/Grado_ABC.md` under *Decisions, 2026-09-23
 (#9)*.
 
-**Load drops, 2026-10-04 (#81): 41 mods to 39.** A load drop (`CONTEXT.md`) is not a port drop, so
+**Load drops, 2026-10-04 (#81): 41 mods to 39.** A load drop (`GLOSSARY.md`) is not a port drop, so
 the twenty port drops stay twenty, and the *Replaced* table below still shows what the port did.
 The first two are `True-Nukes_Continued` and `True-Nukes-Graphics_Continued`, and the hidden member
 `Warheads_Continued` left with them. No replacement was added. What failed, why it was dropped and
@@ -629,7 +633,7 @@ entry and in `Orphan Finder`'s under *Candidates, not members*. `Orphan Finder`'
   been written or shown to be needed. **This now matters more than it did**: as of 2026-09-22
   `Grado_ChangingBase`, and therefore the three packs above it, depend on a mod whose author
   describes it as having "known issues, bugs, missing features, and even the occasional crash".
-  *2026-09-29 (#17): `Grado_NonChanging` has been **loaded** (`CONTEXT.md`, *Load*) on 2.0.77,
+  *2026-09-29 (#17): `Grado_NonChanging` has been **loaded** (`GLOSSARY.md`, *Load*) on 2.0.77,
   base only and with `space-age`, `quality` and `elevated-rails`. Both loads were clean: no error
   or warning in the log, and no conflict between members, so no compatibility Lua was shown to be
   needed. Not tested: play (the play session is still to run), a build below 2.0.77, multiplayer,
@@ -675,7 +679,7 @@ players can rebind. Whether the pack should carry Lua to change the default is #
 `give-discharge-defense-remote` defaults to `Alt+Y` too, with or without Space Age (#71,
 2026-09-30); it is not what stops `YARM`. See `docs/loads/Grado_NonChanging-2026-09-29.md`. *Until
 2026-09-30 this line read "One pack has been loaded; none has had a play session."* *Load*, *Start*
-and *Play session* are glossary terms (`CONTEXT.md`), and they are not interchangeable. A load says
+and *Play session* are glossary terms (`GLOSSARY.md`), and they are not interchangeable. A load says
 the prototypes and start-up scripts work together, and nothing about play. The other four packs are
 still portal readings only. Treat "it resolves on the portal" and "it loads in the game" as
 different claims: for those four, only the first is true. *Qualified 2026-10-01 (#80, #81): a

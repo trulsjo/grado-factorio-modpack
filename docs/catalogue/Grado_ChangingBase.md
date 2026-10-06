@@ -1424,7 +1424,7 @@ in this pack instead?
 
 **The tests, as they stand today:**
 
-- **The promise** (`CONTEXT.md`, *Promise*): this pack may add content, but not content that
+- **The promise** (`GLOSSARY.md`, *Promise*): this pack may add content, but not content that
   competes with an overhaul for the same ground, because `Grado_ABC`, `Grado_ABCX` and `Grado_ABCS`
   all inherit it. It has no clause like `Grado_NonChanging`'s *changes the built factory only when
   the player asks*.
@@ -1798,7 +1798,7 @@ source:
 
 That is this pack's promise failing: content that competes with an overhaul for its ground, in
 every overhaul pack that would inherit it. **`Grado_ABC`'s promise reads differently**
-(`CONTEXT.md`): a member there may extend the overhaul mods or add content of its own, provided it
+(`GLOSSARY.md`): a member there may extend the overhaul mods or add content of its own, provided it
 does not conflict with them. A tier above Bob's that is built from Bob's items, and overwrites none
 of Bob's prototypes, is an extension under that reading. Whether it unbalances Bob's fluid
 progression enough to count as a conflict is the judgement that placement would rest on.
@@ -1891,7 +1891,7 @@ recipe. It also sets `placeable_by` on each source entity and flags the source i
 setting is a startup *Allow in rockets cheat*. `21.0.4` adds an accumulator-charge threshold. No
 technology.
 
-**So it passes `Grado_NonChanging`'s promise as written** (`CONTEXT.md`): no craftable item, entity
+**So it passes `Grado_NonChanging`'s promise as written** (`GLOSSARY.md`): no craftable item, entity
 or recipe. It changes the factory only when the player mines, or marks for deconstruction, while
 the shortcut is on. `control.lua` turns the shortcut on for every new player in
 `on_player_created`. It keeps the packed contents in `storage.items`. By #46's reading it is a

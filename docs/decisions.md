@@ -72,3 +72,11 @@ into every session. Where an entry says "under *Conventions*", it means `CLAUDE.
   resolver re-measured all five on line `2.0`, build `2.0.77`, and read the same floors - `2.0.67`
   from `helmod` `2.2.14`, `2.0.74` from `miniloader-redux` `1.2.0` - and each `info.json` now
   declares its floor. Versions stay `0.1.0`.
+- **A claim has one of three grades of evidence** (2026-10-06, #157): *Measured*, *Read from
+  source* and *Inferred*, defined in `GLOSSARY.md`. Three and not two, because each of the eight
+  review-fix commits of 2026-10-04 and 2026-10-05 repaired a sentence that gave an inference or a
+  reading of source as an observation, and folding the two together loses which it was. The middle grade is not called *Read*, because a
+  portal reading is a measurement. *Assumed* is not a grade, and neither is what a mod's author
+  says. *Measured* may go unmarked inside a section that says how and when; the other two are
+  always marked. The marking rule is in `docs/agents/code-review.md`. Existing prose was not
+  rewritten.

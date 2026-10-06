@@ -79,6 +79,26 @@ It needs PowerShell 7, and fetching needs the mod-portal login Factorio stores o
 in the game. `pwsh -File scripts/stage-pack.ps1 -SelfTest` checks the staging half without the
 network. The tools it runs live in `vendor/grado-factorio-tools`.
 
+## Dumping a staged pack's prototypes
+
+One command gives the path of a `--dump-data` dump of a staged pack, on its last line:
+
+```
+pwsh -File scripts/get-dump.ps1 Grado_ABC
+pwsh -File scripts/get-dump.ps1 Grado_ABCS -With space-age
+```
+
+The dump is kept in `.dump-cache/` at the repository root, which is git-ignored and outside the
+staged mod directories, as `<pack>[+<bundled mods>]-<checksum>-<id>.json`: the checksum is the
+prototype list checksum the game prints, and the game's log (`.log`) and the staged set the dump is
+of (`.key`) lie beside it. Asking again runs nothing while the staged set is the same, and the
+command says which it did. A member at another release, a mod disabled with `-Disabled <names>`,
+another `-With` selection, another game build, or a file added to or removed from a staged mod, is
+another set and gets a dump of its own. What it cannot see is in the script's header.
+
+To clear the cache, delete `.dump-cache/`, or the three files of one dump. Nothing else reads it.
+`pwsh -File scripts/get-dump.ps1 -SelfTest` checks the caching without the game.
+
 ## Publishing
 
 `Grado_NonChanging`, `Grado_ChangingBase` and `Grado_ABCX` already exist on the portal under

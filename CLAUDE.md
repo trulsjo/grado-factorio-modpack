@@ -70,81 +70,15 @@ Do not settle any of them as a side effect of doing something else — no "I pic
 Recording options with trade-offs is welcome; choosing between them is not. If a task cannot proceed
 without a decision, say so and ask.
 
-Settled so far, recorded here so nobody reopens them by accident:
-
-- **Five packs, with ABC as the shared core** (2026-09-20). Replaced an earlier three-pack plan.
-- **Space Age is a target**, which is what produced the ABCX/ABCS split.
-- **SpaceX stays in, via the fork.** `SpaceMod` itself is 1.1-only; `SpaceModFeorasFork` is current
-  (1.3.4, Factorio 2.1, 2026-07-10).
-- **One repo, one directory per pack.**
-- **The 2.0 packs reuse the three existing portal entries** (2026-09-21). The 1.1 releases stay
-  in place on them; one entry serves each player the newest release matching their game version.
-- **Version `0.1.0` on all five** (2026-09-21), each pack versioning independently from there. It
-  sits above every published number and marks the 1.1 -> 2.0 break without claiming the packs work
-  in game. How a version is then chosen is under *Conventions*.
-- **The name is `Grado_ABCS`, with the underscore** (2026-09-21). Permanent — a name is the portal
-  URL and what `info.json` resolves.
-- **Titles are short identity, colon, descriptor** (2026-09-21). The published entries used the
-  raw name as the title; this replaces it. The form itself is under *Conventions*, which is where
-  it is stated once.
-- **Each pack has a promise, and it is the membership test** (2026-09-22). `Grado_NonChanging`
-  adds no content; `Grado_ChangingBase` may, but not content that competes with an overhaul for
-  the same ground. Stated once in `GLOSSARY.md` under *Promise*; the old wording, "does not change
-  save state or the factory", was false and is retired.
-- **`Grado_NonChanging`'s membership is settled** (2026-09-22, #7). 29 members to 26:
-  `AfraidOfTheDark`, `blueprint-sandboxes` and `blueprint_flip_and_turn` out, `Bottleneck` to
-  `BottleneckLite` and `MaxRateCalculator` to `RateCalculator`. `kry-picker-complete` declined.
-  Reasons per mod in `docs/catalogue/Grado_NonChanging.md`.
-- **`Grado_ChangingBase`'s membership is settled** (2026-09-22, #8). 25 members to 20, and it
-  settled #11 and #23 in the same pass. The four LTN mods out and `cybersyn2` in — **Cybersyn 2,
-  which its author declares alpha**; `UltimateBeltsSpaceAge` and `StoneWaterWell-ActuallyUpdated`
-  out as the first two failures of this pack's promise; `safefill` to `Waterfill_v17` and
-  `ModuleInserterSimplified` to `ModuleInserterEx`; `reverse-factory` and `squeak-through-2`
-  mandatory by decision; `bobinserters` kept here and its duplicate line removed from
-  `Grado_ABC/info.json`. `kry-picker-complete` declined here too. Three rules decided most of it:
-  **swaps in, additions out** (as #7); **the promise is the membership test**; and
-  **unreachability breaks a tie but does not decide alone**. Reasons per mod in
-  `docs/catalogue/Grado_ChangingBase.md`.
-- **`Grado_ABC`'s membership is settled** (2026-09-23, #9). 44 mods to 41. The pack gained a promise
-  (`GLOSSARY.md`): **Truls's own Angel's, Bob's and MadClown setup**, where a member may extend the
-  overhaul or add content of its own but must not conflict with it. The whole Deadlock stacking
-  family is out, as is `signalstrings`. `RealisticFusionPower` is replaced by
-  `RealisticFusionPowerPort`, **a comparison slot for `realistic-fusion-refreshed`**, which may take
-  the slot later. `angels-smelting-extended` is kept for now; #50 (2026-09-30) found
-  `angelsextended-remelting` a complement, not an alternative, and recommends not adding it. #8's
-  three rules carried up unchanged, with **a partial replacement counted as an addition**, which is
-  why `ScienceCostTweakerM` and the others went to #49. A 2.x `angelsindustries` port reopens the
-  question rather than adding it back. All ten of this pack's drops are closed. The hidden mandatory
-  members stay unnamed. Reasons per mod in `docs/catalogue/Grado_ABC.md`.
-- **The nukes mods are out of `Grado_ABC`** (2026-10-04, #81). 41 mods to 39:
-  `True-Nukes_Continued` and `True-Nukes-Graphics_Continued`, and the hidden member
-  `Warheads_Continued` leaves with them. They fail in the data stage beside the pack's Bob's and
-  Clowns members on 2.0.77. The first *load drop* (`GLOSSARY.md`), so the twenty port drops stay
-  twenty. No replacement and no pack Lua. A release that passes
-  a data stage beside Bob's and Clowns reopens the question and does not add them back; #113
-  revisits it when 2.1 is stable.
-- **`Grado_ABCX`'s and `Grado_ABCS`'s membership is settled** (2026-09-23, #10). Neither list
-  changed: one member each. Both gained a promise (`GLOSSARY.md`). **`Grado_ABCS` is ABC *beside*
-  Space Age, not merged with it**, so no bridge mod; #31 stays open to revisit that. ABCX keeps its
-  own `! space-age` beside the fork's. `quality` and `elevated-rails` go unnamed, because
-  `space-age` requires both (read from the installed game, 2.0.77). Reasons per mod in
-  `docs/catalogue/Grado_ABCX.md` and `docs/catalogue/Grado_ABCS.md`.
-- **A pack version does not move before its first release** (2026-09-22). All five stay at
-  `0.1.0` through any number of dependency edits; the major/minor rule under *Conventions* starts
-  applying at the first published release. `0.x` to `1.0.0` is the one major that signals
-  maturity rather than a broken save - see ADR 0002.
-- **The declared line is `2.0` for the first release** (2026-09-24, #16), with a 2.1 release on
-  the same entries once factorio.com's stable release is 2.1.x. Minimums: `base >= 2.0.67` for
-  `Grado_NonChanging`, `>= 2.0.74` for the other four. **Applied 2026-09-24 (#58)**: the pinned
-  resolver re-measured all five on line `2.0`, build `2.0.77`, and read the same floors - `2.0.67`
-  from `helmod` `2.2.14`, `2.0.74` from `miniloader-redux` `1.2.0` - and each `info.json` now
-  declares its floor. Versions stay `0.1.0`.
+**What is settled is in `docs/decisions.md`**, one entry per decision. Read it before
+changing a member list, a name, a title, a version or a declared line, and before proposing to add
+a dropped mod back. A new decision is appended there, with its date and ticket.
 
 ## Decisions still open
 
 Listed with their evidence in `docs/porting-notes.md`. Do not close one silently.
 
-- **The 2.1 line.** The declared line is `2.0` (#16, under *Settled so far*). A 2.1 release on the
+- **The 2.1 line.** The declared line is `2.0` (#16, in `docs/decisions.md`). A 2.1 release on the
   same entries follows once factorio.com's stable release is 2.1.x. Stable Factorio is 2.0.77 and
   2.1.20 is experimental (read 2026-09-24). What is known for that day:
   - On a latest-release reading the project's highest floor is `base >= 2.1.20`, from the hidden

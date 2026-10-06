@@ -655,7 +655,8 @@ grown to a quarter of it by keeping each superseded sentence beside its replacem
 suits a record and this file is the record, so the text is here word for word as it stood on
 `5f00aee`, and `CLAUDE.md` now says only what is true today. A fact that changes there gets its
 old wording and a dated note here. Pointers inside the two blocks below, such as "see *Settled
-so far*" or "listed in `docs/porting-notes.md`", refer to `CLAUDE.md` as it stood.
+so far*" or "listed in `docs/porting-notes.md`", refer to `CLAUDE.md` as it stood. *Since
+2026-10-06 the* Settled so far *list is `docs/decisions.md`, moved word for word.*
 
 ### State, as it stood
 

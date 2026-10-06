@@ -108,6 +108,12 @@ table row with another column count than its header, and a link to a file git do
 does not judge prose. `-Range origin/main..HEAD` checks the Markdown a branch changed, `-All` every
 tracked file, and `-SelfTest` proves it can fail.
 
+Agent sessions also get a hook from `.claude/settings.json`: a shell command that changes
+directory into `.mod-cache/` is refused before it runs, because a session's tooling writes state
+files where its shell stands. Reading the cache by path is not affected.
+`scripts/refuse-cd-into-mod-cache.ps1` has one refused and one allowed example to check it with,
+and a `-SelfTest`.
+
 ## Publishing
 
 `Grado_NonChanging`, `Grado_ChangingBase` and `Grado_ABCX` already exist on the portal under

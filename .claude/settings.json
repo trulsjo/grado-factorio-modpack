@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "i=$(cat); case $i in *mod-cache*) printf '%s' \"$i\" | pwsh -NoProfile -File \"$CLAUDE_PROJECT_DIR/scripts/refuse-cd-into-mod-cache.ps1\";; esac"
+          }
+        ]
+      }
+    ]
+  }
+}

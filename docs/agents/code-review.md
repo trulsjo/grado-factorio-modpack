@@ -1,7 +1,7 @@
 # Code review — two rules this repository adds
 
-Both are conventions layered on the `/code-review` plugin rather than changes to it; see *Why it is
-written here rather than fixed at source* at the foot.
+Both are conventions layered on the `/code-review` plugin rather than changes to it; why, and the
+evidence behind each, is in `code-review-why.md`, which a review does not need to load.
 
 Both were decided by Truls in the sibling
 [realistic-fusion-refreshed](https://github.com/trulsjo/realistic-fusion-refreshed), and adopted here
@@ -32,44 +32,11 @@ whether it was independently verified. A silent pass and a filtered pass must ne
 where it is. If a filtered finding matters, say so in the report and let a human decide; inflating a
 score to route around the filter destroys the only signal the score carries.
 
-### Why the threshold cannot be read as "these findings do not matter"
-
-The rubric offers exactly five values — **0, 25, 50, 75, 100** — and the filter admits 80 or more. So
-it admits exactly one of them. The effective rule is *score exactly 100*, and the 75 band, which the
-rubric itself defines as
-
-> Highly confident. The agent double checked the issue, and verified that it is very likely it is a
-> real issue that will be hit in practice … The issue is very important
-
-is discarded by construction. A finding can be verified, important, and dropped.
-
-**Measured here, on the first pull request this repository ever had.** [PR
-#12](https://github.com/trulsjo/grado-factorio-modpack/pull/12): five review agents, nine findings,
-**zero posted**. The two highest both scored 75, both were real, and both were fixed in `011f5d4`:
-
-| finding | score | what it was |
-|---|---|---|
-| the catalogue's variant rule | 75 | said the variants "add one row each, and change nothing else", then described a dropped entry also changing section and Recommendation — and its own worked example broke both halves |
-| the Picker open question | 75 | `docs/porting-notes.md` still said only two of nine Picker mods had replacements, in the same branch that documented `kry-picker-complete` disproving it |
-
-A third, the irreconcilable `Kept 29 / 25 / 45` against `26 / 16 / 41` in one file, was excluded as
-pre-existing and was also real; it is fixed in the same commit. The sibling measured the same shape
-across its PRs #124, #126 and #127: ten findings, zero posted, nine real and subsequently fixed.
-
 ## Review the prose, not only the code
 
-**This repository is almost entirely prose, and nothing here checks it.** A pack is an `info.json`
-whose dependency list *is* the pack, and `CLAUDE.md` says these packs are expected to carry no Lua at
-all. The one gate that exists — the shared check, at
-`vendor/grado-factorio-tools/scripts/commit-check.ps1` since 2026-09-21 — reads the *shape* of a
-commit message and says so in its own header. Nothing reads whether a sentence agrees with the number beside it, and
-**nothing has ever been loaded in Factorio**, so the game cannot contradict a claim either.
-
-*True when this page was adopted on 2026-09-20. Since 2026-10-04 (#115 to #118) all five packs have
-a recorded load on Factorio 2.0.77, and `Grado_NonChanging` has been played (#17, 2026-09-30); the
-records are in `docs/loads/`. So the game can now contradict a claim about whether a pack starts.
-It still cannot contradict a count, a date or a portal reading, which is what the rule below is
-for.*
+**This repository is almost entirely prose, and nothing here checks it.** The commit hook reads
+the shape of a message, and a load can contradict only whether a pack starts. A count, a date or a
+portal reading is checked by the reviewer or by nobody.
 
 ### The rule
 
@@ -84,7 +51,7 @@ set is checked by walking the set, never by agreeing with its tone.
 **When a change supersedes a figure, grep the repository for the old one**, and read every hit in a
 file that records a measurement. Here that is `docs/porting-notes.md`, `docs/catalogue/`, `CLAUDE.md`
 and this file. *Since 2026-10-05 `docs/loads/` too, and the superseded wording of `CLAUDE.md`'s
-State is in `docs/porting-notes.md`, so an old figure may survive there and not in `CLAUDE.md`.* A correction landing in three places and missing the fourth is worse than none,
+State is in `docs/porting-notes.md`, so an old figure may survive there and not in `CLAUDE.md`.* *Since 2026-10-06 `docs/decisions.md` and `docs/agents/code-review-why.md` too, which took the settled decisions from `CLAUDE.md` and the measurements from this file.* A correction landing in three places and missing the fourth is worse than none,
 because the survivor then reads as deliberate.
 
 **An old figure inside a block that says what replaced it is not a defect; an unmarked one is.** The
@@ -106,28 +73,3 @@ a finding.
 
 **This binds the reviewer.** An author who greps before opening the pull request saves a round, but
 the obligation lives in the review.
-
-### Measured, not assumed
-
-Every defect this project has produced so far has been prose or data, and none was catchable by
-machinery:
-
-| what escaped | where it was |
-|---|---|
-| "Sixteen mods are dropped with no replacement found" | `CLAUDE.md`. The true count is twenty; sixteen is the number of *replacements*, taken from the wrong table. Two documents written in one session agreed with each other and neither could check the other — it took the portal to settle it (`3867050`) |
-| "SpaceX is dead" | reported from `SpaceMod` having no 2.0 release, on a page that had already written the caveat that "missing" meant only *under that exact name*. `SpaceModFeorasFork` is live on 2.1, and the five-pack structure exists because of it |
-| seven Picker mods "dropped, no replacement found" | a name-only search. Searching titles returns `kry-picker-complete`, a 2.1 modpack reassembling the family. The same mistake as the row above, made a second time, by the rule written after the first |
-| two optional dependencies silently made mandatory | `? reverse-factory` and `? Squeak Through` are optional in the published 1.1 pack and required in the 2.0 one. Nobody decided that; it is now [#11](https://github.com/trulsjo/grado-factorio-modpack/issues/11) |
-
-Three of those four are a claim stated more confidently than its evidence allowed. That is the defect
-this repository actually produces, and no gate will ever catch it.
-
-## Why it is written here rather than fixed at source
-
-The workflow is a plugin, at `~/.claude/plugins/cache/claude-plugins-official/code-review/`. It is
-not this repository's to edit, and editing a cache would be undone by the next plugin update. So this
-is a convention, and `CLAUDE.md` points at it so a review session loads it before running.
-
-Nothing about the scoring, the rubric or the 80 is changed. The first rule drops one assumption —
-that a filtered finding is a discarded one. The second adds one obligation the rubric never mentions,
-because a plugin that reviews code cannot know that here there is almost no code to review.

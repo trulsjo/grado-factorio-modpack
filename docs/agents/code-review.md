@@ -51,9 +51,10 @@ told.
 
 ## Review the prose, not only the code
 
-**This repository is almost entirely prose, and nothing here checks it.** The commit hook reads
-the shape of a message, and a load can contradict only whether a pack starts. A count, a date or a
-portal reading is checked by the reviewer or by nobody.
+**This repository is almost entirely prose, and nothing here checks what it says.** The commit
+hooks read the shape of a message and of the Markdown - emphasis, tables and links
+(`scripts/markdown-check.ps1`) - and a load can contradict only whether a pack starts. A count, a
+date or a portal reading is checked by the reviewer or by nobody.
 
 ### The rule
 

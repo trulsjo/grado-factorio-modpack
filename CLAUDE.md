@@ -137,23 +137,23 @@ missing.
 ## Conventions
 
 - Default branch `main`. Commit email is set per-repo — do not change it.
-- **A batch of tickets lands as one pull request** (written down 2026-10-05; the practice since
-  PR #94): a branch named for its tickets, one commit per ticket, a review, then a rebase merge.
-  *Since 2026-10-06 (#151): the review is the pre-PR review, and it and one commit of its fixes
-  come before the pull request, whose body carries its findings. The plugin pass,
-  `code-review:code-review`, runs only when Truls asks. Until then this ended "Open the pull
-  request when the work is committed."*
+- **A batch of tickets lands as one pull request** (#151): a branch named for its tickets, one
+  commit per ticket, the pre-PR review and one commit of its fixes, the pull request with the
+  review's findings in its body, then a rebase merge. The plugin pass,
+  `code-review:code-review`, runs only when Truls asks.
 - `CLAUDE.local.md` is personal and git-ignored. Never commit it, and never move its contents into a
   tracked file.
 - **`info.json` is strict JSON — no comments.** Anything that needs explaining goes in
   `docs/porting-notes.md`, next to the mod it explains.
-- **Two documents, two jobs.** `docs/porting-notes.md` records what happened to the 1.1 packs,
-  and since 2026-10-05 the superseded wording of this file's *State* and *Decisions still open*;
-  `docs/catalogue/<pack>.md` records what is in each pack now and why, one entry per mod.
-  `docs/mod-catalogue.md` is the entry format. A fact about the port goes in the notes, a fact about
-  a mod goes in its catalogue entry. *A third since 2026-09-29 (#17):* `docs/loads/<pack>-<date>.md`
-  records one load and its play session - the build, the bundled mods and every resolved member
-  version, so the next load can be compared with it. The first one is the template.
+- **Three documents, three jobs.** `docs/porting-notes.md` records what happened to the 1.1
+  packs; `docs/catalogue/<pack>.md` records what is in each pack now and why, one entry per mod,
+  in the format of `docs/mod-catalogue.md`; `docs/loads/<pack>-<date>.md` records one load and
+  its play session - the build, the bundled mods and every resolved member version, so the next
+  load can be compared with it. The first load record is the template. A fact about the port
+  goes in the notes, a fact about a mod goes in its catalogue entry.
+- **This file states the live rule only.** It is loaded into every session. When a line here
+  changes, its old wording goes to *The trail of CLAUDE.md's State and open decisions* in
+  `docs/porting-notes.md`, with the date, and not beside the new one.
 - **`<pack>/README.md` is the player's page** (2026-09-29, #17), and the text meant for the pack's
   portal description. It ships inside the pack zip, because the packer takes every tracked file in
   the pack directory. It is written for players, so no ticket numbers and no project vocabulary.
@@ -182,12 +182,8 @@ missing.
   `Grado` leading all five so the family sorts together on the portal. The descriptor names the
   mods a player would search for; the initialism alone means nothing to someone browsing.
 - **`name` and `title` are not the same field.** The name is permanent and resolves dependencies;
-  the title is display only. `GLOSSARY.md` is the glossary: six terms, these two among them, each
-  of which has been used here to mean two things. *Nine since 2026-09-24: `Promise` had already
-  made it seven, and #43 added `Resolve` and #16 `Declared line`. Twelve since 2026-09-29: #17
-  added `Load`, `Start` and `Play session`.* *Fourteen since 2026-10-04: #81 added `Hidden member`
-  and `Load drop`.* *Seventeen since 2026-10-06: #157 added `Measured`, `Read from source` and
-  `Inferred`, the three grades of evidence.*
+  the title is display only. `GLOSSARY.md` is the glossary: the terms, these two among them, that
+  have been used here to mean two things.
 
 ## Commit messages
 
@@ -217,9 +213,8 @@ mechanics:
   area (`docs`, `repo`).
 - **What counts as a breaking change.** Here it is a dependency change an existing save cannot
   survive: adding or removing a member mod of `Grado_ChangingBase` or anything below it in the
-  chain - **`Grado_NonChanging` included**, which was written here as exempt until 2026-09-22 and is
-  not: `Tapeline`, `Todo-List`, `YARM` and `SpeedControl` all write to the save, and the removed
-  `blueprint-sandboxes` created whole surfaces. It breaks
+  chain - **`Grado_NonChanging` included**: `Tapeline`, `Todo-List`, `YARM` and `SpeedControl` all
+  write to the save, and the removed `blueprint-sandboxes` created whole surfaces. It breaks
   silently and players find out, not the build. The `!` and the `BREAKING CHANGE:` footer are the
   shared mechanism; what triggers them is this repo's own.
 - **What a body has to cite.** Name a mod by its portal name and pin the version or date behind a

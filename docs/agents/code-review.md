@@ -67,6 +67,17 @@ from the source and not run". Every later sentence that restates the conclusion,
 or in a note elsewhere, carries the same qualifier, and a cause is given as what the source shows.
 Found in PR #129 and PR #138.
 
+**A claim has a grade, and two of the three are always marked.** The grades are in `GLOSSARY.md`:
+*Measured*, *Read from source* and *Inferred* (2026-10-06, #157). *Measured* may go unmarked inside
+a section that says how and when it was measured - a catalogue header's portal-reading date, a load
+record's build line. *Read from source* and *Inferred* are marked every time, and again wherever
+the conclusion is repeated, which is the rule above made general. Each grade has something it
+carries - its day and build, the release read, the claims it rests on - and a claim without it is
+not that grade. A conclusion takes the weakest grade among its parts. A claim that names nothing it
+rests on has no grade: it is marked "not measured" or it is a finding. Prose written before
+2026-10-06 was not rewritten to these terms, so an old "confirmed" or "checked" is not a defect on
+its own.
+
 **A portal reading is a measurement.** Every version, date, download count and `factorio_version` in
 prose here came from an API call on a particular day and goes stale silently. Treat an undated one as
 a finding.

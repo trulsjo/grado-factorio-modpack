@@ -38,7 +38,7 @@ _Avoid_: target (that word is taken - "Space Age is a target" means an expansion
 while "a 2.0 target" and "a 2.1 target" have meant a line)
 
 **Lower / higher**:
-Position in the chain, measured by dependency. `Grado_NonChanging` is the lowest and `Grado_ABCX`
+Position in the chain, by dependency. `Grado_NonChanging` is the lowest and `Grado_ABCX`
 and `Grado_ABCS` are the highest; a pack is higher than every pack it depends on, and loads all of
 them. The README's diagram nests the chain downwards and so reads the opposite way - the words
 follow the dependency, not the indentation. Both directions have been written for the same pair
@@ -85,6 +85,30 @@ A person playing with a pack in the client - ticks run and the mods are used - a
 they did. The only one of the three that says anything about how the members behave together.
 Added 2026-09-29 (#17).
 _Avoid_: play-test (used here for "any of the three" before 2026-09-29), playthrough
+
+**Measured**:
+The thing itself was run or queried and the result written down: a script's output over a data
+dump, a load's log, a portal reading, or what a person saw in a play session. It carries its day,
+and its build where a game was run. A search that finds nothing is measured, and carries what was
+searched. The first of three grades of evidence, with *Read from source* and *Inferred*. Added
+2026-10-06 (#157).
+_Avoid_: confirmed, verified, observed, checked (none says which grade is meant); "measured" for
+anything without its day
+
+**Read from source**:
+Taken from a mod's code or data files, with nothing executed. It carries the release that was read.
+A portal description or a changelog is not source: what an author says is quoted and attributed,
+and has no grade until someone checks it. Added 2026-10-06 (#157).
+_Avoid_: read or reading on its own (a portal reading is *Measured*), "the mod does" for what its
+source says it would do
+
+**Inferred**:
+Concluded from other claims, and it names them. A conclusion takes the weakest grade among its
+parts: a cause joined to a measured effect is inferred, however solid each half is. That nothing
+exists is inferred from a search that found nothing - "`SpaceMod` has no 2.0 release" was measured,
+and "SpaceX is dead" was inferred from it and wrong. Added 2026-10-06 (#157).
+_Avoid_: assumed (a claim that names nothing it rests on has no grade; it is marked "not measured"
+or it is a finding), likely without saying from what
 
 **Title**:
 The `title` field in `info.json`, e.g. `Grado ABCS: Angel's, Bob's, MadClown, Space Age`. Display

@@ -183,7 +183,8 @@ missing.
   of which has been used here to mean two things. *Nine since 2026-09-24: `Promise` had already
   made it seven, and #43 added `Resolve` and #16 `Declared line`. Twelve since 2026-09-29: #17
   added `Load`, `Start` and `Play session`.* *Fourteen since 2026-10-04: #81 added `Hidden member`
-  and `Load drop`.*
+  and `Load drop`.* *Seventeen since 2026-10-06: #157 added `Measured`, `Read from source` and
+  `Inferred`, the three grades of evidence.*
 
 ## Commit messages
 

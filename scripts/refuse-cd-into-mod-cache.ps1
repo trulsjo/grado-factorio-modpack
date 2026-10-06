@@ -19,20 +19,24 @@
 
     WHAT IT REFUSES. A cd, chdir, pushd, sl, Set-Location or Push-Location, standing where a
     command can stand, whose target resolves to the cache or anything under it: relative or
-    absolute, with either slash, as /c/... or C:\..., in any case. A target it cannot resolve - one
-    holding a variable, a substitution or a wildcard - is refused if it holds the text
-    `.mod-cache`. And any command at all while the shell already stands in the cache, unless it
-    begins by changing directory out.
+    absolute, with either slash, as /c/... or C:\.... A relative target is resolved from where the
+    earlier ones in the command left the shell, and from where it started, since one in a subshell
+    does not last. A target it cannot resolve - one holding a variable, a substitution or a
+    wildcard - is refused if it holds the text `.mod-cache`. And any command at all while the
+    shell already stands in the cache, unless it begins by changing directory out.
 
     WHAT IT LETS THROUGH. Everything else, and so a command that reads, lists or searches the
     cache by path, and scripts/stage-pack.ps1, scripts/get-dump.ps1 and the load harness, which
     are given paths and never stand there.
 
     WHAT IT CANNOT SEE. A script or program that changes directory itself. A target that reaches
-    the cache through a variable, a link or a junction whose text does not say so. `git -C`, and
-    a tool's own working-directory option. It reads the command as text and does not parse the
-    shell, so the words `cd .mod-cache` at the start of a line inside a quoted string are refused
-    too.
+    the cache through a variable, a wildcard, a link or a junction whose text does not say so.
+    `git -C`, and a tool's own working-directory option. The cache spelt in another case than
+    `mod-cache`, which Windows opens and the wiring does not start this script for. Anything under
+    WSL or Linux, read from the code and not run there: a /mnt/c/ path is turned into a Windows
+    one. It reads the command as text
+    and does not parse the shell, so `cd .mod-cache` where a command could stand is refused inside
+    a quoted string too: after a `;`, `&`, `|`, `(` or `{`, or at the start of a line.
 
     TO CHECK IT, from the repository root. The first is refused with exit 2, the second passes
     with exit 0:
@@ -67,9 +71,9 @@ function Test-EntersCache {
     $cache = [IO.Path]::GetFullPath((Join-Path $Root '.mod-cache'))
     $inside = { param($p) $p -eq $cache -or $p.StartsWith($cache + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase) }
 
-    $here = [IO.Path]::GetFullPath((& $native $Cwd), $Root)
+    $start = $here = [IO.Path]::GetFullPath((& $native $Cwd), $Root)
     $moves = [regex]::Matches($Command,
-        '(?:^|[;&|({\n]|\b(?:then|do|else)\s)\s*(?:cd|chdir|pushd|sl|Set-Location|Push-Location)\s+(?:-(?:Literal)?Path\s+|--\s+)?("[^"]*"|''[^'']*''|[^\s;&|)}]+)', 'IgnoreCase')
+        '(?:^|[;&|({\n]|\b(?:then|do|else|if|elif|while|until)\s)\s*(?:cd|chdir|pushd|sl|Set-Location|Push-Location)\s+(?:--?\w*\s+)*("[^"]*"|''[^'']*''|[^\s;&|)}]+)', 'IgnoreCase')
     if ((& $inside $here) -and -not ($moves.Count -and $moves[0].Index -eq 0)) { return $true }
     foreach ($m in $moves) {
         $target = $m.Groups[1].Value.Trim('"', "'")
@@ -78,7 +82,7 @@ function Test-EntersCache {
             continue
         }
         $here = [IO.Path]::GetFullPath((& $native $target), $here)
-        if (& $inside $here) { return $true }
+        if ((& $inside $here) -or (& $inside ([IO.Path]::GetFullPath((& $native $target), $start)))) { return $true }
     }
     $false
 }
@@ -92,7 +96,9 @@ if ($SelfTest) {
         @('cd .mod-cache', '.', $true),
         @('cd .mod-cache/Grado_ABC/flib/prototypes && ls', '.', $true),
         @('cd ./.mod-cache/', '.', $true),
-        @('cd .MOD-CACHE\Grado_ABC', '.', $true),
+        @('if cd .mod-cache; then ls; fi', '.', $true),
+        @('cd -P .mod-cache', '.', $true),
+        @('(cd docs && ls); cd .mod-cache', '.', $true),
         @("cd `"$fixture\.mod-cache\Grado_ABC`"", '.', $true),
         @("cd '$posix/.mod-cache' && pwd", '.', $true),
         @("cd /mnt$posix/.mod-cache", '.', $true),
@@ -119,6 +125,8 @@ if ($SelfTest) {
         @('cd docs && ls', '.', $false),
         @('cd .mod-cache-notes', '.', $false),
         @('cd .mod-cache/..', '.', $false),
+        @('cd docs && cd agents', '.', $false),
+        @('cd -', '.', $false),
         @('git commit -m "never cd .mod-cache again"', '.', $false),
         @('echo cd .mod-cache', '.', $false),
         @('', '.', $false)

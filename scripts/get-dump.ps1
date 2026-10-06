@@ -26,14 +26,16 @@
     and gets a dump of its own. A disabled mod is left out of the key, so a set with a mod
     disabled and a set without that mod staged are one set.
 
-    WHAT IT CANNOT SEE. A file inside a staged mod rewritten to the same length under the same
-    version: the key reads sizes, not contents, because hashing a staged overhaul pack is 2.5 GB
-    (Grado_ABC, 2026-10-06). The mod settings: the harness loads every mod at its defaults. And a
+    WHAT IT CANNOT SEE. A change inside a staged mod that leaves its version, file count and
+    total bytes the same: the key reads sizes, not contents, because hashing would read every file
+    of every staged mod. The mod settings: the harness loads every mod at its defaults. And a
     pack that was never staged, or staged long ago, is dumped as it stands; staging is
     scripts/stage-pack.ps1's.
 
-    IT WRITES ONLY UNDER THE CACHE DIRECTORY. The staged directory is read, and junctioned into
-    the harness's temp directory for the run. No info.json is modified.
+    IT WRITES NOTHING UNDER THE STAGED DIRECTORY, and no info.json. The self-test measures that
+    against a stand-in for the game. For a real run it is read from the harness's source, not
+    measured: the staged mods are junctioned or copied into a temp directory, and the game writes
+    there.
 
     TO CLEAR IT, delete .dump-cache/, or the three files of one dump.
 
@@ -110,7 +112,7 @@ function Get-PackDump {
         "factorio $Build"
         "bundled $(($Bundled | Sort-Object) -join ',')"
         foreach ($r in $rows | Where-Object { $_.Name -cnotin $Disabled }) {
-            # ponytail: sizes, not contents. A same-length edit under the same version is not seen;
+            # ponytail: sizes, not contents. An edit that keeps the count and the bytes is not seen;
             # hash the files if staged mods ever get edited in place.
             $size = Get-ChildItem -LiteralPath $r.Path -Recurse -File -Force | Measure-Object Length -Sum
             "$($r.Name) $($r.Version) $($r.Kind), $($size.Count) file(s), $([long] $size.Sum) bytes"
@@ -204,7 +206,6 @@ function Invoke-SelfTest {
             $r = & $ask @{ Bundled = 'space-age', 'quality' }
             $r.Made -and (Split-Path $r.Path -Leaf) -match '^Fixture\+quality\+space-age-4242-' } }
         @{ Name = 'a file added to a staged mod under the same version is not served the old dump'; Test = {
-            $null = & $ask
             Set-Content -LiteralPath (Join-Path $mods 'alpha/data.lua') -Value '-- new'
             (& $ask).Made } }
         @{ Name = 'a zip replaced by one of another size is not served the old dump'; Test = {

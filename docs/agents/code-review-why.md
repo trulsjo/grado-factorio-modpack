@@ -45,6 +45,9 @@ records are in `docs/loads/`. So the game can now contradict a claim about wheth
 It still cannot contradict a count, a date or a portal reading, which is what the rule below is
 for.*
 
+*Since 2026-10-06 (#149) there is a second gate, `scripts/markdown-check.ps1`, which reads the
+shape of the Markdown and still not what a sentence says.*
+
 ## Measured, not assumed
 
 Every defect this project has produced so far has been prose or data, and none was catchable by

@@ -1,6 +1,6 @@
 # Load record: `Grado_ABCS`, 2026-10-04
 
-The first recorded **load** (`CONTEXT.md`, *Load*) of `Grado_ABCS`, for #118: the overhaul beside
+The first recorded **load** (`GLOSSARY.md`, *Load*) of `Grado_ABCS`, for #118: the overhaul beside
 the expansion, and the first measurement of the one pack the portal could not answer for. **One
 load, with Space Age, clean:** 104 mods validated beside `space-age`, `quality` and
 `elevated-rails`, and a map created. The data-stage failure the ticket thought possible did not

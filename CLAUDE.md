@@ -24,7 +24,7 @@ pack carries Lua.
   The three overhaul packs log non-fatal complaints (#125).
 
 The records are in `docs/loads/`. **"It resolves on the portal", "it loads in the game" and "it
-plays" are three claims** (`CONTEXT.md`: *Resolve*, *Load*, *Play session*). For the four upper
+plays" are three claims** (`GLOSSARY.md`: *Resolve*, *Load*, *Play session*). For the four upper
 packs only the first two are true. A *Start* is a fourth thing, less than a load.
 
 How this section came to read as it does, every superseded sentence kept:
@@ -44,7 +44,7 @@ had at least four entries and no known end.
 ## The chain
 
 ```
-Grado_NonChanging        quality of life; adds no content (see CONTEXT.md, *Promise*)
+Grado_NonChanging        quality of life; adds no content (see GLOSSARY.md, *Promise*)
   └─ Grado_ChangingBase    may add content and change saves; compatible with most overhauls
        └─ Grado_ABC          Angel's + Bob's + MadClown. The shared overhaul core.
             ├─ Grado_ABCX     + Space Extension (SpaceX), via `SpaceModFeorasFork`
@@ -89,7 +89,7 @@ Settled so far, recorded here so nobody reopens them by accident:
   it is stated once.
 - **Each pack has a promise, and it is the membership test** (2026-09-22). `Grado_NonChanging`
   adds no content; `Grado_ChangingBase` may, but not content that competes with an overhaul for
-  the same ground. Stated once in `CONTEXT.md` under *Promise*; the old wording, "does not change
+  the same ground. Stated once in `GLOSSARY.md` under *Promise*; the old wording, "does not change
   save state or the factory", was false and is retired.
 - **`Grado_NonChanging`'s membership is settled** (2026-09-22, #7). 29 members to 26:
   `AfraidOfTheDark`, `blueprint-sandboxes` and `blueprint_flip_and_turn` out, `Bottleneck` to
@@ -106,7 +106,7 @@ Settled so far, recorded here so nobody reopens them by accident:
   **unreachability breaks a tie but does not decide alone**. Reasons per mod in
   `docs/catalogue/Grado_ChangingBase.md`.
 - **`Grado_ABC`'s membership is settled** (2026-09-23, #9). 44 mods to 41. The pack gained a promise
-  (`CONTEXT.md`): **Truls's own Angel's, Bob's and MadClown setup**, where a member may extend the
+  (`GLOSSARY.md`): **Truls's own Angel's, Bob's and MadClown setup**, where a member may extend the
   overhaul or add content of its own but must not conflict with it. The whole Deadlock stacking
   family is out, as is `signalstrings`. `RealisticFusionPower` is replaced by
   `RealisticFusionPowerPort`, **a comparison slot for `realistic-fusion-refreshed`**, which may take
@@ -119,12 +119,12 @@ Settled so far, recorded here so nobody reopens them by accident:
 - **The nukes mods are out of `Grado_ABC`** (2026-10-04, #81). 41 mods to 39:
   `True-Nukes_Continued` and `True-Nukes-Graphics_Continued`, and the hidden member
   `Warheads_Continued` leaves with them. They fail in the data stage beside the pack's Bob's and
-  Clowns members on 2.0.77. The first *load drop* (`CONTEXT.md`), so the twenty port drops stay
+  Clowns members on 2.0.77. The first *load drop* (`GLOSSARY.md`), so the twenty port drops stay
   twenty. No replacement and no pack Lua. A release that passes
   a data stage beside Bob's and Clowns reopens the question and does not add them back; #113
   revisits it when 2.1 is stable.
 - **`Grado_ABCX`'s and `Grado_ABCS`'s membership is settled** (2026-09-23, #10). Neither list
-  changed: one member each. Both gained a promise (`CONTEXT.md`). **`Grado_ABCS` is ABC *beside*
+  changed: one member each. Both gained a promise (`GLOSSARY.md`). **`Grado_ABCS` is ABC *beside*
   Space Age, not merged with it**, so no bridge mod; #31 stays open to revisit that. ABCX keeps its
   own `! space-age` beside the fork's. `quality` and `elevated-rails` go unnamed, because
   `space-age` requires both (read from the installed game, 2.0.77). Reasons per mod in
@@ -245,7 +245,7 @@ missing.
   `Grado` leading all five so the family sorts together on the portal. The descriptor names the
   mods a player would search for; the initialism alone means nothing to someone browsing.
 - **`name` and `title` are not the same field.** The name is permanent and resolves dependencies;
-  the title is display only. `CONTEXT.md` is the glossary: six terms, these two among them, each
+  the title is display only. `GLOSSARY.md` is the glossary: six terms, these two among them, each
   of which has been used here to mean two things. *Nine since 2026-09-24: `Promise` had already
   made it seven, and #43 added `Resolve` and #16 `Declared line`. Twelve since 2026-09-29: #17
   added `Load`, `Start` and `Play session`.* *Fourteen since 2026-10-04: #81 added `Hidden member`
@@ -333,5 +333,5 @@ prose is reviewed as carefully as the code, because here there is almost none. *
 
 ### Domain docs
 
-Single-context: `CONTEXT.md` and `docs/adr/` at the repo root. See
+Single-context: `GLOSSARY.md` and `docs/adr/` at the repo root. See
 `docs/agents/domain.md`.

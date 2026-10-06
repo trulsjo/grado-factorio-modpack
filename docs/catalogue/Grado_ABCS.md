@@ -77,7 +77,7 @@ it found is not a substitute for this member — it is a candidate second member
 the interesting part of this file.
 
 **Ruled 2026-09-23 (#10): kept, as the pack's only member.** The pack is `Grado_ABC` beside Space
-Age, not integrated with it (`CONTEXT.md`, *Promise*), so no bridge was added; the reasons are under
+Age, not integrated with it (`GLOSSARY.md`, *Promise*), so no bridge was added; the reasons are under
 *Pressure on the one-mod-per-branch rule* below.
 
 **Every row above is degraded evidence and should be read as such.** The **Latest**, **Downloads**

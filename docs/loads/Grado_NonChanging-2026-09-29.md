@@ -1,6 +1,6 @@
 # Load record: `Grado_NonChanging`, 2026-09-29
 
-The first recorded **load** of any pack (`CONTEXT.md`, *Load*), for #17. Two loads, both clean. The
+The first recorded **load** of any pack (`GLOSSARY.md`, *Load*), for #17. Two loads, both clean. The
 **play session** is complete (2026-09-30). 24 of the 26 named members were seen working - the two
 train painters inferred from the colours, and `PipeVisualizer-Updated`'s `Alt+Y` toggle not
 settled. `ixuAutoSave` and `kry-picker-extended` were not confirmed. The save survived a reload

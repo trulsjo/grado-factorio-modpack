@@ -95,7 +95,7 @@ written, and each affected entry carries its ruling inline. **44 mods to 41.**
    test*; *unreachability breaks a tie but does not decide alone*. #9 kept rule 1 strict: **a partial
    replacement is an addition**. That is what sends `ScienceCostTweakerM`, `deadlock-compat-AngelBobPlus`
    and the two suite mods to #49.
-2. **`Grado_ABC` has a promise now** (`CONTEXT.md`, *Promise*). It is Truls's own Angel's, Bob's and
+2. **`Grado_ABC` has a promise now** (`GLOSSARY.md`, *Promise*). It is Truls's own Angel's, Bob's and
    MadClown setup, so a member need not be about the overhaul. It may extend the overhaul mods or add
    content of its own, but it must not conflict with them, and nothing in it may declare
    `! space-age`.
@@ -1720,7 +1720,7 @@ two decisions is visible from this side.
 Members that survived the 1.1 -> 2.0 port and were removed by #9 on 2026-09-23, or by #81 on
 2026-10-04. The survey text is kept as written, and each entry ends with its ruling. #9's four were
 removed by choice. #81's two were removed because `True-Nukes_Continued` does not load; that is a
-load drop (`CONTEXT.md`).
+load drop (`GLOSSARY.md`).
 
 ### `DeadlockStackingForBobs`
 
@@ -1886,7 +1886,7 @@ target this mod is served.
 
 **Ruled 2026-10-04 (#81): out**, with `True-Nukes_Continued`. No failure was traced to this mod. It
 is art for a mod the pack no longer has, and it was not run on its own. See *Decisions, 2026-10-04 (#81)*.
-*Added 2026-10-04 (#119):* it left with a load drop (`CONTEXT.md`), `True-Nukes_Continued`, and is
+*Added 2026-10-04 (#119):* it left with a load drop (`GLOSSARY.md`), `True-Nukes_Continued`, and is
 not one by the glossary's wording, since the pack was not shown to fail with it.
 
 ### `True-Nukes_Continued`
@@ -1919,7 +1919,7 @@ it stays and is tracked under #43. Whether it can be installed at all turns on #
 member of the three lower packs has at least one 2.0 release (measured 2026-09-23), so on a 2.0
 target this mod is served.
 
-**Ruled 2026-10-04 (#81): out.** A load drop (`CONTEXT.md`, where #81 added the term; *named here
+**Ruled 2026-10-04 (#81): out.** A load drop (`GLOSSARY.md`, where #81 added the term; *named here
 2026-10-04, #119*). It fails in the data stage beside `bobwarfare` `2.1.0`,
 `bobelectronics` `2.1.1` and `Clowns-Nuclear` `2.0.08` on Factorio 2.0.77 (measured 2026-10-03):
 it and `Warheads_Continued` still look up Bob's prototype names from before Bob's 2.x added the
@@ -2043,7 +2043,7 @@ this mod as an alternative, and the code agrees. So the alternative no longer we
 member. The concerns about the member itself stand: a single 2.x release, on 2.0 only, after two
 years dormant. To those add the side finding above: with `bobplates` it redefines Angel's
 `angels-liquid-molten-invar`, which sits against this pack's promise that a member must not
-conflict with the overhaul (`CONTEXT.md`). Whether a redefinition of one fluid is a conflict in
+conflict with the overhaul (`GLOSSARY.md`). Whether a redefinition of one fluid is a conflict in
 that sense was not measured: nothing here compared the two definitions in a load. What the member
 provides has no substitute here either. *Measured 2026-10-01 (#80): the difference is display
 only and reaches no recipe, so the recommendation there is no conflict - see* The

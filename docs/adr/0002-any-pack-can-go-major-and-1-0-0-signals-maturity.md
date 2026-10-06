@@ -17,7 +17,7 @@ sites, `SpeedControl`, and - until #7 removed it - `blueprint-sandboxes`, which 
 surfaces. Removing a mod that owns surfaces is exactly the kind of change the rule exists to warn
 about. The pack is not exempt; it was only ever described as exempt.
 
-The promise it was exempt on the strength of is now stated once, in `CONTEXT.md` under *Promise*,
+The promise it was exempt on the strength of is now stated once, in `GLOSSARY.md` under *Promise*,
 and it does not say what 0001 assumed it said.
 
 **`0.x` to `1.0.0` is the one major that means maturity.** 0001 named the maturity reading as a

@@ -1,6 +1,6 @@
 # Load record: `Grado_ABCX`, 2026-10-04
 
-The first recorded **load** (`CONTEXT.md`, *Load*) of `Grado_ABCX`, for #117, and the first time
+The first recorded **load** (`GLOSSARY.md`, *Load*) of `Grado_ABCX`, for #117, and the first time
 the exclusion the five-pack structure rests on was seen in the game. Two runs:
 
 - **Base only: clean.** 105 mods validated and a map created.

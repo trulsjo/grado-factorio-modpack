@@ -2,7 +2,7 @@
 
 The quality-of-life pack. Its promise is that it **adds no content**: it may tune vanilla
 prototypes, may store its own data in the save, and changes the built factory only when the player
-asks it to. Stated once in `CONTEXT.md` under *Promise*, settled 2026-09-22 by #7. The pack was
+asks it to. Stated once in `GLOSSARY.md` under *Promise*, settled 2026-09-22 by #7. The pack was
 described here as one that "does not change save state or the factory" until that date; *The
 promise* below is where that wording was measured against the members and found false.
 
@@ -34,7 +34,7 @@ carries its ruling inline. **29 members to 26.**
 | everything else | kept as recommended |
 
 **The promise was settled first, because three memberships hung off it.** It is stated once, in
-`CONTEXT.md` under *Promise*: `Grado_NonChanging` adds no content - no craftable item, entity or
+`GLOSSARY.md` under *Promise*: `Grado_NonChanging` adds no content - no craftable item, entity or
 recipe - may tune vanilla prototypes, may store its own data in the save, and changes the built
 factory only when the player asks. The old wording, "does not change save state or the factory", is
 retired as false. See *The promise* below for the evidence that produced it.
@@ -743,7 +743,7 @@ the feature away from this pack as an accepted cost.
 ## Candidates, not members
 
 Every mod #41 names as a candidate addition to this pack, and the two #89 added, assessed against
-the pack's promise (`CONTEXT.md`, *Promise*): **no craftable item, entity or recipe**. Entry format:
+the pack's promise (`GLOSSARY.md`, *Promise*): **no craftable item, entity or recipe**. Entry format:
 `docs/mod-catalogue.md`, *a candidate assessed for a pack and not in it*, whose place in the format
 #62 has still to confirm. **None of these mods is a member, and nothing here changes a dependency
 list.** Every recommendation is only that; membership is Truls's. Every reading in this section was
@@ -2021,7 +2021,7 @@ player asks it to. Of the three groups above, only the *content* half of group 1
 adding a colour mask is visibility and cosmetics, which is what the pack is for. Group 2 stays; group
 3 is the pack's reason to exist.
 
-**The wording is now stated once, in `CONTEXT.md` under *Promise*,** and the three prose copies -
+**The wording is now stated once, in `GLOSSARY.md` under *Promise*,** and the three prose copies -
 `CLAUDE.md`'s chain diagram, `README.md`, and this pack's portal-facing `description` - point at it
 instead of restating it. "Does not change save state or the factory" is retired: it was false under
 any reading that let the pack do its job, and it had three meanings in one sentence.

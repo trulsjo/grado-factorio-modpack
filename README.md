@@ -7,7 +7,7 @@ Lua into it.
 ## The chain
 
 ```
-Grado_NonChanging      quality of life; adds no content (see CONTEXT.md, *Promise*)
+Grado_NonChanging      quality of life; adds no content (see GLOSSARY.md, *Promise*)
   |
   +-- Grado_ChangingBase   may add content and change saves; compatible with most overhauls
         |

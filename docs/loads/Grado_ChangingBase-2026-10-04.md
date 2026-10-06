@@ -1,6 +1,6 @@
 # Load record: `Grado_ChangingBase`, 2026-10-04
 
-The second pack with a recorded **load** (`CONTEXT.md`, *Load*), for #115. Two loads, both clean:
+The second pack with a recorded **load** (`GLOSSARY.md`, *Load*), for #115. Two loads, both clean:
 base only, and with Space Age. The shape is the first record's,
 `docs/loads/Grado_NonChanging-2026-09-29.md`. There is **no play session** here. A load runs no
 ticks, so this says nothing about how the 20 members behave in play; that is #26's.
@@ -30,7 +30,7 @@ effective floor `base >= 2.0.74` from `miniloader-redux` `1.2.0`. It matches the
 ## Resolved closure
 
 51 mods and the two packs, 53 rows. The 51 are the 20 named members of this pack, the 26 of
-`Grado_NonChanging`, and five hidden members (`CONTEXT.md`, *Hidden member*): `flib` and
+`Grado_NonChanging`, and five hidden members (`GLOSSARY.md`, *Hidden member*): `flib` and
 `kry_stdlib`, which `Grado_NonChanging`'s members pull in, and `0-things`, `alien-biomes-graphics`
 and `stdlib2`, which this pack's do. No pack names a member with a version, so these are what the
 portal served a 2.0.77 game on this date. A later load may get other versions.

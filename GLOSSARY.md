@@ -89,24 +89,26 @@ _Avoid_: play-test (used here for "any of the three" before 2026-09-29), playthr
 **Measured**:
 The thing itself was run or queried and the result written down: a script's output over a data
 dump, a load's log, a portal reading, or what a person saw in a play session. It carries its day,
-and its build where a game was run. A search that finds nothing is measured, and carries what was
-searched. The first of three grades of evidence, with *Read from source* and *Inferred*. Added
-2026-10-06 (#157).
+and its build where a game was run, stated with the claim or by the section it stands in. A search
+that finds nothing is measured, and carries what was searched. The strongest of three grades of
+evidence, above *Read from source* and *Inferred*. Added 2026-10-06 (#157).
 _Avoid_: confirmed, verified, observed, checked (none says which grade is meant); "measured" for
-anything without its day
+anything whose day neither it nor its section gives
 
 **Read from source**:
 Taken from a mod's code or data files, with nothing executed. It carries the release that was read.
 A portal description or a changelog is not source: what an author says is quoted and attributed,
-and has no grade until someone checks it. Added 2026-10-06 (#157).
+and has no grade until someone measures it or reads the source. Weaker than *Measured*, because
+nothing ran. Added 2026-10-06 (#157).
 _Avoid_: read or reading on its own (a portal reading is *Measured*), "the mod does" for what its
 source says it would do
 
 **Inferred**:
-Concluded from other claims, and it names them. A conclusion takes the weakest grade among its
-parts: a cause joined to a measured effect is inferred, however solid each half is. That nothing
-exists is inferred from a search that found nothing - "`SpaceMod` has no 2.0 release" was measured,
-and "SpaceX is dead" was inferred from it and wrong. Added 2026-10-06 (#157).
+Concluded from other claims, and it names them. The weakest of the three grades, below *Read from
+source*. A conclusion takes the weakest grade among its parts, and the step that joins them is
+itself inferred: a cause joined to a measured effect is inferred, however solid each half is. That
+nothing exists is inferred from a search that found nothing - "`SpaceMod` has no 2.0 release" was
+measured, and "SpaceX is dead" was inferred from it and wrong. Added 2026-10-06 (#157).
 _Avoid_: assumed (a claim that names nothing it rests on has no grade; it is marked "not measured"
 or it is a finding), likely without saying from what
 

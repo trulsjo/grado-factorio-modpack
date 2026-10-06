@@ -1,11 +1,22 @@
-# Code review — two rules this repository adds
+# Code review — three rules this repository adds
 
-Both are conventions layered on the `/code-review` plugin rather than changes to it; why, and the
-evidence behind each, is in `code-review-why.md`, which a review does not need to load.
+All three are conventions kept around the `code-review:code-review` plugin rather than changes to
+it; why, and the evidence behind each, is in `code-review-why.md`, which a review does not need to
+load. *Two rules until 2026-10-06, when #151 added the third.*
 
-Both were decided by Truls in the sibling
+**`/code-review` has meant three skills, and this file names two reviews.** **The pre-PR review**
+is one fresh subagent on the branch, before a pull request exists; the third rule defines it.
+**The plugin pass** is `code-review:code-review`, the official plugin: several reviewers, then a
+scorer for each candidate finding, and it needs a pull request. "The workflow" below is the plugin
+pass. `mattpocock-skills:code-review` and the built-in `code-review` are neither. Where this file
+said "the `/code-review` plugin" or "the `/code-review` workflow" before 2026-10-06 it meant the
+plugin pass, and now says so.
+
+The first two were decided by Truls in the sibling
 [realistic-fusion-refreshed](https://github.com/trulsjo/realistic-fusion-refreshed), and adopted here
-on 2026-09-20 because this repository hit the first of them on its first pull request.
+on 2026-09-20 because this repository hit the first of them on its first pull request. The third
+was decided by Truls here on 2026-10-06 (#151), a day after the sibling decided its own
+([realistic-fusion-refreshed#592](https://github.com/trulsjo/realistic-fusion-refreshed/issues/592)).
 
 1. **[The threshold gates the comment, not the report](#the-threshold-gates-the-comment-not-the-report)**
    — decided 2026-08-26, settling
@@ -13,24 +24,31 @@ on 2026-09-20 because this repository hit the first of them on its first pull re
 2. **[Review the prose, not only the code](#review-the-prose-not-only-the-code)** — decided
    2026-09-03, widened 2026-09-14 settling
    [realistic-fusion-refreshed#331](https://github.com/trulsjo/realistic-fusion-refreshed/issues/331).
+3. **[One review before the pull request](#one-review-before-the-pull-request)** — decided
+   2026-10-06, settling #151. It also changed where the first rule's filtered findings are posted,
+   dated where it sits.
 
 ## The threshold gates the comment, not the report
 
-The `/code-review` workflow scores each candidate finding and drops anything below 80. **That filter
-governs what gets posted to the pull request. It does not govern what gets told to the person who
-ran the review.**
+The plugin pass scores each candidate finding and leaves anything below 80 out of its comment.
+**That filter governs what the workflow's own comment carries. It does not govern what gets told to
+the person who ran the review** — or, since 2026-10-06 (#151), what reaches the pull request.
 
 ### The rule
 
-**Report every finding that survived verification, whatever it scored.** Post to the PR only what
-clears the threshold, exactly as the workflow says.
+**Report every finding that survived verification, whatever it scored.** The workflow's own comment
+carries only what clears the threshold, exactly as the workflow says. **Every other surviving
+finding goes in a second comment on the same pull request, with its score.** *Until 2026-10-06 this
+said to post only what cleared the threshold, and the rest was told to the person who ran the
+review. #151 changed it, so that the pull request holds the plugin pass's whole report.*
 
 **A review that posts nothing must still say what it filtered.** Name each finding, its score, and
 whether it was independently verified. A silent pass and a filtered pass must never look the same.
 
-**Do not re-score to get a finding published.** The threshold is deliberately conservative and stays
-where it is. If a filtered finding matters, say so in the report and let a human decide; inflating a
-score to route around the filter destroys the only signal the score carries.
+**Do not re-score to move a finding into the first comment.** The threshold is deliberately
+conservative and stays where it is. If a filtered finding matters, say so in the report and let a
+human decide; inflating a score to route around the filter destroys the only signal the score
+carries. *Until 2026-10-06 this was written against re-scoring to get a finding published at all.*
 
 ## Review the prose, not only the code
 
@@ -89,3 +107,50 @@ a finding.
 
 **This binds the reviewer.** An author who greps before opening the pull request saves a round, but
 the obligation lives in the review.
+
+## One review before the pull request
+
+Decided by Truls, 2026-10-06, settling #151. The evidence is in `code-review-why.md`.
+
+### The rule
+
+**Every branch with a diff gets the pre-PR review, before its pull request exists.** No branch is
+exempt for being small. One fresh subagent runs it, and it is defined by what the subagent is
+handed and not by a skill's name:
+
+- the diff against `main`;
+- this file;
+- `GLOSSARY.md`, which holds the three grades the rules above use;
+- on a branch that records measurements, the raw output behind them - a `--dump-data` dump, the
+  portal API's responses, a load's log - and the scripts that produced the figures. On any other
+  branch, the result of `commit-check.ps1 -Range origin/main..HEAD`, and of the resolve if an
+  `info.json` changed.
+
+**A figure whose raw output is gone is a finding.** The reviewer is told which output is missing
+and does not take the figure on trust.
+
+**When an implement skill says to close out with `/code-review`, here that means the pre-PR
+review.** No pull request is needed for it.
+
+**The reviewer that raised a finding confirms its fix.** Continue the same subagent and have it
+read each fix against its own finding. That is a confirmation and not a second round. **A fix that
+adds a sentence adds a claim, and the confirmation checks it like any other.**
+
+**The fixes are one commit of their own, after the ticket commits.** They are not folded into the
+commits they repair, so the list in the pull request's body can be read against a diff.
+
+**Its findings go in the pull request's body, every one**, each with whether it was fixed. They
+carry no score: one reviewer has no scorers, and a score it gave itself would read as the plugin
+pass's. A finding may be left unfixed if the body says which and why. **A finding that needs a
+decision of Truls's is not fixed by the session**: it is listed as unfixed and waiting on him.
+
+**The plugin pass is run when it is asked for, and not otherwise.** It keeps its scorers and its
+threshold, and the first rule above says where its findings go.
+
+**A plugin-pass finding the pre-PR review missed gets its class named**, in the pull request, by
+the session that fixes it. A class a script could detect becomes a ticket proposing the check. A
+class that takes judgement becomes a line in this file. "One-off, no rule" is an answer, and it is
+written down like the others.
+
+When the pre-PR review runs, and what may happen while a review is running, is #159's to decide
+and is not settled here.

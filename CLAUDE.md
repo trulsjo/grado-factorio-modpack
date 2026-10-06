@@ -138,8 +138,9 @@ missing.
 
 - Default branch `main`. Commit email is set per-repo — do not change it.
 - **A batch of tickets lands as one pull request** (written down 2026-10-05; the practice since
-  PR #94): a branch named for its tickets, one commit per ticket, a review, then a rebase merge.
-  Open the pull request when the work is committed.
+  PR #94): a branch named for its tickets, one commit per ticket, the pre-PR review and one commit
+  of its fixes, the pull request with the review's findings in its body, then a rebase merge
+  (#151, 2026-10-06). The plugin pass, `code-review:code-review`, runs only when Truls asks.
 - `CLAUDE.local.md` is personal and git-ignored. Never commit it, and never move its contents into a
   tracked file.
 - **`info.json` is strict JSON — no comments.** Anything that needs explaining goes in
@@ -262,9 +263,10 @@ The five canonical roles, unchanged. See `docs/agents/triage-labels.md`.
 
 ### Code review
 
-Two conventions on top of the `/code-review` plugin: a filtered finding is still reported, and the
-prose is reviewed as carefully as the code, because here there is almost none. **Load
-`docs/agents/code-review.md` before running a review.**
+Three conventions around the `code-review:code-review` plugin: every branch gets the pre-PR review
+before its pull request exists, a filtered finding is still reported, and the prose is reviewed as
+carefully as the code, because here there is almost none. `/code-review` in an implement skill
+means the pre-PR review. **Load `docs/agents/code-review.md` before running a review.**
 
 ### Domain docs
 

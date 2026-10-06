@@ -12,20 +12,25 @@
     had to find it.
 
     WHAT IT READS AS WHAT. A paragraph ends at a blank line, a heading, a list item, a table or a
-    fenced code block; nothing inside a fence is read. A numbered line ends one only as `1.`. Emphasis follows CommonMark's flanking
-    rules: a `*` or `_` with whitespace on both sides is a literal, so is a `_` inside a word, and
-    so is a closer with nothing to close. Only an opener still open when its paragraph ends is
-    reported. A table is a line holding a `|` followed by a delimiter row holding one; every line
-    after it up to a blank line is a row, as GitHub renders it, and each cell is read as a
+    fenced code block; nothing inside a fence is read, and a fence never closed is reported. A
+    number ends a paragraph only as `1.`; inside a numbered list any number is the next item.
+    Emphasis follows CommonMark's flanking rules: a `*` or `_` with whitespace on both sides is a
+    literal, so is a `_` inside a word, and so is a closer with nothing to close. Only an opener
+    still open when its paragraph ends is reported, and a lone `*` that could open is one: `*.md`
+    in prose wants a code span or `\*`. A table is a line holding a `|` followed by a delimiter
+    row holding one; every line after it up to a blank line is a row, and each cell is read as a
     paragraph of its own. A link is `[text](target)` or a `[label]: target` line; a target with a
     scheme (`https:`, `mailto:`) or that is only a `#fragment` is not checked, and the rest must
     name a file or directory git tracks, in exact case, as GitHub serves it.
 
     WHAT IT CANNOT SEE. Prose: numbers, dates and quantifiers stay the reviewer's
     (docs/agents/code-review.md). Whether a `#fragment` names a heading. A code block made by
-    indenting, which is read as text. Emphasis that closes in the wrong place. Markdown outside
-    `.md` files. A link into a submodule that is not initialised is said to be unchecked, and
-    passes. Whether a catalogue's header names every ticket its dated notes cite: measured on
+    indenting, which is read as text. Emphasis that closes in the wrong place, or that a bullet nested in a
+    numbered item leaves open and the next numbered item closes. Markdown outside
+    `.md` files. A link whose target a commit deletes or renames, unless the linking file is
+    staged too: -All sees it. A link into a submodule is asked of the working tree, so neither its
+    case nor whether git tracks it is checked; into one not initialised it is said to be unchecked,
+    and passes. Whether a catalogue's header names every ticket its dated notes cite: measured on
     2026-10-06 and left to the reviewer, see #149.
 
 .PARAMETER Range
@@ -69,8 +74,7 @@ function Test-Inline {
     $chars = $Text.ToCharArray()
     $i = 0
     while ($i -lt $chars.Length) {
-        if ($chars[$i] -eq '\' -and $i + 1 -lt $chars.Length -and [char]::IsPunctuation($chars[$i + 1]) -or
-            $chars[$i] -eq '\' -and $i + 1 -lt $chars.Length -and [char]::IsSymbol($chars[$i + 1])) {
+        if ($chars[$i] -eq '\' -and $i + 1 -lt $chars.Length -and ([char]::IsPunctuation($chars[$i + 1]) -or [char]::IsSymbol($chars[$i + 1]))) {
             $chars[$i + 1] = '.'; $i += 2; continue
         }
         if ($chars[$i] -ne '`') { $i++; continue }
@@ -158,18 +162,19 @@ function Test-Markdown {
         $paragraph.Clear()
     }
     $fence = $null
+    $numbered = $false
     for ($i = 0; $i -lt $Lines.Count; $i++) {
         $line = $Lines[$i] -replace '^(\s*>)+\s?'
         if ($fence) {
             if ($line -match "^\s*$([regex]::Escape($fence))+\s*$") { $fence = $null }
             continue
         }
-        if ($line -match '^\s*(`{3,}|~{3,})') { . $flush; $fence = $Matches[1]; continue }
+        if ($line -match '^\s*(`{3,}|~{3,})') { . $flush; $fence = $Matches[1]; $fenceLine = $i + 1; continue }
 
         # Links, on every line outside a fence. Code spans are blanked first: a path in one is no link.
         $prose = [regex]::Replace($line, '(`+)(?:(?!\1).)+?\1', '')
         $targets = @([regex]::Matches($prose, '\]\(\s*(?:<([^>]*)>|([^)\s]+))') | ForEach-Object { $_.Groups[1].Value + $_.Groups[2].Value })
-        if ($prose -match '^\s{0,3}\[[^\]]+\]:\s*<?([^\s>]+)') { $targets += $Matches[1] }
+        if ($prose -match '^\s{0,3}\[[^\]^][^\]]*\]:\s*<?([^\s>]+)') { $targets += $Matches[1] }
         foreach ($t in $targets) {
             if ($t -match '^([a-zA-Z][a-zA-Z0-9+.-]*:|#|//)') { continue }
             $file = [uri]::UnescapeDataString(($t -replace '[#?].*$'))
@@ -189,7 +194,7 @@ function Test-Markdown {
         if ($line -match '\|' -and $i + 1 -lt $Lines.Count -and $Lines[$i + 1] -match '\|' -and ($Lines[$i + 1] -replace '^(\s*>)+\s?') -match $delimiter) {
             . $flush
             $columns = (Split-TableRow $line).Count
-            for ($r = $i; $r -lt $Lines.Count -and $Lines[$r] -match '\S'; $r++) {
+            for ($r = $i; $r -lt $Lines.Count -and ($Lines[$r] -replace '^(\s*>)+\s?') -match '\S'; $r++) {
                 $cells = Split-TableRow ($Lines[$r] -replace '^(\s*>)+\s?')
                 if ($cells.Count -ne $columns) {
                     @{ Line = $r + 1; Message = "the table row has $($cells.Count) column(s) and its header has $columns" }
@@ -203,15 +208,18 @@ function Test-Markdown {
 
         if ($line -notmatch '\S' -or $line -match '^\s*([-*_])(\s*\1){2,}\s*$') { . $flush; continue }
         if ($line -match '^\s{0,3}#{1,6}(\s|$)') { . $flush; $start = $i + 1; $paragraph.Add($line); . $flush; continue }
-        # A numbered item interrupts a paragraph only as 1., so a wrapped line that begins "31. In"
-        # is still its paragraph (docs/catalogue/Grado_ChangingBase.md had one, 2026-10-06).
-        if ($line -match '^\s*(?:[-*+]|(?<n>\d+)[.)])\s+(?<rest>.*)$' -and (-not $paragraph.Count -or $Matches['n'] -in $null, '1')) {
-            . $flush; $line = $Matches['rest']
+        # A number begins a list only as 1., so a wrapped line that begins "31. In" is still its
+        # paragraph (docs/catalogue/Grado_ChangingBase.md had one, 2026-10-06). Inside a numbered
+        # list any number is the next item.
+        if ($line -match '^\s*(?:[-*+]|(?<n>\d+)[.)])\s+(?<rest>.*)$' -and (-not $paragraph.Count -or $numbered -or $Matches['n'] -in $null, '1')) {
+            . $flush; $numbered = [bool] $Matches['n']; $line = $Matches['rest']
         }
+        elseif (-not $paragraph.Count) { $numbered = $false }
         if (-not $paragraph.Count) { $start = $i + 1 }
         $paragraph.Add($line)
     }
     . $flush
+    if ($fence) { @{ Line = $fenceLine; Message = "the code fence opened with $fence is not closed, so nothing after it was read" } }
 }
 
 function Invoke-Check {
@@ -257,7 +265,7 @@ function Invoke-SelfTest {
     $clean = @'
 # A title with `code_in_it` and a snake_case_name
 
-A paragraph with *emphasis*, **strong**, _underscores_ and `a * in code`, then 2 * 3 * 4,
+A paragraph with *emphasis*, **strong**, _underscores_ and `a * in code`, an escaped \*star and \_under, 2 * 3 * 4,
 a glob like 2.0.* and a note: *Until 2026-10-01 this said two: it missed an* Aside *line. One took
 31. That wrapped line is no list item, so this closes.*
 
@@ -301,6 +309,14 @@ a glob like 2.0.* and a note: *Until 2026-10-01 this said two: it missed an* Asi
         @{ Name = 'a code span left open fails'; Test = {
             $f = @(& $find "a ``code span`nthat runs on`n`nnext")
             $f.Count -eq 1 -and $f[0] -match '^1: a code span opened with ` is not closed' } }
+        @{ Name = 'emphasis left open in a numbered item is not closed by the next item'; Test = {
+            $f = @(& $find "1. first`n2. second *open`n3. third* closes")
+            $f.Count -eq 1 -and $f[0] -match '^2: emphasis opened' } }
+        @{ Name = 'a fence never closed fails, on the line that opened it'; Test = {
+            $f = @(& $find "text`n`n``````powershell`n*hidden")
+            $f.Count -eq 1 -and $f[0] -match '^3: the code fence opened with ``` is not closed' } }
+        @{ Name = 'a quoted table ended by a bare > is read, not thrown on, and a footnote is no link'; Test = {
+            @(& $find "> | a | b |`n> |---|---|`n> | 1 | 2 |`n>`n> more`n`n[^1]: The note.").Count -eq 0 } }
         @{ Name = 'a table row with fewer or more columns than its header fails, naming both counts'; Test = {
             $f = @(& $find "| a | b |`n|---|---|`n| 1 | 2 |`n| 1 |`n| 1 | 2 | 3 |")
             $f.Count -eq 2 -and $f[0] -match '^4: the table row has 1 column\(s\) and its header has 2' -and $f[1] -match '^5: the table row has 3' } }
@@ -344,6 +360,7 @@ a glob like 2.0.* and a note: *Until 2026-10-01 this said two: it missed an* Asi
 if ($SelfTest) { Invoke-SelfTest }
 
 if ($Range) {
+    if ($Range -notmatch '\.\.+[^.]') { throw '-Range needs both ends, as origin/main..HEAD: the files are read at its end.' }
     $revision = $Range -replace '^.*\.\.+'
     $files = @(git -c core.quotepath=off diff --name-only --diff-filter=ACMR $Range)
 }

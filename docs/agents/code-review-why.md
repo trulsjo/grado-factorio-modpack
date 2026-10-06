@@ -1,4 +1,4 @@
-# Code review — why the two rules exist
+# Code review — why the three rules exist
 
 The rules are in `code-review.md`. This page holds what stood beside them there until 2026-10-06:
 the measurements that produced each rule, and why they are conventions and not plugin edits. It
@@ -75,3 +75,40 @@ is a convention, and `CLAUDE.md` points at it so a review session loads it befor
 Nothing about the scoring, the rubric or the 80 is changed. The first rule drops one assumption —
 that a filtered finding is a discarded one. The second adds one obligation the rubric never mentions,
 because a plugin that reviews code cannot know that here there is almost no code to review.
+
+## Why one review before the pull request
+
+*Added 2026-10-06 (#151). Every figure in this section is quoted from #151 or its two comments,
+which took them from the sessions' logs; none was counted again for this page.*
+
+**The batch of 2026-10-05 (#130 to #137, PR #138) was reviewed twice.** A two-axis review on the
+branch, standards and spec, found 27 things. Then the plugin pass ran five reviewers and four
+scorers on the same diff and found five more, mostly wording. Together they cost about 1.4 million
+subagent tokens. The spec axis was the one that recomputed numbers from the dumps, and it found
+the one real error of the batch.
+
+**Only a review handed the raw output can check a figure against it.** The plugin's reviewers are
+given the diff, its blame, earlier pull requests and their comments, and a dump is in none of
+those. That is why the mandatory review is the one before the pull request, and why it is defined
+by what it is handed.
+
+**Narrowing the plugin pass was considered and not taken.** In the sibling, on
+[realistic-fusion-refreshed#579](https://github.com/trulsjo/realistic-fusion-refreshed/pull/579),
+the plugin pass's one finding at 100 was a figure missing its exponent, which an instruction not
+to redo the arithmetic would have told it to skip.
+
+**What the rule gives up.** On
+[realistic-fusion-refreshed#594](https://github.com/trulsjo/realistic-fusion-refreshed/pull/594)
+the plugin pass posted three findings at 100 after a clean confirmation; all three were wording
+and all three were true. One was in a sentence a fix had added after the first review, which is
+where "a fix that adds a sentence adds a claim" comes from. Confirmation by the same reviewer is a
+weaker check than a fresh second round, and it was chosen on cost.
+
+**Why the scorers stay.** Dropping them was the fifth option on #151. The score decides only which
+comment a finding sits in: in PR #121 thirteen findings, twelve below the threshold, all fixed; in
+PR #129 ten, nine below, all fixed. But the scorers did separate the one false positive in PR #138,
+scored 0, and they are inside a plugin this repository does not edit. With the plugin pass run
+only on request, the saving would be small.
+
+**Why the findings go in the body.** Before this rule nothing on a pull request recorded what the
+first review found: the 27 of PR #138 are in a session's log and nowhere else.

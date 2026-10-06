@@ -84,3 +84,12 @@ each when it was decided.
   the strongest grade and *Inferred* the weakest. *Measured* may go unmarked inside a section that
   says how and when; the other two are always marked. The marking rule is in
   `docs/agents/code-review.md`. Existing prose was not rewritten.
+- **One mandatory review per branch, before the pull request** (2026-10-06, #151): the pre-PR
+  review, one fresh subagent handed the diff, the review rules, the glossary and the raw output
+  behind any measurement. Its findings go in the pull request's body and its fixes are one commit
+  of their own. The plugin pass, `code-review:code-review`, runs only when Truls asks, and keeps
+  its scorers. Chosen over running both because the batch of 2026-10-05 cost about 1.4 million
+  subagent tokens for 27 findings and then five (figures from #151), and over the plugin pass
+  alone because only a review handed the raw output can check a figure against it. The rule is
+  in `docs/agents/code-review.md` and its evidence in `docs/agents/code-review-why.md`. When the
+  review runs is #159's.

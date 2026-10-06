@@ -3,7 +3,9 @@
 The big decisions are Truls's (`CLAUDE.md`, *The rule that matters most here*). These are the ones
 made so far, recorded so nobody reopens one by accident. They are in the order they stood in
 `CLAUDE.md` until 2026-10-06, when the list moved here word for word because that file is loaded
-into every session. Where an entry says "under *Conventions*", it means `CLAUDE.md`'s.
+into every session. Where an entry says "under *Conventions*", it means `CLAUDE.md`'s. The
+entries after the one on the declared line (#16) were never in `CLAUDE.md`: they were added here,
+each when it was decided.
 
 - **Five packs, with ABC as the shared core** (2026-09-20). Replaced an earlier three-pack plan.
 - **Space Age is a target**, which is what produced the ABCX/ABCS split.
@@ -73,10 +75,12 @@ into every session. Where an entry says "under *Conventions*", it means `CLAUDE.
   from `helmod` `2.2.14`, `2.0.74` from `miniloader-redux` `1.2.0` - and each `info.json` now
   declares its floor. Versions stay `0.1.0`.
 - **A claim has one of three grades of evidence** (2026-10-06, #157): *Measured*, *Read from
-  source* and *Inferred*, defined in `GLOSSARY.md`. Three and not two, because each of the eight
+  source* and *Inferred*, defined in `GLOSSARY.md`. Three and not two, because six of the eight
   review-fix commits of 2026-10-04 and 2026-10-05 repaired a sentence that gave an inference or a
-  reading of source as an observation, and folding the two together loses which it was. The middle grade is not called *Read*, because a
-  portal reading is a measurement. *Assumed* is not a grade, and neither is what a mod's author
-  says. *Measured* may go unmarked inside a section that says how and when; the other two are
-  always marked. The marking rule is in `docs/agents/code-review.md`. Existing prose was not
-  rewritten.
+  reading of source as an observation (`f2e51f4`, `b9d2798`, `5ea5b14`, `db432d0`, `bb54d42` and
+  `5f00aee`, by their messages; `4bc148a` and `1c90e4e` did not), and folding the two together
+  loses which it was. The middle grade is not called *Read*, because a portal reading is a
+  measurement. *Assumed* is not a grade, and neither is what a mod's author says. *Measured* is
+  the strongest grade and *Inferred* the weakest. *Measured* may go unmarked inside a section that
+  says how and when; the other two are always marked. The marking rule is in
+  `docs/agents/code-review.md`. Existing prose was not rewritten.

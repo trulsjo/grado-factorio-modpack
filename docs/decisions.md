@@ -86,10 +86,14 @@ each when it was decided.
   `docs/agents/code-review.md`. Existing prose was not rewritten.
 - **One mandatory review on every branch with a diff, before the pull request** (2026-10-06,
   #151): the pre-PR review, one fresh subagent handed the diff, the review rules, the glossary
-  and the raw output behind any measurement. Its findings go in the pull request's body and its fixes are one commit
-  of their own. The plugin pass, `code-review:code-review`, runs only when Truls asks, and keeps
-  its scorers. Chosen over running both because the batch of 2026-10-05 cost about 1.4 million
-  subagent tokens for 27 findings and then five (figures from #151), and over the plugin pass
-  alone because only a review handed the raw output can check a figure against it. The rule is
-  in `docs/agents/code-review.md` and its evidence in `docs/agents/code-review-why.md`. Whether a
-  pull request may be merged while a review runs is #159's.
+  and the raw output behind any measurement. Its findings go in the pull request's body and its
+  fixes are one commit of their own. The plugin pass, `code-review:code-review`, runs only when
+  Truls asks, and keeps its scorers; its findings under the threshold now go in a second comment
+  on the pull request, where before they were only told to whoever ran the review. Chosen over
+  running both: the two together cost about 1.4 million subagent tokens on the batch of
+  2026-10-05, for 27 findings and then five (figures from #151, which gives no split, so what
+  leaving one out saves is not measured). Chosen over the plugin pass alone because only a
+  review handed the raw output can check a figure against it, which is inferred from what the
+  plugin's command file hands its reviewers. The rule is in `docs/agents/code-review.md` and its
+  evidence in `docs/agents/code-review-why.md`. Whether a pull request may be merged while a
+  review runs is #159's.

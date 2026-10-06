@@ -44,11 +44,15 @@ review. #151 changed it, so that the pull request holds the plugin pass's whole 
 
 **A review that posts nothing must still say what it filtered.** Name each finding, its score, and
 whether it was independently verified. A silent pass and a filtered pass must never look the same.
+*Since 2026-10-06 (#151) "posts nothing" means the workflow's own comment carries nothing, and
+what it filtered is said in the second comment.*
 
 **Do not re-score to move a finding into the first comment.** The threshold is deliberately
 conservative and stays where it is. If a filtered finding matters, say so in the report and let a
 human decide; inflating a score to route around the filter destroys the only signal the score
-carries. *Until 2026-10-06 this was written against re-scoring to get a finding published at all.*
+carries. *Until 2026-10-06 this was written against re-scoring to get a finding published at all.
+Since then "the report" is the second comment as well as what the person who ran the review is
+told.*
 
 ## Review the prose, not only the code
 
@@ -111,8 +115,10 @@ the obligation lives in the review.
 ## One review before the pull request
 
 Decided by Truls, 2026-10-06, settling #151. The reason: only a review handed the raw output can
-check a figure against it, and running both reviews on the batch of 2026-10-05 cost about 1.4
-million subagent tokens (the figure is #151's). The evidence is in `code-review-why.md`.
+check a figure against it, which is inferred from what the plugin's command file hands its
+reviewers; and the two reviews together cost about 1.4 million subagent tokens on the batch of
+2026-10-05 (the figure is #151's, which gives no split, so what leaving one out saves is not
+measured). The evidence is in `code-review-why.md`.
 
 ### The rule
 
@@ -136,7 +142,8 @@ review.** No pull request is needed for it.
 
 **The reviewer that raised a finding confirms its fix.** Continue the same subagent and have it
 read each fix against its own finding. That is a confirmation and not a second round. **A fix that
-adds a sentence adds a claim, and the confirmation checks it like any other.**
+adds a sentence adds a claim, and the confirmation checks it like any other.** "Confirms" here
+names this step and is not a grade of evidence; `GLOSSARY.md` avoids the word for a claim.
 
 **The fixes are one commit of their own, after the ticket commits.** They are not folded into the
 commits they repair, so the list in the pull request's body can be read against a diff.

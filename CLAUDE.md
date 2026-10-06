@@ -265,11 +265,11 @@ The five canonical roles, unchanged. See `docs/agents/triage-labels.md`.
 
 ### Code review
 
-Three conventions around the `code-review:code-review` plugin: every branch with a diff
-gets the pre-PR review before its pull request exists, a filtered finding is still reported, and
-the prose is reviewed as carefully as the code, because here there is almost none.
-`/code-review` in an implement skill
-means the pre-PR review. **Load `docs/agents/code-review.md` before running a review.**
+Three conventions around the `code-review:code-review` plugin: every branch with a diff gets the
+pre-PR review before its pull request exists, a filtered finding is still reported, and the prose
+is reviewed as carefully as the code, because here there is almost none. `/code-review` in an
+implement skill means the pre-PR review. **Load `docs/agents/code-review.md` before running a
+review.**
 
 ### Domain docs
 

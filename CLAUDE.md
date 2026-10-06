@@ -138,9 +138,11 @@ missing.
 
 - Default branch `main`. Commit email is set per-repo — do not change it.
 - **A batch of tickets lands as one pull request** (written down 2026-10-05; the practice since
-  PR #94): a branch named for its tickets, one commit per ticket, the pre-PR review and one commit
-  of its fixes, the pull request with the review's findings in its body, then a rebase merge
-  (#151, 2026-10-06). The plugin pass, `code-review:code-review`, runs only when Truls asks.
+  PR #94): a branch named for its tickets, one commit per ticket, a review, then a rebase merge.
+  *Since 2026-10-06 (#151): the review is the pre-PR review, and it and one commit of its fixes
+  come before the pull request, whose body carries its findings. The plugin pass,
+  `code-review:code-review`, runs only when Truls asks. Until then this ended "Open the pull
+  request when the work is committed."*
 - `CLAUDE.local.md` is personal and git-ignored. Never commit it, and never move its contents into a
   tracked file.
 - **`info.json` is strict JSON — no comments.** Anything that needs explaining goes in
@@ -263,9 +265,10 @@ The five canonical roles, unchanged. See `docs/agents/triage-labels.md`.
 
 ### Code review
 
-Three conventions around the `code-review:code-review` plugin: every branch gets the pre-PR review
-before its pull request exists, a filtered finding is still reported, and the prose is reviewed as
-carefully as the code, because here there is almost none. `/code-review` in an implement skill
+Three conventions around the `code-review:code-review` plugin: every branch with a diff
+gets the pre-PR review before its pull request exists, a filtered finding is still reported, and
+the prose is reviewed as carefully as the code, because here there is almost none.
+`/code-review` in an implement skill
 means the pre-PR review. **Load `docs/agents/code-review.md` before running a review.**
 
 ### Domain docs

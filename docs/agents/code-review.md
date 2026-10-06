@@ -6,8 +6,8 @@ load. *Two rules until 2026-10-06, when #151 added the third.*
 
 **`/code-review` has meant three skills, and this file names two reviews.** **The pre-PR review**
 is one fresh subagent on the branch, before a pull request exists; the third rule defines it.
-**The plugin pass** is `code-review:code-review`, the official plugin: several reviewers, then a
-scorer for each candidate finding, and it needs a pull request. "The workflow" below is the plugin
+**The plugin pass** is `code-review:code-review`, the official plugin: several reviewers, then
+scorers for the candidate findings, and it needs a pull request. "The workflow" below is the plugin
 pass. `mattpocock-skills:code-review` and the built-in `code-review` are neither. Where this file
 said "the `/code-review` plugin" or "the `/code-review` workflow" before 2026-10-06 it meant the
 plugin pass, and now says so.
@@ -110,7 +110,9 @@ the obligation lives in the review.
 
 ## One review before the pull request
 
-Decided by Truls, 2026-10-06, settling #151. The evidence is in `code-review-why.md`.
+Decided by Truls, 2026-10-06, settling #151. The reason: only a review handed the raw output can
+check a figure against it, and running both reviews on the batch of 2026-10-05 cost about 1.4
+million subagent tokens (the figure is #151's). The evidence is in `code-review-why.md`.
 
 ### The rule
 
@@ -144,7 +146,7 @@ carry no score: one reviewer has no scorers, and a score it gave itself would re
 pass's. A finding may be left unfixed if the body says which and why. **A finding that needs a
 decision of Truls's is not fixed by the session**: it is listed as unfixed and waiting on him.
 
-**The plugin pass is run when it is asked for, and not otherwise.** It keeps its scorers and its
+**The plugin pass is run when Truls asks for it, and not otherwise.** It keeps its scorers and its
 threshold, and the first rule above says where its findings go.
 
 **A plugin-pass finding the pre-PR review missed gets its class named**, in the pull request, by
@@ -152,5 +154,5 @@ the session that fixes it. A class a script could detect becomes a ticket propos
 class that takes judgement becomes a line in this file. "One-off, no rule" is an answer, and it is
 written down like the others.
 
-When the pre-PR review runs, and what may happen while a review is running, is #159's to decide
-and is not settled here.
+Two things are #159's to decide and are not settled here: whether a pull request may be merged
+while a review runs, and where a session can be cleared.

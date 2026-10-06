@@ -4,6 +4,9 @@ The rules are in `code-review.md`. This page holds what stood beside them there 
 the measurements that produced each rule, and why they are conventions and not plugin edits. It
 moved word for word, so that a reviewer loads the rules without the history.
 
+*Since 2026-10-06 (#151) there is a third rule. Its section, the last on this page, was written
+here and never stood in `code-review.md`.*
+
 ## Why the threshold cannot be read as "these findings do not matter"
 
 The rubric offers exactly five values — **0, 25, 50, 75, 100** — and the filter admits 80 or more. So
@@ -13,7 +16,9 @@ rubric itself defines as
 > Highly confident. The agent double checked the issue, and verified that it is very likely it is a
 > real issue that will be hit in practice … The issue is very important
 
-is discarded by construction. A finding can be verified, important, and dropped.
+is discarded by construction. A finding can be verified, important, and dropped. *Since 2026-10-06
+(#151) read "discarded" and "dropped" as left out of the workflow's own comment: such a finding is
+now posted in a second one.*
 
 **Measured here, on the first pull request this repository ever had.** [PR
 #12](https://github.com/trulsjo/grado-factorio-modpack/pull/12): five review agents, nine findings,
@@ -75,6 +80,8 @@ is a convention, and `CLAUDE.md` points at it so a review session loads it befor
 Nothing about the scoring, the rubric or the 80 is changed. The first rule drops one assumption —
 that a filtered finding is a discarded one. The second adds one obligation the rubric never mentions,
 because a plugin that reviews code cannot know that here there is almost no code to review.
+*Since 2026-10-06 (#151) a third says when the workflow is run at all, and changes nothing inside
+it either.*
 
 ## Why one review before the pull request
 
@@ -102,13 +109,14 @@ to redo the arithmetic would have told it to skip.
 the plugin pass posted three findings at 100 after a clean confirmation; all three were wording
 and all three were true. One was in a sentence a fix had added after the first review, which is
 where "a fix that adds a sentence adds a claim" comes from. Confirmation by the same reviewer is a
-weaker check than a fresh second round, and it was chosen on cost.
+weaker check than a fresh second round, and the sibling chose it on cost, from one branch's
+evidence.
 
 **Why the scorers stay.** Dropping them was the fifth option on #151. The score decides only which
 comment a finding sits in: in PR #121 thirteen findings, twelve below the threshold, all fixed; in
 PR #129 ten, nine below, all fixed. But the scorers did separate the one false positive in PR #138,
-scored 0, and they are inside a plugin this repository does not edit. With the plugin pass run
-only on request, the saving would be small.
+scored 0, and they are inside a plugin this repository does not edit.
 
-**Why the findings go in the body.** Before this rule nothing on a pull request recorded what the
-first review found: the 27 of PR #138 are in a session's log and nowhere else.
+**Why the findings go in the body.** PR #138's body gave a count of the first review's findings
+("about 30", where #151 counts 27), the one real error and three notes not actioned (read
+2026-10-06). The other findings are in no record on the pull request.

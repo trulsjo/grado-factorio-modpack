@@ -23,7 +23,7 @@ was decided by Truls here on 2026-10-06 (#151), a day after the sibling decided 
    2026-09-03, widened 2026-09-14 settling
    [realistic-fusion-refreshed#331](https://github.com/trulsjo/realistic-fusion-refreshed/issues/331).
 3. **[One review before the pull request](#one-review-before-the-pull-request)** — decided
-   2026-10-06, settling #151. It also changed where the first rule's filtered findings are posted.
+   2026-10-06, settling #151.
 
 ## The threshold gates the comment, not the report
 

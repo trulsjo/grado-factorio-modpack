@@ -142,8 +142,9 @@ handed and not by a skill's name:
 - `GLOSSARY.md`, which holds the three grades the rules above use;
 - on a branch that records measurements, the raw output behind them - a `--dump-data` dump, the
   portal API's responses, a load's log - and the scripts that produced the figures. On any other
-  branch, the result of `commit-check.ps1 -Range origin/main..HEAD`, and of the resolve if an
-  `info.json` changed.
+  branch, the results of `commit-check.ps1 -Range origin/main..HEAD` and of
+  `scripts/markdown-check.ps1 -Range origin/main..HEAD`, and of the resolve if an `info.json`
+  changed.
 
 **A figure whose raw output is gone is a finding.** The reviewer is told which output is missing
 and does not take the figure on trust.

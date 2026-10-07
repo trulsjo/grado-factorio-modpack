@@ -2,7 +2,8 @@
 
 The rules are in `code-review.md`. This page holds what stood beside them there until 2026-10-06:
 the measurements that produced each rule, and why they are conventions and not plugin edits. It
-moved word for word, so that a reviewer loads the rules without the history.
+moved word for word, so that a reviewer loads the rules without the history. Wording the rules
+have lost, that day or later, is under *What the rules said before*.
 
 ## Why the threshold cannot be read as "these findings do not matter"
 

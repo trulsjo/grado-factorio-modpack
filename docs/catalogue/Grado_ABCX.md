@@ -6,12 +6,9 @@ four: its `! space-age` line is what makes this branch and `Grado_ABCS` mutually
 therefore what forced the shared overhaul out into `Grado_ABC`.
 
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
-**2026-09-22** and is reproduced from the fetched data rather than retyped, except the notes marked
-*Superseded 2026-09-23 by #15*, which #15 took, and the notes dated 2026-09-24 (#43), which #43
-took, and the notes dated 2026-09-24 (#58) and (#61), which those two took, and the notes dated
-2026-10-01 (#39) and (#44), which those two took, and the note dated 2026-10-04 (#117), which #117
-took from the pack's recorded load, and the section dated 2026-10-04 (#124), which #124 took from
-data dumps and the staged source.
+**2026-09-22** and is reproduced from the fetched data rather than retyped, except where a later
+date is given inline. *Until 2026-10-07 (#172) this paragraph listed each later note; each carries
+its own date.*
 
 The dependency list holds 4 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, catalogued in
 `docs/catalogue/Grado_ABC.md` — `SpaceModFeorasFork`, and the `! space-age` line the pack declares
@@ -183,7 +180,9 @@ its other Bob's changes log nothing (`docs/loads/Grado_ABCX-2026-10-04.md`, *Con
 change was walked on 2026-10-04 against two data dumps on Factorio 2.0.77, made through the shared
 harness's `Invoke-HarnessDump`: the staged `Grado_ABCX` (prototype list checksum `1533854567`, the
 recorded load's) and the fork alone on base, which shows each recipe and technology before Bob's.
-Releases: `SpaceModFeorasFork` `1.3.3`, `boblibrary` `2.1.0`, `bobequipment` `2.1.0`.
+Releases: `SpaceModFeorasFork` `1.3.3`, `boblibrary` `2.1.0`, `bobequipment` `2.1.0`. *Added
+2026-10-07 (#175) from this file's header, which said until then that #124 took this section "from
+data dumps and the staged source".*
 
 The integration is two files, `prototypes/recipe-bobs.lua` and `prototypes/technology-bobs.lua`,
 run from the fork's `data-final-fixes.lua` when the setting `SpaceX-no-bob` is off, seven Bob's

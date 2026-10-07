@@ -30,8 +30,7 @@
     `.md` files. A link whose target a commit deletes or renames, unless the linking file is
     staged too: -All sees it. A link into a submodule is asked of the working tree, so neither its
     case nor whether git tracks it is checked; into one not initialised it is said to be unchecked,
-    and passes. Whether a catalogue's header names every ticket its dated notes cite: measured on
-    2026-10-06 and left to the reviewer, see #149.
+    and passes.
 
 .PARAMETER Range
     Check the Markdown files changed in a commit range, as they are at its end:

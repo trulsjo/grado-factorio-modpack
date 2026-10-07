@@ -151,6 +151,9 @@ missing.
   its play session - the build, the bundled mods and every resolved member version, so the next
   load can be compared with it. The first load record is the template. A fact about the port
   goes in the notes, a fact about a mod goes in its catalogue entry.
+- **Ask Truls before a session downloads a program and runs it on this machine** (#179), and
+  say the same in a brief written for a subagent. `scripts/ask-before-download.ps1` is a hook
+  that asks on a package install or a fetched program; its header says what it cannot see.
 - **This file states the live rule only.** It is loaded into every session. When a line here
   changes, its old wording goes to *The trail of CLAUDE.md's State and open decisions* in
   `docs/porting-notes.md`, with the date, and not beside the new one.

@@ -8,7 +8,7 @@ stands. The blanks under the report's headings are the reviewer's and are sent u
 **The report goes to a file, and the reply is five lines.** A report sent as a reply was cut off
 twice: in its sixth finding of ten on PR #163 (2026-10-06, by #167's account), and at the head of
 its fourth of seven on the #172 branch (2026-10-07, by that session's account; the reply was not
-kept). Asked for again as a file, the second arrived whole.
+kept). Asked for again as a file, the second arrived whole, by the same account.
 
 ## Before the first turn
 

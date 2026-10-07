@@ -358,7 +358,8 @@ and the staged `Grado_ABCS` with Space Age (`2316474952`), the recorded loads' t
 *That is prototypes. Whether the tile goes down in a game, and what happens to what stands on it,
 needs play: #27 for the overhaul and #29 with Space Age. The feature parity with `safefill` is
 still unverified.* *Added 2026-10-07 (#175) from this file's header, which until then gave
-"the staged source" among the sources of #136's notes.*
+"the staged source" among the sources of #136's notes. Of the three in this file, this one alone
+cites a source file, the `data.lua` lines above.*
 
 ### `WideChests`
 

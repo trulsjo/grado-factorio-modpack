@@ -146,6 +146,9 @@ handed and not by a skill's name:
   `scripts/markdown-check.ps1 -Range origin/main..HEAD`, and of the resolve if an `info.json`
   changed.
 
+**The words it is handed them with are in `pre-pr-review-brief.md`**, for the review and for the
+confirmation, with the shape of the report.
+
 **A figure whose raw output is gone is a finding.** The reviewer is told which output is missing
 and does not take the figure on trust.
 

@@ -120,6 +120,12 @@ files where its shell stands. Reading the cache by path is not affected.
 `scripts/refuse-cd-into-mod-cache.ps1` has one refused and one allowed example to check it with,
 and a `-SelfTest`.
 
+A second hook there, `scripts/ask-before-download.ps1`, stops a command that installs a package
+(`npm`, `pip`, `gem`, `cargo install`, `winget`, `choco`, `scoop`) or fetches an `.exe`, `.msi`,
+`.zip` or `.tar.gz` from outside the mod portal, and puts the question to the person at the
+keyboard. Reading the portal, staging a pack, `gh` and `git` pass. Its header says what it cannot
+see, and it has a `-SelfTest` too.
+
 ## Publishing
 
 `Grado_NonChanging`, `Grado_ChangingBase` and `Grado_ABCX` already exist on the portal under

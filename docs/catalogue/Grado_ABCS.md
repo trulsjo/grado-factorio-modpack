@@ -813,8 +813,8 @@ Factorio **2.0.77**, made through the shared harness's `Invoke-HarnessDump`: Spa
 (prototype list checksum `3295867752`) and the staged `Grado_ABCS` (`2316474952`, the recorded
 load's), with `space-age`, `quality` and `elevated-rails` at `2.0.77` and the members at the
 releases in `docs/loads/Grado_ABC-2026-10-04.md`. `rso-mod` is `7.0.26`. *Added 2026-10-07 (#175)
-from this file's header, which said until then that #133 took this section "from data dumps" and
-"from `rso-mod`'s staged source as well".*
+from this file's header, which until then said #133 took this section "from `rso-mod`'s staged
+source as well".*
 
 ### How it was read
 
@@ -1228,7 +1228,9 @@ assessed: `angels_space_age_galore` (`JTnadrooi`, `0.9.0`, 2.1, first released 2
 downloads) and `industrial-worlds` (`Szentigrade`, `0.0.10`, 2.1, 2026-10-01, 46 downloads), which
 declares `! angelbob-spaceage-rebalance` and `! BobsAngelsSpaceAge`. So "two" is four at 2.1. Both
 are #31's; see the #83 note under the AngelBob finding in* `docs/catalogue/Grado_ABC.md`. *Both
-were assessed 2026-10-01 (#91); see* Four bridges, not two *below.*
+were assessed 2026-10-01 (#91); see* Four bridges, not two *below.* *Added 2026-10-07 (#175) from
+this file's header, which until then named the ticket of the re-read above: "the one re-read on
+2026-09-23 (#10)".*
 
 | | `angelbob-spaceage-rebalance` | `BobsAngelsSpaceAge` |
 |---|---|---|

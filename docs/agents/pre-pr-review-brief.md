@@ -2,19 +2,20 @@
 
 The words the pre-PR reviewer is handed its material with, for both of its turns. The rules are in
 `code-review.md`, *One review before the pull request*; this page adds none. A session fills the
-blanks, written `<like this>`, and sends the rest as it stands.
+blanks, written `<like this>`, and sends the rest as it stands. `<scratch>` is filled wherever it
+stands. The blanks under the report's headings are the reviewer's and are sent unfilled.
 
 **The report goes to a file, and the reply is five lines.** A report sent as a reply was cut off
 twice: in its sixth finding of ten on PR #163 (2026-10-06, by #167's account), and at the head of
-its fourth of seven on the #172 branch (2026-10-07). Asked for again as a file, the second arrived
-whole.
+its fourth of seven on the #172 branch (2026-10-07, by that session's account; the reply was not
+kept). Asked for again as a file, the second arrived whole.
 
 ## Before the first turn
 
 From the repository root, with `<scratch>` a directory outside the repository:
 
 ```
-git diff origin/main..HEAD > <scratch>/branch.diff
+git diff origin/main...HEAD > <scratch>/branch.diff
 pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -Range origin/main..HEAD > <scratch>/commit-check.txt
 pwsh -NoProfile -File scripts/markdown-check.ps1 -Range origin/main..HEAD > <scratch>/markdown-check.txt
 ```
@@ -72,8 +73,9 @@ Sent to the same subagent, after the fixes are committed. A later fix commit is 
 
 ```
 The fixes are in commit <sha>: `git show <sha>`. <Edits outside the diff, such as a ticket's
-body, and how to read each; or nothing.> The two checks were run again after it:
-<scratch>/commit-check.txt and <scratch>/markdown-check.txt.
+body, and how to read each; or nothing.> <If the two checks' results were handed at the review,
+their results after this commit: <scratch>/commit-check.txt and <scratch>/markdown-check.txt; or
+nothing.>
 
 Not fixed, and why: <each finding by its number; or none>.
 

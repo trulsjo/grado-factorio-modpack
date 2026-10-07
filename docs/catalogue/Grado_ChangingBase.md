@@ -6,8 +6,7 @@ did not exist in `Grado_NonChanging`: what a mod does to a save, and what it for
 from doing. The second has its own section, *What constrains an overhaul on top*.
 
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
-**2026-09-21**, except where a later date is given inline. *Until 2026-10-07 (#172) this paragraph
-listed each later note; each carries its own date.* Searches described below as over "the
+**2026-09-21**, except where a later date is given inline. Searches described below as over "the
 2.x list" first ran over the `version=2.0` listing only, which misses mods released for 2.1 alone
 (#44), and the two over "the 2.1 list" miss mods released for 2.0 alone. **Every search so
 described has since been re-run over the union of both listings** by #83 and carries a *Checked 2026-10-01 (#44, #83)* note
@@ -18,7 +17,8 @@ named in its entry and left to #86. An entry whose *Alternatives considered* rea
 or "none needed" recorded no search, so there was nothing to re-run.
 Each is reproduced
 from the fetched data rather than retyped; the **Read on** row is authoritative where it disagrees
-with this sentence.
+with this sentence. *Until 2026-10-07 (#172) this paragraph listed each later note; each carries
+its own date.*
 
 The dependency list holds 22 entries: `base >= 2.0.0`, `Grado_NonChanging` — a pack, catalogued in
 `docs/catalogue/Grado_NonChanging.md` — and the **20 mods** below. The survey read 25; #8 took the
@@ -357,8 +357,8 @@ and the staged `Grado_ABCS` with Space Age (`2316474952`), the recorded loads' t
 
 *That is prototypes. Whether the tile goes down in a game, and what happens to what stands on it,
 needs play: #27 for the overhaul and #29 with Space Age. The feature parity with `safefill` is
-still unverified.* *Added 2026-10-07 (#175) from this file's header, which said until then that
-the notes dated 2026-10-05 (#136) are "from data dumps, their logs and the staged source".*
+still unverified.* *Added 2026-10-07 (#175) from this file's header, which until then gave
+"the staged source" among the sources of #136's notes.*
 
 ### `WideChests`
 

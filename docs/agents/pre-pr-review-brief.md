@@ -18,6 +18,7 @@ From the repository root, with `<scratch>` a directory outside the repository:
 git diff origin/main...HEAD > <scratch>/branch.diff
 pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -Range origin/main..HEAD > <scratch>/commit-check.txt
 pwsh -NoProfile -File scripts/markdown-check.ps1 -Range origin/main..HEAD > <scratch>/markdown-check.txt
+pwsh -NoProfile -File scripts/glossary-check.ps1 -Range origin/main..HEAD > <scratch>/glossary-check.txt
 ```
 
 Copy the raw output behind each figure on the branch into `<scratch>` as well. A figure whose raw
@@ -46,6 +47,8 @@ You are handed:
 - <the raw output and the scripts behind the figures, one path each with the figure it is
   behind; or, on a branch that records no measurements: <scratch>/commit-check.txt and
   <scratch>/markdown-check.txt, and the resolve's output if an `info.json` changed>
+- <scratch>/glossary-check.txt: each added line that uses a word `GLOSSARY.md` avoids. The
+  script reports and does not judge; say of each use whether it is wrong.
 - <raw output that is missing, and the figure it was behind; or nothing>
 - the tickets: `gh issue view <N> --json title,body,comments` for each.
 

@@ -145,6 +145,8 @@ handed and not by a skill's name:
   branch, the results of `commit-check.ps1 -Range origin/main..HEAD` and of
   `scripts/markdown-check.ps1 -Range origin/main..HEAD`, and of the resolve if an `info.json`
   changed.
+- the output of `scripts/glossary-check.ps1 -Range origin/main..HEAD`, which lists each added line
+  that uses a word `GLOSSARY.md` avoids. It reports and does not judge: each use is the reviewer's.
 
 **The words it is handed them with are in `pre-pr-review-brief.md`**, for the review and for the
 confirmation, with the shape of the report.
@@ -155,7 +157,8 @@ and does not take the figure on trust.
 **When an implement skill says to close out with `/code-review`, here that means the pre-PR
 review.** No pull request is needed for it.
 
-**The reviewer that raised a finding confirms its fix.** Continue the same subagent and have it
+**The reviewer that raised a finding confirms its fix.** <!-- deliberate: confirms -->
+Continue the same subagent and have it
 read each fix against its own finding. That is a confirmation and not a second round. **A fix that
 adds a sentence adds a claim, and the confirmation checks it like any other.** "Confirms" here
 names this step and is not a grade of evidence; `GLOSSARY.md` avoids the word for a claim.

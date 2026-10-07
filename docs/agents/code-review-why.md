@@ -194,3 +194,10 @@ exactly as the workflow says" and "Do not re-score to get a finding published."
 
 > **This repository is almost entirely prose, and nothing here checks it.** The commit hook reads
 > the shape of a message, and a load can contradict only whether a pack starts.
+
+**What the pre-PR reviewer is handed**, the end of its last item, before #173 added the result of
+the Markdown check (2026-10-07):
+
+> On any other
+> branch, the result of `commit-check.ps1 -Range origin/main..HEAD`, and of the resolve if an
+> `info.json` changed.

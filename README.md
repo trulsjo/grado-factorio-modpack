@@ -108,6 +108,12 @@ table row with another column count than its header, and a link to a file git do
 does not judge prose. `-Range origin/main..HEAD` checks the Markdown a branch changed, `-All` every
 tracked file, and `-SelfTest` proves it can fail.
 
+`scripts/glossary-check.ps1 -Range origin/main..HEAD` lists each line a branch adds that uses a
+word `GLOSSARY.md` tells you to avoid, with the term that avoids it. It reports and never refuses,
+because most of those words are ordinary English; `-List` prints the avoid entries it matches and
+the ones it leaves to a reader, with why. A deliberate use is marked on its line with
+`<!-- deliberate: word -->`.
+
 Agent sessions also get a hook from `.claude/settings.json`: a shell command that changes
 directory into `.mod-cache/` is refused before it runs, because a session's tooling writes state
 files where its shell stands. Reading the cache by path is not affected.

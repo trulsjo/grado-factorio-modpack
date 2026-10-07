@@ -134,8 +134,8 @@ the pack is never installed beside Space Age.
 `Grado_ABCS`'s, settled 2026-09-23 (#10): `Grado_ABC` *beside* Space Age, not integrated with it -
 the planets and the overhaul run side by side, so a mod whose job is to merge the two fails
 the test.
-_Avoid_: "does not change save state or the factory", which was the original wording of
-`Grado_NonChanging`'s promise and is false under any reading that lets that pack do its job -
+_Avoid_: "does not change save state or the factory" (the original wording of
+`Grado_NonChanging`'s promise, and false under any reading that lets that pack do its job -
 `Tapeline`, `Todo-List`, `YARM` and `SpeedControl` all write to the save, and half the pack exists
-to change the factory on request.
-Also avoid: guarantee, contract, rule (all used for this and for three other things)
+to change the factory on request), guarantee, contract, rule (all used for this and for three
+other things)

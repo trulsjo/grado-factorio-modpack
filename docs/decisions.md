@@ -102,15 +102,16 @@ each when it was decided.
   is given inline", which is the wording `Grado_NonChanging.md` already had. A later reading
   carries its own day, ticket and source where it stands, and that is the only place they are
   stated. A note from a load, a data dump or a mod's source is not a portal reading, so it names
-  its own day and source whatever the header says. The paragraph in `Grado_ABC.md` and
-  `Grado_ChangingBase.md` on the searches re-run over the union of both listings stays: it is a
-  claim about the file, not a list of notes. Chosen over writing the list rule down for the
+  its own day and source whatever the header says. The sentences in `Grado_ABC.md` and
+  `Grado_ChangingBase.md` on the searches re-run over the union of both listings stay: they are
+  a claim about the file, not a list of notes. Chosen over writing the list rule down for the
   reviewer, and over a fixed form of note a script could match. The list was a second copy of
   what each note says, and the copy was what went stale: the reviews of PR #121 and PR #129 both
-  found a header missing what its batch had added, and #149's matcher counted 21 notes the five
-  headers did not name, 15 of them in `Grado_NonChanging.md`, whose header never had a list
-  (2026-10-06, `main` at `28ed67f`). The first option keeps that cost for every batch, and the
-  second changes how the catalogues are written to keep a duplicate in step. The list was not a
-  pure duplicate: a count of phrases on 2026-10-07 found sources and one section's reading day
-  that may be stated only in a header, so those move to their notes before the list is cut. The
-  form is on `docs/mod-catalogue.md`. The work is #175.
+  found a header missing what its batch had added. #149's matcher found 21 tickets cited in a
+  dated form and not named in their file's header, 15 of them in `Grado_NonChanging.md`, whose
+  header never had a list (2026-10-06, `main` at `28ed67f`). The first option keeps the
+  reviewer's cost for every batch, and the second changes how the catalogues are written to
+  keep a duplicate in step. The list may not be a pure duplicate: a
+  count of phrases on 2026-10-07 (`main` at `d6157a9`) found "staged source" in the headers of
+  `Grado_ABCX.md` and `Grado_ChangingBase.md` and nowhere below them, so each clause is read
+  against its note before the list is cut. The work is #175.

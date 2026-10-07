@@ -1,0 +1,42 @@
+# The two checks a clone opts into with `git config core.hooksPath .githooks`, run on every pull
+# request whether or not its author's clone did (#180): the commit messages and the changed
+# Markdown, over the pull request's own commits. Each check's self-test runs first, so a check
+# that can no longer fail is caught here.
+#
+# The pull request's head is checked out, not the merge commit GitHub makes for it: that commit's
+# message is GitHub's and fails the commit check. The whole history and the submodule come with
+# it, or `origin/main..HEAD` is empty and commit-check.ps1 is missing. The range keeps the three
+# commits of 2026-09-20 out, which fail the check and are left alone (CLAUDE.md).
+#
+# Nothing is installed: pwsh and git are on the runner. The checkout action is the one thing
+# fetched, pinned to a commit.
+name: check
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: refs/pull/${{ github.event.pull_request.number }}/head
+          fetch-depth: 0
+          submodules: true
+
+      - name: Prove both checks can still fail
+        run: |
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -SelfTest
+          pwsh -NoProfile -File scripts/markdown-check.ps1 -SelfTest
+
+      - name: Check the commit messages
+        if: ${{ !cancelled() }}
+        run: pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -Range origin/main..HEAD
+
+      - name: Check the changed Markdown
+        if: ${{ !cancelled() }}
+        run: pwsh -NoProfile -File scripts/markdown-check.ps1 -Range origin/main..HEAD

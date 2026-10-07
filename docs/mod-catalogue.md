@@ -20,6 +20,13 @@ now. Every mod, not only the interesting ones — an absent entry and a boring e
 claims, and only one of them is verifiable. Two more sections appear when a pack has entries for
 them: **Ruled out after the port** and **Candidates, not members**, both under the variants below.
 
+**A pack file's header gives the day of the pack's portal reading, and lists no later note**
+(2026-10-07, #172; the ruling is in `docs/decisions.md`). It says that every portal
+reading below was taken on that day, "except where a later date is given inline". That sentence
+covers portal readings only. A later portal reading carries its own day and ticket where it stands, in a **Read
+on** row or in the note. A note from a load, a data dump or a mod's source names its own day and
+source whatever the header says.
+
 ## Two kinds of duplication
 
 Five packs in four layers — `Grado_ABCX` and `Grado_ABCS` share the top one — and a pack loads

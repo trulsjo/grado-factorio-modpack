@@ -9,16 +9,9 @@ method: the pack loaded on Factorio 2.0.77 with Space Age, 104 mods validated be
 `docs/loads/Grado_ABCS-2026-10-04.md`.*
 
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
-**2026-09-22** and is reproduced from the fetched data rather than retyped, except the one
-re-read on 2026-09-23 (#10), which carries its own date, *Candidates, not members*, read
-2026-09-24 (#31), and the notes dated 2026-09-24 (#58) and (#61), which those two took, and the notes dated
-2026-10-01 (#44, #83), which #83 took over the union of both portal listings as read that day, and
-the entries for `angels_space_age_galore` and `industrial-worlds` and the notes dated 2026-10-01
-(#91), which #91 took, and the notes dated 2026-10-04 (#118), which #118 took from the pack's
-recorded load, and the section dated 2026-10-04 (#128), which #128 took from data dumps, and the
-sections dated 2026-10-05 (#132), (#133) and (#134), which those three took from data dumps,
-#133 from `rso-mod`'s staged source as well and #134 from the staged source of the Bob's and
-Angel's members.
+**2026-09-22** and is reproduced from the fetched data rather than retyped, except where a later
+date is given inline. *Until 2026-10-07 (#172) this paragraph listed each later note; each carries
+its own date.*
 
 The dependency list holds 3 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, catalogued in
 `docs/catalogue/Grado_ABC.md` — and `space-age`. **The pack is new**, so nothing was carried over,
@@ -819,7 +812,9 @@ name resources. This is what those settings hold. Read on 2026-10-05 from two da
 Factorio **2.0.77**, made through the shared harness's `Invoke-HarnessDump`: Space Age alone
 (prototype list checksum `3295867752`) and the staged `Grado_ABCS` (`2316474952`, the recorded
 load's), with `space-age`, `quality` and `elevated-rails` at `2.0.77` and the members at the
-releases in `docs/loads/Grado_ABC-2026-10-04.md`. `rso-mod` is `7.0.26`.
+releases in `docs/loads/Grado_ABC-2026-10-04.md`. `rso-mod` is `7.0.26`. *Added 2026-10-07 (#175)
+from this file's header, which said until then that #133 took this section "from data dumps" and
+"from `rso-mod`'s staged source as well".*
 
 ### How it was read
 

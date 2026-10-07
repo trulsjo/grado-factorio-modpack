@@ -7,18 +7,10 @@ question running through every entry below that did not exist lower down: whethe
 core forecloses either end-game.
 
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
-**2026-09-21** and is reproduced from the fetched data rather than retyped, except those carrying a
-**Read on** of **2026-09-23** and the readings inside #9's rulings, which #9 took, and the notes
-marked *Superseded 2026-09-23 by #15*, which #15 took, and the notes dated 2026-09-24 (#43), which
-#43 took, and the note dated 2026-09-24 (#31), which #31 took, and the notes dated 2026-09-24
-(#58) and (#61), which those two took. The **Read on** row is authoritative where it disagrees
-with this sentence. *Candidates, not members* was read on 2026-09-30 (#50). The notes dated
-2026-10-01 (#39), (#44), (#80), (#44, #83), (#91) and (#93) were taken by #39, #44, #80, #83, #91
-and #93. The notes dated 2026-10-04 (#81) are #81's; the runs they cite are dated where they are
-cited. The notes dated 2026-10-04 (#116) are #116's, from the pack's recorded load, and those dated
-2026-10-04 (#119) are #119's. The section dated 2026-10-04 (#123) is #123's, from a data dump and
-the staged source. The note dated 2026-10-05 (#136) is #136's, from data dumps and a portal reading
-of that day. Searches described below as over "the 2.x list" first ran over
+**2026-09-21** and is reproduced from the fetched data rather than retyped, except where a later
+date is given inline. The **Read on** row is authoritative where it disagrees with this sentence.
+*Until 2026-10-07 (#172) this paragraph listed each later note; each carries its own date.*
+Searches described below as over "the 2.x list" first ran over
 the `version=2.0` listing only, which misses mods released for 2.1 alone (#44). **Every search so
 described has since been re-run over the union of both listings** and carries a *Checked
 2026-10-01* note: four by #44, against a union of 10,845, and the rest by #83, against the listings as read later that day - 9,794
@@ -1933,7 +1925,8 @@ what reopens the question and the candidates handed to #49 are under *Decisions,
 ## Candidates, not members
 
 Mods assessed for this pack that are not in it. **Nothing here changes the dependency list**: whether
-a mod joins is Truls's.
+a mod joins is Truls's. *Added 2026-10-07 (#175) from this file's header, which said until then
+that this section "was read on 2026-09-30 (#50)".*
 
 ### `angelsextended-remelting`
 

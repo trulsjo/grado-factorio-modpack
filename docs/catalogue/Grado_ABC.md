@@ -9,7 +9,6 @@ core forecloses either end-game.
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
 **2026-09-21** and is reproduced from the fetched data rather than retyped, except where a later
 date is given inline. The **Read on** row is authoritative where it disagrees with this sentence.
-*Until 2026-10-07 (#172) this paragraph listed each later note; each carries its own date.*
 Searches described below as over "the 2.x list" first ran over
 the `version=2.0` listing only, which misses mods released for 2.1 alone (#44). **Every search so
 described has since been re-run over the union of both listings** and carries a *Checked
@@ -22,7 +21,8 @@ considered *line.* `spidertrontiers-community-updates`
 was re-run by #93 against the listings as read later still that day - 9,795, 4,344 and 10,854,
 1,059 of them in the 2.1 listing alone - and its claim did not hold; the hits are named in the
 entry and left to #49, and no ruling changed. The other two were not re-run:
-`RealisticReactorsReborn` and `extendedangels`.
+`RealisticReactorsReborn` and `extendedangels`. *Until 2026-10-07 (#172) this paragraph listed
+each later note; each carries its own date.*
 
 The dependency list holds 46 entries: `base >= 2.0.0`, `Grado_ChangingBase` — a pack, catalogued in
 `docs/catalogue/Grado_ChangingBase.md` — and **44 mods**. It read 47 and 45 until 2026-09-22, when

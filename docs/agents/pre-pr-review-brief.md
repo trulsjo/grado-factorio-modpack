@@ -34,7 +34,8 @@ carries <tickets, as #N>. <One or two sentences: what the change is meant to do.
 under review, such as a decision of Truls's that the branch records, or nothing.>
 
 This review is read-only. Do not edit, stage, commit or push anything, and post nothing to
-GitHub. Do not change directory: run every command from the repository root and name files by
+GitHub. Do not download or install any program or package: say in the report if you think you
+need one. Do not change directory: run every command from the repository root and name files by
 path. A session's tooling writes state files where its shell stands, and a command that changes
 directory into `.mod-cache/` is refused by a hook.
 
@@ -78,7 +79,7 @@ Sent to the same subagent, after the fixes are committed. A later fix commit is 
 The fixes are in commit <sha>: `git show <sha>`. <Edits outside the diff, such as a ticket's
 body, and how to read each; or nothing.> <If the two checks' results were handed at the review,
 their results after this commit: <scratch>/commit-check.txt and <scratch>/markdown-check.txt; or
-nothing.>
+nothing.> The glossary check's after this commit: <scratch>/glossary-check.txt.
 
 Not fixed, and why: <each finding by its number; or none>.
 

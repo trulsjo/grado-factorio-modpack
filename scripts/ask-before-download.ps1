@@ -1,7 +1,7 @@
 <#
 .SYNOPSIS
     A hook for agent sessions: stops a shell command that installs a package or fetches a program
-    from outside the mod portal, and has the session ask Truls before it runs. It prints a
+    from anywhere but mods.factorio.com, and has the session ask Truls before it runs. It prints a
     permission decision of "ask" with the reason and exits 0; for any other command it prints
     nothing and exits 0.
 
@@ -20,12 +20,12 @@
     pip install, also as python -m pip; gem install; cargo install; winget, choco and scoop
     install; gh release download. And a command holding curl, wget, iwr, irm, Invoke-WebRequest,
     Invoke-RestMethod, Start-BitsTransfer or DownloadFile with an http address that ends in .exe,
-    .msi, .zip, .tar.gz or .tgz and is not on factorio.com.
+    .msi, .zip, .tar.gz or .tgz and is not on mods.factorio.com.
 
-    WHAT "ASK" DOES. The session shows Truls its permission prompt with the reason, whatever its
-    permission mode, and runs the command only if he allows it. That is read from the hooks
-    reference at https://code.claude.com/docs/en/hooks on 2026-10-08 and was not run in a session:
-    the self-test proves what this script prints, not what a session does with it.
+    WHAT "ASK" DOES. The session prompts Truls to confirm, with the reason, in auto mode too. That
+    is as the hooks reference at https://code.claude.com/docs/en/hooks was summarised by a fetching
+    tool on 2026-10-08; the page's text was not kept. The self-test proves what this script prints,
+    not what a session does with it.
 
     WHAT IT LETS THROUGH. Everything else, and so the project's own work: a read of the portal
     API, a mod fetched from the portal, scripts/stage-pack.ps1, scripts/get-dump.ps1, the resolver
@@ -37,9 +37,11 @@
     started outside this repository. Another package manager (pnpm, yarn, pipx, uv, go, dotnet
     tool, Install-Module), a git clone of a program, and an address that does not end in one of
     the five endings or is built from a variable. An installer or fetcher named in another case
-    than the wiring's words, or reached through cmd /c, an alias or a full path. It reads the
-    command as text and does not parse the shell, so `npm install` where a command could stand is
-    asked about inside a quoted string too.
+    than the wiring's words, named with .exe or .cmd, or reached through cmd /c, sudo, an alias or
+    a full path. An install that opens a quoted string, as in bash -c "npm install x", and one
+    with a flag between the program and `install`. It reads the command as text and does not parse
+    the shell, so `npm install` is asked about inside a quoted string too when it follows a newline
+    or a separator there.
 
     TO CHECK IT, from the repository root. The first prints the decision, the second nothing:
 
@@ -68,8 +70,8 @@ function Get-Download {
         '(?:^|[;&|({\n]|\b(?:then|do|else|if|elif|while|until)\s)\s*((?:npm\s+(?:install|i|ci|add|exec)|npx|(?:py(?:thon[\d.]*)?\s+-m\s+)?pip[\d.]*\s+install|gem\s+install|cargo\s+install|(?:winget|choco|scoop)\s+install|gh\s+release\s+download)\b)', 'IgnoreCase')
     if ($install.Success) { return "installs or downloads a package ($($install.Groups[1].Value -replace '\s+', ' '))" }
     if ($Command -notmatch '\b(curl|wget|iwr|irm|Invoke-WebRequest|Invoke-RestMethod|Start-BitsTransfer|DownloadFile)\b') { return }
-    foreach ($url in [regex]::Matches($Command, 'https?://([^/\s"''`]+)[^\s"''`]*?\.(?:exe|msi|zip|tar\.gz|tgz)(?=$|[\s"''`?#)])', 'IgnoreCase')) {
-        if ($url.Groups[1].Value -notmatch '(^|\.)factorio\.com$') { return "fetches $($url.Value)" }
+    foreach ($url in [regex]::Matches($Command, 'https?://([^/\s"''`]+)[^\s"''`]*?\.(?:exe|msi|zip|tar\.gz|tgz)(?![\w./-])', 'IgnoreCase')) {
+        if ($url.Groups[1].Value -ne 'mods.factorio.com') { return "fetches $($url.Value)" }
     }
 }
 
@@ -91,6 +93,9 @@ if ($SelfTest) {
         @('Invoke-WebRequest "https://example.com/tool.exe" -OutFile tool.exe', $true),
         @('wget https://example.com/linter.tar.gz', $true),
         @('iwr https://example.com/setup.msi -OutFile setup.msi; Start-Process setup.msi', $true),
+        @('curl -LO https://example.com/tool.zip; unzip tool.zip', $true),
+        @('curl -sL https://example.com/tool.tar.gz|tar xz', $true),
+        @('curl -LO https://www.factorio.com/get-download/2.0.77/alpha/win64-manual.zip', $true),
         @('curl -s https://mods.factorio.com/api/mods/flib/full', $false),
         @("Invoke-RestMethod 'https://mods.factorio.com/api/mods?page_size=max&version=2.0'", $false),
         @('curl -L -o flib.zip "https://mods.factorio.com/download/flib/5f7b2c?username=u&token=t.zip"', $false),

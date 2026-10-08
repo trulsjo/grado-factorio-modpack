@@ -45,7 +45,9 @@
     a full path. An install that opens a quoted string, as in bash -c "npm install x", and one
     with a flag between the program and `install`. It reads the command as text and does not parse
     the shell, so `npm install` is refused inside a quoted string too when it follows a newline
-    or a separator there.
+    or a separator there. The cost: prose handed to the shell, a commit message or a pull request
+    body in a heredoc, is refused when one of its lines opens with a matched command, so pass
+    such text as a file (git commit -F, gh pr edit --body-file).
 
     TO CHECK IT, from the repository root. The first is refused with exit 2, the second passes:
 

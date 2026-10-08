@@ -9,7 +9,7 @@
 # commits of 2026-09-20 out, which fail the check and are left alone (CLAUDE.md).
 #
 # Nothing is installed: pwsh and git are on the runner. The checkout action is the one thing
-# fetched, pinned to a commit.
+# fetched besides this repository and its submodule, pinned to a commit.
 name: check
 
 on:

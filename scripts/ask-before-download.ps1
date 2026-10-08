@@ -55,8 +55,10 @@
         '{"tool_input":{"command":"gh issue view 179"}}' | pwsh -NoProfile -File scripts/ask-before-download.ps1
 
 .PARAMETER SelfTest
-    Prove it refuses what it should and lets the rest through, the wiring's own command
-    included. The last case needs sh: the one on the path, or the one Git for Windows ships.
+    Prove it refuses what it should and lets the rest through: first by this script's own
+    pattern, then with every refused case sent through the wiring's command, so that a command
+    the pattern refuses and the wiring never hands over turns the self-test red (#190). The
+    wired cases need sh: the one on the path, or the one Git for Windows ships.
 #>
 
 #Requires -Version 7
@@ -120,7 +122,8 @@ if ($SelfTest) {
     )
     $failures = 0
     $n = 0
-    $total = $cases.Count + 1
+    $refused = @($cases | Where-Object { $_[1] })
+    $total = $cases.Count + $refused.Count + 1
     foreach ($c in $cases) {
         $n++
         $ok = [bool] (Get-Download -Command $c[0]) -eq $c[1]
@@ -128,8 +131,8 @@ if ($SelfTest) {
         if (-not $ok) { $failures++ }
     }
     # The wiring as the session runs it: the command in .claude/settings.json, through sh, with
-    # the tool call on stdin. Exit 2 and a reason for one, exit 0 and silence for the others.
-    $n++
+    # the tool call on stdin. Exit 2 and a reason for every refused case, exit 0 and silence for
+    # a portal read and a plain command.
     $wired = (Get-Content -LiteralPath (Join-Path $ROOT '.claude/settings.json') -Raw | ConvertFrom-Json).hooks.PreToolUse[0].hooks[1].command
     $env:CLAUDE_PROJECT_DIR = $ROOT
     # Git for Windows keeps its sh, and the cat beside it, off the path PowerShell sees.
@@ -140,14 +143,19 @@ if ($SelfTest) {
         $text = (@{ cwd = $ROOT; tool_input = @{ command = $command } } | ConvertTo-Json -Compress) | & $sh -c $wired 2>&1 | Out-String
         @{ Code = $LASTEXITCODE; Text = $text }
     }
-    $asked = & $through 'cargo install rumdl'
-    $fetch = & $through 'curl -LO https://example.com/tool.zip'
+    foreach ($c in $refused) {
+        $n++
+        $r = & $through $c[0]
+        $ok = $r.Code -eq 2 -and $r.Text -match 'Ask Truls'
+        Write-Host ("self-test {0}/{1}: refused through the wiring: `{2}` -- {3}" -f $n, $total, $c[0], $(if ($ok) { 'ok' } else { 'FAILED' }))
+        if (-not $ok) { $failures++; Write-Host "    exit $($r.Code) $($r.Text)" }
+    }
+    $n++
     $portal = & $through 'curl -s https://mods.factorio.com/api/mods/flib'
     $plain = & $through 'git status'
-    $ok = $asked.Code -eq 2 -and $asked.Text -match 'Ask Truls' -and $fetch.Code -eq 2 -and $fetch.Text -match 'tool\.zip' -and
-        $portal.Code -eq 0 -and -not $portal.Text.Trim() -and $plain.Code -eq 0 -and -not $plain.Text.Trim()
-    Write-Host ("self-test {0}/{1}: the wired hook refuses an install and a fetched zip with exit 2 and a reason, and passes a portal read and a plain command in silence -- {2}" -f $n, $total, $(if ($ok) { 'ok' } else { 'FAILED' }))
-    if (-not $ok) { $failures++; Write-Host "    asked: $($asked.Code) $($asked.Text)"; Write-Host "    fetch: $($fetch.Code) $($fetch.Text)"; Write-Host "    portal: $($portal.Code) $($portal.Text)"; Write-Host "    plain: $($plain.Code) $($plain.Text)" }
+    $ok = $portal.Code -eq 0 -and -not $portal.Text.Trim() -and $plain.Code -eq 0 -and -not $plain.Text.Trim()
+    Write-Host ("self-test {0}/{1}: the wired hook passes a portal read and a plain command in silence -- {2}" -f $n, $total, $(if ($ok) { 'ok' } else { 'FAILED' }))
+    if (-not $ok) { $failures++; Write-Host "    portal: $($portal.Code) $($portal.Text)"; Write-Host "    plain: $($plain.Code) $($plain.Text)" }
     Write-Host ''
     if ($failures) { Write-Host "FAILED - self-test: $failures of $total case(s) did not hold."; exit 1 }
     Write-Host "OK - self-test passed: all $total cases."

@@ -77,7 +77,9 @@ If you find nothing, say so under Findings and still fill the second section.
 Sent to the same subagent, after the fixes are committed. A later fix commit is sent the same way.
 
 ```
-The fixes are in commit <sha>: `git show <sha>`. <Edits outside the diff, such as a ticket's
+The fixes are in commit <sha>: `git show <sha>`. <A commit whose message was reworded, by its
+old and new hash: `git log -1 --format=%B <new>`, and `git diff <old> <new>` is empty; or
+nothing.> <Edits outside the diff, such as a ticket's
 body, and how to read each; or nothing.> <If the two checks' results were handed at the review,
 their results after this commit: <scratch>/commit-check.txt and <scratch>/markdown-check.txt; or
 nothing.> The glossary check's after this commit: <scratch>/glossary-check.txt.

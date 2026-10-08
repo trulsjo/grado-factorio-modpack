@@ -10,9 +10,9 @@ twice: in its sixth finding of ten on PR #163 (2026-10-06, by #167's account), a
 its fourth of seven on the #172 branch (2026-10-07, by that session's account; the reply was not
 kept). Asked for again as a file, the second arrived whole, by the same account. **The file is
 written with the file tool, and the reply follows it.** On PR #186 (2026-10-08) a reviewer
-replied with its count before its section existed: it had appended the section through the
-shell, and the download hook refused the command. The count was one short. Recorded in that pull
-request's fifth comment.
+replied with its count before its section existed, by #192's account: it had appended the
+section through the shell, the download hook refused the command, and the count was one short,
+all three by that pull request's fifth comment.
 
 ## Before the first turn
 
@@ -59,7 +59,8 @@ You are handed:
 - the tickets: `gh issue view <N> --json title,body,comments` for each.
 
 Write the report to <scratch>/review.md with the file tool, and reply only after it is written,
-in at most five lines: how many findings, which one matters most, and the path. The report has two sections and no scores.
+in at most five lines: how many findings, which one matters most, and the path. The report has
+two sections and no scores.
 
 ## Findings
 
@@ -84,10 +85,10 @@ and so is a fix made after the plugin pass.
 ```
 The fixes are in commit <sha>: `git show <sha>`. <A commit whose message was reworded, by its
 old and new hash: `git log -1 --format=%B <new>`, and `git diff <old> <new>` is empty; or
-nothing.> <Edits outside the diff, such as a ticket's
-body, and how to read each; or nothing.> <If the two checks' results were handed at the review,
-their results after this commit: <scratch>/commit-check.txt and <scratch>/markdown-check.txt; or
-nothing.> The glossary check's after this commit: <scratch>/glossary-check.txt.
+nothing.> <Edits outside the diff, such as a ticket's body, and how to read each; or nothing.>
+<If the two checks' results were handed at the review, their results after this commit:
+<scratch>/commit-check.txt and <scratch>/markdown-check.txt; or nothing.> The glossary check's
+after this commit: <scratch>/glossary-check.txt.
 
 Not fixed, and why: <each finding by its number; or none>. <For a fix of a plugin-pass finding,
 which is not one of yours: the finding as the pull request states it; or nothing.>

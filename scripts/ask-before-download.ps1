@@ -1,9 +1,8 @@
 <#
 .SYNOPSIS
-    A hook for agent sessions: stops a shell command that installs a package or fetches a program
-    from anywhere but mods.factorio.com, and has the session ask Truls before it runs. It prints a
-    permission decision of "ask" with the reason and exits 0; for any other command it prints
-    nothing and exits 0.
+    A hook for agent sessions: refuses a shell command that installs a package or fetches a program
+    from anywhere but mods.factorio.com, and tells the session to ask Truls. It prints the reason
+    to stderr and exits 2; for any other command it prints nothing and exits 0.
 
 .DESCRIPTION
     WHY (#179). On 2026-10-07 a subagent surveying Markdown linters fetched five binaries from
@@ -16,16 +15,21 @@
     `tool_input.command`. The wiring starts this script only when that JSON holds one of the words
     below or one of the file endings, as the other hook's does and for the same reason.
 
-    WHAT IT ASKS ABOUT. Standing where a command can stand: npm install, i, ci, add or exec; npx;
+    WHAT IT REFUSES. Standing where a command can stand: npm install, i, ci, add or exec; npx;
     pip install, also as python -m pip; gem install; cargo install; winget, choco and scoop
     install; gh release download. And a command holding curl, wget, iwr, irm, Invoke-WebRequest,
     Invoke-RestMethod, Start-BitsTransfer or DownloadFile with an http address that ends in .exe,
     .msi, .zip, .tar.gz or .tgz and is not on mods.factorio.com.
 
-    WHAT "ASK" DOES. The session prompts Truls to confirm, with the reason, in auto mode too. That
-    is as the hooks reference at https://code.claude.com/docs/en/hooks was summarised by a fetching
-    tool on 2026-10-08; the page's text was not kept. The self-test proves what this script prints,
-    not what a session does with it.
+    WHY IT REFUSES AND DOES NOT ASK. It first answered with a permission decision of "ask".
+    Measured 2026-10-08 in a session in auto mode, Claude Code 2.1.292, with `npx --version`: the
+    session's debug log shows the hook's "ask" taken ("Hook result has permissionBehavior=ask") and
+    then "Slow permission decision: 4386ms for Bash (mode=auto, behavior=allow)". The command ran
+    and Truls saw no prompt. What "ask" does in another mode was not measured. A refusal by exit 2
+    is what refuse-cd-into-mod-cache.ps1 does. Nothing a session can set lets a command past: once
+    Truls has said yes he runs it himself, with the `!` prefix at the prompt. The refusal was
+    measured in the same session after the change: `npx --version` did not run and the session
+    was shown the reason.
 
     WHAT IT LETS THROUGH. Everything else, and so the project's own work: a read of the portal
     API, a mod fetched from the portal, scripts/stage-pack.ps1, scripts/get-dump.ps1, the resolver
@@ -40,16 +44,16 @@
     than the wiring's words, named with .exe or .cmd, or reached through cmd /c, sudo, an alias or
     a full path. An install that opens a quoted string, as in bash -c "npm install x", and one
     with a flag between the program and `install`. It reads the command as text and does not parse
-    the shell, so `npm install` is asked about inside a quoted string too when it follows a newline
+    the shell, so `npm install` is refused inside a quoted string too when it follows a newline
     or a separator there.
 
-    TO CHECK IT, from the repository root. The first prints the decision, the second nothing:
+    TO CHECK IT, from the repository root. The first is refused with exit 2, the second passes:
 
         '{"tool_input":{"command":"npm install -g markdownlint-cli"}}' | pwsh -NoProfile -File scripts/ask-before-download.ps1
         '{"tool_input":{"command":"gh issue view 179"}}' | pwsh -NoProfile -File scripts/ask-before-download.ps1
 
 .PARAMETER SelfTest
-    Prove it asks about what it should and lets the rest through, the wiring's own command
+    Prove it refuses what it should and lets the rest through, the wiring's own command
     included. The last case needs sh: the one on the path, or the one Git for Windows ships.
 #>
 
@@ -76,7 +80,7 @@ function Get-Download {
 }
 
 if ($SelfTest) {
-    # Each: the command, and whether it is asked about.
+    # Each: the command, and whether it is refused.
     $cases = @(
         @('npm install -g markdownlint-cli', $true),
         @('cd tools && npm i remark-cli', $true),
@@ -118,11 +122,11 @@ if ($SelfTest) {
     foreach ($c in $cases) {
         $n++
         $ok = [bool] (Get-Download -Command $c[0]) -eq $c[1]
-        Write-Host ("self-test {0}/{1}: {2}: `{3}` -- {4}" -f $n, $total, $(if ($c[1]) { 'asked' } else { 'allowed' }), $c[0], $(if ($ok) { 'ok' } else { 'FAILED' }))
+        Write-Host ("self-test {0}/{1}: {2}: `{3}` -- {4}" -f $n, $total, $(if ($c[1]) { 'refused' } else { 'allowed' }), $c[0], $(if ($ok) { 'ok' } else { 'FAILED' }))
         if (-not $ok) { $failures++ }
     }
     # The wiring as the session runs it: the command in .claude/settings.json, through sh, with
-    # the tool call on stdin. A decision of "ask" for one, exit 0 and silence for the others.
+    # the tool call on stdin. Exit 2 and a reason for one, exit 0 and silence for the others.
     $n++
     $wired = (Get-Content -LiteralPath (Join-Path $ROOT '.claude/settings.json') -Raw | ConvertFrom-Json).hooks.PreToolUse[0].hooks[1].command
     $env:CLAUDE_PROJECT_DIR = $ROOT
@@ -138,11 +142,9 @@ if ($SelfTest) {
     $fetch = & $through 'curl -LO https://example.com/tool.zip'
     $portal = & $through 'curl -s https://mods.factorio.com/api/mods/flib'
     $plain = & $through 'git status'
-    $decision = try { ($asked.Text | ConvertFrom-Json).hookSpecificOutput } catch { $null }
-    $ok = $asked.Code -eq 0 -and $decision -and $decision.hookEventName -eq 'PreToolUse' -and $decision.permissionDecision -eq 'ask' -and
-        $decision.permissionDecisionReason -match 'ask Truls' -and $fetch.Text -match '"ask"' -and
+    $ok = $asked.Code -eq 2 -and $asked.Text -match 'Ask Truls' -and $fetch.Code -eq 2 -and $fetch.Text -match 'tool\.zip' -and
         $portal.Code -eq 0 -and -not $portal.Text.Trim() -and $plain.Code -eq 0 -and -not $plain.Text.Trim()
-    Write-Host ("self-test {0}/{1}: the wired hook answers ask, with a reason, for an install and for a fetched zip, and passes a portal read and a plain command in silence -- {2}" -f $n, $total, $(if ($ok) { 'ok' } else { 'FAILED' }))
+    Write-Host ("self-test {0}/{1}: the wired hook refuses an install and a fetched zip with exit 2 and a reason, and passes a portal read and a plain command in silence -- {2}" -f $n, $total, $(if ($ok) { 'ok' } else { 'FAILED' }))
     if (-not $ok) { $failures++; Write-Host "    asked: $($asked.Code) $($asked.Text)"; Write-Host "    fetch: $($fetch.Code) $($fetch.Text)"; Write-Host "    portal: $($portal.Code) $($portal.Text)"; Write-Host "    plain: $($plain.Code) $($plain.Text)" }
     Write-Host ''
     if ($failures) { Write-Host "FAILED - self-test: $failures of $total case(s) did not hold."; exit 1 }
@@ -157,10 +159,12 @@ catch {
     exit 1
 }
 if ($what) {
-    @{ hookSpecificOutput = @{
-        hookEventName            = 'PreToolUse'
-        permissionDecision       = 'ask'
-        permissionDecisionReason = "This command $what. CLAUDE.md, Conventions: a session has to ask Truls before it downloads a program and runs it on this machine (#179). Allow it only if the session asked first and was told yes."
-    } } | ConvertTo-Json -Compress
+    [Console]::Error.WriteLine(@"
+Refused: this command $what.
+Ask Truls first: a session does not download a program and run it on this machine unasked (#179,
+CLAUDE.md, Conventions). If he says yes, he runs the command himself with the ! prefix. Do not
+rephrase the command to get past this.
+"@)
+    exit 2
 }
 exit 0

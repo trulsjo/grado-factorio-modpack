@@ -67,6 +67,9 @@ duplicated across the five packs", "no replacement was found" — a claim about 
 set is checked by walking the set, never by agreeing with its tone. A fix that adds a figure
 re-walks every quantifier that covers the place it lands. Found in PR #163, twice.
 
+**Where prose restates a list the code holds, read the two side by side.** Found in PR #186,
+where the README's list of what a hook stops had lost two entries of the script's.
+
 **Attribute a figure where it stands.** A note that vouches for the source of every figure in a
 section is a quantifier each later figure can make false, and is a finding. Found in PR #163,
 where one such note was false twice.
@@ -88,8 +91,9 @@ erasing it, which is the same instinct as `CLAUDE.md`'s "record what was dropped
 
 **`CLAUDE.md` and this file are the exception.** Both are loaded whole, so each states the live
 rule only. When a line in one changes, its old wording goes, with its date, to the trail in
-`docs/porting-notes.md` for `CLAUDE.md` and to `code-review-why.md` for this file. A dated
-"since" or "until" note added to either is a finding.
+`docs/porting-notes.md` for `CLAUDE.md` and to `code-review-why.md` for this file. A sentence
+added where none stood owes the trail nothing. A dated "since" or "until" note added to either is
+a finding.
 
 **A record cites a record, not `CLAUDE.md`.** A figure or a settled decision is cited from the
 porting notes, a load record, a catalogue entry or `docs/decisions.md`; `CLAUDE.md` is steering and

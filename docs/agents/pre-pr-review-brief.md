@@ -43,7 +43,8 @@ You are handed:
 - the diff against `main`: <scratch>/branch.diff. The commit messages are part of the review:
   `git log --format=%B origin/main..HEAD`.
 - `docs/agents/code-review.md`. Read it whole. It is the rules you review by, and the prose is
-  reviewed as carefully as the code.
+  reviewed as carefully as the code. Where prose restates a list the code holds, read the two
+  side by side.
 - `GLOSSARY.md`, which holds the three grades of evidence and the other terms.
 - <the raw output and the scripts behind the figures, one path each with the figure it is
   behind; or, on a branch that records no measurements: <scratch>/commit-check.txt and

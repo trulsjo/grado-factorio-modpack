@@ -787,7 +787,8 @@ out; the rule is unchanged.
 > `blueprint-sandboxes` created whole surfaces.
 
 **"This file states the live rule only"**, under *Conventions*, as it stood until 2026-10-08. The
-rule is unchanged; #186 added a sentence saying an added sentence owes the trail nothing.
+rule gained one sentence, decided by Truls on 2026-10-08 (#186): an added sentence owes the trail
+nothing. The rest stands as quoted.
 
 > - **This file states the live rule only.** It is loaded into every session. When a line here
 >   changes, its old wording goes to *The trail of CLAUDE.md's State and open decisions* in

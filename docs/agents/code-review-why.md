@@ -203,8 +203,9 @@ the Markdown check (2026-10-07):
 > branch, the result of `commit-check.ps1 -Range origin/main..HEAD`, and of the resolve if an
 > `info.json` changed.
 
-**The exception for `CLAUDE.md` and `code-review.md`**, as it stood until 2026-10-08. The rule is
-unchanged; #186 added a sentence saying an added sentence owes the trail nothing.
+**The exception for `CLAUDE.md` and `code-review.md`**, as it stood until 2026-10-08. The rule
+gained one sentence, decided by Truls on 2026-10-08 (#186): an added sentence owes the trail
+nothing. The rest stands as quoted.
 
 > **`CLAUDE.md` and this file are the exception.** Both are loaded whole, so each states the live
 > rule only. When a line in one changes, its old wording goes, with its date, to the trail in

@@ -124,12 +124,12 @@ files where its shell stands. Reading the cache by path is not affected.
 and a `-SelfTest`.
 
 A second hook there, `scripts/ask-before-download.ps1`, stops a command that installs a package
-(`npm install`, `npx`, `pip install`, `gem install`, `cargo install`, and `install` under `winget`,
+(`npm install`, `ci`, `add` or `exec`, `npx`, `pip install`, `gem install`, `cargo install`, and `install` under `winget`,
 `choco` or `scoop`) or fetches an `.exe`, `.msi`, `.zip`, `.tar.gz` or `.tgz` from anywhere but
 `mods.factorio.com`, and tells the session to ask Truls, who runs an approved command himself.
 It refuses and does not ask: its header has the measurement of 2026-10-08 that says why. Reading
 the portal, staging a pack, `git` and the rest of `gh` pass: `gh release
-download` is asked about. Its header says what it cannot
+download` is refused. Its header says what it cannot
 see, and it has a `-SelfTest` too.
 
 ## Publishing

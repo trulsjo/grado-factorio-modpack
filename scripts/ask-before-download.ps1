@@ -26,7 +26,7 @@
     session's debug log shows the hook's "ask" taken ("Hook result has permissionBehavior=ask") and
     then "Slow permission decision: 4386ms for Bash (mode=auto, behavior=allow)". The command ran
     and Truls saw no prompt. What "ask" does in another mode was not measured. A refusal by exit 2
-    is what refuse-cd-into-mod-cache.ps1 does. Nothing a session can set lets a command past: once
+    is what refuse-cd-into-mod-cache.ps1 does. The hook has no switch for a session to set: once
     Truls has said yes he runs it himself, with the `!` prefix at the prompt. The refusal was
     measured in the same session after the change: `npx --version` did not run and the session
     was shown the reason.

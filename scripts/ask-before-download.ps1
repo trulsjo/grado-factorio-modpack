@@ -56,9 +56,10 @@
 
 .PARAMETER SelfTest
     Prove it refuses what it should and lets the rest through: first by this script's own
-    pattern, then with every refused case sent through the wiring's command, so that a command
-    the pattern refuses and the wiring never hands over turns the self-test red (#190). The
-    wired cases need sh: the one on the path, or the one Git for Windows ships.
+    pattern, then with every refused case sent through the wiring's command, so that a refused
+    case the wiring never hands over turns the self-test red (#190). Each of the wiring's words
+    has a refused case that holds no other of them. The wired cases need sh: the one on the
+    path, or the one Git for Windows ships.
 #>
 
 #Requires -Version 7
@@ -96,13 +97,13 @@ if ($SelfTest) {
         @('winget install --id Rustlang.Rustup', $true),
         @('choco install ruby -y', $true),
         @('scoop install vale', $true),
-        @('gh release download v0.0.150 -R rvben/rumdl -p "*.zip"', $true),
+        @('gh release download v0.0.150 -R rvben/rumdl', $true),
         @('curl -L -o rumdl.zip https://github.com/rvben/rumdl/releases/download/v0.0.150/rumdl-x86_64-pc-windows-msvc.zip', $true),
         @('Invoke-WebRequest "https://example.com/tool.exe" -OutFile tool.exe', $true),
         @('wget https://example.com/linter.tar.gz', $true),
         @('iwr https://example.com/setup.msi -OutFile setup.msi; Start-Process setup.msi', $true),
         @('curl -LO https://example.com/tool.zip; unzip tool.zip', $true),
-        @('curl -sL https://example.com/tool.tar.gz|tar xz', $true),
+        @('curl -sL https://example.com/tool.tgz|tar xz', $true),
         @('curl -LO https://www.factorio.com/get-download/2.0.77/alpha/win64-manual.zip', $true),
         @('curl -s https://mods.factorio.com/api/mods/flib/full', $false),
         @("Invoke-RestMethod 'https://mods.factorio.com/api/mods?page_size=max&version=2.0'", $false),
@@ -143,9 +144,16 @@ if ($SelfTest) {
         $text = (@{ cwd = $ROOT; tool_input = @{ command = $command } } | ConvertTo-Json -Compress) | & $sh -c $wired 2>&1 | Out-String
         @{ Code = $LASTEXITCODE; Text = $text }
     }
+    # Side by side: each is a start of sh and of this script, and one after another they took
+    # most of a minute.
+    $runs = @{}
+    $refused | ForEach-Object -ThrottleLimit 6 -Parallel {
+        $text = (@{ cwd = $using:ROOT; tool_input = @{ command = $_[0] } } | ConvertTo-Json -Compress) | & $using:sh -c $using:wired 2>&1 | Out-String
+        @{ Command = $_[0]; Code = $LASTEXITCODE; Text = $text }
+    } | ForEach-Object { $runs[$_.Command] = $_ }
     foreach ($c in $refused) {
         $n++
-        $r = & $through $c[0]
+        $r = $runs[$c[0]]
         $ok = $r.Code -eq 2 -and $r.Text -match 'Ask Truls'
         Write-Host ("self-test {0}/{1}: refused through the wiring: `{2}` -- {3}" -f $n, $total, $c[0], $(if ($ok) { 'ok' } else { 'FAILED' }))
         if (-not $ok) { $failures++; Write-Host "    exit $($r.Code) $($r.Text)" }

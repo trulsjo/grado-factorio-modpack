@@ -177,9 +177,9 @@ commits they repair, so the list in the pull request's body can be read against 
 **The review runs before the branch is first pushed**, while a commit can still be reworded.
 **A finding in a commit message is fixed by rewording that commit**: the commit of fixes cannot
 repair a message. The reviewer is given the new hash, reads the message again, and checks that
-the tree did not change. On a branch pushed before its review the message stays, and the pull
-request's body says what holds. Found on PR #186, where five messages stayed wrong, and PR #187,
-where one was reworded twice.
+the tree did not change. Once the branch is pushed the message stays, and the pull request's
+body says what holds. Found in PR #186, where five messages stayed wrong, and PR #187, where one
+was reworded twice.
 
 **Its findings go in the pull request's body, every one**, each with whether it was fixed. They
 carry no score: one reviewer has no scorers, and a score it gave itself would read as the plugin
@@ -197,7 +197,7 @@ written down like the others.
 **A fix made after the plugin pass is confirmed by the branch's pre-PR reviewer**, continued as
 for any later fix commit: the plugin pass's reviewers do not outlive the pass. If that reviewer
 cannot be continued, a fresh one is handed its report and the commits. What the confirmation
-finds, and each repair, is recorded on the pull request. Found on PR #186.
+finds, and each repair, is recorded on the pull request. Found in PR #186.
 
 Two things are #159's to decide and are not settled here: whether a pull request may be merged
 while a review runs, and where a session can be cleared.

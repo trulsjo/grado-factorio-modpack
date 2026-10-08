@@ -124,9 +124,10 @@ files where its shell stands. Reading the cache by path is not affected.
 and a `-SelfTest`.
 
 A second hook there, `scripts/ask-before-download.ps1`, stops a command that installs a package
-(`npm`, `pip`, `gem`, `cargo install`, `winget`, `choco`, `scoop`) or fetches an `.exe`, `.msi`,
-`.zip` or `.tar.gz` from anywhere but `mods.factorio.com`, and puts the question to the person at
-the keyboard. Reading the portal, staging a pack, `git` and the rest of `gh` pass: `gh release
+(`npm install`, `npx`, `pip install`, `gem install`, `cargo install`, and `install` under `winget`,
+`choco` or `scoop`) or fetches an `.exe`, `.msi`, `.zip`, `.tar.gz` or `.tgz` from anywhere but
+`mods.factorio.com`, and answers "ask". The hooks reference says that puts the question to the
+person at the keyboard; no session has been seen to do it. Reading the portal, staging a pack, `git` and the rest of `gh` pass: `gh release
 download` is asked about. Its header says what it cannot
 see, and it has a `-SelfTest` too.
 

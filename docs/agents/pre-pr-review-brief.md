@@ -74,7 +74,8 @@ If you find nothing, say so under Findings and still fill the second section.
 
 ## The confirmation turn
 
-Sent to the same subagent, after the fixes are committed. A later fix commit is sent the same way.
+Sent to the same subagent, after the fixes are committed. A later fix commit is sent the same way,
+and so is a fix made after the plugin pass.
 
 ```
 The fixes are in commit <sha>: `git show <sha>`. <A commit whose message was reworded, by its
@@ -84,7 +85,8 @@ body, and how to read each; or nothing.> <If the two checks' results were handed
 their results after this commit: <scratch>/commit-check.txt and <scratch>/markdown-check.txt; or
 nothing.> The glossary check's after this commit: <scratch>/glossary-check.txt.
 
-Not fixed, and why: <each finding by its number; or none>.
+Not fixed, and why: <each finding by its number; or none>. <For a fix of a plugin-pass finding,
+which is not one of yours: the finding as the pull request states it; or nothing.>
 
 Read each fix against your own finding. The fix commit's message is read like the rest. Still
 read-only, and still from the repository root.

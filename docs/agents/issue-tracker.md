@@ -10,6 +10,7 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
 - **Comment on an issue**: `gh issue comment <number> --body "..."`
 - **Apply / remove labels**: `gh issue edit <number> --add-label "..."` / `--remove-label "..."`
 - **Close**: `gh issue close <number> --comment "..."`
+- **Pull request body**: written with the `mattpocock-skills:pr` skill, where that plugin is installed. This repository adds to what it produces: above its template, a `Closes #<n>` for each ticket the branch resolves, where it resolves any; below it, under one heading, the pre-PR review's findings and its confirmation as they stand in the reviewer's report (`docs/agents/pre-pr-review-brief.md`, *Into the pull request*). `docs/agents/code-review.md` says what else the pull request records once the plugin pass has run.
 
 Infer the repo from `git remote -v`; `gh` does this automatically when run inside a clone.
 

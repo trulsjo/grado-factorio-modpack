@@ -785,3 +785,10 @@ out; the rule is unchanged.
 > chain - **`Grado_NonChanging` included**, which was written here as exempt until 2026-09-22 and is
 > not: `Tapeline`, `Todo-List`, `YARM` and `SpeedControl` all write to the save, and the removed
 > `blueprint-sandboxes` created whole surfaces.
+
+**"This file states the live rule only"**, under *Conventions*, as it stood until 2026-10-08. The
+rule is unchanged; #186 added a sentence saying an added sentence owes the trail nothing.
+
+> - **This file states the live rule only.** It is loaded into every session. When a line here
+>   changes, its old wording goes to *The trail of CLAUDE.md's State and open decisions* in
+>   `docs/porting-notes.md`, with the date, and not beside the new one.

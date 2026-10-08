@@ -126,8 +126,9 @@ and a `-SelfTest`.
 A second hook there, `scripts/ask-before-download.ps1`, stops a command that installs a package
 (`npm install`, `npx`, `pip install`, `gem install`, `cargo install`, and `install` under `winget`,
 `choco` or `scoop`) or fetches an `.exe`, `.msi`, `.zip`, `.tar.gz` or `.tgz` from anywhere but
-`mods.factorio.com`, and answers "ask". The hooks reference says that puts the question to the
-person at the keyboard; no session has been seen to do it. Reading the portal, staging a pack, `git` and the rest of `gh` pass: `gh release
+`mods.factorio.com`, and tells the session to ask Truls, who runs an approved command himself.
+It refuses and does not ask: its header has the measurement of 2026-10-08 that says why. Reading
+the portal, staging a pack, `git` and the rest of `gh` pass: `gh release
 download` is asked about. Its header says what it cannot
 see, and it has a `-SelfTest` too.
 

@@ -153,10 +153,12 @@ missing.
   goes in the notes, a fact about a mod goes in its catalogue entry.
 - **Ask Truls before a session downloads a program and runs it on this machine** (#179), and
   say the same in a brief written for a subagent. `scripts/ask-before-download.ps1` is a hook
-  that asks on a package install or a fetched program; its header says what it cannot see.
+  that refuses a package install or a fetched program, which Truls runs himself with `!` once
+  he has said yes; its header says what it cannot see.
 - **This file states the live rule only.** It is loaded into every session. When a line here
   changes, its old wording goes to *The trail of CLAUDE.md's State and open decisions* in
-  `docs/porting-notes.md`, with the date, and not beside the new one.
+  `docs/porting-notes.md`, with the date, and not beside the new one. A sentence added where none
+  stood owes the trail nothing.
 - **`<pack>/README.md` is the player's page** (2026-09-29, #17), and the text meant for the pack's
   portal description. It ships inside the pack zip, because the packer takes every tracked file in
   the pack directory. It is written for players, so no ticket numbers and no project vocabulary.

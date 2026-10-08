@@ -194,5 +194,10 @@ the session that fixes it. A class a script could detect becomes a ticket propos
 class that takes judgement becomes a line in this file. "One-off, no rule" is an answer, and it is
 written down like the others.
 
+**A fix made after the plugin pass is confirmed by the branch's pre-PR reviewer**, continued as
+for any later fix commit: the plugin pass's reviewers do not outlive the pass. If that reviewer
+cannot be continued, a fresh one is handed its report and the commits. What the confirmation
+finds, and each repair, is recorded on the pull request. Found on PR #186.
+
 Two things are #159's to decide and are not settled here: whether a pull request may be merged
 while a review runs, and where a session can be cleared.

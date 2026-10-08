@@ -8,7 +8,11 @@ stands. The blanks under the report's headings are the reviewer's and are sent u
 **The report goes to a file, and the reply is five lines.** A report sent as a reply was cut off
 twice: in its sixth finding of ten on PR #163 (2026-10-06, by #167's account), and at the head of
 its fourth of seven on the #172 branch (2026-10-07, by that session's account; the reply was not
-kept). Asked for again as a file, the second arrived whole, by the same account.
+kept). Asked for again as a file, the second arrived whole, by the same account. **The file is
+written with the file tool, and the reply follows it.** On PR #186 (2026-10-08) a reviewer
+replied with its count before its section existed: it had appended the section through the
+shell, and the download hook refused the command. The count was one short. Recorded in that pull
+request's fifth comment.
 
 ## Before the first turn
 
@@ -54,8 +58,8 @@ You are handed:
 - <raw output that is missing, and the figure it was behind; or nothing>
 - the tickets: `gh issue view <N> --json title,body,comments` for each.
 
-Write the report to <scratch>/review.md and reply in at most five lines: how many findings,
-which one matters most, and the path. The report has two sections and no scores.
+Write the report to <scratch>/review.md with the file tool, and reply only after it is written,
+in at most five lines: how many findings, which one matters most, and the path. The report has two sections and no scores.
 
 ## Findings
 
@@ -91,7 +95,8 @@ which is not one of yours: the finding as the pull request states it; or nothing
 Read each fix against your own finding. The fix commit's message is read like the rest. Still
 read-only, and still from the repository root.
 
-Add a section to <scratch>/review.md and reply in at most five lines with the path.
+Add a section to <scratch>/review.md with the file tool, and reply only after it is written, in
+at most five lines with the path.
 
 ## Confirmation
 

@@ -125,8 +125,9 @@ and a `-SelfTest`.
 
 A second hook there, `scripts/ask-before-download.ps1`, stops a command that installs a package
 (`npm`, `pip`, `gem`, `cargo install`, `winget`, `choco`, `scoop`) or fetches an `.exe`, `.msi`,
-`.zip` or `.tar.gz` from outside the mod portal, and puts the question to the person at the
-keyboard. Reading the portal, staging a pack, `gh` and `git` pass. Its header says what it cannot
+`.zip` or `.tar.gz` from anywhere but `mods.factorio.com`, and puts the question to the person at
+the keyboard. Reading the portal, staging a pack, `git` and the rest of `gh` pass: `gh release
+download` is asked about. Its header says what it cannot
 see, and it has a `-SelfTest` too.
 
 ## Publishing

@@ -59,7 +59,8 @@
     pattern, then with every refused case sent through the wiring's command, so that a refused
     case the wiring never hands over turns the self-test red (#190). Each of the wiring's words
     has a refused case that holds no other of them. The wired cases need sh: the one on the
-    path, or the one Git for Windows ships.
+    path, or the one Git for Windows ships. It prints how long it took, so that a quoted run
+    time is copied from output (#197).
 #>
 
 #Requires -Version 7
@@ -121,6 +122,7 @@ if ($SelfTest) {
         @('ls .mod-cache/Grado_ABC/.zips/flib_0.16.5.zip', $false),
         @('', $false)
     )
+    $watch = [Diagnostics.Stopwatch]::StartNew()
     $failures = 0
     $n = 0
     $refused = @($cases | Where-Object { $_[1] })
@@ -165,6 +167,7 @@ if ($SelfTest) {
     Write-Host ("self-test {0}/{1}: the wired hook passes a portal read and a plain command in silence -- {2}" -f $n, $total, $(if ($ok) { 'ok' } else { 'FAILED' }))
     if (-not $ok) { $failures++; Write-Host "    portal: $($portal.Code) $($portal.Text)"; Write-Host "    plain: $($plain.Code) $($plain.Text)" }
     Write-Host ''
+    Write-Host "self-test took $($watch.Elapsed.TotalSeconds.ToString('0.0', [cultureinfo]::InvariantCulture)) s."
     if ($failures) { Write-Host "FAILED - self-test: $failures of $total case(s) did not hold."; exit 1 }
     Write-Host "OK - self-test passed: all $total cases."
     exit 0

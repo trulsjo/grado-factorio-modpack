@@ -2,15 +2,19 @@
 .SYNOPSIS
     Reports each use, in the lines a commit range adds to tracked Markdown, of a word that
     GLOSSARY.md lists on an `_Avoid_` line: <file>:<line>: the word, and the term that avoids it.
-    It reports and never refuses: exit 0 whatever it finds.
+    It fails on a use that is not marked deliberate: exit 1 if it reports one, exit 0 if none.
 
 .DESCRIPTION
     WHY (#164). GLOSSARY.md gives most terms an `_Avoid_` line, and nothing read new prose against
     them. The plugin pass on PR #163 (2026-10-06) found "confirms" in new text of
     docs/agents/code-review.md, a word *Measured* avoids, after the pre-PR review had passed it.
-    The output is handed to the pre-PR reviewer (docs/agents/pre-pr-review-brief.md). Whether a
-    reported word is wrong stays the reviewer's, which is why this does not refuse: most of these
-    words are ordinary English, and a check that refused on them would be skipped.
+    The output is handed to the pre-PR reviewer (docs/agents/pre-pr-review-brief.md).
+
+    WHY IT FAILS (#198). Until 2026-10-09 it reported and exited 0, and left each use to the
+    reviewer. On PR #193 a reported use was judged not wrong and left with no marker (finding 9
+    of that pull request's pre-PR review), and only added lines are read, so that use is never
+    reported again. Now a reported use is reworded or marked, and whether a marker is honest is
+    the reviewer's. No git hook and no workflow runs this: a session runs it before the review.
 
     WHAT IT READS AS WHAT. GLOSSARY.md is read as it is at the end of the range. A term is a line
     opening `**Term**:`, and its avoid line runs from `_Avoid_:` to the next blank line. A remark
@@ -39,13 +43,15 @@
 
 .PARAMETER All
     Read every line of every tracked Markdown file, as at HEAD. For measuring how often a word is
-    used before leaving it to the reviewer.
+    used.
 
 .PARAMETER List
     Print the avoid entries that are matched and those that are not, with why.
 
 .PARAMETER SelfTest
-    Prove an avoided word is reported and that a clean line, a marked use and a mention pass.
+    Prove an avoided word is reported and that a clean line, a marked use and a mention pass,
+    and that over a range the script exits 1 on an unmarked use and 0 once it is marked. That
+    case needs git.
 
 .EXAMPLE
     pwsh -File scripts/glossary-check.ps1 -Range origin/main..HEAD
@@ -152,6 +158,25 @@ if ($SelfTest) {
         @{ Name = 'an entry with a condition is listed as not matched, and a remark in parentheses is no entry'; Test = {
             $unmatched = @($avoided | Where-Object Why | ForEach-Object Entry)
             $avoided.Count -eq 5 -and $unmatched.Count -eq 2 -and $unmatched[0] -eq '"measured" for anything undated' -and $unmatched[1] -eq 'above/below without saying of what' } }
+        @{ Name = 'over a range the script exits 1 on an unmarked use and names it, and 0 once the use is marked'; Test = {
+            $temp = Join-Path ([IO.Path]::GetTempPath()) "glossary-check-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
+            New-Item -ItemType Directory -Path $temp -Force | Out-Null
+            try {
+                $git = { git -C $temp -c user.name=selftest -c user.email=selftest@example.invalid -c core.autocrlf=false -c commit.gpgsign=false @args | Out-Null; if ($LASTEXITCODE -ne 0) { throw "git $args failed; the self-test needs git." } }
+                $commit = { param([string] $text) Set-Content -LiteralPath (Join-Path $temp 'a.md') -Value $text; & $git add -A; & $git commit --quiet -m x }
+                $run = { param([string] $range) Push-Location $temp; try { $text = (& pwsh -NoProfile -File $PSCommandPath -Range $range 2>&1 | Out-String) } finally { Pop-Location }; @{ Code = $LASTEXITCODE; Text = $text } }
+                & $git init --quiet
+                Set-Content -LiteralPath (Join-Path $temp 'GLOSSARY.md') -Value $glossary
+                & $commit 'fine'
+                & $commit "fine`nIt was verified."
+                & $commit "fine`nIt was verified. <!-- deliberate: verified -->"
+                $red = & $run 'HEAD~2..HEAD~1'
+                $green = & $run 'HEAD~2..HEAD'
+                Write-Host ($red.Text.TrimEnd() -replace '(?m)^', '    ')
+                $red.Code -eq 1 -and $red.Text -match '(?m)^a\.md:2: "verified"' -and $green.Code -eq 0
+            }
+            finally { Remove-Item -LiteralPath $temp -Recurse -Force }
+        } }
     )
     $failures = 0
     $n = 0
@@ -210,5 +235,6 @@ foreach ($f in $added.Keys) {
     }
 }
 Write-Host ''
-Write-Host "glossary-check: $found use(s) of an avoided word in $($added.Count) Markdown file(s). It reports and does not refuse: whether a use is wrong is the reviewer's. A deliberate use is marked <!-- deliberate: word -->."
+if ($found) { Write-Host "FAILED - glossary-check: $found unmarked use(s) of an avoided word in $($added.Count) Markdown file(s). Reword each, or mark a deliberate one <!-- deliberate: word -->."; exit 1 }
+Write-Host "OK - glossary-check: $($added.Count) Markdown file(s), no unmarked use of an avoided word."
 exit 0

@@ -53,8 +53,9 @@ You are handed:
 - <the raw output and the scripts behind the figures, one path each with the figure it is
   behind; or, on a branch that records no measurements: <scratch>/commit-check.txt and
   <scratch>/markdown-check.txt, and the resolve's output if an `info.json` changed>
-- <scratch>/glossary-check.txt: each added line that uses a word `GLOSSARY.md` avoids. The
-  script reports and does not judge; say of each use whether it is wrong.
+- <scratch>/glossary-check.txt: each added line that uses a word `GLOSSARY.md` avoids and is
+  not marked deliberate. The script fails on one, so a use listed there is a finding. Say of
+  each `<!-- deliberate: word -->` the diff adds whether the use is meant.
 - <raw output that is missing, and the figure it was behind; or nothing>
 - the tickets: `gh issue view <N> --json title,body,comments` for each.
 

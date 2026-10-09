@@ -260,9 +260,9 @@ push, and `-SelfTest` proves the check can still fail.
 **`.githooks/pre-commit` checks the staged Markdown** with `scripts/markdown-check.ps1`: emphasis
 or a code span left open, a ragged table row, a link to a file git does not track.
 `-Range origin/main...HEAD` checks what a branch changed. Three dots here and for
-`scripts/glossary-check.ps1`, two for the commit check: these two hand the range to `git diff`,
-where two dots compare the two tips, and the commit check hands it to `git rev-list`, where three
-would add the commits of `main`.
+`scripts/glossary-check.ps1`, two for the commit check: the Markdown and glossary checks hand
+the range to `git diff`, where two dots compare the two tips, and the commit check hands it to
+`git rev-list`, where three would add the commits of `main`.
 
 ## Agent skills
 

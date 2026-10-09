@@ -118,9 +118,9 @@ A pull request gets this one from the same workflow, with its self-test. No hook
 `-List` prints the avoid entries it matches and the ones it leaves to a reader, with why.
 
 `scripts/header-length-check.ps1` reads the comment header at the top of each `scripts/*.ps1` and
-fails on a line over 100 characters. A line under `.EXAMPLE` is left, because a command cannot be
-wrapped. The `pre-commit` hook runs it on the staged scripts after the Markdown check, and the
-same workflow runs it on every tracked script, with its self-test.
+fails on a line over 100 characters. A line under `.EXAMPLE` is left. The `pre-commit` hook runs
+it on the staged scripts after the Markdown check, and the same workflow runs it on every tracked
+`scripts/*.ps1`, with its self-test.
 
 `scripts/reword-commit.ps1 -Commit <sha> -MessageFile <file>` rewords one commit of a branch that
 is not pushed, the tip or one under it, replays the commits above it, and prints each old and new

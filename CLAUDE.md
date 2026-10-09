@@ -261,7 +261,8 @@ push, and `-SelfTest` proves the check can still fail.
 or a code span left open, a ragged table row, a link to a file git does not track.
 `-Range origin/main...HEAD` checks what a branch changed. Three dots here and for
 `scripts/glossary-check.ps1`, two for the commit check: why is in the header of
-`.github/workflows/check.yml`.
+`.github/workflows/check.yml`. The hook and the workflow run more than this section names, and
+each one's own header says what.
 
 ## Agent skills
 

@@ -1,4 +1,4 @@
-# The two checks a clone opts into with `git config core.hooksPath .githooks`, run on every pull
+# Two of the checks a clone opts into with `git config core.hooksPath .githooks`, run on every pull
 # request whether or not its author's clone did (#180): the commit messages and the changed
 # Markdown, over the pull request's own commits. Each check's self-test runs first, so a check
 # that can no longer fail is caught here. The download hook's self-test runs with them (#194):
@@ -15,9 +15,9 @@
 # others: a session runs those two scripts before a pull request exists, so nothing here runs
 # the scripts themselves.
 #
-# The comment header of each tracked script is held to 100 characters a line (#211), with that
-# check's self-test among the others. It reads every script and not the pull request's alone: a
-# header has no range.
+# The comment header of each tracked `scripts/*.ps1` is read for a line over 100 characters
+# (#211), with that check's self-test among the others. It reads each of them and not the pull
+# request's alone: a header has no range.
 #
 # The pull request's head is checked out, not the merge commit GitHub makes for it, so the range
 # is the pull request's commits and no other. The whole history and the submodule come with it,

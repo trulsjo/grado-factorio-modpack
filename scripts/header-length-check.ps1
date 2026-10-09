@@ -8,25 +8,26 @@
     (2026-10-09) a fix left a header line at 153 characters, and the pre-PR review took a second
     confirmation turn over it. The Markdown check reads `.md` files only.
 
-    WHAT IT READS. The header of each `scripts/*.ps1`: from the first line that opens a block
-    comment to the first after it that opens with the two characters that close one. With no
+    WHAT IT READS. The header of each `scripts/*.ps1`: the lines after the first line that opens
+    a block comment, up to the first that opens with the two characters that close one. With no
     switch, the staged content of the staged scripts, which is what the commit will hold. -All
     reads each tracked script, as staged.
 
-    WHAT IT LEAVES. A line under `.EXAMPLE`, up to the next keyword line: a command cannot be
-    wrapped. The code below the header.
+    WHAT IT LEAVES. A line under `.EXAMPLE`, up to the next line that opens with a dot and a word
+    in capitals: a command there is not wrapped. The code below the header.
 
-    WHAT IT CANNOT SEE. A comment that is not the header. A header whose opening does not start its
-    line. A script outside `scripts/`, and the hooks and the workflow, whose comments are wrapped
-    the same way. Whether a line could have been wrapped: an address longer than the limit is
-    reported like any other. A character outside the basic plane, such as most emoji, counts two.
+    WHAT IT CANNOT SEE. A comment other than the first block comment that starts a line. A header
+    whose opening does not start its line. A script outside `scripts/`, and the hooks and the
+    workflow, whose comments are wrapped the same way. Whether a line could have been wrapped: an
+    address longer than the limit is reported like any other. A character outside the basic
+    plane, such as most emoji, counts two.
 
 .PARAMETER All
     Read each tracked script, as staged, and not only the staged ones.
 
 .PARAMETER SelfTest
     Prove a long header line is reported by its line and length, that a long line under
-    `.EXAMPLE`, below the header or in a script with no header is not, and that a commit's
+    `.EXAMPLE`, below the header or in a script with no block comment is not, and that a commit's
     staged content is what is read. That case needs git.
 
 .EXAMPLE
@@ -71,7 +72,7 @@ if ($SelfTest) {
             (& $hits @('<#', '.EXAMPLE', "    pwsh $long", '', "    $long", '.NOTES', "    $long", '#>')) -eq '7:105' } }
         @{ Name = 'a long line of code below the header is not reported'; Test = {
             (& $hits @('<#', '.SYNOPSIS', '    Short.', '#>', "`$x = '$long'", '<#', $long, '#>')) -eq '' } }
-        @{ Name = 'a script with no header passes'; Test = {
+        @{ Name = 'a script with no block comment passes'; Test = {
             (& $hits @('#Requires -Version 7', "# $long", "`$x = '$long'")) -eq '' } }
         @{ Name = 'a commit''s staged content is what is read: a staged long line is refused by file and line, the staged repair passes, and -All reads a script that is not staged'; Test = {
             $temp = Join-Path ([IO.Path]::GetTempPath()) "header-length-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"

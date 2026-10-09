@@ -147,9 +147,12 @@ handed and not by a skill's name:
 - on a branch that records measurements, the raw output behind them - a `--dump-data` dump, the
   portal API's responses, a load's log - and the scripts that produced the figures. On any other
   branch, the results of `commit-check.ps1 -Range origin/main..HEAD` and of
-  `scripts/markdown-check.ps1 -Range origin/main..HEAD`, and of the resolve if an `info.json`
-  changed.
-- the output of `scripts/glossary-check.ps1 -Range origin/main..HEAD`, which lists each added line
+  `scripts/markdown-check.ps1 -Range origin/main...HEAD`, and of the resolve if an `info.json`
+  changed. The commit check's range has two dots and the other two checks' have three: those two
+  hand it to `git diff`, where two dots compare the two tips and judge a branch behind `main` on
+  what `main` has changed since, and the commit check hands it to `git rev-list`, where three
+  would add the commits of `main`.
+- the output of `scripts/glossary-check.ps1 -Range origin/main...HEAD`, which lists each added line
   that uses a word `GLOSSARY.md` avoids and is not marked deliberate. The script fails if it
   lists one. A listed use is reworded or marked before the review. Whether a marker is honest is
   the reviewer's: a marker silences the script.

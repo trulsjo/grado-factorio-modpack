@@ -217,3 +217,12 @@ made the glossary check fail on an unmarked use:
 
 > - the output of `scripts/glossary-check.ps1 -Range origin/main..HEAD`, which lists each added line
 >   that uses a word `GLOSSARY.md` avoids. It reports and does not judge: each use is the reviewer's.
+
+**What the pre-PR reviewer is handed**, the two ranges that had two dots until 2026-10-09, when
+#204 gave the Markdown check's and the glossary check's three. The sentence that says why the
+commit check keeps two was added then and stood nowhere before.
+
+> `scripts/markdown-check.ps1 -Range origin/main..HEAD`, and of the resolve if an `info.json`
+> changed.
+
+> - the output of `scripts/glossary-check.ps1 -Range origin/main..HEAD`, which lists each added line

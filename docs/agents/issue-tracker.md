@@ -5,6 +5,7 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
 ## Conventions
 
 - **Create an issue**: `gh issue create --title "..." --body "..."`. Write a multi-line body to a file and pass `--body-file <path>`; the same goes for `gh issue comment` and `gh pr create`. Write the file with the Write tool: a heredoc that writes the file is no safer. `scripts/ask-before-download.ps1` refuses a heredoc when one of its lines opens with a command it matches (measured 2026-10-08, recorded on PR #186), and `realistic-fusion-refreshed`'s tracker page records heredoc bodies failing under the Bash tool.
+- **What a ticket states**: a statement about the repository or about a past pull request is read from the source when the ticket is written. One that was not read is marked as an account, as `docs/agents/pre-pr-review-brief.md` does with "by #167's account" (#195).
 - **Read an issue**: `gh issue view <number> --json title,body,labels,comments`, filtered with `--jq`. One call gets the body, the labels and every comment; `--comments` alone, piped, printed the comments and not the body (2026-10-06).
 - **List issues**: `gh issue list --state open --json number,title,body,labels,comments --jq '[.[] | {number, title, body, labels: [.labels[].name], comments: [.comments[].body]}]'` with appropriate `--label` and `--state` filters.
 - **Comment on an issue**: `gh issue comment <number> --body "..."`

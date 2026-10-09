@@ -223,7 +223,9 @@ mechanics:
   silently and players find out, not the build. The `!` and the `BREAKING CHANGE:` footer are the
   shared mechanism; what triggers them is this repo's own.
 - **What a body has to cite.** Name a mod by its portal name and pin the version or date behind a
-  claim, because a portal reading goes stale.
+  claim, because a portal reading goes stale. A body says what changed and why, and cites its
+  ticket where it has one. What happened on an earlier pull request or in the session is the
+  ticket's to tell (#195).
 
 Example:
 

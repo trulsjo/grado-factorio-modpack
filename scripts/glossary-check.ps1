@@ -42,7 +42,8 @@
 
 .PARAMETER Range
     Read the lines a commit range adds: -Range origin/main...HEAD. The same switch as
-    markdown-check.ps1's, with three dots over a branch for the reason given there.
+    markdown-check.ps1's, with three dots over a branch: why is in the header of
+    .github/workflows/check.yml.
 
 .PARAMETER All
     Read every line of every tracked Markdown file, as at HEAD. For measuring how often a word is

@@ -70,6 +70,10 @@ re-walks every quantifier that covers the place it lands. Found in PR #163, twic
 **Where prose restates a list the code holds, read the two side by side.** Found in PR #186,
 where the README's list of what a hook stops had lost two entries of the script's.
 
+**A reason is written out in one file, and the rest point there.** The same reason written out
+in a second file is a finding. Found in PR #205, where one reason stood in four files and the
+commit message's list of them was wrong twice.
+
 **Attribute a figure where it stands.** A note that vouches for the source of every figure in a
 section is a quantifier each later figure can make false, and is a finding. Found in PR #163,
 where one such note was false twice.
@@ -148,10 +152,8 @@ handed and not by a skill's name:
   portal API's responses, a load's log - and the scripts that produced the figures. On any other
   branch, the results of `commit-check.ps1 -Range origin/main..HEAD` and of
   `scripts/markdown-check.ps1 -Range origin/main...HEAD`, and of the resolve if an `info.json`
-  changed. The commit check's range has two dots and the other two checks' have three: those two
-  hand it to `git diff`, where two dots compare the two tips and judge a branch behind `main` on
-  what `main` has changed since, and the commit check hands it to `git rev-list`, where three
-  would add the commits of `main`.
+  changed. The commit check's range has two dots and the other two checks' have three: why is in
+  the header of `.github/workflows/check.yml`.
 - the output of `scripts/glossary-check.ps1 -Range origin/main...HEAD`, which lists each added line
   that uses a word `GLOSSARY.md` avoids and is not marked deliberate. The script fails if it
   lists one. A listed use is reworded or marked before the review. Whether a marker is honest is
@@ -175,6 +177,10 @@ names this step and is not a grade of evidence; `GLOSSARY.md` avoids the word fo
 **A fix narrows or deletes before it adds.** Where cutting a sentence or making it claim less
 repairs a finding, that is the fix, and a fix that adds a sentence in its place is a finding at
 confirmation.
+
+**A fix the reviewer proposes is a claim.** Its quantifier is walked before it goes into the
+report. Found in PR #205, where a proposed narrowing was false of one page and became the next
+finding.
 
 **The fixes are one commit of their own, after the ticket commits.** They are not folded into the
 commits they repair, so the list in the pull request's body can be read against a diff.

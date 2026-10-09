@@ -809,3 +809,11 @@ And as it stood from then until #200 added the glossary check, also on 2026-10-0
 gave it three dots and the sentence that says why the commit check keeps two:
 
 > `-Range origin/main..HEAD` checks what a branch changed.
+
+And as it stood from then until #206, also on 2026-10-09, left the reason to the header of
+`.github/workflows/check.yml` and kept a pointer here:
+
+> `-Range origin/main...HEAD` checks what a branch changed. Three dots here and for
+> `scripts/glossary-check.ps1`, two for the commit check: the Markdown and glossary checks hand
+> the range to `git diff`, where two dots compare the two tips, and the commit check hands it to
+> `git rev-list`, where three would add the commits of `main`.

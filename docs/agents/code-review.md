@@ -150,9 +150,9 @@ handed and not by a skill's name:
   `scripts/markdown-check.ps1 -Range origin/main..HEAD`, and of the resolve if an `info.json`
   changed.
 - the output of `scripts/glossary-check.ps1 -Range origin/main..HEAD`, which lists each added line
-  that uses a word `GLOSSARY.md` avoids and is not marked deliberate, and fails if it lists one.
-  A listed use is reworded or marked before the review. Whether a marker is honest is the
-  reviewer's: a marker silences the script.
+  that uses a word `GLOSSARY.md` avoids and is not marked deliberate. The script fails if it
+  lists one. A listed use is reworded or marked before the review. Whether a marker is honest is
+  the reviewer's: a marker silences the script.
 
 **The words it is handed them with are in `pre-pr-review-brief.md`**, for the review and for the
 confirmation, with the shape of the report.

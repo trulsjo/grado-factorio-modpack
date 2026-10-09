@@ -12,8 +12,8 @@
 
     HOW IT IS WIRED. .claude/settings.json names it as a PreToolUse hook on the two shell tools,
     beside refuse-cd-into-mod-cache.ps1, and hands it the tool call as JSON on stdin: this reads
-    `tool_input.command`. The wiring starts this script only when that JSON holds one of the words
-    below or one of the file endings, as the other hook's does and for the same reason.
+    `tool_input.command`. The wiring starts this script only when that JSON holds one of its
+    words, as the other hook's does and for the same reason.
 
     WHAT IT REFUSES. Standing where a command can stand: npm install, i, ci, add or exec; npx;
     pip install, also as python -m pip; gem install; cargo install; winget, choco and scoop

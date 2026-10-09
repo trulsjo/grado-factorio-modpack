@@ -2,7 +2,7 @@
 .SYNOPSIS
     Reports each use, in the lines a commit range adds to tracked Markdown, of a word that
     GLOSSARY.md lists on an `_Avoid_` line: <file>:<line>: the word, and the term that avoids it.
-    It fails on a use that is not marked deliberate: exit 1 if it reports one, exit 0 if none.
+    Over a range it fails on a use that is not marked deliberate: exit 1 if it reports one.
 
 .DESCRIPTION
     WHY (#164). GLOSSARY.md gives most terms an `_Avoid_` line, and nothing read new prose against
@@ -12,9 +12,10 @@
 
     WHY IT FAILS (#198). Until 2026-10-09 it reported and exited 0, and left each use to the
     reviewer. On PR #193 a reported use was judged not wrong and left with no marker (finding 9
-    of that pull request's pre-PR review), and only added lines are read, so that use is never
-    reported again. Now a reported use is reworded or marked, and whether a marker is honest is
-    the reviewer's. No git hook and no workflow runs this: a session runs it before the review.
+    of that pull request's pre-PR review), and only added lines are read, so that use is not
+    reported again while its line stands. Now a reported use is reworded or marked, and whether
+    a marker is honest is the reviewer's. No git hook and no workflow runs this: a session runs
+    it before the review.
 
     WHAT IT READS AS WHAT. GLOSSARY.md is read as it is at the end of the range. A term is a line
     opening `**Term**:`, and its avoid line runs from `_Avoid_:` to the next blank line. A remark
@@ -43,7 +44,7 @@
 
 .PARAMETER All
     Read every line of every tracked Markdown file, as at HEAD. For measuring how often a word is
-    used.
+    used: it counts and exits 0.
 
 .PARAMETER List
     Print the avoid entries that are matched and those that are not, with why.
@@ -235,6 +236,7 @@ foreach ($f in $added.Keys) {
     }
 }
 Write-Host ''
-if ($found) { Write-Host "FAILED - glossary-check: $found unmarked use(s) of an avoided word in $($added.Count) Markdown file(s). Reword each, or mark a deliberate one <!-- deliberate: word -->."; exit 1 }
+if ($found -and $Range) { Write-Host "FAILED - glossary-check: $found unmarked use(s) of an avoided word in $($added.Count) Markdown file(s). Reword each, or mark a deliberate one <!-- deliberate: word -->."; exit 1 }
+if ($found) { Write-Host "glossary-check: $found use(s) of an avoided word in $($added.Count) Markdown file(s). -All counts and does not fail."; exit 0 }
 Write-Host "OK - glossary-check: $($added.Count) Markdown file(s), no unmarked use of an avoided word."
 exit 0

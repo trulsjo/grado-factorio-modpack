@@ -112,10 +112,9 @@ A pull request gets both checks from `.github/workflows/check.yml`, over its own
 each check's self-test and the download hook's first. Nothing is installed on the runner.
 
 `scripts/glossary-check.ps1 -Range origin/main..HEAD` lists each line a branch adds that uses a
-word `GLOSSARY.md` tells you to avoid, with the term that avoids it. It reports and never refuses,
-because most of those words are ordinary English; `-List` prints the avoid entries it matches and
-the ones it leaves to a reader, with why. A deliberate use is marked on its line with
-`<!-- deliberate: word -->`.
+word `GLOSSARY.md` tells you to avoid, with the term that avoids it, and fails if it lists one.
+A deliberate use is marked on its line with `<!-- deliberate: word -->` and is not listed.
+`-List` prints the avoid entries it matches and the ones it leaves to a reader, with why.
 
 Agent sessions also get a hook from `.claude/settings.json`: a shell command that changes
 directory into `.mod-cache/` is refused before it runs, because a session's tooling writes state

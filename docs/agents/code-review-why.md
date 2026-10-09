@@ -211,3 +211,9 @@ nothing. The rest stands as quoted.
 > rule only. When a line in one changes, its old wording goes, with its date, to the trail in
 > `docs/porting-notes.md` for `CLAUDE.md` and to `code-review-why.md` for this file. A dated
 > "since" or "until" note added to either is a finding.
+
+**What the pre-PR reviewer is handed**, its last item, as it stood until 2026-10-09, when #198
+made the glossary check fail on an unmarked use:
+
+> - the output of `scripts/glossary-check.ps1 -Range origin/main..HEAD`, which lists each added line
+>   that uses a word `GLOSSARY.md` avoids. It reports and does not judge: each use is the reviewer's.

@@ -115,3 +115,10 @@ its number carrying on from the last, with "(at confirmation)" after its sentenc
 
 The body takes *Findings* and *Confirmation* from `<scratch>/review.md` as they stand, under one
 heading. A finding left unfixed has its reason beside its confirmation line.
+
+```
+pwsh -NoProfile -File scripts/pr-body.ps1 -Draft <scratch>/draft.md -Review <scratch>/review.md -Out <scratch>/body.md
+```
+
+`<scratch>/draft.md` is the body above the review. The script fails, and writes nothing, when a
+finding's number opens no line of the confirmation.

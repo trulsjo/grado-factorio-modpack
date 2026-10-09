@@ -1,14 +1,16 @@
 # The two checks a clone opts into with `git config core.hooksPath .githooks`, run on every pull
 # request whether or not its author's clone did (#180): the commit messages and the changed
 # Markdown, over the pull request's own commits. Each check's self-test runs first, so a check
-# that can no longer fail is caught here.
+# that can no longer fail is caught here. The download hook's self-test runs with them (#194):
+# scripts/ask-before-download.ps1 refuses in an agent session and checks nothing here, so this
+# is the one place a pull request that breaks it goes red.
 #
 # The pull request's head is checked out, not the merge commit GitHub makes for it, so the range
 # is the pull request's commits and no other. The whole history and the submodule come with it,
 # or `origin/main..HEAD` is empty and commit-check.ps1 is missing. The range keeps the three
 # commits of 2026-09-20 out, which fail the check and are left alone (CLAUDE.md).
 #
-# Nothing is installed: pwsh and git are on the runner. The checkout action is the one thing
+# Nothing is installed: pwsh, git and sh are on the runner. The checkout action is the one thing
 # fetched besides this repository and its submodule, pinned to a commit.
 name: check
 
@@ -28,10 +30,11 @@ jobs:
           fetch-depth: 0
           submodules: true
 
-      - name: Prove both checks can still fail
+      - name: Prove both checks can still fail, and the download hook can still refuse
         run: |
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/markdown-check.ps1 -SelfTest
+          pwsh -NoProfile -File scripts/ask-before-download.ps1 -SelfTest
 
       - name: Check the commit messages
         if: ${{ !cancelled() }}

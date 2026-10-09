@@ -235,3 +235,10 @@ and kept a pointer.
 > hand it to `git diff`, where two dots compare the two tips and judge a branch behind `main` on
 > what `main` has changed since, and the commit check hands it to `git rev-list`, where three
 > would add the commits of `main`.
+
+**The rule on a reason written out twice**, its second sentence, as it stood from #206 until
+#215, both 2026-10-09. #215 excepted a trail's quotation: as written the rule made a finding of
+the two trails that quote the reason above.
+
+> The same reason written out
+> in a second file is a finding.

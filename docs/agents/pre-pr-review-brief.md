@@ -21,9 +21,12 @@ From the repository root, with `<scratch>` a directory outside the repository:
 ```
 git diff origin/main...HEAD > <scratch>/branch.diff
 pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -Range origin/main..HEAD > <scratch>/commit-check.txt
-pwsh -NoProfile -File scripts/markdown-check.ps1 -Range origin/main..HEAD > <scratch>/markdown-check.txt
-pwsh -NoProfile -File scripts/glossary-check.ps1 -Range origin/main..HEAD > <scratch>/glossary-check.txt
+pwsh -NoProfile -File scripts/markdown-check.ps1 -Range origin/main...HEAD > <scratch>/markdown-check.txt
+pwsh -NoProfile -File scripts/glossary-check.ps1 -Range origin/main...HEAD > <scratch>/glossary-check.txt
 ```
+
+The commit check's range has two dots and the other two have three. Why is in `code-review.md`,
+with the list of what the reviewer is handed.
 
 Copy the raw output behind each figure on the branch into `<scratch>` as well. A figure whose raw
 output is gone is named to the reviewer as missing.

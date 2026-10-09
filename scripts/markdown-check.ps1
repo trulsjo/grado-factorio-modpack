@@ -34,7 +34,10 @@
 
 .PARAMETER Range
     Check the Markdown files changed in a commit range, as they are at its end:
-    -Range origin/main..HEAD. The same switch as commit-check.ps1's.
+    -Range origin/main...HEAD. Three dots over a branch: the range goes to `git diff`, where two
+    dots compare the two tips, and a branch behind `main` is then checked on every Markdown file
+    `main` has changed since. commit-check.ps1 has the same switch and takes two dots, because it
+    hands the range to `git rev-list`.
 
 .PARAMETER All
     Check every tracked Markdown file, as staged.
@@ -47,7 +50,7 @@
     pwsh -File scripts/markdown-check.ps1
 
 .EXAMPLE
-    pwsh -File scripts/markdown-check.ps1 -Range origin/main..HEAD
+    pwsh -File scripts/markdown-check.ps1 -Range origin/main...HEAD
 #>
 
 #Requires -Version 7
@@ -359,7 +362,7 @@ a glob like 2.0.* and a note: *Until 2026-10-01 this said two: it missed an* Asi
 if ($SelfTest) { Invoke-SelfTest }
 
 if ($Range) {
-    if ($Range -notmatch '\.\.+[^.]') { throw '-Range needs both ends, as origin/main..HEAD: the files are read at its end.' }
+    if ($Range -notmatch '\.\.+[^.]') { throw '-Range needs both ends, as origin/main...HEAD: the files are read at its end.' }
     $revision = $Range -replace '^.*\.\.+'
     $files = @(git -c core.quotepath=off diff --name-only --diff-filter=ACMR $Range)
 }

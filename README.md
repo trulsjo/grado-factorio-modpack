@@ -105,13 +105,13 @@ Two git hooks, both wired up by `git config core.hooksPath .githooks`: `commit-m
 shape of a commit message, and `pre-commit` runs `scripts/markdown-check.ps1` on the staged
 Markdown files. That one refuses emphasis or a code span left open at the end of its paragraph, a
 table row with another column count than its header, and a link to a file git does not track. It
-does not judge prose. `-Range origin/main..HEAD` checks the Markdown a branch changed, `-All` every
+does not judge prose. `-Range origin/main...HEAD` checks the Markdown a branch changed, `-All` every
 tracked file, and `-SelfTest` proves it can fail.
 
 A pull request gets both checks from `.github/workflows/check.yml`, over its own commits, with
 each check's self-test and the download hook's first. Nothing is installed on the runner.
 
-`scripts/glossary-check.ps1 -Range origin/main..HEAD` lists each line a branch adds that uses a
+`scripts/glossary-check.ps1 -Range origin/main...HEAD` lists each line a branch adds that uses a
 word `GLOSSARY.md` tells you to avoid, with the term that avoids it, and fails if it lists one.
 A deliberate use is marked on its line with `<!-- deliberate: word -->` and is not listed.
 A pull request gets this one from the same workflow, with its self-test. No hook runs it.

@@ -41,8 +41,8 @@
     are listed. An irregular verb form (read, chose). Markdown outside `.md` files.
 
 .PARAMETER Range
-    Read the lines a commit range adds: -Range origin/main..HEAD. The same switch as
-    markdown-check.ps1's.
+    Read the lines a commit range adds: -Range origin/main...HEAD. The same switch as
+    markdown-check.ps1's, with three dots over a branch for the reason given there.
 
 .PARAMETER All
     Read every line of every tracked Markdown file, as at HEAD. For measuring how often a word is
@@ -57,7 +57,7 @@
     where the range only removes lines. That case needs git.
 
 .EXAMPLE
-    pwsh -File scripts/glossary-check.ps1 -Range origin/main..HEAD
+    pwsh -File scripts/glossary-check.ps1 -Range origin/main...HEAD
 #>
 
 #Requires -Version 7
@@ -198,7 +198,7 @@ if ($SelfTest) {
     exit 0
 }
 
-if ($Range -and $Range -notmatch '\.\.+[^.]') { throw '-Range needs both ends, as origin/main..HEAD: the files are read at its end.' }
+if ($Range -and $Range -notmatch '\.\.+[^.]') { throw '-Range needs both ends, as origin/main...HEAD: the files are read at its end.' }
 $revision = if ($Range) { $Range -replace '^.*\.\.+' } else { 'HEAD' }
 $avoided = @(Get-Avoided -Glossary @(git show "${revision}:GLOSSARY.md"))
 if ($LASTEXITCODE -ne 0) { throw "git could not read GLOSSARY.md at $revision. Run it inside the repository." }
@@ -226,7 +226,7 @@ if ($Range) {
     }
 }
 elseif ($All) { foreach ($f in git -c core.quotepath=off ls-files '*.md') { $added[$f] = $null } }
-else { throw 'Say what to read: -Range origin/main..HEAD, -All, -List or -SelfTest.' }
+else { throw 'Say what to read: -Range origin/main...HEAD, -All, -List or -SelfTest.' }
 if ($LASTEXITCODE -ne 0) { throw 'git could not list the lines to read. Run it inside the repository.' }
 
 $found = 0

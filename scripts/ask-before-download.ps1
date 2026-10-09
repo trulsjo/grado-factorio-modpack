@@ -51,8 +51,10 @@
 
     TO CHECK IT, from the repository root. The first is refused with exit 2, the second passes:
 
-        '{"tool_input":{"command":"npm install -g markdownlint-cli"}}' | pwsh -NoProfile -File scripts/ask-before-download.ps1
-        '{"tool_input":{"command":"gh issue view 179"}}' | pwsh -NoProfile -File scripts/ask-before-download.ps1
+        '{"tool_input":{"command":"npm install -g markdownlint-cli"}}' |
+            pwsh -NoProfile -File scripts/ask-before-download.ps1
+        '{"tool_input":{"command":"gh issue view 179"}}' |
+            pwsh -NoProfile -File scripts/ask-before-download.ps1
 
 .PARAMETER SelfTest
     Prove it refuses what it should and lets the rest through: first by this script's own

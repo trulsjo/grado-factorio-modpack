@@ -41,8 +41,10 @@
     TO CHECK IT, from the repository root. The first is refused with exit 2, the second passes
     with exit 0:
 
-        '{"cwd":".","tool_input":{"command":"cd .mod-cache/Grado_ABC && ls"}}' | pwsh -NoProfile -File scripts/refuse-cd-into-mod-cache.ps1; $LASTEXITCODE
-        '{"cwd":".","tool_input":{"command":"ls .mod-cache/Grado_ABC"}}' | pwsh -NoProfile -File scripts/refuse-cd-into-mod-cache.ps1; $LASTEXITCODE
+        '{"cwd":".","tool_input":{"command":"cd .mod-cache/Grado_ABC && ls"}}' |
+            pwsh -NoProfile -File scripts/refuse-cd-into-mod-cache.ps1; $LASTEXITCODE
+        '{"cwd":".","tool_input":{"command":"ls .mod-cache/Grado_ABC"}}' |
+            pwsh -NoProfile -File scripts/refuse-cd-into-mod-cache.ps1; $LASTEXITCODE
 
 .PARAMETER SelfTest
     Prove it refuses what it should and lets the rest through, the wiring's own command included.

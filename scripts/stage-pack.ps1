@@ -86,10 +86,10 @@
     only an info.json with name `probe-line`, version `1.0.0`, title, author, `"dependencies":
     ["base"]` and `"Factorio_Version": "2.0"`, loaded with `load-harness.ps1 -Mods <its parent>`.
     A key that is there with an empty value is refused too, as an empty factorio_version; what
-    the game does with one was not measured. Two keys that differ only in case, `"Name"` beside `name`, are refused here too,
-    naming the info.json: this script reads the file into an object that cannot hold both. The
-    packer packs such a file and the game reads the lower-case key, as its header says; no pack
-    has one.
+    the game does with one was not measured. Two keys that differ only in case, `"Name"` beside
+    `name`, are refused here too, naming the info.json: this script reads the file into an object
+    that cannot hold both. The packer packs such a file and the game reads the lower-case key, as
+    its header says; no pack has one.
 
     WHAT IT DOES NOT DO. It modifies no info.json. It never loads the game. It does not remove a
     member a pack has since dropped from a -ModsDirectory you named and reuse across membership

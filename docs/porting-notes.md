@@ -805,6 +805,12 @@ And as it stood from then until #200 added the glossary check, also on 2026-10-0
 > its clone opted in: `.github/workflows/check.yml` runs this check and the Markdown check below
 > over the pull request's commits, with both self-tests (#180) and the download hook's (#194).
 
+And as it stood from #200 until #207, also on 2026-10-09, added a fifth self-test and left the
+list of them to the workflow's first step:
+
+> (#180) and `scripts/glossary-check.ps1` (#200) over the pull request's commits, each with its
+> self-test, and the download hook's self-test (#194). Git
+
 **The Markdown check's range**, under *Commit messages*, as it stood until 2026-10-09, when #204
 gave it three dots and the sentence that says why the commit check keeps two:
 

@@ -240,7 +240,7 @@ The 1.1 miniloader has no 2.0 release. miniloader-redux (hgschmie,
 shared check on the message before the commit is written. A pull request gets the check whether or not
 its clone opted in: `.github/workflows/check.yml` runs this check and the Markdown check below
 (#180) and `scripts/glossary-check.ps1` (#200) over the pull request's commits, each with its
-self-test, and the download hook's self-test (#194). Git
+self-test. Its first step lists the other self-tests it runs. Git
 tracks neither `.git/hooks` nor a submodule's contents, so every clone opts in twice:
 
 ```

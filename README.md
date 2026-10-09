@@ -117,6 +117,11 @@ A deliberate use is marked on its line with `<!-- deliberate: word -->` and is n
 A pull request gets this one from the same workflow, with its self-test. No hook runs it.
 `-List` prints the avoid entries it matches and the ones it leaves to a reader, with why.
 
+`scripts/reword-commit.ps1 -Commit <sha> -MessageFile <file>` rewords one commit of a branch that
+is not pushed, the tip or one under it, replays the commits above it, and prints each old and new
+hash. It moves the branch only when every tree is unchanged and the commit check passes the new
+messages. Its self-test runs in the same workflow.
+
 Agent sessions also get a hook from `.claude/settings.json`: a shell command that changes
 directory into `.mod-cache/` is refused before it runs, because a session's tooling writes state
 files where its shell stands. Reading the cache by path is not affected.

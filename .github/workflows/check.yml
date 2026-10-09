@@ -11,6 +11,9 @@
 # since. The commit check's keeps two: it hands the range to `git rev-list`, where two dots are
 # the branch's commits and three would add those of `main`.
 #
+# The self-test of scripts/reword-commit.ps1 runs with the others (#207): a session runs that
+# script on a branch before it is pushed, so nothing here runs the script itself.
+#
 # The pull request's head is checked out, not the merge commit GitHub makes for it, so the range
 # is the pull request's commits and no other. The whole history and the submodule come with it,
 # or `origin/main..HEAD` is empty and commit-check.ps1 is missing. The range keeps the three
@@ -36,12 +39,13 @@ jobs:
           fetch-depth: 0
           submodules: true
 
-      - name: Prove the three checks can still fail, and the download hook can still refuse
+      - name: Run the self-tests
         run: |
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/markdown-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/glossary-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/ask-before-download.ps1 -SelfTest
+          pwsh -NoProfile -File scripts/reword-commit.ps1 -SelfTest
 
       - name: Check the commit messages
         if: ${{ !cancelled() }}

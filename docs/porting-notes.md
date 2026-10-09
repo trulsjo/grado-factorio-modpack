@@ -793,3 +793,9 @@ nothing. The rest stands as quoted.
 > - **This file states the live rule only.** It is loaded into every session. When a line here
 >   changes, its old wording goes to *The trail of CLAUDE.md's State and open decisions* in
 >   `docs/porting-notes.md`, with the date, and not beside the new one.
+
+**What the pull request check runs**, under *Commit messages*, as it stood until 2026-10-09, when
+#194 added the download hook's self-test:
+
+> its clone opted in: `.github/workflows/check.yml` runs this check and the Markdown check below
+> over the pull request's commits, and both self-tests (#180).

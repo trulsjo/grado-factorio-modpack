@@ -114,6 +114,7 @@ each check's self-test and the download hook's first. Nothing is installed on th
 `scripts/glossary-check.ps1 -Range origin/main..HEAD` lists each line a branch adds that uses a
 word `GLOSSARY.md` tells you to avoid, with the term that avoids it, and fails if it lists one.
 A deliberate use is marked on its line with `<!-- deliberate: word -->` and is not listed.
+A pull request gets this one from the same workflow, with its self-test. No hook runs it.
 `-List` prints the avoid entries it matches and the ones it leaves to a reader, with why.
 
 Agent sessions also get a hook from `.claude/settings.json`: a shell command that changes

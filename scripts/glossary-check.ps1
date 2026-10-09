@@ -14,8 +14,10 @@
     reviewer. On PR #193 a reported use was judged not wrong and left with no marker (finding 9
     of that pull request's pre-PR review), and only added lines are read, so that use is not
     reported again while its line stands. Now a reported use is reworded or marked, and whether
-    a marker is honest is the reviewer's. No git hook and no workflow runs this: a session runs
-    it before the review.
+    a marker is honest is the reviewer's.
+
+    WHAT RUNS IT (#200). .github/workflows/check.yml, over a pull request's commits, with the
+    self-test. No git hook does, so a session still runs it before the review.
 
     WHAT IT READS AS WHAT. GLOSSARY.md is read as it is at the end of the range. A term is a line
     opening `**Term**:`, and its avoid line runs from `_Avoid_:` to the next blank line. A remark

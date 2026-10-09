@@ -799,3 +799,8 @@ nothing. The rest stands as quoted.
 
 > its clone opted in: `.github/workflows/check.yml` runs this check and the Markdown check below
 > over the pull request's commits, and both self-tests (#180).
+
+And as it stood from then until #200 added the glossary check, also on 2026-10-09:
+
+> its clone opted in: `.github/workflows/check.yml` runs this check and the Markdown check below
+> over the pull request's commits, with both self-tests (#180) and the download hook's (#194).

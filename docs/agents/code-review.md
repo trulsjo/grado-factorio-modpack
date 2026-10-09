@@ -189,9 +189,9 @@ commits they repair, so the list in the pull request's body can be read against 
 **A finding in a commit message is fixed by rewording that commit**: the commit of fixes cannot
 repair a message. The reviewer is given the new hash, reads the message again, and checks that
 the tree did not change. `scripts/reword-commit.ps1` does the rewording, for a commit under the
-tip too, and prints the old and new hashes. Once the branch is pushed the message stays, and the pull request's
-body says what holds. Found in PR #186, where five messages stayed wrong, and PR #187, where one
-was reworded twice.
+tip too, and prints the old and new hashes. Once the branch is pushed the message stays, and
+the pull request's body says what holds. Found in PR #186, where five messages stayed wrong,
+and PR #187, where one was reworded twice.
 
 **Its findings go in the pull request's body, every one**, each with whether it was fixed. They
 carry no score: one reviewer has no scorers, and a score it gave itself would read as the plugin

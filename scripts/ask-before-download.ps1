@@ -58,9 +58,9 @@
     Prove it refuses what it should and lets the rest through: first by this script's own
     pattern, then with every refused case sent through the wiring's command, so that a refused
     case the wiring never hands over turns the self-test red (#190). Each of the wiring's words
-    has a refused case that holds no other of them. The wired cases need sh: the one on the
-    path, or the one Git for Windows ships. It prints how long it took, so that a quoted run
-    time is copied from output (#197).
+    has a refused case that holds no other of them, which the self-test checks (#196). The
+    wired cases need sh: the one on the path, or the one Git for Windows ships. It prints how
+    long it took, so that a quoted run time is copied from output (#197).
 #>
 
 #Requires -Version 7
@@ -126,7 +126,7 @@ if ($SelfTest) {
     $failures = 0
     $n = 0
     $refused = @($cases | Where-Object { $_[1] })
-    $total = $cases.Count + $refused.Count + 1
+    $total = $cases.Count + $refused.Count + 2
     foreach ($c in $cases) {
         $n++
         $ok = [bool] (Get-Download -Command $c[0]) -eq $c[1]
@@ -166,6 +166,15 @@ if ($SelfTest) {
     $ok = $portal.Code -eq 0 -and -not $portal.Text.Trim() -and $plain.Code -eq 0 -and -not $plain.Text.Trim()
     Write-Host ("self-test {0}/{1}: the wired hook passes a portal read and a plain command in silence -- {2}" -f $n, $total, $(if ($ok) { 'ok' } else { 'FAILED' }))
     if (-not $ok) { $failures++; Write-Host "    portal: $($portal.Code) $($portal.Text)"; Write-Host "    plain: $($plain.Code) $($plain.Text)" }
+    # Each word of the wiring needs a refused case that holds it and none of the others, or the
+    # word could leave the wiring with every wired case above still refused (#196). The words
+    # are read from the wiring, as sh reads them: case counts.
+    $n++
+    $words = @([regex]::Match($wired, 'case \$i in (.+?)\)').Groups[1].Value -split '\|')
+    $bare = @($words | Where-Object { $w = $_; -not ($refused | Where-Object { $c = $_[0]; $c -clike $w -and -not ($words | Where-Object { $_ -ne $w -and $c -clike $_ }) }) })
+    $ok = $words.Count -gt 1 -and -not $bare
+    Write-Host ("self-test {0}/{1}: each of the wiring's {2} words has a refused case that holds no other of them -- {3}" -f $n, $total, $words.Count, $(if ($ok) { 'ok' } else { 'FAILED' }))
+    if (-not $ok) { $failures++; Write-Host "    without one: $($bare -join ' ')" }
     Write-Host ''
     Write-Host "self-test took $($watch.Elapsed.TotalSeconds.ToString('0.0', [cultureinfo]::InvariantCulture)) s."
     if ($failures) { Write-Host "FAILED - self-test: $failures of $total case(s) did not hold."; exit 1 }

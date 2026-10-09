@@ -34,10 +34,8 @@
 
 .PARAMETER Range
     Check the Markdown files changed in a commit range, as they are at its end:
-    -Range origin/main...HEAD. Three dots over a branch: the range goes to `git diff`, where two
-    dots compare the two tips, and a branch behind `main` is then checked on Markdown files
-    `main` has changed since. commit-check.ps1 has the same switch and takes two dots, because it
-    hands the range to `git rev-list`.
+    -Range origin/main...HEAD. Three dots over a branch, where commit-check.ps1's same switch
+    takes two: why is in the header of .github/workflows/check.yml.
 
 .PARAMETER All
     Check every tracked Markdown file, as staged.

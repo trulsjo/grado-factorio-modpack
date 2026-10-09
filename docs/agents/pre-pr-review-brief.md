@@ -25,8 +25,8 @@ pwsh -NoProfile -File scripts/markdown-check.ps1 -Range origin/main...HEAD > <sc
 pwsh -NoProfile -File scripts/glossary-check.ps1 -Range origin/main...HEAD > <scratch>/glossary-check.txt
 ```
 
-The commit check's range has two dots and the other two have three. Why is in `code-review.md`,
-with the list of what the reviewer is handed.
+The commit check's range has two dots and the other two have three. Why is in the header of
+`.github/workflows/check.yml`.
 
 Copy the raw output behind each figure on the branch into `<scratch>` as well. A figure whose raw
 output is gone is named to the reviewer as missing.

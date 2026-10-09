@@ -226,3 +226,12 @@ commit check keeps two was added then and stood nowhere before.
 > changed.
 
 > - the output of `scripts/glossary-check.ps1 -Range origin/main..HEAD`, which lists each added line
+
+**What the pre-PR reviewer is handed**, the sentence on the two ranges, as it stood from #204
+until #206, both 2026-10-09. #206 left the reason to the header of `.github/workflows/check.yml`
+and kept a pointer.
+
+> The commit check's range has two dots and the other two checks' have three: those two
+> hand it to `git diff`, where two dots compare the two tips and judge a branch behind `main` on
+> what `main` has changed since, and the commit check hands it to `git rev-list`, where three
+> would add the commits of `main`.

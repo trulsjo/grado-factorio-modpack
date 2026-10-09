@@ -71,8 +71,8 @@ re-walks every quantifier that covers the place it lands. Found in PR #163, twic
 where the README's list of what a hook stops had lost two entries of the script's.
 
 **A reason is written out in one file, and the rest point there.** The same reason written out
-in a second file is a finding. Found in PR #205, where one reason stood in four files and the
-commit message's list of them was wrong twice.
+in a second file, outside a trail's quotation, is a finding. Found in PR #205, where one reason
+stood in four files and the commit message's list of them was wrong twice.
 
 **Attribute a figure where it stands.** A note that vouches for the source of every figure in a
 section is a quantifier each later figure can make false, and is a finding. Found in PR #163,

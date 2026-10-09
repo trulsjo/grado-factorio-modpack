@@ -122,6 +122,10 @@ is not pushed, the tip or one under it, replays the commits above it, and prints
 hash. It moves the branch only when every tree is unchanged and the commit check passes the new
 messages. Its self-test runs in the same workflow.
 
+`scripts/pr-body.ps1 -Draft <file> -Review <report> -Out <file>` puts the pre-PR reviewer's
+findings and confirmation under the draft of a pull request body, word for word, and fails on a
+finding the confirmation does not answer. Its self-test runs in the same workflow.
+
 Agent sessions also get a hook from `.claude/settings.json`: a shell command that changes
 directory into `.mod-cache/` is refused before it runs, because a session's tooling writes state
 files where its shell stands. Reading the cache by path is not affected.

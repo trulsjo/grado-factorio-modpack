@@ -11,8 +11,9 @@
 # since. The commit check's keeps two: it hands the range to `git rev-list`, where two dots are
 # the branch's commits and three would add those of `main`.
 #
-# The self-test of scripts/reword-commit.ps1 runs with the others (#207): a session runs that
-# script on a branch before it is pushed, so nothing here runs the script itself.
+# The self-tests of scripts/reword-commit.ps1 (#207) and scripts/pr-body.ps1 (#208) run with the
+# others: a session runs those two scripts before a pull request exists, so nothing here runs
+# the scripts themselves.
 #
 # The pull request's head is checked out, not the merge commit GitHub makes for it, so the range
 # is the pull request's commits and no other. The whole history and the submodule come with it,
@@ -46,6 +47,7 @@ jobs:
           pwsh -NoProfile -File scripts/glossary-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/ask-before-download.ps1 -SelfTest
           pwsh -NoProfile -File scripts/reword-commit.ps1 -SelfTest
+          pwsh -NoProfile -File scripts/pr-body.ps1 -SelfTest
 
       - name: Check the commit messages
         if: ${{ !cancelled() }}

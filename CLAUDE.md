@@ -239,7 +239,8 @@ The 1.1 miniloader has no 2.0 release. miniloader-redux (hgschmie,
 **A hook checks all of this, and it is not installed by default.** `.githooks/commit-msg` runs the
 shared check on the message before the commit is written. A pull request gets the check whether or not
 its clone opted in: `.github/workflows/check.yml` runs this check and the Markdown check below
-over the pull request's commits, with both self-tests (#180) and the download hook's (#194). Git
+(#180) and `scripts/glossary-check.ps1` (#200) over the pull request's commits, each with its
+self-test, and the download hook's self-test (#194). Git
 tracks neither `.git/hooks` nor a submodule's contents, so every clone opts in twice:
 
 ```

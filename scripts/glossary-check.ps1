@@ -53,8 +53,8 @@
 
 .PARAMETER SelfTest
     Prove an avoided word is reported and that a clean line, a marked use and a mention pass,
-    and that over a range the script exits 1 on an unmarked use and 0 once it is marked. That
-    case needs git.
+    and that over a range the script exits 1 on an unmarked use, 0 once it is marked and 0
+    where the range only removes lines. That case needs git.
 
 .EXAMPLE
     pwsh -File scripts/glossary-check.ps1 -Range origin/main..HEAD
@@ -161,22 +161,25 @@ if ($SelfTest) {
         @{ Name = 'an entry with a condition is listed as not matched, and a remark in parentheses is no entry'; Test = {
             $unmatched = @($avoided | Where-Object Why | ForEach-Object Entry)
             $avoided.Count -eq 5 -and $unmatched.Count -eq 2 -and $unmatched[0] -eq '"measured" for anything undated' -and $unmatched[1] -eq 'above/below without saying of what' } }
-        @{ Name = 'over a range the script exits 1 on an unmarked use and names it, and 0 once the use is marked'; Test = {
+        @{ Name = 'over a range the script exits 1 on an unmarked use and names it, 0 once the use is marked, and 0 where a file only loses lines'; Test = {
             $temp = Join-Path ([IO.Path]::GetTempPath()) "glossary-check-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
             New-Item -ItemType Directory -Path $temp -Force | Out-Null
             try {
                 $git = { git -C $temp -c user.name=selftest -c user.email=selftest@example.invalid -c core.autocrlf=false -c commit.gpgsign=false @args | Out-Null; if ($LASTEXITCODE -ne 0) { throw "git $args failed; the self-test needs git." } }
-                $commit = { param([string] $text) Set-Content -LiteralPath (Join-Path $temp 'a.md') -Value $text; & $git add -A; & $git commit --quiet -m x }
+                $commit = { param([string] $text) Set-Content -LiteralPath (Join-Path $temp 'a.md') -Value ($text -split "`n"); & $git add -A; & $git commit --quiet -m x }
                 $run = { param([string] $range) Push-Location $temp; try { $text = (& pwsh -NoProfile -File $PSCommandPath -Range $range 2>&1 | Out-String) } finally { Pop-Location }; @{ Code = $LASTEXITCODE; Text = $text } }
                 & $git init --quiet
                 Set-Content -LiteralPath (Join-Path $temp 'GLOSSARY.md') -Value $glossary
                 & $commit 'fine'
                 & $commit "fine`nIt was verified."
                 & $commit "fine`nIt was verified. <!-- deliberate: verified -->"
-                $red = & $run 'HEAD~2..HEAD~1'
-                $green = & $run 'HEAD~2..HEAD'
+                & $commit 'fine'
+                $red = & $run 'HEAD~3..HEAD~2'
+                $green = & $run 'HEAD~3..HEAD~1'
+                $removed = & $run 'HEAD~1..HEAD'
                 Write-Host ($red.Text.TrimEnd() -replace '(?m)^', '    ')
-                $red.Code -eq 1 -and $red.Text -match '(?m)^a\.md:2: "verified"' -and $green.Code -eq 0
+                if ($removed.Code -ne 0) { Write-Host ($removed.Text.TrimEnd() -replace '(?m)^', '    ') }
+                $red.Code -eq 1 -and $red.Text -match '(?m)^a\.md:2: "verified"' -and $green.Code -eq 0 -and $removed.Code -eq 0
             }
             finally { Remove-Item -LiteralPath $temp -Recurse -Force }
         } }
@@ -231,7 +234,7 @@ $added.Remove('GLOSSARY.md')
 foreach ($f in $added.Keys) {
     $lines = @(git show "${revision}:$f")
     if ($LASTEXITCODE -ne 0) { throw "git could not read ${revision}:$f." }
-    $numbers = if ($null -eq $added[$f]) { @(1..[Math]::Max(1, $lines.Count)) } else { $added[$f].ToArray() }
+    $numbers = @(if ($null -eq $added[$f]) { 1..[Math]::Max(1, $lines.Count) } else { $added[$f] })
     foreach ($u in Find-Avoided -Lines $lines -Numbers $numbers -Avoided $avoided) {
         Write-Host "${f}:$($u.Line): `"$($u.Word)`" - *$($u.Term)* avoids $($u.Entry)"
         $found++

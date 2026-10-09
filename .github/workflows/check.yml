@@ -5,7 +5,9 @@
 # scripts/ask-before-download.ps1 refuses in an agent session and checks nothing here, so this
 # is the one place a pull request that breaks it goes red. The glossary check runs over the same
 # commits, with its self-test (#200): no hook runs it, and it fails on an added line that uses a
-# word GLOSSARY.md avoids and is not marked deliberate.
+# word GLOSSARY.md avoids and is not marked deliberate. Its range has three dots: the script
+# hands the range to `git diff`, where two dots would compare the two tips and fail a branch
+# behind `main` for lines it did not add.
 #
 # The pull request's head is checked out, not the merge commit GitHub makes for it, so the range
 # is the pull request's commits and no other. The whole history and the submodule come with it,
@@ -49,4 +51,4 @@ jobs:
 
       - name: Check the added Markdown lines against the glossary
         if: ${{ !cancelled() }}
-        run: pwsh -NoProfile -File scripts/glossary-check.ps1 -Range origin/main..HEAD
+        run: pwsh -NoProfile -File scripts/glossary-check.ps1 -Range origin/main...HEAD

@@ -5,7 +5,20 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
 ## Conventions
 
 - **Create an issue**: `gh issue create --title "..." --body "..."`. Write a multi-line body to a file and pass `--body-file <path>`; the same goes for `gh issue comment` and `gh pr create`. Write the file with the Write tool: a heredoc that writes the file is no safer. `scripts/ask-before-download.ps1` refuses a heredoc when one of its lines opens with a command it matches (measured 2026-10-08, recorded on PR #186), and `realistic-fusion-refreshed`'s tracker page records heredoc bodies failing under the Bash tool.
+- **Before filing, list the open tickets** here and in `trulsjo/grado-factorio-tools`:
+  `gh issue list --state open --limit 200 --json number,title`, and the same with
+  `-R trulsjo/grado-factorio-tools`. The new ticket names any open one it touches. On 2026-10-09
+  a line-length ticket for this repository's own Markdown check was close to being filed beside
+  trulsjo/grado-factorio-tools#93, which had ruled the same day that the limit lives in the
+  shared check (by the account of the session that filed #209).
 - **What a ticket states**: a statement about the repository or about a past pull request is read from the source when the ticket is written. One that was not read is marked as an account, as `docs/agents/pre-pr-review-brief.md` does with "by #167's account" (#195).
+- **A quantifier in a ticket carries its search**: a claim about all, none or the only one of a
+  set ("every", "no", "the one", "nowhere else") is followed by the search that showed it, as a
+  command or as the files walked. The session that implements the ticket runs the search before
+  it copies the claim anywhere; if the two disagree, the page gets what the search showed and
+  the pull request says the ticket was wrong. On 2026-10-09 #206 called one file "the one file
+  where the three ranges stand side by side", two other files held all three, and the claim
+  reached a commit message before a review caught it (PR #210, finding 2 in its body).
 - **Read an issue**: `gh issue view <number> --json title,body,labels,comments`, filtered with `--jq`. One call gets the body, the labels and every comment; `--comments` alone, piped, printed the comments and not the body (2026-10-06).
 - **List issues**: `gh issue list --state open --json number,title,body,labels,comments --jq '[.[] | {number, title, body, labels: [.labels[].name], comments: [.comments[].body]}]'` with appropriate `--label` and `--state` filters.
 - **Comment on an issue**: `gh issue comment <number> --body "..."`

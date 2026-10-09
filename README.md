@@ -119,8 +119,8 @@ A pull request gets this one from the same workflow, with its self-test. No hook
 
 `scripts/reword-commit.ps1 -Commit <sha> -MessageFile <file>` rewords one commit of a branch that
 is not pushed, the tip or one under it, replays the commits above it, and prints each old and new
-hash. It moves the branch only when every tree is unchanged and the commit check passes the new
-messages. Its self-test runs in the same workflow.
+hash. It does not move the branch if a tree changed or the commit check rejects a message. Its
+self-test runs in the same workflow.
 
 `scripts/pr-body.ps1 -Draft <file> -Review <report> -Out <file>` puts the pre-PR reviewer's
 findings and confirmation under the draft of a pull request body, word for word, and fails on a

@@ -14,13 +14,14 @@
     WHAT IT DOES. Each commit from the named one to the tip is written again with
     `git commit-tree`: the same tree, author and author date, on the new parent. The named commit
     takes the message file; the others keep their message. The commit check then reads the new
-    commits, and only if it passes is the branch moved to the new tip. Until then nothing has
-    changed, so a refusal or a rejected message leaves the branch where it was. The index and the
-    working tree are not touched.
+    commits, and if it rejects one the branch is not moved. Until the move nothing has changed,
+    so a refusal or a rejected message leaves the branch where it was. The index and the working
+    tree are not touched.
 
-    WHAT IT REFUSES, changing nothing: a commit that is not in <base>..HEAD; a commit already on
-    origin/<branch>, because once the branch is pushed the message stays; staged changes in the
-    index; a detached HEAD; a merge commit among those to replay.
+    WHAT IT REFUSES, changing nothing: a name that is no commit; a commit that is not in
+    <base>..HEAD; a commit already on origin/<branch>, because once the branch is pushed the
+    message stays; staged changes in the index; a detached HEAD; a merge commit among those to
+    replay.
 
     WHAT IT CANNOT SEE. Whether the new message is true: that is the reviewer's. A push to a
     remote other than `origin`, or one this clone has not fetched. A commit-msg hook is not run:
@@ -32,15 +33,16 @@
     The commit to reword: a hash, or anything `git rev-parse` takes.
 
 .PARAMETER MessageFile
-    The file holding the new message, whole. Trailing blank lines are dropped; nothing else is.
+    The file holding the new message, whole. Trailing blank lines are dropped.
 
 .PARAMETER Base
     Where the branch left: commits in <Base>..HEAD can be reworded. origin/main unless said.
 
 .PARAMETER SelfTest
     Prove a tip and a commit below the tip are reworded with trees, authors, dates and later
-    messages kept, that each refusal refuses, and that a rejected message leaves the branch where
-    it was. Needs git and the tools submodule, for a fixture repository in a temp directory.
+    messages kept, that a commit off the branch, one already pushed and staged changes are
+    refused, and that a rejected message leaves the branch where it was. Needs git and the tools
+    submodule, for a fixture repository in a temp directory.
 
 .EXAMPLE
     pwsh -File scripts/reword-commit.ps1 -Commit 879f5e5 -MessageFile ../scratch/message.txt

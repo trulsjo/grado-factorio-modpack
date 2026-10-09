@@ -20,7 +20,8 @@
     WHAT IT CANNOT SEE. What a confirmation line says: "3. not fixed" answers finding 3 as well
     as "3. fixed" does, and whether a finding left unfixed has its reason beside it is read by a
     person. A finding not headed `### <n>.`, which is taken as text. A `##` heading inside a
-    fenced block is not a heading; one inside an indented block is. The draft is not read at all.
+    fenced block is not a heading, and a `### <n>.` line there is still a finding; a `##` heading
+    inside an indented block is a heading. The draft is not read at all.
 
 .PARAMETER Draft
     The body above the review: the `Closes` lines and the pr skill's template, filled.
@@ -103,7 +104,7 @@ if ($SelfTest) {
             & $throws (& $report $two $null) '2 finding\(s\) and no "## Confirmation"' } }
         @{ Name = 'a finding with no confirmation line is refused by its number, and a longer number does not answer it'; Test = {
             (& $throws (& $report $two @('1. fixed', '12. fixed')) 'answers finding 2\.$') -and (& $throws (& $report $two @('2. fixed')) 'answers finding 1\.$') } }
-        @{ Name = 'a report that found nothing gives a body that says so, with or without a confirmation'; Test = {
+        @{ Name = 'a report that found nothing and has no confirmation gives a body that says so'; Test = {
             $body = Get-Body $draft (& $report @('Nothing found.', '') $null)
             $body.EndsWith("## Pre-PR review`n`nNothing found.`n") -and $body -notmatch 'Confirmation' } }
         @{ Name = 'the confirmation is taken where it stands last, with two runs of numbered lines'; Test = {

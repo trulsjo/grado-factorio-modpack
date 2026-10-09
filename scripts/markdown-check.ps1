@@ -25,8 +25,8 @@
 
     WHAT IT CANNOT SEE. Prose: numbers, dates and quantifiers stay the reviewer's
     (docs/agents/code-review.md). Whether a `#fragment` names a heading. A code block made by
-    indenting, which is read as text. Emphasis that closes in the wrong place, or that a bullet nested in a
-    numbered item leaves open and the next numbered item closes. Markdown outside
+    indenting, which is read as text. Emphasis that closes in the wrong place, or that a bullet
+    nested in a numbered item leaves open and the next numbered item closes. Markdown outside
     `.md` files. A link whose target a commit deletes or renames, unless the linking file is
     staged too: -All sees it. A link into a submodule is asked of the working tree, so neither its
     case nor whether git tracks it is checked; into one not initialised it is said to be unchecked,

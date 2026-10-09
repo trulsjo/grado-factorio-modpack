@@ -15,6 +15,10 @@
 # others: a session runs those two scripts before a pull request exists, so nothing here runs
 # the scripts themselves.
 #
+# The comment header of each tracked script is held to 100 characters a line (#211), with that
+# check's self-test among the others. It reads every script and not the pull request's alone: a
+# header has no range.
+#
 # The pull request's head is checked out, not the merge commit GitHub makes for it, so the range
 # is the pull request's commits and no other. The whole history and the submodule come with it,
 # or `origin/main..HEAD` is empty and commit-check.ps1 is missing. The range keeps the three
@@ -48,6 +52,7 @@ jobs:
           pwsh -NoProfile -File scripts/ask-before-download.ps1 -SelfTest
           pwsh -NoProfile -File scripts/reword-commit.ps1 -SelfTest
           pwsh -NoProfile -File scripts/pr-body.ps1 -SelfTest
+          pwsh -NoProfile -File scripts/header-length-check.ps1 -SelfTest
 
       - name: Check the commit messages
         if: ${{ !cancelled() }}
@@ -60,3 +65,7 @@ jobs:
       - name: Check the added Markdown lines against the glossary
         if: ${{ !cancelled() }}
         run: pwsh -NoProfile -File scripts/glossary-check.ps1 -Range origin/main...HEAD
+
+      - name: Check the scripts' comment headers for line length
+        if: ${{ !cancelled() }}
+        run: pwsh -NoProfile -File scripts/header-length-check.ps1 -All

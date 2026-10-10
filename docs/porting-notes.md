@@ -811,6 +811,14 @@ list of them to the workflow's self-test step:
 > (#180) and `scripts/glossary-check.ps1` (#200) over the pull request's commits, each with its
 > self-test, and the download hook's self-test (#194). Git
 
+And as it stood from #207 until 2026-10-10, when #217 left what the workflow runs to the
+workflow's header:
+
+> A pull request gets the check whether or not
+> its clone opted in: `.github/workflows/check.yml` runs this check and the Markdown check below
+> (#180) and `scripts/glossary-check.ps1` (#200) over the pull request's commits, each with its
+> self-test. Its self-test step lists the other self-tests it runs. Git
+
 **The Markdown check's range**, under *Commit messages*, as it stood until 2026-10-09, when #204
 gave it three dots and the sentence that says why the commit check keeps two:
 
@@ -823,3 +831,14 @@ And as it stood from then until #206, also on 2026-10-09, left the reason to the
 > `scripts/glossary-check.ps1`, two for the commit check: the Markdown and glossary checks hand
 > the range to `git diff`, where two dots compare the two tips, and the commit check hands it to
 > `git rev-list`, where three would add the commits of `main`.
+
+**The `pre-commit` paragraph**, under *Commit messages*, as it stood until 2026-10-10, when #217
+left what the hook checks to the hook's header. Its last sentence was added on 2026-10-09 by
+PR #216, and the range sentence now names the script it speaks of:
+
+> **`.githooks/pre-commit` checks the staged Markdown** with `scripts/markdown-check.ps1`: emphasis
+> or a code span left open, a ragged table row, a link to a file git does not track.
+> `-Range origin/main...HEAD` checks what a branch changed. Three dots here and for
+> `scripts/glossary-check.ps1`, two for the commit check: why is in the header of
+> `.github/workflows/check.yml`. The hook and the workflow run more than this section names, and
+> each one's own header says what.

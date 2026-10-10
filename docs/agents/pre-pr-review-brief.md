@@ -1,7 +1,7 @@
 # The pre-PR reviewer's brief
 
 The words the pre-PR reviewer is handed its material with, for both of its turns. The rules are in
-`code-review.md`, *One review before the pull request*; this page adds none. A session fills the
+`code-review.md`, *One review before the pull request*. A session fills the
 blanks, written `<like this>`, and sends the rest as it stands. `<scratch>` is filled wherever it
 stands. The blanks under the report's headings are the reviewer's and are sent unfilled.
 

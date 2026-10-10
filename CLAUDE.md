@@ -237,10 +237,8 @@ The 1.1 miniloader has no 2.0 release. miniloader-redux (hgschmie,
 ```
 
 **A hook checks all of this, and it is not installed by default.** `.githooks/commit-msg` runs the
-shared check on the message before the commit is written. A pull request gets the check whether or not
-its clone opted in: `.github/workflows/check.yml` runs this check and the Markdown check below
-(#180) and `scripts/glossary-check.ps1` (#200) over the pull request's commits, each with its
-self-test. Its self-test step lists the other self-tests it runs. Git
+shared check on the message before the commit is written. A pull request gets its checks whether or
+not its clone opted in, from `.github/workflows/check.yml`: its header says what it runs. Git
 tracks neither `.git/hooks` nor a submodule's contents, so every clone opts in twice:
 
 ```
@@ -257,12 +255,10 @@ Old commits that fail the check are left alone — the three from 2026-09-20, `3
 predate it. The hook stops the failures growing; `-Range origin/main..HEAD` checks a branch before a
 push, and `-SelfTest` proves the check can still fail.
 
-**`.githooks/pre-commit` checks the staged Markdown** with `scripts/markdown-check.ps1`: emphasis
-or a code span left open, a ragged table row, a link to a file git does not track.
-`-Range origin/main...HEAD` checks what a branch changed. Three dots here and for
-`scripts/glossary-check.ps1`, two for the commit check: why is in the header of
-`.github/workflows/check.yml`. The hook and the workflow run more than this section names, and
-each one's own header says what.
+**What `.githooks/pre-commit` checks is in its header.**
+`scripts/markdown-check.ps1 -Range origin/main...HEAD` checks the Markdown a branch changed. Three
+dots here and for `scripts/glossary-check.ps1`, two for the commit check: why is in the header of
+`.github/workflows/check.yml`.
 
 ## Agent skills
 

@@ -10,8 +10,9 @@
     2026-10-10). The list is for the session to walk before it spawns the reviewer
     (docs/agents/pre-pr-review-brief.md): does the sentence hold for each thing it covers.
 
-    WHY IT DOES NOT FAIL. The words are in ordinary use. Of 92 listed lines read for #213, 30
-    used one in passing. Exit 0 says the range was read, and nothing about what was listed.
+    WHY IT DOES NOT FAIL. The words are in ordinary use. Of the 92 lines #213 read, code and
+    words it tried and left out among them, 30 used a word in passing. Exit 0 says the range
+    was read, and nothing about what was listed.
 
     WHAT IT READS. The lines the range's diff adds, as they are at the end of the range. In a
     `.md` file, each of them. In any other file, the comment lines: one that opens with `#`,
@@ -26,7 +27,8 @@
     phrase broken over two lines. A comment after code on its line, the rest of a block comment
     that opens there, and a comment in a file that marks them another way, such as Lua's. A
     line of code that opens with `#` inside a string that runs over lines is read as a comment.
-    A line that was moved and not changed is listed as added. A file git calls binary.
+    A line that was moved and not changed is listed as added. A file git calls binary, and
+    what a moved submodule pin brings in.
 
 .PARAMETER Range
     The commit range, with both ends: -Range origin/main...HEAD. The diff is read as given,
@@ -87,9 +89,10 @@ if ($SelfTest) {
         & $write 'a.md' @('It always stood here.', 'Only the first is read.')
         & $write 'scripts/a.ps1' @('<#', '    It cannot fail.', '#>', '# each line is read', "`$all = 'every one'  # the last")
         & $write '.github/workflows/check.yml' @('# every pull request', 'name: all')
+        & $write 'my notes.md' @('All of it.')
         & $write '.githooks/pre-commit' @('#!/bin/sh', '# never skipped', 'echo "all of it"')
         & $write 'message.txt' @('add the files', '', 'Nothing else moves.', '', 'Co-Authored-By: All Of Us <all@example.invalid>')
-        & $git add -A -- a.md scripts .github .githooks
+        & $git add -A -- a.md 'my notes.md' scripts .github .githooks
         & $git commit --quiet -F (Join-Path $temp 'message.txt')
         $out = & $run 'HEAD~1...HEAD'
         $bad = & $run 'no-such-branch...HEAD'
@@ -108,6 +111,8 @@ if ($SelfTest) {
             (@(Get-CommentNumbers @('<#', '    text', '#>', '$a = 1  # after code', '    # indented', '<# one line #>', 'echo x')) -join ' ') -eq '1 2 3 5 6' } }
         @{ Name = 'an added Markdown line is listed with its file, line and words, and one the range did not add is not'; Test = {
             $out.Text -match '(?m)^a\.md:2: Markdown: first, only: Only the first is read\.$' -and $out.Text -notmatch 'a\.md:1:' } }
+        @{ Name = 'a file whose name holds a space is read'; Test = {
+            $out.Text -match '(?m)^my notes\.md:1: Markdown: all: All of it\.$' } }
         @{ Name = 'an added comment line is listed: of a script, of the workflow and of a hook'; Test = {
             $out.Text -match '(?m)^scripts/a\.ps1:2: comment: cannot: It cannot fail\.$' -and $out.Text -match '(?m)^scripts/a\.ps1:4: comment: each: ' -and
                 $out.Text -match '(?m)^\.github/workflows/check\.yml:1: comment: every: ' -and $out.Text -match '(?m)^\.githooks/pre-commit:2: comment: never: ' } }
@@ -118,7 +123,7 @@ if ($SelfTest) {
         @{ Name = 'the Co-Authored-By line is not listed'; Test = {
             $out.Text -notmatch 'Co-Authored-By' } }
         @{ Name = 'it exits 0 with lines listed, and ends with the count of each kind'; Test = {
-            $out.Code -eq 0 -and $out.Text -match '6 line\(s\).*Markdown 1, comment 4, commit message 1\.' } }
+            $out.Code -eq 0 -and $out.Text -match '7 line\(s\).*Markdown 2, comment 4, commit message 1\.' } }
         @{ Name = 'a range git cannot read exits non-zero'; Test = {
             $bad.Code -ne 0 } }
     )
@@ -142,8 +147,8 @@ $base, $tip = $Matches[1], $Matches[2]
 # The numbers of the lines the diff adds, by file.
 $added = [ordered] @{}
 $file = $null
-foreach ($d in git -c core.quotepath=off diff --unified=0 --diff-filter=ACMR $Range) {
-    if ($d -match '^\+\+\+ b/(.+)$') { $file = $Matches[1]; $added[$file] = [System.Collections.Generic.List[int]]::new() }
+foreach ($d in git -c core.quotepath=off diff --unified=0 --diff-filter=ACMR --ignore-submodules=all $Range) {
+    if ($d -match '^\+\+\+ b/(.+?)\t?$') { $file = $Matches[1]; $added[$file] = [System.Collections.Generic.List[int]]::new() }
     elseif ($d -match '^@@ -\S+ \+(\d+)(?:,(\d+))? @@') {
         $count = if ($Matches[2]) { [int] $Matches[2] } else { 1 }
         for ($k = 0; $k -lt $count; $k++) { $added[$file].Add([int] $Matches[1] + $k) }

@@ -1,7 +1,7 @@
 # The pre-PR reviewer's brief
 
 The words the pre-PR reviewer is handed its material with, for both of its turns. The rules are in
-`code-review.md`, *One review before the pull request*; this page adds none. A session fills the
+`code-review.md`, *One review before the pull request*. A session fills the
 blanks, written `<like this>`, and sends the rest as it stands. `<scratch>` is filled wherever it
 stands. The blanks under the report's headings are the reviewer's and are sent unfilled.
 
@@ -23,10 +23,16 @@ git diff origin/main...HEAD > <scratch>/branch.diff
 pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -Range origin/main..HEAD > <scratch>/commit-check.txt
 pwsh -NoProfile -File scripts/markdown-check.ps1 -Range origin/main...HEAD > <scratch>/markdown-check.txt
 pwsh -NoProfile -File scripts/glossary-check.ps1 -Range origin/main...HEAD > <scratch>/glossary-check.txt
+pwsh -NoProfile -File scripts/absolute-words.ps1 -Range origin/main...HEAD > <scratch>/absolute-words.txt
 ```
 
-The commit check's range has two dots and the other two have three. Why is in the header of
+The commit check's range has two dots and the others have three. Why is in the header of
 `.github/workflows/check.yml`.
+
+Walk `<scratch>/absolute-words.txt` before the reviewer is spawned (#219): it lists the added
+lines of Markdown, of comment and of commit message that hold a word such as "only", "every" or
+"cannot". Of each line, ask whether the sentence holds for what its word covers, and reword the
+one that does not. The script lists and does not fail, and a word used in passing is left.
 
 Copy the raw output behind each figure on the branch into `<scratch>` as well. A figure whose raw
 output is gone is named to the reviewer as missing.

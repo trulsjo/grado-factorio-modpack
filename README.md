@@ -122,6 +122,12 @@ fails on a line over 100 characters. A line under `.EXAMPLE` is left. The `pre-c
 it on the staged scripts after the Markdown check, and the same workflow runs it on every tracked
 `scripts/*.ps1`, with its self-test.
 
+`scripts/absolute-words.ps1 -Range origin/main...HEAD` lists each line a branch adds, in Markdown,
+in a comment or in a commit message, that holds a word such as "only", "every" or "cannot". Code
+is left out, and what else it cannot see is in its header. It does not fail: the list is for a
+session to walk before the pre-PR review. Its self-test runs in the same workflow, and no hook
+runs it.
+
 `scripts/reword-commit.ps1 -Commit <sha> -MessageFile <file>` rewords one commit of a branch that
 is not pushed, the tip or one under it, replays the commits above it, and prints each old and new
 hash. It does not move the branch if a tree changed or the commit check rejects a message. Its

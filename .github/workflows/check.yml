@@ -19,6 +19,9 @@
 # (#211), with that check's self-test among the others. It reads each of them and not the pull
 # request's alone: a header has no range.
 #
+# scripts/absolute-words.ps1 (#219) has its self-test among the others and no step of its own:
+# it lists lines for a session to walk before the pre-PR review, and has nothing to fail on.
+#
 # The pull request's head is checked out, not the merge commit GitHub makes for it, so the range
 # is the pull request's commits and no other. The whole history and the submodule come with it,
 # or `origin/main..HEAD` is empty and commit-check.ps1 is missing. The range keeps the three
@@ -53,6 +56,7 @@ jobs:
           pwsh -NoProfile -File scripts/reword-commit.ps1 -SelfTest
           pwsh -NoProfile -File scripts/pr-body.ps1 -SelfTest
           pwsh -NoProfile -File scripts/header-length-check.ps1 -SelfTest
+          pwsh -NoProfile -File scripts/absolute-words.ps1 -SelfTest
 
       - name: Check the commit messages
         if: ${{ !cancelled() }}

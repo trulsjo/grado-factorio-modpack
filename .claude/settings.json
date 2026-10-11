@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "i=$(cat); case $i in *mod-cache*) printf '%s' \"$i\" | pwsh -NoProfile -File \"$CLAUDE_PROJECT_DIR/scripts/refuse-cd-into-mod-cache.ps1\";; esac"
+            "command": "i=$(cat); case $i in *mod-cache*) h=\"$CLAUDE_PROJECT_DIR/vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1\"; if [ -f \"$h\" ]; then printf '%s' \"$i\" | pwsh -NoProfile -File \"$h\" -Root \"$CLAUDE_PROJECT_DIR\" -CacheName .mod-cache; else echo \"refuse-cd-into-mod-cache: $h not found, so the command was NOT checked. Run: git submodule update --init\" >&2; exit 1; fi;; esac"
           },
           {
             "type": "command",

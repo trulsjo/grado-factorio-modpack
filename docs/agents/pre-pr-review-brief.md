@@ -21,7 +21,7 @@ From the repository root, with `<scratch>` a directory outside the repository:
 ```
 git diff origin/main...HEAD > <scratch>/branch.diff
 pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -Range origin/main..HEAD > <scratch>/commit-check.txt
-pwsh -NoProfile -File scripts/markdown-check.ps1 -Range origin/main...HEAD > <scratch>/markdown-check.txt
+pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/markdown-check.ps1 -Range origin/main...HEAD > <scratch>/markdown-check.txt
 pwsh -NoProfile -File scripts/glossary-check.ps1 -Range origin/main...HEAD > <scratch>/glossary-check.txt
 pwsh -NoProfile -File scripts/absolute-words.ps1 -Range origin/main...HEAD > <scratch>/absolute-words.txt
 ```

@@ -2,10 +2,12 @@
 # Checks the staged Markdown files for emphasis or a code span left open, a ragged table row and a
 # link to a file that is not tracked (#149), and the staged scripts for a comment header line
 # over 100 characters (#211). What each reads as what, and what it cannot see, is in the header
-# of scripts/markdown-check.ps1 and of scripts/header-length-check.ps1; this is only the wiring.
+# of vendor/grado-factorio-tools/scripts/markdown-check.ps1, the shared check (#182), and of
+# scripts/header-length-check.ps1; this is only the wiring.
 #
-# INSTALL, once per clone, the same line that wires up commit-msg:
+# INSTALL, twice per clone, the same two lines that wire up commit-msg:
 #
+#     git submodule update --init
 #     git config core.hooksPath .githooks
 #
 # pwsh is what every other script here needs. If it is missing, say so and let the commit through,
@@ -18,6 +20,14 @@ fi
 # Both run, so one commit shows what both found.
 root="$(git rev-parse --show-toplevel)"
 status=0
-pwsh -NoProfile -File "$root/scripts/markdown-check.ps1" || status=1
+# A clone that skipped `git submodule update --init` has no shared check. Say so and go on to the
+# header check, as commit-msg says so and lets the commit through.
+CHECK="$root/vendor/grado-factorio-tools/scripts/markdown-check.ps1"
+if [ -f "$CHECK" ]; then
+    pwsh -NoProfile -File "$CHECK" || status=1
+else
+    echo "pre-commit: $CHECK not found, so the staged Markdown was NOT checked." >&2
+    echo "pre-commit: run 'git submodule update --init' to wire up the shared check." >&2
+fi
 pwsh -NoProfile -File "$root/scripts/header-length-check.ps1" || status=1
 exit $status

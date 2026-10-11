@@ -96,7 +96,8 @@ each when it was decided.
   review handed the raw output can check a figure against it, which is inferred from what the
   plugin's command file hands its reviewers. The rule is in `docs/agents/code-review.md` and its
   evidence in `docs/agents/code-review-why.md`. Whether a pull request may be merged while a
-  review runs is #159's.
+  review runs is #159's. *Decided 2026-10-11 (#159): not while a plugin pass or a confirmation
+  of it runs. The rule is in `docs/agents/code-review.md`.*
 - **A catalogue's header gives the day of its portal reading and does not list later notes**
   (2026-10-07, #172). Every portal reading in the file is of that day "except where a later date
   is given inline", which is the wording `Grado_NonChanging.md` already had. A later reading

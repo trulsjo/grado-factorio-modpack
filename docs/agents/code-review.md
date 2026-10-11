@@ -213,5 +213,26 @@ for any later fix commit: the plugin pass's reviewers do not outlive the pass. I
 cannot be continued, a fresh one is handed its report and the commits. What the confirmation
 finds, and each repair, is recorded on the pull request. Found in PR #186.
 
-Two things are #159's to decide and are not settled here: whether a pull request may be merged
-while a review runs, and where a session can be cleared.
+**A pull request is not merged while a plugin pass or a confirmation of it runs** (#159). The
+check run is outside this rule. The merge is Truls's, so a session's last message says when a
+plugin pass or a confirmation is still running.
+
+**A session is cleared at two points, and it says when it has reached one** (#159). A clear is
+`/clear`, a new session, or a later session taking the work up; the harness compacting by itself
+is not one. The session's last message names the point when its conditions hold, and names the
+condition that does not when one is missing.
+
+- **After the pull request is open**, when its body holds the review's findings and
+  confirmation, the check run's result is a comment on it, the brain page and journal are
+  updated and staged, and what waits on Truls is named in the pull request and not in the
+  session's last message alone.
+- **After the merge**, when local `main` is fast-forwarded to it, the local branch is deleted
+  after `git cherry` shows its commits in `main`, the tickets are seen closed, the brain page and
+  journal carry the merge and are staged, and what is still open from the pull request is a
+  ticket or a line in the brain's *Still open*.
+
+**From spawning the pre-PR reviewer until the pull request is open is not a clearing point.**
+Nor is the time the tickets are being implemented: until #139 lands, the raw output behind a
+figure is in the session's scratch directory. **A clear before a plugin pass costs a fresh
+reviewer**, handed the report and the commits as above, and it may be handed a figure whose raw
+output is gone.

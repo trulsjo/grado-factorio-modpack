@@ -853,3 +853,10 @@ the shared commit convention, and #202 took it from there: it is under *Body* in
 > A body says what changed and why, and cites its
 > ticket where it has one. What happened on an earlier pull request or in the session is the
 > ticket's to tell (#195).
+
+**The example commit**, under *Commit messages*, its body as it stood from 2026-09-20 until
+2026-10-11, when #226 gave the download count its day. The day is the catalogue's: the
+`miniloader-redux` entry of `docs/mod-catalogue.md` has the same count, read on 2026-09-20.
+
+> The 1.1 miniloader has no 2.0 release. miniloader-redux (hgschmie,
+> 22,472 downloads) is the maintained successor. Not yet loaded in game.

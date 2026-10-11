@@ -841,7 +841,7 @@ PR #216, and the range sentence now names the script it speaks of:
 
 **The Markdown check's path**, in the range sentence under *Commit messages*, as it stood from
 #217 until 2026-10-11, when #182 deleted this repository's copy of the script and ran the shared
-one from the tools submodule:
+one from the tools submodule, and #209 handed that one a line limit of 100:
 
 > `scripts/markdown-check.ps1 -Range origin/main...HEAD` checks the Markdown a branch changed.
 

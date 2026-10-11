@@ -9,7 +9,8 @@
 # glossary check's have three dots (#204): both scripts hand the range to `git diff`, where two
 # dots would compare the two tips and judge a branch behind `main` on what `main` has changed
 # since. The commit check's keeps two: it hands the range to `git rev-list`, where two dots are
-# the branch's commits and three would add those of `main`.
+# the branch's commits and three would add those of `main`. The Markdown check is handed a line
+# limit of 100 (#209), as .githooks/pre-commit hands it one: without it the check reads no length.
 #
 # The self-tests of scripts/reword-commit.ps1 (#207) and scripts/pr-body.ps1 (#208) run with the
 # others: a session runs those two scripts before a pull request exists, so nothing here runs
@@ -65,7 +66,7 @@ jobs:
 
       - name: Check the changed Markdown
         if: ${{ !cancelled() }}
-        run: pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/markdown-check.ps1 -Range origin/main...HEAD
+        run: pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/markdown-check.ps1 -Range origin/main...HEAD -MaxLineLength 100
 
       - name: Check the added Markdown lines against the glossary
         if: ${{ !cancelled() }}

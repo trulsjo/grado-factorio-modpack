@@ -159,6 +159,15 @@ repository root, in PowerShell: the first is refused with exit 2, the second pas
 Its `-SelfTest -Settings .claude/settings.json` runs the command wired here and fails if that
 command no longer reaches the hook. It is run by hand: no hook and no workflow step runs it.
 
+In a clone without the submodule the wiring prints "the command was NOT checked" and exits 1.
+What a session makes of that was measured on 2026-10-11 with Claude Code 2.1.296, run headless
+with the project's settings alone and the Bash tool (#224): `echo mod-cache-probe` ran, and what
+the tool call returned to the agent held nothing of that line. The line stood in the session's
+hook events, with exit code 1 and outcome "error". A command that does not name `mod-cache` ran
+with no hook output. Not measured: what an interactive session shows the person at the keyboard,
+and the PowerShell tool. So #184's "the session is told" does not hold of the agent, and #228 is
+the repair.
+
 A second hook there, `scripts/ask-before-download.ps1`, stops a command that installs a package
 (`npm install`, `ci`, `add` or `exec`, `npx`, `pip install`, `gem install`, `cargo install`, and
 `install` under `winget`, `choco` or `scoop`) or fetches an `.exe`, `.msi`, `.zip`, `.tar.gz` or

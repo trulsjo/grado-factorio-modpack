@@ -234,7 +234,8 @@ Example:
 📦 build(changingbase): replace miniloader with miniloader-redux
 
 The 1.1 miniloader has no 2.0 release. miniloader-redux (hgschmie,
-22,472 downloads) is the maintained successor. Not yet loaded in game.
+22,472 downloads on 2026-09-20) is the maintained successor. Not yet
+loaded in game.
 ```
 
 **A hook checks all of this, and it is not installed by default.** `.githooks/commit-msg` runs the

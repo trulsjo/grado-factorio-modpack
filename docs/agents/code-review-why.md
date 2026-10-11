@@ -151,12 +151,12 @@ and two were not.
 
 ## Why a pull request waits for its review, and where a session is cleared
 
-*Added 2026-10-11 (#159), decided by Truls that day over fourteen questions; the answers are
-#159's two comments of 2026-10-11. What is given "by #159's account" is from its body and was
+*Added 2026-10-11 (#159), decided by Truls that day; the answers are #159's two comments of
+2026-10-11. What is given "by #159's account" is from its body and was
 not counted again for this page.*
 
-**PR #152 was merged while its review ran.** By #159's account nothing was posted to it, and the
-fixes needed a second pull request, #155, and a rebase of the fix branch. #159 also offered
+**By #159's account PR #152 was merged while its review ran**, nothing was posted to it, and
+the fixes needed a second pull request and a rebase of the fix branch. #159 also offered
 running the review unasked once the pull request was open. #151 overtook that: the pre-PR
 review runs before the pull request exists and the plugin pass runs when Truls asks, so what
 can still be running on an open pull request is a plugin pass or a confirmation.
@@ -183,9 +183,7 @@ scratch file and nowhere else. The pull request's body is built from that file.
 its context is was not measured.
 
 **Not taken:** an entry of its own in `docs/decisions.md`, where #151's entry gained a dated
-note; a term in `GLOSSARY.md`, which has none for how a session works; and making the first
-point depend on whether a plugin pass is wanted, which would be a question at each pull request
-for a pass that runs when Truls asks.
+note; and a term in `GLOSSARY.md`, which has none for how a session works.
 
 ## What the rules said before
 

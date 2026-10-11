@@ -41,9 +41,8 @@
     are listed. An irregular verb form (read, chose). Markdown outside `.md` files.
 
 .PARAMETER Range
-    Read the lines a commit range adds: -Range origin/main...HEAD. The same switch as
-    markdown-check.ps1's, with three dots over a branch: why is in the header of
-    .github/workflows/check.yml.
+    Read the lines a commit range adds: -Range origin/main...HEAD. Three dots over a branch, as
+    the Markdown check is handed here: why is in the header of .github/workflows/check.yml.
 
 .PARAMETER All
     Read every line of every tracked Markdown file, as at HEAD. For measuring how often a word is

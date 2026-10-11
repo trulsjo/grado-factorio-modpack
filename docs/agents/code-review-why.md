@@ -250,8 +250,9 @@ the two trails that quote the reason above.
 
 **The Markdown check's path**, in the head of the second rule and in what the pre-PR reviewer is
 handed, as the two stood until 2026-10-11, when #182 deleted this repository's copy of the script
-and ran the shared one from the tools submodule:
+and ran the shared one from the tools submodule, and #209 handed that one a line limit of 100:
 
+> hooks read the shape of a message and of the Markdown - emphasis, tables and links
 > (`scripts/markdown-check.ps1`) - and a load can contradict only whether a pack starts.
 
 > `scripts/markdown-check.ps1 -Range origin/main...HEAD`, and of the resolve if an `info.json`

@@ -255,9 +255,10 @@ predate it. The hook stops the failures growing; `-Range origin/main..HEAD` chec
 push, and `-SelfTest` proves the check can still fail.
 
 **What `.githooks/pre-commit` checks is in its header.**
-`vendor/grado-factorio-tools/scripts/markdown-check.ps1 -Range origin/main...HEAD` checks the
-Markdown a branch changed. Three dots here and for `scripts/glossary-check.ps1`, two for the
-commit check: why is in the header of `.github/workflows/check.yml`.
+`markdown-check.ps1 -Range origin/main...HEAD -MaxLineLength 100`, in
+`vendor/grado-factorio-tools/scripts/`, checks the Markdown a branch changed and holds its prose
+lines to 100 characters. Three dots here and for `scripts/glossary-check.ps1`, two for the commit
+check: why is in the header of `.github/workflows/check.yml`.
 
 ## Agent skills
 

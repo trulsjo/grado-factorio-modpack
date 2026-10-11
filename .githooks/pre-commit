@@ -1,8 +1,9 @@
 #!/bin/sh
 # Checks the staged Markdown files for emphasis or a code span left open, a ragged table row and a
-# link to a file that is not tracked (#149), and the staged scripts for a comment header line
-# over 100 characters (#211). What each reads as what, and what it cannot see, is in the header
-# of vendor/grado-factorio-tools/scripts/markdown-check.ps1, the shared check (#182), and of
+# link to a file that is not tracked (#149), and for a prose line over 100 characters (#209), and
+# the staged scripts for a comment header line over 100 characters (#211). What each reads as
+# what, and what it cannot see, is in the header of
+# vendor/grado-factorio-tools/scripts/markdown-check.ps1, the shared check (#182), and of
 # scripts/header-length-check.ps1; this is only the wiring.
 #
 # INSTALL, twice per clone, the same two lines that wire up commit-msg:
@@ -24,7 +25,7 @@ status=0
 # header check, as commit-msg says so and lets the commit through.
 CHECK="$root/vendor/grado-factorio-tools/scripts/markdown-check.ps1"
 if [ -f "$CHECK" ]; then
-    pwsh -NoProfile -File "$CHECK" || status=1
+    pwsh -NoProfile -File "$CHECK" -MaxLineLength 100 || status=1
 else
     echo "pre-commit: $CHECK not found, so the staged Markdown was NOT checked." >&2
     echo "pre-commit: run 'git submodule update --init' to wire up the shared check." >&2

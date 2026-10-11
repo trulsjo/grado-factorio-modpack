@@ -9,13 +9,13 @@ survive, **minor** for a save-safe one, **patch** for metadata. Nothing below ch
 
 ## What 0001 got wrong
 
-**`Grado_NonChanging` can go major.** 0001 said it "can never go major under this rule... a pack that
-by definition does not change save state has no save-breaking change available to it". That premise
-is false, and #7 established it on 2026-09-22 while settling what the pack's promise actually means.
-Several members write to the save: `Tapeline`'s measurements, `Todo-List`'s list, `YARM`'s monitored
-sites, `SpeedControl`, and - until #7 removed it - `blueprint-sandboxes`, which created whole
-surfaces. Removing a mod that owns surfaces is exactly the kind of change the rule exists to warn
-about. The pack is not exempt; it was only ever described as exempt.
+**`Grado_NonChanging` can go major.** 0001 said it "can never go major under this rule... a pack
+that by definition does not change save state has no save-breaking change available to it". That
+premise is false, and #7 established it on 2026-09-22 while settling what the pack's promise
+actually means. Several members write to the save: `Tapeline`'s measurements, `Todo-List`'s list,
+`YARM`'s monitored sites, `SpeedControl`, and - until #7 removed it - `blueprint-sandboxes`, which
+created whole surfaces. Removing a mod that owns surfaces is exactly the kind of change the rule
+exists to warn about. The pack is not exempt; it was only ever described as exempt.
 
 The promise it was exempt on the strength of is now stated once, in `GLOSSARY.md` under *Promise*,
 and it does not say what 0001 assumed it said.
@@ -36,8 +36,9 @@ pack working; every later major is a warning about a save. A reader who learns o
 will misread the first, which is why both live here rather than in a one-line convention.
 
 A pack's version does not move at all before its first release. All five sit at `0.1.0` and absorb
-any number of dependency edits without bumping, because there is no player and no save for the number
-to inform. `Grado_NonChanging` reached 26 members from 29 on 2026-09-22 and stayed at `0.1.0`.
+any number of dependency edits without bumping, because there is no player and no save for the
+number to inform. `Grado_NonChanging` reached 26 members from 29 on 2026-09-22 and stayed at
+`0.1.0`.
 
 ## Considered options
 

@@ -87,7 +87,8 @@ The times are from one machine (i7-9850H) and one run each. They are context, no
 ## Conflicts
 
 **None found in the loads.** Neither load showed a failure or a warning between any two members.
-Compatibility Lua is not needed on this evidence. The play session found one key-binding clash, below.
+Compatibility Lua is not needed on this evidence. The play session found one key-binding clash,
+below.
 
 That verdict covers only what a load can see: the prototype stages and `on_init`. Clashing key
 bindings, GUIs drawn over each other, two mods handling the same event, and anything that shows up
@@ -95,13 +96,13 @@ after the first tick are the play session's to find.
 
 ### Key bindings
 
-**One clash confirmed in play: `Alt+Y`.** `YARM`'s selector and `PipeVisualizer-Updated`'s mouse-over
-toggle both default to it. Pressed in the play session, it toggled the pipe visualizer and did not
-give the YARM selector. Rebinding YARM's key in the Controls menu fixed it (a second key, in its
-alternative slot -
-see the 2026-10-01 note under *Does a player's rebinding survive?*). **Compatibility Lua is not
-needed to make the pack usable**, because a player can rebind. Whether the pack should change a
-default anyway is open: it would be the first Lua any pack carries, and that decision is Truls's.
+**One clash confirmed in play: `Alt+Y`.** `YARM`'s selector and `PipeVisualizer-Updated`'s
+mouse-over toggle both default to it. Pressed in the play session, it toggled the pipe visualizer
+and did not give the YARM selector. Rebinding YARM's key in the Controls menu fixed it (a second
+key, in its alternative slot - see the 2026-10-01 note under *Does a player's rebinding survive?*).
+**Compatibility Lua is not needed to make the pack usable**, because a player can rebind. Whether
+the pack should change a default anyway is open: it would be the first Lua any pack carries, and
+that decision is Truls's.
 
 **How the list was made.** The game's Controls menu does not mark clashes, because two bindings
 on one key are often meant for different situations. So the list comes from the data stage
@@ -182,15 +183,16 @@ default key binding."
   also the `associated_control_input` of
   `PipeVisualizer-Updated`'s toolbar shortcut, so moving it changes the key that shortcut shows;
   `YARM`'s shortcut has no associated input. Moving either leaves base's claim on `ALT + Y`. The new
-  key would need checking against the dump's list, since seven keys already carry more than one default.
+  key would need checking against the dump's list, since seven keys already carry more than one
+  default.
 - *Does a player's rebinding survive?* The docs do not say. The evidence is how the binding is
   stored: `%APPDATA%\Factorio\config\config.ini`, `[controls]`, one entry per input name. A key
   left at its default is written commented out, with the default as its value
   (`; get-yarm-selector=ALT + Y`); the one Truls set in play is written live
-  (`get-yarm-selector-alternative=CONTROL + SHIFT + ALT + Y`). A player's own key is therefore stored
-  by name and apart from the default, which suggests a changed default moves only the commented
-  line. That is an inference from the file, not a test: nobody has changed a default under a saved
-  rebinding and looked.
+  (`get-yarm-selector-alternative=CONTROL + SHIFT + ALT + Y`). A player's own key is therefore
+  stored by name and apart from the default, which suggests a changed default moves only the
+  commented line. That is an inference from the file, not a test: nobody has changed a default under
+  a saved rebinding and looked.
 
   *Qualified 2026-10-01 (#77).* The live line is **`YARM`'s alternative slot**
   (`-alternative`, the input's second binding), not its primary `key_sequence`. The primary line
@@ -203,16 +205,16 @@ default key binding."
 
 ## Play session
 
-**Complete, run by Truls in three sittings: 2026-09-29 (about two hours), and two on 2026-09-30.** In the client (Steam, 2.0.77), base only, against the same
-stage directory (`.mod-cache/Grado_NonChanging`, staged 2026-09-29). Its prototype list checksum,
-`169335276`, is the same as load 1's, so the play session ran the configuration recorded above. A
-hand-written `mod-list.json` in the stage directory turned `space-age`, `quality` and
-`elevated-rails` off - without one the game enables them. The second sitting reloaded the first's
-save against the same stage directory, and the checksum was the same. The third was a side run,
-described under item 3's `BlueprintTools`. All seven items are done, though not every member
-within them was confirmed - see the intro. The checklist was written in advance, so what was tried
-is recorded rather than remembered.
-`/editor` is fine for getting items.
+**Complete, run by Truls in three sittings: 2026-09-29 (about two hours), and two on 2026-09-30.**
+In the client (Steam, 2.0.77), base only, against the same stage directory
+(`.mod-cache/Grado_NonChanging`, staged 2026-09-29). Its prototype list checksum, `169335276`, is
+the same as load 1's, so the play session ran the configuration recorded above. A hand-written
+`mod-list.json` in the stage directory turned `space-age`, `quality` and `elevated-rails` off -
+without one the game enables them. The second sitting reloaded the first's save against the same
+stage directory, and the checksum was the same. The third was a side run, described under item 3's
+`BlueprintTools`. All seven items are done, though not every member within them was confirmed - see
+the intro. The checklist was written in advance, so what was tried is recorded rather than
+remembered. `/editor` is fine for getting items.
 
 1. **Key bindings.** *As planned:* "Settings → Controls: note any binding the game marks as
    conflicting". *Could not be done that way:* the game marks no clashes. It was done from the data
@@ -229,15 +231,15 @@ is recorded rather than remembered.
    - `Todo-List`: opens and closes with `Shift+T`.
    - `Tapeline`: opens and closes with `Alt+M`.
    - `solar-calc`: no default key. Opens from its button.
-   - **`YARM`: `Alt+Y` does not give the selector.** It toggles `PipeVisualizer-Updated`'s mouse-over
-     instead. With a custom binding, the selector works. See *Key bindings*.
+   - **`YARM`: `Alt+Y` does not give the selector.** It toggles `PipeVisualizer-Updated`'s
+     mouse-over instead. With a custom binding, the selector works. See *Key bindings*.
    - `PipeVisualizer-Updated`: `Shift+Y` works - one colour per fluid system. `Alt+Y` (mouse-over
      toggle) made no visible difference: networks looked the same with it on or off. That may be
      the toggle working with nothing to show, or not working. Not settled.
    - `SpeedControl`: works, on keys that read oddly on a Norwegian layout. Its bindings are
-     `MINUS` and `EQUALS`, which Factorio names by US key position. On a Norwegian keyboard those are
-     `+` (slower) and `\` (faster), each also with `Shift` and `Alt`. It is a layout quirk, not a
-     clash.
+     `MINUS` and `EQUALS`, which Factorio names by US key position. On a Norwegian keyboard those
+     are `+` (slower) and `\` (faster), each also with `Shift` and `Alt`. It is a layout quirk, not
+     a clash.
    - `BlueprintTools`: **no effect seen** at first. Three of its keys are shared (`Shift+G`,
      `Shift+T`, `Shift+C`), and `Shift+T` opened Todo-List. *Settled 2026-09-30: it works.* With a
      blueprint in hand, `Shift+B` opens the configuration window and `Shift+G` sets a quick grid,

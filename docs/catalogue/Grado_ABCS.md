@@ -29,12 +29,11 @@ Three findings:
   packs and 19 hidden mandatory dependencies: no `! space-age` anywhere, and no mandatory
   `space-age` anywhere. **Seventeen declare it *optionally***, eleven of them `Grado_ABC` members.
   Silence is not compatibility, and this pack is where that gets tested. *Tested as a load
-  2026-10-04 (#118): the chain loads beside Space Age with no error from the game, which is still not
-  compatibility in play.* *Superseded 2026-09-22 by
-  #7 and #8 and 2026-09-23 by #9, which changed the three lower lists to 87 named members.
-  Re-read 2026-09-24 (#61) for those 87, latest release each: still no `! space-age` and no
-  mandatory `space-age`; sixteen declare it optionally, ten of them `Grado_ABC` members. The
-  hidden members were not re-read.*
+  2026-10-04 (#118): the chain loads beside Space Age with no error from the game, which is still
+  not compatibility in play.* *Superseded 2026-09-22 by #7 and #8 and 2026-09-23 by #9, which
+  changed the three lower lists to 87 named members. Re-read 2026-09-24 (#61) for those 87, latest
+  release each: still no `! space-age` and no mandatory `space-age`; sixteen declare it optionally,
+  ten of them `Grado_ABC` members. The hidden members were not re-read.*
 - **This is where the one-mod-per-branch rule is under real pressure.** Adding `space-age` enables
   the expansion beside Angel's and Bob's; it does not make them work together. The two mods on 2.x
   that attempt that job, both assessed by #31, would each be a second addition, and one of them,
@@ -70,8 +69,8 @@ it found is not a substitute for this member — it is a candidate second member
 the interesting part of this file.
 
 **Ruled 2026-09-23 (#10): kept, as the pack's only member.** The pack is `Grado_ABC` beside Space
-Age, not integrated with it (`GLOSSARY.md`, *Promise*), so no bridge was added; the reasons are under
-*Pressure on the one-mod-per-branch rule* below.
+Age, not integrated with it (`GLOSSARY.md`, *Promise*), so no bridge was added; the reasons are
+under *Pressure on the one-mod-per-branch rule* below.
 
 **Every row above is degraded evidence and should be read as such.** The **Latest**, **Downloads**
 and **Owner** rows describe the placeholder, not the expansion; **Does** is a description of the
@@ -94,9 +93,9 @@ product rather than a reading of an `info_json`. No other entry in this catalogu
 | releases | one: `1.1.0`, `factorio_version` 1.1, dependencies `["base >= 1.1.0"]` |
 
 It is a name reservation, made on the day of the FFF that its `source_url` points at, so that nobody
-else could take `space-age` before the expansion shipped. `base` is reserved the same way by the same
-owner, and `quality` too; `elevated-rails` is reserved by `Quezler` rather than by the same account,
-which is a curiosity rather than a fact this pack depends on.
+else could take `space-age` before the expansion shipped. `base` is reserved the same way by the
+same owner, and `quality` too; `elevated-rails` is reserved by `Quezler` rather than by the same
+account, which is a curiosity rather than a fact this pack depends on.
 
 **What follows for the catalogue.** `CLAUDE.md`'s evidence rules are built on the portal API, and
 for this one member they return nothing usable. Three things the other 100-odd entries state as read
@@ -108,7 +107,8 @@ once, end to end — is not merely the last check on this pack; it is the first 
 member.** *Measured 2026-10-04 (#118): that first check is made, as a load. The installed
 `space-age` `2.0.77` loaded beside the whole chain with no error from the game; members' own log
 complaints are in the record. Its dependency list, line and floor are still the 2026-09-23 reading
-below, and the game has now confirmed the `quality` and `elevated-rails` lines. The 2.1 build is still unread, and the play session is still #29's.*
+below, and the game has now confirmed the `quality` and `elevated-rails` lines. The 2.1 build is
+still unread, and the play session is still #29's.*
 
 One consequence is worth naming rather than leaving implicit. Space Age ships as three mods, not
 one: `space-age`, `quality` and `elevated-rails` are distinct names, which the portal's three
@@ -118,9 +118,10 @@ from the portal.
 
 **It can from the game, and it does.** `data/space-age/info.json` in the installed game, version
 `2.0.77`, read 2026-09-23, declares `base >= 2.0.0`, `elevated-rails >= 2.0.0` and
-`quality >= 2.0.0`, with `factorio_version` `2.0`. So the other two are hidden mandatory dependencies
-of this member, the same shape as the ones `docs/catalogue/Grado_ABC.md` found, and #10 ruled not to
-name them in the pack's list. This is a reading of 2.0.77; a 2.1 build was not available to read.
+`quality >= 2.0.0`, with `factorio_version` `2.0`. So the other two are hidden mandatory
+dependencies of this member, the same shape as the ones `docs/catalogue/Grado_ABC.md` found, and #10
+ruled not to name them in the pack's list. This is a reading of 2.0.77; a 2.1 build was not
+available to read.
 
 **Measured in the game 2026-10-04 (#118): required, and a disabled one is refused, not switched
 on.** With
@@ -231,12 +232,13 @@ eight it names pull in ten more of their own. Nine of those ten are ones it list
 | `condensing-agricultural-tower` | `planetaris-arig` | `1.1.1`, 2026-02-24 | `1.1.2`, 2.1, 2026-07-15 | 31,552 | `Syen_ce` |
 | `lamp-post` | `planetaris-hyarion` | `1.0.5`, 2026-09-05 | `1.0.6`, 2.1, 2026-09-05 | 22,399 | `Syen_ce` |
 
-The first eight are the ones this mod names; the last ten arrive through them. `muluna-utility-constants` is the one
-of the ten it does not list at all. None of the eighteen was assessed as a mod - each would need an
-entry of its own if the pack took them, and several of the ten are buildings or content in their
-own right, by their titles. **With it, this pack's closure is 122 mods against 103 without**, and
-the pack's effective floor rises from `base >= 2.0.74` (`miniloader-redux`) to **`>= 2.0.76`**,
-set by this mod itself. The resolve found every member and no constraint violated.
+The first eight are the ones this mod names; the last ten arrive through them.
+`muluna-utility-constants` is the one of the ten it does not list at all. None of the eighteen was
+assessed as a mod - each would need an entry of its own if the pack took them, and several of the
+ten are buildings or content in their own right, by their titles. **With it, this pack's closure is
+122 mods against 103 without**, and the pack's effective floor rises from `base >= 2.0.74`
+(`miniloader-redux`) to **`>= 2.0.76`**, set by this mod itself. The resolve found every member and
+no constraint violated.
 
 **Does `Grado_ABC` need any change to accommodate it? No.** With it added, no pick anywhere in the
 lower closure moved version, no constraint between the picks was violated, and every requirement it
@@ -246,8 +248,8 @@ chain's closure**, and the resolve checked each range. Twenty are named members:
 `bobenemies`, `bobequipment`, `bobgreenhouse`, `bobinserters`, `bobmining`, `bobores`,
 `bobvehicleequipment`, `bobwarfare`, `DiscoScience`, `FNEI`, `helmod`, `RateCalculator`,
 `reskins-angels`, `reskins-bobs` and `Todo-List`. Five are hidden: the three
-`angelsaddons-mobility-graphics-*` packages, `alien-biomes-graphics` and `reskins-library`. What it would
-change is this pack, not the one below.
+`angelsaddons-mobility-graphics-*` packages, `alien-biomes-graphics` and `reskins-library`. What it
+would change is this pack, not the one below.
 
 **What was not measured.** The 2.1 line: `1.2.17` names the same eight at higher minimums
 (`Paracelsin >= 1.9.2`, `PlanetsLib >= 1.21.3` among them), but the chain does not resolve on a
@@ -265,12 +267,11 @@ declares `! angelbob-spaceage-rebalance`; this mod declares nothing about either
 whether the unintegrated pack plays - and only together with the promise, which a bridge fails.
 #10's ruling stands until then. If the bridge is ever wanted, this is
 the stronger mod by every measure taken: current on both lines within two days of this reading, 72
-releases, nearly fifteen times the other's downloads. Its cost is eighteen third-party mods, most of them
-planets and planet content. How it pushes on the one-mod-per-branch rule depends on what the rule
-counts. Named the way #10 named `quality` and `elevated-rails` - hidden mandatory members stay
+releases, nearly fifteen times the other's downloads. Its cost is eighteen third-party mods, most of
+them planets and planet content. How it pushes on the one-mod-per-branch rule depends on what the
+rule counts. Named the way #10 named `quality` and `elevated-rails` - hidden mandatory members stay
 unnamed - the pack would list two members, `space-age` and this mod, with the eighteen unnamed.
-Counted by what a player installs, it adds nineteen.
-Which reading the rule means is Truls's.
+Counted by what a player installs, it adds nineteen. Which reading the rule means is Truls's.
 
 ### `BobsAngelsSpaceAge`
 
@@ -327,9 +328,9 @@ and a narrower job - it moves ores between planets rather than merging the two p
 
 It is built on the author's modified Angel's Special Vanilla from `angels_galore` and requires
 three of the author's other Galore mods and the author's library. Its description says it leaves
-out Angel's eight extra metals. Created 2026-09-30, the day of its one release. A source repository is linked,
-`https://github.com/JTnadrooi/Project-Galore`, and was not read, so everything below is from the
-`info_json` of each mod and this mod's description.
+out Angel's eight extra metals. Created 2026-09-30, the day of its one release. A source repository
+is linked, `https://github.com/JTnadrooi/Project-Galore`, and was not read, so everything below is from the `info_json` of each mod and this
+mod's description.
 
 **What it requires from the chain.** It names three dependencies: `base >= 2.0`,
 `space_age_galore` and `angels_galore`. Through `angels_galore` it requires `angelsbioprocessing`,
@@ -448,12 +449,12 @@ record of that high is* Effective Factorio floor *in `docs/porting-notes.md`, me
 `CLAUDE.md` only repeats it.*
 
 **Against the promise: one of the two of the four that do not merge, by their own accounts - but it
-moves the overhaul.** Its stated goal is to "install multiple large overhaul ecosystems without turning
-Nauvis into an uncontrolled mixture of all of them", and "the goal is not to flatten the overhaul
-packs into vanilla Space Age". That is separation, and on its face it is nearer "the planets and the
-overhaul run side by side" than the unintegrated pack, where Angel's and Bob's rewrite Nauvis
-itself. Against that: it gets there by rewriting the overhaul. Angel's and Bob's geology is
-suppressed on Nauvis, their science recipes are rebuilt where needed, dedicated `iw-ab-*`
+moves the overhaul.** Its stated goal is to "install multiple large overhaul ecosystems without
+turning Nauvis into an uncontrolled mixture of all of them", and "the goal is not to flatten the
+overhaul packs into vanilla Space Age". That is separation, and on its face it is nearer "the
+planets and the overhaul run side by side" than the unintegrated pack, where Angel's and Bob's
+rewrite Nauvis itself. Against that: it gets there by rewriting the overhaul. Angel's and Bob's
+geology is suppressed on Nauvis, their science recipes are rebuilt where needed, dedicated `iw-ab-*`
 prototypes stand in where the ecosystems would collide, and research milestones become
 surface-aware. Angel's and Bob's stop being the game a player starts in and become a planet they
 travel to. A mod whose job is that is a bridge in the sense this section uses, built on isolation
@@ -614,8 +615,8 @@ The changelog lines, each from the release of 2026-06-01:
 - **Bob's writes over Space Age on purpose**, in its `data` stage. That is the turbo belts,
   `battery-mk3-equipment`, the `carbon` item and `ammonia`. `boblogistics`, `bobequipment` and
   `bobplates` declare `space-age` as an optional dependency, which loads them after it, and so
-  does `bobassembly`. `bobrevamp` and `bobores` do not name it in their `info.json`, and the dump has `bobrevamp`'s
-  `ammonia` all the same.
+  does `bobassembly`. `bobrevamp` and `bobores` do not name it in their `info.json`, and the dump
+  has `bobrevamp`'s `ammonia` all the same.
 - **Bob's steps aside on purpose** and edits Space Age's prototype in place. That is the tungsten
   and lithium items and recipes. `boblogistics` also folds Space Age's technology
   `turbo-transport-belt` into `logistics-4` and hides it (`data-final-fixes.lua` lines 49 to 62),
@@ -1069,10 +1070,10 @@ The two tungsten steps are where this pack changed most. In Space Age alone the 
 carbide is made in an assembling machine from `tungsten-ore`, `carbon` and `sulfuric-acid`, by a
 recipe that mining a rock on Vulcanus unlocks. Here the only recipe is Angel's, behind
 `angels-tungsten-carbide-smelting-1`, which costs automation, logistic, chemical and production
-science. Its prerequisite is `angels-tungsten-smelting-1`, which has six of its own. The foundry's own recipe is unchanged: 50
-`tungsten-carbide` among its parts, made on Vulcanus only, and its technology is still triggered
-by crafting `tungsten-carbide`. Vulcanus's `tungsten-ore` does feed Angel's chain: three recipes
-take it, `angels-processed-tungsten`, `angels-solid-tungsten-oxide` and
+science. Its prerequisite is `angels-tungsten-smelting-1`, which has six of its own. The foundry's
+own recipe is unchanged: 50 `tungsten-carbide` among its parts, made on Vulcanus only, and its
+technology is still triggered by crafting `tungsten-carbide`. Vulcanus's `tungsten-ore` does feed
+Angel's chain: three recipes take it, `angels-processed-tungsten`, `angels-solid-tungsten-oxide` and
 `angels-catalyst-metal-yellow`.
 
 #### `agricultural-science-pack`
@@ -1209,16 +1210,16 @@ It also refines the count: **seventeen of the 117 declare `space-age` optionally
 seventeen are `Grado_ABC` members, not ten.** *(All three figures predate #9, which on 2026-09-23
 removed `deadlock-beltboxes-loaders` and three other members and added one: after it the
 `space-age`-optional counts are sixteen and ten, and the 117 is not re-derived.)* The eleventh is
-`deadlock-beltboxes-loaders`, which is not a Bob's mod and so fell outside the frame #4 counted in; the remaining six are
-`Grado_ChangingBase`'s `EditorExtensions`, `StoneWaterWell-ActuallyUpdated`, `alien-biomes`,
-`reverse-factory` and `underground-pipe-pack`, and `Grado_NonChanging`'s `FactorySearch`. *(Read
-2026-09-22, before #8 changed that pack the same day: `StoneWaterWell-ActuallyUpdated` is no longer
-a member, and the incoming `cybersyn2` and `Waterfill_v17` were not in the frame. The count is left
-as measured; re-deriving it needs a ticket nobody has filed.)* But an
-overhaul that replaces the ore-to-plate chain and an expansion that adds four planets with
-their own ores are not integrated by resolving; they are integrated by somebody writing the bridge.
-`Grado_ABCX` has no equivalent gap, because the fork declares direct Bob's integration and is
-designed to sit on Nauvis.
+`deadlock-beltboxes-loaders`, which is not a Bob's mod and so fell outside the frame #4 counted in;
+the remaining six are `Grado_ChangingBase`'s `EditorExtensions`, `StoneWaterWell-ActuallyUpdated`,
+`alien-biomes`, `reverse-factory` and `underground-pipe-pack`, and `Grado_NonChanging`'s
+`FactorySearch`. *(Read 2026-09-22, before #8 changed that pack the same day:
+`StoneWaterWell-ActuallyUpdated` is no longer a member, and the incoming `cybersyn2` and
+`Waterfill_v17` were not in the frame. The count is left as measured; re-deriving it needs a ticket
+nobody has filed.)* But an overhaul that replaces the ore-to-plate chain and an expansion that adds
+four planets with their own ores are not integrated by resolving; they are integrated by somebody
+writing the bridge. `Grado_ABCX` has no equivalent gap, because the fork declares direct Bob's
+integration and is designed to sit on Nauvis.
 
 **Two mods on 2.x attempt the bridge, and they are mutually exclusive.** Both were read 2026-09-22;
 `angelbob-spaceage-rebalance` was re-read at `1.2.17` on 2026-09-23 with its mandatory list
@@ -1289,20 +1290,19 @@ Truls's.
   measure — current within three days of this reading, fifteen times the downloads, on 2.1 — and it
   is not a one-mod addition. Its eight mandatory extras, plus itself and `space-age`, would make
   `Grado_ABCS` a **ten-member pack** against `Grado_ABCX`'s one. Seven of the eight are community
-  planet content and its graphics, the eighth, `PlanetsLib`, is the library they share, and those are
-  content decisions nobody has taken. *(Ten extras and twelve members until 2026-09-23 (#10), when
-  the game showed that `space-age` pulls in `quality` and `elevated-rails` itself.)* *(Qualified
-  2026-10-04 (#118): it requires them; a disabled one is refused, not enabled. See* What the portal
-  actually returns*.)* It also requires
-  `angelsbioprocessing`, `angelspetrochem`,
+  planet content and its graphics, the eighth, `PlanetsLib`, is the library they share, and those
+  are content decisions nobody has taken. *(Ten extras and twelve members until 2026-09-23 (#10),
+  when the game showed that `space-age` pulls in `quality` and `elevated-rails` itself.)*
+  *(Qualified 2026-10-04 (#118): it requires them; a disabled one is refused, not enabled. See* What
+  the portal actually returns*.)* It also requires `angelsbioprocessing`, `angelspetrochem`,
   `angelsrefining`, `angelssmelting` and seven Bob's mods at specific minimum versions, all of which
   `Grado_ABC` already carries, so the ABC side costs nothing extra.
 - **`BobsAngelsSpaceAge` fits the rule and is much weaker evidence.** Its whole mandatory list is
   `base >= 2.0.0`, `space-age`, `angelsrefining` and `bobplates`, the last two already ABC members,
-  so it would be a genuine second-and-final addition. Against that: 251 downloads, seven months since
-  its last release, still on `factorio_version` 2.0, a version number that starts with `0.0`, and a
-  summary written in German. It does a narrower job — redistributing ores across three planets, not
-  merging the two progressions.
+  so it would be a genuine second-and-final addition. Against that: 251 downloads, seven months
+  since its last release, still on `factorio_version` 2.0, a version number that starts with `0.0`,
+  and a summary written in German. It does a narrower job — redistributing ores across three
+  planets, not merging the two progressions.
 - **Doing nothing is also an option and is not obviously wrong.** `Grado_ABCS` as it stands is a
   playable claim — Angel's and Bob's on Nauvis, the expansion's planets beside them, unintegrated —
   and whether that is the pack Truls wants is exactly the kind of question `CLAUDE.md` reserves.

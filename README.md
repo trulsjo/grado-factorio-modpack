@@ -81,15 +81,18 @@ network. The tools it runs live in `vendor/grado-factorio-tools`.
 
 ## Dumping a staged pack's prototypes
 
-One command gives the path of a `--dump-data` dump of a staged pack, on its last line:
+One command, run from the repository root, gives the path of a `--dump-data` dump of a staged
+pack, on its last line. It is the shared dump cache in the tools submodule, handed the pack's
+staged directory:
 
 ```
-pwsh -File scripts/get-dump.ps1 Grado_ABC
-pwsh -File scripts/get-dump.ps1 Grado_ABCS -With space-age
+pwsh -File vendor/grado-factorio-tools/scripts/get-dump.ps1 .mod-cache/Grado_ABC
+pwsh -File vendor/grado-factorio-tools/scripts/get-dump.ps1 .mod-cache/Grado_ABCS -With space-age
 ```
 
-The dump is kept in `.dump-cache/` at the repository root, which is git-ignored and outside the
-staged mod directories, as `<pack>[+<bundled mods>]-<checksum>-<id>.json`: the checksum is the
+The dump is kept in `.dump-cache/` under the directory the command is run from, which at the
+repository root is git-ignored and outside the staged mod directories, as
+`<pack>[+<bundled mods>]-<checksum>-<id>.json`: the checksum is the
 prototype list checksum the game prints, and the game's log (`.log`) and the staged set the dump is
 of (`.key`) lie beside it. Asking again runs nothing while the staged set is the same, and the
 command says which it did. A member at another release, a mod disabled with `-Disabled <names>`,
@@ -97,7 +100,8 @@ another `-With` selection, another game build, or a file added to or removed fro
 another set and gets a dump of its own. What it cannot see is in the script's header.
 
 To clear the cache, delete `.dump-cache/`, or the three files of one dump. Nothing else reads it.
-`pwsh -File scripts/get-dump.ps1 -SelfTest` checks the caching without the game.
+`pwsh -File vendor/grado-factorio-tools/scripts/get-dump.ps1 -SelfTest` checks the caching without
+the game.
 
 ## Checks
 

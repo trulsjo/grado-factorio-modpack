@@ -23,6 +23,12 @@
 # scripts/absolute-words.ps1 (#219) has its self-test among the others and no step of its own:
 # it lists lines for a session to walk before the pre-PR review, and has nothing to fail on.
 #
+# The self-test of the mod-cache hook's wiring is not run here (#225). It is
+# vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 -SelfTest -Settings
+# .claude/settings.json, and on this runner 4 of its 39 cases fail at tools pin 20ef896, each a
+# Windows way of writing a path (measured 2026-10-11, run 38165530088; grado-factorio-tools#113).
+# The case that reads the wiring held. Until that is repaired a session runs it by hand.
+#
 # The pull request's head is checked out, not the merge commit GitHub makes for it, so the range
 # is the pull request's commits and no other. The whole history and the submodule come with it,
 # or `origin/main..HEAD` is empty and the two shared checks, commit-check.ps1 and

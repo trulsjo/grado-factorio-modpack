@@ -141,7 +141,9 @@ not missing.
 - **A batch of tickets lands as one pull request** (#151): a branch named for its tickets, one
   commit per ticket, the pre-PR review and one commit of its fixes, the pull request with the
   review's findings in its body, then a rebase merge. The plugin pass,
-  `code-review:code-review`, runs only when Truls asks.
+  `code-review:code-review`, runs only when Truls asks. A pull request is not merged while a
+  plugin pass or a confirmation of it runs, and a session is cleared only at the two points
+  `docs/agents/code-review.md` names (#159).
 - `CLAUDE.local.md` is personal and git-ignored. Never commit it, and never move its contents into a
   tracked file.
 - **`info.json` is strict JSON — no comments.** Anything that needs explaining goes in

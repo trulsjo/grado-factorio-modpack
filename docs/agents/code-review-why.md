@@ -149,6 +149,44 @@ was pushed found three more errors, each in a sentence the repair had added. One
 false twice: "every figure in this section is quoted from #151" became "one is not from #151",
 and two were not.
 
+## Why a pull request waits for its review, and where a session is cleared
+
+*Added 2026-10-11 (#159), decided by Truls that day over fourteen questions; the answers are
+#159's two comments of 2026-10-11. What is given "by #159's account" is from its body and was
+not counted again for this page.*
+
+**PR #152 was merged while its review ran.** By #159's account nothing was posted to it, and the
+fixes needed a second pull request, #155, and a rebase of the fix branch. #159 also offered
+running the review unasked once the pull request was open. #151 overtook that: the pre-PR
+review runs before the pull request exists and the plugin pass runs when Truls asks, so what
+can still be running on an open pull request is a plugin pass or a confirmation.
+
+**The check run is left out** because Truls merged PR #221 on 2026-10-11 with its glossary step
+red, by his own ruling on that pull request, and a rule covering the check run would have
+forbidden that. What happens if a pull request is merged while a review runs is left unwritten:
+the rule is there to stop it.
+
+**Why clearing points are named.** By #159's account the three largest sessions of 2026-10-03
+to 2026-10-06 peaked at about 730k, 524k and 389k tokens of context, because one session
+carried the implementing, the pull request, the review, the fixes, the new tickets and a
+retrospective. What a clear loses is what stands in the session and nowhere else. Two cases
+from 2026-10-11, by that session's own account: after PR #221 merged, three open items stood in
+its last message alone until one became grado-factorio-tools#106; and that the merge of PR #222
+waited on Truls was said in the conversation and not on the pull request. That is where the
+last condition of each point comes from.
+
+**Why the stretch from the reviewer's spawn to the open pull request is not one.** A clear there
+loses the reviewer before its confirmation, or leaves a reviewed branch whose report is in a
+scratch file and nowhere else. The pull request's body is built from that file.
+
+**Why compaction is outside the rule.** It is not chosen. Whether a session can tell how full
+its context is was not measured.
+
+**Not taken:** an entry of its own in `docs/decisions.md`, where #151's entry gained a dated
+note; a term in `GLOSSARY.md`, which has none for how a session works; and making the first
+point depend on whether a plugin pass is wanted, which would be a question at each pull request
+for a pass that runs when Truls asks.
+
 ## What the rules said before
 
 `code-review.md` is loaded whole by every review, so since 2026-10-06 it states the live rule only
@@ -257,3 +295,9 @@ and ran the shared one from the tools submodule, and #209 handed that one a line
 
 > `scripts/markdown-check.ps1 -Range origin/main...HEAD`, and of the resolve if an `info.json`
 > changed.
+
+**The last paragraph of the third rule**, as it stood from 2026-10-06 until 2026-10-11, when Truls
+decided #159 and the rule took its place:
+
+> Two things are #159's to decide and are not settled here: whether a pull request may be merged
+> while a review runs, and where a session can be cleared.

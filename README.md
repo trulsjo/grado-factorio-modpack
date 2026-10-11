@@ -146,9 +146,17 @@ finding the confirmation does not answer. Its self-test runs in the same workflo
 
 Agent sessions also get a hook from `.claude/settings.json`: a shell command that changes
 directory into `.mod-cache/` is refused before it runs, because a session's tooling writes state
-files where its shell stands. Reading the cache by path is not affected.
-`scripts/refuse-cd-into-mod-cache.ps1` has one refused and one allowed example to check it with,
-and a `-SelfTest`.
+files where its shell stands. Reading the cache by path is not affected. The hook is the shared
+one, `vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1`. To check it from the
+repository root, in PowerShell: the first is refused with exit 2, the second passes with exit 0.
+
+```
+'{"cwd":".","tool_input":{"command":"cd .mod-cache/Grado_ABC && ls"}}' | pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 -Root .; $LASTEXITCODE
+'{"cwd":".","tool_input":{"command":"ls .mod-cache/Grado_ABC"}}' | pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 -Root .; $LASTEXITCODE
+```
+
+Its `-SelfTest -Settings .claude/settings.json` runs the command wired here and fails if that
+command no longer reaches the hook. It is run by hand: no hook and no workflow step runs it.
 
 A second hook there, `scripts/ask-before-download.ps1`, stops a command that installs a package
 (`npm install`, `ci`, `add` or `exec`, `npx`, `pip install`, `gem install`, `cargo install`, and `install` under `winget`,

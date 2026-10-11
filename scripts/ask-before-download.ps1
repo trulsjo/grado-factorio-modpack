@@ -32,8 +32,8 @@
     was shown the reason.
 
     WHAT IT LETS THROUGH. Everything else, and so the project's own work: a read of the portal
-    API, a mod fetched from the portal, scripts/stage-pack.ps1, scripts/get-dump.ps1, the resolver
-    and the other tools in vendor/grado-factorio-tools, gh and git. A member mod is Lua the game
+    API, a mod fetched from the portal, scripts/stage-pack.ps1, the resolver, the dump cache and
+    the other tools in vendor/grado-factorio-tools, gh and git. A member mod is Lua the game
     runs; #179 takes staging one as the project's work and not as downloading a program.
 
     WHAT IT CANNOT SEE. A download made by a script or program it lets through, the staging
@@ -112,7 +112,7 @@ if ($SelfTest) {
         @("Invoke-RestMethod 'https://mods.factorio.com/api/mods?page_size=max&version=2.0'", $false),
         @('curl -L -o flib.zip "https://mods.factorio.com/download/flib/5f7b2c?username=u&token=t.zip"', $false),
         @('pwsh -File scripts/stage-pack.ps1 Grado_ABC', $false),
-        @('pwsh -File scripts/get-dump.ps1 Grado_ABCS -With space-age', $false),
+        @('pwsh -File vendor/grado-factorio-tools/scripts/get-dump.ps1 .mod-cache/Grado_ABCS -With space-age', $false),
         @('pwsh -File vendor/grado-factorio-tools/scripts/resolve-modpack.ps1 -Line 2.0 -Build 2.0.77 Grado_ABC/info.json', $false),
         @('gh issue view 179 --json title,body,comments', $false),
         @('gh pr create --title "x" --body "y"', $false),

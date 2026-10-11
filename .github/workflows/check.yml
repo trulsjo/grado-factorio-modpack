@@ -27,7 +27,8 @@
 # vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 -SelfTest -Settings
 # .claude/settings.json, and on this runner 4 of its 39 cases fail at tools pin 20ef896, each a
 # Windows way of writing a path (measured 2026-10-11, run 38165530088; grado-factorio-tools#113).
-# The case that reads the wiring held. Until that is repaired a session runs it by hand.
+# The case that reads the wiring held. Until grado-factorio-tools#113 is closed a session runs
+# the self-test by hand.
 #
 # The pull request's head is checked out, not the merge commit GitHub makes for it, so the range
 # is the pull request's commits and no other. The whole history and the submodule come with it,

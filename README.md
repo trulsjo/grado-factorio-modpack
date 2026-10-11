@@ -165,8 +165,8 @@ with the project's settings alone and the Bash tool (#224): `echo mod-cache-prob
 the tool call returned to the agent held nothing of that line. The line stood in the session's
 hook events, with exit code 1 and outcome "error". A command that does not name `mod-cache` ran
 with no hook output. Not measured: what an interactive session shows the person at the keyboard,
-and the PowerShell tool. So #184's "the session is told" does not hold of the agent, and #228 is
-the repair.
+and the PowerShell tool. So in that run #184's fourth criterion did not hold of what the tool
+call returned, and #228 is the repair.
 
 A second hook there, `scripts/ask-before-download.ps1`, stops a command that installs a package
 (`npm install`, `ci`, `add` or `exec`, `npx`, `pip install`, `gem install`, `cargo install`, and

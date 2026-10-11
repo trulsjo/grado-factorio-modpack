@@ -848,3 +848,12 @@ PR #216, and the range sentence now names the script it speaks of:
 one from the tools submodule:
 
 > `scripts/markdown-check.ps1 -Range origin/main...HEAD` checks the Markdown a branch changed.
+
+**What a body has to cite**, under *Commit messages*, its last two sentences, as they stood from
+#195 (2026-10-09) until 2026-10-11. Truls ruled on 2026-10-09 that the rule is stated once, in
+the shared commit convention, and #202 took it from there: it is under *Body* in
+`vendor/grado-factorio-tools/docs/commit-convention.md` as pinned.
+
+> A body says what changed and why, and cites its
+> ticket where it has one. What happened on an earlier pull request or in the session is the
+> ticket's to tell (#195).

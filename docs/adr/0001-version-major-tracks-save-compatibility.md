@@ -7,8 +7,8 @@
 A pack carries no content of its own, so the usual semver reading - how much of the API changed -
 has nothing to measure. The one question a player actually asks a pack's version is whether they can
 update mid-save, so that is what the number answers: **major** for a dependency change an existing
-save cannot survive (a member mod of `Grado_ChangingBase` or below added or removed), **minor** for a
-save-safe dependency change, **patch** for metadata only. This matches the breaking-change rule
+save cannot survive (a member mod of `Grado_ChangingBase` or below added or removed), **minor** for
+a save-safe dependency change, **patch** for metadata only. This matches the breaking-change rule
 `CLAUDE.md` already applies to commit messages.
 
 ## Consequences

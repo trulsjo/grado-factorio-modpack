@@ -53,8 +53,8 @@ told.
 
 **This repository is almost entirely prose, and nothing here checks what it says.** The commit
 hooks read the shape of a message and of the Markdown - emphasis, tables and links
-(`vendor/grado-factorio-tools/scripts/markdown-check.ps1`) - and a load can contradict only whether a pack starts. A count, a
-date or a portal reading is checked by the reviewer or by nobody.
+(`vendor/grado-factorio-tools/scripts/markdown-check.ps1`) - and a load can contradict only whether
+a pack starts. A count, a date or a portal reading is checked by the reviewer or by nobody.
 
 ### The rule
 
@@ -125,8 +125,8 @@ rests on has no grade: it is marked "not measured" or it is a finding. Prose wri
 its own.
 
 **A portal reading is a measurement.** Every version, date, download count and `factorio_version` in
-prose here came from an API call on a particular day and goes stale silently. Treat an undated one as
-a finding.
+prose here came from an API call on a particular day and goes stale silently. Treat an undated one
+as a finding.
 
 **This binds the reviewer.** An author who greps before opening the pull request saves a round, but
 the obligation lives in the review.
@@ -152,8 +152,8 @@ handed and not by a skill's name:
   portal API's responses, a load's log - and the scripts that produced the figures. On any other
   branch, the results of `commit-check.ps1 -Range origin/main..HEAD` and of
   `markdown-check.ps1 -Range origin/main...HEAD`, both in `vendor/grado-factorio-tools/scripts/`,
-  and of the resolve if an `info.json` changed. The commit check's range has two dots and the other two checks' have three: why is in
-  the header of `.github/workflows/check.yml`.
+  and of the resolve if an `info.json` changed. The commit check's range has two dots and the other
+  two checks' have three: why is in the header of `.github/workflows/check.yml`.
 - the output of `scripts/glossary-check.ps1 -Range origin/main...HEAD`, which lists each added line
   that uses a word `GLOSSARY.md` avoids and is not marked deliberate. The script fails if it
   lists one. A listed use is reworded or marked before the review. Whether a marker is honest is

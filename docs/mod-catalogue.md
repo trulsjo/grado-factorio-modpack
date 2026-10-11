@@ -152,9 +152,10 @@ seventh was added on 2026-09-24, for a mod assessed for a pack that was never in
 and fourth it adds a **Status** row, moves the entry to a section of its own and constrains the
 **Recommendation**, which takes verdicts of its own in place of the template's.
 
-- **A mod that replaced a 1.1 mod** adds one row, `| **Supersedes** | `old-name`, last 1.1 release |`,
-  and changes nothing else. The heading is the mod that is in the pack now, not the one it replaced
-  — the heading has to match the dependency list.
+- **A mod that replaced a 1.1 mod** adds one row,
+  `| **Supersedes** | `old-name`, last 1.1 release |`, and changes nothing else. The heading is the
+  mod that is in the pack now, not the one it replaced — the heading has to match the dependency
+  list.
 
 `reconsider:` was added to the in-pack verdicts on 2026-09-21, after the `Grado_NonChanging` survey
 hit a case the first three could not express. `keep`, `replace with` and `drop` each assert an
@@ -169,9 +170,9 @@ instead. Use it sparingly — a survey where several entries reconsider has not 
   own leaves an overlap nobody can trace.
 
 - **A mod dropped during the port** does three things: it adds
-  `| **Status** | dropped during the port |`, it sits in the *Dropped during the port* section rather
-  than *In the pack*, and its **Recommendation** begins `stay dropped` or `reconsider:` followed by
-  what is to be reconsidered.
+  `| **Status** | dropped during the port |`, it sits in the *Dropped during the port* section
+  rather than *In the pack*, and its **Recommendation** begins `stay dropped` or `reconsider:`
+  followed by what is to be reconsidered.
 
 - **A mod ruled out after the port** is the same shape for a mod that survived the port and was
   removed later, by a decision rather than by an upstream gap. It adds
@@ -179,8 +180,8 @@ instead. Use it sparingly — a survey where several entries reconsider has not 
   ``| **Status** | replaced by `new-name`, <date> (#<issue>) |`` if something took its place, and it
   sits in the *Ruled out after the port* section. **Its Recommendation is left exactly as the survey
   wrote it**, with the ruling appended below as its own paragraph — because a ruling that overwrites
-  the recommendation it acted on cannot be audited afterwards. The replacement, if there is one, gets
-  its own entry under *In the pack* carrying the `**Supersedes**` row.
+  the recommendation it acted on cannot be audited afterwards. The replacement, if there is one,
+  gets its own entry under *In the pack* carrying the `**Supersedes**` row.
 
   Added 2026-09-22, settling a gap #7 hit: the three variants above all assume a mod left during the
   port, and `Grado_NonChanging` removed three mods that had survived it. Without this variant the
@@ -196,8 +197,8 @@ instead. Use it sparingly — a survey where several entries reconsider has not 
   only because the mod it serves is a load drop goes the same way, without being called one: the
   glossary's term is for a member the pack does not load with. Its ruling paragraph names the load
   drop it left with and says whether any failure was traced to it. #81's two entries in
-  `docs/catalogue/Grado_ABC.md` are the first, one of each kind. No new variant: whether the format should have fewer
-  or more is #62's.
+  `docs/catalogue/Grado_ABC.md` are the first, one of each kind. No new variant: whether the format
+  should have fewer or more is #62's.
 
 - **A mod added after the port** is the mirror of the one above: a mod that was never in the 1.1
   pack and entered by a decision. It sits under *In the pack*, carries the `**Supersedes**` row if
@@ -216,9 +217,9 @@ instead. Use it sparingly — a survey where several entries reconsider has not 
 
   Both added 2026-09-22 by #8, which hit two more gaps at once: it added three mods to
   `Grado_ChangingBase` that no variant covered, and it resolved the `bobinserters` duplication by
-  deleting a line from `Grado_ABC` whose entry then had no licensed shape. The lesson is the same one
-  the variant above records — the format assumed the port was the only thing that ever moved a mod,
-  and it is not.
+  deleting a line from `Grado_ABC` whose entry then had no licensed shape. The lesson is the same
+  one the variant above records — the format assumed the port was the only thing that ever moved a
+  mod, and it is not.
 
 - **A candidate assessed for a pack and not in it** sits in a *Candidates, not members* section
   and adds `| **Status** | candidate, not a member (#<issue>) |`. **Its Recommendation is `add`,
@@ -262,9 +263,9 @@ The rules are in `CLAUDE.md`. Two of them decide whether an entry is finished:
 expensive one, and the worked example below is what it found the first time it was properly applied.
 The full list is two calls, `version=2.0` and `version=2.1`, taken as a union — `CLAUDE.md` has the
 counts. Match against `name`, `title` *and* `summary`. *Corrected 2026-10-01 (#44): this read "one
-call — the `version=2.0` parameter means "2.0 and later", so the 9,642 entries it returns include the
-2.1 mods". It does not: on 2026-10-01, 1,054 mods were in the 2.1 listing only.* *Noted 2026-10-06
-(#158): the record of the counts is the search dated 2026-10-01 in
+call — the `version=2.0` parameter means "2.0 and later", so the 9,642 entries it returns include
+the 2.1 mods". It does not: on 2026-10-01, 1,054 mods were in the 2.1 listing only.* *Noted
+2026-10-06 (#158): the record of the counts is the search dated 2026-10-01 in
 `docs/catalogue/Grado_NonChanging.md`, under* Night lighting: what replaces AfraidOfTheDark's tune
 (#42). *`CLAUDE.md` only repeats them.*
 
@@ -276,11 +277,11 @@ the name to look related. `PickerExtended` became `kry-picker-extended`, `WaterW
 `Grado_ChangingBase` — in part because of the overlaps recorded here. `boblogistics` against it and
 `space-age` against it are both gone, and **#38 was closed as moot**. The instances are left in the
 text above because the point they make is about the *rate* at which surveys find overlaps, which the
-removal does not change; only the tally of live overlaps does, and that is **three**: `miniloader-redux` against
-`deadlock-beltboxes-loaders`, `angelsaddons-storage` against the `WideChests` family, and
-`SpaceModFeorasFork` against `space-age`. Three of the six are void — the two above and, earlier,
-`blueprint-sandboxes` against `EditorExtensions`, which **#7** voided on 2026-09-22 by removing
-`blueprint-sandboxes` from `Grado_NonChanging`.
+removal does not change; only the tally of live overlaps does, and that is **three**:
+`miniloader-redux` against `deadlock-beltboxes-loaders`, `angelsaddons-storage` against the
+`WideChests` family, and `SpaceModFeorasFork` against `space-age`. Three of the six are void — the
+two above and, earlier, `blueprint-sandboxes` against `EditorExtensions`, which **#7** voided on
+2026-09-22 by removing `blueprint-sandboxes` from `Grado_NonChanging`.
 
 ## Worked examples
 

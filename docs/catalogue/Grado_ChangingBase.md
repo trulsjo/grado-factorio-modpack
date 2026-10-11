@@ -9,16 +9,14 @@ Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below w
 **2026-09-21**, except where a later date is given inline. Searches described below as over "the
 2.x list" first ran over the `version=2.0` listing only, which misses mods released for 2.1 alone
 (#44), and the two over "the 2.1 list" miss mods released for 2.0 alone. **Every search so
-described has since been re-run over the union of both listings** by #83 and carries a *Checked 2026-10-01 (#44, #83)* note
-(#44 found the gap; #83 ran every re-run in this file),
-against the listings as read that day - 9,794 in `version=2.0`, 4,341 in `version=2.1`, 10,850 in
-the union, 1,056 of them in the 2.1 listing alone. A new hit that could change a recommendation is
-named in its entry and left to #86. An entry whose *Alternatives considered* reads "none searched"
-or "none needed" recorded no search, so there was nothing to re-run.
-Each is reproduced
-from the fetched data rather than retyped; the **Read on** row is authoritative where it disagrees
-with this sentence. *Until 2026-10-07 (#172) this paragraph listed each later note; each carries
-its own date.*
+described has since been re-run over the union of both listings** by #83 and carries a *Checked
+2026-10-01 (#44, #83)* note (#44 found the gap; #83 ran every re-run in this file), against the
+listings as read that day - 9,794 in `version=2.0`, 4,341 in `version=2.1`, 10,850 in the union,
+1,056 of them in the 2.1 listing alone. A new hit that could change a recommendation is named in its
+entry and left to #86. An entry whose *Alternatives considered* reads "none searched" or "none
+needed" recorded no search, so there was nothing to re-run. Each is reproduced from the fetched data
+rather than retyped; the **Read on** row is authoritative where it disagrees with this sentence.
+*Until 2026-10-07 (#172) this paragraph listed each later note; each carries its own date.*
 
 The dependency list holds 22 entries: `base >= 2.0.0`, `Grado_NonChanging` — a pack, catalogued in
 `docs/catalogue/Grado_NonChanging.md` — and the **20 mods** below. The survey read 25; #8 took the
@@ -29,9 +27,9 @@ replaced, not removed: `cybersyn2` carries its `Supersedes` row. *The `base` lin
 `base >= 2.0.74` since 2026-09-24 (#58).*
 
 **All 20 current members have a 2.x release.** None is stranded on 1.1. **Eleven of the twenty
-require `base >= 2.1`**, which is the same finding the `Grado_NonChanging` survey reached and is fatal to
-this pack's declared `factorio_version` for the same reason; see *The pack cannot load on the
-Factorio version it declares* *(at a 2.1 target; on stable 2.0.77 the pack resolves - #43,
+require `base >= 2.1`**, which is the same finding the `Grado_NonChanging` survey reached and is
+fatal to this pack's declared `factorio_version` for the same reason; see *The pack cannot load on
+the Factorio version it declares* *(at a 2.1 target; on stable 2.0.77 the pack resolves - #43,
 2026-09-24)*. #8 raised the floor again, to `base >= 2.1.12`, by adopting `cybersyn2`.
 
 ## Decisions, 2026-09-22 (#8)
@@ -80,17 +78,17 @@ ruling inline. **25 members to 20.**
 **A `2.0`-declaring member is unreachable, not merely stale** - *at a 2.1 target. Qualified
 2026-09-23 (#9): every member has a 2.0 release with a `base` floor below 2.1, so on a 2.0 target
 these are served; see #43 and #16.* Of the six, three leave the pack
-outright - `LTN_Content_Reader_Updated`, `StoneWaterWell-ActuallyUpdated` and `UltimateBeltsSpaceAge` -
-and one is fixed by the `Waterfill_v17` swap. **`Nanobots2` and `qol_research` remain unreachable
-and stay in the pack**, which is #43's, not this ticket's. *#43 found on 2026-09-24 that the whole
-chain resolves on stable 2.0.77, so both are served today and matter only at a 2.1 target; see
-`docs/porting-notes.md`, Resolves on stable 2.0.77.*
+outright - `LTN_Content_Reader_Updated`, `StoneWaterWell-ActuallyUpdated` and
+`UltimateBeltsSpaceAge` - and one is fixed by the `Waterfill_v17` swap. **`Nanobots2` and
+`qol_research` remain unreachable and stay in the pack**, which is #43's, not this ticket's. *#43
+found on 2026-09-24 that the whole chain resolves on stable 2.0.77, so both are served today and
+matter only at a 2.1 target; see `docs/porting-notes.md`, Resolves on stable 2.0.77.*
 
 Two questions were deferred rather than answered: candidate additions that were never in the 1.1
 pack, which needs a ticket of its own, and `kry-picker-complete`'s members assessed one at a time
 for whichever pack each fits, which is **#46**. *Assessed 2026-10-01: see* Candidates, not members.
-*The first went to #84, which assessed three candidates on 2026-10-01; see* Outside the bundle *under
-the same section.*
+*The first went to #84, which assessed three candidates on 2026-10-01; see* Outside the bundle
+*under the same section.*
 
 ## In the pack
 
@@ -164,12 +162,12 @@ Angel's-family mod, so the author is already tracking the kind of overhaul this 
 the same 1.1 mod and the choice between them is a preference, which is why the survey recorded it
 rather than settling it.
 
-**Recommendation: keep.** Added by #8 on 2026-09-22, replacing `ModuleInserterSimplified`. The 1.1 pack carried
-`ModuleInserter`, the configurable one, and the port replaced it with the deliberately *less*
-configurable of its two successors while the incumbent's own page named this one as "a straight
-upgrade from Module Inserter". That was never a decision, and `Grado_ABC` puts Bob's modules on
-Angel's machines, which is the situation per-machine-type configuration exists for. `pump`, a
-`Grado_ABC` member, already declares `? ModuleInserterEx >= 7.0.2`.
+**Recommendation: keep.** Added by #8 on 2026-09-22, replacing `ModuleInserterSimplified`. The 1.1
+pack carried `ModuleInserter`, the configurable one, and the port replaced it with the deliberately
+*less* configurable of its two successors while the incumbent's own page named this one as "a
+straight upgrade from Module Inserter". That was never a decision, and `Grado_ABC` puts Bob's
+modules on Angel's machines, which is the situation per-machine-type configuration exists for.
+`pump`, a `Grado_ABC` member, already declares `? ModuleInserterEx >= 7.0.2`.
 
 **It declares `flib >= 0.17.0`** where `ModuleInserterSimplified` declared no library at all — and
 **that costs the pack nothing**, because `flib` is already mandatory for three current members:
@@ -318,13 +316,14 @@ served. Re-run over the union for "waterfill", "water fill" and "landfill": four
 all in the 2.0 listing alone - `safefill` (36,408 downloads, the mod #8 replaced with this one),
 `Noxys_Waterfill` (`0.5.0`, 2024-11-03, 30,850), `CanalBuilderMAV` (26,574), which digs shallow
 canals, and `chens-waterfill-mod` (210). `Wetlandfill` and `Yumako_and_Jellynut_swampfill`, also
-2.0 only, place Gleba wetland tiles rather than water. None changes the comparison: this mod still leads on
-downloads, at 303,648 on 2026-10-01 (303,064 in the table, read 2026-09-22), and on reach.*
+2.0 only, place Gleba wetland tiles rather than water. None changes the comparison: this mod still
+leads on downloads, at 303,648 on 2026-10-01 (303,064 in the table, read 2026-09-22), and on reach.*
 
-**Recommendation: keep.** Added by #8 on 2026-09-22, replacing `safefill`, which declares `factorio_version: 2.0` and is
-therefore not served to a 2.1 game at all — see *The pack cannot load on the Factorio version it
-declares*. This pack's floor is well above 2.0, so the member it replaces installs on nothing.
-*(That is the 2.1 reading. On stable 2.0.77 `safefill` would have been served; #43, 2026-09-24.)*
+**Recommendation: keep.** Added by #8 on 2026-09-22, replacing `safefill`, which declares
+`factorio_version: 2.0` and is therefore not served to a 2.1 game at all — see *The pack cannot load
+on the Factorio version it declares*. This pack's floor is well above 2.0, so the member it replaces
+installs on nothing. *(That is the 2.1 reading. On stable 2.0.77 `safefill` would have been served;
+#43, 2026-09-24.)*
 
 **Two things this swap does not do, stated so they are not assumed.** It does not answer whether a
 waterfill mod survives the overhaul layers: `safefill`'s author declined to claim compatibility with
@@ -378,9 +377,9 @@ add-ons, so replacing it means replacing four members.
 **Recommendation: keep.** It set the pack's Factorio floor at `base >= 2.1.8`, which was the
 highest requirement of any member of any pack when this was written and **was overtaken twice on
 2026-09-22** — first by `SpaceModFeorasFork`'s `>= 2.1.9` in `Grado_ABCX`, then by `cybersyn2`'s
-`>= 2.1.12` in this pack, which #8 added. **It no longer sets this pack's floor either.** See *What constrains an overhaul on
-top* for
-what the family costs in load time once Angel's and Bob's chest types are in the game.
+`>= 2.1.12` in this pack, which #8 added. **It no longer sets this pack's floor either.** See *What
+constrains an overhaul on top* for what the family costs in load time once Angel's and Bob's chest
+types are in the game.
 
 ### `WideChestsAllTypes`
 
@@ -668,12 +667,13 @@ Space Age ships a recycler doing a narrower version of the same job, so `Grado_A
 both; the mod declares `? space-age`, so its author is aware, and an **Overlaps** row against a paid
 DLC rather than a portal mod would not mean anything.
 
-**Ruled 2026-09-22 (#8, settling #11): mandatory, by decision.** The port flattened `? reverse-factory`
-to a hard requirement without anyone choosing to; the ruling keeps the result and supplies the
-reason. An optional dependency installs nothing — it only orders load if the player already has the
-mod — so a pack whose members are optional hands the player less than its list implies. That is what
-a mod does to declare soft compatibility, not what a pack does. These two were the only optional
-entries across all three published 1.1 packs, which reads as an outlier rather than a policy.
+**Ruled 2026-09-22 (#8, settling #11): mandatory, by decision.** The port flattened
+`? reverse-factory` to a hard requirement without anyone choosing to; the ruling keeps the result
+and supplies the reason. An optional dependency installs nothing — it only orders load if the player
+already has the mod — so a pack whose members are optional hands the player less than its list
+implies. That is what a mod does to declare soft compatibility, not what a pack does. These two were
+the only optional entries across all three published 1.1 packs, which reads as an outlier rather
+than a policy.
 
 The objection that this pack must stay overhaul-compatible and mandatory imposes was weighed and
 does not bite here: this is the survey's own example of the ideal member, with thirty-one optional
@@ -712,11 +712,11 @@ with the mod it succeeds, which is how a designated successor announces itself. 
 whole 2.1 list by name, title and summary returns **one** other candidate, and it is not a rival:
 `Exteros-QoL-System` (`Exteros`, `0.4.2`, 2.1, 2026-09-12, 3,923 downloads), a bundle whose summary
 offers "Even Distribution, Squeak Through, Auto Deconstruct & more" as one mod. It is declined as an
-addition under this ticket's first rule, which is a different statement from nothing existing. It declares no `base` floor,
-so it adds nothing to the pack's. *Checked 2026-10-01 (#44, #83): the 2.1 list misses mods released
-for 2.0 alone. "squeak" over the union adds three from the 2.0 listing alone, none a successor: `jump`
-(1,084 downloads) offers a jump button as an "alternative to squeak through", `go-around` is "the
-opposite of Squeak Through", and `silent-belts-5` mutes belt sounds.*
+addition under this ticket's first rule, which is a different statement from nothing existing. It
+declares no `base` floor, so it adds nothing to the pack's. *Checked 2026-10-01 (#44, #83): the 2.1
+list misses mods released for 2.0 alone. "squeak" over the union adds three from the 2.0 listing
+alone, none a successor: `jump` (1,084 downloads) offers a jump button as an "alternative to squeak
+through", `go-around` is "the opposite of Squeak Through", and `silent-belts-5` mutes belt sounds.*
 
 The `kry-picker-complete` note above is now moot: #8 declined that bundle for this pack, as #7 did
 for `Grado_NonChanging`.
@@ -772,9 +772,9 @@ end in `stay dropped`: `PickerTweaks` because it is the wrong kind of mod for th
 `alien-biomes-hr-terrain` and `crafting_combinator` because what they did is now delivered by
 something already present, and `beautiful_bridge_railway` because its successors cover the function
 but not the point. Two end in `reconsider:` — `PickerPipeTools` and `PickerVehicles` — and both name
-the same replacement, `kry-picker-complete`. Assessing it against *this* pack is what the two entries
-below do; adopting it into `Grado_ChangingBase` is **#8**, the decide-and-apply ticket for this
-pack's membership, and not this survey's to take.
+the same replacement, `kry-picker-complete`. Assessing it against *this* pack is what the two
+entries below do; adopting it into `Grado_ChangingBase` is **#8**, the decide-and-apply ticket for
+this pack's membership, and not this survey's to take.
 
 ### `PickerPipeTools`
 
@@ -808,8 +808,8 @@ mandatory member, `Orphan Finder` as an optional.
 
 **Recommendation: reconsider:** as part of the `kry-picker-complete` question, not on its own. This
 is the second pack to reach that modpack, and from a different direction — `Grado_NonChanging` got
-there through `PickerAtheneum`, whose worked example is in `docs/mod-catalogue.md` and whose entry is
-in `docs/catalogue/Grado_NonChanging.md`. Answering it once for the chain is cheaper and more
+there through `PickerAtheneum`, whose worked example is in `docs/mod-catalogue.md` and whose entry
+is in `docs/catalogue/Grado_NonChanging.md`. Answering it once for the chain is cheaper and more
 coherent than adopting it pack by pack.
 
 **No single ticket owns that, which is worth saying rather than routing around.** Adoption is pack
@@ -851,8 +851,8 @@ are 2.1 successors of `Orphan Finder`; see that mod's entry under* Candidates, n
 | **Status** | dropped during the port |
 | **Read on** | 2026-09-21 |
 
-**Alternatives considered.** It is a bundle, so it has no single successor — but read against its own
-feature list, the chain already carries most of it:
+**Alternatives considered.** It is a bundle, so it has no single successor — but read against its
+own feature list, the chain already carries most of it:
 
 - **Squeak Through** — `squeak-through-2`, a current member of this pack.
 - **Lights** — `AfraidOfTheDark` and `Brighter-Lamps`, both `Grado_NonChanging` members.
@@ -911,7 +911,8 @@ deciding about once rather than assembling by hand.
 train-toggle mod and `Honk`, which is three additions to restore one dropped mod.
 
 **Its members are not abandoned, though.** #8 opened a ticket to assess `kry-picker-complete`'s
-mandatory and optional members one at a time, for whichever pack each fits, rather than as a bundle. *Done 2026-10-01 (#46): see* Candidates, not members.
+mandatory and optional members one at a time, for whichever pack each fits, rather than as a bundle.
+*Done 2026-10-01 (#46): see* Candidates, not members.
 
 ### `alien-biomes-hr-terrain`
 
@@ -1025,21 +1026,22 @@ The 31-and-29 split in `docs/porting-notes.md` checks out against `0.0.2`, and *
 not dependency entries** — `0.0.2` declares 33 lines in all, of which `base >= 1.1.0` and
 `Grado_NonChanging` are not mods, leaving 31 mods, 29 of them mandatory. That is the opposite
 convention to the "27 entries" at the top of this file, which counts every line. *Superseded
-2026-09-22 by #8: the top of this file now reads 22 entries, on the same every-line convention.* Both numbers are
-right and neither is comparable to the other without saying which is being counted, which is how the
-brain page got a "31" it could not reconcile.
+2026-09-22 by #8: the top of this file now reads 22 entries, on the same every-line convention.*
+Both numbers are right and neither is comparable to the other without saying which is being counted,
+which is how the brain page got a "31" it could not reconcile.
 
-**That same ambiguity had already broken a tally one paragraph above the one being corrected**, which
-the review of this ticket caught: the `Grado_ChangingBase` section's headline read "16 carried over,
-8 replaced, 6 dropped" — a members-only 16 beside an all-entries 8, adding up to neither 31 nor 25.
-Carried over is **17** on the basis that sentence uses. Both are fixed in the same commit, with the
-old readings kept.
+**That same ambiguity had already broken a tally one paragraph above the one being corrected**,
+which the review of this ticket caught: the `Grado_ChangingBase` section's headline read "16 carried
+over, 8 replaced, 6 dropped" — a members-only 16 beside an all-entries 8, adding up to neither 31
+nor 25. Carried over is **17** on the basis that sentence uses. Both are fixed in the same commit,
+with the old readings kept.
 
 The correction matters beyond tidiness, because the demotion is half of issue #11: `reverse-factory`
 did not merely stay optional across the port. It was mandatory in `0.0.1`, made optional in `0.0.2`,
 and is mandatory again in the 2.0 pack.
 
-**Ruled 2026-09-22 (#8): stays dropped**, as recommended — the feature was absorbed by the base game.
+**Ruled 2026-09-22 (#8): stays dropped**, as recommended — the feature was absorbed by the base
+game.
 
 ## Ruled out after the port
 
@@ -1153,11 +1155,11 @@ experimental, while LTN ships a 2.1 and a 2.0 branch side by side on the same da
 filing it: nothing else among the 100 members of the five packs depends on LTN, so the cluster moves
 as one unit and nothing in Angel's, Bob's, MadClown, SpaceX or Space Age notices either way.
 
-**Recommendation: keep — and the question is open as #23.** Released eleven days before this reading,
-so actively maintained, and it is the better-supported of the two on the game version this pack
-actually needs. That is a recommendation on the 2.1 evidence, not a closure: which train-logistics
-paradigm a pack ships is pack membership, so #23 records it and #8 settles it. It is one of four
-members at `base >= 2.1.7`, the second-highest floor in the pack.
+**Recommendation: keep — and the question is open as #23.** Released eleven days before this
+reading, so actively maintained, and it is the better-supported of the two on the game version this
+pack actually needs. That is a recommendation on the 2.1 evidence, not a closure: which
+train-logistics paradigm a pack ships is pack membership, so #23 records it and #8 settles it. It is
+one of four members at `base >= 2.1.7`, the second-highest floor in the pack.
 
 **Ruled 2026-09-22 (#8): out, replaced by `cybersyn2`** — and by neither of the two answers #23 was
 written to choose between. #23 offered staying on LTN, swapping to Project Cybersyn CS1, waiting for
@@ -1221,17 +1223,18 @@ which is stated on the incumbent's own portal page:
 carried `ModuleInserter`, the configurable one, and the port replaced it with the deliberately
 *less* configurable of its two successors — while the mod's own page names the other as the straight
 upgrade. Nobody recorded choosing that. It matters more here than it would in a vanilla pack:
-`Grado_ABC` layers Bob's modules and Angel's machines on top, which is the situation per-machine-type
-configuration exists for. Simplified has 3.5 times the downloads, which is a real argument and not a
-tiebreaker — this is a preference, and the point of the entry is that the preference has not been
-expressed. `pump`, a `Grado_ABC` member, declares `? ModuleInserterEx >= 7.0.2`, so the other mod is
-already half-present in the chain as an optional.
+`Grado_ABC` layers Bob's modules and Angel's machines on top, which is the situation
+per-machine-type configuration exists for. Simplified has 3.5 times the downloads, which is a real
+argument and not a tiebreaker — this is a preference, and the point of the entry is that the
+preference has not been expressed. `pump`, a `Grado_ABC` member, declares
+`? ModuleInserterEx >= 7.0.2`, so the other mod is already half-present in the chain as an optional.
 
 **Ruled 2026-09-22 (#8): replaced by `ModuleInserterEx`**, which is the question this entry asked.
 The 1.1 pack carried the configurable mod and the port swapped it for the deliberately less
 configurable sibling without anyone deciding to; the ruling restores what was ported from. The
-download asymmetry the entry flags is real — 164,383 against 47,569, both read 2026-09-21 — and was read as measuring the
-vanilla audience rather than this chain's, where Bob's modules sit on Angel's machines.
+download asymmetry the entry flags is real — 164,383 against 47,569, both read 2026-09-21 — and was
+read as measuring the vanilla audience rather than this chain's, where Bob's modules sit on Angel's
+machines.
 
 ### `StoneWaterWell-ActuallyUpdated`
 
@@ -1308,8 +1311,8 @@ advertise loader support.
 downloads), which adds its own belt tiers past express. Both mods stack tiers onto the same
 progression, and no mod mediates between them: `UltimateBeltsSpaceAge` declares `base >= 2.0` and
 nothing else — no optional dependency on Bob's, no compatibility handling of any kind — while
-`boblogistics` declares optionals for `bobplates`, `bobinserters`, `space-age`, `valves`, `Krastorio2`
-and `aai-loaders`, and none for this. Neither side is arranging the other's tiers.
+`boblogistics` declares optionals for `bobplates`, `bobinserters`, `space-age`, `valves`,
+`Krastorio2` and `aai-loaders`, and none for this. Neither side is arranging the other's tiers.
 
 **It also costs the loaders.** The 1.1 `miniloader` declared `? UltimateBelts >= 0.16.4`, so the 1.1
 pack had loaders for the Ultimate tiers. `miniloader-redux`, the 2.0 replacement, does not: its page
@@ -1343,8 +1346,8 @@ inherit this pack.
 `factorio_version` **2.1**, 2026-08-05, 4,056 downloads — nineteen months more current, reachable,
 and its configurable per-tier speeds would have let the top tier be tuned under `miniloader-redux`'s
 240 items/sec degradation threshold. But it declares `base >= 2.0` and nothing else, exactly as this
-mod does: **no compatibility handling for `boblogistics` either**, so the loader gap persists and the
-promise failure is unchanged. Swapping would have fixed reachability and staleness and left the
+mod does: **no compatibility handling for `boblogistics` either**, so the loader gap persists and
+the promise failure is unchanged. Swapping would have fixed reachability and staleness and left the
 actual objection standing. If belt tiers are wanted later they are an overhaul-layer question, and
 `more-belts` is the better carrier for it.
 
@@ -1780,15 +1783,15 @@ source:
 
 - **The Bob's recipes cooperate.** #41's reading, in that entry: with three Bob's mods loaded, every
   duct recipe is rewritten to Bob's items, which #84 confirmed exist on the 2.0 line.
-- **The throughput does not.** The `non-return-duct`, `duct-intake` and `duct-exhaust` pump at `120` per tick.
-  `boblogistics`' `prototypes/entity/pump.lua` tops its pump ladder at `bob-pump-4`, `80` per tick,
-  and halves the whole ladder to `40` when `quality` is loaded. `Grado_ABCS` loads it through
-  `space-age`, which requires it (#10), and on an install that owns the expansion the game enabled
-  it beside `Grado_NonChanging` too (#59, the one pack measured). So a duct
-  unlocked at chemical science, from `bob-pump-2`s, outpumps Bob's fourth tier by half again, or
-  threefold with `quality`. The smallest duct holds `400` and the straight `duct` `800`, against `100` for every
-  `boblogistics` pipe.
-  It does not touch any Bob's prototype. It adds a tier above Bob's ladder rather than rewriting it.
+- **The throughput does not.** The `non-return-duct`, `duct-intake` and `duct-exhaust` pump at `120`
+  per tick. `boblogistics`' `prototypes/entity/pump.lua` tops its pump ladder at `bob-pump-4`, `80`
+  per tick, and halves the whole ladder to `40` when `quality` is loaded. `Grado_ABCS` loads it
+  through `space-age`, which requires it (#10), and on an install that owns the expansion the game
+  enabled it beside `Grado_NonChanging` too (#59, the one pack measured). So a duct unlocked at
+  chemical science, from `bob-pump-2`s, outpumps Bob's fourth tier by half again, or threefold with
+  `quality`. The smallest duct holds `400` and the straight `duct` `800`, against `100` for every
+  `boblogistics` pipe. It does not touch any Bob's prototype. It adds a tier above Bob's ladder
+  rather than rewriting it.
 - **Neither mod names the other in its dependencies.** The recipe rewrite is keyed on `mods[]`
   alone.
 
@@ -1825,10 +1828,11 @@ not this one's.
 **Why it is here.** `kry-picker-complete` `1.0.1` names it, and #46 did not assess it from source.
 It republishes `BlueprintExtensions`, whose `!` it declares, and is based on that mod's `0.5.0`.
 
-**Reachability: fine on both lines, at the cost of a new mandatory dependency.** `3.3.16` declares no
-`base` floor and needs `Kux-CoreLib >= 3.15.0`. The newest 2.0 `Kux-CoreLib` is `3.17.8`,
+**Reachability: fine on both lines, at the cost of a new mandatory dependency.** `3.3.16` declares
+no `base` floor and needs `Kux-CoreLib >= 3.15.0`. The newest 2.0 `Kux-CoreLib` is `3.17.8`,
 2025-06-14, `base >= 2.0.55`, below this pack's `2.0.74`. At 2.1, `4.3.18` needs `Kux-CoreLib
->= 4.17.10`; the newest, `4.17.11` (2026-09-15), asks `base >= 2.1.12`, which is below the project's 2.1 high of `2.1.20`. `Kux-CoreLib`
+>= 4.17.10`; the newest, `4.17.11` (2026-09-15), asks `base >=
+>2.1.12`, which is below the project's 2.1 high of `2.1.20`. `Kux-CoreLib`
 (105,092 downloads, same owner) is in no pack. Its summary warns players not to update it before
 its dependents.
 
@@ -1847,10 +1851,10 @@ adds nothing. Its `data:extend` calls are library functions for its dependents. 
   correctly (`FluidMustFlow`, `underground-pipe-pack` and the GDIW and Fluid Permutations family,
   all optional), and landfill removal.
 - **Keys.** `actions.lua` binds `Shift+X`, `Shift+V`, `Ctrl+Alt+R`, `Shift+U`, `Ctrl+Alt+W`,
-  `Ctrl+Alt+L`, `Ctrl+Shift+Alt+L`, and the number pad with and without `Ctrl`. **`Shift+V` is already
-  bound by `VehicleSnap`** (`Grado_NonChanging`), which is #73's ground. No other `key_sequence` in
-  the staged `Grado_ABC` closure matches the strings above. That is a text search, so it misses
-  base keys.
+  `Ctrl+Alt+L`, `Ctrl+Shift+Alt+L`, and the number pad with and without `Ctrl`. **`Shift+V` is
+  already bound by `VehicleSnap`** (`Grado_NonChanging`), which is #73's ground. No other
+  `key_sequence` in the staged `Grado_ABC` closure matches the strings above. That is a text search,
+  so it misses base keys.
 
 **Already in the chain?** In part: `BlueprintTools` and the base game, above.
 
@@ -1970,8 +1974,8 @@ Three readings, all from the portal API:
 
 1. **The author says so on the dropped mod's own page.** Its summary now reads: "The high-resolution
    textures for Alien Biomes. **Not required for Factorio 2.0 games.**" The mod's last release is
-   `0.6.1` on 2020-11-24, four years before Factorio 2.0 — so that sentence was edited onto a dormant
-   page after the fact, deliberately, to tell people to stop installing it.
+   `0.6.1` on 2020-11-24, four years before Factorio 2.0 — so that sentence was edited onto a
+   dormant page after the fact, deliberately, to tell people to stop installing it.
 2. **The textures moved, they were not absorbed.** `alien-biomes` `0.8.0` declares
    **`alien-biomes-graphics >= 0.8.0`** as a *mandatory* dependency. That mod — `Earendel`, `0.8.0`,
    `factorio_version` **2.1**, 2026-06-24, 339,385 downloads — is described simply as "The graphics
@@ -2022,23 +2026,25 @@ the paragraph after the table is about four of them that do.
 | `qol_research` | Tech-tree overhauls, mildly | Adds technologies; optional compatibility covers `space-exploration`, `nullius` and `Krastorio2`, but neither Bob's nor Angel's. Its flat-value setting is the escape hatch | **passes** — nothing in Angel's or Bob's grants player QoL bonuses, so there is no contested slot |
 | `StoneWaterWell-ActuallyUpdated` | Water economies | Free water anywhere on land, with `pycoalprocessing` its only overhaul compatibility. Angel's builds a water-treatment chain that assumes water has a cost | **fails — out.** It removes the need for the chain that overhaul exists to build |
 
-Four more are not a compatibility constraint but a cost, and the cost scales with the overhaul rather
-than with this pack: the `WideChests` family. `WideChestsAllTypes` merges *all* basic chest types and says
-it "Increases memory usage and loading time"; `WideChestsUnlimited` removes the size limits and says
-it "can increase memory usage and loading time significantly". Both are in the pack, and the number
-of chest types they iterate is set by whatever is layered above — `Grado_ABC` adds Bob's and
-Angel's chests and carries `WideChestsBobs`, a fifth mod in the same family, on top. This is the
-member whose cost is smallest in `Grado_ChangingBase` alone and largest in `Grado_ABCS`, which is
-the opposite of every other entry above, and it is measurable the first time a pack is loaded.
+Four more are not a compatibility constraint but a cost, and the cost scales with the overhaul
+rather than with this pack: the `WideChests` family. `WideChestsAllTypes` merges *all* basic chest
+types and says it "Increases memory usage and loading time"; `WideChestsUnlimited` removes the size
+limits and says it "can increase memory usage and loading time significantly". Both are in the pack,
+and the number of chest types they iterate is set by whatever is layered above — `Grado_ABC` adds
+Bob's and Angel's chests and carries `WideChestsBobs`, a fifth mod in the same family, on top. This
+is the member whose cost is smallest in `Grado_ChangingBase` alone and largest in `Grado_ABCS`,
+which is the opposite of every other entry above, and it is measurable the first time a pack is
+loaded.
 
 *Measured 2026-10-05 (#136), on "measurable the first time a pack is loaded". Data dumps on
 Factorio 2.0.77 through the shared harness's `Invoke-HarnessDump`, of the staged
 `Grado_ChangingBase`, base only, and the staged `Grado_ABCS` with `space-age`, `quality` and
 `elevated-rails`, each with `WideChestsAllTypes` `2.0.0` and `WideChestsUnlimited` `2.0.0`
 enabled and then with both disabled. `WideChests` `6.2.4` and `WideChestsLogistic` `3.1.1` stayed
-on, with `WideChestsBobs` `2.0.0` in `Grado_ABCS`, where it is a member, and every other member was at the release of the recorded
-loads. The pack mods were disabled in all four, since `Grado_ChangingBase` requires the two; they
-carry no Lua, and the dumps with the two enabled have the recorded loads' checksums.*
+on, with `WideChestsBobs` `2.0.0` in `Grado_ABCS`, where it is a member, and every other member was
+at the release of the recorded loads. The pack mods were disabled in all four, since
+`Grado_ChangingBase` requires the two; they carry no Lua, and the dumps with the two enabled have
+the recorded loads' checksums.*
 
 | | `Grado_ChangingBase` | `Grado_ABCS` |
 |---|---|---|
@@ -2064,15 +2070,15 @@ carry no Lua, and the dumps with the two enabled have the recorded loads' checks
 - ***The time is small, and it is noisy.** "Data stage" is the game's clock at the line
   `Prototype list checksum`. Five runs of each, alternating, on one machine (i7-9850H). At best
   and at the median the two members cost between one and two seconds in `Grado_ChangingBase` and
-  between two and a half and five in `Grado_ABCS`. But some runs were far slower whatever was enabled. In
-  `Grado_ABCS` one run with them enabled took 64 seconds, and without them one took 55 and one
+  between two and a half and five in `Grado_ABCS`. But some runs were far slower whatever was
+  enabled. In `Grado_ABCS` one run with them enabled took 64 seconds, and without them one took 55
+  and one
   31. In `Grado_ChangingBase` one run with them enabled took 15. So the difference is
   inside what this machine does from run to run, and the numbers are context, not a benchmark.*
-- ***The time is not spent in the family's own Lua.** Over the twenty runs the log gives 0.02 seconds at
-  the median to the stages of `WideChests`, `WideChestsLogistic` and `WideChestsBobs` together,
-  and about 0.2 at most.
-  The rest is other members and the game working through more prototypes. Which was not
-  attributed.*
+- ***The time is not spent in the family's own Lua.** Over the twenty runs the log gives 0.02
+  seconds at the median to the stages of `WideChests`, `WideChestsLogistic` and `WideChestsBobs`
+  together, and about 0.2 at most. The rest is other members and the game working through more
+  prototypes. Which was not attributed.*
 
 *Not measured: memory, which both mods' descriptions name; the two members apart from each other;
 loading sprites, which a headless dump does not do; and anything in play. A merged chest in a
@@ -2080,8 +2086,8 @@ game is #26's.*
 
 `reverse-factory` deserves a line for not being on the list. Un-crafting every item in the game is
 the most invasive thing in the pack on paper, and it is the member with the best overhaul story:
-thirty-one optional dependencies naming Angel's, Bob's, Krastorio, SE, IR3, SeaBlock and Space Age. It is
-the shape of what a `Grado_ChangingBase` member should look like.
+thirty-one optional dependencies naming Angel's, Bob's, Krastorio, SE, IR3, SeaBlock and Space Age.
+It is the shape of what a `Grado_ChangingBase` member should look like.
 
 **One member joined this list after the survey was written and is not in the table**, because the
 table records what the survey found: `cybersyn2` constrains nothing an overhaul does, but it sets
@@ -2107,9 +2113,9 @@ floor twice over**, to a number no pack in the project had reached:
 | `base >= 2.1.7` | `alien-biomes`, `miniloader-redux`, `textplates` |
 | `base >= 2.1.0` / `>= 2.1` | `AdditionalPasteSettings`, `EditorExtensions`, `ModuleInserterEx`, `UltimateResearchQueue2`, `Waterfill_v17`, `bobinserters` |
 
-Two more arrive indirectly: `WideChestsLogistic` requires `WideChests >= 6.3.0`, which is the release
-that requires 2.1.8, and `alien-biomes`' mandatory `alien-biomes-graphics` requires 2.1.7 on its own
-account. `cybersyn2` brings a third, `0-things`, which also requires 2.1.12.
+Two more arrive indirectly: `WideChestsLogistic` requires `WideChests >= 6.3.0`, which is the
+release that requires 2.1.8, and `alien-biomes`' mandatory `alien-biomes-graphics` requires 2.1.7 on
+its own account. `cybersyn2` brings a third, `0-things`, which also requires 2.1.12.
 
 **The survey's table read `>= 2.1.8` and named three LTN mods that are no longer members** -
 `LogisticTrainNetwork` at `>= 2.1.7` and `LTN_Combinator_Modernized` and `LtnManager` at `>= 2.1`.
@@ -2134,10 +2140,10 @@ answer is no for four of them: `Grado_ABC` inherits this pack's floor, `Grado_AB
 its only member is not a portal mod. That measurement is **#15**, and **#8 changed its inputs on
 2026-09-22**: `Grado_ABCX`'s own 2.1.9 is no longer the project high, because `Grado_ABC`,
 `Grado_ABCX` and `Grado_ABCS` all now inherit `>= 2.1.12` through this pack. **Superseded
-2026-09-23 by #15:** every pack now inherits `>= 2.1.20` on a latest-release reading, from the hidden
-`kry_stdlib` `2.2.21`; see *Effective Factorio floor* in `docs/porting-notes.md`.
-**The number to declare instead is Truls's to set** and is **#16**; this section supplies the
-evidence for this pack, not the decision.
+2026-09-23 by #15:** every pack now inherits `>= 2.1.20` on a latest-release reading, from the
+hidden `kry_stdlib` `2.2.21`; see *Effective Factorio floor* in `docs/porting-notes.md`. **The
+number to declare instead is Truls's to set** and is **#16**; this section supplies the evidence for
+this pack, not the decision.
 
 ## What was not checked
 

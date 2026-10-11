@@ -1,8 +1,8 @@
 # grado-factorio-modpack
 
 Five Factorio **2.0** modpacks, ported from the three 1.1 packs published on the mod portal by
-`ostogvin`. A pack is an `info.json` and nothing else unless compatibility between member mods forces
-Lua into it.
+`ostogvin`. A pack is an `info.json` and nothing else unless compatibility between member mods
+forces Lua into it.
 
 ## The chain
 
@@ -28,14 +28,13 @@ lives there, and each branch adds exactly one thing.
 2026-09-30). 24 of its 26 named members were seen working, the save reloaded with the members'
 data that was checked, and one key-binding clash turned up - see
 [docs/loads/Grado_NonChanging-2026-09-29.md](docs/loads/Grado_NonChanging-2026-09-29.md). The
-other four packs each have a recorded load, from 2026-10-04, and have not been played: a load shows the mods
-start together, not that the pack plays well. `Grado_ABCX` was also refused beside Space Age, as
-intended. The records are in [docs/loads/](docs/loads/). See
-[docs/porting-notes.md](docs/porting-notes.md) for what was kept, replaced and dropped, and for the
-open questions. [docs/catalogue/](docs/catalogue/) is the other half: one file per pack, one entry
-per mod, recording what each mod does, how current it is and whether it should stay. **All five
-packs have now been surveyed**, the last two on 2026-09-22 - which is a claim about the portal, not
-about the game.
+other four packs each have a recorded load, from 2026-10-04, and have not been played: a load shows
+the mods start together, not that the pack plays well. `Grado_ABCX` was also refused beside Space
+Age, as intended. The records are in [docs/loads/](docs/loads/). See [docs/porting-notes.md](docs/porting-notes.md) for what was kept,
+replaced and dropped, and for the open questions. [docs/catalogue/](docs/catalogue/) is the other half: one file per
+pack, one entry per mod, recording what each mod does, how current it is and whether it should stay.
+**All five packs have now been surveyed**, the last two on 2026-09-22 - which is a claim about the
+portal, not about the game.
 
 ## Staging a pack
 
@@ -159,13 +158,12 @@ Its `-SelfTest -Settings .claude/settings.json` runs the command wired here and 
 command no longer reaches the hook. It is run by hand: no hook and no workflow step runs it.
 
 A second hook there, `scripts/ask-before-download.ps1`, stops a command that installs a package
-(`npm install`, `ci`, `add` or `exec`, `npx`, `pip install`, `gem install`, `cargo install`, and `install` under `winget`,
-`choco` or `scoop`) or fetches an `.exe`, `.msi`, `.zip`, `.tar.gz` or `.tgz` from anywhere but
-`mods.factorio.com`, and tells the session to ask Truls, who runs an approved command himself.
-It refuses and does not ask: its header has the measurement of 2026-10-08 that says why. Reading
-the portal, staging a pack, `git` and the rest of `gh` pass: `gh release
-download` is refused. Its header says what it cannot
-see, and it has a `-SelfTest` too.
+(`npm install`, `ci`, `add` or `exec`, `npx`, `pip install`, `gem install`, `cargo install`, and
+`install` under `winget`, `choco` or `scoop`) or fetches an `.exe`, `.msi`, `.zip`, `.tar.gz` or
+`.tgz` from anywhere but `mods.factorio.com`, and tells the session to ask Truls, who runs an
+approved command himself. It refuses and does not ask: its header has the measurement of 2026-10-08
+that says why. Reading the portal, staging a pack, `git` and the rest of `gh` pass:
+`gh release download` is refused. Its header says what it cannot see, and it has a `-SelfTest` too.
 
 ## Publishing
 

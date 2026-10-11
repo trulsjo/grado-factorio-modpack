@@ -41,7 +41,8 @@ Four findings, and the first is the one #6 was asked to check:
   `progger` and `Sectoid` — and none of them is the portal owner.
 - **The fork's only Angel's-side integration is with a mod `Grado_ABC` dropped.** It declares
   `? angelsindustries` and no other `angels*` dependency at all. `angelsindustries` is 1.1-only and
-  is the largest single loss in the project. See *What dropping `angelsindustries` cost this branch*.
+  is the largest single loss in the project. See *What dropping `angelsindustries` cost this
+  branch*.
 
 ## In the pack
 
@@ -74,12 +75,12 @@ how many players were on 1.1, not quality; the original has 36 releases going ba
 accumulate downloads from 2.x players because it does not run for them.
 
 **Ruled 2026-09-23 (#10): kept, as the pack's only member**, for the reasons in the recommendation,
-and the pack's own `! space-age` line kept beside the fork's. The pack's promise is in `GLOSSARY.md`.
-The line stays even though the fork declares the same thing, because the exclusion is a decision
-about the packs, so the pack states it rather than borrowing the fork's. The cost is that it would
-mask the fork ever dropping its `!`, the event that reopens the five-pack structure, so re-reading
-the fork's dependency list - *The incompatibility, re-verified* below - is the only tripwire for
-that.
+and the pack's own `! space-age` line kept beside the fork's. The pack's promise is in
+`GLOSSARY.md`. The line stays even though the fork declares the same thing, because the exclusion is
+a decision about the packs, so the pack states it rather than borrowing the fork's. The cost is that
+it would mask the fork ever dropping its `!`, the event that reopens the five-pack structure, so
+re-reading the fork's dependency list - *The incompatibility, re-verified* below - is the only
+tripwire for that.
 
 It declares `factorio_version` **2.1** while the pack declares 2.0, and it requires `base >= 2.1.9`.
 Both are recorded under the open question rather than settled here.
@@ -145,8 +146,9 @@ time rather than merely making it unwise.
 
 The asymmetry worth recording is in what each one costs to verify. `SpaceModFeorasFork` is a portal
 mod whose every claim above was read from the portal API. `space-age` is not on the portal in any
-usable sense, so its entry in `docs/catalogue/Grado_ABCS.md` cannot be evidenced the same way — which
-means the two branches of this project are not equally checkable, and the ABCS side needs the game.
+usable sense, so its entry in `docs/catalogue/Grado_ABCS.md` cannot be evidenced the same way —
+which means the two branches of this project are not equally checkable, and the ABCS side needs the
+game.
 
 #### What dropping `angelsindustries` cost this branch
 
@@ -160,10 +162,10 @@ entry in the entire list.**
 
 `angelsindustries` is 1.1-only — last release `0.4.21` on 2024-02-21, read 2026-09-22 — and
 `Grado_ABC` dropped it with no successor found. The fork's changelog shows the integration was
-deliberate and recent: `1.2.11` (2024-07-15) "Fixed compatibility issue with Bob's Technology mod and
-Technology Overhaul setting from Angel's Industries mod" and `1.2.12` (2024-10-15) "Added rudimentary
-compatibility for angels tech overhaul mode" — the tech overhaul being what `angelsindustries`
-provides.
+deliberate and recent: `1.2.11` (2024-07-15) "Fixed compatibility issue with Bob's Technology mod
+and Technology Overhaul setting from Angel's Industries mod" and `1.2.12` (2024-10-15) "Added
+rudimentary compatibility for angels tech overhaul mode" — the tech overhaul being what
+`angelsindustries` provides.
 
 So on this branch, Angel's and SpaceX now meet with no declared integration between them at all.
 `docs/catalogue/Grado_ABC.md` records three members and one page-text claim that degrade with the
@@ -283,21 +285,21 @@ The declared `base >= 2.0.0` is still not honoured - on that reading the floor i
 `docs/porting-notes.md`, Resolves on stable 2.0.77. Honoured since 2026-09-24 (#58), when the
 declaration was raised to `base >= 2.0.74`.*
 
-`Grado_ABCX/info.json` declares `factorio_version` `2.0` and `base >= 2.0.0`. Its one member requires
-`base >= 2.1.9`.
+`Grado_ABCX/info.json` declares `factorio_version` `2.0` and `base >= 2.0.0`. Its one member
+requires `base >= 2.1.9`.
 
-**That was the highest floor found anywhere in the project when it was measured.** Measured across every member of all
-three packs in the chain and their full mandatory closure — **98 distinct named members and 19
-hidden mandatory dependencies, 117 mods**, latest 2.x release each, read 2026-09-22 — the highest
-`base >=` any of them declares is `2.1.8`, from `WideChests` `6.3.0`. The fork raises it by one patch
-version. So the effective minimum for a `Grado_ABCX` install was **`base >= 2.1.9`**, and a player
-on 2.0.x cannot satisfy the pack. **Read again after #8 settled `Grado_ChangingBase` later on
-2026-09-22: the minimum is `base >= 2.1.12`**, from `cybersyn2` and the `0-things` library it pulls,
-both of which this pack inherits. The count above is left as measured; the conclusion the section
-draws is unchanged and the number it draws it from is higher. **Superseded 2026-09-23 by #15:** the
-minimum is now `base >= 2.1.20` on a latest-release reading, set by the hidden `kry_stdlib` `2.2.21`,
-released that day. See *Effective Factorio floor* in `docs/porting-notes.md`, which also says why
-that number rests on one release.
+**That was the highest floor found anywhere in the project when it was measured.** Measured across
+every member of all three packs in the chain and their full mandatory closure — **98 distinct named
+members and 19 hidden mandatory dependencies, 117 mods**, latest 2.x release each, read 2026-09-22 —
+the highest `base >=` any of them declares is `2.1.8`, from `WideChests` `6.3.0`. The fork raises it
+by one patch version. So the effective minimum for a `Grado_ABCX` install was **`base >= 2.1.9`**,
+and a player on 2.0.x cannot satisfy the pack. **Read again after #8 settled `Grado_ChangingBase`
+later on 2026-09-22: the minimum is `base >= 2.1.12`**, from `cybersyn2` and the `0-things` library
+it pulls, both of which this pack inherits. The count above is left as measured; the conclusion the
+section draws is unchanged and the number it draws it from is higher. **Superseded 2026-09-23 by
+#15:** the minimum is now `base >= 2.1.20` on a latest-release reading, set by the hidden
+`kry_stdlib` `2.2.21`, released that day. See *Effective Factorio floor* in `docs/porting-notes.md`,
+which also says why that number rests on one release.
 
 Two things about that count, because both are easy to get wrong and this survey got both wrong first
 time round. **98 is distinct mods, not declarations**: the three lists hold 99 entries and

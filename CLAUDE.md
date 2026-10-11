@@ -3,9 +3,9 @@
 Factorio modpack project. Five packs, ported from the three 1.1 packs Truls publishes on the mod
 portal as `ostogvin`. See `README.md` for what the packs are; this file is how to work in the repo.
 
-**Long-term context lives in the brain**, not here — the decision trail, the upstream survey, what was
-measured and what is still assumed. `CLAUDE.local.md` has the path and is git-ignored. Read it at
-session start.
+**Long-term context lives in the brain**, not here — the decision trail, the upstream survey, what
+was measured and what is still assumed. `CLAUDE.local.md` has the path and is git-ignored. Read it
+at session start.
 
 ## State
 
@@ -53,18 +53,18 @@ Grado_NonChanging        quality of life; adds no content (see GLOSSARY.md, *Pro
 
 **ABCX and ABCS are mutually exclusive and must stay that way.** `SpaceModFeorasFork` declares
 `! space-age`. That incompatibility is the entire reason `Grado_ABC` exists as its own pack rather
-than the two end-games duplicating the overhaul list. **Anything both branches need goes in ABC**, and
-each branch adds exactly one thing. If you find yourself adding the same mod to both, it belongs in
-ABC.
+than the two end-games duplicating the overhaul list. **Anything both branches need goes in ABC**,
+and each branch adds exactly one thing. If you find yourself adding the same mod to both, it belongs
+in ABC.
 
 `Grado_ABC` and `Grado_ABCS` are new portal entries. The other three already exist under `ostogvin`
 as Factorio 1.1 entries.
 
 ## The rule that matters most here
 
-**The big decisions are Truls's.** Which mods are in a pack, whether a dropped mod gets a replacement
-or stays dropped, whether Space Age is first-class, what the packs are called, and what happens to the
-existing 1.1 portal entries.
+**The big decisions are Truls's.** Which mods are in a pack, whether a dropped mod gets a
+replacement or stays dropped, whether Space Age is first-class, what the packs are called, and what
+happens to the existing 1.1 portal entries.
 
 Do not settle any of them as a side effect of doing something else — no "I picked X to get started".
 Recording options with trade-offs is welcome; choosing between them is not. If a task cannot proceed
@@ -104,9 +104,9 @@ CLAUDE.md's State and open decisions*.
   the version being targeted rather than from memory.
 - `/stable/` and `/latest/` both move, and `latest` is the **experimental** build. Pin an explicit
   version when recording a fact.
-- **The 1.1→2.0 break is the whole reason this project exists.** A 1.1 mod is not a 2.0 mod, and a mod
-  with a 2.0 release is not necessarily Space Age compatible. Both are checkable; check rather than
-  assume.
+- **The 1.1→2.0 break is the whole reason this project exists.** A 1.1 mod is not a 2.0 mod, and a
+  mod with a 2.0 release is not necessarily Space Age compatible. Both are checkable; check rather
+  than assume.
 
 ## Checking the mod portal
 
@@ -129,10 +129,11 @@ the portal and still be uninstallable on the other line (#43).
 **A mod missing under one name is not a mod that does not exist.** Learned the expensive way on
 2026-09-20: `SpaceMod` has no 2.0 release, and reporting "SpaceX is dead" from that was wrong —
 `SpaceModFeorasFork` is a live fork on 2.1. Search titles and summaries, not just names, before
-concluding anything is gone. The same trap may be hiding successors for the seven dropped Picker mods.
+concluding anything is gone. The same trap may be hiding successors for the seven dropped Picker
+mods.
 
-**Check `factorio_version` for any `2.x`, not `== "2.0"` exactly.** A mod that has moved to 2.1 is not
-missing.
+**Check `factorio_version` for any `2.x`, not `== "2.0"` exactly.** A mod that has moved to 2.1 is
+not missing.
 
 ## Conventions
 
@@ -165,8 +166,8 @@ missing.
   `Grado_NonChanging` has the first one.
 - **Record what was dropped and why**, never just remove a line. A dependency that silently vanishes
   cannot be revisited.
-- Cite a mod by its **portal name** (`even-pickier-dollies`), not its title, because the name is what
-  `info.json` resolves.
+- Cite a mod by its **portal name** (`even-pickier-dollies`), not its title, because the name is
+  what `info.json` resolves.
 - **A pack's major version tracks save compatibility**, not maturity - with one exception, named
   below. Major = a dependency change an existing save cannot survive (a member mod of
   `Grado_ChangingBase` or below added or removed); minor = a save-safe dependency change; patch =

@@ -7,8 +7,8 @@ in the repo, `docs/porting-notes.md` is what happened to the 1.1 packs.
 ## Language
 
 **Pack**:
-One of the five things this repo publishes. A pack is an `info.json` whose `dependencies` list is the
-whole of it; it contributes no content of its own.
+One of the five things this repo publishes. A pack is an `info.json` whose `dependencies` list is
+the whole of it; it contributes no content of its own.
 _Avoid_: modpack (fine in prose, but "pack" is the unit), mod
 
 **Member mod**:

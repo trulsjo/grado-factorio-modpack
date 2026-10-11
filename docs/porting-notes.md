@@ -95,14 +95,14 @@ than replaced during the port - see the pack header above for what #8 did to the
 
 **Re-checked 2026-09-21 by the `Grado_ChangingBase` survey: none is recommended for adding back as
 itself, and not one of the six is a case of nothing existing** - "no replacement found" turns out to
-be false for all six once titles and summaries are searched. Four stay dropped - `crafting_combinator` was
-absorbed by the base game, `alien-biomes-hr-terrain` by a mandatory dependency,
-`beautiful_bridge_railway` has a two-mod functional replacement that was deliberately not taken, and
-`PickerTweaks` is the wrong kind of mod for a pack that must survive an overhaul. Two,
-`PickerPipeTools` and `PickerVehicles`, are `reconsider:` against `kry-picker-complete`: assessed by
-#3, and adopting it into this pack is #8's rather than this file's. See
-`docs/catalogue/Grado_ChangingBase.md`. The heading below describes the original port search, not the
-current state.
+be false for all six once titles and summaries are searched. Four stay dropped -
+`crafting_combinator` was absorbed by the base game, `alien-biomes-hr-terrain` by a mandatory
+dependency, `beautiful_bridge_railway` has a two-mod functional replacement that was deliberately
+not taken, and `PickerTweaks` is the wrong kind of mod for a pack that must survive an overhaul.
+Two, `PickerPipeTools` and `PickerVehicles`, are `reconsider:` against `kry-picker-complete`:
+assessed by #3, and adopting it into this pack is #8's rather than this file's. See
+`docs/catalogue/Grado_ChangingBase.md`. The heading below describes the original port search, not
+the current state.
 
 **Ruled 2026-09-22 (#8): all six stay dropped.** The four the survey recommended keeping dropped
 were ratified as they stood. `PickerPipeTools` and `PickerVehicles` close against
@@ -132,8 +132,8 @@ the whole branch's.
 2026-09-22). #9 made these changes:
 
 - **Out:** the three Deadlock mods (`deadlock-beltboxes-loaders`, `DeadlockStackingForBobs`,
-  `DeadlockStackingForVanilla`). The stacking feature is dropped entirely, because it covered vanilla
-  and Bob's items and not Angel's or Clowns ones, and Truls is not sure he wants it at all.
+  `DeadlockStackingForVanilla`). The stacking feature is dropped entirely, because it covered
+  vanilla and Bob's items and not Angel's or Clowns ones, and Truls is not sure he wants it at all.
 - **Out:** `signalstrings`, a library nothing depends on, with no reason for it on record.
 - **In:** `RealisticFusionPowerPort` (`Durikkan`, `1.9.2`), replacing `RealisticFusionPower` as a
   **comparison slot**. Truls wants it beside his own `realistic-fusion-refreshed`, which may replace
@@ -279,23 +279,23 @@ place and 1.1 players keep a working install. Publishing new entries instead wou
 stale 1.1 entries that searchers still find. The download counts were not the argument - twenty
 downloads is nothing - one URL per pack was.
 
-**Version `0.1.0` on all five, and packs version independently from there.** `0.1.0` sits above every
-published number, so it is legal on the reused entries, and the minor bump marks the 1.1 -> 2.0 break
-without claiming a stability nothing supports: no pack has been loaded in Factorio. *True on
-2026-09-21, when this was decided. Since 2026-10-04 (#115 to #118) all five packs have a recorded
+**Version `0.1.0` on all five, and packs version independently from there.** `0.1.0` sits above
+every published number, so it is legal on the reused entries, and the minor bump marks the 1.1 ->
+2.0 break without claiming a stability nothing supports: no pack has been loaded in Factorio. *True
+on 2026-09-21, when this was decided. Since 2026-10-04 (#115 to #118) all five packs have a recorded
 load on 2.0.77, and only `Grado_NonChanging` has been played (#17); the records are in
-`docs/loads/`. The versions did not move.* `1.0.0` would
-have been a lie and `2.0.0` would have read as tracking the game version, which breaks the moment a
-pack targets 2.1. Continuing each entry's own line (`0.0.2` / `0.0.3` / `0.0.3`) was the alternative;
-it left the largest change these packs will ever have looking like a patch. Lockstep versioning was
-rejected with it - a pack's version answers "did this pack's dependency list change", and lockstep
-would publish four no-op releases every time one mod is swapped. What a bump *means* is a standing
-rule, not a port fact: see `CLAUDE.md` and `docs/adr/0002-any-pack-can-go-major-and-1-0-0-signals-maturity.md`.
-*Until 2026-09-30 this pointed at ADR 0001, which 0002 supersedes (#70).*
+`docs/loads/`. The versions did not move.* `1.0.0` would have been a lie and `2.0.0` would have read
+as tracking the game version, which breaks the moment a pack targets 2.1. Continuing each entry's
+own line (`0.0.2` / `0.0.3` / `0.0.3`) was the alternative; it left the largest change these packs
+will ever have looking like a patch. Lockstep versioning was rejected with it - a pack's version
+answers "did this pack's dependency list change", and lockstep would publish four no-op releases
+every time one mod is swapped. What a bump *means* is a standing rule, not a port fact: see
+`CLAUDE.md` and `docs/adr/0002-any-pack-can-go-major-and-1-0-0-signals-maturity.md`. *Until
+2026-09-30 this pointed at ADR 0001, which 0002 supersedes (#70).*
 
 **The name is `Grado_ABCS`, with the underscore.** `GradoABCS` was the alternative. A name is what
-`info.json` resolves and what the portal URL carries, and it cannot be changed without abandoning the
-entry, so this one is permanent. Its own sibling `Grado_ABCX` is already published with the
+`info.json` resolves and what the portal URL carries, and it cannot be changed without abandoning
+the entry, so this one is permanent. Its own sibling `Grado_ABCX` is already published with the
 underscore, as are the other two; `ABCX` and `ABCS` sitting next to each other spelled differently
 was the outcome to avoid.
 
@@ -333,11 +333,11 @@ release declares 2.0, a 2.1 game is served nothing - see the last list below), a
 closure is 29 mods for `Grado_NonChanging`, 52 for `Grado_ChangingBase`, 107 for `Grado_ABC` and
 `Grado_ABCS`, and 108 for `Grado_ABCX`, one of each count being `Automatic_Train_Painter`'s
 `+FluidWagonColorMask`, which is not a portal name. It is almost certainly a mangled prefix on
-`FluidWagonColorMask`, already a named `Grado_NonChanging` member: `Automatic_Train_Painter`'s newest
-2.0 release, `2.0.1`, lists `?FluidWagonColorMask`. Whether the game accepts the `+` is checkable
-only in game. Every other mod in every closure has a 2.0 release. The 2.0 closure is one smaller for
-the two lower packs (that entry) and four smaller for the three above them (that entry and three
-Artisanal Reskins libraries, `reskins-assets-base`, `reskins-assets-bobs` and
+`FluidWagonColorMask`, already a named `Grado_NonChanging` member: `Automatic_Train_Painter`'s
+newest 2.0 release, `2.0.1`, lists `?FluidWagonColorMask`. Whether the game accepts the `+` is
+checkable only in game. Every other mod in every closure has a 2.0 release. The 2.0 closure is one
+smaller for the two lower packs (that entry) and four smaller for the three above them (that entry
+and three Artisanal Reskins libraries, `reskins-assets-base`, `reskins-assets-bobs` and
 `reskins-sprite-utils`, that the older releases do not pull).
 
 | Pack | Declares | Highest own member, latest 2.x | Effective floor, latest 2.x | Effective floor, newest 2.0 | Honours `base >= 2.0.0`? |
@@ -472,10 +472,10 @@ resolver re-measured all five on 2.0.77 and read the same two floors, and each `
 declares its floor.*
 
 Upstream 2.1 plans and served replacements were not researched for these. They matter only at a
-2.1 target, and whether to target 2.1 is #16's choice (*Ruled 2026-09-24 (#16), applied 2026-09-24 (#58).*);
-Truls closed #43 on the 2.0.77 result with this list kept as a watch list rather than a sweep.
-*Qualified 2026-10-01 (#90): #83's union re-run found served 2.1 successors for one row and for one
-candidate, named below. The others are still not researched.*
+2.1 target, and whether to target 2.1 is #16's choice (*Ruled 2026-09-24 (#16), applied 2026-09-24
+(#58).*); Truls closed #43 on the 2.0.77 result with this list kept as a watch list rather than a
+sweep. *Qualified 2026-10-01 (#90): #83's union re-run found served 2.1 successors for one row and
+for one candidate, named below. The others are still not researched.*
 
 **2.1-only successors found so far (#83, named here by #90).** Each is served at 2.1 only, so none
 is served on the declared 2.0 line, and each follows a mod that is not served at 2.1. Read on the
@@ -498,22 +498,22 @@ entry and in `Orphan Finder`'s under *Candidates, not members*. `Orphan Finder`'
 
 - **`alien-biomes-hr-terrain` was dropped on the assumption that 2.0 `alien-biomes` absorbed the
   HR terrain. Answered 2026-09-21 and closed 2026-09-22 (#8): the drop was right, the mechanism was
-  wrong, and the mod stays dropped - now by ruling and not only by recommendation.** `Earendel` did not grow `alien-biomes` to contain the terrain - he split *all* the
-  graphics into `alien-biomes-graphics`, created 2024-10-17 for the 2.0 port and now a mandatory
-  dependency of `alien-biomes` (`0.8.0`, 2.1, 2026-06-24), and edited the old mod's page to read
-  "Not required for Factorio 2.0 games". A ChangingBase player gets the high-resolution terrain
-  automatically. The difference matters: there is a third mod in the chain, named in none of our
-  five dependency lists, that can go stale on its own. Evidence in
-  `docs/catalogue/Grado_ChangingBase.md`. **This is now a pattern rather than an incident.** The
-  `Grado_ABC` survey found **fifteen** such mods on 2026-09-21 - nine from part 1 (`boblibrary`,
-  `Clowns-Nuclear` and seven Angel's graphics packages) and six more from part 2 (four Artisanal
-  Reskins packages, `rusty-locale` and `Warheads_Continued`) - every one mandatory, every one
-  absent from all five dependency lists. The set was computed as the mandatory closure of all 45
-  members minus what the two lower packs already pull in, which is what keeps `flib` out of the
-  count: it is a mandatory dependency here but `Grado_NonChanging` already installs it. Two are
-  worth naming: `rusty-locale` is staler than any named member of the pack, and
-  `Warheads_Continued` is content rather than art. Any survey reading a dependency list should
-  expect this and should walk the closure rather than one level. See
+  wrong, and the mod stays dropped - now by ruling and not only by recommendation.** `Earendel` did
+  not grow `alien-biomes` to contain the terrain - he split *all* the graphics into
+  `alien-biomes-graphics`, created 2024-10-17 for the 2.0 port and now a mandatory dependency of
+  `alien-biomes` (`0.8.0`, 2.1, 2026-06-24), and edited the old mod's page to read "Not required for
+  Factorio 2.0 games". A ChangingBase player gets the high-resolution terrain automatically. The
+  difference matters: there is a third mod in the chain, named in none of our five dependency lists,
+  that can go stale on its own. Evidence in `docs/catalogue/Grado_ChangingBase.md`. **This is now a
+  pattern rather than an incident.** The `Grado_ABC` survey found **fifteen** such mods on
+  2026-09-21 - nine from part 1 (`boblibrary`, `Clowns-Nuclear` and seven Angel's graphics packages)
+  and six more from part 2 (four Artisanal Reskins packages, `rusty-locale` and
+  `Warheads_Continued`) - every one mandatory, every one absent from all five dependency lists. The
+  set was computed as the mandatory closure of all 45 members minus what the two lower packs already
+  pull in, which is what keeps `flib` out of the count: it is a mandatory dependency here but
+  `Grado_NonChanging` already installs it. Two are worth naming: `rusty-locale` is staler than any
+  named member of the pack, and `Warheads_Continued` is content rather than art. Any survey reading
+  a dependency list should expect this and should walk the closure rather than one level. See
   `docs/catalogue/Grado_ABC.md`. *Fourteen after #9 (2026-09-23), which took `rusty-locale` out with
   the Deadlock mods, and thirteen after #81 (2026-10-04), which took `Warheads_Continued` out with
   `True-Nukes_Continued`.*
@@ -521,92 +521,88 @@ entry and in `Orphan Finder`'s under *Candidates, not members*. `Orphan Finder`'
   Angel's, MadClown) have moved to `2.1`. **Re-measured for all five on 2026-09-23 against the
   settled memberships (#15): see *Effective Factorio floor* above, which supersedes the readings in
   this entry.** **The member counts below are each pack as it stood when
-  it was measured**: #7 and #8 then took the three lower lists to 26, 20 and 44 members, #9 took the third to 41
-  on 2026-09-23 and #81 to 39 on 2026-10-04, and the
-  numerators have not been re-derived against them. **Answered for `Grado_NonChanging` on
-  2026-09-21, and the answer is no:** ten of its 29 members require `base >= 2.1`, six of them
-  `>= 2.1.7`, so a player on
-  2.0.x cannot satisfy the pack. See `docs/catalogue/Grado_NonChanging.md`. The mechanism is the
-  members' own `base` requirements rather than the `factorio_version` field. **Answered the same way
-  for `Grado_ChangingBase` on 2026-09-21, and it raises the floor:** eleven of its 25 members require
+  it was measured**: #7 and #8 then took the three lower lists to 26, 20 and 44 members, #9 took the
+  third to 41 on 2026-09-23 and #81 to 39 on 2026-10-04, and the numerators have not been re-derived
+  against them. **Answered for `Grado_NonChanging` on 2026-09-21, and the answer is no:** ten of its
+  29 members require `base >= 2.1`, six of them `>= 2.1.7`, so a player on 2.0.x cannot satisfy the
+  pack. See `docs/catalogue/Grado_NonChanging.md`. The mechanism is the members' own `base`
+  requirements rather than the `factorio_version` field. **Answered the same way for
+  `Grado_ChangingBase` on 2026-09-21, and it raises the floor:** eleven of its 25 members require
   `base >= 2.1`, and `WideChests` `6.3.0` requires `>= 2.1.8`, the highest seen in any pack at the
   time. **#8 raised it again on 2026-09-22, to `base >= 2.1.12`** - `cybersyn2`, and the `0-things`
   library it pulls, both require it, which is above `Grado_ABCX`'s 2.1.9 and is now the project
   high. That floor is inherited by `Grado_ABC`, `Grado_ABCX` and `Grado_ABCS`, so the swap changed
   the answer for four packs. Removing the four LTN mods took out one `>= 2.1.7` member and two
-  `>= 2.1` ones, which lowers nothing, because the new member is higher than all of them.
-  See `docs/catalogue/Grado_ChangingBase.md`. **Answered the same way for `Grado_ABC` on
-  2026-09-21:** all 29 of the overhaul-core members require `base >= 2.1`, 22 of them in their own
-  dependency list, and the pack is now measured in full - **twenty-six of the 45 declare it
-  directly** and the other nineteen are neutral or inherit it. It does not raise the floor - the
-  highest requirement from ABC's own members is `>= 2.1.0` - but the pack inherits
-  `Grado_ChangingBase`'s floor, which was `>= 2.1.8` when this was measured and is `>= 2.1.12` after
-  #8, so that is the effective minimum for an ABC install. See
-  `docs/catalogue/Grado_ABC.md`. **Answered for both end-game branches on 2026-09-22, and
-  `Grado_ABCX` raises the floor again:** `SpaceModFeorasFork` `1.3.4` requires `base >= 2.1.9`, one
-  patch above `WideChests` and, until 2026-09-22, **the highest requirement anywhere in the
-  project** - measured across
-  the chain's full mandatory closure, 98 distinct named members of the three lower packs and 19
-  hidden mandatory dependencies, 117 mods, latest 2.x release each. `Grado_ABCS` adds nothing to the
-  floor that can be read, because `space-age` is
-  not a portal mod and its `base` requirement is unreadable by this method at all; from the portal
-  alone it inherits `Grado_ChangingBase`'s floor, `>= 2.1.8` when this was measured and `>= 2.1.12`
-  after #8. See `docs/catalogue/Grado_ABCX.md` and
-  `docs/catalogue/Grado_ABCS.md`. **So the measurement is complete for four packs and not completable
-  for the fifth without the game**, which is issue #29. The number itself is Truls's to set.
-  **Ruled 2026-09-24 (#16), applied 2026-09-24 (#58):** declared line `2.0` for the first release, with
-  `base >= 2.0.67` for `Grado_NonChanging` and `>= 2.0.74` for the other four, and a 2.1 release
-  once factorio.com's stable release is 2.1.x. What remained open until #58 was applying it - the
-  `info.json` edits waited on the resolver (trulsjo/grado-factorio-tools#14) re-measuring them,
-  and it is pinned here since 2026-09-24 (#24) - and #29's `space-age` reading. *The edits landed
-  2026-09-24 (#58), on a re-measurement that read the same floors; #29's reading stays open.*
-  *(Partly read 2026-09-23, #10: `space-age` `2.0.77` in the installed game declares
-  `base >= 2.0.0`, below the inherited `2.1.12`, so on 2.0.77 it does not raise the floor. A 2.1
-  build is unread. See `docs/catalogue/Grado_ABCS.md`, What the portal actually returns.)*
-  **Every reading above is of each member's *latest* release, and that turns out to matter
-  (2026-09-23, #9).** All 91 named mods checked (the three lower packs' lists before #9's removals,
-  plus `RealisticFusionPowerPort`, so a superset of the 87 members after it) have at least one
-  release declaring `factorio_version` 2.0, and none of those newest 2.0
-  releases asks for `base >= 2.1`. On a 2.0 game the portal serves each mod its newest 2.0 release,
-  so the 2.1 floor measured here is a floor for a 2.1 target and not a proof that 2.0 is
-  impossible. The hidden mandatory members pass the same check: `Grado_ABC`'s fourteen after #9, plus `flib`,
-  `alien-biomes-graphics`, `kry_stdlib`, `stdlib2` and `0-things`. Not checked: whether the
-  old releases' version floors on each other are consistent. See #43 and #16. *(Checked
-  2026-09-24, #43: consistent on stable 2.0.77, zero violations across all five packs - see
-  *Resolves on stable 2.0.77* above.)*
+  `>= 2.1` ones, which lowers nothing, because the new member is higher than all of them. See
+  `docs/catalogue/Grado_ChangingBase.md`. **Answered the same way for `Grado_ABC` on 2026-09-21:**
+  all 29 of the overhaul-core members require `base >= 2.1`, 22 of them in their own dependency
+  list, and the pack is now measured in full - **twenty-six of the 45 declare it directly** and the
+  other nineteen are neutral or inherit it. It does not raise the floor - the highest requirement
+  from ABC's own members is `>= 2.1.0` - but the pack inherits `Grado_ChangingBase`'s floor, which
+  was `>= 2.1.8` when this was measured and is `>= 2.1.12` after #8, so that is the effective
+  minimum for an ABC install. See `docs/catalogue/Grado_ABC.md`. **Answered for both end-game
+  branches on 2026-09-22, and `Grado_ABCX` raises the floor again:** `SpaceModFeorasFork` `1.3.4`
+  requires `base >= 2.1.9`, one patch above `WideChests` and, until 2026-09-22, **the highest
+  requirement anywhere in the project** - measured across the chain's full mandatory closure, 98
+  distinct named members of the three lower packs and 19 hidden mandatory dependencies, 117 mods,
+  latest 2.x release each. `Grado_ABCS` adds nothing to the floor that can be read, because
+  `space-age` is not a portal mod and its `base` requirement is unreadable by this method at all;
+  from the portal alone it inherits `Grado_ChangingBase`'s floor, `>= 2.1.8` when this was measured
+  and `>= 2.1.12` after #8. See `docs/catalogue/Grado_ABCX.md` and `docs/catalogue/Grado_ABCS.md`.
+  **So the measurement is complete for four packs and not completable for the fifth without the
+  game**, which is issue #29. The number itself is Truls's to set. **Ruled 2026-09-24 (#16), applied
+  2026-09-24 (#58):** declared line `2.0` for the first release, with `base >= 2.0.67` for
+  `Grado_NonChanging` and `>= 2.0.74` for the other four, and a 2.1 release once factorio.com's
+  stable release is 2.1.x. What remained open until #58 was applying it - the `info.json` edits
+  waited on the resolver (trulsjo/grado-factorio-tools#14) re-measuring them, and it is pinned here
+  since 2026-09-24 (#24) - and #29's `space-age` reading. *The edits landed 2026-09-24 (#58), on a
+  re-measurement that read the same floors; #29's reading stays open.* *(Partly read 2026-09-23,
+  #10: `space-age` `2.0.77` in the installed game declares `base >= 2.0.0`, below the inherited
+  `2.1.12`, so on 2.0.77 it does not raise the floor. A 2.1 build is unread. See
+  `docs/catalogue/Grado_ABCS.md`, What the portal actually returns.)* **Every reading above is of
+  each member's *latest* release, and that turns out to matter (2026-09-23, #9).** All 91 named mods
+  checked (the three lower packs' lists before #9's removals, plus `RealisticFusionPowerPort`, so a
+  superset of the 87 members after it) have at least one release declaring `factorio_version` 2.0,
+  and none of those newest 2.0 releases asks for `base >= 2.1`. On a 2.0 game the portal serves each
+  mod its newest 2.0 release, so the 2.1 floor measured here is a floor for a 2.1 target and not a
+  proof that 2.0 is impossible. The hidden mandatory members pass the same check: `Grado_ABC`'s
+  fourteen after #9, plus `flib`, `alien-biomes-graphics`, `kry_stdlib`, `stdlib2` and `0-things`.
+  Not checked: whether the old releases' version floors on each other are consistent. See #43 and
+  #16. *(Checked 2026-09-24, #43: consistent on stable 2.0.77, zero violations across all five
+  packs - see *Resolves on stable 2.0.77* above.)*
 - **`RealisticFusionPower` is among the drops.** It is the mod the separate
-  *realistic-fusion-refreshed* project exists to succeed; that mod is a candidate to add here once it
-  ships. **Answered in part 2026-09-23 (#9):** `RealisticFusionPowerPort` holds the slot for now, as a
-  comparison against the sibling project, which may replace it once published.
+  *realistic-fusion-refreshed* project exists to succeed; that mod is a candidate to add here once
+  it ships. **Answered in part 2026-09-23 (#9):** `RealisticFusionPowerPort` holds the slot for now,
+  as a comparison against the sibling project, which may replace it once published.
 - **The Picker family lost seven of nine - and for `Grado_NonChanging` that is now closed.**
   **#7 settled it on 2026-09-22: the four drops cost that pack nothing.** `kry-picker-extended` and
   `BlueprintTools` are already members and cover the belt, planner and sorting features, and the one
-  feature thought to be missing - `PickerInventoryTools`' requester-chest-from-blueprint - turned out
-  to be base-game. Dropping a blueprint on a requester chest's "Add section" button is vanilla 2.0;
-  the suggestion asking for it was closed Implemented, and a sweep of every 2.x mod by title and
-  summary found nothing reproducing it because nothing needs to. The sentence below, that only
+  feature thought to be missing - `PickerInventoryTools`' requester-chest-from-blueprint - turned
+  out to be base-game. Dropping a blueprint on a requester chest's "Add section" button is vanilla
+  2.0; the suggestion asking for it was closed Implemented, and a sweep of every 2.x mod by title
+  and summary found nothing reproducing it because nothing needs to. The sentence below, that only
   `PickerInventoryTools`' requester-chest-from-blueprint has no successor found, is superseded. See
   `docs/catalogue/Grado_NonChanging.md`. **The three in `Grado_ChangingBase` were assessed on
   2026-09-21 and reach the same place from a different direction:** `PickerTweaks` is recommended to
   stay dropped on its own merits - a mod that adjusts base item values does not belong under an
   overhaul - while `PickerPipeTools` and `PickerVehicles` split into features covered mostly by
   `kry-picker-complete` members and optionals, and partly by mods already in the chain
-  (`PipeVisualizer-Updated` and `VehicleSnap`, both `Grado_NonChanging` members, which are in neither
-  that modpack's dependency list nor its optionals). Only `PickerPipeTools`' pipe clamps have no
-  successor found. That is the second pack to arrive at the same modpack question, from a different
-  direction. **Adoption is pack membership and splits by pack: `Grado_NonChanging`'s share is #7 and
-  `Grado_ChangingBase`'s is #8.** No ticket owns it for the chain, and one answer would serve both.
-  **#7 declined it for `Grado_NonChanging` on 2026-09-22** - out of that ticket's scope as an
-  addition, and it carries `EvenDistributionLite` as a mandatory member, which would have overruled
-  the decision to keep `even-distribution`. Its individual members are ticketed separately.
-  `Grado_ChangingBase`'s share is still #8's and is not settled by that.
-  **#8 settled it on 2026-09-22 and declined it here too**, on the same grounds: an addition of a mod
-  never in the 1.1 pack, plus the structural objection that a pack depending on a pack hands a third
-  party control of several members at once. `PickerPipeTools` and `PickerVehicles` stay dropped, and
-  the pipe clamps stay the one feature with no successor found. **So the Picker question is now
-  closed for both packs that owned a share of it**, and the bundle's members are ticketed for
-  assessment one at a time, for whichever pack each fits.
-  See `docs/catalogue/Grado_ChangingBase.md`. Original note follows.
+  (`PipeVisualizer-Updated` and `VehicleSnap`, both `Grado_NonChanging` members, which are in
+  neither that modpack's dependency list nor its optionals). Only `PickerPipeTools`' pipe clamps
+  have no successor found. That is the second pack to arrive at the same modpack question, from a
+  different direction. **Adoption is pack membership and splits by pack: `Grado_NonChanging`'s share
+  is #7 and `Grado_ChangingBase`'s is #8.** No ticket owns it for the chain, and one answer would
+  serve both. **#7 declined it for `Grado_NonChanging` on 2026-09-22** - out of that ticket's scope
+  as an addition, and it carries `EvenDistributionLite` as a mandatory member, which would have
+  overruled the decision to keep `even-distribution`. Its individual members are ticketed
+  separately. `Grado_ChangingBase`'s share is still #8's and is not settled by that. **#8 settled it
+  on 2026-09-22 and declined it here too**, on the same grounds: an addition of a mod never in the
+  1.1 pack, plus the structural objection that a pack depending on a pack hands a third party
+  control of several members at once. `PickerPipeTools` and `PickerVehicles` stay dropped, and the
+  pipe clamps stay the one feature with no successor found. **So the Picker question is now closed
+  for both packs that owned a share of it**, and the bundle's members are ticketed for assessment
+  one at a time, for whichever pack each fits. See `docs/catalogue/Grado_ChangingBase.md`. Original
+  note follows.
 - **The Picker family lost seven of nine - and that is now disputed.** The name-only search found
   replacements for `PickerDollies` (`even-pickier-dollies`) and `PickerExtended`
   (`kry-picker-extended`) alone. Searching titles instead turns up `kry-picker-complete`, a 2.1
@@ -624,29 +620,29 @@ entry and in `Orphan Finder`'s under *Candidates, not members*. `Orphan Finder`'
 - **The train-logistics paradigm was reopened and changed. Closed 2026-09-22 (#8, settling #23):
   `Grado_ChangingBase` moves from LTN to Cybersyn 2.** The four LTN mods are out and `cybersyn2` is
   in - and it is author-declared **alpha**, which was read and accepted rather than overlooked. The
-  reasoning is that Project Cybersyn CS1, which #23 was written to weigh, has no migration to its own
-  successor and so is a dead end, while doing this before any release costs nobody an invalid entity
-  and doing it after would cost every logistic train stop in a player's base. The content-reader
-  feature leaves the pack outright, because no CS2 content reader exists. See
+  reasoning is that Project Cybersyn CS1, which #23 was written to weigh, has no migration to its
+  own successor and so is a dead end, while doing this before any release costs nobody an invalid
+  entity and doing it after would cost every logistic train stop in a player's base. The
+  content-reader feature leaves the pack outright, because no CS2 content reader exists. See
   `docs/catalogue/Grado_ChangingBase.md`.
-- **Nothing has been play-tested.** No pack has been loaded in Factorio, and no compatibility Lua has
-  been written or shown to be needed. **This now matters more than it did**: as of 2026-09-22
+- **Nothing has been play-tested.** No pack has been loaded in Factorio, and no compatibility Lua
+  has been written or shown to be needed. **This now matters more than it did**: as of 2026-09-22
   `Grado_ChangingBase`, and therefore the three packs above it, depend on a mod whose author
   describes it as having "known issues, bugs, missing features, and even the occasional crash".
-  *2026-09-29 (#17): `Grado_NonChanging` has been **loaded** (`GLOSSARY.md`, *Load*) on 2.0.77,
-  base only and with `space-age`, `quality` and `elevated-rails`. Both loads were clean: no error
-  or warning in the log, and no conflict between members, so no compatibility Lua was shown to be
+  *2026-09-29 (#17): `Grado_NonChanging` has been **loaded** (`GLOSSARY.md`, *Load*) on 2.0.77, base
+  only and with `space-age`, `quality` and `elevated-rails`. Both loads were clean: no error or
+  warning in the log, and no conflict between members, so no compatibility Lua was shown to be
   needed. Not tested: play (the play session is still to run), a build below 2.0.77, multiplayer,
   and the other four packs, including `Grado_ChangingBase` and the alpha above. Record, with every
   resolved member version: `docs/loads/Grado_NonChanging-2026-09-29.md`.* *2026-09-30 (#17): its
   play session is complete. 24 of the 26 named members were seen working (`ixuAutoSave` and
-  `kry-picker-extended` not confirmed), the save survived a reload with the members' data that
-  was checked, and the only conflict found is a key binding: `YARM` and `PipeVisualizer-Updated`
-  both default to `Alt+Y`. Whether that earns the first compatibility Lua is #73's.* *Base's
+  `kry-picker-extended` not confirmed), the save survived a reload with the members' data that was
+  checked, and the only conflict found is a key binding: `YARM` and `PipeVisualizer-Updated` both
+  default to `Alt+Y`. Whether that earns the first compatibility Lua is #73's.* *Base's
   `give-discharge-defense-remote` defaults to `Alt+Y` too, with or without Space Age (#71,
   2026-09-30).* *2026-10-04 (#115 to #118): the other four packs each have a recorded load on
-  2.0.77, records in `docs/loads/`. Every base-only load was clean, none of the four was played,
-  and `Grado_ABCX` was refused beside Space Age as intended.*
+  2.0.77, records in `docs/loads/`. Every base-only load was clean, none of the four was played, and
+  `Grado_ABCX` was refused beside Space Age as intended.*
 
 ## The trail of CLAUDE.md's State and open decisions
 
@@ -723,22 +719,21 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
   declaring 2.0 whose `base` floor is below 2.1, and the whole closure read that way asks
   `base >= 2.0.74` (`miniloader-redux`, #15). So a 2.0 target may resolve, while a 2.1 target
   strands the 2.0-only members. That makes "installs on no version of Factorio" unproven rather than
-  true, and the choice between the two targets is #16's (*Ruled 2026-09-24 (#16), applied 2026-09-24 (#58).*)
-  The hidden members pass too. Not yet checked: whether the old releases' floors on each other are
-  consistent. *Checked 2026-09-24 (#43): they are.* **Stable Factorio is 2.0.77; 2.1.20 is
+  true, and the choice between the two targets is #16's (*Ruled 2026-09-24 (#16), applied 2026-09-24
+  (#58).*) The hidden members pass too. Not yet checked: whether the old releases' floors on each
+  other are consistent. *Checked 2026-09-24 (#43): they are.* **Stable Factorio is 2.0.77; 2.1.20 is
   experimental** (read 2026-09-24). **On 2.0.77 all five packs resolve on portal metadata, with zero
   conflicts between the releases a 2.0.77 game would install** (#43, closed 2026-09-24) - so the 2.0
   target is no longer "may resolve". Seventeen members, two of them hidden, still have no 2.1
   release; that list is a watch list for when 2.1 goes stable, under *Resolves on stable 2.0.77* in
   `docs/porting-notes.md`. *Fourteen, one of them hidden, since 2026-10-04 (#81) dropped the nukes
-  mods.* The five-pack table, dated 2026-09-23 and against the settled
-  memberships, is *Effective Factorio floor* in `docs/porting-notes.md` (#15). **Ruled 2026-09-24
-  (#16) - see *Settled so far*.** What stayed open until #58 was applying it: the `info.json` edits
-  waited on the resolver re-measuring the minimums. *Applied 2026-09-24 (#58): re-measured on
-  2.0.77, same floors, and the five `info.json` files declare them.* *Dated 2026-10-04 (#126), on
-  "`Grado_ABCS` cannot be answered until the pack is loaded" above: the pack has loaded since, on
-  2.0.77 with Space Age (#118). The 2.1 build of `space-age` is still unread, so for the 2.1 line
-  that sentence stands.*
+  mods.* The five-pack table, dated 2026-09-23 and against the settled memberships, is *Effective
+  Factorio floor* in `docs/porting-notes.md` (#15). **Ruled 2026-09-24 (#16) - see *Settled so
+  far*.** What stayed open until #58 was applying it: the `info.json` edits waited on the resolver
+  re-measuring the minimums. *Applied 2026-09-24 (#58): re-measured on 2.0.77, same floors, and the
+  five `info.json` files declare them.* *Dated 2026-10-04 (#126), on "`Grado_ABCS` cannot be
+  answered until the pack is loaded" above: the pack has loaded since, on 2.0.77 with Space Age
+  (#118). The 2.1 build of `space-age` is still unread, so for the 2.1 line that sentence stands.*
 - **`PickerPipeTools`' pipe clamps are the one feature lost in the port with no successor found** —
   a search, not a proof. All twenty port drops are now closed (#7, #8, #9): nineteen stay dropped
   and `RealisticFusionPower` was replaced by `RealisticFusionPowerPort`.
@@ -764,10 +759,11 @@ sentence about this trail is a bullet of its own.
 > - **Two documents, two jobs.** `docs/porting-notes.md` records what happened to the 1.1 packs,
 >   and since 2026-10-05 the superseded wording of this file's *State* and *Decisions still open*;
 >   `docs/catalogue/<pack>.md` records what is in each pack now and why, one entry per mod.
->   `docs/mod-catalogue.md` is the entry format. A fact about the port goes in the notes, a fact about
->   a mod goes in its catalogue entry. *A third since 2026-09-29 (#17):* `docs/loads/<pack>-<date>.md`
->   records one load and its play session - the build, the bundled mods and every resolved member
->   version, so the next load can be compared with it. The first one is the template.
+>   `docs/mod-catalogue.md` is the entry format. A fact about the port goes in the notes, a fact
+>   about a mod goes in its catalogue entry. *A third since 2026-09-29 (#17):*
+>   `docs/loads/<pack>-<date>.md` records one load and its play session - the build, the bundled
+>   mods and every resolved member version, so the next load can be compared with it. The first one
+>   is the template.
 
 **The glossary's count**, in the bullet on `name` and `title`. `CLAUDE.md` no longer counts the
 terms.

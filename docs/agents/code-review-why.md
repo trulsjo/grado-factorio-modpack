@@ -7,9 +7,9 @@ have lost, that day or later, is under *What the rules said before*.
 
 ## Why the threshold cannot be read as "these findings do not matter"
 
-The rubric offers exactly five values — **0, 25, 50, 75, 100** — and the filter admits 80 or more. So
-it admits exactly one of them. The effective rule is *score exactly 100*, and the 75 band, which the
-rubric itself defines as
+The rubric offers exactly five values — **0, 25, 50, 75, 100** — and the filter admits 80 or more.
+So it admits exactly one of them. The effective rule is *score exactly 100*, and the 75 band, which
+the rubric itself defines as
 
 > Highly confident. The agent double checked the issue, and verified that it is very likely it is a
 > real issue that will be hit in practice … The issue is very important
@@ -34,11 +34,12 @@ across its PRs #124, #126 and #127: ten findings, zero posted, nine real and sub
 ## Why the prose is reviewed
 
 **This repository is almost entirely prose, and nothing here checks it.** A pack is an `info.json`
-whose dependency list *is* the pack, and `CLAUDE.md` says these packs are expected to carry no Lua at
-all. The one gate that exists — the shared check, at
+whose dependency list *is* the pack, and `CLAUDE.md` says these packs are expected to carry no Lua
+at all. The one gate that exists — the shared check, at
 `vendor/grado-factorio-tools/scripts/commit-check.ps1` since 2026-09-21 — reads the *shape* of a
-commit message and says so in its own header. Nothing reads whether a sentence agrees with the number beside it, and
-**nothing has ever been loaded in Factorio**, so the game cannot contradict a claim either.
+commit message and says so in its own header. Nothing reads whether a sentence agrees with the
+number beside it, and **nothing has ever been loaded in Factorio**, so the game cannot contradict a
+claim either.
 
 *True when this page was adopted on 2026-09-20. Since 2026-10-04 (#115 to #118) all five packs have
 a recorded load on Factorio 2.0.77, and `Grado_NonChanging` has been played (#17, 2026-09-30); the
@@ -64,8 +65,8 @@ machinery:
 | seven Picker mods "dropped, no replacement found" | a name-only search. Searching titles returns `kry-picker-complete`, a 2.1 modpack reassembling the family. The same mistake as the row above, made a second time, by the rule written after the first |
 | two optional dependencies silently made mandatory | `? reverse-factory` and `? Squeak Through` are optional in the published 1.1 pack and required in the 2.0 one. Nobody decided that; it is now [#11](https://github.com/trulsjo/grado-factorio-modpack/issues/11) |
 
-Three of those four are a claim stated more confidently than its evidence allowed. That is the defect
-this repository actually produces, and no gate will ever catch it.
+Three of those four are a claim stated more confidently than its evidence allowed. That is the
+defect this repository actually produces, and no gate will ever catch it.
 
 ## Why a record does not cite `CLAUDE.md`
 
@@ -78,14 +79,14 @@ that hold the facts.
 ## Why it is written here rather than fixed at source
 
 The workflow is a plugin, at `~/.claude/plugins/cache/claude-plugins-official/code-review/`. It is
-not this repository's to edit, and editing a cache would be undone by the next plugin update. So this
-is a convention, and `CLAUDE.md` points at it so a review session loads it before running.
+not this repository's to edit, and editing a cache would be undone by the next plugin update. So
+this is a convention, and `CLAUDE.md` points at it so a review session loads it before running.
 
 Nothing about the scoring, the rubric or the 80 is changed. The first rule drops one assumption —
-that a filtered finding is a discarded one. The second adds one obligation the rubric never mentions,
-because a plugin that reviews code cannot know that here there is almost no code to review.
-*Since 2026-10-06 (#151) a third says when the workflow is run at all, and changes nothing inside
-it either.*
+that a filtered finding is a discarded one. The second adds one obligation the rubric never
+mentions, because a plugin that reviews code cannot know that here there is almost no code to
+review. *Since 2026-10-06 (#151) a third says when the workflow is run at all, and changes nothing
+inside it either.*
 
 ## Why one review before the pull request
 
@@ -219,7 +220,8 @@ nothing. The rest stands as quoted.
 made the glossary check fail on an unmarked use:
 
 > - the output of `scripts/glossary-check.ps1 -Range origin/main..HEAD`, which lists each added line
->   that uses a word `GLOSSARY.md` avoids. It reports and does not judge: each use is the reviewer's.
+>   that uses a word `GLOSSARY.md` avoids. It reports and does not judge: each use is the
+>   reviewer's.
 
 **What the pre-PR reviewer is handed**, the two ranges that had two dots until 2026-10-09, when
 #204 gave the Markdown check's and the glossary check's three. The sentence that says why the

@@ -49,6 +49,9 @@ for.*
 *Since 2026-10-06 (#149) there is a second gate, `scripts/markdown-check.ps1`, which reads the
 shape of the Markdown and still not what a sentence says.*
 
+*Since 2026-10-11 (#182) that gate is the shared check,
+`vendor/grado-factorio-tools/scripts/markdown-check.ps1`, and this repository holds no copy.*
+
 ## Measured, not assumed
 
 Every defect this project has produced so far has been prose or data, and none was catchable by
@@ -242,3 +245,12 @@ the two trails that quote the reason above.
 
 > The same reason written out
 > in a second file is a finding.
+
+**The Markdown check's path**, in the head of the second rule and in what the pre-PR reviewer is
+handed, as the two stood until 2026-10-11, when #182 deleted this repository's copy of the script
+and ran the shared one from the tools submodule:
+
+> (`scripts/markdown-check.ps1`) - and a load can contradict only whether a pack starts.
+
+> `scripts/markdown-check.ps1 -Range origin/main...HEAD`, and of the resolve if an `info.json`
+> changed.

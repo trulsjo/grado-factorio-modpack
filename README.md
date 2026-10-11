@@ -102,8 +102,11 @@ To clear the cache, delete `.dump-cache/`, or the three files of one dump. Nothi
 ## Checks
 
 Two git hooks, both wired up by `git config core.hooksPath .githooks`: `commit-msg` checks the
-shape of a commit message, and `pre-commit` runs `scripts/markdown-check.ps1` on the staged
-Markdown files. That one refuses emphasis or a code span left open at the end of its paragraph, a
+shape of a commit message, and `pre-commit` runs the shared Markdown check,
+`vendor/grado-factorio-tools/scripts/markdown-check.ps1`, on the staged Markdown files. Both
+checks live in the tools submodule, so a clone runs `git submodule update --init` too; without
+it each hook says what was not checked and does not refuse the commit for that. The Markdown
+check refuses emphasis or a code span left open at the end of its paragraph, a
 table row with another column count than its header, and a link to a file git does not track. It
 does not judge prose. `-Range origin/main...HEAD` checks the Markdown a branch changed, `-All` every
 tracked file, and `-SelfTest` proves it can fail.

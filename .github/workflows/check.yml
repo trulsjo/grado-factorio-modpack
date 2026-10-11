@@ -24,8 +24,9 @@
 #
 # The pull request's head is checked out, not the merge commit GitHub makes for it, so the range
 # is the pull request's commits and no other. The whole history and the submodule come with it,
-# or `origin/main..HEAD` is empty and commit-check.ps1 is missing. The range keeps the three
-# commits of 2026-09-20 out, which fail the check and are left alone (CLAUDE.md).
+# or `origin/main..HEAD` is empty and the two shared checks, commit-check.ps1 and
+# markdown-check.ps1 (#182), are missing. The range keeps the three commits of 2026-09-20 out,
+# which fail the check and are left alone (CLAUDE.md).
 #
 # Nothing is installed: pwsh, git and sh are on the runner. The checkout action is the one thing
 # fetched besides this repository and its submodule, pinned to a commit.
@@ -50,7 +51,7 @@ jobs:
       - name: Run the self-tests
         run: |
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -SelfTest
-          pwsh -NoProfile -File scripts/markdown-check.ps1 -SelfTest
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/markdown-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/glossary-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/ask-before-download.ps1 -SelfTest
           pwsh -NoProfile -File scripts/reword-commit.ps1 -SelfTest
@@ -64,7 +65,7 @@ jobs:
 
       - name: Check the changed Markdown
         if: ${{ !cancelled() }}
-        run: pwsh -NoProfile -File scripts/markdown-check.ps1 -Range origin/main...HEAD
+        run: pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/markdown-check.ps1 -Range origin/main...HEAD
 
       - name: Check the added Markdown lines against the glossary
         if: ${{ !cancelled() }}

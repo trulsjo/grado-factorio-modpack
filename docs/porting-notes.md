@@ -842,3 +842,9 @@ PR #216, and the range sentence now names the script it speaks of:
 > `scripts/glossary-check.ps1`, two for the commit check: why is in the header of
 > `.github/workflows/check.yml`. The hook and the workflow run more than this section names, and
 > each one's own header says what.
+
+**The Markdown check's path**, in the range sentence under *Commit messages*, as it stood from
+#217 until 2026-10-11, when #182 deleted this repository's copy of the script and ran the shared
+one from the tools submodule:
+
+> `scripts/markdown-check.ps1 -Range origin/main...HEAD` checks the Markdown a branch changed.

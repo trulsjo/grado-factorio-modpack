@@ -26,6 +26,15 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
   the pull request says the ticket was wrong. On 2026-10-09 #206 called one file "the one file
   where the three ranges stand side by side", two other files held all three, and the claim
   reached a commit message before a review caught it (PR #210, finding 2 in its body).
+- **A criterion that a setting took effect names a newly started process**: where a ticket asks
+  that a setting, a hook or a plugin be shown working or absent, the criterion names a `claude`
+  process started after the commit that holds the setting is
+  checked out, <!-- deliberate: checked -->
+  and the process's start time is kept beside the start of its transcript. A new session
+  id <!-- deliberate: id -->
+  does not show it. On 2026-10-12 #160's "a new session" was met with a `/clear`, twice, in a
+  process started four minutes before the commit: both sessions opened with the plugin's text,
+  and neither could show whether the setting worked (#245).
 - **Read an issue**: `gh issue view <number> --json title,body,labels,comments`, filtered with
   `--jq`. One call gets the body, the labels and every comment; `--comments` alone, piped, printed
   the comments and not the body (2026-10-06).

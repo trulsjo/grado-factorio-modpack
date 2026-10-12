@@ -116,17 +116,17 @@ each when it was decided.
   count of phrases on 2026-10-07 (`main` at `d6157a9`) found "staged source" in the headers of
   `Grado_ABCX.md` and `Grado_ChangingBase.md` and nowhere below them, so each clause is read
   against its note before the list is cut. The work is #175.
-- **oh-my-claudecode and ponytail are switched off in this repository** (2026-10-12, #160), in
-  the tracked `.claude/settings.json`, so every clone gets it; a clone without either plugin is
-  unaffected. oh-my-claudecode's hooks added 59 reminders in the session of 2026-10-05, four
+- **oh-my-claudecode and ponytail are disabled in `.claude/settings.json`** (2026-10-12, #160).
+  oh-my-claudecode's hooks added 59 reminders in the session of 2026-10-05, four
   texts about testing, verifying and parallel execution in a <!-- deliberate: verifying -->
   repository with no tests; its read
   budget refused a second full read of a large file, which a review needs; its state files are
   what landed in the mod cache (#150); and it adds about forty skills to every session. Counts
-  read from the session logs on 2026-10-06. ponytail's session-start text steers towards the
+  are #160's, read from the session logs on 2026-10-06.
+  ponytail's session-start text steers towards the
   shortest explanation, against a repository that is almost all prose and whose reviews ask for
   every number pinned and every claim qualified. Whether either changed what an agent did was
   not measured. Nothing tracked here depended on either: a search on 2026-10-12 found no mention
-  outside the `.omc/*` lines in `.gitignore`, which stay as a guard should the plugin come back
-  on locally, as does #150's hook. Other plugins were out of scope. The oh-my-claudecode
+  outside the `.omc/*` lines in `.gitignore`, which stay as a guard, as does #150's hook.
+  Other plugins were out of scope. The oh-my-claudecode
   section of a global `CLAUDE.md` still loads, so `CLAUDE.md` says which of it does not apply.

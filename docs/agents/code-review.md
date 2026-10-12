@@ -149,8 +149,8 @@ handed and not by a skill's name:
 - this file;
 - `GLOSSARY.md`, which holds the three grades the rules above use;
 - on a branch that records measurements, the raw output behind them - a `--dump-data` dump, the
-  portal API's responses, a load's log - and the scripts that produced the figures. On any other
-  branch, the results of `commit-check.ps1 -Range origin/main..HEAD` and of
+  portal API's responses, a load's log - and the commands and scripts that produced the figures.
+  On any other branch, the results of `commit-check.ps1 -Range origin/main..HEAD` and of
   `markdown-check.ps1 -Range origin/main...HEAD -MaxLineLength 100`, both in
   `vendor/grado-factorio-tools/scripts/`, and of the resolve if an `info.json` changed. The
   commit check's range has two dots and the other two checks' have three: why is in the header of

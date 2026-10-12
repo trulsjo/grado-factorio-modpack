@@ -26,11 +26,10 @@
 # The self-test of the mod-cache hook's wiring runs with the others (#225):
 # vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 -SelfTest -Settings
 # .claude/settings.json. Its last case runs the command wired in that file, so a pull request
-# whose wiring no longer reaches the script goes red here. On this runner it passes 36 of its 40
-# cases at tools pin e3b9ba8 and skips 4, each a Windows way of writing a path (measured
+# whose wired command no longer reaches the script goes red here. On this runner it passes 36 of
+# its 40 cases at tools pin e3b9ba8 and skips 4, each a Windows way of writing a path (measured
 # 2026-10-12, run 38222599731); with a wrong file name in the wired path the last case failed
-# and so did the check (run 38222794433). At pin 20ef896 the four failed
-# (grado-factorio-tools#113).
+# and so did the check (run 38222794433).
 #
 # The pull request's head is checked out, not the merge commit GitHub makes for it, so the range
 # is the pull request's commits and no other. The whole history and the submodule come with it,

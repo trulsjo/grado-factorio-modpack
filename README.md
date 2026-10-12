@@ -169,9 +169,9 @@ tool and `Write-Output mod-cache-probe` with the PowerShell tool each ran, and t
 quoted the message as "hook additional context". In both runs the session's events also held it
 as a notice, "PreToolUse:Bash says:" and "PreToolUse:PowerShell says:". Not measured: what an
 interactive session shows the person at the keyboard. With the submodule present the self-test
-above passed its 39 cases on the same day, the last of which runs the wired command. Before this
-the wiring printed a line to the same effect to stderr and exited 1, and in the one run measured
-on 2026-10-11, with the Bash tool, what the tool call returned to the agent held nothing of it
+above passed on the same day, and its last case runs the wired command. Before this the wiring
+printed a line to the same effect to stderr and exited 1, and in the one run measured on
+2026-10-11, with the Bash tool, what the tool call returned to the agent held nothing of it
 (#224).
 
 A second hook there, `scripts/ask-before-download.ps1`, stops a command that installs a package

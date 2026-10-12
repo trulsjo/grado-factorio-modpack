@@ -137,7 +137,7 @@ each when it was decided.
   `C:\Users\TrulsJ\.claude\CLAUDE.md` was given as a user file, in checkouts under `C:\src`
   (7 transcripts, 2026-09-21 to 2026-09-26) and in herdr worktrees under `C:\Users\TrulsJ`
   (3, 2026-10-12). Under `~/.claude-personal`, which has no `CLAUDE.md`, it was given as a
-  project file in a worktree (3) and not under `C:\src` (9). Read from source, Claude Code's
-  memory page as it stood on 2026-10-12: a `.claude/CLAUDE.md` in a directory above the working
+  project file in a worktree (3) and not under `C:\src` (9). Claude Code's memory page, as it
+  stood on 2026-10-12, says that a `.claude/CLAUDE.md` in a directory above the working
   directory is loaded at launch. Truls ruled that the instruction stays, and `CLAUDE.md` now
   gives it as a condition.

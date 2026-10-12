@@ -157,7 +157,7 @@ repository root, in PowerShell: the first is refused with exit 2, the second pas
 ```
 
 Its `-SelfTest -Settings .claude/settings.json` runs the command wired here and fails if that
-command no longer reaches the hook. It is run by hand: no hook and no workflow step runs it.
+command no longer reaches the hook. The pull request check runs it, among its self-tests.
 
 In a clone without the submodule the wiring exits 0 and prints JSON that hands the session one
 message: the script was not found, the command was

@@ -1386,7 +1386,8 @@ figures**, 211, 202, 206, 188, 20 and 169. Measured on Factorio 2.0.77, on the d
 alone, `3295867752`, where the first column differs with no overhaul in it, with
 `dump-walk.ps1` at the tools commit `41b5488`. A script outside both repositories, kept as a
 comment on #242, ran that script's walk of own materials with one of its rules changed at a time.
-Each row is the count the script makes, of what a counted recipe gives:*
+Each row but the last three is the count the script makes, of what a counted recipe gives, under
+that rule:*
 
 | Rule changed | Nauvis | Vulcanus | Gleba | Fulgora | Aquilo | A platform | Off by, summed |
 |---|---|---|---|---|---|---|---|
@@ -1402,17 +1403,19 @@ Each row is the count the script makes, of what a counted recipe gives:*
 | A recipe's surface conditions are not read | 214 | 211 | 214 | 210 | 24 | 176 | 53 |
 | A hidden recycling recipe does not count | 203 | 202 | 202 | 73 | 21 | 173 | 132 |
 | A recipe must be enabled or unlocked by a technology | 210 | 207 | 209 | 207 | 23 | 175 | 37 |
-| Counted with what is supplied | 211 | 208 | 210 | 209 | 28 | 176 | 46 |
+| Counted with what is supplied and what follows from it | 211 | 208 | 210 | 209 | 28 | 176 | 46 |
 | Counted less what is supplied | 201 | 198 | 198 | 199 | 20 | 171 | 35 |
 | Counted with what follows from the supply, less the supply | 202 | 198 | 199 | 200 | 21 | 172 | 36 |
 
 *Where a pump with a fluid of its own may stand was not varied: the dump of Space Age alone has
-no such pump. The last three rows change what is counted and not the walk.*
+no such pump. Nor was what a planet's settings list. The last three rows change what is counted and
+not the walk.*
 
 *Six of those rules were then tried in every combination, with four ways of counting: 256 in
 all. The six are the tree, the nest by its control, the nest's drops on every surface, what an
-item spoils or burns into, the surface conditions and the recycling recipes. The two for plants
-were left out, each being over a hundred off alone. **None of the 256 gives the six figures.**
+item spoils or burns into, the surface conditions and the recycling recipes. The other four
+were left out: the two for plants, each being over a hundred off alone, and steam and the
+technology rule, which moved no figure alone. **None of the 256 gives the six figures.**
 The two closest are 27 off, summed over the six surfaces: surface conditions not read, counted
 less what is supplied, with or without what follows from the supply. They give 205, 202, 203,
 202, 21, 172 and 206, 202, 204, 203, 22, 172.*
@@ -1424,9 +1427,9 @@ less what is supplied, with or without what follows from the supply. They give 2
   Nauvis's 211 by 14, a platform's 169 by 8 and Gleba's 206 by 6.*
 - ***Fulgora's 188 is given by none.** In the 256, with the hidden recycling recipes counted
   Fulgora comes to between 199 and 214, and without them to between 58 and 79. Inferred from
-  that: the first script differed on Fulgora in a rule that is not among those tried.*
-- *Part of the gap is in what is counted and not in what can be made. A recycling recipe gives
-  back what a surface already supplies, an ore for one, so the script counts as made a thing
+  that: the first script differed on Fulgora in something the 256 do not hold.*
+- *A recycling recipe gives back what a surface already supplies, an ore for one, so the script
+  counts as made a thing
   that is only mined. Counted less what is supplied, Aquilo is the first table's 20.*
 
 *So the difference is still not explained. The three findings under the first table do not rest

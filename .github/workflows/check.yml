@@ -66,6 +66,7 @@ jobs:
           pwsh -NoProfile -File scripts/pr-body.ps1 -SelfTest
           pwsh -NoProfile -File scripts/header-length-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/absolute-words.ps1 -SelfTest
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 -SelfTest -Settings .claude/settings.json
 
       - name: Check the commit messages
         if: ${{ !cancelled() }}

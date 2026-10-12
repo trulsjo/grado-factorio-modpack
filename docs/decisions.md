@@ -132,3 +132,12 @@ each when it was decided.
   guard, as does #150's hook.
   Other plugins were out of scope. The oh-my-claudecode
   section of a global `CLAUDE.md` still loads, so `CLAUDE.md` says which of it does not apply.
+  *2026-10-12 (#249):* "still loads" held in three cases of four. Measured that day from the
+  list of instruction files in 22 transcripts. Under `~/.claude`,
+  `C:\Users\TrulsJ\.claude\CLAUDE.md` was given as a user file, in checkouts under `C:\src`
+  (7 transcripts, 2026-09-21 to 2026-09-26) and in herdr worktrees under `C:\Users\TrulsJ`
+  (3, 2026-10-12). Under `~/.claude-personal`, which has no `CLAUDE.md`, it was given as a
+  project file in a worktree (3) and not under `C:\src` (9). Read from source, Claude Code's
+  memory page as it stood on 2026-10-12: a `.claude/CLAUDE.md` in a directory above the working
+  directory is loaded at launch. Truls ruled that the instruction stays, and `CLAUDE.md` now
+  gives it as a condition.

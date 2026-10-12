@@ -866,3 +866,10 @@ the command that reads a ticket in it:
 
 > GitHub Issues on `trulsjo/grado-factorio-modpack`, via the `gh` CLI. See
 > `docs/agents/issue-tracker.md`.
+
+**The oh-my-claudecode bullet**, under *Conventions*, its second sentence as it stood from
+2026-10-12 (#160) until later that day, when #249 narrowed it to a condition. The measurement
+behind that is in the #160 entry of `docs/decisions.md`.
+
+> The oh-my-claudecode section of a global `CLAUDE.md` still loads: do not act on its agents,
+> skills or keywords here, and its review rule is replaced by `docs/agents/code-review.md`.

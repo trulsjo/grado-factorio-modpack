@@ -158,6 +158,10 @@ not missing.
   say the same in a brief written for a subagent. `scripts/ask-before-download.ps1` is a hook
   that refuses a package install or a fetched program, which Truls runs himself with `!` once
   he has said yes; its header says what it cannot see.
+- **oh-my-claudecode and ponytail are switched off in this repository** (#160), in
+  `.claude/settings.json`. The oh-my-claudecode section of a global `CLAUDE.md` still loads: its
+  agents, skills, keywords and `.omc/` state do not exist here, and its review rule is replaced
+  by `docs/agents/code-review.md`.
 - **This file states the live rule only.** It is loaded into every session. When a line here
   changes, its old wording goes to *The trail of CLAUDE.md's State and open decisions* in
   `docs/porting-notes.md`, with the date, and not beside the new one. A sentence added where none

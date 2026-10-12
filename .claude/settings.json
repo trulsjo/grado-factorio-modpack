@@ -1,4 +1,8 @@
 {
+  "enabledPlugins": {
+    "oh-my-claudecode@omc": false,
+    "ponytail@claude-community": false
+  },
   "hooks": {
     "PreToolUse": [
       {

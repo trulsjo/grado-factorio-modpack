@@ -860,3 +860,9 @@ the shared commit convention, and #202 took it from there: it is under *Body* in
 
 > The 1.1 miniloader has no 2.0 release. miniloader-redux (hgschmie,
 > 22,472 downloads) is the maintained successor. Not yet loaded in game.
+
+**The issue-tracker pointer**, under *Agent skills*, as it stood until 2026-10-12, when #235 put
+the command that reads a ticket in it:
+
+> GitHub Issues on `trulsjo/grado-factorio-modpack`, via the `gh` CLI. See
+> `docs/agents/issue-tracker.md`.

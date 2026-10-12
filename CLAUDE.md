@@ -267,8 +267,8 @@ check: why is in the header of `.github/workflows/check.yml`.
 
 ### Issue tracker
 
-GitHub Issues on `trulsjo/grado-factorio-modpack`, via the `gh` CLI. See
-`docs/agents/issue-tracker.md`.
+GitHub Issues on `trulsjo/grado-factorio-modpack`, via the `gh` CLI. Read a ticket with
+`gh issue view <n> --json title,body,labels,comments`. See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 

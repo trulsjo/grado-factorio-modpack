@@ -797,7 +797,8 @@ rewrite, 4:** `raw-fish`, `cliff-explosives`, `stone-brick` and `landfill`.
   `Grado_ABCS`. What the planets then place was not looked at. *Looked at 2026-10-05 (#133): see*
   What each planet places. *The overhaul's ores are on Nauvis only, the other four planets list
   what they list in Space Age alone, and `rso-mod`, as its source reads, takes over placing all of
-  it but `scrap`.*
+  it but `scrap`.* *Counted on a generated map 2026-10-12 (#140): what the source reads as placed
+  is there. That `rso-mod` placed it is inferred.*
 - **Which mod made each change.** The dumps show the result. Where a mod is named above, its
   prototype names say so. *Traced 2026-10-05 (#134) for the 29 shared names: see* Which member
   defines each shared name. *The other changes are still untraced.*
@@ -806,7 +807,8 @@ rewrite, 4:** `raw-fish`, `cliff-explosives`, `stone-brick` and `landfill`.
 ## What each planet places (2026-10-05, #133)
 
 A reading of prototypes and of one member's source. No map was generated: what a planet looks like
-is #29's play session.
+is #29's play session. *A map was generated 2026-10-12 (#140), with no play: see*
+Counted on a generated map.
 
 The overhaul replaces the vanilla ores, and Space Age's planets are generated from settings that
 name resources. This is what those settings hold. Read on 2026-10-05 from two data dumps on
@@ -834,6 +836,10 @@ map generator places no resource anywhere but Fulgora, and `rso-mod` places them
 script instead, from a table per planet (`resourceconfigs/mainconfig.lua`, `vanilla.lua`,
 `bobores.lua`, `angelsores.lua`, `clownsores.lua`). The third column below is that table, **read
 from the source and not run**. It is the same mechanism base only, where it is `Grado_ABC`'s.
+*Run 2026-10-12 (#140): see* Counted on a generated map. *What the third column names was
+counted on its planet, but for the three names that are not resources and for `clowns-ore1` and
+`clowns-resource1`, of which this pack's square has none. The `infinite-` resources are there
+beside them. That `rso-mod` is what placed them is still inferred.*
 
 ### Nauvis
 
@@ -855,19 +861,25 @@ Three things in `rso-mod`'s Nauvis table, all read from the source:
   mod checks each name against the game, logs `Resource not available` and skips it. As the
   source reads, that is where the line in the load records comes from, and it would answer their
   "why". The names in the log are the ones the table keeps. It was not run with the lines
-  changed.
+  changed. *Run 2026-10-12 (#140), with the lines as they are: the three names are logged and
+  no entity of those names is in the count.*
 - **`stone` is a resource in this pack and not in `Grado_ABC`**: Space Age's, kept for Gleba. So
   the entry that is skipped base only is valid here, and the table would place stone patches on
   Nauvis. It agrees with the recorded loads: `Resource not available: stone` is in `Grado_ABC`'s
-  log and not in this pack's.
+  log and not in this pack's. *Counted 2026-10-12 (#140): 1,255 `stone` entities on Nauvis in
+  this pack and none in `Grado_ABC`.*
 - **`tungsten-ore` on Nauvis.** `bobores.lua` adds it when a resource of that name exists with an
   autoplace (lines 120 and 121). Base only there is none, as Angel's leaves no Bob's ore on the map.
   Here there is one, Space Age's, in the mining category `hard-solid`. So the table would place
-  Space Age's tungsten ore on Nauvis.
+  Space Age's tungsten ore on Nauvis. *Counted 2026-10-12 (#140): 847 `tungsten-ore` entities on
+  Nauvis in this pack and none in `Grado_ABC`.*
 
 The `infinite-` resources are in the planet's list and in none of `rso-mod`'s tables (searched for
 `infinite-` in `resourceconfigs/`: one hit, in the table for another mod). What places them, if
-anything, was not found. That is the same base only.
+anything, was not found. That is the same base only. *Found 2026-10-12 (#140): they are placed,
+in both packs, 2,875 entities here and 3,265 in `Grado_ABC`, and `rso-mod`'s control script has
+the lines for it, read from its source. The search above looked in `resourceconfigs/` only. See*
+Counted on a generated map.
 
 ### Vulcanus, Gleba, Fulgora and Aquilo
 
@@ -898,13 +910,16 @@ unit named in the five planets' settings is in the pack's dump, and so is every 
 expression. Every item or fluid a listed entity gives when mined is there too.
 
 **In `rso-mod`'s table, three**: `iron-ore`, `copper-ore` and `uranium-ore` on Nauvis, as above.
-It logs them and goes on.
+It logs them and goes on. *Run 2026-10-12 (#140): logged in the run, and no entity of the three
+names was counted.*
 
 ### Which planets can supply the overhaul's ores
 
 **Nauvis only, as the prototypes and the table read.** No Angel's or Clowns resource is in the
 list of Vulcanus, Gleba, Fulgora or Aquilo, and `rso-mod`'s tables for Vulcanus, Gleba and Aquilo
-hold Space Age's resources and nothing else.
+hold Space Age's resources and nothing else. *Counted 2026-10-12 (#140): no Angel's or Clowns
+resource in the generated square of any of the four. Vulcanus has `infinite-coal`, which is the
+overhaul's twin of a resource Vulcanus lists.*
 
 What the other planets do place are things the overhaul's recipes take, under names the two share
 or that both use:
@@ -920,10 +935,127 @@ or that both use:
 
 Whether those are enough to build on each planet is the next section's.
 
+### Counted on a generated map (2026-10-12, #140)
+
+Measured on Factorio **2.0.77**. A map of each pack was created with no player in it, a fixed
+square of each planet was generated, and the resource entities in it were counted by name. It
+counts what is placed. Whether the amounts make a start that can be played is #27's and #29's.
+
+**How the count was made.** The staged `Grado_ABC`, base only, and the staged `Grado_ABCS` with
+`space-age`, `quality` and `elevated-rails` at `2.0.77`. `get-dump.ps1` served both sets from its
+cache on the day, so they are the sets of the dumps `2195323740` and `2316474952`, the recorded
+loads' checksums, with the members at the releases in `docs/loads/Grado_ABC-2026-10-04.md` and
+`rso-mod` at `7.0.26`. Each was run through the shared harness (`load-harness-lib.ps1` in
+`vendor/grado-factorio-tools/scripts`) with one throwaway mod beside it, `grado-count` `0.0.1`,
+which is not in this repository and not on the portal. Every mod setting was at its default.
+
+- `--create` with `--map-gen-seed 140140`, then `--benchmark` on that save for 700 ticks.
+- At tick 30 the throwaway mod creates the surface of every planet that has none, asks for the
+  chunks within 24 of the origin's chunk and forces them: 49 by 49 chunks, 2,401, which is 1,568
+  by 1,568 tiles around the origin.
+- At tick 120 and again at tick 600 it counts every entity of the type `resource` in that square.
+  On every surface all 2,401 chunks were generated, and the two counts are the same.
+- The staged sets were the same before and after, by file count and bytes: 18,616 files in
+  `Grado_ABC` and 18,617 in `Grado_ABCS`.
+
+**Nauvis, both packs.** The seed of the surface is `140140` in both.
+
+| Resource on Nauvis | `Grado_ABC` | `Grado_ABCS` |
+|---|---|---|
+| `angels-fissure` | 9 | 9 |
+| `angels-natural-gas` | 12 | 9 |
+| `angels-ore1` | 2,823 | 2,209 |
+| `angels-ore2` | 943 | 849 |
+| `angels-ore3` | 1,810 | 2,320 |
+| `angels-ore4` | 1,752 | 1,310 |
+| `angels-ore5` | 2,599 | 1,243 |
+| `angels-ore6` | 752 | 1,350 |
+| `clowns-ore1` | 202 | 0 |
+| `clowns-ore2` | 790 | 1,526 |
+| `clowns-ore3` | 920 | 157 |
+| `clowns-ore4` | 270 | 348 |
+| `clowns-ore5` | 591 | 1,312 |
+| `clowns-ore6` | 370 | 398 |
+| `clowns-ore7` | 470 | 270 |
+| `clowns-ore8` | 0 | 591 |
+| `clowns-ore9` | 360 | 370 |
+| `clowns-resource1` | 1,497 | 0 |
+| `clowns-resource2` | 881 | 470 |
+| `coal` | 3,507 | 2,728 |
+| `crude-oil` | 9 | 20 |
+| `infinite-angels-ore1` | 453 | 407 |
+| `infinite-angels-ore2` | 190 | 181 |
+| `infinite-angels-ore3` | 282 | 415 |
+| `infinite-angels-ore4` | 277 | 242 |
+| `infinite-angels-ore5` | 386 | 135 |
+| `infinite-angels-ore6` | 58 | 172 |
+| `infinite-clowns-ore1` | 47 | 0 |
+| `infinite-clowns-ore2` | 137 | 243 |
+| `infinite-clowns-ore3` | 149 | 29 |
+| `infinite-clowns-ore4` | 29 | 85 |
+| `infinite-clowns-ore5` | 118 | 239 |
+| `infinite-clowns-ore6` | 67 | 47 |
+| `infinite-clowns-ore7` | 48 | 29 |
+| `infinite-clowns-ore8` | 0 | 118 |
+| `infinite-clowns-ore9` | 38 | 67 |
+| `infinite-clowns-resource1` | 291 | 0 |
+| `infinite-clowns-resource2` | 161 | 48 |
+| `infinite-coal` | 534 | 418 |
+| `stone` | 0 | 1,255 |
+| `tungsten-ore` | 0 | 847 |
+| **All** | **23,832** in 37 names | **22,466** in 37 names |
+
+What the three inferences of #133 come to:
+
+- **`stone` is placed on Nauvis in `Grado_ABCS`, 1,255 entities, and not in `Grado_ABC`.** As
+  #133 read from `rso-mod`'s source. Base only there is no resource of that name to place.
+- **`tungsten-ore` is placed on Nauvis in `Grado_ABCS`, 847 entities, and not in `Grado_ABC`**,
+  where there is no resource of that name either. Also as #133 read.
+- **The `infinite-` resources are placed, in both packs**: 3,265 entities under 17 names in
+  `Grado_ABC` and 2,875 under 16 in `Grado_ABCS`. #133 found nothing that places them because it
+  searched `resourceconfigs/` and not the control script. Read from the source on 2026-10-12,
+  `rso-mod` `7.0.26`, `control.lua` lines 659 to 697: where it spawns an ore and a resource named
+  `infinite-` and the ore's name exists, it spawns that in the ore's place when the spot's
+  strength is over the setting `rso-infinite-ore-threshold`. That the count's `infinite-`
+  entities come from those lines is inferred from the two together; no run was made with the
+  lines changed.
+
+**Nothing was placed under the names `rso-mod` logs as not available.** No `iron-ore`,
+`copper-ore` or `uranium-ore` in either pack, and no `stone` in `Grado_ABC`. The count is of
+resource entities, and none of those is a resource prototype in the pack that logs it, so this
+shows only that the skip left nothing behind under those names. Both runs logged the lines the
+recorded loads have: three names twice in `Grado_ABCS`, four names twice in `Grado_ABC`.
+
+Six names are in one pack's square and not the other's: `clowns-ore8` and its `infinite-` twin
+in `Grado_ABCS` alone, `clowns-ore1`, `clowns-resource1` and their twins in `Grado_ABC` alone.
+All six are resources in both dumps. This is one seed and one square, so a name with no entity
+here is not a name the pack does not place.
+
+**The other four planets, `Grado_ABCS`.** All four were created and generated by the script,
+with no play:
+
+| Planet | Seed of the surface | Chunks generated | Resources counted |
+|---|---|---|---|
+| Vulcanus | `1249952931` | 2,401 of 2,401 | `calcite` 1,602, `coal` 2,592, `infinite-coal` 367, `sulfuric-acid-geyser` 73, `tungsten-ore` 10,158 |
+| Gleba | `3215223111` | 2,401 of 2,401 | `stone` 1,598 |
+| Fulgora | `2967719150` | 2,401 of 2,401 | `scrap` 7,490 |
+| Aquilo | `3111940012` | 2,401 of 2,401 | `crude-oil` 33, `fluorine-vent` 45, `lithium-brine` 25 |
+
+Each planet has the resources of its list and of `rso-mod`'s table, and Vulcanus has one more:
+`infinite-coal`, which is in neither and comes with `coal`. No Angel's or Clowns resource was
+counted off Nauvis.
+
+**What a count does not say** is which mod placed an entity. Of the 47 resource prototypes in
+the dump, 45 have a probability of `0`, `scrap` has its own and one has no autoplace. So that
+`rso-mod` placed everything here but Fulgora's `scrap` is inferred from that and from its
+source. It was not measured: no run was made without
+`rso-mod`.
+
 ### Not covered
 
 - **A generated map.** Nothing here was seen in the game. In particular, whether `rso-mod` places
-  `stone` and `tungsten-ore` on Nauvis is read from its source.
+  `stone` and `tungsten-ore` on Nauvis is read from its source. *Generated and counted 2026-10-12
+  (#140): see* Counted on a generated map. *Both are placed on Nauvis in `Grado_ABCS`.*
 - **Amounts.** Richness, patch size and frequency were not compared.
 - **Asteroids and space routes.** Each planet's asteroid list is the same in both dumps; the
   routes between them were not read.

@@ -110,7 +110,8 @@ the 565 of `Grado_ABC`'s base-only load:
   still reports `iron-ore`, `copper-ore` and `uranium-ore`. *Read 2026-10-05 (#133): `stone` is a
   resource here, Space Age's, so `rso-mod`'s Nauvis table would place it, and Space Age's
   `tungsten-ore` beside it. From its source, not run. See* What each planet places *in
-  `docs/catalogue/Grado_ABCS.md`.*
+  `docs/catalogue/Grado_ABCS.md`.* *Run 2026-10-12 (#140): a generated square of Nauvis has
+  1,255 `stone` and 847 `tungsten-ore` entities. See* Counted on a generated map *there.*
 - `UltimateResearchQueue2`'s three timing lines differ. Nothing else changed.
 
 No member logged a complaint that names a Space Age prototype.

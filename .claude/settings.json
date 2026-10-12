@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "i=$(cat); case $i in *mod-cache*) h=\"$CLAUDE_PROJECT_DIR/vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1\"; if [ -f \"$h\" ]; then printf '%s' \"$i\" | pwsh -NoProfile -File \"$h\" -Root \"$CLAUDE_PROJECT_DIR\" -CacheName .mod-cache; else m='refuse-cd-into-mod-cache: vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 was not found, so this command was NOT checked by the mod-cache hook. git submodule update --init fetches the script.'; printf '{\"systemMessage\":\"%s\",\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"additionalContext\":\"%s\"}}' \"$m\" \"$m\"; fi;; esac"
+            "command": "i=$(cat); case $i in *mod-cache*) h=\"$CLAUDE_PROJECT_DIR/vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache-x.ps1\"; if [ -f \"$h\" ]; then printf '%s' \"$i\" | pwsh -NoProfile -File \"$h\" -Root \"$CLAUDE_PROJECT_DIR\" -CacheName .mod-cache; else m='refuse-cd-into-mod-cache: vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 was not found, so this command was NOT checked by the mod-cache hook. git submodule update --init fetches the script.'; printf '{\"systemMessage\":\"%s\",\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"additionalContext\":\"%s\"}}' \"$m\" \"$m\"; fi;; esac"
           },
           {
             "type": "command",

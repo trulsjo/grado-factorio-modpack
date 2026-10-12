@@ -240,6 +240,16 @@ has no key of its own and fires on whatever key its control has. Each control na
 
 `WideChests`' three inputs have no key and no link, so there is nothing to compare.
 
+*Since 2026-10-12 (#139) this check is `dump-keys.ps1` in `vendor/grado-factorio-tools/scripts`,
+given the pack's dump,
+`-Below` the dump of `Grado_NonChanging`, `-Mods` the staged pack and the same `config.ini`,
+which was last written 2026-09-30. Run that day on the dump `1028326153` it prints 192 engine
+controls, 163 with a key in the primary slot and 9 in the alternative, none rebound; 33 inputs,
+19 with a default key, 11 linked and 3 with neither; and the two tables above, with the same
+four inputs sharing 13, 8, one and one controls. It finds the member by searching the staged
+Lua for the input's name in quotes, and gives the eleven linked inputs the members the second
+table has.*
+
 ## Not checked
 
 - **Play.** No play session. #26.

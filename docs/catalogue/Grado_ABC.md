@@ -2539,6 +2539,13 @@ Stated plainly so the gaps are not mistaken for clean results.
     subgroup, icon or name and **none in ingredients, results, category or time**; and one fluid
     differs, `angels-liquid-molten-invar`, which is #80's finding. Two `EditorExtensions` chests
     differ in inventory size, which follows the number of items.*
+  - *Since 2026-10-12 (#139) these two counts are `dump-diff.ps1` in
+    `vendor/grado-factorio-tools/scripts`, given the two dumps.
+    Run that day, the second made again with the checksum above, `2949552679`: 100 prototypes in
+    the first alone, 75 recipes, 11 items, 8 technologies and 6 item subgroups; 13 technologies
+    differing in `effects`; 31 recipes differing, none in a field other than `order`,
+    `subgroup`, `icons`, `icon_mipmaps`, `hidden` and `localised_name`; the one fluid and the
+    two chests. How many of the 75 are hidden, and what the walk reaches, are not that script's.*
 
   *So beside the Angel's releases this pack loads, what it adds is in the dump, and no existing
   recipe's ingredients or results differ with it. The walk's "reaches" is an upper bound, as its

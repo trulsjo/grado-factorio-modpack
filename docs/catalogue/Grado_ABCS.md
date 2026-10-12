@@ -807,8 +807,8 @@ rewrite, 4:** `raw-fish`, `cliff-explosives`, `stone-brick` and `landfill`.
   `Grado_ABCS`. What the planets then place was not looked at. *Looked at 2026-10-05 (#133): see*
   What each planet places. *The overhaul's ores are on Nauvis only, the other four planets list
   what they list in Space Age alone, and `rso-mod`, as its source reads, takes over placing all of
-  it but `scrap`.* *Counted on a generated map 2026-10-12 (#140): what the source reads as placed
-  is there. That `rso-mod` placed it is inferred.*
+  it but `scrap`.* *Counted on a generated map 2026-10-12 (#140): see*
+  Counted on a generated map. *That `rso-mod` placed it is inferred.*
 - **Which mod made each change.** The dumps show the result. Where a mod is named above, its
   prototype names say so. *Traced 2026-10-05 (#134) for the 29 shared names: see* Which member
   defines each shared name. *The other changes are still untraced.*
@@ -841,7 +841,7 @@ an entity in a planet's list whose prototype type is `resource`.
 and `-Against` the dump of Space Age alone. Run that day on `2316474952` and `3295867752`, it
 prints what the first two columns of the two tables below hold: the resources of each planet, 6
 and 39 on Nauvis, and 12 autoplace controls against 47 there with the four named gone. It prints
-the zeroed property expressions, eight, two and two, and Gleba's 73 decoratives against 79 with
+the property expressions that differ, eight, two and two, and Gleba's 73 decoratives against 79 with
 the six names. It finds no name the dump lacks, and 45 of the 47 resource prototypes at a
 probability of `0`. The third column is read from `rso-mod`'s source and no script makes it.
 The comparison with the base-only dump was not made again.*
@@ -937,8 +937,9 @@ names was counted.*
 
 **Nauvis only, as the prototypes and the table read.** No Angel's or Clowns resource is in the
 list of Vulcanus, Gleba, Fulgora or Aquilo, and `rso-mod`'s tables for Vulcanus, Gleba and Aquilo
-hold Space Age's resources and nothing else. *Counted 2026-10-12 (#140): no Angel's or Clowns
-resource in the generated square of any of the four. Vulcanus has `infinite-coal`, which is the
+hold Space Age's resources and nothing else. *Counted 2026-10-12 (#140): no `angels-` or
+`clowns-` name in the generated square of any of the four. Vulcanus has `infinite-coal`, which is
+the
 overhaul's twin of a resource Vulcanus lists.*
 
 What the other planets do place are things the overhaul's recipes take, under names the two share
@@ -962,9 +963,9 @@ square of each planet was generated, and the resource entities in it were counte
 counts what is placed. Whether the amounts make a start that can be played is #27's and #29's.
 
 **How the count was made.** The staged `Grado_ABC`, base only, and the staged `Grado_ABCS` with
-`space-age`, `quality` and `elevated-rails` at `2.0.77`. `get-dump.ps1` served both sets from its
-cache on the day, so they are the sets of the dumps `2195323740` and `2316474952`, the recorded
-loads' checksums, with the members at the releases in `docs/loads/Grado_ABC-2026-10-04.md` and
+`space-age`, `quality` and `elevated-rails` at `2.0.77`. Both steps of each run print the recorded
+loads' prototype list checksum, `2195323740` and `2316474952`, so the sets are those loads', with
+the members at the releases in `docs/loads/Grado_ABC-2026-10-04.md` and
 `rso-mod` at `7.0.26`. Each was run through the shared harness (`load-harness-lib.ps1` in
 `vendor/grado-factorio-tools/scripts`) with one throwaway mod beside it, `grado-count` `0.0.1`,
 which is not in this repository and not on the portal. Every mod setting was at its default.
@@ -1025,7 +1026,7 @@ which is not in this repository and not on the portal. Every mod setting was at 
 | `tungsten-ore` | 0 | 847 |
 | **All** | **23,832** in 37 names | **22,466** in 37 names |
 
-What the three inferences of #133 come to:
+What #133 read and did not find comes to:
 
 - **`stone` is placed on Nauvis in `Grado_ABCS`, 1,255 entities, and not in `Grado_ABC`.** As
   #133 read from `rso-mod`'s source. Base only there is no resource of that name to place.
@@ -1046,9 +1047,10 @@ resource entities, and none of those is a resource prototype in the pack that lo
 shows only that the skip left nothing behind under those names. Both runs logged the lines the
 recorded loads have: three names twice in `Grado_ABCS`, four names twice in `Grado_ABC`.
 
-Six names are in one pack's square and not the other's: `clowns-ore8` and its `infinite-` twin
+Six names that are resources in both dumps are in one pack's square and not the other's:
+`clowns-ore8` and its `infinite-` twin
 in `Grado_ABCS` alone, `clowns-ore1`, `clowns-resource1` and their twins in `Grado_ABC` alone.
-All six are resources in both dumps. This is one seed and one square, so a name with no entity
+This is one seed and one square, so a name with no entity
 here is not a name the pack does not place.
 
 **The other four planets, `Grado_ABCS`.** All four were created and generated by the script,
@@ -1062,7 +1064,7 @@ with no play:
 | Aquilo | `3111940012` | 2,401 of 2,401 | `crude-oil` 33, `fluorine-vent` 45, `lithium-brine` 25 |
 
 Each planet has the resources of its list and of `rso-mod`'s table, and Vulcanus has one more:
-`infinite-coal`, which is in neither and comes with `coal`. No Angel's or Clowns resource was
+`infinite-coal`, which is in neither. No `angels-` or `clowns-` name was
 counted off Nauvis.
 
 **What a count does not say** is which mod placed an entity. Of the 47 resource prototypes in

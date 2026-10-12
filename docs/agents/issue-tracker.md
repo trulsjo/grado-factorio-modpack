@@ -46,8 +46,8 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
 - **A decision that makes a ticket wait** is recorded in one step with three parts: the
   `blocked_by` edge is added, the body's "Blocked by" line names the blocker, and
   `ready-for-agent` comes off. On 2026-10-12 #225 was handed to a session as `ready-for-agent`
-  with "Blocked by: None" in its body, while Truls's decision of 2026-10-11 that it waits stood
-  in its comments (#232).
+  with "None" under "Blocked by" in its body, while Truls's decision of 2026-10-11 that it waits
+  stood in its comments (#232).
 - **Pull request body**: written with the `mattpocock-skills:pr` skill, where that plugin is
   installed. This repository adds to what it produces: above its template, a `Closes #<n>` for each
   ticket the branch resolves, where it resolves any; below it, under one heading, the pre-PR

@@ -304,6 +304,6 @@ decided #159 and the rule took its place:
 2026-10-12, when #234 added the commands. On PR #230 the prompt of two headless runs was in
 neither saved stream and the command line had not been saved, so the reviewer could not read how
 far the prompt led the reply, and a sentence of the README was narrowed (finding 1 in that pull
-request's body):
+request's body).
 
 > portal API's responses, a load's log - and the scripts that produced the figures.

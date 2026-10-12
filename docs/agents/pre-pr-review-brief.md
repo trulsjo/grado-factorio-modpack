@@ -16,7 +16,27 @@ all three by that pull request's fifth comment.
 
 ## Before the first turn
 
-From the repository root, with `<scratch>` a directory outside the repository:
+From the repository root, read the branch's commits against `main` first (#241):
+
+```
+git fetch origin
+git cherry -v origin/main HEAD
+```
+
+The fetch comes first, because `git cherry` reads the local `origin/main`. A line opening `-` is
+a commit whose patch is already in `main`: the branch was cut from one that has since merged.
+Stop, rebase with `git rebase --onto origin/main <the last commit that is not this branch's>`,
+and start this section again.
+
+**Read the `+` lines against the branch's tickets as well.** A merged commit whose patch was
+changed before or by the merge shows `+`, so the mark does not tell it from one of the branch's
+own. One was seen on `160-plugins` (2026-10-12, by #241's account), beside two that showed `-`.
+A `+` commit that is not this branch's own came with the branch this one was cut from. If
+`gh pr list --state merged` shows that branch's pull request, the same rebase drops the commit.
+If it is not merged, the reviewer is told under "not under review" which commits are not the
+branch's.
+
+Then, with `<scratch>` a directory outside the repository:
 
 ```
 git diff origin/main...HEAD > <scratch>/branch.diff

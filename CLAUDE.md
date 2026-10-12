@@ -159,8 +159,8 @@ not missing.
   that refuses a package install or a fetched program, which Truls runs himself with `!` once
   he has said yes; its header says what it cannot see.
 - **oh-my-claudecode and ponytail are disabled in `.claude/settings.json`** (#160). The
-  oh-my-claudecode section of a global `CLAUDE.md` still loads: its agents, skills and keywords
-  do not exist here, and its review rule is replaced by `docs/agents/code-review.md`.
+  oh-my-claudecode section of a global `CLAUDE.md` still loads: do not act on its agents, skills
+  or keywords here, and its review rule is replaced by `docs/agents/code-review.md`.
 - **This file states the live rule only.** It is loaded into every session. When a line here
   changes, its old wording goes to *The trail of CLAUDE.md's State and open decisions* in
   `docs/porting-notes.md`, with the date, and not beside the new one. A sentence added where none

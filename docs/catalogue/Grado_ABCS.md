@@ -574,6 +574,16 @@ is the same as in the base-only dump, field for field, **Space Age's** when it i
 Space Age alone, and **mixed** when it is neither, with what differs. "Stage" is the member's own
 stage: `data` is `data.lua`.
 
+*Since 2026-10-12 (#139) the 29 names and the "Holds" column are `dump-shared-names.ps1` in
+`vendor/grado-factorio-tools/scripts`, given the four dumps: base `911970612`, Space Age alone,
+base-only `Grado_ABC` and
+`Grado_ABCS`. Run that day it prints 29 names and, for what the pack holds, 12 the overhaul's,
+one Space Age's, two that are the same in both and 14 mixed, which is what the table below has,
+row for row. It lists a name under its prototype type, so the four the table under* Names both
+define *calls entities are a `transport-belt`, an `underground-belt`, a `splitter` and a
+`battery-equipment`. The member, the file and the "Deliberate?" column are read from source and
+no script makes them.*
+
 | Name | Member, file and stage | Holds | Deliberate? |
 |---|---|---|---|
 | items `turbo-transport-belt`, `turbo-underground-belt`, `turbo-splitter` | `boblogistics`, `prototypes/item/belt.lua` from line 71, `data`. Defined without a check, so it replaces Space Age's | the overhaul's | yes, by the rename below |
@@ -825,6 +835,16 @@ For each planet, `map_gen_settings` was compared between the two dumps: the auto
 the entities, tiles and decoratives it lists, the cliff, the territory units and the property
 expressions. Every name in the pack's settings was then looked up in the pack's dump. A resource is
 an entity in a planet's list whose prototype type is `resource`.
+
+*Since 2026-10-12 (#139) this comparison is `dump-planets.ps1` in
+`vendor/grado-factorio-tools/scripts`, given the pack's dump
+and `-Against` the dump of Space Age alone. Run that day on `2316474952` and `3295867752`, it
+prints what the first two columns of the two tables below hold: the resources of each planet, 6
+and 39 on Nauvis, and 12 autoplace controls against 47 there with the four named gone. It prints
+the zeroed property expressions, eight, two and two, and Gleba's 73 decoratives against 79 with
+the six names. It finds no name the dump lacks, and 45 of the 47 resource prototypes at a
+probability of `0`. The third column is read from `rso-mod`'s source and no script makes it.
+The comparison with the base-only dump was not made again.*
 
 **The dumps alone do not answer the question, because of `rso-mod`.** Its `data-final-fixes.lua`
 sets the probability and richness of every resource's autoplace to `0` (lines 39 to 46), and
@@ -1119,6 +1139,25 @@ something a surface supplies, or **joins the overhaul**: reaches an item or flui
 base-only `Grado_ABC` dump also has. Below a join the chain is `Grado_ABC`'s own, and it is not
 listed here. The script still follows it to the ground, which is where "can be made" comes from.
 
+*Since 2026-10-12 (#139) the walk is `dump-walk.ps1` in `vendor/grado-factorio-tools/scripts`. The
+script that made this
+section lived in a session's scratch directory and is gone, so that one is written again from
+the rules above; its header has them, with where it had to choose. Run that day, Factorio
+2.0.77, on the dumps `3295867752` and `2316474952`:*
+
+- *Its self-test gives the known answer for Space Age alone: 275 technologies, the six packs and
+  330 of 340 recipes. It then removes each of its eight source rules in turn. With six of them
+  removed the answer changes. With the pump's fluid or the steam removed it does not, so a dump
+  of Space Age alone does not show those two rules, and the self-test says so.*
+- *Run on the pack with `-Against` the dump of Space Age alone, it prints the table under*
+  Result *as it stands: 340, 317 and 23; 330 and 306; 268, 6 and 1. It names the same six
+  technologies and the same one dead end, the labs `lab`, `biolab` and `bob-lab-2`, and 55 of
+  1,204 technologies not reached. It reports all twelve packs the labs take and not the six
+  alone; all twelve can be made.*
+- *The table under* From its own materials *it does not print figure for figure: see the note
+  there. The tables under* The walks *were written by hand from the first script's output, and
+  no script prints them.*
+
 ### Result
 
 **All six packs can be made, as the prototypes read.** All six technologies can be researched,
@@ -1313,6 +1352,32 @@ Vulcanus, Gleba, Aquilo and a platform. On Fulgora it is not.**
 Wood and fuel oil can both be made on Nauvis, and Angel's has a barrel for the fluid.
 Whether shipping them is a nuisance or a wall is play, and it is the bridge question's evidence,
 not its answer.
+
+*Made again 2026-10-12 (#139) by `dump-walk.ps1` with `-BroughtIn wood`, on the same two dumps.
+**The counts are not the table's, and the findings are the same.***
+
+| Surface | Made from its own materials, Space Age alone | Of those, not in `Grado_ABCS` | With `wood` brought in |
+|---|---|---|---|
+| Nauvis | 210 items and fluids | 7 | 7 |
+| Vulcanus | 207 | 102 | 15 |
+| Gleba | 209 | 8 | 8 |
+| Fulgora | 207 | 108 | 23 |
+| Aquilo | 23 | 5 | 5 |
+| A space platform | 175 | 89 | 14 |
+
+*Why the counts differ is not known. The first script is gone, and the prose above does not say
+which entities it took as being on a planet, where a pump with a fluid of its own may stand, or
+whether it counted what is mined. The new script's header says what it does with each. What both
+tables show:*
+
+- *Each surface's own science pack is made from its own materials on Vulcanus, Gleba, Aquilo and
+  a platform, in Space Age alone and in the pack. On Fulgora it is made in Space Age alone and
+  not in the pack.*
+- *Wood is the gap on Vulcanus, Fulgora and a platform: 102, 108 and 89 fall to 15, 23 and 14
+  with wood brought in.*
+- *With wood, Fulgora still lacks `electromagnetic-science-pack`, `supercapacitor` and
+  `superconductor`. With `angels-liquid-multi-phase-oil`, the pack's crude oil, brought in as
+  well, 15 are left where the paragraph above has 11, and those three are no longer among them.*
 
 ### Not covered
 

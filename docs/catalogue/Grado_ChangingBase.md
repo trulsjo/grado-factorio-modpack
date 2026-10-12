@@ -2084,6 +2084,16 @@ the recorded loads' checksums.*
 loading sprites, which a headless dump does not do; and anything in play. A merged chest in a
 game is #26's.*
 
+*Since 2026-10-12 (#139) the counts of the table are `dump-diff.ps1` in
+`vendor/grado-factorio-tools/scripts`, given the dump
+with the two enabled and the dump with them disabled. Run that day on the `Grado_ChangingBase`
+pair, the second made again with the checksum the table has, `3996344298`: 7,676 and 6,983
+prototypes, 693 in the first alone, 198 of the type `container` and 495 `logistic-container`,
+and 53.2 MB against 37.8 MB. The `Grado_ABCS` pair was not made again. The number of chest types
+and the times are not the script's. It also prints 55 prototypes that are in both dumps and
+differ, which "No other prototype type changes" above does not cover: 47 of the type `container`
+in `picture`, the seven chest items in `stack_size`, and one `selection-tool`.*
+
 `reverse-factory` deserves a line for not being on the list. Un-crafting every item in the game is
 the most invasive thing in the pack on paper, and it is the member with the best overhaul story:
 thirty-one optional dependencies naming Angel's, Bob's, Krastorio, SE, IR3, SeaBlock and Space Age.

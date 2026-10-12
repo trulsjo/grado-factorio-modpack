@@ -35,6 +35,19 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
 - **Comment on an issue**: `gh issue comment <number> --body "..."`
 - **Apply / remove labels**: `gh issue edit <number> --add-label "..."` / `--remove-label "..."`
 - **Close**: `gh issue close <number> --comment "..."`
+- **Add a blocker**: a native issue dependency, which GitHub shows on the ticket.
+  `gh api --method POST repos/trulsjo/grado-factorio-modpack/issues/<n>/dependencies/blocked_by -F issue_id=<blocker-db-id>`,
+  where `<blocker-db-id>` is the blocker's numeric **database id**, <!-- deliberate: id -->
+  GitHub's word for it, and _not_ its `#number` or `node_id`:
+  `gh api repos/trulsjo/grado-factorio-modpack/issues/<blocker> --jq .id`. For a blocker in
+  `grado-factorio-tools` it is read from
+  `repos/trulsjo/grado-factorio-tools/issues/<blocker>` and the POST is the same: #225 carries
+  such an edge to trulsjo/grado-factorio-tools#113 (read 2026-10-12).
+- **A decision that makes a ticket wait** is recorded in one step with three parts: the
+  `blocked_by` edge is added, the body's "Blocked by" line names the blocker, and
+  `ready-for-agent` comes off. On 2026-10-12 #225 was handed to a session as `ready-for-agent`
+  with "Blocked by: None" in its body, while Truls's decision of 2026-10-11 that it waits stood
+  in its comments (#232).
 - **Pull request body**: written with the `mattpocock-skills:pr` skill, where that plugin is
   installed. This repository adds to what it produces: above its template, a `Closes #<n>` for each
   ticket the branch resolves, where it resolves any; below it, under one heading, the pre-PR
@@ -83,10 +96,7 @@ Used by `/wayfinder`. The **map** is a single issue with **child** issues as tic
   (`research`/`prototype`/`grilling`/`task`). Once claimed, the ticket is assigned to the driving
   dev.
 - **Blocking**: GitHub's **native issue dependencies**, the canonical, UI-visible representation.
-  Add an edge with
-  `gh api --method POST repos/<owner>/<repo>/issues/<child>/dependencies/blocked_by -F issue_id=<blocker-db-id>`,
-  where `<blocker-db-id>` is the blocker's numeric **database id**
-  (`gh api repos/<owner>/<repo>/issues/<n> --jq .id`, _not_ the `#number` or `node_id`). GitHub
+  The command that adds an edge is under *Conventions*, *Add a blocker*. GitHub
   reports `issue_dependencies_summary.blocked_by` (open blockers only, the live gate). Where
   dependencies aren't available, fall back to a `Blocked by: #<n>, #<n>` line at the top of the
   child body. A ticket is unblocked when every blocker is closed.

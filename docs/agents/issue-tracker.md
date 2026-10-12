@@ -32,7 +32,7 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
   checked out, <!-- deliberate: checked -->
   and the process's start time is kept beside the start of its transcript. A new session
   id <!-- deliberate: id -->
-  does not show it. On 2026-10-12 #160's "a new session" was met with a `/clear`, twice, in a
+  does not show it. On 2026-10-12 #160's "a new session" was met with a `/clear` in a
   process started four minutes before the commit: both sessions opened with the plugin's text,
   and neither could show whether the setting worked (#245).
 - **Read an issue**: `gh issue view <number> --json title,body,labels,comments`, filtered with

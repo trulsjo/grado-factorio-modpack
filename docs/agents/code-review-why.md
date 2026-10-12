@@ -299,3 +299,11 @@ decided #159 and the rule took its place:
 
 > Two things are #159's to decide and are not settled here: whether a pull request may be merged
 > while a review runs, and where a session can be cleared.
+
+**What the pre-PR reviewer is handed**, the end of its measurements sentence, as it stood until
+2026-10-12, when #234 added the commands. On PR #230 the prompt of two headless runs was in
+neither saved stream and the command line had not been saved, so the reviewer could not read how
+far the prompt led the reply, and a sentence of the README was narrowed (finding 1 in that pull
+request's body):
+
+> portal API's responses, a load's log - and the scripts that produced the figures.

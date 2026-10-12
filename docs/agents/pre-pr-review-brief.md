@@ -34,8 +34,9 @@ lines of Markdown, of comment and of commit message that hold a word such as "on
 "cannot". Of each line, ask whether the sentence holds for what its word covers, and reword the
 one that does not. The script lists and does not fail, and a word used in passing is left.
 
-Copy the raw output behind each figure on the branch into `<scratch>` as well. A figure whose raw
-output is gone is named to the reviewer as missing.
+Copy the raw output behind each figure on the branch into `<scratch>` as well, and save beside it
+the command that produced it, as it was run and with any prompt it was given (#234). A figure
+whose raw output is gone is named to the reviewer as missing.
 
 ## The review turn
 
@@ -59,9 +60,10 @@ You are handed:
   reviewed as carefully as the code. Where prose restates a list the code holds, read the two
   side by side.
 - `GLOSSARY.md`, which holds the three grades of evidence and the other terms.
-- <the raw output and the scripts behind the figures, one path each with the figure it is
-  behind; or, on a branch that records no measurements: <scratch>/commit-check.txt and
-  <scratch>/markdown-check.txt, and the resolve's output if an `info.json` changed>
+- <the raw output, the saved commands and the scripts behind the figures, one path each with
+  the figure it is behind; or, on a branch that records no measurements:
+  <scratch>/commit-check.txt and <scratch>/markdown-check.txt, and the resolve's output if an
+  `info.json` changed>
 - <scratch>/glossary-check.txt: each added line that uses a word `GLOSSARY.md` avoids and is
   not marked deliberate. The script fails on one, so a use listed there is a finding. Say of
   each `<!-- deliberate: word -->` the diff adds whether the use is meant.

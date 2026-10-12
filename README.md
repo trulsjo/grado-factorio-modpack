@@ -159,14 +159,20 @@ repository root, in PowerShell: the first is refused with exit 2, the second pas
 Its `-SelfTest -Settings .claude/settings.json` runs the command wired here and fails if that
 command no longer reaches the hook. It is run by hand: no hook and no workflow step runs it.
 
-In a clone without the submodule the wiring prints "the command was NOT checked" and exits 1.
-What a session makes of that was measured on 2026-10-11 with Claude Code 2.1.296, run headless
-with the project's settings alone and the Bash tool (#224): `echo mod-cache-probe` ran, and what
-the tool call returned to the agent held nothing of that line. The line stood in the session's
-hook events, with exit code 1 and outcome "error". A command that does not name `mod-cache` ran
-with no hook output. Not measured: what an interactive session shows the person at the keyboard,
-and the PowerShell tool. So in that run #184's fourth criterion did not hold of what the tool
-call returned, and #228 is the repair.
+In a clone without the submodule the wiring exits 0 and prints JSON that hands the session one
+sentence: the script was not found, the command was
+NOT checked by the mod-cache hook, <!-- deliberate: checked -->
+and `git submodule update --init` fetches the script. The command runs (#228). Measured 2026-10-12
+with Claude Code 2.1.296, run headless with the project's settings alone, in a clone of `1b30cbe`
+without the submodule and with this wiring: `echo mod-cache-probe` with the Bash tool and
+`Write-Output mod-cache-probe` with the PowerShell tool each ran, and the agent, asked what it
+was handed after the result, quoted the sentence as "hook additional context". In both runs the
+session's events also held the sentence as a notice, "PreToolUse:Bash says:" and
+"PreToolUse:PowerShell says:". Not measured: what an interactive session shows the person at the
+keyboard. With the submodule present the self-test above passed its 39 cases on the same day,
+the last of which runs the wired command. Before this the wiring printed the line to stderr and
+exited 1, and in the one run measured on 2026-10-11, with the Bash tool, what the tool call
+returned to the agent held nothing of it (#224).
 
 A second hook there, `scripts/ask-before-download.ps1`, stops a command that installs a package
 (`npm install`, `ci`, `add` or `exec`, `npx`, `pip install`, `gem install`, `cargo install`, and

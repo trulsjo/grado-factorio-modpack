@@ -119,7 +119,8 @@ each when it was decided.
 - **oh-my-claudecode and ponytail are switched off in this repository** (2026-10-12, #160), in
   the tracked `.claude/settings.json`, so every clone gets it; a clone without either plugin is
   unaffected. oh-my-claudecode's hooks added 59 reminders in the session of 2026-10-05, four
-  texts about testing, verifying and parallel execution in a repository with no tests; its read
+  texts about testing, verifying and parallel execution in a <!-- deliberate: verifying -->
+  repository with no tests; its read
   budget refused a second full read of a large file, which a review needs; its state files are
   what landed in the mod cache (#150); and it adds about forty skills to every session. Counts
   read from the session logs on 2026-10-06. ponytail's session-start text steers towards the

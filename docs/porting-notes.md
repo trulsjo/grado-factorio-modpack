@@ -873,3 +873,10 @@ behind that is in the #160 entry of `docs/decisions.md`.
 
 > The oh-my-claudecode section of a global `CLAUDE.md` still loads: do not act on its agents,
 > skills or keywords here, and its review rule is replaced by `docs/agents/code-review.md`.
+
+**The batch bullet**, under *Conventions*, the end of its last sentence as it stood from
+2026-10-11 (#159) until 2026-10-13, when #243 gave a session with no branch a clearing point of
+its own:
+
+> plugin pass or a confirmation of it runs, and a session is cleared only at the two points
+> `docs/agents/code-review.md` names (#159).

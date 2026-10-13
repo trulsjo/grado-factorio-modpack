@@ -1357,6 +1357,7 @@ not its answer.
 
 *Made again 2026-10-12 (#139) by `dump-walk.ps1` with `-BroughtIn wood`, on the same two dumps.
 **The counts are not the table's, and the findings are the same.***
+*Counted another way since 2026-10-13 (#251): the third table, at the end of this section.*
 
 | Surface | Made from its own materials, Space Age alone | Of those, not in `Grado_ABCS` | With `wood` brought in |
 |---|---|---|---|
@@ -1431,10 +1432,63 @@ less what is supplied, with or without what follows from the supply. They give 2
 - *A recycling recipe gives back what a surface already supplies, an ore for one, so the script
   counts as made a thing
   that is only mined. Counted less what is supplied, Aquilo is the first table's 20.*
+  *"Counts as made" is of 2026-10-12 and the script at `41b5488`. At `ad3bcce` (2026-10-13,
+  #251) it does not: see the note below.*
 
 *So the difference is still not explained. The three findings under the first table do not rest
 on it: the note above has them holding on the script's own rules. `dump-walk.ps1` is not
-changed.*
+changed.* *"Is not changed" is of 2026-10-12 and #242. It was changed after, in the tools
+repository: see the note below.*
+
+*Counted again 2026-10-13 (#251), with `dump-walk.ps1` at the tools commit `ad3bcce`, where
+the pin moved from `41b5488`. Truls ruled 2026-10-12, on grado-factorio-tools#126, what the walk
+of own materials counts, and grado-factorio-tools#127 changed the script to it. Measured on
+Factorio 2.0.77, on the same two dumps, `2316474952` (`Grado_ABCS`) and `3295867752` (Space Age
+alone), from the repository root:*
+
+```
+pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/dump-walk.ps1 <Grado_ABCS dump> -Against <Space Age dump> -BroughtIn wood
+```
+
+*Beside each figure is the second table's, of 2026-10-12 at `41b5488`:*
+
+| Surface | Made from its own materials, Space Age alone | 2026-10-12 | Of those, not in `Grado_ABCS` | 2026-10-12 | With `wood` brought in | 2026-10-12 |
+|---|---|---|---|---|---|---|
+| Nauvis | 202 items and fluids | 210 | 7 | 7 | 7 | 7 |
+| Vulcanus | 198 | 207 | 101 | 102 | 14 | 15 |
+| Gleba | 199 | 209 | 8 | 8 | 8 | 8 |
+| Fulgora | 200 | 207 | 107 | 108 | 22 | 23 |
+| Aquilo | 21 | 23 | 5 | 5 | 5 | 5 |
+| A space platform | 172 | 175 | 89 | 89 | 14 | 14 |
+
+*What is counted now, in the words of the script's header: "every item and fluid the surface can
+then have, less what it supplies. A thing the surface supplies is not counted as made, whichever
+recipe gives it back". Steam where there is water is counted, "and so is what an item had there
+spoils into, burns into or gives when launched, whether or not a recipe gives it". A thing is
+"not in" the pack "when this dump's surface cannot have it at all, supplied or made". The
+second table counted what a counted recipe gives, which took in a supplied thing wherever some
+recipe gave it back and left out steam where the walk adds it with no recipe, both by
+grado-factorio-tools#126; that is why the figures changed. The first column is the row "Counted with
+what follows from the supply, less the supply" of the table of rules above, which is the count
+the script now makes.*
+
+*Two names leave the lists the script prints under its tables, which begin "Not to be had on"
+where they began "Not made on": `carbon` on Vulcanus and `heavy-oil` on Fulgora, by a run of
+the script as it stood at `41b5488` the same day, on the same dumps. The other four lists hold
+the same names. The first table is still not reproduced.*
+
+*The three findings under the second table, read against the new lists:*
+
+- *The first holds. The script's table of science packs has each surface's own pack made from
+  its own materials on Vulcanus, Gleba, Aquilo and a platform, in Space Age alone and in the
+  pack, and `electromagnetic-science-pack` on Fulgora in Space Age alone and not in the pack.*
+- *The second holds, with other figures: 101, 107 and 89 fall to 14, 22 and 14 with wood
+  brought in.*
+- *The third holds, with another figure. With wood, `electromagnetic-science-pack`,
+  `supercapacitor` and `superconductor` are among Fulgora's 22. With
+  `-BroughtIn wood,angels-liquid-multi-phase-oil`, 14 are left on Fulgora where that note has 15
+  and the findings under the first table 11, those three are not among them, and the other
+  five surfaces' counts do not move. The one name fewer is `heavy-oil`.*
 
 ### Not covered
 

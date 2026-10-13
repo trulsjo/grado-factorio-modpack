@@ -1357,7 +1357,7 @@ not its answer.
 
 *Made again 2026-10-12 (#139) by `dump-walk.ps1` with `-BroughtIn wood`, on the same two dumps.
 **The counts are not the table's, and the findings are the same.***
-*Counted another way since 2026-10-13 (#251): the third table, at the end of this section.*
+*Counted another way since 2026-10-13 (#251): the table at the end of this section.*
 
 | Surface | Made from its own materials, Space Age alone | Of those, not in `Grado_ABCS` | With `wood` brought in |
 |---|---|---|---|
@@ -1474,7 +1474,7 @@ the script now makes.*
 
 *Two names leave the lists the script prints under its tables, which begin "Not to be had on"
 where they began "Not made on": `carbon` on Vulcanus and `heavy-oil` on Fulgora, by a run of
-the script as it stood at `41b5488` the same day, on the same dumps. The other four lists hold
+the script as it stood at `41b5488` 2026-10-13, on the same dumps. The other four lists hold
 the same names. The first table is still not reproduced.*
 
 *The three findings under the second table, read against the new lists:*

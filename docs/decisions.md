@@ -174,17 +174,16 @@ each when it was decided.
   whole and is sent the code blocks of `docs/agents/pre-pr-review-brief.md`, and the session
   reads the brief's page. #178 listed five requirements of the brief that the rules did not
   state, and the brief held four more by the day it was ruled (#192, #219, #234, #241, by a
-  reading of the page), so a list would have gone out of date again. The brief is mandatory:
-  one rule says the review is run by it, and a session that writes its own words has not done
-  the pre-PR review. By the test three things went into the rules, each with what stands behind
-  it in `docs/agents/code-review-why.md`, *What the rules took from the brief*: the commit
-  messages and the tickets are in the list of what the reviewer is handed, the two checks'
-  results are handed over on every branch, and the review is read-only. The rest stays in the
-  brief: the report to a file and the reply of five lines, the file tool, the report's two
-  sections, the `git cherry` read, the command saved beside a figure's raw output, no change of
-  directory, and the walk of `absolute-words.txt`, whose list the reviewer is not handed. No
-  step of the review reads whether a session walked it. The incidents behind the file
-  requirement stay in the brief's head, beside it. #178 offered five options for the whole and
-  three for the checks. Taken: "Split them", with the test drawing its line, and "Run both on
-  every branch, and say so in the rules". `GLOSSARY.md` has *Rule of review*. No ADR: it is
-  cheap to reverse.
+  reading of the page), so a list would have gone out of date again. The brief is mandatory: one
+  rule says the review is run by it, and a session that writes its own words has done the pre-PR
+  review wrong. By the test three things went into the rules, each with what stands behind it in
+  `docs/agents/code-review-why.md`, *What the rules took from the brief*: the commit messages
+  and the tickets are in the list of what the reviewer is handed, the two checks' results are
+  handed over on every branch, and the review is read-only. Staying in the brief, among others:
+  the report to a file and the reply of five lines, the file tool, the report's two sections,
+  the `git cherry` read, the command saved beside a figure's raw output, no change of directory,
+  and the walk of `absolute-words.txt`, whose list the reviewer is not handed. No step of the
+  review reads whether a session walked it. The incidents behind the file requirement stay in
+  the brief's head, beside it. #178 offered five options for the whole and three for the checks.
+  Taken: "Split them", with the test drawing its line, and "Run both on every branch, and say so
+  in the rules". `GLOSSARY.md` has *Rule of review*. No ADR: it is cheap to reverse.

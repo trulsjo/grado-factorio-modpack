@@ -219,6 +219,37 @@ comment on its ticket. The session Truls ruled #243 in was one.
 - **A rule that a session writes its scratch path down.** How long those directories live was
   not measured.
 
+## What the rules took from the brief
+
+Decided by Truls, 2026-10-13, settling #178. The decision and its test are in
+`docs/decisions.md`; this section holds what stands behind the three changes it made to the
+rules.
+
+The plugin pass on PR #177 (2026-10-07) raised two findings against
+`pre-pr-review-brief.md`, each scored 75, in that pull request's
+[second comment](https://github.com/trulsjo/grado-factorio-modpack/pull/177#issuecomment-6044971703)
+(read 2026-10-13). Finding 1: the brief said it added no rule beside requirements the rules did
+not state. Finding 6: its preparation step ran both checks on every branch, where the rules
+handed their results over on a branch that records no measurements.
+
+**The commit messages and the tickets.** The brief handed both over as it was first written:
+`git show 21a405f:docs/agents/pre-pr-review-brief.md` (2026-10-07) has the `git log` line and
+the `gh issue view` line, and it hands both over now. The versions between were not read. The
+rules define the pre-PR review by what the reviewer is handed, so their list was two short of
+the brief's.
+
+**Both checks on every branch.** #173's body gives the reason the results are handed over: "A
+clone that never wired up the hooks gets neither check and no message, so the hand-over is the
+one place a branch is sure to have been checked." <!-- deliberate: checked -->
+A branch that records measurements has commit
+messages and Markdown as well, so the reason does not stop at the split, and the brief at
+`21a405f` already ran both without a condition. Not measured: whether a branch that records
+measurements ever reached its review with a failing check.
+
+**Read-only.** The brief said it at `21a405f` and says it now. It is a rule because two others
+rest on it: the reviewer that raised a finding reads the fix against it, and the fixes are one
+commit of the session's. No case of a reviewer making a fix was looked for.
+
 ## What the rules said before
 
 `code-review.md` is loaded whole by every review, so since 2026-10-06 it states the live rule only
@@ -351,3 +382,17 @@ gives a reason that does not wait on #139.
 
 > Nor is the time the tickets are being implemented: until #139 lands, the raw output behind a
 > figure is in the session's scratch directory.
+
+**What the pre-PR reviewer is handed**, its item on measurements and checks, as it stood until
+2026-10-13, when Truls ruled #178 and the two checks' results were handed over on every branch.
+The items on the commit messages and the tickets, and the sentence on read-only, were added
+then and stood nowhere before.
+
+> - on a branch that records measurements, the raw output behind them - a `--dump-data` dump, the
+>   portal API's responses, a load's log - and the commands and scripts that produced the figures.
+>   On any other branch, the results of `commit-check.ps1 -Range origin/main..HEAD` and of
+
+**The pointer to the brief**, as it stood from 2026-10-07 (#167) until 2026-10-13 (#178):
+
+> **The words it is handed them with are in `pre-pr-review-brief.md`**, for the review and for the
+> confirmation, with the shape of the report.

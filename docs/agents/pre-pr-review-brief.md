@@ -1,9 +1,11 @@
 # The pre-PR reviewer's brief
 
 The words the pre-PR reviewer is handed its material with, for both of its turns. The rules are in
-`code-review.md`, *One review before the pull request*. A session fills the
-blanks, written `<like this>`, and sends the rest as it stands. `<scratch>` is filled wherever it
-stands. The blanks under the report's headings are the reviewer's and are sent unfilled.
+`code-review.md`, *One review before the pull request*. This page adds the procedure: what a
+session does before the first turn, the words each turn is sent with, and how the report comes
+back. A session fills the blanks, written `<like this>`, and sends the rest as it stands.
+`<scratch>` is filled wherever it stands. The blanks under the report's headings are the
+reviewer's and are sent unfilled.
 
 **The report goes to a file, and the reply is five lines.** A report sent as a reply was cut off
 twice: in its sixth finding of ten on PR #163 (2026-10-06, by #167's account), and at the head of
@@ -81,9 +83,9 @@ You are handed:
   side by side.
 - `GLOSSARY.md`, which holds the three grades of evidence and the other terms.
 - <the raw output, the saved commands and the scripts behind the figures, one path each with
-  the figure it is behind; or, on a branch that records no measurements:
-  <scratch>/commit-check.txt and <scratch>/markdown-check.txt, and the resolve's output if an
-  `info.json` changed>
+  the figure it is behind; or nothing>
+- <scratch>/commit-check.txt and <scratch>/markdown-check.txt. <The resolve's output, if an
+  `info.json` changed; or nothing.>
 - <scratch>/glossary-check.txt: each added line that uses a word `GLOSSARY.md` avoids and is
   not marked deliberate. The script fails on one, so a use listed there is a finding. Say of
   each `<!-- deliberate: word -->` the diff adds whether the use is meant.
@@ -118,9 +120,8 @@ and so is a fix made after the plugin pass.
 The fixes are in commit <sha>: `git show <sha>`. <A commit whose message was reworded, by its
 old and new hash: `git log -1 --format=%B <new>`, and `git diff <old> <new>` is empty; or
 nothing.> <Edits outside the diff, such as a ticket's body, and how to read each; or nothing.>
-<If the two checks' results were handed at the review, their results after this commit:
-<scratch>/commit-check.txt and <scratch>/markdown-check.txt; or nothing.> The glossary check's
-after this commit: <scratch>/glossary-check.txt.
+The checks' results after this commit: <scratch>/commit-check.txt, <scratch>/markdown-check.txt
+and <scratch>/glossary-check.txt.
 
 Not fixed, and why: <each finding by its number; or none>. <For a fix of a plugin-pass finding,
 which is not one of yours: the finding as the pull request states it; or nothing.>

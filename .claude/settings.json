@@ -4,6 +4,12 @@
     "ponytail@claude-community": false,
     "ponytail@ponytail": false
   },
+  "permissions": {
+    "allow": [
+      "Bash(gh api --method POST repos/trulsjo/grado-factorio-modpack/issues/*/dependencies/blocked_by -F issue_id=*)",
+      "Bash(gh api --method POST repos/trulsjo/grado-factorio-tools/issues/*/dependencies/blocked_by -F issue_id=*)"
+    ]
+  },
   "hooks": {
     "PreToolUse": [
       {

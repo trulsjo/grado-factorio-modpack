@@ -143,20 +143,20 @@ each when it was decided.
   gives it as a condition.
 - **The table of own materials of 2026-10-13 is the record, and its difference from #132's is
   not closed as looked for and not found** (2026-10-13, #248). `docs/catalogue/Grado_ABCS.md`,
-  *From its own materials*, has three tables: #132's of 2026-10-05, `dump-walk.ps1`'s of
-  2026-10-12, and that script's of 2026-10-13 at the tools commit `ad3bcce`, with the count
+  *From its own materials*, has three tables of what each surface makes: #132's of
+  2026-10-05, `dump-walk.ps1`'s of 2026-10-12, and that script's of 2026-10-13 at the tools
+  commit `ad3bcce`, with the count
   Truls ruled on grado-factorio-tools#126 (#251). The third is the record. The first two stay as
   history, each with its date, and the first is "not reproduced", not "not reproducible". #248
   offered three options: close it as looked for and not found after #242's 256 rule sets, search
   more rules, or make the script's table the record. Truls took the third for the record and
   none of the three for the difference, because the session that put them to him found the
   text of #132's scripts in the transcript of 2026-10-05, where the catalogue had "the first
-  script is gone". They are two comments on #248, extracted and not run. #253 runs them on the
+  script is gone". They are comments on #248, extracted and not run. #253 runs them on the
   dump `3295867752`. If they do not run, or do not print 211, 202, 206, 188, 20 and 169, it
   says which and no wider search follows. If they print them, the difference is explained when
   each rule on which they differ from `dump-walk.ps1` is named, read from source, and the first
   table's row is measured to move to the record's 202, 198, 199, 200, 21 and 172 under that
   script's rules, or what is left over is stated for each surface. #253 changes no figure of
   the record and not `dump-walk.ps1`. The recovered scripts stay as ticket comments, in neither
-  repository, with no ADR and no `GLOSSARY.md` entry: they answer one question and
-  `dump-walk.ps1` is the tool.
+  repository, with no ADR and no `GLOSSARY.md` entry.

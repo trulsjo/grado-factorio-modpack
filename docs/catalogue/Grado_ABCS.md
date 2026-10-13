@@ -1328,8 +1328,9 @@ Space Age alone, by this measure, makes each planet's pack on its own planet, an
 both.
 
 *This table is not reproduced (2026-10-13, #248): neither `dump-walk.ps1` nor any rule #242
-tried gives its first column. The record is the third table, at the end of this section. Under
-this one, a sentence in italics dated 2026-10-13 gives the record's figure beside the one cited.*
+tried gives its first column. The record is the table of 2026-10-13, at the end of this
+section. Under this one, a sentence in italics dated 2026-10-13 gives the record's figure
+beside the one cited.*
 
 | Surface | Made from its own materials, Space Age alone | Of those, not in `Grado_ABCS` | With `wood` brought in |
 |---|---|---|---|
@@ -1396,10 +1397,7 @@ tables show:*
   well, 15 are left where the paragraph above has 11, and those three are no longer among them.*
 
 *"The first script is gone" is of 2026-10-12 and #139. The files are gone and their text is
-not (2026-10-13, #248). The transcript of the session of 2026-10-05 holds the calls that wrote
-`fx.py`, `walk.py`, `gen132.py` and `local132.py`, and they are two comments on #248, extracted
-and not run. `why.py`, which one of those calls imports, was not extracted. "Why the counts
-differ is not known" still holds.*
+not (2026-10-13, #248): see the note of #248 at the end of this section.*
 
 *Looked for 2026-10-12 (#242), and not found: **no rule tried gives the first table's six
 figures**, 211, 202, 206, 188, 20 and 169. Measured on Factorio 2.0.77, on the dump of Space Age
@@ -1511,16 +1509,19 @@ the same names. The first table is still not reproduced.*
 
 *Decided 2026-10-13 (#248), by Truls: **the table above, of 2026-10-13, is the record, and the
 difference from the first table is not closed as looked for and not found.** The first and the
-second table stay as history, each with its date, and the first is not reproduced. #248 asked
-whether the search of #242 ends it. It does not, because the first script's text was found: the
-note under the second table says where. #253 runs it on the dump `3295867752`. If it does not
-run, or does not print 211, 202, 206, 188, 20 and 169, #253 says which and no wider search
-follows. If it prints them, #253 names each rule on which it differs from `dump-walk.ps1` and
-measures whether the first table's row moves to the record's under that script's rules.*
+second table stay as history, each with its date, and the first is not reproduced. Why, and
+what #253 does and where it ends: `docs/decisions.md`.*
+
+*Where the first script's text is, measured 2026-10-13: the transcript of the session of
+2026-10-05 holds the calls that wrote `fx.py`, `walk.py`, `gen132.py` and `local132.py`, and
+they are comments on #248, extracted and not run. `why.py`, which the call that made
+`solved.pkl` imports, was not extracted. Two calls of 09:11 UTC import `local132` without
+naming its file; the pre-PR review of this note found them, and they are a third comment
+there. Read and not run, they print the first table's second and third columns.*
 
 *Measured that day before a figure of the record was put beside a sentence under the first
 table: the command of the note of #251, at the tools commit `ad3bcce`, pwsh 7.6.6, on the same
-two dumps, printed the third table's eighteen figures, and with
+two dumps, printed the eighteen figures of the table of 2026-10-13, and with
 `-BroughtIn wood,angels-liquid-multi-phase-oil` 14 for Fulgora.*
 
 *Read from source, in `local132.py` as first written and not run: it counts what the surface

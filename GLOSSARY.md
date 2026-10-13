@@ -112,6 +112,15 @@ measured, and "SpaceX is dead" was inferred from it and wrong. Added 2026-10-06 
 _Avoid_: assumed (a claim that names nothing it rests on has no grade; it is marked "not measured"
 or it is a finding), likely without saying from what
 
+**Rule of review**:
+What a reviewer judges a branch by, or what defines a review: what the reviewer is handed, who
+reads a fix against its finding, and where the findings go. The rules of review are in
+`docs/agents/code-review.md`. What a session does to prepare and send the pre-PR review, and how
+the report comes back, is *procedure*: it binds the session, through the one rule that says
+which page the review is run by, and it is not what a branch is judged by. Added 2026-10-13
+(#178).
+_Avoid_: rule for a step of procedure, mechanics, requirement without saying which of the two
+
 **Title**:
 The `title` field in `info.json`, e.g. `Grado ABCS: Angel's, Bob's, MadClown, Space Age`. Display
 only - shown in the in-game mod list and on the pack's portal entry, and freely changed in any

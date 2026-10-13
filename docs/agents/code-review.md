@@ -148,9 +148,10 @@ handed and not by a skill's name:
 - the diff against `main`;
 - this file;
 - `GLOSSARY.md`, which holds the three grades the rules above use;
+- the commit messages, and the branch's tickets;
 - on a branch that records measurements, the raw output behind them - a `--dump-data` dump, the
-  portal API's responses, a load's log - and the commands and scripts that produced the figures.
-  On any other branch, the results of `commit-check.ps1 -Range origin/main..HEAD` and of
+  portal API's responses, a load's log - and the commands and scripts that produced the figures;
+- the results of `commit-check.ps1 -Range origin/main..HEAD` and of
   `markdown-check.ps1 -Range origin/main...HEAD -MaxLineLength 100`, both in
   `vendor/grado-factorio-tools/scripts/`, and of the resolve if an `info.json` changed. The
   commit check's range has two dots and the other two checks' have three: why is in the header of
@@ -160,8 +161,12 @@ handed and not by a skill's name:
   lists one. A listed use is reworded or marked before the review. Whether a marker is honest is
   the reviewer's: a marker silences the script.
 
-**The words it is handed them with are in `pre-pr-review-brief.md`**, for the review and for the
-confirmation, with the shape of the report.
+**The review is read-only.** The reviewer changes nothing in the repository and posts nothing
+to GitHub: a fix is the session's.
+
+**The pre-PR review is run by `pre-pr-review-brief.md`, as it stands**: what a session does
+before the first turn, the words each turn is sent with, and how the report comes back. That
+page is procedure and states no rule of review.
 
 **A figure whose raw output is gone is a finding.** The reviewer is told which output is missing
 and does not take the figure on trust.

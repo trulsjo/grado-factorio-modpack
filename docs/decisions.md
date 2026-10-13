@@ -97,7 +97,10 @@ each when it was decided.
   plugin's command file hands its reviewers. The rule is in `docs/agents/code-review.md` and its
   evidence in `docs/agents/code-review-why.md`. Whether a pull request may be merged while a
   review runs is #159's. *Decided 2026-10-11 (#159): not while a plugin pass or a confirmation
-  of it runs. The rule is in `docs/agents/code-review.md`.*
+  of it runs. The rule is in `docs/agents/code-review.md`.* *Decided 2026-10-13 (#243): the
+  time the tickets are being implemented stays outside the points where a session is cleared,
+  and a session with no branch has a point of its own. The rule is in the same file and why in
+  `docs/agents/code-review-why.md`.*
 - **A catalogue's header gives the day of its portal reading and does not list later notes**
   (2026-10-07, #172). Every portal reading in the file is of that day "except where a later date
   is given inline", which is the wording `Grado_NonChanging.md` already had. A later reading

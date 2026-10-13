@@ -217,7 +217,8 @@ finds, and each repair, is recorded on the pull request. Found in PR #186.
 check run is outside this rule. The merge is Truls's, so a session's last message says when a
 plugin pass or a confirmation is still running.
 
-**A session is cleared at two points, and it says when it has reached one** (#159). A clear is
+**A session that carries a branch is cleared at two points, and it says when it has reached
+one** (#159). A clear is
 `/clear`, a new session, or a later session taking the work up; the harness compacting by itself
 is not one. The session's last message names the point when its conditions hold, and names the
 condition that does not when one is missing.
@@ -231,8 +232,12 @@ condition that does not when one is missing.
   journal carry the merge and are staged, and what is still open from the pull request is a
   ticket or a line in the brain's *Still open*.
 
+**A session with no branch is cleared once what it decided is a comment on its ticket**, with
+the command and the output behind each figure it made. A grill is one. Its last message says so.
+
 **From spawning the pre-PR reviewer until the pull request is open is not a clearing point.**
-Nor is the time the tickets are being implemented: until #139 lands, the raw output behind a
-figure is in the session's scratch directory. **A clear before a plugin pass costs a fresh
-reviewer**, handed the report and the commits as above, and it may be handed a figure whose raw
-output is gone.
+Nor is the time the tickets are being implemented: which output and which command stand behind
+a figure is known to the session alone, a later session gets another scratch directory, and no
+kept script makes a portal reading, a load's log or a timing again. **A clear before a
+plugin pass costs a fresh reviewer**, handed the report and the commits as above, and it may be
+handed a figure whose raw output is gone.

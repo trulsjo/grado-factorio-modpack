@@ -192,38 +192,38 @@ five scripts in `vendor/grado-factorio-tools/scripts` and a dump, so the output 
 sections they make can be made again after a clear, and output from anything else is as it was.
 #140's count in the same pull request, made by a throwaway mod, is a case of the second kind.
 
-**A clear leaves the scratch directory's files where they were**, measured 2026-10-13 on
-Truls's machine by a session that had begun with `/clear`; the command and its whole output are
-in #243's comment. There were 29 session directories under
-`%TEMP%\claude\C--src-factorio-grado-factorio-modpack\`, and the eight written last were
-listed. The listing session's own was empty and one from 2026-10-12 was empty. The other six,
-from 2026-10-12 and 2026-10-13, held 223, 58, 19, 214, 35 and 2054 files. The session was told
-none of their paths. That those files are earlier sessions' raw output is inferred from where
-they stand: no file was opened. Not measured: whether anything empties one of these
-directories, why the one from 2026-10-12 is empty, and the 21 not listed.
+**Files stood in six session directories after a clear**, measured 2026-10-13 on Truls's
+machine by a session that had begun with `/clear`; the command and its whole output are in
+#243's comment. There were 29 session directories under
+`%TEMP%\claude\C--src-factorio-grado-factorio-modpack\`, and the eight with the latest
+modification time were listed. The listing session's own was empty and one from 2026-10-12 was
+empty. The other six, from 2026-10-12 and 2026-10-13, held 223, 58, 19, 214, 35 and 2054 files.
+That those files are earlier sessions' raw output is inferred from where they stand: no file
+was opened. Not measured: whether anything empties one of these directories, why the one from
+2026-10-12 is empty, and the 21 not listed.
 
 **Why a session with no branch has a point of its own.** Both of the two points need a pull
 request, and the rule's opening read as the whole list. A grill makes no branch and ends in a
-comment on its ticket. The session that ruled #243 was one.
+comment on its ticket. The session Truls ruled #243 in was one.
 
-**Not taken on #243**, each with why:
+**Not taken on #243:**
 
 - **Narrowing the rule** to a branch with a figure that cannot be made again, the ticket's
   second option. It asks a session to judge its figures when its context is fullest, and the
   command behind a kept script's figure, as it was run (#234), is in the session too.
 - **Dropping the rule** for the time of implementing, the third option, and **leaving the
   sentence** as history, the fourth, which `code-review.md` stating the live rule does not allow.
-- **A third clearing point between the tickets of a batch**, once a ticket is committed and the
-  command and output behind its figures are a comment on it. PR #252, PR #254 and PR #255, all
-  of 2026-10-13, carried one ticket each, so no batch was there to outgrow a session, and which
-  figures the comment must cover would still be the session's to judge.
+- **A third clearing point between the tickets of a batch.** PR #252, PR #254 and PR #255, all
+  of 2026-10-13, carried one ticket each, so no batch was there to outgrow a session, and it is
+  the second option under another name.
 - **A rule that a session writes its scratch path down.** How long those directories live was
   not measured.
 
 ## What the rules said before
 
 `code-review.md` is loaded whole by every review, so since 2026-10-06 it states the live rule only
-and its old wording is kept here. The passages below are word for word as they stood on `0444fa2`.
+and its old wording is kept here. The passages below are word for word as they stood: on `0444fa2`
+where a passage gives no span of its own.
 
 **The head of the file**, two sentences now out:
 

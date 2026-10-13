@@ -225,12 +225,12 @@ Decided by Truls, 2026-10-13, settling #178. The decision and its test are in
 `docs/decisions.md`; this section holds what stands behind the three changes it made to the
 rules.
 
-The plugin pass on PR #177 (2026-10-07) raised two findings against
-`pre-pr-review-brief.md`, each scored 75, in that pull request's
-[second comment](https://github.com/trulsjo/grado-factorio-modpack/pull/177#issuecomment-6044971703)
-(read 2026-10-13). Finding 1: the brief said it added no rule beside requirements the rules did
-not state. Finding 6: its preparation step ran both checks on every branch, where the rules
-handed their results over on a branch that records no measurements.
+Two findings of the plugin pass on PR #177 (2026-10-07) turned on whether the brief's
+requirements are rules, each scored 75, in its
+[comment](https://github.com/trulsjo/grado-factorio-modpack/pull/177#issuecomment-6044971703)
+on that pull request (read 2026-10-13). Finding 1: the brief said it added no rule beside
+requirements the rules did not state. Finding 6: its preparation step ran both checks on every
+branch, where the rules handed their results over on a branch that records no measurements.
 
 **The commit messages and the tickets.** The brief handed both over as it was first written:
 `git show 21a405f:docs/agents/pre-pr-review-brief.md` (2026-10-07) has the `git log` line and
@@ -248,7 +248,7 @@ measurements ever reached its review with a failing check.
 
 **Read-only.** The brief said it at `21a405f` and says it now. It is a rule because two others
 rest on it: the reviewer that raised a finding reads the fix against it, and the fixes are one
-commit of the session's. No case of a reviewer making a fix was looked for.
+commit of their own. No case of a reviewer making a fix was looked for.
 
 ## What the rules said before
 
@@ -383,7 +383,8 @@ gives a reason that does not wait on #139.
 > Nor is the time the tickets are being implemented: until #139 lands, the raw output behind a
 > figure is in the session's scratch directory.
 
-**What the pre-PR reviewer is handed**, its item on measurements and checks, as it stood until
+**What the pre-PR reviewer is handed**, the first two sentences of its item on measurements
+and checks, as they stood until
 2026-10-13, when Truls ruled #178 and the two checks' results were handed over on every branch.
 The items on the commit messages and the tickets, and the sentence on read-only, were added
 then and stood nowhere before.
@@ -391,6 +392,8 @@ then and stood nowhere before.
 > - on a branch that records measurements, the raw output behind them - a `--dump-data` dump, the
 >   portal API's responses, a load's log - and the commands and scripts that produced the figures.
 >   On any other branch, the results of `commit-check.ps1 -Range origin/main..HEAD` and of
+>   `markdown-check.ps1 -Range origin/main...HEAD -MaxLineLength 100`, both in
+>   `vendor/grado-factorio-tools/scripts/`, and of the resolve if an `info.json` changed.
 
 **The pointer to the brief**, as it stood from 2026-10-07 (#167) until 2026-10-13 (#178):
 

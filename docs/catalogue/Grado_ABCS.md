@@ -1160,6 +1160,9 @@ the rules above; its header has them, with where it had to choose. Run that day,
   there. The tables under* The walks *were written by hand from the first script's output, and
   no script prints them.*
 
+*"Is gone" is of 2026-10-12 and #139. The files are gone and their text is not (2026-10-13,
+#248): see the note under* From its own materials.
+
 ### Result
 
 **All six packs can be made, as the prototypes read.** All six technologies can be researched,
@@ -1324,6 +1327,10 @@ Space Age alone, by this measure, makes each planet's pack on its own planet, an
 `space-science-pack` on a platform. `promethium-science-pack` needs parts from the planets in
 both.
 
+*This table is not reproduced (2026-10-13, #248): neither `dump-walk.ps1` nor any rule #242
+tried gives its first column. The record is the third table, at the end of this section. Under
+this one, a sentence in italics dated 2026-10-13 gives the record's figure beside the one cited.*
+
 | Surface | Made from its own materials, Space Age alone | Of those, not in `Grado_ABCS` | With `wood` brought in |
 |---|---|---|---|
 | Nauvis | 211 items and fluids | 7 | |
@@ -1340,6 +1347,7 @@ Vulcanus, Gleba, Aquilo and a platform. On Fulgora it is not.**
   Nauvis and Gleba have trees. Vulcanus, Fulgora, Aquilo and a platform supply none, so on those
   nothing with an electronic circuit in it can be made from local material: assembling machines,
   the starter science pack and the accumulator among the 98, 101 and 87.
+  *The record has 101, 107 and 89 (2026-10-13, #248).*
 - **Fulgora also lacks an oil.** With wood brought in, 19 are still missing, and
   `electromagnetic-science-pack` is one of them, with `supercapacitor` and `superconductor`.
   Space Age builds them on the ocean's `heavy-oil`. Here `superconductor` needs
@@ -1347,9 +1355,14 @@ Vulcanus, Gleba, Aquilo and a platform. On Fulgora it is not.**
   nutrient pulp or a vegetable oil. `angels-liquid-naphtha`, which `electrolyte` needs, can be
   made there, from coal that `coal-synthesis` makes. With crude oil brought in as well, 11 are
   left.
+  *The record has 22 where this has 19. Where this has 11 it has 14, with
+  `angels-liquid-multi-phase-oil`, the pack's crude oil, brought in beside wood (2026-10-13,
+  #248).*
 - **What is left after that** is the vanilla oil fractions and their barrels, which the pack
   makes nowhere, and the beacon and the modules above the first tier, which have Bob's recipes.
   `carbon` and `ammonia` are among the 7 and the 4 for the same reason as the fractions.
+  *The record has 7 on Nauvis, 8 on Gleba and 5 on Aquilo. `carbon` is in each of those three
+  lists and `ammonia` in Aquilo's (2026-10-13, #248).*
 
 Wood and fuel oil can both be made on Nauvis, and Angel's has a barrel for the fluid.
 Whether shipping them is a nuisance or a wall is play, and it is the bridge question's evidence,
@@ -1381,6 +1394,12 @@ tables show:*
 - *With wood, Fulgora still lacks `electromagnetic-science-pack`, `supercapacitor` and
   `superconductor`. With `angels-liquid-multi-phase-oil`, the pack's crude oil, brought in as
   well, 15 are left where the paragraph above has 11, and those three are no longer among them.*
+
+*"The first script is gone" is of 2026-10-12 and #139. The files are gone and their text is
+not (2026-10-13, #248). The transcript of the session of 2026-10-05 holds the calls that wrote
+`fx.py`, `walk.py`, `gen132.py` and `local132.py`, and they are two comments on #248, extracted
+and not run. `why.py`, which one of those calls imports, was not extracted. "Why the counts
+differ is not known" still holds.*
 
 *Looked for 2026-10-12 (#242), and not found: **no rule tried gives the first table's six
 figures**, 211, 202, 206, 188, 20 and 169. Measured on Factorio 2.0.77, on the dump of Space Age
@@ -1489,6 +1508,24 @@ the same names. The first table is still not reproduced.*
   `-BroughtIn wood,angels-liquid-multi-phase-oil`, 14 are left on Fulgora where that note has 15
   and the findings under the first table 11, those three are not among them, and the other
   five surfaces' counts do not move. The one name fewer is `heavy-oil`.*
+
+*Decided 2026-10-13 (#248), by Truls: **the table above, of 2026-10-13, is the record, and the
+difference from the first table is not closed as looked for and not found.** The first and the
+second table stay as history, each with its date, and the first is not reproduced. #248 asked
+whether the search of #242 ends it. It does not, because the first script's text was found: the
+note under the second table says where. #253 runs it on the dump `3295867752`. If it does not
+run, or does not print 211, 202, 206, 188, 20 and 169, #253 says which and no wider search
+follows. If it prints them, #253 names each rule on which it differs from `dump-walk.ps1` and
+measures whether the first table's row moves to the record's under that script's rules.*
+
+*Measured that day before a figure of the record was put beside a sentence under the first
+table: the command of the note of #251, at the tools commit `ad3bcce`, pwsh 7.6.6, on the same
+two dumps, printed the third table's eighteen figures, and with
+`-BroughtIn wood,angels-liquid-multi-phase-oil` 14 for Fulgora.*
+
+*Read from source, in `local132.py` as first written and not run: it counts what the surface
+supplies together with what it makes from it. The ruling on grado-factorio-tools#126 has a
+supplied thing as not made, so the first table is not the record whatever #253 finds.*
 
 ### Not covered
 

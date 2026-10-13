@@ -1332,6 +1332,10 @@ tried gives its first column. The record is the table of 2026-10-13, at the end 
 section. Under this one, a sentence in italics dated 2026-10-13 gives the record's figure
 beside the one cited.*
 
+*"Is not reproduced" is of #248. Later the same day (#253) the script that made the table
+printed it again, every figure: see the note of #253 at the end of this section. The record
+is as it was.*
+
 | Surface | Made from its own materials, Space Age alone | Of those, not in `Grado_ABCS` | With `wood` brought in |
 |---|---|---|---|
 | Nauvis | 211 items and fluids | 7 | |
@@ -1527,6 +1531,66 @@ two dumps, printed the eighteen figures of the table of 2026-10-13, and with
 *Read from source, in `local132.py` as first written and not run: it counts what the surface
 supplies together with what it makes from it. The ruling on grado-factorio-tools#126 has a
 supplied thing as not made, so the first table is not the record whatever #253 finds.*
+
+*Run 2026-10-13 (#253): **the first table is reproduced, and its difference from the record
+is three rules.** "Why the counts differ is not known" (#139), "the difference is still not
+explained" (#242) and "the first table is still not reproduced" (#251), in the notes above,
+are each of their day. No figure of the record is changed, and `dump-walk.ps1` is not.*
+
+*Measured that day with Python 3.13.14, on the Factorio 2.0.77 dumps `3295867752`,
+`2316474952` and the base-only `Grado_ABC`'s `2195323740`, copied from the dump cache. The
+scripts of 2026-10-05 were rebuilt by running again, in the transcript's order, the calls
+that are comments on #248, with `why.py`, which was found in the same transcript. Rebuilt,
+they print 211, 202, 206, 188, 20 and 169 for Space Age alone, the first table's second
+column, 7, 98, 7, 101, 4 and 87, its third, 12, 19 and 12, and the 11 of the paragraph under
+it. The commands, what they printed and the scripts are two comments on #253.*
+
+*Read from the two sources, the first script as last patched and `dump-walk.ps1` at the tools
+commit `ad3bcce`, ten rules differ; the table of them is in #253's first comment. Measured
+on the dump of Space Age alone, with the first script's walk given each of `dump-walk.ps1`'s
+rules in turn: seven of the ten move no figure, alone or with the other nine, and these
+three together give the record's row.*
+
+- ***What is counted.** The first script counted what a surface supplies with what it makes.
+  The record leaves the supply out.*
+- ***Steam.** The first script gave steam where water is supplied. `dump-walk.ps1` gives it
+  wherever there is water, also water a recipe makes.*
+- ***The machine.** In the first script a recipe counts on a surface only where a machine of
+  its category may stand, by that machine's surface conditions. `dump-walk.ps1` asks for no
+  machine there.*
+
+| Surface | First table | What is counted | Steam | The machine | The record |
+|---|---|---|---|---|---|
+| Nauvis | 211 | -9 | 0 | 0 | 202 |
+| Vulcanus | 202 | -10 | 0 | +6 | 198 |
+| Gleba | 206 | -11 | 0 | +4 | 199 |
+| Fulgora | 188 | -9 | +1 | +20 | 200 |
+| Aquilo | 20 | -7 | +1 | +7 | 21 |
+| A space platform | 169 | -4 | +1 | +6 | 172 |
+
+*Each middle column is that rule changed alone, and the three add up on every surface.*
+
+***Fulgora's 188 is the machine rule.** #242 varied no rule of that kind, and none of its
+256 gave 188. Off Nauvis the rule refuses the category `captive-spawner-process`, whose one
+machine is `captive-biter-spawner`, and the one recipe of that category gives `biter-egg`.
+Twenty names are lost to the rule on Fulgora, `coal`, `carbon`, `explosives` and
+`military-science-pack` among them. Inferred from the list of twenty, and not traced recipe
+by recipe: they follow from `biter-egg` through `nutrients` and `spoilage`.*
+
+*Not shown by this:*
+
+- *Whether the first script, given the three rules, holds the same names as `dump-walk.ps1`
+  counts. The six counts are equal, and `dump-walk.ps1` prints the count and not the list.*
+- *The seven rules on `Grado_ABCS`. They were measured on Space Age alone, and the pack has a
+  pump with a fluid of its own, which that dump has not.*
+- *A rule beyond the ten. They are those found by reading, and a difference that moves no
+  figure on this dump would not show in equal counts.*
+
+*Seen, and Truls's to rule: read from source, `dump-walk.ps1`'s walk of own materials reads
+no machine's surface conditions, and measured on the dump of Space Age alone the recipe
+`biter-egg` takes no ingredient and has no surface condition of its own. So the record very
+likely counts `biter-egg`, and what follows from it, as made on every surface, a platform
+among them. Not measured on `dump-walk.ps1` itself, which does not print the list.*
 
 ### Not covered
 

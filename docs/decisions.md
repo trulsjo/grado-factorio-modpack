@@ -160,3 +160,6 @@ each when it was decided.
   script's rules, or what is left over is stated for each surface. #253 changes no figure of
   the record and not `dump-walk.ps1`. The recovered scripts stay as ticket comments, in neither
   repository, with no ADR and no `GLOSSARY.md` entry.
+  *2026-10-13 (#253):* the scripts ran and printed the six figures, so #132's table is
+  reproduced, and the difference is explained by three rules. The record is as it was. What
+  was measured is in the catalogue, under the note of #253 in that section.

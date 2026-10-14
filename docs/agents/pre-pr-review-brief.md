@@ -133,14 +133,17 @@ If you find nothing, say so under Findings and still fill the second section.
 ## The confirmation turn
 
 Sent to the same subagent, after the fixes are committed. A later fix commit is sent the same way,
-and so is a fix made after the plugin pass.
+and so is a fix made after the plugin pass. The first confirmation also hands the draft of the
+pull request's body, `<scratch>/draft.md`, written before it (#273); a review that found nothing
+still gets this turn, for the draft.
 
 ```
 The fixes are in commit <sha>: `git show <sha>`. <A commit whose message was reworded, by its
 old and new hash: `git log -1 --format=%B <new>`, and `git diff <old> <new>` is empty; or
 nothing.> <Edits outside the diff, such as a ticket's body, and how to read each; or nothing.>
 The checks' results after this commit: <scratch>/commit-check.txt, <scratch>/markdown-check.txt
-and <scratch>/glossary-check.txt.
+and <scratch>/glossary-check.txt. <The draft of the pull request's body above the review:
+<scratch>/draft.md, read like the commit messages; or nothing.>
 
 Not fixed, and why: <each finding by its number; or none>. <For a fix of a plugin-pass finding,
 which is not one of yours: the finding as the pull request states it; or nothing.>
@@ -168,5 +171,6 @@ heading. A finding left unfixed has its reason beside its confirmation line.
 pwsh -NoProfile -File scripts/pr-body.ps1 -Draft <scratch>/draft.md -Review <scratch>/review.md -Out <scratch>/body.md
 ```
 
-`<scratch>/draft.md` is the body above the review. The script fails, and writes nothing, when a
+`<scratch>/draft.md` is the body above the review, as the confirmation read it, with any finding
+in it fixed. The script fails, and writes nothing, when a
 finding's number opens no line of the confirmation.

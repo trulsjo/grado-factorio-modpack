@@ -51,7 +51,8 @@ pwsh -NoProfile -File scripts/absolute-words.ps1 -Range origin/main...HEAD > <sc
 The commit check's range has two dots and the others have three. Why is in the header of
 `.github/workflows/check.yml`.
 
-If an `info.json` changed, resolve all five packs in one run (#259), whichever pack changed:
+If an `info.json` changed, resolve all five packs in one run (#259), in PowerShell, whichever
+pack changed:
 
 ```
 pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/resolve-modpack.ps1 `
@@ -62,10 +63,11 @@ Get-Date -Format o >> <scratch>/resolve.txt
 
 `<line>` is the packs' `factorio_version`, and `<build>` the installed game's version, from its
 `data/base/info.json`, which is what `scripts/stage-pack.ps1` passes when it is given no build.
-The resolver reads the portal, so its output is a measurement and the time of the run is kept
-with it. A pack named by another is read from the files given, by the resolver's header, so the
-run covers every pack above the one that changed. A run that fails is handed over as it stands:
-the reviewer reports it, and a repair that needs a decision of Truls's waits on him.
+`<build>` must be on `<line>`: `stage-pack.ps1` refuses a build off the line, and the resolver
+does not, read from both scripts' source. The resolver reads the portal, so its output is a
+measurement and the time of the run is kept with it. A pack named by another is read from the
+files given, by the resolver's header, so the run covers every pack above the one that
+changed. A run that fails is handed over as it stands, and the review goes on.
 
 Walk `<scratch>/absolute-words.txt` before the reviewer is spawned (#219): it lists the added
 lines of Markdown, of comment and of commit message that hold a word such as "only", "every" or
@@ -101,7 +103,8 @@ You are handed:
 - <the raw output, the saved commands and the scripts behind the figures, one path each with
   the figure it is behind; or nothing>
 - <scratch>/commit-check.txt and <scratch>/markdown-check.txt. <If an `info.json` changed:
-  <scratch>/resolve.txt, the resolve of all five packs, with the time it was run; or nothing.>
+  <scratch>/resolve.txt, the resolve of all five packs, with the time it was run; a failure in it
+  is a finding; or nothing.>
 - <scratch>/glossary-check.txt: each added line that uses a word `GLOSSARY.md` avoids and is
   not marked deliberate. The script fails on one, so a use listed there is a finding. Say of
   each `<!-- deliberate: word -->` the diff adds whether the use is meant.

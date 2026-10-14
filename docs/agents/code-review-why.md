@@ -250,6 +250,25 @@ measurements ever reached its review with a failing check.
 rest on it: the reviewer that raised a finding reads the fix against it, and the fixes are one
 commit of their own. No case of a reviewer making a fix was looked for.
 
+## Why no check finds a dated note out of place
+
+Decided by Truls, 2026-10-14, settling #181; the ruling is #181's comment of that day. The rule
+that a dated note goes last in its paragraph is the reviewer's to find, as it was on PR #121,
+PR #129, PR #138 and PR #177, and `markdown-check.ps1` gets no check for it.
+
+**At this rate a check flags mostly what is not the thing.** Counted 2026-10-14 on `main` at
+`7a0bec5` with the script in #181's first comment: 199 dated notes, and 82 with other text after
+them in their paragraph. #181's hand sort of the 74 flags at `4cc5805` (2026-10-07) found about
+14 to 17 that were the thing, so about one flag in ten; the 82 were not sorted again.
+
+**A check would have needed one form of note.** *Dated note* in `GLOSSARY.md` has two, and with
+an italic label followed by roman text nothing in the markup shows where the note ends, so a
+check could not tell the note's own text from older text after it. Retiring that form was the
+cost of a check, and it was not taken.
+
+**The notes already out of place stay.** No check fails on them, and a reviewer who meets one
+has the paragraph in front of them in the diff.
+
 ## What the rules said before
 
 `code-review.md` is loaded whole by every review, so since 2026-10-06 it states the live rule only

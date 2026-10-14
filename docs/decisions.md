@@ -187,3 +187,13 @@ each when it was decided.
   the brief's head, beside it. #178 offered five options for the whole and three for the checks.
   Taken: "Split them", with the test drawing its line, and "Run both on every branch, and say so
   in the rules". `GLOSSARY.md` has *Rule of review*. No ADR: it is cheap to reverse.
+- **No check finds a dated note out of place; the reviewer does** (2026-10-14, #181). A dated
+  note goes last in its paragraph, and `markdown-check.ps1` gets no check for it. #181 offered
+  three options: a broad check, a narrow one for notes opening "*Until*" or "*Added*", and the
+  reviewer. Taken: the reviewer. On `7a0bec5` the ticket's script flags 82 of 199 notes, and
+  about one flag in ten was the thing by #181's hand sort of an earlier count. A dated note has
+  two forms, one italic run or an italic label with roman text after it, and runs to the end of
+  its paragraph; a check would have needed the second form retired. Notes already out of place
+  stay until a branch changes their paragraph. The rule is in `docs/agents/code-review.md`, why
+  and the count in `docs/agents/code-review-why.md`, and `GLOSSARY.md` has *Dated note*. No ADR:
+  a check can still be built.

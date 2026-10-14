@@ -107,6 +107,8 @@ why the grep above reads it.
 **A dated note goes after the older text it speaks to.** Last in its paragraph, and after the
 older dated paragraphs of its entry. A note set before older text, or in the middle of a
 paragraph, reads as if that text were written knowing it. Found in PR #121, PR #129 and PR #138.
+Notes placed before 2026-10-14 were not moved: one out of place is fixed when a branch changes its
+paragraph, and is a finding if it is not (#181).
 
 **A conclusion read from source says so wherever it is repeated.** A section may open with "read
 from the source and not run". Every later sentence that restates the conclusion, in that section

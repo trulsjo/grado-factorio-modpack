@@ -121,6 +121,14 @@ which page the review is run by, and it is not what a branch is judged by. Added
 (#178).
 _Avoid_: rule for a step of procedure, mechanics, requirement without saying which of the two
 
+**Dated note**:
+Text added to a record after it was written, opening in italics with a word and the day it was
+added, as in *Checked 2026-09-24 (#25)*. It runs from that opening to the end of its paragraph,
+in either of two forms: one italic run, which may leave italics for a section title or a file
+path and go on, or an italic label with the note's text after it in roman. Added 2026-10-14
+(#181).
+_Avoid_: note on its own where an undated aside could be meant; the italics as the note's extent
+
 **Title**:
 The `title` field in `info.json`, e.g. `Grado ABCS: Angel's, Bob's, MadClown, Space Age`. Display
 only - shown in the in-game mod list and on the pack's portal entry, and freely changed in any

@@ -67,10 +67,9 @@ Get-Date -Format o >> <scratch>/resolve.txt
 refuses it before it calls the resolver, read from its source at `32c732c`. The resolver refuses
 it before it reads a pack or the portal and writes no pin file, read from its source at the tools
 repository's `8a4f66f` and run through `vendor/` on 2026-10-14 (#277). The resolver reads the
-portal, so its output is a
-measurement and the time of the run is kept with it. A pack named by another is read from the
-files given, by the resolver's header, so the run covers every pack above the one that
-changed. A run that fails is handed over as it stands, and the review goes on.
+portal, so its output is a measurement and the time of the run is kept with it. A pack named by
+another is read from the files given, by the resolver's header, so the run covers every pack above
+the one that changed. A run that fails is handed over as it stands, and the review goes on.
 
 Walk `<scratch>/absolute-words.txt` before the reviewer is spawned (#219): it lists the added
 lines of Markdown, of comment and of commit message that hold a word such as "only", "every" or

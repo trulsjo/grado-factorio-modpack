@@ -160,9 +160,9 @@ handed and not by a skill's name:
   that uses a word `GLOSSARY.md` avoids and is not marked deliberate. The script fails if it
   lists one. A listed use is reworded or marked before the review. Whether a marker is honest is
   the reviewer's: a marker silences the script.
-- at the confirmation, the draft of the pull request's body above the review, which is read
-  like the commit messages: a finding in it is fixed in the draft before the pull request opens
-  (#273).
+- at the confirmation, which a review that found nothing gets as well, the draft of the pull
+  request's body above the review, which is read like the commit messages: a finding in it is
+  fixed in the draft before the pull request opens (#273).
 
 **The review is read-only.** The reviewer changes nothing in the repository and posts nothing
 to GitHub: a fix is the session's.

@@ -7,11 +7,11 @@ back. A session fills the blanks, written `<like this>`, and sends the rest as i
 `<scratch>` is filled wherever it stands. The blanks under the report's headings are the
 reviewer's and are sent unfilled.
 
-**The report goes to a file, and the reply is five lines.** A report sent as a reply was cut off
+**The report goes to a file, and the turn ends on five lines.** A report sent as a reply was cut off
 twice: in its sixth finding of ten on PR #163 (2026-10-06, by #167's account), and at the head of
 its fourth of seven on the #172 branch (2026-10-07, by that session's account; the reply was not
 kept). Asked for again as a file, the second arrived whole, by the same account. **The file is
-written with the file tool, and the reply follows it.** On PR #186 (2026-10-08) a reviewer
+written with the file tool, and the five lines follow it.** On PR #186 (2026-10-08) a reviewer
 replied with its count before its section existed, by #192's account: it had appended the
 section through the shell, the download hook refused the command, and the count was one short,
 all three by that pull request's fifth comment.
@@ -89,8 +89,9 @@ under review, such as a decision of Truls's that the branch records, or nothing.
 
 This review is read-only. Do not edit, stage, commit or push anything, and post nothing to
 GitHub. Do not download or install any program or package: say in the report if you think you
-need one. Run every command from the repository root and name files by path. A session's tooling writes state files where its shell stands, and a command that changes
-directory into `.mod-cache/` is refused by a hook.
+need one. Run every command from the repository root and name files by path. A session's
+tooling writes state files where its shell stands, and a command that changes directory into
+`.mod-cache/` is refused by a hook.
 
 You are handed:
 - the diff against `main`: <scratch>/branch.diff. The commit messages are part of the review:
@@ -132,10 +133,9 @@ If you find nothing, say so under Findings and still fill the second section.
 
 ## The confirmation turn
 
-Sent to the same subagent, after the fixes are committed. A later fix commit is sent the same way,
-and so is a fix made after the plugin pass. The first confirmation also hands the draft of the
-pull request's body, `<scratch>/draft.md`, written before it (#273); a review that found nothing
-still gets this turn, for the draft.
+Sent to the same subagent, after the fixes are committed. A later fix commit, or a fix to the
+draft, is sent the same way, and so is a fix made after the plugin pass. The first confirmation
+also hands the draft of the pull request's body, `<scratch>/draft.md`, written before it (#273).
 
 ```
 The fixes are in commit <sha>: `git show <sha>`. <A commit whose message was reworded, by its
@@ -171,6 +171,5 @@ heading. A finding left unfixed has its reason beside its confirmation line.
 pwsh -NoProfile -File scripts/pr-body.ps1 -Draft <scratch>/draft.md -Review <scratch>/review.md -Out <scratch>/body.md
 ```
 
-`<scratch>/draft.md` is the body above the review, as the confirmation read it, with any finding
-in it fixed. The script fails, and writes nothing, when a
-finding's number opens no line of the confirmation.
+`<scratch>/draft.md` is the body above the review, as the last confirmation read it. The script
+fails, and writes nothing, when a finding's number opens no line of the confirmation.

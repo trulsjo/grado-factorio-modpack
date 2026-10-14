@@ -1323,32 +1323,36 @@ it supplies itself, with nothing brought in? Every machine is taken as being the
 technology as researched, so it is a question about materials only. Here the recycler's recipes
 do count, hidden as they are, because Fulgora is built on them.
 
-*"Every machine is taken as being there" is of 2026-10-05 and #132, and of `dump-walk.ps1` up
-to the tools commit `ad3bcce`. Since the pin moved to `8a4f66f` (2026-10-14, #257) the walk
-asks this of a machine, in the words of the script's header (*FROM ITS OWN MATERIALS*): a
-recipe counts when "its surface conditions hold on that surface, and so do those of some
-machine of its category or of one of its additional categories, where any machine crafts them
-(ruled on #132). A machine is any prototype with crafting categories." That #132 is the tools
-repository's. What it still does not ask, from the same header (*WHERE THAT IS LOOSER THAN THE
-GAME*): "Whether a machine can be built from the surface's materials is not asked, only whether
-it may stand there. So a machine that is hidden, or that no item places, speaks for its category
-like any other." A recipe whose category no prototype crafts counts, and so does a recipe
-crafted by hand on a platform, since a character has no surface conditions. The header claims
-an upper bound "as far as machines go", and not of the whole count: what a surface supplies is
-not held to it.*
-
 Space Age alone, by this measure, makes each planet's pack on its own planet, and
 `space-science-pack` on a platform. `promethium-science-pack` needs parts from the planets in
 both.
 
 *This table is not reproduced (2026-10-13, #248): neither `dump-walk.ps1` nor any rule #242
-tried gives its first column. The record is the table of 2026-10-13, at the end of this
-section. Under this one, a sentence in italics dated 2026-10-13 gives the record's figure
+tried gives its first column. The record is the table of 2026-10-13, in the note of #251
+below. Under this one, a sentence in italics dated 2026-10-13 gives the record's figure
 beside the one cited.*
 
 *"Is not reproduced" is of #248. Later the same day (#253) the scripts that made the table
-printed it again, every figure: see the note of #253 at the end of this section. The record
+printed it again, every figure: see the note of #253 below. The record
 is as it was.*
+
+*Dated 2026-10-14 (#257): "Every machine is taken as being there", in the paragraph above, was
+written 2026-10-05 for #132. It held of `dump-walk.ps1` up to the tools commit `ad3bcce`, and
+not of the first script, which asked for the machine, by the note of #253. Since 2026-10-14,
+with the pin at `8a4f66f` (#277), the walk asks this of a machine, in the words of the script's
+header (*FROM ITS OWN MATERIALS*): a recipe counts when "its surface conditions hold on that
+surface, and so do those of some machine of its category or of one of its additional
+categories, where any machine crafts them (ruled on #132). A machine is any prototype with
+crafting categories." That #132 is the tools repository's. What it still does not ask, from the
+same header (*WHERE THAT IS LOOSER THAN THE GAME*): "Whether a machine can be built from the
+surface's materials is not asked, only whether it may stand there. So a machine that is hidden,
+or that no item places, speaks for its category like any other." A recipe whose category no
+prototype crafts counts, and so does a recipe crafted by hand on a platform, since a character
+has no surface conditions. The header claims an upper bound "as far as machines go", and not of
+the whole count: what a surface supplies is not held to it.*
+*The record is now the table of 2026-10-14, in the note of #257 at the end of this section, by
+Truls's ruling that day (`docs/decisions.md`). "The record" in a note dated 2026-10-13 is the
+table of that day, in the note of #251.*
 
 | Surface | Made from its own materials, Space Age alone | Of those, not in `Grado_ABCS` | With `wood` brought in |
 |---|---|---|---|
@@ -1389,7 +1393,7 @@ not its answer.
 
 *Made again 2026-10-12 (#139) by `dump-walk.ps1` with `-BroughtIn wood`, on the same two dumps.
 **The counts are not the table's, and the findings are the same.***
-*Counted another way since 2026-10-13 (#251): the table at the end of this section.*
+*Counted another way since 2026-10-13 (#251): the table in the note of #251 below.*
 
 | Surface | Made from its own materials, Space Age alone | Of those, not in `Grado_ABCS` | With `wood` brought in |
 |---|---|---|---|
@@ -1415,7 +1419,7 @@ tables show:*
   well, 15 are left where the paragraph above has 11, and those three are no longer among them.*
 
 *"The first script is gone" is of 2026-10-12 and #139. The files are gone and their text is
-not (2026-10-13, #248): see the note of #248 at the end of this section.*
+not (2026-10-13, #248): see the note of #248 below.*
 
 *Looked for 2026-10-12 (#242), and not found: **no rule tried gives the first table's six
 figures**, 211, 202, 206, 188, 20 and 169. Measured on Factorio 2.0.77, on the dump of Space Age
@@ -1626,18 +1630,19 @@ six surfaces, a platform among them, and `rocket-part` on a platform. So the rec
 them, and what follows from them, on surfaces where the machine's own surface conditions do
 not hold.*
 
-*Ruled 2026-10-13 by Truls, on grado-factorio-tools#132: the walk of own materials reads a
-machine's surface conditions. grado-factorio-tools#134 applied it, merged as `15c0c9f` and
-`a844a7d`. **Counted again 2026-10-14 (#257)**, with `dump-walk.ps1` at the tools commit
-`8a4f66f`, where the pin moved from `ad3bcce` (#277 moved it there, for the resolver, and it
-holds both). Measured on Factorio 2.0.77, pwsh 7.6.6, on the same two dumps, `2316474952`
+***Counted again 2026-10-14 (#257)**, with `dump-walk.ps1` at the tools commit `8a4f66f`,
+where the pin moved from `ad3bcce` (#277 moved it there, for the resolver, and it holds both).
+Truls ruled 2026-10-13, on grado-factorio-tools#132, that the walk of own materials reads a
+machine's surface conditions, and grado-factorio-tools#134 applied it, merged as `15c0c9f` and
+`a844a7d`. Measured on Factorio 2.0.77, pwsh 7.6.6, on the same two dumps, `2316474952`
 (`Grado_ABCS`) and `3295867752` (Space Age alone), from the repository root:*
 
 ```
 pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/dump-walk.ps1 <Grado_ABCS dump> -Against <Space Age dump> -BroughtIn wood
 ```
 
-*Beside each figure is the record's, of 2026-10-13 at `ad3bcce`:*
+*This table is the record since 2026-10-14 (`docs/decisions.md`). Beside each figure is the
+table of 2026-10-13's, at `ad3bcce`, which was the record until then:*
 
 | Surface | Made from its own materials, Space Age alone | 2026-10-13 | Of those, not in `Grado_ABCS` | 2026-10-13 | With `wood` brought in | 2026-10-13 |
 |---|---|---|---|---|---|---|
@@ -1659,25 +1664,27 @@ by the same script given the `Grado_ABCS` dump alone, is 2,100, 1,180, 1,892, 1,
 and 1,195 at `ad3bcce` (#257's body).*
 
 *With `-BroughtIn wood,angels-liquid-multi-phase-oil`, the same day and pin, Fulgora is 11 and
-the other five surfaces do not move. The record had 14 there.*
+the other five surfaces do not move. The table of 2026-10-13 has 14 there.*
 
 *The note of #253, read against the new script.* *Of its three rules, **both walks now ask
 for the machine**: `dump-walk.ps1`, like the first script, reads the surface conditions of the
-machines of a recipe's category. **What is counted and steam still differ.** The first table
-plus the note's columns "What is counted" and "Steam" is 202, 192, 195, 180, 14 and 166 on the
-six surfaces, the figures above. The second column is now the first table's, 7, 98, 7, 101, 4
-and 87, which the note of #253 measured as the one the machine rule alone moves, and the third
-has the first table's 12, 19 and 12 on the three surfaces where that table gives one. Not
-shown: whether the two machine rules are the same rule beyond these dumps. By its header,
-`dump-walk.ps1` also takes a recipe's additional categories, and counts a recipe whose category
-no prototype crafts; that is read from source and was not compared with the first script's.*
+machines of a recipe's category, read from both sources. **What is counted and steam still
+differ.** The first table plus the note's columns "What is counted" and "Steam" is 202, 192,
+195, 180, 14 and 166 on the six surfaces, the figures above. The second column is now the first
+table's, 7, 98, 7, 101, 4 and 87, which the note of #253 measured as the one the machine rule
+alone moves, and the third has the first table's 12, 19 and 12 on the three surfaces where that
+table gives one. Not shown: whether the two machine rules are the same rule beyond these dumps.
+By its header, `dump-walk.ps1` also takes a recipe's additional categories, and counts a recipe
+whose category no prototype crafts; that is read from source and was not compared with the first
+script's.*
 
 *`biter-egg` off Nauvis: its one machine, `captive-biter-spawner`, may stand only where the
 pressure is 1000, and the walk no longer counts `biter-egg` on any surface but Nauvis. Measured
 the same day by the script's `-SelfTest`, whose last case asks it: on each of the two dumps it
 printed "biter-egg is counted from its own materials on [nauvis] -- ok". On the dump of
 `Grado_ABCS` the self-test as a whole fails, as it is written for Space Age alone, and that line
-does not depend on the rest. This does not answer #147.*
+does not depend on the rest, both read from the self-test's source at `8a4f66f`. This does not
+answer #147.*
 
 *The findings under the first table, read against the new lists:*
 
@@ -1691,7 +1698,7 @@ does not depend on the rest. This does not answer #147.*
   `electromagnetic-science-pack`, `supercapacitor` and `superconductor`, and 11 are left with
   crude oil brought in as well, none of the three among them.*
 - *The fourth holds: `carbon` is among Nauvis's 7 and Gleba's 7 and `ammonia` among Aquilo's 4.
-  Aquilo's list no longer has `carbon`, which the record's did.*
+  Aquilo's list does not have `carbon`, which the table of 2026-10-13's has.*
 
 ### Not covered
 

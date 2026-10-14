@@ -165,6 +165,7 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   *2026-10-13 (#253):* the scripts ran and printed the six figures, so #132's table is
   reproduced, and the difference is explained by three rules. The record is as it was. What
   was measured is in the catalogue, under the note of #253 in that section.
+  *2026-10-14 (#257):* the record is now the table of 2026-10-14, by the entry of #257 below.
 - **The pre-PR reviewer's brief is procedure, and a rule of review has a test** (2026-10-13,
   #178). A rule of review is what a reviewer judges a branch by, or what defines the review:
   what the reviewer is handed, who reads a fix against its finding, where the findings go.
@@ -206,3 +207,10 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   that commit added, one of them a repair that was false in the way its finding had been, and the
   repairs of the three were pushed unread. The rule is in `docs/agents/code-review.md`. No ADR:
   it is a rule of review and cheap to change.
+- **The table of own materials of 2026-10-14 is the record** (2026-10-14, #257). Truls ruled on
+  grado-factorio-tools#132 (2026-10-13) that the walk of own materials reads a machine's surface
+  conditions, and with the pin at the tools commit `8a4f66f` `dump-walk.ps1` does. The table it
+  printed on 2026-10-14, in the note of #257 in `docs/catalogue/Grado_ABCS.md`, *From its own
+  materials*, replaces the table of 2026-10-13 at `ad3bcce` as the record, which #248 made it.
+  That table stays as history with its date, as the two before it do. The pre-PR review of #257
+  asked whether the record moved, and Truls answered it when asked by the session. No ADR.

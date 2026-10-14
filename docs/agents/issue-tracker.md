@@ -34,7 +34,12 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
   id <!-- deliberate: id -->
   does not show it. On 2026-10-12 #160's "a new session" was met with a `/clear` in a
   process started four minutes before the commit: both sessions opened with the plugin's text,
-  and neither could show whether the setting worked (#245).
+  and neither could show whether the setting worked (#245). A run made to stand in for a refused
+  case is read against that case's transcript before its result is used: who issued the command,
+  a typed prompt or the session itself; its shape, alone or inside a compound command; and what
+  asked for it. A difference is stated beside the result (#272). On 2026-10-13 #233's control
+  ran the `blocked_by` write as a typed prompt, while the refusal it stood in for was a session's
+  own compound command, and a run was skipped on its result before a review found the difference.
 - **Read an issue**: `gh issue view <number> --json title,body,labels,comments`, filtered with
   `--jq`. One call gets the body, the labels and every comment; `--comments` alone, piped, printed
   the comments and not the body (2026-10-06).

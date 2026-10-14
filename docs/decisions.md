@@ -197,3 +197,16 @@ each when it was decided.
   stay until a branch changes their paragraph. The rule is in `docs/agents/code-review.md`, why
   and the count in `docs/agents/code-review-why.md`, and `GLOSSARY.md` has *Dated note*. No ADR:
   a check can still be built.
+- **A fix made after the plugin pass is read by the branch's pre-PR reviewer** (2026-10-08,
+  #191). The plugin pass's reviewers do not outlive the pass, so on PR #186 four of its findings
+  were fixed in a commit no reviewer had read. The pre-PR reviewer is continued to read such a fix
+  against its finding, and if it cannot be, a fresh one is handed its report and the commits.
+  The fallback was proposed by the commit that added the rule and left to Truls; he merged
+  PR #193 with it. #166
+  asked the same question and was settled by this rule on 2026-10-14, when Truls also ruled that
+  the confirmation has no bound: what it finds is repaired and read again until a read finds
+  nothing new. Not taken: one read, with what it finds repaired and listed on the pull request
+  as unread, as on PR #163. There the one read of the fix commit found three errors in sentences
+  that commit added, one of them a repair that was false in the way its finding had been, and the
+  repairs of the three were pushed unread. The rule is in `docs/agents/code-review.md`. No ADR:
+  it is a rule of review and cheap to change.

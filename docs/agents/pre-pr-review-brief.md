@@ -89,8 +89,7 @@ under review, such as a decision of Truls's that the branch records, or nothing.
 
 This review is read-only. Do not edit, stage, commit or push anything, and post nothing to
 GitHub. Do not download or install any program or package: say in the report if you think you
-need one. Do not change directory: run every command from the repository root and name files by
-path. A session's tooling writes state files where its shell stands, and a command that changes
+need one. Run every command from the repository root and name files by path. A session's tooling writes state files where its shell stands, and a command that changes
 directory into `.mod-cache/` is refused by a hook.
 
 You are handed:

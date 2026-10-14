@@ -51,6 +51,22 @@ pwsh -NoProfile -File scripts/absolute-words.ps1 -Range origin/main...HEAD > <sc
 The commit check's range has two dots and the others have three. Why is in the header of
 `.github/workflows/check.yml`.
 
+If an `info.json` changed, resolve all five packs in one run (#259), whichever pack changed:
+
+```
+pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/resolve-modpack.ps1 `
+    -Line <line> -Build <build> Grado_NonChanging/info.json Grado_ChangingBase/info.json `
+    Grado_ABC/info.json Grado_ABCX/info.json Grado_ABCS/info.json *> <scratch>/resolve.txt
+Get-Date -Format o >> <scratch>/resolve.txt
+```
+
+`<line>` is the packs' `factorio_version`, and `<build>` the installed game's version, from its
+`data/base/info.json`, which is what `scripts/stage-pack.ps1` passes when it is given no build.
+The resolver reads the portal, so its output is a measurement and the time of the run is kept
+with it. A pack named by another is read from the files given, by the resolver's header, so the
+run covers every pack above the one that changed. A run that fails is handed over as it stands:
+the reviewer reports it, and a repair that needs a decision of Truls's waits on him.
+
 Walk `<scratch>/absolute-words.txt` before the reviewer is spawned (#219): it lists the added
 lines of Markdown, of comment and of commit message that hold a word such as "only", "every" or
 "cannot". Of each line, ask whether the sentence holds for what its word covers, and reword the
@@ -84,8 +100,8 @@ You are handed:
 - `GLOSSARY.md`, which holds the three grades of evidence and the other terms.
 - <the raw output, the saved commands and the scripts behind the figures, one path each with
   the figure it is behind; or nothing>
-- <scratch>/commit-check.txt and <scratch>/markdown-check.txt. <The resolve's output, if an
-  `info.json` changed; or nothing.>
+- <scratch>/commit-check.txt and <scratch>/markdown-check.txt. <If an `info.json` changed:
+  <scratch>/resolve.txt, the resolve of all five packs, with the time it was run; or nothing.>
 - <scratch>/glossary-check.txt: each added line that uses a word `GLOSSARY.md` avoids and is
   not marked deliberate. The script fails on one, so a use listed there is a finding. Say of
   each `<!-- deliberate: word -->` the diff adds whether the use is meant.

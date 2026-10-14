@@ -111,9 +111,10 @@ You are handed:
 - <raw output that is missing, and the figure it was behind; or nothing>
 - the tickets: `gh issue view <N> --json title,body,comments` for each.
 
-Write the report to <scratch>/review.md with the file tool, and reply only after it is written,
-in at most five lines: how many findings, which one matters most, and the path. The report has
-two sections and no scores.
+Write the report to <scratch>/review.md with the file tool. Once it is written, end your turn
+with at most five lines as its last text: how many findings, which one matters most, and the
+path. Send no message: the five lines reach the session as they are. The report has two
+sections and no scores.
 
 ## Findings
 
@@ -151,8 +152,8 @@ which is not one of yours: the finding as the pull request states it; or nothing
 Read each fix against your own finding. The fix commit's message is read like the rest. Still
 read-only, and still from the repository root.
 
-Add a section to <scratch>/review.md with the file tool, and reply only after it is written, in
-at most five lines with the path.
+Add a section to <scratch>/review.md with the file tool. Once it is written, end your turn with
+at most five lines and the path as its last text, and send no message.
 
 ## Confirmation
 

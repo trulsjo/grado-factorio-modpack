@@ -52,15 +52,19 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
   `grado-factorio-tools` it is read from
   `repos/trulsjo/grado-factorio-tools/issues/<blocker>` and the POST is the same: #225 carries
   such an edge to trulsjo/grado-factorio-tools#113 (read 2026-10-12).
-  **The POST, run with the Bash tool, is allowed by a rule in the tracked
-  `.claude/settings.json`** (#233), in this spelling, for a ticket of this repository or of
-  `grado-factorio-tools`. `-X POST` for `--method POST`, and the DELETE that removes an edge,
+  **Run the POST with the Bash tool: a rule in the tracked `.claude/settings.json` allows it
+  there and in no other tool** (#233, #267), in this spelling, for a ticket of this repository
+  or of `grado-factorio-tools`. `-X POST` for `--method POST`, and the DELETE that removes an edge,
   are not covered. Not measured: that the client honours the rule. On 2026-10-13 the write ran
   in auto mode on `main`, which had no rule, when the command was typed as the session's prompt
   (client 2.1.296, one run), so a run asked for that way would not show it. The client's
   documentation, as code.claude.com served *Auto mode configuration* that day, says: "By
   default, narrow Bash and PowerShell allow rules such as `Bash(npm test)` stay in effect in
-  auto mode."
+  auto mode." #267 left the rule unmeasured: the refusal of 2026-10-12 was one event, so a run
+  on a commit without the rule might be allowed as well, and a run with the rule would then show
+  nothing. It added no `PowerShell(...)` rule, and named the one tool instead. If the POST in
+  this spelling, run with the Bash tool, is refused, the rule is not honoured: file a ticket with
+  the transcript's lines and the client's version.
 - **A decision that makes a ticket wait** is recorded in one step with three parts: the
   `blocked_by` edge is added, the body's "Blocked by" line names the blocker, and
   `ready-for-agent` comes off. On 2026-10-12 #225 was handed to a session as `ready-for-agent`

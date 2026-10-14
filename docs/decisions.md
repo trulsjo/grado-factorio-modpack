@@ -4,8 +4,7 @@ The big decisions are Truls's (`CLAUDE.md`, *The rule that matters most here*). 
 made so far, recorded so nobody reopens one by accident. They are in the order they stood in
 `CLAUDE.md` until 2026-10-06, when the list moved here word for word because that file is loaded
 into every session. Where an entry says "under *Conventions*", it means `CLAUDE.md`'s. The
-entries after the one on the declared line (#16) were never in `CLAUDE.md`: they were added here,
-each when it was decided.
+entries after the one on the declared line (#16) were never in `CLAUDE.md`: they were added here.
 
 - **Five packs, with ABC as the shared core** (2026-09-20). Replaced an earlier three-pack plan.
 - **Space Age is a target**, which is what produced the ABCX/ABCS split.
@@ -190,13 +189,10 @@ each when it was decided.
 - **No check finds a dated note out of place; the reviewer does** (2026-10-14, #181). A dated
   note goes last in its paragraph, and `markdown-check.ps1` gets no check for it. #181 offered
   three options: a broad check, a narrow one for notes opening "*Until*" or "*Added*", and the
-  reviewer. Taken: the reviewer. On `7a0bec5` the ticket's script flags 82 of 199 notes, and
-  about one flag in ten was the thing by #181's hand sort of an earlier count. A dated note has
-  two forms, one italic run or an italic label with roman text after it, and runs to the end of
-  its paragraph; a check would have needed the second form retired. Notes already out of place
-  stay until a branch changes their paragraph. The rule is in `docs/agents/code-review.md`, why
-  and the count in `docs/agents/code-review-why.md`, and `GLOSSARY.md` has *Dated note*. No ADR:
-  a check can still be built.
+  reviewer. Taken: the reviewer. Notes already out of place stay until a branch changes their
+  paragraph. The rule is in `docs/agents/code-review.md`, why and the count in
+  `docs/agents/code-review-why.md`, and `GLOSSARY.md` has *Dated note*. No ADR: a check can still
+  be built.
 - **A fix made after the plugin pass is read by the branch's pre-PR reviewer** (2026-10-08,
   #191). The plugin pass's reviewers do not outlive the pass, so on PR #186 four of its findings
   were fixed in a commit no reviewer had read. The pre-PR reviewer is continued to read such a fix

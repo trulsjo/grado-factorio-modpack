@@ -16,9 +16,10 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
   a line-length ticket for this repository's own Markdown check was close to being filed beside
   trulsjo/grado-factorio-tools#93, which had ruled the same day that the limit lives in the
   shared check (by the account of the session that filed #209).
-- **What a ticket states**: a statement about the repository or about a past pull request is read
-  from the source when the ticket is written. One that was not read is marked as an account, as
-  `docs/agents/pre-pr-review-brief.md` does with "by #167's account" (#195).
+- **What a ticket or a ruling comment states**: a statement about the repository or about a past
+  pull request is read from the source when the ticket or the comment is written. One that was
+  not read is marked as an account, as `docs/agents/pre-pr-review-brief.md` does with "by #167's
+  account" (#195, #273).
 - **A quantifier in a ticket carries its search**: a claim about all, none or the only one of a
   set ("every", "no", "the one", "nowhere else") is followed by the search that showed it, as a
   command or as the files walked. The session that implements the ticket runs the search before

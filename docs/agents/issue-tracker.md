@@ -63,7 +63,7 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
   `Bash(npm test)` stay in effect in auto mode." #267 left the rule unmeasured: the refusal of
   2026-10-12 was one event, so a run on a commit without the rule might be allowed as well, and
   a run with the rule would then show nothing. #269: one tool keeps one unmeasured rule set, and
-  a `PowerShell(...)` pair would need an edit to the settings file, which the auto-mode check
+  a `PowerShell(...)` rule would need an edit to the settings file, which the auto-mode check
   refused on 2026-10-13 until Truls allowed it in the session. If the POST in this spelling,
   run with the Bash tool as a command of its own, is refused, the rule is not honoured: file a
   ticket with the transcript's lines and the client's version.

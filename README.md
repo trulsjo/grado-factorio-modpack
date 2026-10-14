@@ -167,8 +167,13 @@ and `git submodule update --init` fetches the script. The command runs (#184, #2
 of `1b30cbe` without the submodule and with this wiring: `echo mod-cache-probe` with the Bash
 tool and `Write-Output mod-cache-probe` with the PowerShell tool each ran, and the agent's reply
 quoted the message as "hook additional context". In both runs the session's events also held it
-as a notice, "PreToolUse:Bash says:" and "PreToolUse:PowerShell says:". Not measured: what an
-interactive session shows the person at the keyboard. With the submodule present the self-test
+as a notice, "PreToolUse:Bash says:" and "PreToolUse:PowerShell says:". Measured 2026-10-14
+with Claude Code 2.1.299, the CLI run interactively with the project's settings alone, in a
+fresh clone of `7a0bec5` without the submodule: the same two probes each showed the message in
+the default view, under the tool call, as "PreToolUse:Bash says:" and "PreToolUse:PowerShell
+says:". The Ctrl+O transcript view added nothing about it. An agent read the terminal through
+herdr and Truls watched it, and he said the read matched what he saw; the text is on #231. The
+desktop app and the IDE extensions were not measured. With the submodule present the self-test
 above passed on the same day, and its last case runs the wired command. Before this the wiring
 printed a line to the same effect to stderr and exited 1, and in the one run measured on
 2026-10-11, with the Bash tool, what the tool call returned to the agent held nothing of it

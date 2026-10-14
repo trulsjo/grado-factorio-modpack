@@ -259,7 +259,7 @@ PR #129, PR #138 and PR #177, and `markdown-check.ps1` gets no check for it.
 **At this rate a check flags mostly what is not the thing.** Counted 2026-10-14 on `main` at
 `7a0bec5` with the script in #181's first comment: 199 dated notes, and 82 with other text after
 them in their paragraph. #181's hand sort of the 74 flags at `4cc5805` (2026-10-07) found about
-14 to 17 that were the thing, so about one flag in ten; the 82 were not sorted again.
+14 to 17 that were the thing; the 82 were not sorted again.
 
 **A check would have needed one form of note.** *Dated note* in `GLOSSARY.md` has two, and with
 an italic label followed by roman text nothing in the markup shows where the note ends, so a

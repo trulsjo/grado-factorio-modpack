@@ -1336,24 +1336,6 @@ beside the one cited.*
 printed it again, every figure: see the note of #253 below. The record
 is as it was.*
 
-*Dated 2026-10-14 (#257): "Every machine is taken as being there", in the paragraph above, was
-written 2026-10-05 for #132. It held of `dump-walk.ps1` up to the tools commit `ad3bcce`, and
-not of the first script, which asked for the machine, by the note of #253. Since 2026-10-14,
-with the pin at `8a4f66f` (#277), the walk asks this of a machine, in the words of the script's
-header (*FROM ITS OWN MATERIALS*): a recipe counts when "its surface conditions hold on that
-surface, and so do those of some machine of its category or of one of its additional
-categories, where any machine crafts them (ruled on #132). A machine is any prototype with
-crafting categories." That #132 is the tools repository's. What it still does not ask, from the
-same header (*WHERE THAT IS LOOSER THAN THE GAME*): "Whether a machine can be built from the
-surface's materials is not asked, only whether it may stand there. So a machine that is hidden,
-or that no item places, speaks for its category like any other." A recipe whose category no
-prototype crafts counts, and so does a recipe crafted by hand on a platform, since a character
-has no surface conditions. The header claims an upper bound "as far as machines go", and not of
-the whole count: what a surface supplies is not held to it.*
-*The record is now the table of 2026-10-14, in the note of #257 at the end of this section, by
-Truls's ruling that day (`docs/decisions.md`). "The record" in a note dated 2026-10-13 is the
-table of that day, in the note of #251.*
-
 | Surface | Made from its own materials, Space Age alone | Of those, not in `Grado_ABCS` | With `wood` brought in |
 |---|---|---|---|
 | Nauvis | 211 items and fluids | 7 | |
@@ -1665,6 +1647,22 @@ and 1,195 at `ad3bcce` (#257's body).*
 
 *With `-BroughtIn wood,angels-liquid-multi-phase-oil`, the same day and pin, Fulgora is 11 and
 the other five surfaces do not move. The table of 2026-10-13 has 14 there.*
+
+*"Every machine is taken as being there", in the opening paragraph of this section, was
+written 2026-10-05 for #132. It held of `dump-walk.ps1` up to the tools commit `ad3bcce`, and
+not of the first script, which asked for the machine, by the note of #253. Since 2026-10-14,
+with the pin at `8a4f66f` (#277), the walk asks this of a machine, in the words of the script's
+header (*FROM ITS OWN MATERIALS*): a recipe counts when "its surface conditions hold on that
+surface, and so do those of some machine of its category or of one of its additional
+categories, where any machine crafts them (ruled on #132). A machine is any prototype with
+crafting categories." That #132 is the tools repository's. What it still does not ask, from the
+same header (*WHERE THAT IS LOOSER THAN THE GAME*): "Whether a machine can be built from the
+surface's materials is not asked, only whether it may stand there. So a machine that is hidden,
+or that no item places, speaks for its category like any other." A recipe whose category no
+prototype crafts counts, and so does a recipe crafted by hand on a platform, since a character
+has no surface conditions. The header claims an upper bound "as far as machines go", and not of
+the whole count: what a surface supplies is not held to it.*
+*"The record" in a note dated 2026-10-13 is the table of that day, in the note of #251.*
 
 *The note of #253, read against the new script.* *Of its three rules, **both walks now ask
 for the machine**: `dump-walk.ps1`, like the first script, reads the surface conditions of the

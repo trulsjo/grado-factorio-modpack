@@ -63,8 +63,11 @@ Get-Date -Format o >> <scratch>/resolve.txt
 
 `<line>` is the packs' `factorio_version`, and `<build>` the installed game's version, from its
 `data/base/info.json`, which is what `scripts/stage-pack.ps1` passes when it is given no build.
-`<build>` must be on `<line>`: `stage-pack.ps1` refuses a build off the line, and the resolver
-does not, read from both scripts' source. The resolver reads the portal, so its output is a
+`<build>` must be on `<line>`, and both scripts refuse a pair that is not. `stage-pack.ps1`
+refuses it before it calls the resolver, read from its source at `32c732c`. The resolver refuses
+it before it reads a pack or the portal and writes no pin file, read from its source at the tools
+repository's `8a4f66f` and run through `vendor/` on 2026-10-14 (#277). The resolver reads the
+portal, so its output is a
 measurement and the time of the run is kept with it. A pack named by another is read from the
 files given, by the resolver's header, so the run covers every pack above the one that
 changed. A run that fails is handed over as it stands, and the review goes on.

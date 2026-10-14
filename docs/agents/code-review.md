@@ -221,7 +221,8 @@ written down like the others.
 pre-PR reviewer**, continued as
 for any later fix commit: the plugin pass's reviewers do not outlive the pass. If that reviewer
 cannot be continued, a fresh one is handed its report and the commits. What the confirmation
-finds, and each repair, is recorded on the pull request. Found in PR #186.
+finds, and each repair, is recorded on the pull request. Found in PR #186. What the confirmation
+finds is repaired and read again, until a read finds nothing new (#166).
 
 **A pull request is not merged while a plugin pass or a confirmation of it runs** (#159). The
 check run is outside this rule. The merge is Truls's, so a session's last message says when a

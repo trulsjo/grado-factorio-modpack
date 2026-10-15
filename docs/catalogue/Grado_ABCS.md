@@ -1250,21 +1250,26 @@ overhaul's own technologies were not chased; see *Not covered*.
   captive spawner is missed. Whether the game offers the technology is still not tried: it would
   bear only on pack Lua.*
   *Probed 2026-10-15 (#285), on 2.0.77 with Space Age, for #282's report and #29; the ruling
-  stands. **The game refuses the technology.** A throwaway probe mod, run through the load
+  stands. **`LuaForce::add_research` refuses both `captive-biter-spawner` and
+  `kovarex-enrichment-process` in the pack.** A throwaway probe mod, run through the load
   harness in `vendor/grado-factorio-tools` beside the set staged on 2026-10-08 (with
-  `Clowns-AngelBob-Nuclear` `2.0.13`), marked researched in `on_init` the enabled technologies
-  in the prerequisite chains of `captive-biter-spawner`, stopping at a disabled one. The one it
-  stopped at was `kovarex-enrichment-process`. It then called `LuaForce::add_research` on the
-  player force. **It returned `false`**, and the research queue stayed empty; writing
-  `research_queue` with the technology left it empty too, which the 2.0.77 API documents for "one
-  whose prerequisites are not fulfilled". At runtime `captive-biter-spawner` is enabled and not
-  `visible_when_disabled`; `kovarex-enrichment-process` is disabled, not `visible_when_disabled`
-  and not researched. Two controls held. On Space Age alone, Kovarex is enabled; with its chain
-  marked too, the same call returned `true` and the technology became the current research. In
-  the pack load, `MOX-nuclear-power` (enabled, its one prerequisite `plutonium-processing`
-  enabled and unresearched) returned `false`. 2.0.77's `LuaForce` has no attribute saying
-  whether the research queue is enabled, so that was not read. What the research screen shows is
-  not seen: a headless run has no GUI.*
+  `Clowns-AngelBob-Nuclear` `2.0.13`), worked in `on_init` on the player force. First it marked
+  researched the enabled technologies in Kovarex's own prerequisite chains, which held no
+  disabled one, and called `add_research` on Kovarex: **`false`**. Then it did the same for
+  `captive-biter-spawner`'s chains, stopping at a disabled technology; the one it stopped at was
+  Kovarex. **`add_research` returned `false`** and the research queue stayed empty. Writing
+  `research_queue` with either technology left it empty too, which the 2.0.77 API documents for
+  "one whose prerequisites are not fulfilled". At runtime `captive-biter-spawner` is enabled, not
+  `visible_when_disabled` and not researched; Kovarex is disabled, not `visible_when_disabled`
+  and not researched. On Space Age alone, both are enabled, neither is `visible_when_disabled`
+  and neither is researched at the start; there both calls returned `true` and each technology
+  in turn became the current research. `MOX-nuclear-power` in the pack and
+  `advanced-combinators` on Space Age alone, each with an enabled, unresearched prerequisite, were
+  refused too. Inferred, not measured: that Kovarex's being disabled is why it is refused (its
+  `research_trigger` was not read), and so that no route gets the spawner researched in play, from
+  the two refusals and from `LuaTechnology::enabled`, "Can this technology be researched?".
+  2.0.77's `LuaForce` has no attribute saying whether the research queue is enabled, so that was
+  not read. What the research screen shows is not seen: a headless run has no GUI.*
 
 **Three things a planet supplies that nothing takes**, which are not dead ends in a walk but are
 dead material:

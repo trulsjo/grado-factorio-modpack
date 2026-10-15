@@ -369,8 +369,9 @@ branch.*
 **Recommendation: keep.** Current on 2.1, the best-maintained of the pack's four nuclear add-ons by
 both recency and downloads, and the only one of them requiring `base >= 2.1` on its own account.
 
-*Read 2026-10-15 (#289): its Kovarex check works for this pack on 2.0 by a typo, and on 2.1 the
-fixed check would leave its tree behind a technology `add_research` refuses. Three points:*
+*Read 2026-10-15 (#289): its Kovarex check works for this pack on 2.0 by a typo, and on 2.1,
+inferred, the fixed check would leave its tree behind a technology `add_research` refuses. Three
+points:*
 
 - *1.8.1, the release the 2.0 packs resolve (pinned in the staging of 2026-10-08), checks for
   Kovarex under a misspelled name, `kovarex-enrivhment-process`, in `data-updates.lua` lines
@@ -390,14 +391,15 @@ fixed check would leave its tree behind a technology `add_research` refuses. Thr
   `prototypes/technology-overrides.lua` line 31 of 2.0.13 and of `Pezzawinkle/MadClowns`
   `master` at `d4c8d0a` (2.1.02). Read from source. GitHub's code search of the repository for
   the name found seven files, five of them Lua, and no line of those five that names it removes
-  it. In both of this pack's data dumps on 2.0.77, base only (prototype list checksums
-  `2195323740` and `2949552679`), the technology is there with `enabled: false`: measured.*
+  it. In this pack's data dump on 2.0.77, base only (prototype list checksum `2195323740`), the
+  technology is there with `enabled: false`: measured.*
 
-*So on 2.1 the check would be false in this pack, and `plutonium-processing` would keep a
+*So on 2.1 the check would be false beside `Clowns-AngelBob-Nuclear`, unless another member's
+2.1 release removes Kovarex, which was not read, and `plutonium-processing` would keep a
 prerequisite that `add_research` refuses, as #285 and #287 measured for a disabled Kovarex on
-2.0.77. The rest of the mod's tree would sit behind it. This is inferred, from the three points
-and those measurements; nothing was run on 2.1. It reaches `Grado_ABCX` and `Grado_ABCS` through
-this pack. What to do on 2.1 is #290's, at stable 2.1.*
+2.0.77 with Space Age. The rest of the mod's tree would sit behind it. This is inferred, from the
+three points and those measurements; nothing was run on 2.1. It reaches `Grado_ABCX` and
+`Grado_ABCS` through this pack. What to do on 2.1 is #290's, at stable 2.1.*
 
 ### `RealisticFusionPowerPort`
 
@@ -2341,9 +2343,8 @@ defect" above was a reading of dependency lists, and a run found a defect in one
 that name each other. Four of the six remain, three named and `Clowns-Nuclear` hidden, and
 `True-Nukes-Graphics_Continued` is out too. See* Decisions, 2026-10-04 (#81).
 
-*2026-10-15 (#289): two of the four meet at Kovarex. `PlutoniumEnergy`'s check of whether it
-exists works on 2.0 only by a typo, and on 2.1 would leave its tree behind the Kovarex
-`Clowns-AngelBob-Nuclear` disables. See the note on* `PlutoniumEnergy` *above.*
+*2026-10-15 (#289): `PlutoniumEnergy` and `Clowns-AngelBob-Nuclear` meet at Kovarex. See the
+note on* `PlutoniumEnergy` *above.*
 
 ## Overlaps
 

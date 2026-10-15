@@ -101,6 +101,13 @@ they did. The only one of the three that says anything about how the members beh
 Added 2026-09-29 (#17).
 _Avoid_: play-test (used here for "any of the three" before 2026-09-29), playthrough
 
+**Dead end**:
+Something a pack contains that a player cannot reach from a new game at the default settings: a
+technology no research gets to, a recipe nothing unlocks, or a goal that needs one of those.
+Added 2026-10-15 (#294).
+_Avoid_: dead end for a mod with no future, say *abandoned* (no release expected) or *no
+successor* (nothing replaces it)
+
 **Measured**:
 The thing itself was run or queried and the result written down: a script's output over a data
 dump, a load's log, a portal reading, or what a person saw in a play session. It carries its day,

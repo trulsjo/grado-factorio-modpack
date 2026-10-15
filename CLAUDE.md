@@ -21,6 +21,7 @@ pack carries Lua.
   to change a default is Truls's (#73).
 - `Grado_ChangingBase`, `Grado_ABC`, `Grado_ABCX`, `Grado_ABCS`: loaded 2026-10-04 (#115 to
   #118). No play session yet (#26 to #29). `Grado_ABCX` is refused beside Space Age, as intended.
+  `Grado_ABCX`'s first 2.0 release is held until SpaceX's fourth stage can be reached (#294).
   The three overhaul packs log non-fatal complaints (#125).
 
 The records are in `docs/loads/`. **"It resolves on the portal", "it loads in the game" and "it

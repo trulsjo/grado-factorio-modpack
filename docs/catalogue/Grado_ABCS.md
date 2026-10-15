@@ -574,8 +574,8 @@ read from source: no line skips Bob's particle. `bobores` `2.1.2` makes it in `d
 none, with no check for Space Age. Space Age `2.0.77` defines a particle of the same name and type
 in its own `data` (`prototypes/particles.lua` line 656). That Space Age's replaces Bob's is
 inferred from the 2.0.77 load order, which runs shorter dependency chains first and then sorts by
-name (the API docs' data-lifecycle page), applied to the two `info.json` files: both chains are
-two deep, and `bobores` sorts before `space-age`. No changelog line or comment speaks to the
+name (the API docs' data-lifecycle page), applied to the `info.json` files of both chains: both
+are two deep, and `bobores` sorts before `space-age`. No changelog line or comment speaks to the
 particle.*
 
 "Holds" says which definition the `Grado_ABCS` dump has: **the overhaul's** when the prototype
@@ -597,13 +597,13 @@ no script makes them.*
 |---|---|---|---|
 | items `turbo-transport-belt`, `turbo-underground-belt`, `turbo-splitter` | `boblogistics`, `prototypes/item/belt.lua` from line 71, `data`. Defined without a check, so it replaces Space Age's | the overhaul's | yes, by the rename below |
 | entities of the same three names | `boblogistics`, `prototypes/entity/belt.lua` from line 291, `data` | mixed: Bob's entity, with a heating energy and Space Age's frozen graphics that `boblogistics` adds itself | yes: lines 760 to 781, under `feature_flags["freezing"]` and `if mods["space-age"]` |
-| recipes of the same three names | `boblogistics`, `prototypes/recipe/belt-recipe.lua`, `data` | mixed: Bob's recipe in the category `pressing`. Which line sets the category was not traced. *Traced 2026-10-15 (#141), read from source: lines 348 to 351, under `if mods["space-age"]`, in `data`. No changelog line names `pressing`* | yes, by the rename below |
+| recipes of the same three names | `boblogistics`, `prototypes/recipe/belt-recipe.lua`, `data` | mixed: Bob's recipe in the category `pressing`. Which line sets the category was not traced. *Traced 2026-10-15 (#141), read from source in `boblogistics` `2.1.1`: lines 348 to 351, under `if mods["space-age"]`, in `data`. No changelog line names `pressing`* | yes, by the rename below |
 | corpses `turbo-transport-belt-remnants`, `turbo-underground-belt-remnants`, `turbo-splitter-remnants` | `reskins-bobs`, `prototypes/entity/logistics/belt-entities.lua`, `data`, through `reskins-library`, which copies a base remnant and names it `<entity>-remnants` | the overhaul's | no check for Space Age. Line 12 picks the name `turbo` by `boblibrary`'s version, so it follows Bob's rename |
 | item, recipe, equipment and technology `battery-mk3-equipment` | `bobequipment`, `prototypes/item/equipment.lua` 128, `recipe/equipment.lua` 70, `equipment/equipment.lua` 214 and `technology/equipment.lua` 148, `data`. No check | the overhaul's, all four | yes, by its changelog |
 | item `carbon` | `bobplates`, `prototypes/item/resource.lua` 4, `data`. No check; lines 247 to 250 give it Space Age's icon `if mods["space-age"]` | the overhaul's: hidden, because Angel's replaces it | yes |
 | recipe `carbon` | `bobplates`, `prototypes/recipe/resource-recipe.lua`, `data`. Lines 1 to 12, `if mods["space-age"]`: Space Age's recipe is renamed `bob-carbon-from-acid`. Line 14 on: Bob's own `carbon` | mixed: Bob's recipe, differing from base only in `allow_productivity` | yes |
 | item `tungsten-ore` | `bobores`, `prototypes/tungsten-ore.lua`, made by `boblibrary`'s ore function from `data.lua` line 71 | mixed: Angel's icon, name and subgroup on Space Age's item | yes: see under the table |
-| particle `tungsten-ore-particle` | base only, `boblibrary`'s `create_particle` (`ore-functions.lua` 413) | **Space Age's** | not traced: which line skips Bob's particle. *Traced 2026-10-15 (#141): none does. Bob's is made and Space Age's replaces it; see the paragraph above the table* |
+| particle `tungsten-ore-particle` | base only, `boblibrary`'s `create_particle` (`ore-functions.lua` 413) | **Space Age's** | not traced: which line skips Bob's particle. *Traced 2026-10-15 (#141): see the paragraph above the table* |
 | item `tungsten-plate` | `bobplates`, `prototypes/item/plates.lua` 168: `if not data.raw.item["tungsten-plate"]`, so Space Age's is kept | mixed: Space Age's item with the overhaul's icon, name, order and subgroup | yes, by the check |
 | recipe `tungsten-plate` | `bobplates`, `prototypes/recipe/plates-recipe.lua`, `data`. Line 189, `if not mods["space-age"]`: its own. Otherwise line 225: Space Age's recipe, with `bob-powdered-tungsten` for `tungsten-ore` | mixed: Space Age's recipe with that ingredient, and hidden | yes |
 | item `tungsten-carbide` | `bobplates`, `prototypes/item/alloys.lua` 105: the same check; lines 121 to 125 move Space Age's item to Bob's subgroup | mixed, as `tungsten-plate` | yes |
@@ -657,6 +657,10 @@ The changelog lines, each from the release of 2026-06-01:
     (`prototypes/global-override/bobplates.lua` lines 228 to 231), and `angelssmelting` gives it
     a subgroup (`prototypes/override/smelting-override-lithium.lua` line 13).
 
+*Found 2026-10-15 (#141): one of the 29 is held by load order alone, as inferred.
+`tungsten-ore-particle` is Space Age's because Space Age's definition replaces Bob's; see the note
+above the table.*
+
 One change #128 listed comes from the second mechanism and is not Angel's: Space Age's `lithium`
 recipe loses `lithium-brine` and gains 5 `bob-lithium-chloride` in `bobplates`
 (`prototypes/recipe/plates-recipe.lua` lines 227 and 228). The dump has `angels-solid-lithium` in
@@ -666,7 +670,7 @@ line 234, `OV.global_replace_item("bob-lithium-chloride", "angels-solid-lithium"
 `if mods["bobplates"]` (line 226) and with no check for Space Age. It queues the swap, and
 `OV.execute()` at its `data-updates.lua` line 53 applies it to every recipe, so in `data-updates`:
 the third mechanism above. The changelog line nearest it is `0.12.2`'s "Hide Bob's salt, brine,
-and lithium chloride (769)", and no 2.0 release's names lithium or Space Age.*
+and lithium chloride (769)", and no line of a 2.0 release names lithium or Space Age.*
 
 Not traced, beside the three named above: the stage in which each Angel's override is applied,
 beyond that they are queued in its `data-updates.lua` and `data-final-fixes.lua`; and the Bob's
@@ -1234,17 +1238,17 @@ overhaul's own technologies were not chased; see *Not covered*.
   hides the recipe of that name (`prototypes/override/angelspetrochem-nuclear.lua` line 105) and
   not the technology. The comment above line 31 reads "remove kovarex and remove it from
   bobingabout prereq", and the mod's description calls its enrichment chain "a far more intricate
-  replacement to the Koravex Enrichment Process". From line 32 to line 73 the same file moves the
+  replacement to the Koravex Enrichment Process". From line 32 to line 73 the same file moves
   technologies that need Kovarex onto another prerequisite or off it, and `captive-biter-spawner`
   is not among them: its prerequisites are Space Age `2.0.77`'s
   (`space-age/prototypes/technology.lua` line 1916).*
   *Ruled 2026-10-15 by Truls (#147): the pack leaves it as it is, and #282 reports it to the
-  maintainer of `Clowns-AngelBob-Nuclear`. The fault is that member's: by the trace above it moves
-  the other technologies that need Kovarex and leaves Space Age's out. So Lua in the pack to move
-  `captive-biter-spawner` off Kovarex would do one member's own job, a* Patch *in* `GLOSSARY.md`*,
-  and the pack carries none. The play session (#29) notes whether building a captive spawner is
-  missed. Whether the game offers the technology is still not tried: it would bear only on pack
-  Lua.*
+  maintainer of `Clowns-AngelBob-Nuclear`. The fault is that member's: by the trace above, read
+  from source, it moves other technologies off Kovarex and leaves Space Age's out. So Lua in the
+  pack to move `captive-biter-spawner` off Kovarex would do one member's own job, a* Patch *in*
+  `GLOSSARY.md`*, and the pack carries none. The play session (#29) notes whether building a
+  captive spawner is missed. Whether the game offers the technology is still not tried: it would
+  bear only on pack Lua.*
 
 **Three things a planet supplies that nothing takes**, which are not dead ends in a walk but are
 dead material:

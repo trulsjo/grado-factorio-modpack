@@ -34,8 +34,8 @@ _Avoid_: drop without saying which kind, port drop for a mod that has a 2.x rele
 Lua a pack carries to join two member mods that each load on their own, where the join belongs in
 neither member's own code. The one kind of code a pack is expected to carry. Added 2026-10-15
 (#147).
-_Avoid_: compatibility patch for the pack's own Lua (the catalogues use it for a mod that patches
-others)
+_Avoid_: compatibility patch or compat for the pack's own Lua (the catalogues use the first for a
+mod that patches others)
 
 **Patch**:
 Lua a pack would carry to do one member mod's own job for it: a fix that belongs in that member's

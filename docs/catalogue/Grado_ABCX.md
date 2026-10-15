@@ -332,26 +332,24 @@ Truls's to set; no `info.json` was modified.
 
 #### The fourth stage waits on a disabled Kovarex (2026-10-15, #294)
 
-**Measured** in the dump `Grado_ABCX-1533854567-4ab17c33a054` (made 2026-10-15 by
-`get-dump.ps1`: 2.0.77, base only, every setting at its default, 107 mods, the fork at `1.3.3`,
-`Clowns-AngelBob-Nuclear` `2.0.13`). `kovarex-enrichment-process` has `enabled = false`, which
-`Clowns-AngelBob-Nuclear` sets in `prototypes/technology-overrides.lua` line 31. The fork's
-`exploration-satellite` and `space-fluid-tanks` take it as a prerequisite
+**Measured** in the dump `Grado_ABCX-1533854567-4ab17c33a054` (made 2026-10-15 by `get-dump.ps1`:
+2.0.77, base only, every setting at its default, 105 mods, the fork at `1.3.3`,
+`Clowns-AngelBob-Nuclear` `2.0.13`). `kovarex-enrichment-process` has `enabled = false`, which, read
+from its source, `Clowns-AngelBob-Nuclear` sets in `prototypes/technology-overrides.lua` line 31.
+The fork's `exploration-satellite` and `space-fluid-tanks` take it as a prerequisite
 (`prototypes/technology.lua` lines 692 and 766), and `space-cartography` follows
-`exploration-satellite`. Nothing else
-unlocks their recipes, and no other recipe makes `exploration-satellite`, `space-water-tank`,
-`space-oxygen-tank`, `space-fuel-tank`, `space-oxygen-barrel` or `space-map`.
+`exploration-satellite`. Nothing else unlocks their recipes, and no other recipe makes
+`exploration-satellite`, `space-water-tank`, `space-oxygen-tank`, `space-fuel-tank` or `space-map`.
 
 **Read from source**, the fork's `control.lua`: with `SpaceX-classic-mode` off, its default, the
-fork adds a fourth stage whose launch list holds those items but `space-oxygen-barrel`, an
-ingredient of `space-oxygen-tank`, beside 2 `space-ai-robot` (lines 199-210). SpaceX is complete
-when the last stage is (lines 628-631), and the rocket-launch victory is turned off (lines
-224-227).
+fork adds a fourth stage whose launch list holds those items beside 2 `space-ai-robot` (lines
+199-210). SpaceX is complete when the last stage is (lines 628-631), and the rocket-launch victory
+is turned off (lines 224-227).
 
-**Inferred**, until #295's probe: at its defaults the pack's end-game cannot be finished, a *Dead
-end*. `add_research` refusing a disabled Kovarex was measured only in `Grado_ABCS` (#285, #287).
-Truls ruled 2026-10-15 (#294, in `docs/decisions.md`): the pack's first 2.0 release is held, the
-fix is asked of `Clowns-AngelBob-Nuclear` (#296) and the fork (#297), and the pack carries no
+**Inferred**, until #295's probe: at its defaults the pack's end-game cannot be finished, a
+*Dead end*. `add_research` refusing a disabled Kovarex was measured only in `Grado_ABCS` (#285,
+#287). Truls ruled 2026-10-15 (#294, in `docs/decisions.md`): the pack's first 2.0 release is held,
+the fix is asked of `Clowns-AngelBob-Nuclear` (#296) and the fork (#297), and the pack carries no
 *Patch*.
 
 ## Dropped during the port

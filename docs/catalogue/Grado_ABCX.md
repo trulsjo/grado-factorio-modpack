@@ -365,15 +365,13 @@ returned `true` and became the current research. In the second load the probe's 
 run after `Clowns-AngelBob-Nuclear`'s, made that replacement, and all three calls returned `true`,
 each becoming the current research. Kovarex's `enabled` was `false` wherever the probe read it,
 in both loads. The replacement touched seven technologies: the fork's two, `angels-nuclear-fuel` and
-`bobingabout-enrichment-process`, both disabled in the dump, and the three Bob's fission equipment
-technologies that `Clowns-AngelBob-Nuclear` names (`technology-overrides.lua` lines 34-39). Those
-three still had Kovarex when the probe's file ran, and the dump gives them `mixed-oxide-fuel`.
-The cause is measured as* Measured *in `GLOSSARY.md` asks: the two loads' active mods and versions
-are equal, as are the 278 names marked researched. The probe's source differs only by
-`data-updates.lua`, and the result changed. The commands, results and source are #295's probe
-record, a comment on that ticket. Limited to the `add_research` call: researching,
-launching and the research screen were not run, so the end-game being a* Dead end *in play stays
-inferred.*
+`bobingabout-enrichment-process`, both disabled in the dump, and three Bob's fission equipment
+technologies. That the replacement is the cause is measured as* Measured *in `GLOSSARY.md` asks:
+the two loads' active mods and versions are equal, as are the 278 names marked researched. The
+probe's source differs only by `data-updates.lua`, and the result changed. The commands, results
+and source are #295's probe record, a comment on that ticket. Limited to the `add_research` call:
+researching, launching and the research screen were not run, so the end-game being a* Dead end *in
+play stays inferred.*
 
 ## Dropped during the port
 

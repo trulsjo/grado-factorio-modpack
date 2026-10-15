@@ -83,6 +83,14 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   the strongest grade and *Inferred* the weakest. *Measured* may go unmarked inside a section that
   says how and when; the other two are always marked. The marking rule is in
   `docs/agents/code-review.md`. Existing prose was not rewritten.
+- **A tested cause is *Measured*** (2026-10-15, #292): an exception to *Inferred*'s rule for a
+  cause. It applies when a run changed one named thing, as the record shows it differed, with
+  every other input recorded as held, in one run or two, and the result changed, the claim
+  limited to what was run. The reason: #287 changed only `enabled` on Kovarex in one load and
+  `add_research` went from `false` to `true`, which tests the cause itself, unlike "SpaceX is
+  dead", a cause read from a search. A reversal is not required. Two runs a day apart without
+  held inputs recorded do not qualify. Existing prose was not regraded, except #287's note by a
+  dated note.
 - **One mandatory review on every branch with a diff, before the pull request** (2026-10-06,
   #151): the pre-PR review, one fresh subagent handed the diff, the review rules, the glossary
   and the raw output behind any measurement. Its findings go in the pull request's body and its

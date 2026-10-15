@@ -352,6 +352,29 @@ is turned off (lines 224-227).
 the fix is asked of `Clowns-AngelBob-Nuclear` (#296) and the fork (#297), and the pack carries no
 *Patch*.
 
+*Measured 2026-10-15 (#295), on 2.0.77, base only, every setting at its default, in the set staged
+2026-10-08 (the fork at `1.3.3`, `Clowns-AngelBob-Nuclear` `2.0.13`): **`add_research` refuses
+`exploration-satellite` and `space-fluid-tanks` as the pack stands, and accepts both once
+Kovarex is replaced by `mixed-oxide-fuel` in every technology's prerequisites.** A throwaway probe
+mod ran through the load harness in two loads. In `on_init` it marked researched every technology
+in the two technologies' prerequisite closures except `kovarex-enrichment-process`, 278 of them,
+`mixed-oxide-fuel` among them in both loads. It then called `add_research` on the player force on
+each, and on `space-casings` as a control with no Kovarex in its closure, each from an empty
+research queue. As the pack stands, both returned `false` and left the queue empty; the control
+returned `true` and became the current research. In the second load the probe's `data-updates.lua`,
+run after `Clowns-AngelBob-Nuclear`'s, made that replacement, and all three calls returned `true`,
+each becoming the current research. Kovarex's `enabled` was `false` wherever the probe read it,
+in both loads. The replacement touched seven technologies: the fork's two, `angels-nuclear-fuel` and
+`bobingabout-enrichment-process`, both disabled in the dump, and the three Bob's fission equipment
+technologies that `Clowns-AngelBob-Nuclear` names (`technology-overrides.lua` lines 34-39). Those
+three still had Kovarex when the probe's file ran, and the dump gives them `mixed-oxide-fuel`.
+The cause is measured as* Measured *in `GLOSSARY.md` asks: the two loads' active mods and versions
+are equal, as are the 278 names marked researched. The probe's source differs only by
+`data-updates.lua`, and the result changed. The commands, results and source are #295's probe
+record, a comment on that ticket. Limited to the `add_research` call: researching,
+launching and the research screen were not run, so the end-game being a* Dead end *in play stays
+inferred.*
+
 ## Dropped during the port
 
 **None.** The 1.1 `Grado_ABCX` held 56 mods; 55 of them are accounted for under `Grado_ABC` and

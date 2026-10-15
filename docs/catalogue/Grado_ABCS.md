@@ -1291,7 +1291,7 @@ overhaul's own technologies were not chased; see *Not covered*.
   `GLOSSARY.md`): **disabling Kovarex is why `add_research` refuses it, measured**, limited to
   that call on the player force, in the set staged 2026-10-08, on 2.0.77 with Space Age. #287's
   record meets each condition. One thing changed, Kovarex's runtime `enabled`, from `false` to
-  `true`. Of the fields the probe recorded, both technologies' `enabled` and `researched`, it is
+  `true`. Of the state the probe recorded for both technologies, `enabled` and `researched`, it is
   the only one that differs between the first call's state after and the second's before. Both
   calls ran in one load, each from an empty research queue and with no prerequisite of Kovarex
   unresearched, and between them the probe's source writes only `enabled` and an empty research

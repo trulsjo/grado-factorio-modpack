@@ -80,6 +80,18 @@ Copy the raw output behind each figure on the branch into `<scratch>` as well, a
 the command that produced it, as it was run and with any prompt it was given (#234). A figure
 whose raw output is gone is named to the reviewer as missing.
 
+**A probe in a clone outside the repository's directory can start under another profile**
+(#280). Where the `claude` command chooses its Claude Code profile by the directory it is started
+in, an interactive `claude` started in such a clone can run with another profile's settings,
+sign-in and folder trust, and write its transcript under that profile. On 2026-10-14 it happened
+to #231's measurement, whose write-up did not say so
+([#231's addendum](https://github.com/trulsjo/grado-factorio-modpack/issues/231#issuecomment-6185969252)),
+and twice to #160's second process before it was started under the intended profile
+([#160](https://github.com/trulsjo/grado-factorio-modpack/issues/160#issuecomment-6178947824)).
+Start the probe under the intended profile explicitly: set `CLAUDE_CONFIG_DIR` and start the
+client's executable, not the `claude` command. Save the `projects/` directory its transcript was
+written to beside its command and output, since that directory shows which profile ran it.
+
 ## The review turn
 
 Sent to one fresh subagent.

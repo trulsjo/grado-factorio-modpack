@@ -1270,6 +1270,21 @@ overhaul's own technologies were not chased; see *Not covered*.
   the two refusals and from `LuaTechnology::enabled`, "Can this technology be researched?".
   2.0.77's `LuaForce` has no attribute saying whether the research queue is enabled, so that was
   not read. What the research screen shows is not seen: a headless run has no GUI.*
+  *Measured 2026-10-15 (#287), on 2.0.77 with Space Age: **disabling Kovarex is why
+  `add_research` refuses it**, so the first half of #285's "Inferred, not measured" is now
+  measured. The data dump of this pack beside Space Age (prototype list checksum `2316474952`)
+  gives `kovarex-enrichment-process` no `research_trigger`: it has a `unit` (600 × 30 s;
+  automation, logistic, chemical and space science), `enabled: false`, and the four prerequisites
+  #285's probe saw. A second throwaway probe, through the same harness beside the same staged set,
+  ran three calls in `on_init` on the player force, each from an empty research queue. First,
+  with Kovarex's prerequisite chains researched (no disabled technology among them), `add_research`
+  on Kovarex while disabled returned `false` and left the queue empty. Second, with Kovarex's
+  `enabled` set to `true` and nothing else changed, the same call returned `true` and Kovarex
+  became the current research. Third, with Kovarex then marked researched and
+  `captive-biter-spawner`'s other prerequisite chains researched (no disabled technology among
+  them), `add_research` on the spawner returned `true` and it became the current research.
+  Still inferred: that no other route gets the spawner researched in play. What the research
+  screen shows is still not seen. #147's ruling stands.*
 
 **Three things a planet supplies that nothing takes**, which are not dead ends in a walk but are
 dead material:

@@ -30,6 +30,21 @@ with it. Distinct from a port drop, which is a 1.1 mod with no 2.x release, and 
 out by choice. Added 2026-10-04 (#81).
 _Avoid_: drop without saying which kind, port drop for a mod that has a 2.x release
 
+**Glue**:
+Lua a pack carries to join two member mods that each load on their own, where the join belongs in
+neither member's own code. The one kind of code a pack is expected to carry. Added 2026-10-15
+(#147).
+_Avoid_: compatibility patch for the pack's own Lua (the catalogues use it for a mod that patches
+others)
+
+**Patch**:
+Lua a pack would carry to do one member mod's own job for it: a fix that belongs in that member's
+code, such as a case the member left out. The test against *Glue* is whose code the fix belongs in.
+The lean is against it: report upstream instead, ruled case by case (#81, #147). Added 2026-10-15
+(#147).
+_Avoid_: glue for code that does one member's job; fix for the pack's own Lua (it hides whose job
+it was)
+
 **Declared line**:
 The Factorio release line a pack's `factorio_version` names - `2.0` or `2.1` - and so the games the
 portal serves it to. All five packs share one, because a pack cannot depend on a pack its game is

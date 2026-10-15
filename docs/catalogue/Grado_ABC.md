@@ -369,6 +369,36 @@ branch.*
 **Recommendation: keep.** Current on 2.1, the best-maintained of the pack's four nuclear add-ons by
 both recency and downloads, and the only one of them requiring `base >= 2.1` on its own account.
 
+*Read 2026-10-15 (#289): its Kovarex check works for this pack on 2.0 by a typo, and on 2.1 the
+fixed check would leave its tree behind a technology `add_research` refuses. Three points:*
+
+- *1.8.1, the release the 2.0 packs resolve (pinned in the staging of 2026-10-08), checks for
+  Kovarex under a misspelled name, `kovarex-enrivhment-process`, in `data-updates.lua` lines
+  15-17, so the check is always true. Under it Kovarex is removed from `nuclear-breeding`'s
+  prerequisites, the second entry of `{ 'plutonium-nuclear-power', 'kovarex-enrichment-process' }`
+  (`prototypes/technology/technology.lua` line 152). In this pack that is the result needed,
+  because `Clowns-AngelBob-Nuclear` disables Kovarex. Read from source.*
+- *1.9.2 (line 2.1, released 2026-10-15, tag `v1.9.2` at `f849fd5`, `main`'s head when read)
+  fixed the spelling and only the spelling, after JohnTheCoolingFan/PlutoniumEnergy#112: line 19
+  now asks whether `kovarex-enrichment-process` exists. Since 1.9.0 the check guards
+  `plutonium-processing`, whose prerequisites are `{ "kovarex-enrichment-process",
+  "nuclear-fuel-reprocessing", "fluid-handling" }` (`technology.lua` line 32), and replaces the
+  first with `uranium-processing`. The changelog: "the technology will depend on Kovarex
+  enrichment process now unless another mod removes it". Read from source.*
+- *`Clowns-AngelBob-Nuclear` disables Kovarex and does not remove it:
+  `data.raw.technology["kovarex-enrichment-process"].enabled = false`, in
+  `prototypes/technology-overrides.lua` line 31 of 2.0.13 and of `Pezzawinkle/MadClowns`
+  `master` at `d4c8d0a` (2.1.02). Read from source. GitHub's code search of the repository for
+  the name found seven files, five of them Lua, and no line of those five that names it removes
+  it. In both of this pack's data dumps on 2.0.77, base only (prototype list checksums
+  `2195323740` and `2949552679`), the technology is there with `enabled: false`: measured.*
+
+*So on 2.1 the check would be false in this pack, and `plutonium-processing` would keep a
+prerequisite that `add_research` refuses, as #285 and #287 measured for a disabled Kovarex on
+2.0.77. The rest of the mod's tree would sit behind it. This is inferred, from the three points
+and those measurements; nothing was run on 2.1. It reaches `Grado_ABCX` and `Grado_ABCS` through
+this pack. What to do on 2.1 is #290's, at stable 2.1.*
+
 ### `RealisticFusionPowerPort`
 
 | | |
@@ -2310,6 +2340,10 @@ own `Clowns-Nuclear` compatibility, a failure seen only after two patches. So "n
 defect" above was a reading of dependency lists, and a run found a defect in one of the three mods
 that name each other. Four of the six remain, three named and `Clowns-Nuclear` hidden, and
 `True-Nukes-Graphics_Continued` is out too. See* Decisions, 2026-10-04 (#81).
+
+*2026-10-15 (#289): two of the four meet at Kovarex. `PlutoniumEnergy`'s check of whether it
+exists works on 2.0 only by a typo, and on 2.1 would leave its tree behind the Kovarex
+`Clowns-AngelBob-Nuclear` disables. See the note on* `PlutoniumEnergy` *above.*
 
 ## Overlaps
 

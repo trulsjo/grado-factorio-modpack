@@ -105,8 +105,8 @@ _Avoid_: play-test (used here for "any of the three" before 2026-09-29), playthr
 Something a pack contains that a player cannot reach from a new game at the default settings: a
 technology no research gets to, a recipe nothing unlocks, or a goal that needs one of those.
 Added 2026-10-15 (#294).
-_Avoid_: dead end for a mod with no future, say *abandoned* (no release expected) or *no
-successor* (nothing replaces it)
+_Avoid_: dead end for a mod with no future (say *abandoned* if no release is expected, *no
+successor* if nothing replaces it)
 
 **Measured**:
 The thing itself was run or queried and the result written down: a script's output over a data

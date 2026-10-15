@@ -1238,6 +1238,13 @@ overhaul's own technologies were not chased; see *Not covered*.
   technologies that need Kovarex onto another prerequisite or off it, and `captive-biter-spawner`
   is not among them: its prerequisites are Space Age `2.0.77`'s
   (`space-age/prototypes/technology.lua` line 1916).*
+  *Ruled 2026-10-15 by Truls (#147): the pack leaves it as it is, and #282 reports it to the
+  maintainer of `Clowns-AngelBob-Nuclear`. The fault is that member's: by the trace above it moves
+  the other technologies that need Kovarex and leaves Space Age's out. So Lua in the pack to move
+  `captive-biter-spawner` off Kovarex would do one member's own job, a* Patch *in* `GLOSSARY.md`*,
+  and the pack carries none. The play session (#29) notes whether building a captive spawner is
+  missed. Whether the game offers the technology is still not tried: it would bear only on pack
+  Lua.*
 
 **Three things a planet supplies that nothing takes**, which are not dead ends in a walk but are
 dead material:

@@ -1270,9 +1270,10 @@ overhaul's own technologies were not chased; see *Not covered*.
   the two refusals and from `LuaTechnology::enabled`, "Can this technology be researched?".
   2.0.77's `LuaForce` has no attribute saying whether the research queue is enabled, so that was
   not read. What the research screen shows is not seen: a headless run has no GUI.*
-  *Measured 2026-10-15 (#287), on 2.0.77 with Space Age: **disabling Kovarex is why
-  `add_research` refuses it**, so the first half of #285's "Inferred, not measured" is now
-  measured. The data dump of this pack beside Space Age (prototype list checksum `2316474952`)
+  *Measured 2026-10-15 (#287), on 2.0.77 with Space Age: **`add_research` refuses Kovarex while
+  it is disabled and accepts it once only its `enabled` is set to `true`.** That narrows the first
+  half of #285's "Inferred, not measured" to the step from this difference to a cause. The data
+  dump of this pack beside Space Age (prototype list checksum `2316474952`)
   gives `kovarex-enrichment-process` no `research_trigger`: it has a `unit` (600 × 30 s;
   automation, logistic, chemical and space science), `enabled: false`, and the four prerequisites
   #285's probe saw. A second throwaway probe, through the same harness beside the same staged set,
@@ -1283,7 +1284,8 @@ overhaul's own technologies were not chased; see *Not covered*.
   became the current research. Third, with Kovarex then marked researched and
   `captive-biter-spawner`'s other prerequisite chains researched (no disabled technology among
   them), `add_research` on the spawner returned `true` and it became the current research.
-  Still inferred: that no other route gets the spawner researched in play. What the research
+  Still inferred, from the first call's refusal and the missing `research_trigger`: that no route
+  gets the spawner researched in play while Kovarex is disabled. What the research
   screen shows is still not seen. #147's ruling stands.*
 
 **Three things a planet supplies that nothing takes**, which are not dead ends in a walk but are

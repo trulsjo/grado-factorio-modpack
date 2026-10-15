@@ -91,6 +91,15 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   dead", a cause read from a search. A reversal is not required. Two runs a day apart without
   held inputs recorded do not qualify. Existing prose was not regraded, except #287's note by a
   dated note.
+- **`Grado_ABCX`'s first 2.0 release waits on SpaceX's fourth stage** (2026-10-15, #294): at its
+  defaults `SpaceModFeorasFork` completes on a fourth stage, five of whose six items come only from
+  `exploration-satellite`, `space-fluid-tanks` and `space-cartography`, and those technologies need
+  the Kovarex that `Clowns-AngelBob-Nuclear` disables. That the stage cannot be finished is inferred
+  until #295's probe. The promise's "SpaceX end-game" is the fork as it plays at its defaults, all
+  four stages, so classic mode is no way out. The fix is asked of the members' authors: one loop in
+  `Clowns-AngelBob-Nuclear` that replaces a Kovarex prerequisite on every technology (today it fixes
+  named mods one by one), and, as a second report, a check on `enabled` in the fork. The pack
+  carries no *Patch*. The hold is reviewed at stable 2.1, with #290.
 - **One mandatory review on every branch with a diff, before the pull request** (2026-10-06,
   #151): the pre-PR review, one fresh subagent handed the diff, the review rules, the glossary
   and the raw output behind any measurement. Its findings go in the pull request's body and its

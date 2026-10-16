@@ -70,6 +70,10 @@ re-walks every quantifier that covers the place it lands. Found in PR #163, twic
 **Where prose restates a list the code holds, read the two side by side.** Found in PR #186,
 where the README's list of what a hook stops had lost two entries of the script's.
 
+**A citation of a section names its heading, and the reviewer opens that heading and reads that
+it holds the claim.** Found in PR #303, where "the section before it" pointed to the wrong section
+and the review read the figures without opening it.
+
 **A reason is written out in one file, and the rest point there.** The same reason written out
 in a second file, outside a trail's quotation, is a finding. Found in PR #205, where one reason
 stood in four files and the commit message's list of them was wrong twice.

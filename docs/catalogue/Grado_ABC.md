@@ -1315,7 +1315,10 @@ generated map* and *Nauvis*.
 - **The tungsten is already reported**, in "Angels-Bobs-SpaceAge Tungsten Ore" on the discussion
   tab, where the author called it a conflict with Bob's and did not promise a fix (read
   2026-10-16).
-  The count goes there as a reply rather than as a second report.
+  The count goes there as a reply rather than as a second report. *Ruled again 2026-10-16
+  (#146): no reply. Nobody in the thread doubts that it happens, and what it lacks is a fix,
+  which the reply did not offer. The author had already given the cause there. The new report
+  links to the thread.*
 - **`Grado_ABCS` keeps `stone` and `tungsten-ore` on Nauvis until a fix ships**, with no pack
   Lua: the lean is against a *Patch* (`GLOSSARY.md`). Whether either matters in play is for
   `Grado_ABCS`'s play session (#29).
@@ -1323,6 +1326,7 @@ generated map* and *Nauvis*.
   mod than without it, and no run was made without `rso-mod`.
 
 Both texts are drafts on #146, not yet posted (2026-10-16); the links go there once they are.
+*2026-10-16: one text, the report. The reply was withdrawn on #146.*
 
 ### `spidertrontiers-community-updates`
 

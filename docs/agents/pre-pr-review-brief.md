@@ -114,7 +114,9 @@ You are handed:
 - `docs/agents/code-review.md`. Read it whole. It is the rules you review by, and the prose is
   reviewed as carefully as the code. Where prose restates a list the code holds, read the two
   side by side.
-- `GLOSSARY.md`, which holds the three grades of evidence and the other terms.
+- `GLOSSARY.md`, which holds the terms and the words most of them avoid.
+- `vendor/grado-factorio-tools/docs/claim-grades.md`, which holds the three grades of evidence
+  and the rules a reviewer checks them by.
 - <the raw output, the saved commands and the scripts behind the figures, one path each with
   the figure it is behind; or nothing>
 - <scratch>/commit-check.txt and <scratch>/markdown-check.txt. <If an `info.json` changed:

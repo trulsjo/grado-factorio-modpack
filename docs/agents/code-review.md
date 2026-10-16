@@ -115,16 +115,15 @@ from the source and not run". Every later sentence that restates the conclusion,
 or in a note elsewhere, carries the same qualifier, and a cause is given as what the source shows.
 Found in PR #129 and PR #138.
 
-**A claim has a grade, and two of the three are always marked.** The grades are in `GLOSSARY.md`:
-*Measured*, *Read from source* and *Inferred* (2026-10-06, #157). *Measured* may go unmarked inside
-a section that says how and when it was measured - a catalogue header's portal-reading date, a load
-record's build line. *Read from source* and *Inferred* are marked every time, and again wherever
-the conclusion is repeated, which is the rule above made general. Each grade has something it
-carries - its day and build, the release read, the claims it rests on - and a claim without it is
-not that grade. A conclusion takes the weakest grade among its parts. A claim that names nothing it
-rests on has no grade: it is marked "not measured" or it is a finding. Prose written before
-2026-10-06 was not rewritten to these terms, so an old "confirmed" or "checked" is not a defect on
-its own.
+**A claim has a grade, and two of the three are always marked.** The grades, *Measured*, *Read
+from source* and *Inferred*, and the rules a reviewer checks them by are on the
+[shared page](../../vendor/grado-factorio-tools/docs/claim-grades.md) (since 2026-10-16, #301).
+Here they apply to all new prose (2026-10-06, #157), because six of the eight review-fix commits
+of 2026-10-04 and 2026-10-05 repaired a sentence that gave an inference or a reading of source as
+an observation; the entry for #157 in `docs/decisions.md` names them. Marking *Read from source*
+and *Inferred* wherever a conclusion is repeated is the rule above made general. Prose written
+before 2026-10-06 was not rewritten to these terms, so an old "confirmed" or "checked" is not a
+defect on its own.
 
 **A portal reading is a measurement.** Every version, date, download count and `factorio_version` in
 prose here came from an API call on a particular day and goes stale silently. Treat an undated one
@@ -149,7 +148,9 @@ handed and not by a skill's name:
 
 - the diff against `main`;
 - this file;
-- `GLOSSARY.md`, which holds the three grades the rules above use;
+- `GLOSSARY.md`, which holds the terms and the words most of them avoid;
+- `vendor/grado-factorio-tools/docs/claim-grades.md`, which holds the three grades the rules
+  above use;
 - the commit messages, and the branch's tickets;
 - on a branch that records measurements, the raw output behind them - a `--dump-data` dump, the
   portal API's responses, a load's log - and the commands and scripts that produced the figures;

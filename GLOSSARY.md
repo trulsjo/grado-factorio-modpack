@@ -109,33 +109,23 @@ _Avoid_: dead end for a mod with no future (say *abandoned* if no release is exp
 successor* if nothing replaces it)
 
 **Measured**:
-The thing itself was run or queried and the result written down: a script's output over a data
-dump, a load's log, a portal reading, or what a person saw in a play session. It carries its day,
-and its build where a game was run, stated with the claim or by the section it stands in. A search
-that finds nothing is measured, and carries what was searched. A cause is measured when the run
-itself tested it: it changed one named thing, taken from the record as what actually differed,
-the record shows every other input held, in one run or in two whose recorded inputs are otherwise
-equal, and the result changed. The claim is limited to what was run. Amended 2026-10-15 (#292).
-The strongest of three grades of evidence, above *Read from source* and *Inferred*. Added
-2026-10-06 (#157).
+The strongest of the three claim grades, defined on the
+[shared page](vendor/grado-factorio-tools/docs/claim-grades.md). Added 2026-10-06 (#157), amended
+2026-10-15 (#292), defined there since 2026-10-16 (#301).
 _Avoid_: confirmed, verified, observed, checked (none says which grade is meant); "measured" for
 anything whose day neither it nor its section gives
 
 **Read from source**:
-Taken from a mod's code or data files, with nothing executed. It carries the release that was read.
-A portal description or a changelog is not source: what an author says is quoted and attributed,
-and has no grade until someone measures it or reads the source. Weaker than *Measured*, because
-nothing ran. Added 2026-10-06 (#157).
+The middle of the three claim grades, defined on the
+[shared page](vendor/grado-factorio-tools/docs/claim-grades.md). Added 2026-10-06 (#157), defined
+there since 2026-10-16 (#301).
 _Avoid_: read or reading on its own (a portal reading is *Measured*), "the mod does" for what its
 source says it would do
 
 **Inferred**:
-Concluded from other claims, and it names them. The weakest of the three grades, below *Read from
-source*. A conclusion takes the weakest grade among its parts, and the step that joins them is
-itself inferred: a cause joined to a measured effect is inferred, however solid each half is,
-unless the cause itself was tested as *Measured* says. That nothing exists is inferred from a
-search that found nothing - "`SpaceMod` has no 2.0 release" was measured, and "SpaceX is dead"
-was inferred from it and wrong. Added 2026-10-06 (#157).
+The weakest of the three claim grades, defined on the
+[shared page](vendor/grado-factorio-tools/docs/claim-grades.md). Added 2026-10-06 (#157), defined
+there since 2026-10-16 (#301).
 _Avoid_: assumed (a claim that names nothing it rests on has no grade; it is marked "not measured"
 or it is a finding), likely without saying from what
 

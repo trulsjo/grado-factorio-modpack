@@ -455,6 +455,14 @@ textures — which is where the `alien-biomes-hr-terrain` question below lands. 
 states: "**When used with Space Age, only the Nauvis surface will be affected**", so its reach in
 `Grado_ABCS` is narrower than in `Grado_ABCX` without either being broken.
 
+*2026-10-16 (#284): narrower, but not Nauvis only. Read from source in `0.8.0` (downloaded
+2026-10-16, SHA1 matching the portal's): it keeps `0.7.4`'s loop, which removes six decoratives
+from Gleba's list in Space Age `2.0.77`. The trace is in the `Grado_ABCS` catalogue, under
+"Gleba's decorative list". The author takes bug reports on Discord: the portal's `homepage` for
+the mod is a Discord invite and it lists no source repository (read 2026-10-16), and Truls said
+the same that day. He reported it there on 2026-10-16, in the
+[Alien Biomes bug channel](https://discord.com/channels/419526714721566720/1560555396844748870).*
+
 ### `bobinserters`
 
 | | |

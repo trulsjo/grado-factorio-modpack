@@ -1294,30 +1294,33 @@ settings decide what the other three's ore actually looks like on a map.
 **Recommendation: keep.** Current, maintained, and the member with the strongest claim to being
 load-bearing for how an ABC game opens.
 
-**Its Nauvis table keeps three names Angel's removed: report it to the author, ruled 2026-10-16
-(#146).**
+**Its Nauvis table keeps three names it means to drop when Angel's is loaded: report it to the
+author, ruled 2026-10-16 (#146).**
 `resourceconfigs/mainconfig.lua` means to drop `iron-ore`, `copper-ore` and `stone` from the
 table when Angel's is loaded, and clears a level of the table that does not hold them: lines 583
-to 585 in `7.0.26` and 595 to 597 in `7.1.4`, the newest release on 2026-10-16, read from source.
-Base only, what it leaves is lines in the log. In `Grado_ABCS`, where Space Age keeps `stone` as
-a resource for Gleba, 1,255 `stone` entities were counted on Nauvis, and beside them 847 of Space
-Age's `tungsten-ore`, which comes from `bobores.lua` and not from these lines, read from source.
-The count is #140's, on one map, and the reading is #133's; both are in the `Grado_ABCS`
-catalogue, under *Counted on a generated map* and the section before it.
+to 585 in `7.0.26` and 595 to 597 in `7.1.4`, the newest release on 2026-10-16 (#145, on #146),
+read from source. Base only, as the source reads, what it leaves is lines in the log. In
+`Grado_ABCS`, where Space Age keeps `stone` as a resource for Gleba, 1,255 `stone` entities were
+counted on Nauvis, and beside them 847 of Space Age's `tungsten-ore`. As the source reads, the
+table gets `stone` from these lines and `tungsten-ore` from `bobores.lua`; that the table placed
+what was counted is inferred. The count is #140's, 2026-10-12 on Factorio 2.0.77, on one map, and
+the `7.0.26` reading is #133's; both are in the `Grado_ABCS` catalogue, under *Counted on a
+generated map* and the section before it.
 
-- **The table-key bug is reported** as a new thread on the portal's discussion tab, in its Bugs
-  category, where `orzelek` was answering when read on 2026-10-16. No report of it was found on
-  the first page of either the discussion tab or the forum board. The reason: the fix is three
-  lines and belongs in this mod's code.
+- **The table-key bug goes** as a new thread on the portal's discussion tab, in its Bugs
+  category, where `orzelek` was answering when read on 2026-10-16. No report of it was found by
+  title on the first page of either the discussion tab or the forum board. The reason is the
+  recommendation Truls took, as it is quoted on #146: "The bug is clear, the fix is small and
+  the author is active." The fix there is the draft's three lines, not tested.
 - **The tungsten is already reported**, in "Angels-Bobs-SpaceAge Tungsten Ore" on the discussion
-  tab, where the author called it a conflict with Bob's and promised no fix (read 2026-10-16).
+  tab, where the author called it a conflict with Bob's and did not promise a fix (read
+  2026-10-16).
   The count goes there as a reply rather than as a second report.
 - **`Grado_ABCS` keeps `stone` and `tungsten-ore` on Nauvis until a fix ships**, with no pack
   Lua: the lean is against a *Patch* (`GLOSSARY.md`). Whether either matters in play is for
   `Grado_ABCS`'s play session (#29).
 - **Membership is not reopened.** It would be reopened on a count showing a pack worse with the
-  mod than without it, and no run was made without `rso-mod`. What the count shows from the bug
-  is ore Angel's meant to remove placed on Nauvis, in `Grado_ABCS`.
+  mod than without it, and no run was made without `rso-mod`.
 
 Both texts are drafts on #146, not yet posted (2026-10-16); the links go there once they are.
 

@@ -915,7 +915,8 @@ Three things in `rso-mod`'s Nauvis table, all read from the source:
   autoplace (lines 120 and 121). Base only there is none, as Angel's leaves no Bob's ore on the map.
   Here there is one, Space Age's, in the mining category `hard-solid`. So the table would place
   Space Age's tungsten ore on Nauvis. *Counted 2026-10-12 (#140): 847 `tungsten-ore` entities on
-  Nauvis in this pack and none in `Grado_ABC`.*
+  Nauvis in this pack and none in `Grado_ABC`.* *Ruled 2026-10-16 (#146), for this bullet and
+  the two above: under `rso-mod` in the `Grado_ABC` catalogue.*
 
 The `infinite-` resources are in the planet's list and in none of `rso-mod`'s tables (searched for
 `infinite-` in `resourceconfigs/`: one hit, in the table for another mod). What places them, if

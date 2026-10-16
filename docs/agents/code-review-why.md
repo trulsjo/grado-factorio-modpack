@@ -418,3 +418,22 @@ then and stood nowhere before.
 
 > **The words it is handed them with are in `pre-pr-review-brief.md`**, for the review and for the
 > confirmation, with the shape of the report.
+
+**The rule on claim grades**, as it stood from 2026-10-06 (#157) until 2026-10-16, when #301
+moved the grades and their rules to the shared page in `grado-factorio-tools`:
+
+> **A claim has a grade, and two of the three are always marked.** The grades are in `GLOSSARY.md`:
+> *Measured*, *Read from source* and *Inferred* (2026-10-06, #157). *Measured* may go unmarked
+> inside a section that says how and when it was measured - a catalogue header's portal-reading
+> date, a load record's build line. *Read from source* and *Inferred* are marked every time, and
+> again wherever the conclusion is repeated, which is the rule above made general. Each grade has
+> something it carries - its day and build, the release read, the claims it rests on - and a claim
+> without it is not that grade. A conclusion takes the weakest grade among its parts. A claim that
+> names nothing it rests on has no grade: it is marked "not measured" or it is a finding. Prose
+> written before 2026-10-06 was not rewritten to these terms, so an old "confirmed" or "checked" is
+> not a defect on its own.
+
+**What the pre-PR reviewer is handed**, its item on `GLOSSARY.md`, as it stood until 2026-10-16
+(#301):
+
+> - `GLOSSARY.md`, which holds the three grades the rules above use;

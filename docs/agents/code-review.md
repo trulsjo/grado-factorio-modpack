@@ -117,10 +117,9 @@ Found in PR #129 and PR #138.
 
 **A claim has a grade, and two of the three are always marked.** The grades, *Measured*, *Read
 from source* and *Inferred*, and the rules a reviewer checks them by are on the
-[shared page](../../vendor/grado-factorio-tools/docs/claim-grades.md) (since 2026-10-16, #301).
-Here they apply to all new prose (2026-10-06, #157), because six of the eight review-fix commits
-of 2026-10-04 and 2026-10-05 repaired a sentence that gave an inference or a reading of source as
-an observation; the entry for #157 in `docs/decisions.md` names them. Marking *Read from source*
+[shared page](../../vendor/grado-factorio-tools/docs/claim-grades.md).
+Here they apply to all new prose (2026-10-06, #157); the reason is in that entry of
+`docs/decisions.md`. Marking *Read from source*
 and *Inferred* wherever a conclusion is repeated is the rule above made general. Prose written
 before 2026-10-06 was not rewritten to these terms, so an old "confirmed" or "checked" is not a
 defect on its own.

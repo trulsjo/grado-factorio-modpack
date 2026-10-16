@@ -232,3 +232,10 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   Kovarex prerequisite on every technology (in 2.0.13 it fixes named mods one by one), and, as a
   second report, a check on `enabled` in the fork. The pack carries no *Patch*. The hold is reviewed
   at stable 2.1, with #290.
+- **The claim grades are defined in `grado-factorio-tools`** (2026-10-16, #301): on its
+  `docs/claim-grades.md`, written once there so that `realistic-fusion-refreshed` takes the same
+  grades rather than a copy (Truls, on trulsjo/realistic-fusion-refreshed#720). The meanings, the
+  scope here and the reason are unchanged from #157 and #292. `GLOSSARY.md` keeps an entry for each
+  grade with its `_Avoid_` line and a link, because `scripts/glossary-check.ps1` reads its words
+  from those lines; dropping them would have stopped it catching "confirmed" (Truls, in the triage
+  of #301).

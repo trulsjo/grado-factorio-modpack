@@ -457,7 +457,8 @@ states: "**When used with Space Age, only the Nauvis surface will be affected**"
 
 *2026-10-16 (#284): narrower, but not Nauvis only. Read from source in `0.8.0` (downloaded
 2026-10-16, SHA1 matching the portal's): it keeps `0.7.4`'s loop, which removes six decoratives
-from Gleba's list in Space Age `2.0.77`. The trace is in the `Grado_ABCS` catalogue, under
+from Gleba's list in Space Age `2.0.77`; whether Space Age's 2.1 build, the only one `0.8.0` is
+served to, still lists them was not read. The trace is in the `Grado_ABCS` catalogue, under
 "Gleba's decorative list". The author takes bug reports on Discord: the portal's `homepage` for
 the mod is a Discord invite and it lists no source repository (read 2026-10-16), and Truls said
 the same that day. He reported it there on 2026-10-16, in the

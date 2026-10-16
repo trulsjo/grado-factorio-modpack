@@ -949,10 +949,10 @@ same in both dumps. Two things differ:
   The line that would have cleared the prototypes' autoplace is commented out (line 48), under a
   comment that Space Age fails to load with it. The mod's description says "When used with Space
   Age, only Nauvis will be affected", and its changelog for `0.7.0` the same: this loop does
-  otherwise.* *2026-10-16 (#284): `0.8.0`'s file is `0.7.4`'s but for one trailing blank line, so
-  it has the same loop at the same lines, read from source. Whether Space Age's 2.1 build still
-  lists the six on Gleba was not read. Reported to the author; where and how is under
-  `alien-biomes` in the `Grado_ChangingBase` catalogue.*
+  otherwise.* *2026-10-16 (#284): `0.8.0`'s file is `0.7.4`'s, byte for byte, so it has the
+  same loop at the same lines, read from source. Whether Space Age's 2.1 build still lists the
+  six on Gleba was not read. Reported to the author; where and how is under `alien-biomes` in
+  the `Grado_ChangingBase` catalogue.*
 
 What a resource gives changed in one: `crude-oil` gives `angels-liquid-multi-phase-oil`, on Aquilo
 as on Nauvis. The other eight give what they give in Space Age alone.

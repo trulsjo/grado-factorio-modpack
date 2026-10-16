@@ -1305,7 +1305,7 @@ counted on Nauvis, and beside them 847 of Space Age's `tungsten-ore`. As the sou
 table gets `stone` from these lines and `tungsten-ore` from `bobores.lua`; that the table placed
 what was counted is inferred. The count is #140's, 2026-10-12 on Factorio 2.0.77, on one map, and
 the `7.0.26` reading is #133's; both are in the `Grado_ABCS` catalogue, under *Counted on a
-generated map* and the section before it.
+generated map* and *Nauvis*.
 
 - **The table-key bug goes** as a new thread on the portal's discussion tab, in its Bugs
   category, where `orzelek` was answering when read on 2026-10-16. No report of it was found by

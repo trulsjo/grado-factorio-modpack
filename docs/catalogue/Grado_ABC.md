@@ -1316,9 +1316,9 @@ generated map* and *Nauvis*.
   tab, where the author called it a conflict with Bob's and did not promise a fix (read
   2026-10-16).
   The count goes there as a reply rather than as a second report. *Ruled again 2026-10-16
-  (#146): no reply. Nobody in the thread doubts that it happens, and what it lacks is a fix,
-  which the reply did not offer. The author had already given the cause there. The new report
-  links to the thread.*
+  (#146): no reply. Truls's reason: "I don't think anyone in the thread doubts that it happens,
+  just that there is not yet any clear fix." The reply offered none. The recommendation he took
+  added that the author had already given the cause there. The new report links to the thread.*
 - **`Grado_ABCS` keeps `stone` and `tungsten-ore` on Nauvis until a fix ships**, with no pack
   Lua: the lean is against a *Patch* (`GLOSSARY.md`). Whether either matters in play is for
   `Grado_ABCS`'s play session (#29).

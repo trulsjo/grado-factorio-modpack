@@ -239,3 +239,12 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   grade with its `_Avoid_` line and a link, because `scripts/glossary-check.ps1` reads its words
   from those lines; dropping them would have stopped it catching "confirmed" (Truls, in the triage
   of #301).
+- **How `rso-mod`'s membership is judged** (2026-10-17, #309): by the pack's *Promise*, as for
+  any member. A count reopens it when `rso-mod` leaves an ore *Unplaced* that is placed without
+  it, on the same seed and set: the reading is a difference, so a resource unplaced either way does
+  not count. Each pack is judged on its own runs, and removal from `Grado_ABC` is considered only
+  if the base-only packs fail as well. `stone` and `tungsten-ore` on Nauvis with Space
+  Age are *Known defects*, reported to the author, and become conflicts only if the author says no.
+  #307's counts and the recount of the packs found no ore that `rso-mod` unplaces. The ruling is
+  for `rso-mod` only. The counts and the reports are in its entry in
+  `docs/catalogue/Grado_ABC.md`; the watch on the author's answers is #310.

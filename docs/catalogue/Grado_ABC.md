@@ -1331,7 +1331,11 @@ loaded, but the three-line fix was not run.*
 - **Membership is not reopened.** It would be reopened on a count showing a pack worse with the
   mod than without it, and no run was made without `rso-mod`. *2026-10-17: #307 made runs
   without it, set by set rather than as the pack; they are below. Whether they show a pack worse
-  with the mod is Truls's, and not yet asked.*
+  with the mod is Truls's, and not yet asked.* *Ruled 2026-10-17 (#309): they do not. The
+  pack's promise stays the membership test, and a count reopens it when `rso-mod` leaves an ore
+  unplaced that is placed without it; `docs/decisions.md` has the ruling, and `GLOSSARY.md` has
+  Unplaced and Known defect. No count has found one. `stone` and `tungsten-ore` on Nauvis are
+  known defects while the reports are with the author (#310).*
 
 Both texts are drafts on #146, not yet posted (2026-10-16); the links go there once they are.
 *2026-10-16: one text, the report. The reply was withdrawn on #146.* *2026-10-17: both are
@@ -1355,6 +1359,22 @@ count row for row. The counts are on #307.
   line 120**, in a throwaway copy of `7.0.26`. It takes Nauvis `tungsten-ore` to none in all
   three sets and leaves the counts on the other four planets as they were. Most other Nauvis
   counts change, none to zero, and `stone` stays.
+
+*Counted again 2026-10-17 (#309): no pack has an ore unplaced.* The staged packs with
+`rso-mod`, on the 97 by 97 chunks around Nauvis's origin, Nauvis only, Factorio 2.0.77:
+`Grado_ABC`, `Grado_ABCX` and `Grado_ABCS` at seed 140140, and `Grado_ABCS` at seed 307307. In
+`Grado_ABCS`, Space Age's `calcite`, `scrap`, `sulfuric-acid-geyser`, `fluorine-vent` and
+`lithium-brine` have no entity on Nauvis; the pack's run of 2026-10-16 counted each on its own
+planet. Apart from those, the one resource with no entity on Nauvis in all four runs is
+`angels-sea-pump-resource`, which has no autoplace. `clowns-ore1` and its `infinite-` twin were
+found in `Grado_ABCS` on seed 307307 only (428 and 76). `Grado_ABCX`'s Nauvis counts are the
+same as `Grado_ABC`'s, name for name. The counts are on #307.
+
+*Read from source 2026-10-17 (#309): `infinite-coal` on Vulcanus is not a defect.* `rso-mod`
+`7.0.26` places `infinite-<ore>` inside a patch of `<ore>` wherever that prototype exists, a
+feature its comment calls "infinite ore handling for Angels Ores mod" (`control.lua` lines 659
+to 668), and nothing there reads which planet the patch is on. It is not reported. Whether it
+matters in play is for #29.
 
 ### `spidertrontiers-community-updates`
 

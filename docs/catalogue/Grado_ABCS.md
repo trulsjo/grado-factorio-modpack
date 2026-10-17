@@ -1106,7 +1106,9 @@ counted off Nauvis.
 the dump, 45 have a probability of `0`, `scrap` has its own and one has no autoplace. So that
 `rso-mod` placed everything here but Fulgora's `scrap` is inferred from that and from its
 source. It was not measured: no run was made without
-`rso-mod`.
+`rso-mod`. *2026-10-17 (#307): runs without `rso-mod` were made for the Bob's, Angel's and
+MadClown's members, not for the pack. They are in `rso-mod`'s entry in the `Grado_ABC`
+catalogue.*
 
 ### Not covered
 

@@ -108,6 +108,19 @@ Added 2026-10-15 (#294).
 _Avoid_: dead end for a mod with no future (say *abandoned* if no release is expected, *no
 successor* if nothing replaces it)
 
+**Unplaced**:
+A resource that exists in a game's prototypes and of which no planet has an entity in the area
+counted. Unplaced is not unobtainable: an ore can be unplaced and still come from sorting. Added
+2026-10-17 (#309).
+_Avoid_: "unavailable" for a resource no planet places (it reads as "cannot be obtained")
+
+**Known defect**:
+A member's defect that has been reported to its author with a fix proposed. It is not a conflict
+under the pack's *Promise* while it is with the author; it becomes one when the author says
+explicitly that it will not be fixed. Silence and a release without the fix leave it a known
+defect. Added 2026-10-17 (#309).
+_Avoid_: "conflict" for a defect still with its author
+
 **Measured**:
 The strongest of the three claim grades, defined on the
 [shared page](vendor/grado-factorio-tools/docs/claim-grades.md). Added 2026-10-06 (#157), amended

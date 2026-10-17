@@ -1305,7 +1305,10 @@ counted on Nauvis, and beside them 847 of Space Age's `tungsten-ore`. As the sou
 table gets `stone` from these lines and `tungsten-ore` from `bobores.lua`; that the table placed
 what was counted is inferred. The count is #140's, 2026-10-12 on Factorio 2.0.77, on one map, and
 the `7.0.26` reading is #133's; both are in the `Grado_ABCS` catalogue, under *Counted on a
-generated map* and *Nauvis*.
+generated map* and *Nauvis*. *2026-10-17 (#307): measured for `tungsten-ore`, which no Space
+Age run without `rso-mod` placed on Nauvis, and which the guard below took off it. For `stone`
+it is still inferred: no Space Age run without `rso-mod` placed it on Nauvis with Angel's
+loaded, but the three-line fix was not run.*
 
 - **The table-key bug goes** as a new thread on the portal's discussion tab, in its Bugs
   category, where `orzelek` was answering when read on 2026-10-16. No report of it was found by
@@ -1319,14 +1322,38 @@ generated map* and *Nauvis*.
   (#146): no reply. Truls's reason: "I don't think anyone in the thread doubts that it happens,
   just that there is not yet any clear fix." The reply offered none. The recommendation he took
   added that the author had already given the cause there. The new report links to the thread.*
+  *2026-10-17: a reply after all, with a fix that #307's counts tested. Truls posted it
+  there, draft 3 as revised on #146.*
 - **`Grado_ABCS` keeps `stone` and `tungsten-ore` on Nauvis until a fix ships**, with no pack
   Lua: the lean is against a *Patch* (`GLOSSARY.md`). Whether either matters in play is for
   `Grado_ABCS`'s play session (#29).
 - **Membership is not reopened.** It would be reopened on a count showing a pack worse with the
-  mod than without it, and no run was made without `rso-mod`.
+  mod than without it, and no run was made without `rso-mod`. *2026-10-17: #307 made runs
+  without it, set by set rather than as the pack; they are below. Whether they show a pack worse
+  with the mod is Truls's, and not yet asked.*
 
 Both texts are drafts on #146, not yet posted (2026-10-16); the links go there once they are.
-*2026-10-16: one text, the report. The reply was withdrawn on #146.*
+*2026-10-16: one text, the report. The reply was withdrawn on #146.* *2026-10-17: both are
+posted, the report on 2026-10-16 as its own thread and the reply on 2026-10-17 in the tungsten
+thread. The links are on #146.*
+
+**Counted on 2026-10-17 (#307): no ore went missing with `rso-mod`, and the one-line guard
+takes `tungsten-ore` off Nauvis.** Factorio 2.0.77, seed 140140, every resource entity in the 49
+by 49 chunks around the origin of each planet. The sets are this pack's Bob's members, then
+Angel's added, then MadClown's added, each base only and with Space Age, with and without
+`rso-mod`. The staged `Grado_ABC` and `Grado_ABCS` were run as well, and match #140's Nauvis
+count row for row. The counts are on #307.
+
+- **No resource with an autoplace was missing from every map.** Four were zero in that square
+  and were found on a 97 by 97 square of Nauvis or on a second seed.
+- **With Space Age and `rso-mod`, Nauvis gets `tungsten-ore` in all three sets** (420, 986 and
+  847) **and `stone` in the two with Angel's** (2,321 and 1,658). With Space Age and without
+  `rso-mod`, Nauvis gets no `tungsten-ore` in any set and no `stone` in those two. With
+  `rso-mod`, Vulcanus also gets `infinite-coal` (367) in the two with Angel's.
+- **The guard is `and not script.active_mods["space-age"]` on `resourceconfigs/bobores.lua`
+  line 120**, in a throwaway copy of `7.0.26`. It takes Nauvis `tungsten-ore` to none in all
+  three sets and leaves the counts on the other four planets as they were. The other Nauvis ores
+  change amounts, none to zero, and `stone` stays.
 
 ### `spidertrontiers-community-updates`
 

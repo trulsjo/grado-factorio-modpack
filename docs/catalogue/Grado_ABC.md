@@ -2638,6 +2638,166 @@ See `docs/catalogue/Grado_ABCX.md` and `docs/catalogue/Grado_ABCS.md`. **The num
 instead is Truls's** and is **#16**; this section supplies the evidence for this pack, not the
 decision.
 
+## Technologies the walk cannot reach (2026-10-18, #144)
+
+#132's walk of the recipe graph, in `docs/catalogue/Grado_ABCS.md` under *Whether each Space Age
+science pack can be made*, left 55 technologies of `Grado_ABCS` unreached and chased one of them,
+`captive-biter-spawner`. This chases the other 54, and the 52 of them this pack has base only. It
+reports what stops each. It says nothing about whether a member should stay.
+
+**One technology stops all 54: `bob-zinc-processing`, which is disabled, and which
+`extendedangels` names as a prerequisite of eight others.** It is a dead end in the prototypes,
+not a gap in the walk. No missing source rule was found, so the walk was not changed and
+nothing was run again: **52 technologies stay unreachable in `Grado_ABC`, base only, and 55 in
+`Grado_ABCS`**, the 54 and `captive-biter-spawner`.
+
+### How it was counted
+
+Measured 2026-10-18, on Factorio 2.0.77 and pwsh 7.6.7, with `dump-walk.ps1` at the tools commit
+this repository pins, `0125895`. Both packs were staged again that day with
+`scripts/stage-pack.ps1`, which resolves every member afresh. `get-dump.ps1` then served both
+from its cache, nothing run: the resolve gave the same set, by the dump key's exact text, as the
+two dumps made 2026-10-11. Their prototype list checksums are #132's own: `2195323740` for this
+pack base only and `2316474952` for `Grado_ABCS` beside Space Age. The key of the first lists
+the 100 mods of `docs/loads/Grado_ABC-2026-10-04.md` at the releases that record gives, compared
+line by line, and the three packs at `0.1.0`. The second lists the same 100, `Grado_ABCS`, and
+`elevated-rails`, `quality` and `space-age` bundled. From the repository root:
+
+```
+pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/dump-walk.ps1 <Grado_ABC dump>
+pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/dump-walk.ps1 <Grado_ABCS dump>
+```
+
+| | Not hidden or disabled | Can be researched | Not reached | #132, 2026-10-05 |
+|---|---|---|---|---|
+| `Grado_ABC`, base only | 1,126 | 1,074 | 52 | 52 |
+| `Grado_ABCS`, with Space Age | 1,204 | 1,149 | 55 | 55 |
+
+The names are those #132 had: the 52 base only, and with Space Age the same 52,
+`bob-quality-module-4`, `bob-quality-module-5` and `captive-biter-spawner`.
+
+To find what stops each, a script outside both repositories, which reads the walk's own result
+through `dump-walk.ps1`'s functions, listed for each technology not reached its prerequisites
+that were not reached either. A technology with none would have been traced down through its
+science packs, their recipes and their ingredients to the first thing the walk does not have.
+**There was no such technology in either pack.** Every one waits on another that is not
+reached, and every such chain ends at a technology that is disabled. The script is in the pull
+request that brought this section.
+
+### What stops each
+
+**`bob-zinc-processing`: a dead end in the prototypes.** In both dumps it has `enabled: false`,
+`hidden: true` and no effects. These eight technologies name it as a prerequisite, and the rest
+follow from them:
+
+| Names `bob-zinc-processing` | Also not reached, because of it | Base only | With Space Age |
+|---|---|---|---|
+| `angels-bio-refugium-butchery-2` | `angels-bio-refugium-butchery-3`; `angels-bio-refugium-biter-1`, `-2` and `-3`; `angels-bio-processing-crystal-full`, and after it `bob-modules-4` and `-5`; the speed, efficiency, productivity, pollution-clean and pollution-create modules 4 and 5; `angels-bio-yield-module-4` and `-5`; `effect-transmission-3`; `automation-6`; `bob-energy-shield-equipment-5` and `-6`; `bob-fission-reactor-equipment-3` and `-4`; `bob-power-armor-4` and `-5`; `bob-plasma-turrets-4`; `bob-vehicle-big-turret-equipment-4`; `bob-vehicle-fission-cell-equipment-5` and `-6`; `bob-vehicle-fission-reactor-equipment-5` and `-6`; `bob-vehicle-shield-equipment-5` and `-6`; `thermonuclear-bomb`. With Space Age also `bob-quality-module-4` and `-5` | 37 | 39 |
+| `angels-warehouses-2` | `angels-warehouses-3` and `-4` | 3 | 3 |
+| `angels-logistic-warehouses-2`, which also needs `angels-warehouses-2` | `angels-logistic-warehouses-3` and `-4` | 3 | 3 |
+| `angels-water-washing-3` | `angels-water-washing-4` | 2 | 2 |
+| `angels-gardens-3` | `garden-mutation` | 2 | 2 |
+| `angels-bio-nutrient-paste-2` | `angels-bio-nutrient-paste-3` | 2 | 2 |
+| `angels-bio-refugium-fish-3` | `angels-bio-refugium-fish-4` | 2 | 2 |
+| `angels-bio-farm-3` | | 1 | 1 |
+| | | **52** | **54** |
+
+**`kovarex-enrichment-process`: a dead end in the prototypes, `Grado_ABCS` only.** It stops
+`captive-biter-spawner` and nothing else. It is not traced again here: `Clowns-AngelBob-Nuclear`
+disables it, and the trace, the probes and #147's ruling are in `docs/catalogue/Grado_ABCS.md`
+under *Dead ends* (#141, #285, #287, #292).
+
+**Gaps in the walk: none found.** No technology was stopped by something the game supplies and
+the walk does not know.
+
+### Why `bob-zinc-processing` is disabled and still named
+
+*Read from source*, in the releases the dumps hold:
+
+- `angelssmelting` `2.0.5` disables it, in `prototypes/override/smelting-override-alloy-brass.lua`
+  line 22, `OV.disable_technology("bob-zinc-processing")`, under `mods["bobplates"]` and its
+  trigger for brass plate. In `smelting-override-alloy-gunmetal.lua` line 24 it also queues
+  `OV.global_replace_technology("bob-zinc-processing", "angels-gunmetal-smelting-1")`, which
+  replaces it as a prerequisite wherever it stands. Both are queued, and run by `OV.execute()` in
+  its `data-updates.lua` line 229.
+- `OV.execute()` resets the queue when it has run: in `angelsrefining` `2.0.4`,
+  `prototypes/override-functions.lua`, `ov_functions.execute` ends with `initialize_tables()`,
+  commented "reset the data tables after execution to allow for multiple points of execution".
+  A prerequisite queued with `OV.add_prereq` is added by name when a later `OV.execute()` runs,
+  and nothing there asks whether that technology is disabled (`adjust_technology`).
+- `extendedangels` `0.6.9` queues `bob-zinc-processing` as a prerequisite of the eight, in
+  `prototypes/overrides/technology.lua`, required from its `data-updates.lua` line 14: lines 29,
+  33 and 38 for the two warehouses and `angels-water-washing-3`, under `mods["bobplates"]`, and
+  lines 107 to 115 for the five bio technologies, under `angelsmods.bioprocessing` and
+  `mods["bobplates"]`. `OV.execute()` is also called in the `data-updates.lua` of
+  `angelsbioprocessing` and in the `data-final-fixes.lua` of `angelspetrochem` and
+  `angelssmelting`.
+
+*Inferred* from those and from the dump: `extendedangels` declares `angelssmelting` as a
+dependency, so the game runs its `data-updates` after `angelssmelting`'s. By then the
+replacement had run and been cleared, so a later `OV.execute()` added the eight prerequisites
+with nothing to replace them. The dump shows the result.
+
+*Inferred*: that no technology of the 54 can be researched in play. It rests on the dump, which
+has `bob-zinc-processing` disabled with no effects, and on #285's probe, which measured
+`LuaForce::add_research` refusing `captive-biter-spawner` while its prerequisite
+`kovarex-enrichment-process` was disabled and not researched. No probe was run for these. A
+runtime script could still research it: a search of the staged `Grado_ABCS` for `researched =
+true` outside `prototypes/` found migrations that name other technologies, `qol_research`
+setting its own internal ones, and `UltimateResearchQueue2`'s instant research, which marks
+prerequisites researched and which its `util.lua` line 56 allows only in cheat mode or the
+editor. None names `bob-zinc-processing`.
+
+**A later release has a change for it, on 2.1 only.** `extendedangels` `0.7.0` (released 2026-08-17,
+`factorio_version` 2.1; portal, read 2026-10-18) has in its changelog, under "Changes": "Fixed
+several techs require Bob's Zinc Processing as this has been replaced by Bob's Brass
+Processing". A 2.0 game is not served it, so the packs on line 2.0 resolve `0.6.9`. Whether
+`0.7.0` reaches the 54 was not tried: no 2.1 build was run.
+
+### What is lost, for #27
+
+What the 54 unlock is play, and #27's to weigh. Read from the table: tier 4 and 5 modules of
+every kind, from the speed module to the bio yield module, and with Space Age the quality
+module; the top tiers of Bob's personal and vehicle equipment and power armour; the tier 2 to 4
+warehouses; the third and fourth tier of Angel's water washing, gardens, nutrient paste, fish
+refugium and butchery; the biter refugium chain and its crystals; `automation-6`; and
+`thermonuclear-bomb`. The modules wait on `bob-modules-4`, whose prerequisite is
+`angels-bio-processing-crystal-full`, and that waits on the biter refugium, by the prerequisites
+in the dump.
+
+### In `Grado_ABCX`, where it stops all of SpaceX
+
+The ticket asked for the two packs above. `Grado_ABCX` was walked too, the same day and at the
+same pin, on its dump of 2026-10-15 (`Grado_ABCX-1533854567-4ab17c33a054`, the one
+`docs/catalogue/Grado_ABCX.md` cites under *The fourth stage waits on a disabled Kovarex*).
+It was not staged again. Its key lists the same 100 mods at the same releases as this pack's
+dump, with `Grado_ABCX` and `SpaceModFeorasFork` `1.3.3`.
+
+**1,074 of its 1,149 technologies that are not hidden or disabled can be researched, and
+none of the fork's 23 is among them.** The 75 not reached are the 52 above and the fork's 23,
+and the same script found every one waiting on `bob-zinc-processing`. Three also wait on
+`kovarex-enrichment-process`: `exploration-satellite`, `space-cartography` and
+`space-fluid-tanks`, the dead end #294 found. In the dump, `space-assembly`, the fork's first
+technology, has the prerequisites `rocket-silo`, `construction-robotics`, `bob-robots-3`,
+`bob-speed-module-5` and `bob-efficiency-module-5`, and the last two are among the 37 under
+`angels-bio-refugium-butchery-2`. *Read from source*, `SpaceModFeorasFork` `1.3.3`,
+`prototypes/technology-bobs.lua` lines 151 and 152, required from its `data-final-fixes.lua`
+line 13, add the speed module and replace `efficiency-module-3` with the efficiency module, when
+`bobmods.modules.EnableGodModules` is not true.
+
+So on line 2.0, at the defaults, **the fork's tree cannot be started in `Grado_ABCX`**, not
+only its fourth stage. That is evidence for #294; what follows from it is Truls's.
+
+### Not covered
+
+- **Recipes.** The walk also leaves 263 of this pack's 3,239 recipes that are not hidden
+  unmade, base only. 106 of the 263 are unlocked by one of the 52; the other 157 were not
+  chased.
+- **Settings other than the defaults.** The harness loads every mod at its defaults, and
+  `angelssmelting`'s brass and gunmetal triggers decide whether `bob-zinc-processing` is
+  disabled.
+- **The game's research screen.** Nothing was played; a headless run has no GUI.
+
 ## What was not checked
 
 Stated plainly so the gaps are not mistaken for clean results.

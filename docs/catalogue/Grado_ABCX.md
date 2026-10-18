@@ -373,6 +373,17 @@ and source are #295's probe record, a comment on that ticket. Limited to the `ad
 researching, launching and the research screen were not run, so the end-game being a* Dead end *in
 play stays inferred.*
 
+*Walked 2026-10-18 (#144), on the dump above, at the tools commit `0125895`: **none of the fork's
+23 technologies can be researched, as the prototypes read, and the first stage is stopped as
+well as the fourth.** `space-assembly`, the fork's first technology, takes
+`bob-speed-module-5` and `bob-efficiency-module-5` as prerequisites, and both wait on
+`bob-zinc-processing`, which `angelssmelting` disables and `extendedangels` names as a
+prerequisite. The record, with the source lines, is in `docs/catalogue/Grado_ABC.md` under*
+Technologies the walk cannot reach*. #295's probe did not meet this: it marked researched every
+technology in the two closures except Kovarex, by the paragraph above, and
+`bob-zinc-processing` is in both closures by the dump's prerequisites, so* Inferred*: it was
+marked researched too. Whether this bears on #294's ruling is Truls's.*
+
 ## Dropped during the port
 
 **None.** The 1.1 `Grado_ABCX` held 56 mods; 55 of them are accounted for under `Grado_ABC` and

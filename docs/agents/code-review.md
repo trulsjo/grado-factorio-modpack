@@ -67,7 +67,7 @@ duplicated across the five packs", "no replacement was found" — a claim about 
 set is checked by walking the set, never by agreeing with its tone. A fix that adds a figure
 re-walks every quantifier that covers the place it lands. Found in PR #163, twice.
 
-**A case the ruling's own terms leave open is a finding for Truls**, one per case, even where the
+**A case a ruling's own terms leave open is a finding for Truls**, one per case, even where the
 evidence leans one way. It is listed as unfixed and waiting on him, as *One review before the pull
 request* says of any finding that needs his decision. Found in PR #311, where the area counted
 was left open and two ores rested on it.

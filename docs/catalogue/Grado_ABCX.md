@@ -374,11 +374,11 @@ researching, launching and the research screen were not run, so the end-game bei
 play stays inferred.*
 
 *Walked 2026-10-18 (#144), on the dump above, at the tools commit `0125895`: **none of the fork's
-23 technologies can be researched, as the prototypes read, and the first stage is stopped as
-well as the fourth.** `space-assembly`, the fork's first technology, takes
-`bob-speed-module-5` and `bob-efficiency-module-5` as prerequisites, and both wait on
-`bob-zinc-processing`, which `angelssmelting` disables and `extendedangels` names as a
-prerequisite. The record, with the source lines, is in `docs/catalogue/Grado_ABC.md` under*
+23 technologies can be researched, as the prototypes read.** `space-assembly`, the fork's first
+technology, takes `bob-speed-module-5` and `bob-efficiency-module-5` as prerequisites, and both
+wait on `bob-zinc-processing`, which, read from source, `angelssmelting` `2.0.5` disables and
+`extendedangels` `0.6.9` names as a prerequisite. The record, with the source lines, is in
+`docs/catalogue/Grado_ABC.md` under*
 Technologies the walk cannot reach*. #295's probe did not meet this: it marked researched every
 technology in the two closures except Kovarex, by the paragraph above, and
 `bob-zinc-processing` is in both closures by the dump's prerequisites, so* Inferred*: it was

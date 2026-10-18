@@ -2645,10 +2645,10 @@ science pack can be made*, left 55 technologies of `Grado_ABCS` unreached and ch
 `captive-biter-spawner`. This chases the other 54, and the 52 of them this pack has base only. It
 reports what stops each. It says nothing about whether a member should stay.
 
-**One technology stops all 54: `bob-zinc-processing`, which is disabled, and which
-`extendedangels` names as a prerequisite of eight others.** It is a dead end in the prototypes,
-not a gap in the walk. No missing source rule was found, so the walk was not changed and
-nothing was run again: **52 technologies stay unreachable in `Grado_ABC`, base only, and 55 in
+**One technology stops all 54: `bob-zinc-processing`, which is disabled, and which, by the
+source below, `extendedangels` names as a prerequisite of eight others.** It is a dead end in
+the prototypes, not a gap in the walk. No missing source rule was found, so the walk was not
+changed: **52 technologies stay unreachable in `Grado_ABC`, base only, and 55 in
 `Grado_ABCS`**, the 54 and `captive-biter-spawner`.
 
 ### How it was counted
@@ -2673,16 +2673,16 @@ pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/dump-walk.ps1 <Grado_A
 | `Grado_ABC`, base only | 1,126 | 1,074 | 52 | 52 |
 | `Grado_ABCS`, with Space Age | 1,204 | 1,149 | 55 | 55 |
 
-The names are those #132 had: the 52 base only, and with Space Age the same 52,
-`bob-quality-module-4`, `bob-quality-module-5` and `captive-biter-spawner`.
+With Space Age they are the same 52, `bob-quality-module-4` and `-5`, and
+`captive-biter-spawner`, the three #132 named.
 
 To find what stops each, a script outside both repositories, which reads the walk's own result
 through `dump-walk.ps1`'s functions, listed for each technology not reached its prerequisites
 that were not reached either. A technology with none would have been traced down through its
 science packs, their recipes and their ingredients to the first thing the walk does not have.
 **There was no such technology in either pack.** Every one waits on another that is not
-reached, and every such chain ends at a technology that is disabled. The script is in the pull
-request that brought this section.
+reached, and every such chain ends at a technology that is disabled. The scripts are in the
+pull request that brought this section.
 
 ### What stops each
 
@@ -2702,7 +2702,8 @@ follow from them:
 | `angels-bio-farm-3` | | 1 | 1 |
 | | | **52** | **54** |
 
-**`kovarex-enrichment-process`: a dead end in the prototypes, `Grado_ABCS` only.** It stops
+**`kovarex-enrichment-process`: a dead end in the prototypes, of these two packs in
+`Grado_ABCS` only.** It stops
 `captive-biter-spawner` and nothing else. It is not traced again here: `Clowns-AngelBob-Nuclear`
 disables it, and the trace, the probes and #147's ruling are in `docs/catalogue/Grado_ABCS.md`
 under *Dead ends* (#141, #285, #287, #292).
@@ -2730,8 +2731,8 @@ the walk does not know.
   33 and 38 for the two warehouses and `angels-water-washing-3`, under `mods["bobplates"]`, and
   lines 107 to 115 for the five bio technologies, under `angelsmods.bioprocessing` and
   `mods["bobplates"]`. `OV.execute()` is also called in the `data-updates.lua` of
-  `angelsbioprocessing` and in the `data-final-fixes.lua` of `angelspetrochem` and
-  `angelssmelting`.
+  `angelsbioprocessing`, `angelspetrochem` and `angelsrefining`, and in the
+  `data-final-fixes.lua` of `angelspetrochem` and `angelssmelting`.
 
 *Inferred* from those and from the dump: `extendedangels` declares `angelssmelting` as a
 dependency, so the game runs its `data-updates` after `angelssmelting`'s. By then the
@@ -2744,11 +2745,13 @@ has `bob-zinc-processing` disabled with no effects, and on #285's probe, which m
 `kovarex-enrichment-process` was disabled and not researched. No probe was run for these. A
 runtime script could still research it: a search of the staged `Grado_ABCS` for `researched =
 true` outside `prototypes/` found migrations that name other technologies, `qol_research`
-setting its own internal ones, and `UltimateResearchQueue2`'s instant research, which marks
+setting its own internal ones, `EditorExtensions`' testing lab copying a research finished
+elsewhere, and `UltimateResearchQueue2`'s instant research, which marks
 prerequisites researched and which its `util.lua` line 56 allows only in cheat mode or the
 editor. None names `bob-zinc-processing`.
 
-**A later release has a change for it, on 2.1 only.** `extendedangels` `0.7.0` (released 2026-08-17,
+**A later release lists a change for it in its changelog, on 2.1 only.** `extendedangels`
+`0.7.0` (released 2026-08-17,
 `factorio_version` 2.1; portal, read 2026-10-18) has in its changelog, under "Changes": "Fixed
 several techs require Bob's Zinc Processing as this has been replaced by Bob's Brass
 Processing". A 2.0 game is not served it, so the packs on line 2.0 resolve `0.6.9`. Whether
@@ -2756,16 +2759,11 @@ Processing". A 2.0 game is not served it, so the packs on line 2.0 resolve `0.6.
 
 ### What is lost, for #27
 
-What the 54 unlock is play, and #27's to weigh. Read from the table: tier 4 and 5 modules of
-every kind, from the speed module to the bio yield module, and with Space Age the quality
-module; the top tiers of Bob's personal and vehicle equipment and power armour; the tier 2 to 4
-warehouses; the third and fourth tier of Angel's water washing, gardens, nutrient paste, fish
-refugium and butchery; the biter refugium chain and its crystals; `automation-6`; and
-`thermonuclear-bomb`. The modules wait on `bob-modules-4`, whose prerequisite is
-`angels-bio-processing-crystal-full`, and that waits on the biter refugium, by the prerequisites
-in the dump.
+What the 54 unlock is play, and #27's to weigh. The technologies are in the table above. The
+modules wait on `bob-modules-4`, whose prerequisite is `angels-bio-processing-crystal-full`, and
+that waits on the biter refugium, by the prerequisites in the dump.
 
-### In `Grado_ABCX`, where it stops all of SpaceX
+### In `Grado_ABCX`, where it stops all of SpaceX's technologies
 
 The ticket asked for the two packs above. `Grado_ABCX` was walked too, the same day and at the
 same pin, on its dump of 2026-10-15 (`Grado_ABCX-1533854567-4ab17c33a054`, the one
@@ -2785,8 +2783,9 @@ technology, has the prerequisites `rocket-silo`, `construction-robotics`, `bob-r
 line 13, add the speed module and replace `efficiency-module-3` with the efficiency module, when
 `bobmods.modules.EnableGodModules` is not true.
 
-So on line 2.0, at the defaults, **the fork's tree cannot be started in `Grado_ABCX`**, not
-only its fourth stage. That is evidence for #294; what follows from it is Truls's.
+So on line 2.0, at the defaults, **none of the fork's technologies can be researched in
+`Grado_ABCX`, as the prototypes read.** That is evidence for #294; what follows from it is
+Truls's.
 
 ### Not covered
 
@@ -2795,7 +2794,7 @@ only its fourth stage. That is evidence for #294; what follows from it is Truls'
   chased.
 - **Settings other than the defaults.** The harness loads every mod at its defaults, and
   `angelssmelting`'s brass and gunmetal triggers decide whether `bob-zinc-processing` is
-  disabled.
+  disabled, read from source in `2.0.5`.
 - **The game's research screen.** Nothing was played; a headless run has no GUI.
 
 ## What was not checked

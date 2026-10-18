@@ -2730,8 +2730,7 @@ the walk does not know.
   `prototypes/overrides/technology.lua`, required from its `data-updates.lua` line 14: lines 29,
   33 and 38 for the two warehouses and `angels-water-washing-3`, under `mods["bobplates"]`, and
   lines 107 to 115 for the five bio technologies, under `angelsmods.bioprocessing` and
-  `mods["bobplates"]`. `OV.execute()` is also called in the `data-updates.lua` of
-  `angelsbioprocessing`, `angelspetrochem` and `angelsrefining`, and in the
+  `mods["bobplates"]`. `OV.execute()` is also called later, among other places in the
   `data-final-fixes.lua` of `angelspetrochem` and `angelssmelting`.
 
 *Inferred* from those and from the dump: `extendedangels` declares `angelssmelting` as a

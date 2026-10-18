@@ -242,9 +242,12 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
 - **How `rso-mod`'s membership is judged** (2026-10-17, #309): by the pack's *Promise*, as for
   any member. A count reopens it when `rso-mod` leaves an ore *Unplaced* that is placed without
   it, on the same seed and set: the reading is a difference, so a resource unplaced either way does
-  not count. Each pack is judged on its own runs, and removal from `Grado_ABC` is considered only
+  not count. On Nauvis the area counted is the 97 by 97 chunks around the origin (2026-10-18): an
+  ore missing from the 49 by 49 square and placed on the larger one is not unplaced. Each pack is
+  judged on its own runs, and removal from `Grado_ABC` is considered only
   if the base-only packs fail as well. `stone` and `tungsten-ore` on Nauvis with Space
   Age are *Known defects*, reported to the author, and become conflicts only if the author says no.
-  #307's counts and the recount of the packs found no ore that `rso-mod` unplaces. The ruling is
-  for `rso-mod` only. The counts and the reports are in its entry in
-  `docs/catalogue/Grado_ABC.md`; the watch on the author's answers is #310.
+  `clowns-ore1` on Nauvis at seed 140140 in `Grado_ABCS`, placed without `rso-mod` and unplaced
+  with it, was ruled part of the `tungsten-ore` defect on 2026-10-18, because the guard proposed
+  for that defect places it. The ruling is for `rso-mod` only. The counts and the reports are in
+  its entry in `docs/catalogue/Grado_ABC.md`; the watch on the author's answers is #310.

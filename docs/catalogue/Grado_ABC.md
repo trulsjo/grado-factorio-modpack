@@ -1334,8 +1334,11 @@ loaded, but the three-line fix was not run.*
   with the mod is Truls's, and not yet asked.* *Ruled 2026-10-17 (#309): they do not. The
   pack's promise stays the membership test, and a count reopens it when `rso-mod` leaves an ore
   unplaced that is placed without it; `docs/decisions.md` has the ruling, and `GLOSSARY.md` has
-  Unplaced and Known defect. No count has found one. `stone` and `tungsten-ore` on Nauvis are
-  known defects while the reports are with the author (#310).*
+  Unplaced and Known defect. `stone` and `tungsten-ore` on Nauvis in `Grado_ABCS` are known
+  defects while the reports are with the author (#310).* *Ruled 2026-10-18 (#309): the one
+  ore the 97 by 97 counts found unplaced, `clowns-ore1` on Nauvis at seed 140140 in
+  `Grado_ABCS`, is part of the `tungsten-ore` defect. A follow-up telling the author is drafted
+  on #310.*
 
 Both texts are drafts on #146, not yet posted (2026-10-16); the links go there once they are.
 *2026-10-16: one text, the report. The reply was withdrawn on #146.* *2026-10-17: both are
@@ -1347,7 +1350,12 @@ takes `tungsten-ore` off Nauvis.** Factorio 2.0.77, seed 140140, every resource 
 by 49 chunks around the origin of each planet. The sets are this pack's Bob's members, then
 Angel's added, then MadClown's added, each base only and with Space Age, with and without
 `rso-mod`. The staged `Grado_ABC` and `Grado_ABCS` were run as well, and match #140's Nauvis
-count row for row. The counts are on #307.
+count row for row. The counts are on #307. *2026-10-18 (#309): read by the rule recorded below,
+three ores, each with its `infinite-` twin, went missing on this square: `clowns-ore8` in the
+base-only set with MadClown's (5,523 without `rso-mod`, none with it), and `clowns-resource1`
+(2,612 and none) and `clowns-ore1` (2,007 and none) in the Space Age set with MadClown's. Of the
+three, only `clowns-ore1` is missing on the 97 by 97 square as well. That square is the area
+counted, so the other two are not unplaced (`docs/decisions.md`).*
 
 - **No resource with an autoplace was missing from every map.** Those that were zero in that
   square were found on a 97 by 97 square of Nauvis or on a second seed.
@@ -1360,7 +1368,8 @@ count row for row. The counts are on #307.
   three sets and leaves the counts on the other four planets as they were. Most other Nauvis
   counts change, none to zero, and `stone` stays.
 
-*Counted again 2026-10-17 (#309): no pack has an ore unplaced.* The staged packs with
+*Counted again 2026-10-17 and 2026-10-18 (#309): `rso-mod` unplaces `clowns-ore1` on Nauvis in
+`Grado_ABCS` at seed 140140, and the guard places it.* The staged packs with
 `rso-mod`, on the 97 by 97 chunks around Nauvis's origin, Nauvis only, Factorio 2.0.77:
 `Grado_ABC`, `Grado_ABCX` and `Grado_ABCS` at seed 140140, and `Grado_ABCS` at seed 307307. In
 `Grado_ABCS`, Space Age's `calcite`, `scrap`, `sulfuric-acid-geyser`, `fluorine-vent` and
@@ -1368,12 +1377,18 @@ count row for row. The counts are on #307.
 planet. Apart from those, the one resource with no entity on Nauvis in all four runs is
 `angels-sea-pump-resource`, which has no autoplace. `clowns-ore1` and its `infinite-` twin were
 found in `Grado_ABCS` on seed 307307 only (428 and 76). `Grado_ABCX`'s Nauvis counts are the
-same as `Grado_ABC`'s, name for name. The counts are on #307.
+same as `Grado_ABC`'s, name for name. On 2026-10-18 `Grado_ABCS` was counted the same way at
+seed 140140 without `rso-mod` and with #307's guarded copy of it. `clowns-ore1` was 19,451
+without it, none with it and 641 with the guard; its twin was 5,191, none and 101. With the
+guard, Nauvis has no `tungsten-ore`, and `stone` drops from 8,500 to 6,716. `clowns-ore1` has the
+smallest allotment in `rso-mod`'s `resourceconfigs/clownsores.lua` (10, against 20 to 30 for the
+other MadClown's ores), so it is taken to lose the region rolls the extra `tungsten-ore` entry
+takes. That is inferred from the counts, not traced in the source. The counts are on #307.
 
 *Read from source 2026-10-17 (#309): `infinite-coal` on Vulcanus is not a defect.* `rso-mod`
-`7.0.26` places `infinite-<ore>` inside a patch of `<ore>` wherever that prototype exists, a
+`7.0.26` places `infinite-<ore>` inside a patch of `<ore>` when that prototype exists, a
 feature its comment calls "infinite ore handling for Angels Ores mod" (`control.lua` lines 659
-to 668), and nothing there reads which planet the patch is on. It is not reported. Whether it
+to 691), and nothing there reads which planet the patch is on. It is not reported. Whether it
 matters in play is for #29.
 
 ### `spidertrontiers-community-updates`

@@ -177,7 +177,9 @@ at most five lines and the path as its last text, and send no message.
 <n>. fixed | not fixed: <what is left> | left unfixed, as said
 
 One line for each finding, by its number. A new finding goes under Findings in the same form,
-its number carrying on from the last, with "(at confirmation)" after its sentence.
+its number carrying on from the last, with "(at confirmation)" after its sentence. A later
+confirmation goes under ## Confirmation as ### Second confirmation, ### Third confirmation and
+so on, with a line for each finding it answers.
 ```
 
 ## Into the pull request

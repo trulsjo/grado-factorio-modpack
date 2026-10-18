@@ -377,12 +377,12 @@ play stays inferred.*
 23 technologies can be researched, as the prototypes read.** `space-assembly`, the fork's first
 technology, takes `bob-speed-module-5` and `bob-efficiency-module-5` as prerequisites, and both
 wait on `bob-zinc-processing`, which, read from source, `angelssmelting` `2.0.5` disables and
-`extendedangels` `0.6.9` names as a prerequisite. The record, with the source lines, is in
-`docs/catalogue/Grado_ABC.md` under*
-Technologies the walk cannot reach*. #295's probe did not meet this: it marked researched every
-technology in the two closures except Kovarex, by the paragraph above, and
-`bob-zinc-processing` is in both closures by the dump's prerequisites, so* Inferred*: it was
-marked researched too. Whether this bears on #294's ruling is Truls's.*
+`extendedangels` `0.6.9` names as a prerequisite. #295's probe did not meet this: it marked
+researched every technology in the two closures except Kovarex, by the paragraph above, and
+`bob-zinc-processing` is in both closures by the dump's prerequisites, so,* Inferred *from that,
+it was marked researched too. Whether this bears on #294's ruling is Truls's. The record, with
+the source lines, is in `docs/catalogue/Grado_ABC.md`, under* Technologies the walk cannot
+reach.
 
 ## Dropped during the port
 

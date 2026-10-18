@@ -1224,9 +1224,7 @@ them. The six technologies are `oil-processing`, `advanced-oil-processing`, `coa
 ### Dead ends
 
 **One among Space Age's own technologies and recipes, and no science pack needs it.** The
-overhaul's own technologies were not chased; see *Not covered*. *Chased 2026-10-18 (#144): one
-more dead end stops all 54, `bob-zinc-processing`; see `docs/catalogue/Grado_ABC.md`,*
-Technologies the walk cannot reach.
+overhaul's own technologies were not chased; see *Not covered*.
 
 - **The technology `captive-biter-spawner` cannot be researched.** Its prerequisites are Space
   Age's: `cryogenic-science-pack`, `biter-egg-handling` and `kovarex-enrichment-process`. The
@@ -1815,12 +1813,12 @@ answer #147.*
   disabled did not come out as researchable. One is `captive-biter-spawner`. Of the other 54, 52
   are the same in the base-only dump, and two, `bob-quality-module-4` and `-5`, exist only with
   Space Age. None was chased: they may be the script not knowing a source, and base only they
-  are #27's. *Chased 2026-10-18 (#144), in `docs/catalogue/Grado_ABC.md` under* Technologies
-  the walk cannot reach*. Counted again that day at the tools commit `0125895`, on these two
-  dumps, which a fresh resolve gave again: 55 of 1,204, and 52 base only, so no figure here
-  changed. All 54 wait on `bob-zinc-processing`, which, read from source, `angelssmelting`
-  `2.0.5` disables and `extendedangels` `0.6.9` names as a prerequisite: a dead end in the
-  prototypes, not a source the walk lacks.*
+  are #27's. *Chased 2026-10-18 (#144). Counted again that day at the tools commit `0125895`,
+  on these two dumps, which a fresh resolve gave again: 55 of 1,204, and 52 base only, so no
+  figure here changed. All 54 wait on `bob-zinc-processing`, which, read from source,
+  `angelssmelting` `2.0.5` disables and `extendedangels` `0.6.9` names as a prerequisite: a
+  dead end in the prototypes, not a source the walk lacks. The record is in
+  `docs/catalogue/Grado_ABC.md`, under* Technologies the walk cannot reach.
 - **Weights and rocket capacity**, so whether a given item can be lifted.
 - **A 2.1 build of any of it.**
 

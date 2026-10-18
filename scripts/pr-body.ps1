@@ -110,6 +110,9 @@ if ($SelfTest) {
         @{ Name = 'the confirmation is taken where it stands last, with two runs of numbered lines'; Test = {
             $body = Get-Body $draft (& $report $two @('1. fixed', '2. not fixed: see 3', '', 'Second confirmation.', '', '2. fixed') -ConfirmationLast)
             $body.EndsWith("### Confirmation`n`n1. fixed`n2. not fixed: see 3`n`nSecond confirmation.`n`n2. fixed`n") -and $body -notmatch 'adding it up' } }
+        @{ Name = 'a later confirmation under its own third-level heading is kept, and its lines answer findings'; Test = {
+            $body = Get-Body $draft (& $report $two @('1. fixed', '', '### Second confirmation', '', '2. fixed'))
+            $body.EndsWith("### Confirmation`n`n1. fixed`n`n### Second confirmation`n`n2. fixed`n") } }
         @{ Name = 'a second-level heading inside a fenced block does not end a finding'; Test = {
             $fenced = (& $finding 1) + @('```', '## Findings', '## Not a heading', '```', 'After the block.', '')
             $body = Get-Body $draft (& $report $fenced @('1. fixed'))

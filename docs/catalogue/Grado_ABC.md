@@ -2657,7 +2657,8 @@ Measured 2026-10-18, on Factorio 2.0.77 and pwsh 7.6.7, with `dump-walk.ps1` at 
 this repository pins, `0125895`. Both packs were staged again that day with
 `scripts/stage-pack.ps1`, which resolves every member afresh. `get-dump.ps1` then served both
 from its cache, nothing run: the resolve gave the same set, by the dump key's exact text, as the
-two dumps made 2026-10-11. Their prototype list checksums are #132's own: `2195323740` for this
+two dumps in the cache, whose files are dated 2026-10-11. Their prototype list checksums are #132's
+own: `2195323740` for this
 pack base only and `2316474952` for `Grado_ABCS` beside Space Age. The key of the first lists
 the 100 mods of `docs/loads/Grado_ABC-2026-10-04.md` at the releases that record gives, compared
 line by line, and the three packs at `0.1.0`. The second lists the same 100, `Grado_ABCS`, and
@@ -2682,7 +2683,7 @@ that were not reached either. A technology with none would have been traced down
 science packs, their recipes and their ingredients to the first thing the walk does not have.
 **There was no such technology in either pack.** Every one waits on another that is not
 reached, and every such chain ends at a technology that is disabled. The scripts are in the
-pull request that brought this section.
+description of #315, the pull request that brought this section.
 
 ### What stops each
 
@@ -2708,8 +2709,9 @@ follow from them:
 disables it, and the trace, the probes and #147's ruling are in `docs/catalogue/Grado_ABCS.md`
 under *Dead ends* (#141, #285, #287, #292).
 
-**Gaps in the walk: none found.** No technology was stopped by something the game supplies and
-the walk does not know.
+**Gaps in the walk: none found.** The trace above stops at the first disabled technology, so the
+walk was run again on both dumps with `bob-zinc-processing` taken out of every prerequisite
+list: all 52 are then reached base only, and with Space Age all but `captive-biter-spawner`.
 
 ### Why `bob-zinc-processing` is disabled and still named
 
@@ -2742,10 +2744,11 @@ with nothing to replace them. The dump shows the result.
 has `bob-zinc-processing` disabled with no effects, and on #285's probe, which measured
 `LuaForce::add_research` refusing `captive-biter-spawner` while its prerequisite
 `kovarex-enrichment-process` was disabled and not researched. No probe was run for these. A
-runtime script could still research it: a search of the staged `Grado_ABCS` for `researched =
-true` outside `prototypes/` found migrations that name other technologies, `qol_research`
-setting its own internal ones, `EditorExtensions`' testing lab copying a research finished
-elsewhere, and `UltimateResearchQueue2`'s instant research, which marks
+runtime script could still research it: a search of the staged `Grado_ABCS`, at the releases
+the dump key lists, for `researched = true` outside `prototypes/` found, read from source,
+migrations that name other technologies, `qol_research` `3.4.2` setting its own internal ones,
+`EditorExtensions` `2.5.2`' testing lab copying a research finished elsewhere, and
+`UltimateResearchQueue2` `2.0.9`'s instant research, which marks
 prerequisites researched and which its `util.lua` line 56 allows only in cheat mode or the
 editor. None names `bob-zinc-processing`.
 

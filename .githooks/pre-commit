@@ -1,6 +1,6 @@
 #!/bin/sh
-# Checks the staged Markdown files for emphasis or a code span left open, a ragged table row and a
-# link to a file that is not tracked (#149), and for a prose line over 100 characters (#209), and
+# Checks the staged Markdown files for broken emphasis and code spans, ragged tables and links
+# that lead nowhere (#149), and for a prose line over 100 characters (#209), and
 # the staged scripts for a comment header line over 100 characters (#211). What each reads as
 # what, and what it cannot see, is in the header of
 # vendor/grado-factorio-tools/scripts/markdown-check.ps1, the shared check (#182), and of

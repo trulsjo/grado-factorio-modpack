@@ -1920,7 +1920,7 @@ Truls's.
   are content decisions nobody has taken. *(Ten extras and twelve members until 2026-09-23 (#10),
   when the game showed that `space-age` pulls in `quality` and `elevated-rails` itself.)*
   *(Qualified 2026-10-04 (#118): it requires them; a disabled one is refused, not enabled. See* What
-  the portal actually returns*.)* It also requires `angelsbioprocessing`, `angelspetrochem`,
+  the portal actually returns.*)* It also requires `angelsbioprocessing`, `angelspetrochem`,
   `angelsrefining`, `angelssmelting` and seven Bob's mods at specific minimum versions, all of which
   `Grado_ABC` already carries, so the ABC side costs nothing extra.
 - **`BobsAngelsSpaceAge` fits the rule and is much weaker evidence.** Its whole mandatory list is

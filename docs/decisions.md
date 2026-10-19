@@ -264,3 +264,14 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   dropped, so on 2.0 the hold would wait on a release this project chose not to ask for. The
   hold, both causes, is reviewed at stable 2.1 in #290. A 2.0 play session of the pack is not
   run: #28 waits for 2.1.
+- **A pull request's body carries the pr template's three headings** (2026-10-19, #320):
+  `## Summary`, `## Evidence` and `## Merge Danger`, each once, at the second level, outside
+  fenced blocks and in that order, in the body above the pre-PR review. Other sections may stand
+  between them and after them, and what stands under each is read by the pre-PR reviewer, not
+  the script. The rule stood on `docs/agents/issue-tracker.md` from 2026-10-08, and none of the
+  20 pull requests merged after PR #278 has all three: a session built the body from the
+  reviewer's brief, which did not name the skill, and nothing read the draft.
+  `scripts/pr-body.ps1` now refuses a draft that breaks the rule, and the rule holds whether or
+  not the plugin is installed. The 20 bodies are left as they are. The ruling reaches
+  `realistic-fusion-refreshed` as its own ticket, trulsjo/realistic-fusion-refreshed#730, whose
+  enforcement is that repository's call.

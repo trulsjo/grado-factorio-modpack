@@ -78,12 +78,17 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
   `ready-for-agent` comes off. On 2026-10-12 #225 was handed to a session as `ready-for-agent`
   with "None" under "Blocked by" in its body, while Truls's decision of 2026-10-11 that it waits
   stood in its comments (#232).
-- **Pull request body**: written with the `mattpocock-skills:pr` skill, where that plugin is
-  installed. This repository adds to what it produces: above its template, a `Closes #<n>` for each
-  ticket the branch resolves, where it resolves any; below it, under one heading, the pre-PR
-  review's findings and its confirmation as they stand in the reviewer's report
-  (`docs/agents/pre-pr-review-brief.md`, *Into the pull request*). `docs/agents/code-review.md` says
-  what else the pull request records once the plugin pass has run.
+- **Pull request body**: carries the `mattpocock-skills:pr` template's three headings,
+  `## Summary`, `## Evidence` and `## Merge Danger`, each once, at the second level and in that
+  order; other sections may stand between them and after them (Truls, 2026-10-19, #320). The
+  template is filled with that skill, where the plugin is installed, and from the same three
+  headings by hand where it is not. This repository adds to what it produces: above its
+  template, a `Closes #<n>` for each ticket the branch resolves, where it resolves any; below it,
+  under one heading, the pre-PR review's findings and its confirmation as they stand in the
+  reviewer's report (`docs/agents/pre-pr-review-brief.md`, *Into the pull request*).
+  `scripts/pr-body.ps1` builds the body and refuses a draft without the three headings.
+  `docs/agents/code-review.md` says what else the pull request records once the plugin pass has
+  run.
 
 Infer the repo from `git remote -v`; `gh` does this automatically when run inside a clone.
 

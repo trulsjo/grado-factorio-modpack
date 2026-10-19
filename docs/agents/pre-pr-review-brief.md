@@ -191,5 +191,7 @@ heading. A finding left unfixed has its reason beside its confirmation line.
 pwsh -NoProfile -File scripts/pr-body.ps1 -Draft <scratch>/draft.md -Review <scratch>/review.md -Out <scratch>/body.md
 ```
 
-`<scratch>/draft.md` is the body above the review, as the last confirmation read it. The script
-fails, and writes nothing, when a finding's number opens no line of the confirmation.
+`<scratch>/draft.md` is the body above the review, as the last confirmation read it. It is the
+`Closes` lines and the `mattpocock-skills:pr` template, filled: load the skill before writing it.
+The script fails, and writes nothing, when a finding's number opens no line of the confirmation,
+and when the draft lacks one of the template's three headings or holds them out of order (#320).

@@ -278,7 +278,7 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   enforcement is that repository's call.
 - **A pull request names a branch commit by its role, and closes a ticket only in a bare
   `Closes #N` line** (2026-10-19, #321): Truls's ruling in the grill during #321's triage. The
-  two rules, their scope and their reasons are on `docs/agents/issue-tracker.md`, as *A commit of
+  two rules and their scope are on `docs/agents/issue-tracker.md`, as *A commit of
   the branch is named by its role, never by its hash* and *A closing keyword stands in a bare
   `Closes #N` line and nowhere else*. This entry records the ruling here as #320's has its own
   entry above (Truls, on the pre-PR review of PR #323, #324).

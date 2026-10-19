@@ -109,10 +109,10 @@ shape of a commit message, and `pre-commit` runs the shared Markdown check,
 `vendor/grado-factorio-tools/scripts/markdown-check.ps1`, on the staged Markdown files. Both
 checks live in the tools submodule, so a clone runs `git submodule update --init` too; without
 it each hook says which check did not run, and does not refuse the commit for that. The Markdown
-check refuses emphasis or a code span left open at the end of its paragraph, a table row with
-another column count than its header, a link to a file git does not track, and a prose line over
-100 characters: the hook and the workflow hand it `-MaxLineLength 100`, and without that it does
-not read length. Its header says which lines are not held to the limit. It does not judge prose.
+check refuses broken emphasis and code spans, ragged tables, links that lead nowhere, and a prose
+line over 100 characters: the hook and the workflow hand it `-MaxLineLength 100`, and without
+that it does not read length. Its header says what it reads as what, and which lines are not held
+to the limit. It does not judge prose.
 `-Range origin/main...HEAD` checks the Markdown a branch changed, `-All` every tracked file, and
 `-SelfTest` proves it can fail.
 

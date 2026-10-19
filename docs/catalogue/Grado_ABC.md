@@ -2654,7 +2654,7 @@ changed: **52 technologies stay unreachable in `Grado_ABC`, base only, and 55 in
 ### How it was counted
 
 Measured 2026-10-18, on Factorio 2.0.77 and pwsh 7.6.7, with `dump-walk.ps1` at the tools commit
-this repository pins, `0125895`. Both packs were staged again that day with
+`0125895`. Both packs were staged again that day with
 `scripts/stage-pack.ps1`, which resolves every member afresh. `get-dump.ps1` then served both
 from its cache, nothing run: the resolve gave the same set, by the dump key's exact text, as the
 two dumps in the cache, whose files are dated 2026-10-11. Their prototype list checksums are #132's

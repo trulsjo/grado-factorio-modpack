@@ -133,8 +133,8 @@ with at most five lines as its last text: how many findings, which one matters m
 path. Send no message: the five lines reach the session as they are. The report has two
 sections and no scores. It goes into the pull request's body as it stands, so name a commit of
 the branch by its role, such as "the ticket commit for #N" or "the fix commit", and never by its
-hash: the rebase merge rewrites each one. A commit on `main` may be named by its hash. Quote no
-closing keyword before an issue reference: say "the line that closes #N".
+hash. A commit on `main` may be named by its hash. Quote no closing keyword before an issue
+reference: say "the `Closes` line for #N".
 
 ## Findings
 
@@ -164,10 +164,10 @@ also hands the draft of the pull request's body, `<scratch>/draft.md`, written b
 <The fixes are in the fix commit, at `HEAD`: `git show HEAD`; or nothing.> <A commit whose
 message was reworded, named by its role, with its old and new hash for the commands alone:
 `git log -1 --format=%B <new>`, and `git diff <old> <new>` is empty; or nothing.> <Edits
-outside the diff, such as a ticket's body, and how to read each; or nothing.> <The checks' results after this commit: <scratch>/commit-check.txt,
-<scratch>/markdown-check.txt and <scratch>/glossary-check.txt; or nothing.> <The draft of the
-pull request's body above the review: <scratch>/draft.md, read like the commit messages; or
-nothing.>
+outside the diff, such as a ticket's body, and how to read each; or nothing.> <The checks'
+results after this commit: <scratch>/commit-check.txt, <scratch>/markdown-check.txt and
+<scratch>/glossary-check.txt; or nothing.> <The draft of the pull request's body above the
+review: <scratch>/draft.md, read like the commit messages; or nothing.>
 
 Not fixed, and why: <each finding by its number; or none>. <For a fix of a plugin-pass finding,
 which is not one of yours: the finding as the pull request states it; or nothing.>

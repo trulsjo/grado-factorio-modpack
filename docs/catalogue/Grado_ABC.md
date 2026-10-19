@@ -410,22 +410,27 @@ the kept `--dump-data` dumps, all on 2.0.77 with this mod at 1.8.1, `Clowns-Ange
 listed every recipe whose ingredients, results or name hold plutonium, MOX, breeder or a minor
 actinide, the technologies unlocking each, the reactors and the nuclear fuel items.*
 
-- *Two Pu-239 items, and no recipe joins them. `bob-plutonium-239` is the one Bob's, Angel's
+- *Two Pu-239 items in use, and no recipe joins them. `bob-plutonium-239` is the one Bob's, Angel's
   and both Clowns mods use: 10 unhidden recipes make it and 12 use it. `plutonium-239` is this
   mod's alone, with its own `plutonium-238`: 3 recipes make the first and 5 use it, 4 make the
   second and 5 use it. No recipe holds both Pu-239 items, in any of the four dumps.
   `angels-plutonium-239`, which the Clowns source names, is defined and no unhidden recipe
   makes or uses it.*
 - *What the other side gives, all of it on `bob-plutonium-239`. Plutonium is made by
-  reprocessing depleted uranium and thorium cells (`Clowns-AngelBob-Nuclear`), by
-  `angels-plutonium-synthesis` from neptunium and by `angels-plutonium-breeding`. It goes into
+  reprocessing depleted uranium and thorium cells (`Clowns-AngelBob-Nuclear`, six recipes), by
+  `angels-plutonium-synthesis` from neptunium, by `angels-plutonium-breeding`, from Angel's
+  depleted MOX cells by `angels-advanced-mixed-oxide-reprocessing`, and by
+  `angels-americium-regeneration`, which takes 1 and gives 6. It goes into
   two MOX cells for the standard reactor: `angels-mixed-oxide-cell`, 8 GJ, and the result of
   Clowns' `mixed-oxide` recipe, `RRR-clowns-mox-cell`, 7 GJ, beside 2 GJ for
   `uranium-fuel-cell`. It also goes into the thorium cells, `clowns-radiothermal-fuel`,
   Angel's two nuclear fuels made with rocket fuel, the `plutonium-atomic-bomb` and
   `angels-atomic-bomb` recipes, `bob-atomic-artillery-shell`, `bob-rtg`, and, through
   `angels-mixed-oxide-cell`, three of Bob's fission equipment upgrades.*
-- *What this mod alone gives. `plutonium-fuel-cell`, 20 GJ in the standard reactor, the
+- *What this mod alone gives. Its plutonium starts from depleted uranium cells:
+  `advanced-nuclear-fuel-reprocessing-with-barrelling` makes a barrelled waste solution, and
+  `uranium-fuel-cell-waste-solution-centrifuging` returns both isotopes from it. Then
+  `plutonium-fuel-cell`, 20 GJ in the standard reactor, the
   largest unhidden item of the `nuclear` fuel category in the dumps. The `MOX-reactor`, 20 MW
   with a neighbour bonus of 1.5, and its own `MOX` fuel category and `MOX-fuel-cell`, 3 GJ. The
   `breeder-reactor`, 20 MW with a bonus of 0.5, whose depleted cells are reprocessed into a
@@ -433,22 +438,31 @@ actinide, the technologies unlocking each, the reactors and the nuclear fuel ite
   magazine, two cannon shells and `plutonium-atomic-artillery-shell`. `plutonium-fuel`, made with
   rocket fuel, and two recipes for `fission-reactor-equipment`.*
 - *The four dumps agree. `Grado_ABCX`'s listing and both of `Grado_ABC`'s are the same, line
-  for line. `Grado_ABCS`'s adds Space Age's recycling recipes, 35 of them, all hidden, and Space
-  Age's own fuel items, none of them plutonium.*
+  for line. `Grado_ABCS`'s adds Space Age's recycling recipes, 35 of them, all hidden, and four
+  of Space Age's own prototypes, two fuel items, a reactor and a technology, none of them
+  plutonium.*
 
 *Without this mod nothing was run: every dump holds it. The other side's list above is the
 dumps' with this mod's recipes set aside, so its standing without the mod is inferred, from the
 dumps and from a search of the staged `Grado_ABC` for the mod's name, outside the mod itself.
 The search found one member that names it, `RealisticReactorsReborn` 2.0.27, which lists the
 `MOX` and `nuclear-breeder` fuel categories under a comment naming this mod; in the dumps its
-reactors take `nuclear` and `MOX`. One recipe of the other side is unlocked by this mod's
-`plutonium-processing`, `advanced-nuclear-fuel-reprocessing`, and also by
-`nuclear-fuel-reprocessing-2`.*
+reactors take `nuclear` and `MOX`.*
+
+*Where the two sides meet: a recipe name both define. This mod and `Clowns-AngelBob-Nuclear` each
+define a recipe named `advanced-nuclear-fuel-reprocessing`, read from source: this mod's 1.8.1
+in `prototypes/recipe/recipes.lua` line 48, depleted uranium cells and sulfuric acid to a fluid
+waste solution, unlocked by its `plutonium-processing`; the Clowns 2.0.13 one in
+`prototypes/recipes/nuclear-reprocessing.lua` line 5, unlocked by `nuclear-fuel-reprocessing-2`.
+The dumps hold the Clowns one, with its ingredients, its `bob-plutonium-239` and its icon, and
+unlock it from both technologies: measured. So this mod's fluid recipe is not in the pack, and
+its plutonium comes in by the barrelled recipe alone. The search for the mod's name did not find
+this.*
 
 *Kovarex does not gate the other side. In the dumps `mixed-oxide-fuel` unlocks Clowns' MOX and
 Angel's MOX, synthesis and americium recipes, and none of its 107 prerequisites, walked to the
 root, is disabled or hidden. None of the 82 of this mod's `plutonium-processing` is either, on
-2.0, by the misspelt check above. Kovarex is not among `mixed-oxide-fuel`'s because
+2.0. Kovarex is not among `mixed-oxide-fuel`'s because
 `Clowns-AngelBob-Nuclear` removes that prerequisite: read from source,
 `prototypes/technology-overrides.lua` line 45, the same file in 2.0.13 and in 2.1.02
 (`Pezzawinkle/MadClowns` at `d4c8d0a`). That 2.1 holds the same in the game is inferred from

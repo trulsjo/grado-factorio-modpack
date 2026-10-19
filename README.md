@@ -143,7 +143,8 @@ self-test runs in the same workflow.
 
 `scripts/pr-body.ps1 -Draft <file> -Review <report> -Out <file>` puts the pre-PR reviewer's
 findings and confirmation under the draft of a pull request body, word for word, and fails on a
-finding the confirmation does not answer. Its self-test runs in the same workflow.
+finding the confirmation does not answer, and on a draft without the `mattpocock-skills:pr`
+template's three headings, in order. Its self-test runs in the same workflow.
 
 Agent sessions also get a hook from `.claude/settings.json`: a shell command that changes
 directory into `.mod-cache/` is refused before it runs, because a session's tooling writes state

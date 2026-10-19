@@ -1,7 +1,8 @@
 <#
 .SYNOPSIS
     Puts the pre-PR reviewer's findings and confirmation under a pull request body's draft, word
-    for word from the report, and fails when a finding has no confirmation line.
+    for word from the report, and fails when a finding has no confirmation line or the draft
+    lacks one of the pr template's three headings.
 
 .DESCRIPTION
     WHY (#208). The body takes *Findings* and *Confirmation* from the reviewer's report as they
@@ -17,11 +18,23 @@
     WHAT IT REFUSES, writing nothing: a report with no `## Findings`; one with a numbered finding
     and no `## Confirmation`; one where a finding's number opens no line of the confirmation.
 
+    THE DRAFT'S HEADINGS (#320). Truls ruled on 2026-10-19 that the body above the review carries
+    the `mattpocock-skills:pr` template's three headings: `## Summary`, `## Evidence` and
+    `## Merge Danger`, each once, at the second level, outside fenced blocks, in that order.
+    Other sections may stand between them and after them. Of 20 bodies merged after PR #278,
+    none had all three, while the rule stood on docs/agents/issue-tracker.md and nothing read
+    it. A draft that breaks the rule is refused, writing nothing, with each heading missing,
+    each one given twice, or the order the three stand in.
+
     WHAT IT CANNOT SEE. What a confirmation line says: "3. not fixed" answers finding 3 as well
     as "3. fixed" does, and whether a finding left unfixed has its reason beside it is read by a
     person. A finding not headed `### <n>.`, which is taken as text. A `##` heading inside a
     fenced block is not a heading, and a `### <n>.` line there is still a finding; a `##` heading
-    inside an indented block is a heading. The draft is not read at all.
+    inside an indented block is a heading. Of the draft, the three headings alone are read: not
+    what stands under them, not `**Door:**` or `**Blast Radius:**`, and not the `Closes` lines.
+    A heading line is the heading's text exactly, from the line's first column, with trailing
+    spaces allowed: one indented, closed with `##`, or underlined is taken as missing, and one in
+    an indented block or an HTML comment is taken as a heading.
 
 .PARAMETER Draft
     The body above the review: the `Closes` lines and the pr skill's template, filled.
@@ -51,6 +64,28 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
+$TemplateHeadings = 'Summary', 'Evidence', 'Merge Danger'
+
+# What is wrong with the draft's three template headings, one line each. Empty if nothing is.
+function Get-DraftProblem([string] $DraftText) {
+    $found = [System.Collections.Generic.List[string]]::new()
+    $fenced = $false
+    foreach ($line in $DraftText -split "`r?`n") {
+        if ($line -match '^\s*(```|~~~)') { $fenced = -not $fenced; continue }
+        if ($fenced) { continue }
+        foreach ($h in $TemplateHeadings) { if ($line.TrimEnd() -ceq "## $h") { $found.Add($h) } }
+    }
+    $problems = @(foreach ($h in $TemplateHeadings) {
+        $count = @($found | Where-Object { $_ -ceq $h }).Count
+        if ($count -eq 0) { "``## $h`` is missing" }
+        elseif ($count -gt 1) { "``## $h`` stands $count times" }
+    })
+    if (-not $problems -and ($found -join '|') -cne ($TemplateHeadings -join '|')) {
+        $problems += "the headings stand in the order $($found -join ', ')"
+    }
+    $problems
+}
+
 # The lines under one second-level heading of the report, up to the next one. $null if it is absent.
 function Get-Section([string[]] $Lines, [string] $Heading) {
     $taken = $null
@@ -69,6 +104,8 @@ function Get-Section([string[]] $Lines, [string] $Heading) {
 }
 
 function Get-Body([string] $DraftText, [string[]] $ReviewLines) {
+    $problems = @(Get-DraftProblem $DraftText)
+    if ($problems) { throw "The draft breaks the pr template: $($problems -join '; '). It needs ``## Summary``, ``## Evidence`` and ``## Merge Danger``, once each and in that order." }
     $findings = Get-Section $ReviewLines 'Findings'
     if ($null -eq $findings) { throw 'The report has no "## Findings" section.' }
     $confirmation = Get-Section $ReviewLines 'Confirmation'
@@ -88,16 +125,30 @@ if ($SelfTest) {
         $conf = if ($null -ne $Confirmation) { @('## Confirmation', '') + $Confirmation + '' } else { @() }
         @('# Pre-PR review of `branch`', '', 'Two findings.', '', '## Findings', '') + $Findings + $(if ($ConfirmationLast) { $read + $conf } else { $conf + $read }) }
     $two = (& $finding 1) + (& $finding 2)
-    $draft = "Closes #1`n`n## Summary`n`nA change.`n"
+    $draft = "Closes #1`n`n## Summary`n`nA change.`n`n## Evidence`n`nRead.`n`n## Merge Danger`n`nNone.`n"
+    $refusesDraft = { param([string] $text, [string] $why) try { Get-Body $text (& $report @('Nothing found.', '') $null) | Out-Null; $false } catch { $_.Exception.Message -match $why } }
     $throws = { param([string[]] $lines, [string] $why) try { Get-Body $draft $lines | Out-Null; $false } catch { $_.Exception.Message -match $why } }
     $cases = @(
         @{ Name = 'the body is the draft, one heading, every finding and the whole confirmation, with no report heading above the third level'; Test = {
             $body = Get-Body $draft (& $report $two @('Read at `abc1234`.', '', '1. fixed', '2. not fixed: the count is still off'))
             $after = $body.Substring($body.IndexOf('## Pre-PR review') + 16)
-            $body.StartsWith("Closes #1`n`n## Summary`n`nA change.`n`n## Pre-PR review`n`n### 1. Something is wrong.") -and
+            $body.StartsWith("$($draft.TrimEnd())`n`n## Pre-PR review`n`n### 1. Something is wrong.") -and
                 $after -match '(?m)^### 2\. Something' -and $after -match '(?m)^- \*\*Where:\*\* `a\.md:2`$' -and
                 $after -match "(?m)^### Confirmation`n`nRead at ``abc1234``\.`n`n1\. fixed`n2\. not fixed: the count is still off`n$" -and
                 $after -notmatch '(?m)^#{1,2} ' -and $body -notmatch 'Read and found correct|adding it up|Two findings' } }
+        @{ Name = 'a draft with a template heading missing is refused, naming it'; Test = {
+            & $refusesDraft ($draft -replace '## Evidence', 'Evidence') '`## Evidence` is missing\.' } }
+        @{ Name = 'a draft with a template heading twice is refused, naming it and the count'; Test = {
+            & $refusesDraft ($draft + "`n## Summary`n`nAgain.`n") '`## Summary` stands 2 times' } }
+        @{ Name = 'a draft with the three headings out of order is refused, naming the order'; Test = {
+            $swapped = "Closes #1`n`n## Evidence`n`nRead.`n`n## Summary`n`nA change.`n`n## Merge Danger`n`nNone.`n"
+            & $refusesDraft $swapped 'in the order Evidence, Summary, Merge Danger' } }
+        @{ Name = 'a template heading only inside a fenced block is missing, as is one at the third level'; Test = {
+            (& $refusesDraft ($draft -replace '## Merge Danger', "~~~`n## Merge Danger`n~~~") '`## Merge Danger` is missing\.') -and
+                (& $refusesDraft ($draft -replace '## Summary', '### Summary') '`## Summary` is missing\.') } }
+        @{ Name = 'a draft with other sections between and after the three headings passes'; Test = {
+            $extra = "Closes #1`n`n## Summary`n`nA change.`n`n## Said on the tickets`n`nA ruling.`n`n## Evidence`n`nRead.`n`n## Merge Danger`n`nNone.`n`n## Notes`n`nMore.`n"
+            (Get-Body $extra (& $report @('Nothing found.', '') $null)).StartsWith($extra.TrimEnd()) } }
         @{ Name = 'a report with no Findings section is refused'; Test = {
             & $throws @('# Report', '', '## Confirmation', '', '1. fixed') 'no "## Findings"' } }
         @{ Name = 'findings with no Confirmation section are refused'; Test = {
@@ -117,19 +168,22 @@ if ($SelfTest) {
             $fenced = (& $finding 1) + @('```', '## Findings', '## Not a heading', '```', 'After the block.', '')
             $body = Get-Body $draft (& $report $fenced @('1. fixed'))
             $body -match '(?m)^## Findings\n## Not a heading\n```\nAfter the block\.$' -and $body -match '(?m)^1\. fixed$' } }
-        @{ Name = 'run as a command it writes the body and exits 0, and a refused report exits 1 and writes nothing'; Test = {
+        @{ Name = 'run as a command it writes the body and exits 0, and a refused report or draft exits 1 and writes nothing'; Test = {
             $temp = Join-Path ([IO.Path]::GetTempPath()) "pr-body-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
             New-Item -ItemType Directory -Path $temp -Force | Out-Null
             try {
                 Set-Content -LiteralPath "$temp/draft.md" -Value $draft -NoNewline
                 Set-Content -LiteralPath "$temp/good.md" -Value (& $report $two @('1. fixed', '2. fixed'))
                 Set-Content -LiteralPath "$temp/bad.md" -Value (& $report $two @('1. fixed'))
+                Set-Content -LiteralPath "$temp/bare.md" -Value "Closes #1`n`n## Summary`n`nA change.`n" -NoNewline
                 $good = & pwsh -NoProfile -File $PSCommandPath -Draft "$temp/draft.md" -Review "$temp/good.md" -Out "$temp/good-body.md" 2>&1 | Out-String; $goodCode = $LASTEXITCODE
                 $bad = & pwsh -NoProfile -File $PSCommandPath -Draft "$temp/draft.md" -Review "$temp/bad.md" -Out "$temp/bad-body.md" 2>&1 | Out-String; $badCode = $LASTEXITCODE
+                $bare = & pwsh -NoProfile -File $PSCommandPath -Draft "$temp/bare.md" -Review "$temp/good.md" -Out "$temp/bare-body.md" 2>&1 | Out-String; $bareCode = $LASTEXITCODE
                 if ($goodCode -ne 0) { Write-Host ($good.TrimEnd() -replace '(?m)^', '    ') }
                 if ($badCode -ne 1) { Write-Host ($bad.TrimEnd() -replace '(?m)^', '    ') }
                 $goodCode -eq 0 -and (Get-Content -LiteralPath "$temp/good-body.md" -Raw) -eq (Get-Body $draft (& $report $two @('1. fixed', '2. fixed'))) -and
-                    $badCode -eq 1 -and $bad -match 'finding 2' -and -not (Test-Path -LiteralPath "$temp/bad-body.md")
+                    $badCode -eq 1 -and $bad -match 'finding 2' -and -not (Test-Path -LiteralPath "$temp/bad-body.md") -and
+                    $bareCode -eq 1 -and $bare -match '`## Evidence` is missing' -and -not (Test-Path -LiteralPath "$temp/bare-body.md")
             }
             finally { Remove-Item -LiteralPath $temp -Recurse -Force }
         } }

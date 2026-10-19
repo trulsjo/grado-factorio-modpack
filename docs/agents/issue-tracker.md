@@ -89,6 +89,19 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
   `scripts/pr-body.ps1` builds the body and refuses a draft without the three headings.
   `docs/agents/code-review.md` says what else the pull request records once the plugin pass has
   run.
+- **A commit of the branch is named by its role, never by its hash** (Truls, 2026-10-19, #321).
+  Pull requests here are rebase-merged, which rewrites every commit on the branch: cite the pull
+  request, or a commit as "the ticket commit for #N", "the fix commit" or "the commit at `HEAD`".
+  A commit may be cited by its hash once it is on `main`. The rule covers the body, the pull
+  request's comments and the commit messages. A comment on a check run names the run, whose page
+  records the commit, and says "on the branch tip" rather than a hash.
+- **A closing keyword stands in a bare `Closes #N` line and nowhere else** (#321): no full stop
+  after it, and a closing line quoted anywhere else, in the reviewer's report too, is reworded.
+  A code span does not shield one. `vendor/grado-factorio-tools/scripts/pr-body-check.ps1` holds
+  the body to this rule and the one above: the session runs it on the body file before
+  `gh pr create` (`docs/agents/pre-pr-review-brief.md`, *Into the pull request*), and
+  `.github/workflows/check.yml` runs it on the pull request's body, again when the body is
+  edited. Nothing reads comments or commit messages for it.
 
 Infer the repo from `git remote -v`; `gh` does this automatically when run inside a clone.
 

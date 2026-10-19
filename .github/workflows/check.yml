@@ -31,6 +31,15 @@
 # 2026-10-12, run 38222599731); with a wrong file name in the wired path the last case failed
 # and so did the check (run 38222794433).
 #
+# The shared body check, vendor/grado-factorio-tools/scripts/pr-body-check.ps1, runs on the pull
+# request's body (#321), with its self-test among the others: it fails a body that cites a commit
+# not on main, and a closing keyword outside a bare `Closes #N` line. The rebase merge rewrites
+# every commit of the branch, so a body citing one cites a commit main never holds. The body
+# reaches the script through the environment, never pasted into the command, as the tools
+# repository's workflow hands it. `edited` is among the triggers so an edited body is checked
+# again; it runs the other steps again too. The script refuses a shallow clone, and the whole
+# history below is what lets it tell a commit on main from one that is not.
+#
 # The pull request's head is checked out, not the merge commit GitHub makes for it, so the range
 # is the pull request's commits and no other. The whole history and the submodule come with it,
 # or `origin/main..HEAD` is empty and the two shared checks, commit-check.ps1 and
@@ -43,6 +52,7 @@ name: check
 
 on:
   pull_request:
+    types: [opened, edited, synchronize, reopened]
 
 permissions:
   contents: read
@@ -65,6 +75,7 @@ jobs:
           pwsh -NoProfile -File scripts/ask-before-download.ps1 -SelfTest
           pwsh -NoProfile -File scripts/reword-commit.ps1 -SelfTest
           pwsh -NoProfile -File scripts/pr-body.ps1 -SelfTest
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/pr-body-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/header-length-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/absolute-words.ps1 -SelfTest
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 -SelfTest -Settings .claude/settings.json
@@ -84,3 +95,10 @@ jobs:
       - name: Check the scripts' comment headers for line length
         if: ${{ !cancelled() }}
         run: pwsh -NoProfile -File scripts/header-length-check.ps1 -All
+
+      - name: Check the pull request body
+        if: ${{ !cancelled() }}
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        shell: pwsh
+        run: ./vendor/grado-factorio-tools/scripts/pr-body-check.ps1 -Body "$env:PR_BODY"

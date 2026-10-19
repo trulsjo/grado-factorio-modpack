@@ -72,7 +72,8 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   `Grado_NonChanging`, `>= 2.0.74` for the other four. **Applied 2026-09-24 (#58)**: the pinned
   resolver re-measured all five on line `2.0`, build `2.0.77`, and read the same floors - `2.0.67`
   from `helmod` `2.2.14`, `2.0.74` from `miniloader-redux` `1.2.0` - and each `info.json` now
-  declares its floor. Versions stay `0.1.0`.
+  declares its floor. Versions stay `0.1.0`. *Not for `Grado_ABCX` since 2026-10-19 (#294): its
+  first release is on 2.1, by the entry "`Grado_ABCX` has no 2.0 release" below.*
 - **A claim has one of three grades of evidence** (2026-10-06, #157): *Measured*, *Read from
   source* and *Inferred*, defined in `GLOSSARY.md`. Three and not two, because six of the eight
   review-fix commits of 2026-10-04 and 2026-10-05 repaired a sentence that gave an inference or a
@@ -231,8 +232,8 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   The fix is asked of the members' authors: one loop in `Clowns-AngelBob-Nuclear` that replaces a
   Kovarex prerequisite on every technology (in 2.0.13 it fixes named mods one by one), and, as a
   second report, a check on `enabled` in the fork. The pack carries no *Patch*. The hold is reviewed
-  at stable 2.1, with #290. *Superseded 2026-10-19 (#294) by the entry "`Grado_ABCX` has no 2.0
-  release" below.*
+  at stable 2.1, with #290. *Its hold on a 2.0 release superseded 2026-10-19 (#294) by the entry
+  "`Grado_ABCX` has no 2.0 release" below.*
 - **The claim grades are defined in `grado-factorio-tools`** (2026-10-16, #301): on its
   `docs/claim-grades.md`, written once there so that `realistic-fusion-refreshed` takes the same
   grades rather than a copy (Truls, on trulsjo/realistic-fusion-refreshed#720). The meanings, the
@@ -257,8 +258,9 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   defaults. A second cause stands behind the hold of 2026-10-15, whose condition already covered
   any cause: on the 2.0 dump none of the fork's 23 technologies can be researched, as the
   prototypes read, because its first waits on `bob-zinc-processing`. The record is in
-  `docs/catalogue/Grado_ABC.md`, under *Technologies the walk cannot reach*. Read from its source
-  2026-10-18, `extendedangels` fixed that in `0.7.0`, a 2.1 release, and no 2.0 branch or tag of
-  it carries the fix. The 2.0 report (#316) was dropped, so on 2.0 the hold would wait on a release
-  nobody has asked for. The hold, both causes, is reviewed at stable 2.1 in #290. A 2.0 play
-  session of the pack is not run: #28 waits for 2.1.
+  `docs/catalogue/Grado_ABC.md`, under *Technologies the walk cannot reach*. Read from its
+  repository 2026-10-18, `extendedangels` dropped that prerequisite on line 2.1 (in `0.7.0`, by
+  #316's read of its commits), and no 2.0 branch or tag of it drops it. The 2.0 report (#316) was
+  dropped, so on 2.0 the hold would wait on a release this project chose not to ask for. The
+  hold, both causes, is reviewed at stable 2.1 in #290. A 2.0 play session of the pack is not
+  run: #28 waits for 2.1.

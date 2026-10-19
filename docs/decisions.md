@@ -269,8 +269,9 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   fenced blocks and in that order, in the body above the pre-PR review. Other sections may stand
   between them and after them, and what stands under each is read by the pre-PR reviewer, not
   the script. The rule stood on `docs/agents/issue-tracker.md` from 2026-10-08, and none of the
-  20 pull requests merged after PR #278 has all three: a session built the body from the
-  reviewer's brief, which did not name the skill, and nothing read the draft.
+  20 pull requests merged after PR #278 has all three. *Inferred*, from the reviewer's brief,
+  which did not name the skill, and from `scripts/pr-body.ps1`, which read nothing of the draft:
+  a session built the body from the brief, and no script read the draft for the headings.
   `scripts/pr-body.ps1` now refuses a draft that breaks the rule, and the rule holds whether or
   not the plugin is installed. The 20 bodies are left as they are. The ruling reaches
   `realistic-fusion-refreshed` as its own ticket, trulsjo/realistic-fusion-refreshed#730, whose

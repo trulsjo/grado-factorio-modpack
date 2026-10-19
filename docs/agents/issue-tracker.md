@@ -79,16 +79,16 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
   with "None" under "Blocked by" in its body, while Truls's decision of 2026-10-11 that it waits
   stood in its comments (#232).
 - **Pull request body**: carries the `mattpocock-skills:pr` template's three headings,
-  `## Summary`, `## Evidence` and `## Merge Danger`, each once, at the second level and in that
-  order; other sections may stand between them and after them (Truls, 2026-10-19, #320). The
-  template is filled with that skill, where the plugin is installed, and from the same three
-  headings by hand where it is not. This repository adds to what it produces: above its
-  template, a `Closes #<n>` for each ticket the branch resolves, where it resolves any; below it,
-  under one heading, the pre-PR review's findings and its confirmation as they stand in the
-  reviewer's report (`docs/agents/pre-pr-review-brief.md`, *Into the pull request*).
-  `scripts/pr-body.ps1` builds the body and refuses a draft without the three headings.
-  `docs/agents/code-review.md` says what else the pull request records once the plugin pass has
-  run.
+  `## Summary`, `## Evidence` and `## Merge Danger`, each once, at the second level, outside
+  fenced blocks and in that order; other sections may stand between them and after them (Truls,
+  2026-10-19, #320). The template is filled with that skill, where the plugin is installed, and
+  from the same three headings by hand where it is not. This repository adds to what it
+  produces: above its template, a `Closes #<n>` for each ticket the branch resolves, where it
+  resolves any; below it, under one heading, the pre-PR review's findings and its confirmation
+  as they stand in the reviewer's report (`docs/agents/pre-pr-review-brief.md`, *Into the pull
+  request*). `scripts/pr-body.ps1` builds the body and refuses a draft without the three
+  headings. `docs/agents/code-review.md` says what else the pull request records once the plugin
+  pass has run.
 - **A commit of the branch is named by its role, never by its hash** (Truls, 2026-10-19, #321).
   Pull requests here are rebase-merged, which rewrites every commit on the branch: cite the pull
   request, or a commit as "the ticket commit for #N", "the fix commit" or "the commit at `HEAD`".

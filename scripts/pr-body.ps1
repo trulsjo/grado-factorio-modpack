@@ -21,10 +21,9 @@
     THE DRAFT'S HEADINGS (#320). Truls ruled on 2026-10-19 that the body above the review carries
     the `mattpocock-skills:pr` template's three headings: `## Summary`, `## Evidence` and
     `## Merge Danger`, each once, at the second level, outside fenced blocks, in that order.
-    Other sections may stand between them and after them. Of 20 bodies merged after PR #278,
-    none had all three, while the rule stood on docs/agents/issue-tracker.md and nothing read
-    it. A draft that breaks the rule is refused, writing nothing, with each heading missing,
-    each one given twice, or the order the three stand in.
+    Other sections may stand between them and after them; why is in docs/decisions.md. A draft
+    that breaks the rule is refused, writing nothing, with each heading missing, each one given
+    twice, or the order the three stand in.
 
     WHAT IT CANNOT SEE. What a confirmation line says: "3. not fixed" answers finding 3 as well
     as "3. fixed" does, and whether a finding left unfixed has its reason beside it is read by a

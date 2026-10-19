@@ -2786,8 +2786,8 @@ line 13, add the speed module and replace `efficiency-module-3` with the efficie
 `bobmods.modules.EnableGodModules` is not true.
 
 So on line 2.0, at the defaults, **none of the fork's technologies can be researched in
-`Grado_ABCX`, as the prototypes read.** That is evidence for #294; what follows from it is
-Truls's.
+`Grado_ABCX`, as the prototypes read.** That is evidence for #294, on which Truls ruled
+2026-10-19 that `Grado_ABCX` has no 2.0 release (in `docs/decisions.md`).
 
 ### Not covered
 

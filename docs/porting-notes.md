@@ -699,6 +699,12 @@ unrecorded load. The pack was zipped by the shared packer (tools `d09fba3`) and 
 load harness on 2.0.77, base only: 29 mods validated (the 28 resolved members and the pack; `base`
 not counted) and a map created. No member versions were written down, which is why #17 re-ran it.*
 
+**The `Grado_ABCX` hold**, in the list under that line, as it stood from 2026-10-15 (#294) until
+2026-10-19, when Truls ruled that `Grado_ABCX` has no 2.0 release. The ruling is in
+`docs/decisions.md`.
+
+> `Grado_ABCX`'s first 2.0 release is held until SpaceX's fourth stage can be reached (#294).
+
 ### Decisions still open, as it stood
 
 Listed in full with their evidence in `docs/porting-notes.md`. Do not close one silently.

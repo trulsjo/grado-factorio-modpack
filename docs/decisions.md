@@ -231,7 +231,8 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   The fix is asked of the members' authors: one loop in `Clowns-AngelBob-Nuclear` that replaces a
   Kovarex prerequisite on every technology (in 2.0.13 it fixes named mods one by one), and, as a
   second report, a check on `enabled` in the fork. The pack carries no *Patch*. The hold is reviewed
-  at stable 2.1, with #290.
+  at stable 2.1, with #290. *Superseded 2026-10-19 (#294) by the entry "`Grado_ABCX` has no 2.0
+  release" below.*
 - **The claim grades are defined in `grado-factorio-tools`** (2026-10-16, #301): on its
   `docs/claim-grades.md`, written once there so that `realistic-fusion-refreshed` takes the same
   grades rather than a copy (Truls, on trulsjo/realistic-fusion-refreshed#720). The meanings, the
@@ -251,3 +252,13 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   with it, was ruled part of the `tungsten-ore` defect on 2026-10-18, because the guard proposed
   for that defect places it. The ruling is for `rso-mod` only. The counts and the reports are in
   its entry in `docs/catalogue/Grado_ABC.md`; the watch on the author's answers is #310.
+- **`Grado_ABCX` has no 2.0 release** (2026-10-19, #294): its first release is on 2.1, and it
+  waits there, as the 2.0 release did, until SpaceX's fourth stage can be reached at the fork's
+  defaults. A second cause stands behind the hold of 2026-10-15, whose condition already covered
+  any cause: on the 2.0 dump none of the fork's 23 technologies can be researched, as the
+  prototypes read, because its first waits on `bob-zinc-processing`. The record is in
+  `docs/catalogue/Grado_ABC.md`, under *Technologies the walk cannot reach*. Read from its source
+  2026-10-18, `extendedangels` fixed that in `0.7.0`, a 2.1 release, and no 2.0 branch or tag of
+  it carries the fix. The 2.0 report (#316) was dropped, so on 2.0 the hold would wait on a release
+  nobody has asked for. The hold, both causes, is reviewed at stable 2.1 in #290. A 2.0 play
+  session of the pack is not run: #28 waits for 2.1.

@@ -146,6 +146,11 @@ findings and confirmation under the draft of a pull request body, word for word,
 finding the confirmation does not answer, and on a draft without the `mattpocock-skills:pr`
 template's three headings, in order. Its self-test runs in the same workflow.
 
+The shared `vendor/grado-factorio-tools/scripts/pr-body-check.ps1` reads the finished body: it
+fails on a commit cited by hash that is not on `main`, and on a closing keyword outside a bare
+`Closes #N` line. A session runs it on the body file before `gh pr create`, and the same workflow
+runs it on the pull request's body, again when the body is edited, with its self-test.
+
 Agent sessions also get a hook from `.claude/settings.json`: a shell command that changes
 directory into `.mod-cache/` is refused before it runs, because a session's tooling writes state
 files where its shell stands. Reading the cache by path is not affected. The hook is the shared

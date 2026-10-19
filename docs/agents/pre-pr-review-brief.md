@@ -131,7 +131,10 @@ You are handed:
 Write the report to <scratch>/review.md with the file tool. Once it is written, end your turn
 with at most five lines as its last text: how many findings, which one matters most, and the
 path. Send no message: the five lines reach the session as they are. The report has two
-sections and no scores.
+sections and no scores. It goes into the pull request's body as it stands, so name a commit of
+the branch by its role, such as "the ticket commit for #N" or "the fix commit", and never by its
+hash: the rebase merge rewrites each one. A commit on `main` may be named by its hash. Quote no
+closing keyword before an issue reference: say "the line that closes #N".
 
 ## Findings
 
@@ -151,14 +154,17 @@ If you find nothing, say so under Findings and still fill the second section.
 ## The confirmation turn
 
 Sent to the same subagent, after the fixes are committed. A later fix commit, or a fix to the
-draft, is sent the same way, and so is a fix made after the plugin pass. The first confirmation
+draft, is sent the same way, and so is a fix made after the plugin pass. The turn names the
+branch's commits by their roles, or by position from `HEAD`, as the report does (#321). A
+rewording is the exception: the reviewer runs `git diff <old> <new>`, so the two hashes stand in
+the turn's commands, and its confirmation line names the commit by its role. The first confirmation
 also hands the draft of the pull request's body, `<scratch>/draft.md`, written before it (#273).
 
 ```
-<The fixes are in commit <sha>: `git show <sha>`; or nothing.> <A commit whose message was
-reworded, by its old and new hash: `git log -1 --format=%B <new>`, and `git diff <old> <new>` is
-empty; or nothing.> <Edits outside the diff, such as a ticket's body, and how to read each; or
-nothing.> <The checks' results after this commit: <scratch>/commit-check.txt,
+<The fixes are in the fix commit, at `HEAD`: `git show HEAD`; or nothing.> <A commit whose
+message was reworded, named by its role, with its old and new hash for the commands alone:
+`git log -1 --format=%B <new>`, and `git diff <old> <new>` is empty; or nothing.> <Edits
+outside the diff, such as a ticket's body, and how to read each; or nothing.> <The checks' results after this commit: <scratch>/commit-check.txt,
 <scratch>/markdown-check.txt and <scratch>/glossary-check.txt; or nothing.> <The draft of the
 pull request's body above the review: <scratch>/draft.md, read like the commit messages; or
 nothing.>
@@ -167,7 +173,8 @@ Not fixed, and why: <each finding by its number; or none>. <For a fix of a plugi
 which is not one of yours: the finding as the pull request states it; or nothing.>
 
 Read each fix against your own finding. The fix commit's message is read like the rest. Still
-read-only, and still from the repository root.
+read-only, and still from the repository root. Name the branch's commits by their roles, as in
+the first turn, in a confirmation line too.
 
 Add a section to <scratch>/review.md with the file tool. Once it is written, end your turn with
 at most five lines and the path as its last text, and send no message.
@@ -195,3 +202,16 @@ pwsh -NoProfile -File scripts/pr-body.ps1 -Draft <scratch>/draft.md -Review <scr
 `Closes` lines and the `mattpocock-skills:pr` template, filled: load the skill before writing it.
 The script fails, and writes nothing, when a finding's number opens no line of the confirmation,
 and when the draft lacks one of the template's three headings or holds them out of order (#320).
+
+The shared body check runs before the pull request is created (#321), in one command joined
+with `&&`, so that a failure stops the create:
+
+```
+pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/pr-body-check.ps1 <scratch>/body.md && gh pr create --title "<title>" --body-file <scratch>/body.md
+```
+
+It fails on a commit cited by hash that is not on `main`, and on a closing keyword outside a bare
+`Closes #N` line, wherever either stands. A failure in the draft is fixed in the draft. One in
+the review's text goes back to the reviewer by a confirmation turn, to reword its report, since
+the body takes the report as it stands. Then the body is built and run through the check again.
+The rules are on `docs/agents/issue-tracker.md`.

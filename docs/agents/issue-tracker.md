@@ -101,10 +101,11 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
   (2026-10-11) said that no ticket was closed, with the word "closed" just before
   trulsjo/grado-factorio-tools#103, and GitHub listed that issue as one the merge would close
   (trulsjo/grado-factorio-tools#112, recorded in the check's header). Held to bare lines, what
-  a merge closes can be read from its `Closes #N` lines alone. A closing line quoted anywhere
-  else, in the reviewer's report too, is reworded. The check passes over a line only when it is
-  `Closes #N` and nothing else, so no full stop goes after it. It reads code spans too, so a code
-  span does not shield one; whether GitHub closes on a keyword in a code span was not measured.
+  a body closes can be read from its `Closes #N` lines alone. A closing line quoted anywhere
+  else, in the reviewer's report too, is reworded. A line with a closing keyword passes the
+  check only when it is `Closes #N` and nothing else, so no full stop goes after it. The check
+  reads code spans too, so a code span does not shield one; whether GitHub closes on a keyword
+  in a code span was not measured.
   `vendor/grado-factorio-tools/scripts/pr-body-check.ps1` holds the body to this rule and the
   one above: the session runs it on the body file before `gh pr create`
   (`docs/agents/pre-pr-review-brief.md`, *Into the pull request*), and

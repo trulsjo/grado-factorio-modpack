@@ -380,11 +380,11 @@ wait on `bob-zinc-processing`, which, read from source, `angelssmelting` `2.0.5`
 `extendedangels` `0.6.9` names as a prerequisite. #295's probe did not meet this: it marked
 researched every technology in the two closures except Kovarex, by the paragraph above, and
 `bob-zinc-processing` is in both closures by the dump's prerequisites, so,* Inferred *from that,
-it was marked researched too. This bears on #294: Truls ruled 2026-10-19 (in `docs/decisions.md`)
-that `Grado_ABCX` has no 2.0 release, and that its first, on 2.1, waits until the fourth stage can
-be reached there. The record, with
+it was marked researched too. Whether this bears on #294's ruling is Truls's. The record, with
 the source lines, is in `docs/catalogue/Grado_ABC.md`, under* Technologies the walk cannot
-reach.
+reach. *Ruled 2026-10-19 (#294, in `docs/decisions.md`): `Grado_ABCX` has no 2.0 release, which
+supersedes the hold on its first 2.0 release ruled 2026-10-15, and its first, on 2.1, waits until
+the fourth stage can be reached there.*
 
 ## Dropped during the port
 

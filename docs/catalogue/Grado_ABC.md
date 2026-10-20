@@ -468,6 +468,50 @@ root, is disabled or hidden. None of the 82 of this mod's `plutonium-processing`
 (`Pezzawinkle/MadClowns` at `d4c8d0a`). That 2.1 holds the same in the game is inferred from
 that source; nothing was run on 2.1.*
 
+*Measured 2026-10-20 (#332): the pack without this mod. Two `--dump-data` dumps of the staged
+`Grado_ABC` on 2.0.77, made by `get-dump.ps1` from one mod directory with the pack's own zip
+disabled in both, and this mod disabled in the second: the two sets differ by this mod alone.
+The first has checksum `2195323740`, the 2026-10-11 dump's (its set less the pack's zip, which
+holds no prototype). The second has `3718243312`. `dump-diff.ps1` between them, and a script over
+the second for the rest:*
+
+- *92 prototypes go and none comes. 40 recipes, 13 items, 11 technologies, 4 ammunitions, the
+  `MOX-reactor` and `breeder-reactor`, 2 fluids, the `MOX` and `nuclear-breeder` fuel categories,
+  and 18 more: the `nuclear-artillery` ammo category, projectiles, explosions, remnants, sprites,
+  three item subgroups and `atomic-bomb-fire-flame`. Of the 40 recipes, 12 are named `rf-` and 3
+  `RRR-`, so they are taken to be `reverse-factory`'s and `RealisticReactorsReborn`'s for this
+  mod's items, by their prefixes. The 11 technologies: `MOX-nuclear-power`,
+  `breeder-fuel-cell-from-MOX-fuel-cell`, `breeder-fuel-cell-from-uranium-cell`,
+  `fission-reactor-equipment-from-MOX-fuel`, `fission-reactor-equipment-from-plutonium`,
+  `nuclear-breeding`, `plutonium-ammo`, `plutonium-atomic-bomb`, `plutonium-nuclear-power`,
+  `plutonium-processing` and `plutonium-reprocessing`. Everything under "What this mod alone
+  gives" above is among the 92.*
+- *14 prototypes stay and change.*
+  - *`RealisticReactorsReborn`'s branch for this mod: its two reactor displayers burn `nuclear`
+    and `MOX` with it, `nuclear` alone without, and its three cell recipes above go. Nothing
+    else of it changes.*
+  - *The Clowns `advanced-nuclear-fuel-reprocessing`, the name both mods define: with this mod it
+    has `allow_productivity` set and this mod's `nuclear-uranium` subgroup, without it neither.
+    So this mod reaches into the recipe that replaced its own.*
+  - *`nuclear-fuel-reprocessing`, and the recipe and item `uranium-fuel-cell` and the item
+    `depleted-uranium-fuel-cell`, go back from that subgroup to the Clowns and Angel's ones.
+    Four more change only an order string. Menu placement, nothing a recipe uses.*
+  - *`bob-fluid-barrel-processing` no longer unlocks this mod's barrel recipes.*
+  - *`EditorExtensions`' two aggregate chests hold 3,622 stacks against 3,639: 17 fewer, the
+    number of items and ammunitions that go. That the chests are sized by the item count is
+    inferred from the match.*
+- *Nothing is left pointing at what went. No technology's prerequisite or unlock, and no
+  recipe's ingredient or result, names a prototype missing from the second dump. The pack also
+  loads without the mod: `docs/loads/Grado_ABC-2026-10-20.md`.*
+- *The "without this mod" picture above, inferred on 2026-10-19, holds in the second dump, claim
+  by claim. 10 unhidden recipes still make `bob-plutonium-239` and 12 use it. Each recipe named
+  under "What the other side gives" is there, unhidden, and unlocked by a technology. The two
+  MOX cells are still 8 GJ and 7 GJ. `mixed-oxide-fuel` still has 107 prerequisites, none
+  disabled or hidden. Three of Bob's fission equipment recipes still take
+  `angels-mixed-oxide-cell`. Two things to read with it: the `plutonium-atomic-bomb` it names
+  is a recipe, which `atomic-bomb` unlocks, and it stays, while the technology of that name is
+  this mod's and goes. And `RealisticReactorsReborn`'s reactors take `nuclear` alone.*
+
 ### `RealisticFusionPowerPort`
 
 | | |

@@ -51,6 +51,14 @@ The lean is against it: report upstream instead, ruled case by case (#81, #147).
 _Avoid_: glue for code that does one member's job; fix for the pack's own Lua (it hides whose job
 it was)
 
+**Coexistence fix**:
+A mod that makes an end-game and `Grado_ABC` run together without merging their progressions or
+moving either's content between planets: a crash fix, a missing recipe, a soft-lock removed. It
+passes `Grado_ABCS`'s promise, and a branch may carry one beside its end-game. Added 2026-10-20
+(#31).
+_Avoid_: "glue" for it (that is the pack's own Lua between two members); "bridge" for it (kept for
+a mod that merges or relocates); "compat mod" for it (used for both)
+
 **Shared name**:
 A prototype type and name that two or more members define, or a member and an expansion. It says
 nothing of which definition stands or what the game ends with: the later definition can replace
@@ -201,8 +209,8 @@ but it must not conflict with them. Because both end-games build on it, nothing 
 `Grado_ABCX`'s, settled 2026-09-23 (#10): `Grado_ABC` plus the SpaceX end-game and nothing else;
 the pack is never installed beside Space Age.
 `Grado_ABCS`'s, settled 2026-09-23 (#10): `Grado_ABC` *beside* Space Age, not integrated with it -
-the planets and the overhaul run side by side, so a mod whose job is to merge the two fails
-the test.
+the planets and the overhaul run side by side, so a mod that merges the two, or moves either's
+content between planets, fails the test; a coexistence fix passes it. Narrowed 2026-10-20 (#31).
 _Avoid_: "does not change save state or the factory" (the original wording of
 `Grado_NonChanging`'s promise, and false under any reading that lets that pack do its job -
 `Tapeline`, `Todo-List`, `YARM` and `SpeedControl` all write to the save, and half the pack exists

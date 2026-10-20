@@ -174,18 +174,6 @@ assessed the first two; #91 assessed the two #83 found in the 2.1 listing alone 
 **None is a member, and nothing here changes that**: #10 ruled on 2026-09-23 that the pack is
 `Grado_ABC` *beside* Space Age, and #31 is where that is revisited.
 
-*Closed 2026-10-20 (#31), in its `docs/decisions.md` entry.* The promise now fails a mod that
-merges or relocates and passes a *coexistence fix* (`GLOSSARY.md`), and the one-mod-per-branch rule
-counts what a player installs. On that reading all four fail: `angelbob-spaceage-rebalance` and
-`angels_space_age_galore` merge, and `BobsAngelsSpaceAge` and `industrial-worlds` relocate. So
-the open questions their recommendations leave to Truls are answered, and the recommendations stand
-as written. The four were re-read 2026-10-20 and no assessment moved: `angelbob-spaceage-rebalance`
-is at `1.2.18` (2.1) and `1.1.43` (2.0), both 2026-10-15, with the same eight mandatory mods and
-4,066 downloads; `BobsAngelsSpaceAge` still `0.0.3`, 263 downloads; `angels_space_age_galore`
-`1.0.2`, 2.1 only, 56 downloads; `industrial-worlds` `0.0.12`, 2026-10-17, 2.1 only, 76 downloads.
-The same day's sweep found mods these searches missed, coexistence fixes among them; #335 assesses
-them.
-
 The first two entries were read on **2026-09-24**, and there a closure is what
 `resolve-modpack.ps1` picks on line `2.0`, build `2.0.77`, for a copy of the chain with the one
 candidate added to this pack's list. The last two were read on **2026-10-01**, and that method
@@ -196,6 +184,18 @@ dependency without a prefix or with `~`, recursively, with `base`, `space-age`, 
 portal mods the four lists name - `space-age` aside, the members of the three lower packs - which
 reaches 20 mods no list names, 107 in all. That is a
 latest-release reading, so it is not the same set as #31's 2.0.77 closure.
+
+*Closed 2026-10-20 (#31), in its `docs/decisions.md` entry.* The promise now fails a mod that
+merges or relocates and passes a *coexistence fix* (`GLOSSARY.md`), and the one-mod-per-branch rule
+counts what a player installs. On that reading, and by their authors' own descriptions, all four
+fail: `angelbob-spaceage-rebalance` and `angels_space_age_galore` merge, and `BobsAngelsSpaceAge`
+and `industrial-worlds` relocate. So the open questions their recommendations leave to Truls are
+answered, and the recommendations stand as written. The four were re-read 2026-10-20 and no
+assessment moved: `angelbob-spaceage-rebalance` is at `1.2.18` (2.1) and `1.1.43` (2.0), both
+2026-10-15, with the same eight mandatory mods and 4,066 downloads; `BobsAngelsSpaceAge` still
+`0.0.3`, 263 downloads; `angels_space_age_galore` `1.0.2`, 2.1 only, 56 downloads;
+`industrial-worlds` `0.0.12`, 2026-10-17, 2.1 only, 76 downloads. The same day's sweep found mods
+#4's, #6's and #83's searches missed, coexistence fixes among them; #335 assesses them.
 
 ### `angelbob-spaceage-rebalance`
 
@@ -273,10 +273,11 @@ checked against a mod that redistributes ores across planets.
 (`! BobsAngelsSpaceAge >= 0.0.3`), and doing nothing, which #10 chose. No third bridge was found;
 #6's search and #4's before it are the ones behind that claim, not a new one. *Two more were found
 2026-10-01 (#83) in the 2.1 listing alone and are assessed below (#91). `industrial-worlds`
-declares `! angelbob-spaceage-rebalance`; this mod declares nothing about either.* *False when
-written, found 2026-10-20 (#31): #4's, #6's and #83's searches matched names only. A sweep of names,
-titles and summaries over both listings found `TIMSABA`, a merge on 2.0 since 2026-05-15, and
-several coexistence fixes. #335 assesses them and corrects this claim where else it stands.*
+declares `! angelbob-spaceage-rebalance`; this mod declares nothing about either.* *Found
+2026-10-20 (#31): a third existed when this was written. A sweep of names, titles and summaries
+over both listings found `TIMSABA`, a merge by its own summary, on 2.0 since 2026-05-15. These
+searches did not report it; how they missed it is not recorded. #335 assesses it, with the
+coexistence fixes the sweep also found, and corrects this claim where else it stands.*
 
 **Recommendation: reconsider:** whether this pack should carry a bridge at all, once #29 shows
 whether the unintegrated pack plays - and only together with the promise, which a bridge fails.
@@ -1841,7 +1842,8 @@ answer #147.*
 
 `CLAUDE.md` says anything both branches need lives in `Grado_ABC` and each branch adds exactly one
 thing. #6 was asked to report pressure on that rule, not resolve it. **This is where it is under
-pressure, and the pressure is real.**
+pressure, and the pressure is real.** *`CLAUDE.md` reworded the rule on 2026-10-20 (#31): see its
+entry in `docs/decisions.md`.*
 
 **The gap.** Adding `space-age` makes the expansion load beside Angel's and Bob's. It does not make
 them one game. Issue #4 established the load-order half of this on 2026-09-21 — nothing in

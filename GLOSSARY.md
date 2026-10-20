@@ -210,7 +210,7 @@ but it must not conflict with them. Because both end-games build on it, nothing 
 the pack is never installed beside Space Age.
 `Grado_ABCS`'s, settled 2026-09-23 (#10): `Grado_ABC` *beside* Space Age, not integrated with it -
 the planets and the overhaul run side by side, so a mod that merges the two, or moves either's
-content between planets, fails the test; a coexistence fix passes it. Narrowed 2026-10-20 (#31).
+content between planets, fails the test; a coexistence fix passes it. Restated 2026-10-20 (#31).
 _Avoid_: "does not change save state or the factory" (the original wording of
 `Grado_NonChanging`'s promise, and false under any reading that lets that pack do its job -
 `Tapeline`, `Todo-List`, `YARM` and `SpeedControl` all write to the save, and half the pack exists

@@ -57,8 +57,8 @@ Grado_NonChanging        quality of life; adds no content (see GLOSSARY.md, *Pro
 `! space-age`. That incompatibility is the entire reason `Grado_ABC` exists as its own pack rather
 than the two end-games duplicating the overhaul list. **Anything both branches need goes in ABC**,
 and each branch adds exactly one end-game, plus any coexistence fix that end-game needs beside
-`Grado_ABC`, counted by what a player installs (mods the game itself supplies are not counted). If
-you find yourself adding the same mod to both, it belongs in ABC.
+`Grado_ABC`, counted by what a player installs (the mods the game supplies with an end-game are
+not counted). If you find yourself adding the same mod to both, it belongs in ABC.
 
 `Grado_ABC` and `Grado_ABCS` are new portal entries. The other three already exist under `ostogvin`
 as Factorio 1.1 entries.

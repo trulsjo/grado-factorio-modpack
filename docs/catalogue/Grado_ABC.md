@@ -23,15 +23,15 @@ its claim did not hold; the hits are named in the entry and left to #49, and no 
 other two were not re-run: `RealisticReactorsReborn` and `extendedangels`. *Until 2026-10-07 (#172)
 this paragraph listed each later note; each carries its own date.*
 
+**The pack is now catalogued in full**: #4 surveyed 29 members and 3 drops on 2026-09-21, #5 the
+other 16 and 7 the same day. Which ticket took which is *The split between #4 and #5* below, kept
+because two tickets writing one file is the only way a mod falls through.
 The dependency list holds 46 entries: `base >= 2.0.0`, `Grado_ChangingBase` — a pack, catalogued in
 `docs/catalogue/Grado_ChangingBase.md` — and **44 mods**. It read 47 and 45 until 2026-09-22, when
 #8 removed the duplicate `bobinserters` line; the mod is still installed by every player of this
 pack, through `Grado_ChangingBase`, and still has an entry below. Ten more were dropped during the
 port. *Superseded 2026-09-23 by #9, and the `base` line 2026-09-24 by #58: the list now holds 43
 entries - `base >= 2.0.74`, `Grado_ChangingBase` and 41 mods.*
-**The pack is now catalogued in full**: #4 surveyed 29 members and 3 drops on 2026-09-21, #5 the
-other 16 and 7 the same day. Which ticket took which is *The split between #4 and #5* below, kept
-because two tickets writing one file is the only way a mod falls through.
 **#9 took the pack from 44 mods to 41 on 2026-09-23**: four out, one in. Its ledger is *Decisions,
 2026-09-23 (#9)* below, and the four removed members are now under *Ruled out after the port*. The
 survey text, including the four findings below, is left as it was measured over 45.

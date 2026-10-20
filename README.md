@@ -58,14 +58,16 @@ has since dropped; the command prints the `load-harness.ps1` line that
 loads it. The options:
 
 - `-ModsDirectory <dir>` puts the set somewhere else, and is never pruned: a mod the pack drops
-  stays there until you remove it. Factorio took a staged directory as its mods directory as it
-  stands, on the one run checked: the fetch leaves a `.zips` subdirectory there, and the game
-  passed over it without a word - no log line, no `mod-list.json` entry (2.0.77 headless,
-  `Grado_NonChanging`, 2026-09-24, #59). The game then writes a `mod-list.json` into the
-  directory, enabling every mod it finds there - and `space-age`, `quality` and `elevated-rails`
-  too, on an install that owns the expansion. Use one directory per pack: a second pack staged
-  into the same one joins the first pack's members, and `Grado_ABCX` beside
-  `Grado_ABCS` is a set that must never exist.
+  stays there until you remove it. The resolver's pin file goes beside it, as `<dir>.pins.psd1`,
+  and the fetch reads it from there; with no `-ModsDirectory` it is
+  `.mod-cache/<pack>.pins.psd1`. So staging elsewhere leaves the default one as it was. Factorio
+  took a staged directory as its mods directory as it stands, on the one run made: the fetch
+  leaves a `.zips` subdirectory there, and the game passed over it without a word - no log
+  line, no `mod-list.json` entry (2.0.77 headless, `Grado_NonChanging`, 2026-09-24, #59). The
+  game then writes a `mod-list.json` into the directory, enabling every mod it finds there - and
+  `space-age`, `quality` and `elevated-rails` too, on an install that owns the expansion. Use one
+  directory per pack: a second pack staged into the same one joins the first pack's members, and
+  `Grado_ABCX` beside `Grado_ABCS` is a set that must never exist.
 - `-Build 2.0.77` resolves for a build other than the installed one. It has to be on the pack's
   `factorio_version` line, or the command refuses.
 - `-FactorioExe <path>` names the install, when it is not where `load-harness.ps1` looks.

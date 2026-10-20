@@ -37,6 +37,9 @@ survey text, including the four findings below, is left as it was measured over 
 Clowns members. The list now holds 41 entries - `base >= 2.0.74`, `Grado_ChangingBase` and 39
 mods. Its ledger is *Decisions, 2026-10-04 (#81)* below, and both entries are now under *Ruled out
 after the port*.
+**#330 took the pack from 39 mods to 38 on 2026-10-20**: `PlutoniumEnergy` out, by choice. The
+list now holds 40 entries - `base >= 2.0.74`, `Grado_ChangingBase` and 38 mods. Its ledger is
+*Decisions, 2026-10-20 (#330)* below, and the entry is now under *Ruled out after the port*.
 **The pack is now catalogued in full**: #4 surveyed 29 members and 3 drops on 2026-09-21, #5 the
 other 16 and 7 the same day. Which ticket took which is *The split between #4 and #5* below, kept
 because two tickets writing one file is the only way a mod falls through.
@@ -184,6 +187,27 @@ summaries were read and their source was not, and none was loaded.
 exit 0. That is the first time the pack's full closure, with the pack itself enabled, has got
 through a data stage. It is not a recorded load: no member versions were written to `docs/loads/`,
 and that is #27's. *Recorded the same day (#116), again 103: `docs/loads/Grado_ABC-2026-10-04.md`.*
+
+## Decisions, 2026-10-20 (#330)
+
+Truls ruled on #330, the first member removed by choice since #9's four, and the first under the
+name *Choice drop* (`GLOSSARY.md`). **39 mods to 38.**
+
+| mod | ruling |
+|---|---|
+| `PlutoniumEnergy` | **out**: the pack's nuclear chain is too overloaded |
+| a replacement | **none**, and no condition reopens the question |
+| a report to its author, or the Clowns author, of the recipe name it shares with `Clowns-AngelBob-Nuclear` | **none**: the mod promises no interop with these mods |
+| a *Patch* re-adding its lost recipe | not taken: the mod leaves instead |
+| the version | stays `0.1.0`: no pack has had its first release |
+
+**What was measured** (#332, 2026-10-20): what the pack loses, prototype by prototype, from two
+data dumps that differ by this mod alone. The note is under `PlutoniumEnergy`, below. The three
+packs that hold it each load without it (`docs/loads/`, the records of that date), every other
+member at its release of 2026-10-04, and the log complaints of #125 unchanged. No member
+depends on it: none declares it, and `RealisticReactorsReborn`'s branch for it goes quietly.
+At stable 2.1, with #290, the check is that still no member depends on its items. That is a
+check, not a reopening.
 
 ## The split between #4 and #5
 
@@ -349,168 +373,6 @@ ahead of it at 27,050 — and the one the others lean on: `Clowns-AngelBob-Nucle
 
 **Recommendation: keep.** Current on 2.1, load-bearing for the rest of the Clowns set, and the
 largest single block of content in the pack that is neither Angel's nor Bob's.
-
-### `PlutoniumEnergy`
-
-| | |
-|---|---|
-| **Title** | Plutonium Energy |
-| **Does** | Extends the nuclear chain past uranium: plutonium bred from fission, reprocessed into fuel for a higher-output cycle, plus plutonium-based ammunition |
-| **Latest** | `1.8.2`, `factorio_version` **2.1**, 2026-06-26 |
-| **Downloads** | 79,842 |
-| **Owner** | `JohnTheCoolingFan` |
-| **Read on** | 2026-09-21 |
-
-**Alternatives considered.** None searched as a substitute. It is one of six mods in this pack
-touching the nuclear chain, which is a question about the subsystem rather than about this mod; see
-*Six mods on one nuclear chain* below. *Four since 2026-10-04 (#81), which dropped the weapons
-branch.*
-
-**Recommendation: keep.** Current on 2.1, the best-maintained of the pack's four nuclear add-ons by
-both recency and downloads, and the only one of them requiring `base >= 2.1` on its own account.
-
-*Read 2026-10-15 (#289): its Kovarex check works for this pack on 2.0 by a typo, and on 2.1,
-inferred, the fixed check would leave its tree behind a technology `add_research` refuses. Three
-points:*
-
-- *1.8.1, the release the 2.0 packs resolve (pinned in the staging of 2026-10-08), checks for
-  Kovarex under a misspelled name, `kovarex-enrivhment-process`, in `data-updates.lua` lines
-  15-17, so the check is always true. Under it Kovarex is removed from `nuclear-breeding`'s
-  prerequisites, the second entry of `{ 'plutonium-nuclear-power', 'kovarex-enrichment-process' }`
-  (`prototypes/technology/technology.lua` line 152). In this pack that is the result needed,
-  because `Clowns-AngelBob-Nuclear` disables Kovarex. Read from source.*
-- *1.9.2 (line 2.1, released 2026-10-15, tag `v1.9.2` at `f849fd5`, `main`'s head when read)
-  fixed the spelling and only the spelling, after JohnTheCoolingFan/PlutoniumEnergy#112: line 19
-  now asks whether `kovarex-enrichment-process` exists. Since 1.9.0 the check guards
-  `plutonium-processing`, whose prerequisites are `{ "kovarex-enrichment-process",
-  "nuclear-fuel-reprocessing", "fluid-handling" }` (`technology.lua` line 32), and replaces the
-  first with `uranium-processing`. The changelog: "the technology will depend on Kovarex
-  enrichment process now unless another mod removes it". Read from source.*
-- *`Clowns-AngelBob-Nuclear` disables Kovarex and does not remove it:
-  `data.raw.technology["kovarex-enrichment-process"].enabled = false`, in
-  `prototypes/technology-overrides.lua` line 31 of 2.0.13 and of `Pezzawinkle/MadClowns`
-  `master` at `d4c8d0a` (2.1.02). Read from source. GitHub's code search of the repository for
-  the name found seven files, five of them Lua, and no line of those five that names it removes
-  it. In this pack's data dump on 2.0.77, base only (prototype list checksum `2195323740`), the
-  technology is there with `enabled: false`: measured.*
-
-*So on 2.1 the check would be false beside `Clowns-AngelBob-Nuclear`, unless another member's
-2.1 release removes Kovarex, which was not read, and `plutonium-processing` would keep a
-prerequisite that `add_research` refuses, as #285 and #287 measured for a disabled Kovarex on
-2.0.77 with Space Age. The rest of the mod's tree would sit behind it. This is inferred, from the
-three points and those measurements; nothing was run on 2.1. It reaches `Grado_ABCX` and
-`Grado_ABCS` through this pack. What to do on 2.1 is #290's, at stable 2.1.*
-
-*Read 2026-10-19 (#328): what it adds beside the plutonium the pack already has from
-`Clowns-AngelBob-Nuclear`, `Clowns-Nuclear`, Angel's and Bob's. Measured by a script's output over
-the kept `--dump-data` dumps, all on 2.0.77 with this mod at 1.8.1, `Clowns-AngelBob-Nuclear` at
-2.0.13, `Clowns-Nuclear` at 2.0.08 and `angelspetrochem` at 2.0.3: `Grado_ABC` of 2026-10-11
-(checksum `2195323740`) and 2026-10-12 (`2949552679`), `Grado_ABCX` of 2026-10-15
-(`1533854567`), and `Grado_ABCS` with Space Age of 2026-10-11 (`2316474952`). The script
-listed every recipe whose ingredients, results or name hold plutonium, MOX, breeder or a minor
-actinide, the technologies unlocking each, the reactors and the nuclear fuel items.*
-
-- *Two Pu-239 items in use, and no recipe joins them. `bob-plutonium-239` is the one Bob's, Angel's
-  and both Clowns mods use: 10 unhidden recipes make it and 12 use it. `plutonium-239` is this
-  mod's alone, with its own `plutonium-238`: 3 recipes make the first and 5 use it, 4 make the
-  second and 5 use it. No recipe holds both Pu-239 items, in any of the four dumps.
-  `angels-plutonium-239`, which the Clowns source names, is defined and no unhidden recipe
-  makes or uses it.*
-- *What the other side gives, all of it on `bob-plutonium-239`. Plutonium is made by
-  reprocessing depleted uranium and thorium cells (`Clowns-AngelBob-Nuclear`, six recipes), by
-  `angels-plutonium-synthesis` from neptunium, by `angels-plutonium-breeding`, from Angel's
-  depleted MOX cells by `angels-advanced-mixed-oxide-reprocessing`, and by
-  `angels-americium-regeneration`, which takes 1 and gives 6. It goes into
-  two MOX cells for the standard reactor: `angels-mixed-oxide-cell`, 8 GJ, and the result of
-  Clowns' `mixed-oxide` recipe, `RRR-clowns-mox-cell`, 7 GJ, beside 2 GJ for
-  `uranium-fuel-cell`. It also goes into the thorium cells, `clowns-radiothermal-fuel`,
-  Angel's two nuclear fuels made with rocket fuel, the `plutonium-atomic-bomb` and
-  `angels-atomic-bomb` recipes, `bob-atomic-artillery-shell`, `bob-rtg`, and, through
-  `angels-mixed-oxide-cell`, three of Bob's fission equipment upgrades.*
-- *What this mod alone gives. Its plutonium starts from depleted uranium cells:
-  `advanced-nuclear-fuel-reprocessing-with-barrelling` makes a barrelled waste solution, and
-  `uranium-fuel-cell-waste-solution-centrifuging` returns both isotopes from it. Then
-  `plutonium-fuel-cell`, 20 GJ in the standard reactor, the
-  largest unhidden item of the `nuclear` fuel category in the dumps. The `MOX-reactor`, 20 MW
-  with a neighbour bonus of 1.5, and its own `MOX` fuel category and `MOX-fuel-cell`, 3 GJ. The
-  `breeder-reactor`, 20 MW with a bonus of 0.5, whose depleted cells are reprocessed into a
-  waste solution that returns both plutonium isotopes. Four plutonium ammunitions: a rounds
-  magazine, two cannon shells and `plutonium-atomic-artillery-shell`. `plutonium-fuel`, made with
-  rocket fuel, and two recipes for `fission-reactor-equipment`.*
-- *The four dumps agree. `Grado_ABCX`'s listing and both of `Grado_ABC`'s are the same, line
-  for line. `Grado_ABCS`'s adds Space Age's recycling recipes, 35 of them, all hidden, and four
-  of Space Age's own prototypes, two fuel items, a reactor and a technology, none of them
-  plutonium.*
-
-*Without this mod nothing was run: every dump holds it. The other side's list above is the
-dumps' with this mod's recipes set aside, so its standing without the mod is inferred, from the
-dumps and from a search of the staged `Grado_ABC` for the mod's name, outside the mod itself.
-The search found one member that names it, `RealisticReactorsReborn` 2.0.27, which lists the
-`MOX` and `nuclear-breeder` fuel categories under a comment naming this mod; in the dumps its
-reactors take `nuclear` and `MOX`.*
-
-*Where the two sides meet: a recipe name both define. This mod and `Clowns-AngelBob-Nuclear` each
-define a recipe named `advanced-nuclear-fuel-reprocessing`, read from source: this mod's 1.8.1
-in `prototypes/recipe/recipes.lua` line 48, depleted uranium cells and sulfuric acid to a fluid
-waste solution, unlocked by its `plutonium-processing`; the Clowns 2.0.13 one in
-`prototypes/recipes/nuclear-reprocessing.lua` line 5, unlocked by `nuclear-fuel-reprocessing-2`.
-The dumps hold the Clowns one, with its ingredients, its `bob-plutonium-239` and its icon, and
-unlock it from both technologies: measured. So this mod's fluid recipe is not in the pack, and
-its plutonium comes in by the barrelled recipe alone. The search for the mod's name did not find
-this.*
-
-*Kovarex does not gate the other side. In the dumps `mixed-oxide-fuel` unlocks Clowns' MOX and
-Angel's MOX, synthesis and americium recipes, and none of its 107 prerequisites, walked to the
-root, is disabled or hidden. None of the 82 of this mod's `plutonium-processing` is either, on
-2.0. Kovarex is not among `mixed-oxide-fuel`'s because
-`Clowns-AngelBob-Nuclear` removes that prerequisite: read from source,
-`prototypes/technology-overrides.lua` line 45, the same file in 2.0.13 and in 2.1.02
-(`Pezzawinkle/MadClowns` at `d4c8d0a`). That 2.1 holds the same in the game is inferred from
-that source; nothing was run on 2.1.*
-
-*Measured 2026-10-20 (#332): the pack without this mod. Two `--dump-data` dumps of the staged
-`Grado_ABC` on 2.0.77, made by `get-dump.ps1` from one mod directory with the pack's own zip
-disabled in both, and this mod disabled in the second: the two sets differ by this mod alone.
-The first has checksum `2195323740`, the 2026-10-11 dump's (its set less the pack's zip, which
-holds no prototype). The second has `3718243312`. `dump-diff.ps1` between them, and a script over
-the second for the rest:*
-
-- *92 prototypes go and none comes. 40 recipes, 13 items, 11 technologies, 4 ammunitions, the
-  `MOX-reactor` and `breeder-reactor`, 2 fluids, the `MOX` and `nuclear-breeder` fuel categories,
-  and 18 more: the `nuclear-artillery` ammo category, projectiles, explosions, remnants, sprites,
-  three item subgroups and `atomic-bomb-fire-flame`. Of the 40 recipes, 12 are named `rf-` and 3
-  `RRR-`, so they are taken to be `reverse-factory`'s and `RealisticReactorsReborn`'s for this
-  mod's items, by their prefixes. The 11 technologies: `MOX-nuclear-power`,
-  `breeder-fuel-cell-from-MOX-fuel-cell`, `breeder-fuel-cell-from-uranium-cell`,
-  `fission-reactor-equipment-from-MOX-fuel`, `fission-reactor-equipment-from-plutonium`,
-  `nuclear-breeding`, `plutonium-ammo`, `plutonium-atomic-bomb`, `plutonium-nuclear-power`,
-  `plutonium-processing` and `plutonium-reprocessing`. Everything under "What this mod alone
-  gives" above is among the 92.*
-- *14 prototypes stay and change.*
-  - *`RealisticReactorsReborn`'s branch for this mod: its two reactor displayers burn `nuclear`
-    and `MOX` with it, `nuclear` alone without, and its three cell recipes above go. Nothing
-    else of it changes.*
-  - *The Clowns `advanced-nuclear-fuel-reprocessing`, the name both mods define: with this mod it
-    has `allow_productivity` set and this mod's `nuclear-uranium` subgroup, without it neither.
-    So this mod reaches into the recipe that replaced its own.*
-  - *`nuclear-fuel-reprocessing`, and the recipe and item `uranium-fuel-cell` and the item
-    `depleted-uranium-fuel-cell`, go back from that subgroup to the Clowns and Angel's ones.
-    Four more change only an order string. Menu placement, nothing a recipe uses.*
-  - *`bob-fluid-barrel-processing` no longer unlocks this mod's barrel recipes.*
-  - *`EditorExtensions`' two aggregate chests hold 3,622 stacks against 3,639: 17 fewer, the
-    number of items and ammunitions that go. That the chests are sized by the item count is
-    inferred from the match.*
-- *Nothing is left pointing at what went. No technology's prerequisite or unlock, and no
-  recipe's ingredient or result, names a prototype missing from the second dump. The pack also
-  loads without the mod: `docs/loads/Grado_ABC-2026-10-20.md`.*
-- *The "without this mod" picture above, inferred on 2026-10-19, holds in the second dump, claim
-  by claim. 10 unhidden recipes still make `bob-plutonium-239` and 12 use it. Each recipe named
-  under "What the other side gives" is there, unhidden, and unlocked by a technology. The two
-  MOX cells are still 8 GJ and 7 GJ. `mixed-oxide-fuel` still has 107 prerequisites, none
-  disabled or hidden. Three of Bob's fission equipment recipes still take
-  `angels-mixed-oxide-cell`. Two things to read with it: the `plutonium-atomic-bomb` it names
-  is a recipe, which `atomic-bomb` unlocks, and it stays, while the technology of that name is
-  this mod's and goes. And `RealisticReactorsReborn`'s reactors take `nuclear` alone.*
 
 ### `RealisticFusionPowerPort`
 
@@ -1952,7 +1814,8 @@ two decisions is visible from this side.
 Members that survived the 1.1 -> 2.0 port and were removed by #9 on 2026-09-23, or by #81 on
 2026-10-04. The survey text is kept as written, and each entry ends with its ruling. #9's four were
 removed by choice. #81's two were removed because `True-Nukes_Continued` does not load; that is a
-load drop (`GLOSSARY.md`).
+load drop (`GLOSSARY.md`). *2026-10-20 (#330): `PlutoniumEnergy`, last below, is the fifth removed
+by choice, the first so named: a* Choice drop *(`GLOSSARY.md`).*
 
 ### `DeadlockStackingForBobs`
 
@@ -2161,6 +2024,176 @@ hidden member `Warheads_Continued` leaves with it. No replacement was added. The
 what reopens the question and the candidates handed to #49 are under *Decisions, 2026-10-04 (#81)*.
 **Checked 2026-10-04 (#81):** the search this entry did not run was run - no other continuation of
 `True-Nukes` is on 2.x.
+
+### `PlutoniumEnergy`
+
+| | |
+|---|---|
+| **Title** | Plutonium Energy |
+| **Does** | Extends the nuclear chain past uranium: plutonium bred from fission, reprocessed into fuel for a higher-output cycle, plus plutonium-based ammunition |
+| **Latest** | `1.8.2`, `factorio_version` **2.1**, 2026-06-26 |
+| **Downloads** | 79,842 |
+| **Owner** | `JohnTheCoolingFan` |
+| **Read on** | 2026-09-21 |
+| **Status** | dropped 2026-10-20 (#330), a *Choice drop* |
+
+**Alternatives considered.** None searched as a substitute. It is one of six mods in this pack
+touching the nuclear chain, which is a question about the subsystem rather than about this mod; see
+*Six mods on one nuclear chain* below. *Four since 2026-10-04 (#81), which dropped the weapons
+branch.*
+
+**Recommendation: keep.** Current on 2.1, the best-maintained of the pack's four nuclear add-ons by
+both recency and downloads, and the only one of them requiring `base >= 2.1` on its own account.
+
+*Read 2026-10-15 (#289): its Kovarex check works for this pack on 2.0 by a typo, and on 2.1,
+inferred, the fixed check would leave its tree behind a technology `add_research` refuses. Three
+points:*
+
+- *1.8.1, the release the 2.0 packs resolve (pinned in the staging of 2026-10-08), checks for
+  Kovarex under a misspelled name, `kovarex-enrivhment-process`, in `data-updates.lua` lines
+  15-17, so the check is always true. Under it Kovarex is removed from `nuclear-breeding`'s
+  prerequisites, the second entry of `{ 'plutonium-nuclear-power', 'kovarex-enrichment-process' }`
+  (`prototypes/technology/technology.lua` line 152). In this pack that is the result needed,
+  because `Clowns-AngelBob-Nuclear` disables Kovarex. Read from source.*
+- *1.9.2 (line 2.1, released 2026-10-15, tag `v1.9.2` at `f849fd5`, `main`'s head when read)
+  fixed the spelling and only the spelling, after JohnTheCoolingFan/PlutoniumEnergy#112: line 19
+  now asks whether `kovarex-enrichment-process` exists. Since 1.9.0 the check guards
+  `plutonium-processing`, whose prerequisites are `{ "kovarex-enrichment-process",
+  "nuclear-fuel-reprocessing", "fluid-handling" }` (`technology.lua` line 32), and replaces the
+  first with `uranium-processing`. The changelog: "the technology will depend on Kovarex
+  enrichment process now unless another mod removes it". Read from source.*
+- *`Clowns-AngelBob-Nuclear` disables Kovarex and does not remove it:
+  `data.raw.technology["kovarex-enrichment-process"].enabled = false`, in
+  `prototypes/technology-overrides.lua` line 31 of 2.0.13 and of `Pezzawinkle/MadClowns`
+  `master` at `d4c8d0a` (2.1.02). Read from source. GitHub's code search of the repository for
+  the name found seven files, five of them Lua, and no line of those five that names it removes
+  it. In this pack's data dump on 2.0.77, base only (prototype list checksum `2195323740`), the
+  technology is there with `enabled: false`: measured.*
+
+*So on 2.1 the check would be false beside `Clowns-AngelBob-Nuclear`, unless another member's
+2.1 release removes Kovarex, which was not read, and `plutonium-processing` would keep a
+prerequisite that `add_research` refuses, as #285 and #287 measured for a disabled Kovarex on
+2.0.77 with Space Age. The rest of the mod's tree would sit behind it. This is inferred, from the
+three points and those measurements; nothing was run on 2.1. It reaches `Grado_ABCX` and
+`Grado_ABCS` through this pack. What to do on 2.1 is #290's, at stable 2.1.*
+
+*Read 2026-10-19 (#328): what it adds beside the plutonium the pack already has from
+`Clowns-AngelBob-Nuclear`, `Clowns-Nuclear`, Angel's and Bob's. Measured by a script's output over
+the kept `--dump-data` dumps, all on 2.0.77 with this mod at 1.8.1, `Clowns-AngelBob-Nuclear` at
+2.0.13, `Clowns-Nuclear` at 2.0.08 and `angelspetrochem` at 2.0.3: `Grado_ABC` of 2026-10-11
+(checksum `2195323740`) and 2026-10-12 (`2949552679`), `Grado_ABCX` of 2026-10-15
+(`1533854567`), and `Grado_ABCS` with Space Age of 2026-10-11 (`2316474952`). The script
+listed every recipe whose ingredients, results or name hold plutonium, MOX, breeder or a minor
+actinide, the technologies unlocking each, the reactors and the nuclear fuel items.*
+
+- *Two Pu-239 items in use, and no recipe joins them. `bob-plutonium-239` is the one Bob's, Angel's
+  and both Clowns mods use: 10 unhidden recipes make it and 12 use it. `plutonium-239` is this
+  mod's alone, with its own `plutonium-238`: 3 recipes make the first and 5 use it, 4 make the
+  second and 5 use it. No recipe holds both Pu-239 items, in any of the four dumps.
+  `angels-plutonium-239`, which the Clowns source names, is defined and no unhidden recipe
+  makes or uses it.*
+- *What the other side gives, all of it on `bob-plutonium-239`. Plutonium is made by
+  reprocessing depleted uranium and thorium cells (`Clowns-AngelBob-Nuclear`, six recipes), by
+  `angels-plutonium-synthesis` from neptunium, by `angels-plutonium-breeding`, from Angel's
+  depleted MOX cells by `angels-advanced-mixed-oxide-reprocessing`, and by
+  `angels-americium-regeneration`, which takes 1 and gives 6. It goes into
+  two MOX cells for the standard reactor: `angels-mixed-oxide-cell`, 8 GJ, and the result of
+  Clowns' `mixed-oxide` recipe, `RRR-clowns-mox-cell`, 7 GJ, beside 2 GJ for
+  `uranium-fuel-cell`. It also goes into the thorium cells, `clowns-radiothermal-fuel`,
+  Angel's two nuclear fuels made with rocket fuel, the `plutonium-atomic-bomb` and
+  `angels-atomic-bomb` recipes, `bob-atomic-artillery-shell`, `bob-rtg`, and, through
+  `angels-mixed-oxide-cell`, three of Bob's fission equipment upgrades.*
+- *What this mod alone gives. Its plutonium starts from depleted uranium cells:
+  `advanced-nuclear-fuel-reprocessing-with-barrelling` makes a barrelled waste solution, and
+  `uranium-fuel-cell-waste-solution-centrifuging` returns both isotopes from it. Then
+  `plutonium-fuel-cell`, 20 GJ in the standard reactor, the
+  largest unhidden item of the `nuclear` fuel category in the dumps. The `MOX-reactor`, 20 MW
+  with a neighbour bonus of 1.5, and its own `MOX` fuel category and `MOX-fuel-cell`, 3 GJ. The
+  `breeder-reactor`, 20 MW with a bonus of 0.5, whose depleted cells are reprocessed into a
+  waste solution that returns both plutonium isotopes. Four plutonium ammunitions: a rounds
+  magazine, two cannon shells and `plutonium-atomic-artillery-shell`. `plutonium-fuel`, made with
+  rocket fuel, and two recipes for `fission-reactor-equipment`.*
+- *The four dumps agree. `Grado_ABCX`'s listing and both of `Grado_ABC`'s are the same, line
+  for line. `Grado_ABCS`'s adds Space Age's recycling recipes, 35 of them, all hidden, and four
+  of Space Age's own prototypes, two fuel items, a reactor and a technology, none of them
+  plutonium.*
+
+*Without this mod nothing was run: every dump holds it. The other side's list above is the
+dumps' with this mod's recipes set aside, so its standing without the mod is inferred, from the
+dumps and from a search of the staged `Grado_ABC` for the mod's name, outside the mod itself.
+The search found one member that names it, `RealisticReactorsReborn` 2.0.27, which lists the
+`MOX` and `nuclear-breeder` fuel categories under a comment naming this mod; in the dumps its
+reactors take `nuclear` and `MOX`.*
+
+*Where the two sides meet: a recipe name both define. This mod and `Clowns-AngelBob-Nuclear` each
+define a recipe named `advanced-nuclear-fuel-reprocessing`, read from source: this mod's 1.8.1
+in `prototypes/recipe/recipes.lua` line 48, depleted uranium cells and sulfuric acid to a fluid
+waste solution, unlocked by its `plutonium-processing`; the Clowns 2.0.13 one in
+`prototypes/recipes/nuclear-reprocessing.lua` line 5, unlocked by `nuclear-fuel-reprocessing-2`.
+The dumps hold the Clowns one, with its ingredients, its `bob-plutonium-239` and its icon, and
+unlock it from both technologies: measured. So this mod's fluid recipe is not in the pack, and
+its plutonium comes in by the barrelled recipe alone. The search for the mod's name did not find
+this.*
+
+*Kovarex does not gate the other side. In the dumps `mixed-oxide-fuel` unlocks Clowns' MOX and
+Angel's MOX, synthesis and americium recipes, and none of its 107 prerequisites, walked to the
+root, is disabled or hidden. None of the 82 of this mod's `plutonium-processing` is either, on
+2.0. Kovarex is not among `mixed-oxide-fuel`'s because
+`Clowns-AngelBob-Nuclear` removes that prerequisite: read from source,
+`prototypes/technology-overrides.lua` line 45, the same file in 2.0.13 and in 2.1.02
+(`Pezzawinkle/MadClowns` at `d4c8d0a`). That 2.1 holds the same in the game is inferred from
+that source; nothing was run on 2.1.*
+
+*Measured 2026-10-20 (#332): the pack without this mod. Two `--dump-data` dumps of the staged
+`Grado_ABC` on 2.0.77, made by `get-dump.ps1` from one mod directory with the pack's own zip
+disabled in both, and this mod disabled in the second: the two sets differ by this mod alone.
+The first has checksum `2195323740`, the 2026-10-11 dump's (its set less the pack's zip, which
+holds no prototype). The second has `3718243312`. `dump-diff.ps1` between them, and a script over
+the second for the rest:*
+
+- *92 prototypes go and none comes. 40 recipes, 13 items, 11 technologies, 4 ammunitions, the
+  `MOX-reactor` and `breeder-reactor`, 2 fluids, the `MOX` and `nuclear-breeder` fuel categories,
+  and 18 more: the `nuclear-artillery` ammo category, projectiles, explosions, remnants, sprites,
+  three item subgroups and `atomic-bomb-fire-flame`. Of the 40 recipes, 12 are named `rf-` and 3
+  `RRR-`, so they are taken to be `reverse-factory`'s and `RealisticReactorsReborn`'s for this
+  mod's items, by their prefixes. The 11 technologies: `MOX-nuclear-power`,
+  `breeder-fuel-cell-from-MOX-fuel-cell`, `breeder-fuel-cell-from-uranium-cell`,
+  `fission-reactor-equipment-from-MOX-fuel`, `fission-reactor-equipment-from-plutonium`,
+  `nuclear-breeding`, `plutonium-ammo`, `plutonium-atomic-bomb`, `plutonium-nuclear-power`,
+  `plutonium-processing` and `plutonium-reprocessing`. Everything under "What this mod alone
+  gives" above is among the 92.*
+- *14 prototypes stay and change.*
+  - *`RealisticReactorsReborn`'s branch for this mod: its two reactor displayers burn `nuclear`
+    and `MOX` with it, `nuclear` alone without, and its three cell recipes above go. Nothing
+    else of it changes.*
+  - *The Clowns `advanced-nuclear-fuel-reprocessing`, the name both mods define: with this mod it
+    has `allow_productivity` set and this mod's `nuclear-uranium` subgroup, without it neither.
+    So this mod reaches into the recipe that replaced its own.*
+  - *`nuclear-fuel-reprocessing`, and the recipe and item `uranium-fuel-cell` and the item
+    `depleted-uranium-fuel-cell`, go back from that subgroup to the Clowns and Angel's ones.
+    Four more change only an order string. Menu placement, nothing a recipe uses.*
+  - *`bob-fluid-barrel-processing` no longer unlocks this mod's barrel recipes.*
+  - *`EditorExtensions`' two aggregate chests hold 3,622 stacks against 3,639: 17 fewer, the
+    number of items and ammunitions that go. That the chests are sized by the item count is
+    inferred from the match.*
+- *Nothing is left pointing at what went. No technology's prerequisite or unlock, and no
+  recipe's ingredient or result, names a prototype missing from the second dump. The pack also
+  loads without the mod: `docs/loads/Grado_ABC-2026-10-20.md`.*
+- *The "without this mod" picture above, inferred on 2026-10-19, holds in the second dump, claim
+  by claim. 10 unhidden recipes still make `bob-plutonium-239` and 12 use it. Each recipe named
+  under "What the other side gives" is there, unhidden, and unlocked by a technology. The two
+  MOX cells are still 8 GJ and 7 GJ. `mixed-oxide-fuel` still has 107 prerequisites, none
+  disabled or hidden. Three of Bob's fission equipment recipes still take
+  `angels-mixed-oxide-cell`. Two things to read with it: the `plutonium-atomic-bomb` it names
+  is a recipe, which `atomic-bomb` unlocks, and it stays, while the technology of that name is
+  this mod's and goes. And `RealisticReactorsReborn`'s reactors take `nuclear` alone.*
+
+**Ruled 2026-10-20 (#330): out**, a *Choice drop* (`GLOSSARY.md`). Truls's reason: the pack's
+nuclear chain is too overloaded. The replaced definition above is not the reason. It loads, it has
+releases on both lines, and nothing failed. The pack still has the Clowns and Angel's plutonium and
+MOX, as measured above. No replacement, and no condition reopens the question. No report to either
+mod's author: the mod promises no interop with these mods. The version stays `0.1.0`, since a pack's
+version does not move before its first release. The ruling is under *Decisions, 2026-10-20 (#330)*.
 
 ## Candidates, not members
 
@@ -2558,6 +2591,12 @@ note on* `PlutoniumEnergy` *above.*
 the "Adds" column does not say. What each side gives, and that no recipe joins their
 plutonium items, is in the note on* `PlutoniumEnergy` *above.*
 
+*2026-10-20 (#330): `PlutoniumEnergy` is out, a choice drop, because the chain is too
+overloaded. Three of the six remain: `Clowns-AngelBob-Nuclear`, its hidden `Clowns-Nuclear` and
+`RealisticReactorsReborn`. The plutonium and MOX of the Clowns pair, Angel's and Bob's stay,
+measured. The entry the two notes above point to is now under "Ruled out after the port", and
+what left with it is in its note of 2026-10-20 (#332).*
+
 ## Overlaps
 
 Cross-pack overlaps carry an **Overlaps** row in the entry above and are not repeated here. This
@@ -2588,13 +2627,14 @@ on a 2026 cadence, the other is a single 2.0 release after two dormant years. If
 carries one third-party Angel's extension instead of two, that is which.
 
 **Nuclear reaches across the split.** `Clowns-AngelBob-Nuclear` and its hidden `Clowns-Nuclear` add
-thorium cycles, waste processing and reactor fuels; #5 holds `PlutoniumEnergy`,
-`RealisticReactorsReborn` and the two `True-Nukes` mods *(both dropped 2026-10-04, #81)*. That is
-six mods on one subsystem, spread across both halves of this pack, and `Clowns-Nuclear` declares
-`(?) RealisticReactorsReborn`, so at least one pair is integrated by its author. **Both halves are
-now surveyed** and the subsystem is set out in *Six mods on one nuclear chain* above: the six are
-wired together by their own authors and none is a candidate for removal, but five of them are small
-and stale and only `PlutoniumEnergy` is not.
+thorium cycles, waste processing and reactor fuels; #5 holds `PlutoniumEnergy` *(dropped 2026-10-20,
+#330)*, `RealisticReactorsReborn` and the two `True-Nukes` mods *(both dropped 2026-10-04, #81)*.
+That is six mods on one subsystem, spread across both halves of this pack, and `Clowns-Nuclear`
+declares `(?) RealisticReactorsReborn`, so at least one pair is integrated by its author. **Both
+halves are now surveyed** and the subsystem is set out in *Six mods on one nuclear chain* above: the
+six are wired together by their own authors and none is a candidate for removal, but five of them
+are small and stale and only `PlutoniumEnergy` is not. *2026-10-20 (#330): that one was the one
+removed, by choice, for the chain's load and not its health. See* Decisions, 2026-10-20 (#330).
 
 **Bulk storage, and the half of it that is this pack's own.** `angelsaddons-storage`'s warehouses,
 silos and pressure tanks overlap the `WideChests` family, and `WideChestsBobs` — one of #5's — is a

@@ -26,9 +26,15 @@ lower pack does name
 
 **Load drop**:
 A member mod that was kept at the 1.1 -> 2.0 port and removed later because the pack does not load
-with it. Distinct from a port drop, which is a 1.1 mod with no 2.x release, and from a member ruled
-out by choice. Added 2026-10-04 (#81).
+with it. Distinct from a port drop, which is a 1.1 mod with no 2.x release, and from a
+*Choice drop*, a member ruled out by choice. Added 2026-10-04 (#81).
 _Avoid_: drop without saying which kind, port drop for a mod that has a 2.x release
+
+**Choice drop**:
+A member mod removed at Truls's ruling, for what it adds to the pack, while it still has a release
+and the pack still loads with it. The third kind of drop beside a port drop and a *Load drop*. It
+names no condition that would reopen it unless its ruling says one. Added 2026-10-20 (#330).
+_Avoid_: "load drop" for one; pruning
 
 **Glue**:
 Lua a pack carries to join two member mods that each load on their own, where the join belongs in
@@ -44,6 +50,19 @@ The lean is against it: report upstream instead, ruled case by case (#81, #147).
 (#147).
 _Avoid_: glue for code that does one member's job; fix for the pack's own Lua (it hides whose job
 it was)
+
+**Shared name**:
+A prototype type and name that two or more members define, or a member and an expansion. It says
+nothing of which definition the game ends with: the later one can replace the earlier whole, or
+the two can mix. Added 2026-10-20 (#330).
+_Avoid_: "clash" for it (the word is kept for a key binding where one input stops working)
+
+**Replaced definition**:
+A shared name whose later definition replaces the earlier one whole, so one member's prototype is
+gone from the game without a log line. Which one is left follows the load order, which a release of
+either mod can change. Added 2026-10-20 (#330).
+_Avoid_: "clash" for it (as for a shared name); "override" for it (the catalogues use the word
+for one mod's deliberate change to another's prototype)
 
 **Declared line**:
 The Factorio release line a pack's `factorio_version` names - `2.0` or `2.1` - and so the games the

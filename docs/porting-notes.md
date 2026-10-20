@@ -155,6 +155,11 @@ The first two are `True-Nukes_Continued` and `True-Nukes-Graphics_Continued`, an
 `Warheads_Continued` left with them. No replacement was added. What failed, why it was dropped and
 what reopens it are in `docs/catalogue/Grado_ABC.md` under *Decisions, 2026-10-04 (#81)*.
 
+**A choice drop, 2026-10-20 (#330): 39 mods to 38.** `PlutoniumEnergy` out, at Truls's ruling,
+because the pack's nuclear chain is too overloaded. A choice drop (`GLOSSARY.md`) is neither a port
+drop nor a load drop, so the twenty port drops stay twenty. No replacement. What the pack loses and
+the ruling are in `docs/catalogue/Grado_ABC.md`, under *Decisions, 2026-10-20 (#330)*.
+
 ### Replaced
 
 | 1.1 mod | 2.0 replacement |
@@ -522,7 +527,8 @@ entry and in `Orphan Finder`'s under *Candidates, not members*. `Orphan Finder`'
   settled memberships (#15): see *Effective Factorio floor* above, which supersedes the readings in
   this entry.** **The member counts below are each pack as it stood when
   it was measured**: #7 and #8 then took the three lower lists to 26, 20 and 44 members, #9 took the
-  third to 41 on 2026-09-23 and #81 to 39 on 2026-10-04, and the numerators have not been re-derived
+  third to 41 on 2026-09-23, #81 to 39 on 2026-10-04 and #330 to 38 on 2026-10-20, and the
+  numerators have not been re-derived
   against them. **Answered for `Grado_NonChanging` on 2026-09-21, and the answer is no:** ten of its
   29 members require `base >= 2.1`, six of them `>= 2.1.7`, so a player on 2.0.x cannot satisfy the
   pack. See `docs/catalogue/Grado_NonChanging.md`. The mechanism is the members' own `base`

@@ -251,6 +251,20 @@ four inputs sharing 13, 8, one and one controls. It finds the member by searchin
 Lua for the input's name in quotes, and gives the eleven linked inputs the members the second
 table has.*
 
+*2026-10-20 (#142): the game was asked to write a line from a `PAD` spelling, and a headless run
+writes none. Measured on 2.0.77 (build 84539, win64, steam), through the load harness's
+`Invoke-Factorio`, with a config file and a write directory of their own and the player's left
+alone. The mod directory held `underground-pipe-pack` `2.0.6` beside base, with `elevated-rails`,
+`quality` and `space-age` disabled; its dump gives `plus-valve` the key `PAD +` and `minus-valve`
+`PAD -`, both with no `linked_game_control`. Two runs, `--dump-data` and `--create`, both exited
+0, and each left its config file as the harness wrote it, 211 bytes holding only `[path]`, with no
+`[controls]` section. In the two write directories only the dump holds a `KP_` or `PAD ` line,
+its two `key_sequence` values. So the bridge is still not measured, and the `plus-valve` and
+`minus-valve` rows of the table above still rest on the assumption. What would write the
+section is inferred and not tried: the file #96 read was written on 2026-09-30, during
+`Grado_NonChanging`'s play session, so a windowed start with that config file, quit from the main
+menu, should write it.*
+
 ## Not checked
 
 - **Play.** No play session. #26.

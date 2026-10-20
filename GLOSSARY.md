@@ -61,10 +61,10 @@ a mod that merges or relocates); "compat mod" for it (used for both)
 
 **Shared name**:
 A prototype type and name that two or more members define, or a member and an expansion. The base
-game's own prototypes are not counted: a member that redefines one is doing an overhaul's job. It
-says nothing of which definition stands or what the game ends with: the later definition can
-replace the earlier whole, and a later stage can still change the prototype, so the game can end
-with a mix of the two. Added 2026-10-20 (#330); the base game left out 2026-10-20 (#331).
+game's own prototypes are not shared names: a member that redefines one is doing an overhaul's
+job. It says nothing of which definition stands or what the game ends with: the later definition
+can replace the earlier whole, and a later stage can still change the prototype, so the game can
+end with a mix of the two. Added 2026-10-20 (#330); the base game left out 2026-10-20 (#331).
 _Avoid_: "clash" for it (the load records keep the word for a key binding where one input stops
 working)
 

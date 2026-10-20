@@ -328,6 +328,8 @@ calls it `bob-advanced-processing-unit`, so the recipe takes the vanilla branch.
 #81 found in the nukes mods and #122 in `Nanobots2`
 (`docs/catalogue/Grado_ChangingBase.md`).
 
+#### Names it shares (2026-10-20, #331)
+
 *Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition replaces
 another mod's, for one name. `Clowns-Nuclear`, which it requires and which has no entry, is named
 there too: another mod's definition replaces its own, for one name.
@@ -416,8 +418,8 @@ at `1.9.2`, in the pack's recorded load. Not played.*
 
 *Traced 2026-10-20 (#331):* named in *Names members both define*, below: another mod's definition
 replaces its own, for 3 names. They are its `angels-electric-boiler` as item, machine and recipe,
-replaced by `angelspetrochem`'s, which leaves its `rfp-boiling` recipes with no machine, *Read
-from source*: #338.
+replaced by `angelspetrochem`'s. That leaves its `rfp-boiling` recipes with no machine,
+*Inferred* from the trace and the source read in #338.
 
 ### `RealisticReactorsReborn`
 
@@ -899,7 +901,7 @@ replaces its own, for 2 names.
 *Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
 a patch from Angel's queue merged in, for one name; another mod's definition replaces its own, for 6
 names: the six laser beams, which differ from `bobvehicleequipment`'s only in which mod's graphics
-files they name, *Read from source*.
+files they name, *Read from source* (`bobequipment` `2.1.0`, `bobvehicleequipment` `2.1.1`).
 
 ### `bobgreenhouse`
 
@@ -3155,10 +3157,10 @@ Stated plainly so the gaps are not mistaken for clean results.
 
 ## Names members both define (2026-10-20, #331)
 
-**463 prototype names are defined by two or more members of `Grado_ABC`.** *Measured* by a traced
-run of the data stage, on Factorio 2.0.77 on 2026-10-20, every mod of the closure at the release
-`docs/loads/Grado_ABC-2026-10-20.md` gives. A further 569 base-game names are defined again by a
-member, counted and not listed (`GLOSSARY.md`, *Shared name*), and 341 names are defined twice by
+**463 prototype names are defined by two or more mods of `Grado_ABC`'s closure.** *Measured* by a
+traced run of the data stage, on Factorio 2.0.77 on 2026-10-20, every mod of the closure at the
+release `docs/loads/Grado_ABC-2026-10-20.md` gives. A further 569 base-game names are defined again
+by a mod, counted and not listed (`GLOSSARY.md`, *Shared name*), and 341 names are defined twice by
 one mod, which is not a shared name. Every name, with each mod that defined it and its stage, is
 in `docs/traces/Grado_ABC-2026-10-20.md`, with the configuration and the commands. Below, one row
 per sequence of mods.
@@ -3179,24 +3181,22 @@ patch merged in, so what changes is what the patch says. Each such row is *Infer
 stage and calling file: which patch each recipe got was not read.
 
 **100 are replaced definitions**, where two or more mods each define the name fresh and the last
-stands whole. Truls ruled on 2026-10-20 that a ticket is filed only where the mod that stands
-shows no sign of knowing the earlier one: no dependency on it from that mod or its author's other
-mods, and no file or Lua naming it. That test is *Read from source*, the staged `info.json` files
-and a search of each standing mod's files. Every pair passes it but two:
+replaces the earlier whole. Truls ruled on 2026-10-20 that a ticket is filed only where the mod that
+stands shows no sign of knowing the earlier one: no dependency on it from that mod or its author's
+other mods, and no file or Lua naming it. That test is *Read from source*, the staged `info.json`
+files and a search of each standing mod's files. Every pair passes it but two:
 
 - `bobequipment` > `bobvehicleequipment`, the six laser beams, which `bobwarfare` defines first.
-  *Read from source:* the three definitions differ only in which mod's graphics files they name,
-  and `bobwarfare` takes the same sound from a file of its own. No ticket: that is not a loss
+  *Read from source* (`bobwarfare` `2.1.0`, `bobequipment` `2.1.0`, `bobvehicleequipment`
+  `2.1.1`): the three definitions differ only in which mod's graphics files they name, and
+  `bobwarfare` takes the same sound from a file of its own. No ticket: that is not a loss
   #331's ruling tickets.
 - `RealisticFusionPowerPort` > `angelspetrochem`, `angels-electric-boiler` as item, machine and
-  recipe. *Read from source:* the boiler that is gone is the only machine for
-  `RealisticFusionPowerPort`'s `rfp-boiling` recipes, and Angel's, which stands, does not craft
-  that category. Ticketed: #338.
+  recipe. *Read from source* (`RealisticFusionPowerPort` `1.9.2`, `angelspetrochem` `2.0.3`): the
+  boiler that is gone is the only machine for `RealisticFusionPowerPort`'s `rfp-boiling` recipes,
+  and Angel's, which stands, does not craft that category. Ticketed: #338.
 
-In the rest, the mod that stands declares the earlier one, or is by the same author: Bob's mods
-over each other, `reskins-angels`' graphics over `reskins-bobs`', `extendedangels` and
-`angels-smelting-extended` over the Angel's mods they declare, and `cybersyn2`'s sprites over
-those of `0-things`, which it requires.
+In the rest, the mod that stands declares the earlier one, or is by the same author.
 
 **What the trace cannot see.** A change a later stage makes in place, which is not a definition,
 and a prototype assigned straight into `data.raw`. So *replaced* judges the definitions, as

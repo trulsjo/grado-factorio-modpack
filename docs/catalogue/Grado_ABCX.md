@@ -386,6 +386,8 @@ reach. *Ruled 2026-10-19 (#294, in `docs/decisions.md`): `Grado_ABCX` has no 2.0
 supersedes the hold on its first 2.0 release ruled 2026-10-15, and its first, on 2.1, waits until
 the fourth stage can be reached there.*
 
+#### No name shared (2026-10-20, #331)
+
 *Traced 2026-10-20 (#331):* it defines no name another member defines, at `1.3.3`, the release
 staged. See *Names members both define*, below.
 

@@ -297,15 +297,16 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   *The promise:* `Grado_ABCS`'s fails a mod that merges `Grado_ABC` with Space Age or moves
   either's content between planets, and passes a *Coexistence fix* (`GLOSSARY.md`), a mod that
   makes the two run together without doing either. *The count:* the one-mod-per-branch rule counts
-  what a player installs, not counting the mods the game itself supplies, which keeps #10's
-  `quality` and `elevated-rails`. *The exception:* a coexistence fix cannot sit in `Grado_ABC`,
-  because each one found requires `space-age` and `Grado_ABCX` refuses it, so a branch may carry
-  one beside its end-game. This narrows #10's "no bridge mod": merges and relocations stay out,
-  and fixes may be proposed. Of #31's four candidates, all fail: `angelbob-spaceage-rebalance`
-  merges and installs nineteen mods, `BobsAngelsSpaceAge` and `industrial-worlds` relocate, and
-  `angels_space_age_galore` merges and cannot be installed beside `Grado_ABC`. Neither branch's
-  list changes: `SpaceModFeorasFork` `1.3.4` and `space-age` each install one mod (read
-  2026-10-20). The rule's wording is in `CLAUDE.md`, its old wording on the trail in
-  `docs/porting-notes.md`. #31 closes; the mods its searches missed, coexistence fixes among them,
-  are #335's, and a poor play session in #29 reopens the question. No ADR: before a release this
-  is easy to undo.
+  what a player installs, not counting the mods the game supplies with an end-game, which keeps
+  #10's `quality` and `elevated-rails`. *The exception:* a coexistence fix cannot sit in
+  `Grado_ABC`, because each of the six #335 lists requires `space-age` (read 2026-10-20) and
+  `Grado_ABCX` refuses it, so a branch may carry one beside its end-game. This refines #10's "no
+  bridge mod": merges and relocations stay out, and fixes may be proposed. Of #31's four
+  candidates, all fail, by their authors' own descriptions: `angelbob-spaceage-rebalance` merges
+  and installs nineteen mods (resolved 2026-09-24, `1.1.42`), `BobsAngelsSpaceAge` and
+  `industrial-worlds` relocate, and `angels_space_age_galore` merges and cannot be installed
+  beside `Grado_ABC` (read 2026-10-01, #91). Neither branch's list changes:
+  `SpaceModFeorasFork` `1.3.4` and `space-age` each install one mod (read 2026-10-20). The rule's
+  wording is in `CLAUDE.md`, its old wording on the trail in `docs/porting-notes.md`. #31 closes;
+  the mods #4's, #6's and #83's searches missed, coexistence fixes among them, are #335's, and a
+  poor play session in #29 reopens the question. No ADR: before a release this is easy to undo.

@@ -893,8 +893,8 @@ its own:
 > plugin pass or a confirmation of it runs, and a session is cleared only at the two points
 > `docs/agents/code-review.md` names (#159).
 
-**The one-mod-per-branch rule**, under *The chain*, the end of its second sentence as it
-stood until 2026-10-20, when #31 counted it by what a player installs and let a branch carry
+**The one-mod-per-branch rule**, under *The chain*, the fourth sentence of its paragraph
+as it stood until 2026-10-20, when #31 counted it by what a player installs and let a branch carry
 a coexistence fix beside its end-game. The ruling is the #31 entry of `docs/decisions.md`.
 
 > **Anything both branches need goes in ABC**, and each branch adds exactly one thing.

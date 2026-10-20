@@ -422,4 +422,5 @@ no 2.x release to add to any pack. The remaining fourteen name other overhauls â
 membership decision rather than a relocation.
 
 **The rule is under no pressure from `Grado_ABCX`.** It is under pressure from `Grado_ABCS`, and
-that is reported in `docs/catalogue/Grado_ABCS.md`.
+that is reported in `docs/catalogue/Grado_ABCS.md`. *`CLAUDE.md` reworded the rule on 2026-10-20
+(#31): see its entry in `docs/decisions.md`.*

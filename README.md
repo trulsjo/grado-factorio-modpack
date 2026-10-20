@@ -19,7 +19,7 @@ Grado_NonChanging      quality of life; adds no content (see GLOSSARY.md, *Promi
 
 **ABCX and ABCS are mutually exclusive.** `SpaceModFeorasFork` declares `! space-age`, so the two
 end-game routes cannot be combined. That is why ABC exists as its own pack: everything they share
-lives there, and each branch adds exactly one thing.
+lives there, and each branch adds its own end-game.
 
 ## Status
 

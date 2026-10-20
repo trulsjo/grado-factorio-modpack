@@ -161,6 +161,11 @@ stays at three. The tier that could not be served was the one that left.
 `UltimateBeltsSpaceAge` entry in `docs/catalogue/Grado_ChangingBase.md`, and that entry is now under
 *Ruled out after the port*.
 
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: a member's definition
+replaces its own for 21 names, and its own replaces `bobores`' for 3; for 3 recipes its definition
+stands with a patch from Angel's queue merged in. `quality`, which it requires and which has no
+entry, is named there too, for 4 recipes.
+
 ## Dropped during the port
 
 **None, and the section cannot have entries.** `Grado_ABCS` did not exist in 1.1, so there is no 1.1
@@ -569,6 +574,10 @@ shared name.
 | fluid (1) | `ammonia` |
 | particle (1) | `tungsten-ore-particle` |
 
+*Traced 2026-10-20 (#331):* a trace of the data stage finds 26 of the 29 and the `resource`
+`tungsten-ore`, and both differences are explained in *Names members both define (2026-10-20,
+#331)*, below.
+
 ### Which member defines each shared name (2026-10-05, #134)
 
 #128 recorded which form the dump holds and not which mod made it. This is the member behind each
@@ -692,6 +701,57 @@ Not traced, beside the three named above: the stage in which each Angel's overri
 beyond that they are queued in its `data-updates.lua` and `data-final-fixes.lua`; and the Bob's
 and Angel's releases on the 2.1 line. *The three were traced 2026-10-15 (#141), in the notes on
 the particle above the table, on the turbo belts' recipe row and on `lithium` above.*
+
+### Names members both define (2026-10-20, #331)
+
+**493 prototype names are defined by two or more mods of `Grado_ABCS`, Space Age's among them.**
+*Measured* by a traced run of the data stage on Factorio 2.0.77 on 2026-10-20, with `space-age`
+named and the members at the releases of `Grado_ABC`'s run. A further 574 base-game names are
+defined again by a mod, counted and not listed (`GLOSSARY.md`, *Shared name*), and 352 are defined
+twice by one mod. Every name is in `docs/traces/Grado_ABCS-2026-10-20.md`. 463 of them are
+`Grado_ABC`'s, in `docs/catalogue/Grado_ABC.md`, *Names members both define (2026-10-20, #331)*,
+which also says what *mix* and *replaced* mean here and what the trace cannot see.
+
+**34 rows are this pack's own:** 30 names `Grado_ABC` does not have, and 4 recipes, `carbon`,
+`lithium-plate`, `tungsten-carbide` and `tungsten-plate`, that Space Age defines first here, where
+in `Grado_ABC` `bobplates` does. They are below, one row per sequence of mods. No pair in them
+raises a ticket. Where a member stands over Space Age, it knows Space Age by the test in
+`Grado_ABC`'s section, except in two places; where `space-age` stands, over `bobores`'
+`tungsten-ore` and its particle, those are #134's rows. `reskins-bobs` redefines the three turbo
+belt corpses as graphics for Bob's belts, which is not a loss #331's ruling tickets.
+`angelspetrochem` makes `rocket-fuel-recycling` again from its own changed `rocket-fuel`, through
+`quality`'s function for it: *Read from source*, `prototypes/override/recycling.lua`, which lists
+`rocket-fuel` among the recipes it changed.
+
+**Against #134's 29 names.** The trace has 27 names that `space-age` defines and a member defines
+too: 26 of #134's 29, and one it did not list. Both differences are explained:
+
+- **Not in the trace:** the items `tungsten-plate`, `tungsten-carbide` and `lithium-plate`.
+  *Read from source*, `bobplates` `2.1.1`: it defines each only `if not data.raw.item[...]`
+  (`prototypes/item/plates.lua`, lines 149 and 168; `prototypes/item/alloys.lua`, line 105), and
+  beside Space Age it changes Space Age's item in place instead, which is not a definition. #134
+  compared dumps, which see the change.
+- **In the trace, not in #134's table:** the `resource` `tungsten-ore`, defined by `bobores`
+  through `boblibrary` and then by `space-age`, whose definition stands. #128's comparison had no
+  row for resources, and #134's `tungsten-ore` row already describes this one.
+
+The trace reads definitions, and #134 found about half of the 29 to be a mix by what later stages
+change in place. Its *replaced* rows below do not contradict that: they say the earlier definition
+is gone, not what the game ends with.
+
+| Defined fresh by, in order | Result | Names | Types | Which | Grade |
+|---|---|---|---|---|---|
+| `bobmodules` | mix: `bobmodules`'s definition, patched by Angel's queue | 3 | recipe 3 | `bob-quality-processor`, `bob-quality-processor-2`, `bob-quality-processor-3` | Inferred |
+| `quality` | mix: `quality`'s definition, patched by Angel's queue | 3 | recipe 3 | `quality-module`, `quality-module-2`, `quality-module-3` | Inferred |
+| `space-age` | mix: `space-age`'s definition, patched by Angel's queue | 3 | recipe 3 | `lithium-plate`, `tungsten-carbide`, `tungsten-plate` | Inferred |
+| `space-age` > `boblogistics` | replaced: `space-age`'s gone | 9 | item 3, recipe 3, splitter 1, transport-belt 1, underground-belt 1 | `turbo-splitter`, `turbo-transport-belt`, `turbo-underground-belt` | Inferred |
+| `space-age` > `bobequipment` | replaced: `space-age`'s gone | 4 | battery-equipment 1, item 1, recipe 1, technology 1 | `battery-mk3-equipment` | Inferred |
+| `bobores` > `space-age` | replaced: `bobores`'s gone | 3 | item 1, optimized-particle 1, resource 1 | `tungsten-ore`, `tungsten-ore-particle` | Inferred |
+| `space-age` > `reskins-bobs` | replaced: `space-age`'s gone | 3 | corpse 3 | `turbo-splitter-remnants`, `turbo-transport-belt-remnants`, `turbo-underground-belt-remnants` | Inferred |
+| `space-age` > `bobassembly` | replaced: `space-age`'s gone | 2 | recipe-category 2 | `electronics`, `electronics-with-fluid` | Inferred |
+| `space-age` > `bobplates` | replaced: `space-age`'s gone; 1 then patched by Angel's queue | 2 | item 1, recipe 1 | `carbon` | Inferred |
+| `quality` > `angelspetrochem` | replaced: `angelspetrochem` makes it again from its changed `rocket-fuel`, through `quality`'s own function | 1 | recipe 1 | `rocket-fuel-recycling` | Read from source |
+| `space-age` > `bobrevamp` | replaced: `space-age`'s gone | 1 | fluid 1 | `ammonia` | Inferred |
 
 ### A Space Age recipe the overhaul changed: 36
 

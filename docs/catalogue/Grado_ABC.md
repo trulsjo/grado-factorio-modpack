@@ -328,6 +328,10 @@ calls it `bob-advanced-processing-unit`, so the recipe takes the vanilla branch.
 #81 found in the nukes mods and #122 in `Nanobots2`
 (`docs/catalogue/Grado_ChangingBase.md`).
 
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition replaces
+another mod's, for one name. `Clowns-Nuclear`, which it requires and which has no entry, is named
+there too: another mod's definition replaces its own, for one name.
+
 ### `Clowns-Extended-Minerals`
 
 | | |
@@ -353,6 +357,9 @@ mod is in neither.*
 **Recommendation: keep.** Current on 2.1, and it is one of the three mods that make this an ABC pack
 rather than an AB one.
 
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for 86 names.
+
 ### `Clowns-Processing`
 
 | | |
@@ -373,6 +380,9 @@ ahead of it at 27,050 — and the one the others lean on: `Clowns-AngelBob-Nucle
 
 **Recommendation: keep.** Current on 2.1, load-bearing for the rest of the Clowns set, and the
 largest single block of content in the pack that is neither Angel's nor Bob's.
+
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for 2 names.
 
 ### `RealisticFusionPowerPort`
 
@@ -403,6 +413,11 @@ with the other six members here that do the same. It declares nothing about Spac
 **Recommendation: keep.** Added by #9 on 2026-09-23, replacing `RealisticFusionPower`, as a
 comparison slot for `realistic-fusion-refreshed`. Not yet loaded in game. *Loaded 2026-10-04 (#116),
 at `1.9.2`, in the pack's recorded load. Not played.*
+
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: another mod's definition
+replaces its own, for 3 names. They are its `angels-electric-boiler` as item, machine and recipe,
+replaced by `angelspetrochem`'s, which leaves its `rfp-boiling` recipes with no machine, *Read
+from source*: #338.
 
 ### `RealisticReactorsReborn`
 
@@ -609,6 +624,9 @@ it wants in `data.raw` instead of replacing the prototype, which would keep Ange
 is
 #81. *Ruled 2026-10-04 (#81): the nukes mods are out; see* Decisions, 2026-10-04 (#81).
 
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition replaces
+another mod's, for 2 names.
+
 ### `angelsaddons-cab`
 
 | | |
@@ -681,6 +699,9 @@ against a warehouse and miss the fifth.
 evidence for the question #30 asks, not a reason to dispose of either side here — which layer owns
 bulk storage is pack membership, and that is #8's and #9's.
 
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for 5 names.
+
 ### `angelsbioprocessing`
 
 | | |
@@ -699,6 +720,10 @@ It requires `angelsrefining`, `angelspetrochem` and `angelssmelting` at `>= 2.1.
 unnamed `angelsbioprocessinggraphics`, and declares `(?) bobmodules`.
 
 **Recommendation: keep.** Current on 2.1.
+
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: another mod's definition
+replaces its own, for 4 names; it runs Angel's patch queue, which the trace logs as defining 26
+names again.
 
 ### `angelsinfiniteores`
 
@@ -724,6 +749,9 @@ described under *Overlaps* below.
 
 **Recommendation: keep.** Current on 2.1.
 
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: it runs Angel's patch
+queue, which the trace logs as defining one name again.
+
 ### `angelspetrochem`
 
 | | |
@@ -738,6 +766,10 @@ described under *Overlaps* below.
 **Alternatives considered.** None. Core Angel's.
 
 **Recommendation: keep.** Current on 2.1, and the second-most-downloaded Angel's mod.
+
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for 2 names; its definition replaces another mod's, for 4
+names; it runs Angel's patch queue, which the trace logs as defining 133 names again.
 
 ### `angelsrefining`
 
@@ -763,6 +795,10 @@ It carries fourteen optional dependencies — twelve of them Bob's mods, plus `r
 **Recommendation: keep.** Current on 2.1, the most-downloaded Angel's mod, and the thing the pack is
 named for.
 
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for 12 names; another mod's definition replaces its own, for
+one name; it runs Angel's patch queue, which the trace logs as defining 130 names again.
+
 ### `angelssmelting`
 
 | | |
@@ -779,6 +815,10 @@ named for.
 `angelsextended-remelting`, is recorded under the first of those.
 
 **Recommendation: keep.** Current on 2.1.
+
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: another mod's definition
+replaces its own, for 2 names; it runs Angel's patch queue, which the trace logs as defining 109
+names again.
 
 ### `bobassembly`
 
@@ -798,6 +838,10 @@ pattern holds for ten of the sixteen Bob's mods; see *Space Age is not ruled out
 
 **Recommendation: keep.** Current on 2.1.
 
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for 10 names; its definition replaces another mod's, for one
+name.
+
 ### `bobelectronics`
 
 | | |
@@ -812,6 +856,10 @@ pattern holds for ten of the sixteen Bob's mods; see *Space Age is not ruled out
 **Alternatives considered.** None. Core Bob's.
 
 **Recommendation: keep.** Current on 2.1.
+
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for 12 names; its definition replaces another mod's, for 19
+names; another mod's definition replaces its own, for 2 names.
 
 ### `bobenemies`
 
@@ -830,6 +878,9 @@ pattern holds for ten of the sixteen Bob's mods; see *Space Age is not ruled out
 **Recommendation: keep.** Current on 2.1. This is the mod whose job `angelsexploration` would have
 extended; see that drop's entry.
 
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: another mod's definition
+replaces its own, for 2 names.
+
 ### `bobequipment`
 
 | | |
@@ -844,6 +895,11 @@ extended; see that drop's entry.
 **Alternatives considered.** None. Core Bob's.
 
 **Recommendation: keep.** Current on 2.1.
+
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for one name; another mod's definition replaces its own, for 6
+names: the six laser beams, which differ from `bobvehicleequipment`'s only in which mod's graphics
+files they name, *Read from source*.
 
 ### `bobgreenhouse`
 
@@ -861,6 +917,9 @@ trees; both are in this pack and the overlap is within-pack, described under *Ov
 than with a row here.
 
 **Recommendation: keep.** Current on 2.1.
+
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for 6 names.
 
 ### `bobinserters`
 
@@ -901,6 +960,9 @@ because the mod is still installed by every `Grado_ABC` player — through `Grad
 is where it is now catalogued as a member. What was removed is a redundant line, not a mod.
 `bobinserters` is now named in exactly one of the five dependency lists.
 
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: another mod's definition
+replaces its own, for one name.
+
 ### `boblogistics`
 
 | | |
@@ -939,6 +1001,10 @@ landing in rather than a coincidence of two. **Two of those three are void as of
 named `UltimateBeltsSpaceAge`, and #8 removed it. The pattern the paragraph describes was real and
 is part of why it went.
 
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for 16 names; its definition replaces another mod's, for 2
+names; another mod's definition replaces its own, for one name.
+
 ### `bobmining`
 
 | | |
@@ -953,6 +1019,9 @@ is part of why it went.
 **Alternatives considered.** None. Core Bob's.
 
 **Recommendation: keep.** Current on 2.1.
+
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for 9 names.
 
 ### `bobmodules`
 
@@ -972,6 +1041,9 @@ knows about both the pack below it and the Space Age quality system.
 
 **Recommendation: keep.** Current on 2.1.
 
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for 22 names.
+
 ### `bobores`
 
 | | |
@@ -989,6 +1061,9 @@ It is one of four mods in this pack with an opinion about what a map's resources
 *Overlaps*.
 
 **Recommendation: keep.** Current on 2.1.
+
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: another mod's definition
+replaces its own, for 3 names.
 
 ### `bobplates`
 
@@ -1008,6 +1083,10 @@ category rather than content or tweaks.
 **Recommendation: keep.** Current on 2.1. This mod is the worked example in
 `docs/mod-catalogue.md`, read on 2026-09-20 at 290,643 downloads; this entry supersedes that copy.
 
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for 111 names; its definition replaces another mod's, for 3
+names; another mod's definition replaces its own, for 24 names.
+
 ### `bobpower`
 
 | | |
@@ -1022,6 +1101,9 @@ category rather than content or tweaks.
 **Alternatives considered.** None. Core Bob's.
 
 **Recommendation: keep.** Current on 2.1.
+
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for 6 names.
 
 ### `bobrevamp`
 
@@ -1040,6 +1122,10 @@ This is the Bob's mod that changes base-game recipes most directly, so it is the
 argue with whatever either end-game adds on top. Nothing in it declares an incompatibility.
 
 **Recommendation: keep.** Current on 2.1.
+
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for 21 names; its definition replaces another mod's, for 2
+names.
 
 ### `bobtech`
 
@@ -1079,6 +1165,10 @@ labs flash colours and is declared optional here, so the author is already track
 `spidertrontiers-community-updates` get filled with, so it is worth more to this pack than its
 download count suggests.
 
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for 4 names; its definition replaces another mod's, for 10
+names.
+
 ### `bobwarfare`
 
 | | |
@@ -1094,6 +1184,10 @@ download count suggests.
 drops — would have sat beside, which is #5's to weigh.
 
 **Recommendation: keep.** Current on 2.1.
+
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for 19 names; its definition replaces another mod's, for 3
+names; another mod's definition replaces its own, for 10 names.
 
 ### `botReplacer`
 
@@ -1146,6 +1240,10 @@ that it is an optional extra, not that it is neglected.
 in role and is the healthier of the two by every reading taken here, which is context for that
 mod's `reconsider:` rather than an argument against this one.
 
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
+a patch from Angel's queue merged in, for 19 names; its definition replaces another mod's, for 4
+names.
+
 ### `pump`
 
 | | |
@@ -1192,6 +1290,9 @@ either is ever added back, and it does not cover one mod the pack does have.
 their hidden packages, shipped on the same day, 2026-07-20 — the series is released as a set, which
 is worth knowing because it means they go stale as a set too.
 
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition replaces
+another mod's, for 30 names.
+
 ### `reskins-bobs`
 
 | | |
@@ -1212,6 +1313,11 @@ The second-most-downloaded member of this half at 130,520, behind `rso-mod`. It 
 the five packs.
 
 **Recommendation: keep.** Current on 2.1.
+
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition replaces
+another mod's, for 3 names; another mod's definition replaces its own, for 30 names.
+`reskins-library`, which it requires and which has no entry, is named there too: another mod's
+definition replaces its own, for 3 names.
 
 ### `reskins-compatibility`
 
@@ -3046,3 +3152,95 @@ Stated plainly so the gaps are not mistaken for clean results.
   arithmetic on portal dates. A mod that needs no changes and a mod that has been abandoned look
   identical from here, and `signalstrings` — a small library that could legitimately be finished —
   is the standing reminder that the two are different.
+
+## Names members both define (2026-10-20, #331)
+
+**463 prototype names are defined by two or more members of `Grado_ABC`.** *Measured* by a traced
+run of the data stage, on Factorio 2.0.77 on 2026-10-20, every mod of the closure at the release
+`docs/loads/Grado_ABC-2026-10-20.md` gives. A further 569 base-game names are defined again by a
+member, counted and not listed (`GLOSSARY.md`, *Shared name*), and 341 names are defined twice by
+one mod, which is not a shared name. Every name, with each mod that defined it and its stage, is
+in `docs/traces/Grado_ABC-2026-10-20.md`, with the configuration and the commands. Below, one row
+per sequence of mods.
+
+**The trace's check holds.** It lists `angels-liquid-molten-invar` as defined by `angelssmelting`
+and then `angels-smelting-extended`, both in the data stage, with the second standing: the case
+#50 and #80 found by chance. So no fallback was used.
+
+**363 end as a mix, through Angel's patch queue.** *Read from source*, `angelsrefining` `2.0.4`:
+`OV.patch_recipes` queues a patch for a recipe, from any mod, and `OV.execute` applies the queue.
+It calls `RB.patch`, which builds a copy of the recipe that stands in `data.raw`, merges the patch
+in, and defines it again (`prototypes/override-functions.lua`, `ov_functions.execute`;
+`prototypes/recipe-builder.lua`, `p_copy` and `RB.patch`). `angelsrefining`, `angelspetrochem`,
+`angelssmelting`, `angelsbioprocessing` and `angelsinfiniteores` each run it in data-updates or
+data-final-fixes. The trace logs the copy as defined by the mod that ran the queue, which is why
+an Angel's mod stands over 373 of the 374 recipes. What stands is the earlier definition with the
+patch merged in, so what changes is what the patch says. Each such row is *Inferred*, from its
+stage and calling file: which patch each recipe got was not read.
+
+**100 are replaced definitions**, where two or more mods each define the name fresh and the last
+stands whole. Truls ruled on 2026-10-20 that a ticket is filed only where the mod that stands
+shows no sign of knowing the earlier one: no dependency on it from that mod or its author's other
+mods, and no file or Lua naming it. That test is *Read from source*, the staged `info.json` files
+and a search of each standing mod's files. Every pair passes it but two:
+
+- `bobequipment` > `bobvehicleequipment`, the six laser beams, which `bobwarfare` defines first.
+  *Read from source:* the three definitions differ only in which mod's graphics files they name,
+  and `bobwarfare` takes the same sound from a file of its own. No ticket: that is not a loss
+  #331's ruling tickets.
+- `RealisticFusionPowerPort` > `angelspetrochem`, `angels-electric-boiler` as item, machine and
+  recipe. *Read from source:* the boiler that is gone is the only machine for
+  `RealisticFusionPowerPort`'s `rfp-boiling` recipes, and Angel's, which stands, does not craft
+  that category. Ticketed: #338.
+
+In the rest, the mod that stands declares the earlier one, or is by the same author: Bob's mods
+over each other, `reskins-angels`' graphics over `reskins-bobs`', `extendedangels` and
+`angels-smelting-extended` over the Angel's mods they declare, and `cybersyn2`'s sprites over
+those of `0-things`, which it requires.
+
+**What the trace cannot see.** A change a later stage makes in place, which is not a definition,
+and a prototype assigned straight into `data.raw`. So *replaced* judges the definitions, as
+`GLOSSARY.md`'s *Replaced definition* does, not what the game ends with: a later stage can still
+make a replaced name a mix. The full list is in the header of
+`vendor/grado-factorio-tools/scripts/trace-definitions.ps1`.
+
+| Defined fresh by, in order | Result | Names | Types | Which | Grade |
+|---|---|---|---|---|---|
+| `bobplates` | mix: `bobplates`'s definition, patched by Angel's queue | 111 | recipe 111 | `bob-air-pump`, `bob-air-pump-2`, `bob-air-pump-3`, `bob-air-pump-4`, `bob-alumina`, `bob-aluminium-plate`, `bob-amethyst-3`, `bob-brass-alloy`, `bob-bronze-alloy`, `bob-calcium-chloride`, `bob-carbon-from-wood`, `bob-cobalt-oxide`, `bob-cobalt-oxide-from-copper`, `bob-cobalt-plate`, `bob-cobalt-steel-alloy`, `bob-cobalt-steel-bearing`, `bob-cobalt-steel-bearing-ball`, `bob-cobalt-steel-gear-wheel`, `bob-copper-tungsten-alloy`, `bob-deuterium`, `bob-deuterium-fuel-cell`, `bob-deuterium-fuel-cell-2`, `bob-deuterium-fuel-reprocessing`, `bob-diamond-3`, `bob-distillery`, `bob-electric-chemical-furnace`, `bob-electrolyser`, `bob-emerald-3`, `bob-empty-canister`, `bob-empty-nuclear-fuel-cell`, `bob-enriched-fuel`, `bob-gas-canister`, `bob-glass`, `bob-gold-plate`, `bob-gunmetal-alloy`, `bob-heavy-water`, `bob-hydrogen-chloride`, `bob-hydrogen-sulfide`, `bob-invar-alloy`, `bob-lead-oxide`, `bob-lead-oxide-2`, `bob-lead-plate`, `bob-lead-plate-2`, `bob-liquid-air`, `bob-liquid-fuel`, `bob-lithium-chloride`, `bob-lithium-cobalt-oxide`, `bob-nickel-plate`, `bob-nitinol-alloy`, `bob-nitric-acid`, `bob-nitrogen`, `bob-petroleum-gas-cracking`, `bob-plutonium-fuel-cell`, `bob-plutonium-nucleosynthesis`, `bob-polishing-compound`, `bob-powdered-tungsten`, `bob-pure-water`, `bob-pure-water-from-lithia`, `bob-ruby-3`, `bob-salt`, `bob-salt-water-electrolysis`, `bob-sapphire-3`, `bob-silicon-carbide`, `bob-silicon-nitride`, `bob-silicon-plate`, `bob-silicon-powder`, `bob-silicon-wafer`, `bob-silver-from-lead`, `bob-silver-nitrate`, `bob-silver-oxide`, `bob-silver-plate`, `bob-sodium-hydroxide-sink`, `bob-solid-fuel-from-hydrogen`, `bob-steel-chemical-furnace`, `bob-stone-chemical-furnace`, `bob-sulfur-2`, `bob-sulfur-3`, `bob-sulfur-dioxide`, `bob-sulfuric-acid-2`, `bob-sulfuric-acid-3`, `bob-thorium-fuel-cell`, `bob-thorium-fuel-reprocessing`, `bob-thorium-plutonium-fuel-cell`, `bob-thorium-processing`, `bob-tin-plate`, `bob-titanium-plate`, `bob-topaz-3`, `bob-tungsten-oxide`, `bob-tungstic-acid`, `bob-void-pump`, `bob-water-electrolysis`, `bob-water-pump`, `bob-water-pump-2`, `bob-water-pump-3`, `bob-water-pump-4`, `bob-zinc-plate`, `bobingabout-enrichment-process`, `carbon`, `lithium-plate`, `tungsten-carbide`, `tungsten-plate`, `void-bob-chlorine`, `void-bob-deuterium`, `void-bob-hydrogen`, `void-bob-hydrogen-chloride`, `void-bob-hydrogen-sulfide`, `void-bob-nitrogen`, `void-bob-oxygen`, `void-bob-sulfur-dioxide`, `void-petroleum-gas`, `void-steam` | Inferred |
+| `Clowns-Extended-Minerals` | mix: `Clowns-Extended-Minerals`'s definition, patched by Angel's queue | 86 | recipe 86 | `clowns-chunk-mix1-processing`, `clowns-chunk-mix2-processing`, `clowns-chunk-mix3-processing`, `clowns-chunk-mix4-processing`, `clowns-chunk-mix5-processing`, `clowns-chunk-mix6-processing`, `clowns-chunk-mix7-processing`, `clowns-chunk-mix8-processing`, `clowns-chunk-mix9-processing`, `clowns-crushed-mix1-processing`, `clowns-crushed-mix2-processing`, `clowns-crushed-mix3-processing`, `clowns-crushed-mix4-processing`, `clowns-crushed-mix5-processing`, `clowns-crushed-mix6-processing`, `clowns-crushed-mix7-processing`, `clowns-crystal-mix1-processing`, `clowns-crystal-mix2-processing`, `clowns-crystal-mix3-processing`, `clowns-crystal-mix4-processing`, `clowns-crystal-mix5-processing`, `clowns-crystal-mix6-processing`, `clowns-crystal-mix7-processing`, `clowns-ore1-chunk-processing`, `clowns-ore1-crushed-processing`, `clowns-ore1-crystal-processing`, `clowns-ore1-pure-processing`, `clowns-ore2-chunk-processing`, `clowns-ore2-crushed-processing`, `clowns-ore2-crystal-processing`, `clowns-ore2-pure-processing`, `clowns-ore3-chunk-processing`, `clowns-ore3-crushed-processing`, `clowns-ore3-crystal-processing`, `clowns-ore3-pure-processing`, `clowns-ore4-chunk-processing`, `clowns-ore4-crushed-processing`, `clowns-ore4-crystal-processing`, `clowns-ore4-pure-processing`, `clowns-ore5-chunk-processing`, `clowns-ore5-crushed-processing`, `clowns-ore5-crystal-processing`, `clowns-ore5-pure-processing`, `clowns-ore6-chunk-processing`, `clowns-ore6-crushed-processing`, `clowns-ore6-crystal-processing`, `clowns-ore6-pure-processing`, `clowns-ore7-chunk-processing`, `clowns-ore7-crushed-processing`, `clowns-ore7-crystal-processing`, `clowns-ore7-pure-processing`, `clowns-ore8-chunk-processing`, `clowns-ore8-crushed-processing`, `clowns-ore8-crystal-processing`, `clowns-ore8-pure-processing`, `clowns-ore9-chunk-processing`, `clowns-ore9-crushed-processing`, `clowns-ore9-crystal-processing`, `clowns-ore9-pure-processing`, `clowns-pure-mix1-processing`, `clowns-pure-mix2-processing`, `clowns-pure-mix3-processing`, `clowns-pure-mix4-processing`, `clowns-pure-mix5-processing`, `clowns-pure-mix6-processing`, `clowns-resource1-sluicing`, `clownsore11-crushed-processing`, `clownsore11-crystal-processing`, `clownsore11-dust-processing`, `clownsore11-powder-processing`, `clownsore12-crushed-processing`, `clownsore12-crystal-processing`, `clownsore12-dust-processing`, `clownsore12-powder-processing`, `clownsore13-crushed-processing`, `clownsore13-crystal-processing`, `clownsore13-dust-processing`, `clownsore13-powder-processing`, `clownsore14-crushed-processing`, `clownsore14-crystal-processing`, `clownsore14-dust-processing`, `clownsore14-powder-processing`, `clownsore15-crushed-processing`, `clownsore15-crystal-processing`, `clownsore15-dust-processing`, `clownsore15-powder-processing` | Inferred |
+| `bobmodules` | mix: `bobmodules`'s definition, patched by Angel's queue | 22 | recipe 22 | `bob-beacon-2`, `bob-beacon-3`, `bob-efficiency-processor`, `bob-efficiency-processor-2`, `bob-efficiency-processor-3`, `bob-module-circuit-board`, `bob-module-contact`, `bob-module-processor-board`, `bob-module-processor-board-2`, `bob-module-processor-board-3`, `bob-pollution-clean-processor`, `bob-pollution-clean-processor-2`, `bob-pollution-clean-processor-3`, `bob-pollution-create-processor`, `bob-pollution-create-processor-2`, `bob-pollution-create-processor-3`, `bob-productivity-processor`, `bob-productivity-processor-2`, `bob-productivity-processor-3`, `bob-speed-processor`, `bob-speed-processor-2`, `bob-speed-processor-3` | Inferred |
+| `bobrevamp` | mix: `bobrevamp`'s definition, patched by Angel's queue | 21 | recipe 21 | `ammonia`, `bob-ammoniated-brine`, `bob-ammonium-chloride-reprocessing`, `bob-brine`, `bob-brine-electrolysis`, `bob-carbon-dioxide`, `bob-carbon-dioxide-oil-processing`, `bob-dinitrogen-tetroxide`, `bob-enriched-fuel-from-hydrazine`, `bob-heat-shield-tile`, `bob-hydrazine`, `bob-hydrogen-peroxide`, `bob-limestone`, `bob-nitric-oxide`, `bob-sodium-bicarbonate`, `bob-sodium-carbonate`, `bob-sodium-chlorate`, `bob-sodium-cobaltate`, `bob-sodium-perchlorate`, `void-ammonia`, `void-bob-carbon-dioxide` | Inferred |
+| `extendedangels` | mix: `extendedangels`'s definition, patched by Angel's queue | 19 | recipe 19 | `angels-pellet-tungsten-smelting-2`, `angels-warehouse-active-provider-mk2`, `angels-warehouse-active-provider-mk3`, `angels-warehouse-active-provider-mk4`, `angels-warehouse-buffer-mk2`, `angels-warehouse-buffer-mk3`, `angels-warehouse-buffer-mk4`, `angels-warehouse-mk2`, `angels-warehouse-mk3`, `angels-warehouse-mk4`, `angels-warehouse-passive-provider-mk2`, `angels-warehouse-passive-provider-mk3`, `angels-warehouse-passive-provider-mk4`, `angels-warehouse-requester-mk2`, `angels-warehouse-requester-mk3`, `angels-warehouse-requester-mk4`, `angels-warehouse-storage-mk2`, `angels-warehouse-storage-mk3`, `angels-warehouse-storage-mk4` | Inferred |
+| `bobwarfare` | mix: `bobwarfare`'s definition, patched by Angel's queue | 19 | recipe 19 | `bob-artillery-wagon-2`, `bob-atomic-artillery-shell`, `bob-glycerol`, `bob-gun-cotton`, `bob-gun-turret-3`, `bob-laser-turret-3`, `bob-mech-leg-segment`, `bob-nitroglycerin`, `bob-petroleum-jelly`, `bob-plasma-turret-1`, `bob-plasma-turret-2`, `bob-power-armor-mk3`, `bob-radar-3`, `bob-rifle`, `bob-robot-tool-combat-2`, `bob-sniper-rifle`, `bob-sniper-turret-2`, `bob-sniper-turret-3`, `bob-sulfuric-nitric-acid` | Inferred |
+| `boblogistics` | mix: `boblogistics`'s definition, patched by Angel's queue | 16 | recipe 16 | `bob-aluminium-pipe`, `bob-aluminium-pipe-to-ground`, `bob-armoured-cargo-wagon`, `bob-armoured-fluid-wagon`, `bob-armoured-locomotive`, `bob-cargo-wagon-2`, `bob-fluid-wagon-2`, `bob-locomotive-2`, `bob-overflow-valve`, `bob-pump-3`, `bob-repair-pack-3`, `bob-roboport-door-2`, `bob-storage-tank-3`, `bob-storage-tank-all-corners-3`, `bob-topup-valve`, `bob-valve` | Inferred |
+| `angelsrefining` | mix: `angelsrefining`'s definition, patched by Angel's queue | 12 | recipe 12 | `angels-filter-ceramic`, `angels-liquifier`, `angels-liquifier-2`, `angels-liquifier-3`, `angels-liquifier-4`, `angels-ore2-crystal`, `angels-ore4-crystal`, `angels-ore5-crystal`, `angels-ore8-anode-sludge`, `angels-ore8-dust`, `angels-ore9-anode-sludge`, `angels-ore9-dust` | Inferred |
+| `bobelectronics` | mix: `bobelectronics`'s definition, patched by Angel's queue | 12 | recipe 12 | `bob-electronic-components`, `bob-fibreglass-board`, `bob-gilded-copper-cable`, `bob-insulated-cable`, `bob-integrated-electronics`, `bob-phenolic-board`, `bob-processing-electronics`, `bob-solder`, `bob-solder-alloy`, `bob-solder-alloy-lead`, `bob-tinned-copper-cable`, `bob-wooden-board` | Inferred |
+| `bobassembly` | mix: `bobassembly`'s definition, patched by Angel's queue | 10 | recipe 10 | `bob-assembling-machine-4`, `bob-assembling-machine-5`, `bob-assembling-machine-6`, `bob-centrifuge-2`, `bob-electric-chemical-mixing-furnace`, `bob-electric-furnace-2`, `bob-electronics-machine-1`, `bob-electronics-machine-2`, `bob-electronics-machine-3`, `bob-fluid-chemical-furnace` | Inferred |
+| `bobmining` | mix: `bobmining`'s definition, patched by Angel's queue | 9 | recipe 9 | `bob-area-mining-drill-2`, `bob-area-mining-drill-3`, `bob-mining-drill-2`, `bob-mining-drill-3`, `bob-pumpjack-1`, `bob-water-miner-1`, `bob-water-miner-2`, `bob-water-miner-3`, `bob-water-miner-4` | Inferred |
+| `bobgreenhouse` | mix: `bobgreenhouse`'s definition, patched by Angel's queue | 6 | recipe 6 | `bob-advanced-greenhouse-cycle`, `bob-basic-greenhouse-cycle`, `bob-fertiliser`, `bob-greenhouse`, `bob-seedling`, `bob-wood-pellets` | Inferred |
+| `bobpower` | mix: `bobpower`'s definition, patched by Angel's queue | 6 | recipe 6 | `bob-boiler-4`, `bob-fluid-generator-3`, `bob-heat-exchanger-3`, `bob-heat-pipe-3`, `bob-oil-boiler-3`, `bob-steam-engine-4` | Inferred |
+| `angelsaddons-storage` | mix: `angelsaddons-storage`'s definition, patched by Angel's queue | 5 | recipe 5 | `angels-warehouse-active-provider`, `angels-warehouse-buffer`, `angels-warehouse-passive-provider`, `angels-warehouse-requester`, `angels-warehouse-storage` | Inferred |
+| `bobvehicleequipment` | mix: `bobvehicleequipment`'s definition, patched by Angel's queue | 4 | recipe 4 | `bob-vehicle-big-turret-equipment-1`, `bob-vehicle-big-turret-equipment-2`, `bob-vehicle-fission-cell-equipment-2`, `bob-vehicle-fission-reactor-equipment-2` | Inferred |
+| `Clowns-Processing` | mix: `Clowns-Processing`'s definition, patched by Angel's queue | 2 | recipe 2 | `clowns-molten-magnesium-smelting`, `clowns-plate-magnesium` | Inferred |
+| `angelspetrochem` | mix: `angelspetrochem`'s definition, patched by Angel's queue | 2 | recipe 2 | `angels-filter-lime`, `angels-gas-sulfur-dioxide-calcium-sulfate` | Inferred |
+| `bobequipment` | mix: `bobequipment`'s definition, patched by Angel's queue | 1 | recipe 1 | `bob-exoskeleton-equipment-2` | Inferred |
+| `reskins-bobs` > `reskins-angels` | replaced: `reskins-bobs`'s gone | 30 | explosion 12, optimized-particle 12, corpse 6 | `ar-ar-bob-brass-pipe-explosion-base`, `ar-ar-bob-brass-pipe-to-ground-explosion-base`, `ar-ar-bob-titanium-pipe-explosion-base`, `ar-ar-bob-titanium-pipe-to-ground-explosion-base`, `ar-ar-bob-tungsten-pipe-explosion-base`, `ar-ar-bob-tungsten-pipe-to-ground-explosion-base`, `ar-bob-brass-pipe-explosion`, `ar-bob-brass-pipe-metal-particle-medium-tinted`, `ar-bob-brass-pipe-metal-particle-small-tinted`, `ar-bob-brass-pipe-to-ground-explosion`, `ar-bob-brass-pipe-to-ground-metal-particle-medium-tinted`, `ar-bob-brass-pipe-to-ground-metal-particle-small-tinted`, `ar-bob-titanium-pipe-explosion`, `ar-bob-titanium-pipe-metal-particle-medium-tinted`, `ar-bob-titanium-pipe-metal-particle-small-tinted`, `ar-bob-titanium-pipe-to-ground-explosion`, `ar-bob-titanium-pipe-to-ground-metal-particle-medium-tinted`, `ar-bob-titanium-pipe-to-ground-metal-particle-small-tinted`, `ar-bob-tungsten-pipe-explosion`, `ar-bob-tungsten-pipe-metal-particle-medium-tinted`, `ar-bob-tungsten-pipe-metal-particle-small-tinted`, `ar-bob-tungsten-pipe-to-ground-explosion`, `ar-bob-tungsten-pipe-to-ground-metal-particle-medium-tinted`, `ar-bob-tungsten-pipe-to-ground-metal-particle-small-tinted`, `bob-brass-pipe-remnants`, `bob-brass-pipe-to-ground-remnants`, `bob-titanium-pipe-remnants`, `bob-titanium-pipe-to-ground-remnants`, `bob-tungsten-pipe-remnants`, `bob-tungsten-pipe-to-ground-remnants` | Inferred |
+| `bobplates` > `bobelectronics` | replaced: `bobplates`'s gone; 6 then patched by Angel's queue | 19 | recipe 7, item 3, item-subgroup 3, produce-per-hour-achievement 3, technology 2, fluid 1 | `bob-advanced-processing-unit`, `bob-boards`, `bob-coal-cracking`, `bob-computer-age-1`, `bob-computer-age-2`, `bob-computer-age-3`, `bob-electronic-boards`, `bob-electronic-components`, `bob-ferric-chloride-solution`, `bob-resin`, `bob-resin-oil`, `bob-resin-wood`, `bob-rubber`, `bob-synthetic-wood`, `bob-wood-processing` | Inferred |
+| `0-things` > `cybersyn2` | replaced: `0-things`'s gone | 16 | sprite 16 | `relm_indicator_black`, `relm_indicator_blue`, `relm_indicator_cyan`, `relm_indicator_green`, `relm_indicator_orange`, `relm_indicator_pink`, `relm_indicator_purple`, `relm_indicator_red`, `relm_indicator_white`, `relm_indicator_yellow`, `relm_pin_black`, `relm_pin_disabled`, `relm_pin_white`, `relm_settings_black`, `relm_settings_disabled`, `relm_settings_white` | Inferred |
+| `bobwarfare` > `bobequipment` > `bobvehicleequipment` | replaced: `bobwarfare`'s and `bobequipment`'s gone; the three differ only in which mod's graphics files they name | 6 | beam 6 | `bob-laser-beam-amethyst`, `bob-laser-beam-diamond`, `bob-laser-beam-emerald`, `bob-laser-beam-glass`, `bob-laser-beam-sapphire`, `bob-laser-beam-topaz` | Read from source |
+| `angelsbioprocessing` > `extendedangels` | replaced: `angelsbioprocessing`'s gone | 4 | item-subgroup 4 | `angels-bio-processing-buildings-alien-a`, `angels-bio-processing-buildings-nauvis-a`, `angels-bio-processing-buildings-vegetabilis-a`, `angels-bio-processing-buildings-vegetabilis-b` | Inferred |
+| `reskins-library` > `reskins-bobs` | replaced: `reskins-library`'s gone | 3 | optimized-particle 2, explosion 1 | `ar-oil-refinery-explosion`, `ar-oil-refinery-metal-particle-big-tint-tinted`, `ar-oil-refinery-metal-particle-medium-tinted` | Inferred |
+| `RealisticFusionPowerPort` > `angelspetrochem` | replaced: `RealisticFusionPowerPort`'s gone; #338; 1 then patched by Angel's queue | 3 | assembling-machine 1, item 1, recipe 1 | `angels-electric-boiler` | Read from source |
+| `bobwarfare` > `bobvehicleequipment` | replaced: `bobwarfare`'s gone | 3 | explosion 1, projectile 1, sticker 1 | `bob-plasma-explosion`, `bob-plasma-projectile`, `bob-plasma-sticker` | Inferred |
+| `bobores` > `bobplates` | replaced: `bobores`'s gone | 3 | item-subgroup 2, fluid 1 | `bob-gems-ore`, `bob-lithia-water`, `bob-ores` | Inferred |
+| `bobplates` > `bobrevamp` | replaced: `bobplates`'s gone; 2 then patched by Angel's queue | 2 | recipe 2 | `bob-lithium-perchlorate`, `bob-nitrogen-dioxide` | Inferred |
+| `angelssmelting` > `angels-smelting-extended` | replaced: `angelssmelting`'s gone | 2 | fluid 1, item-subgroup 1 | `angels-alloys-casting`, `angels-liquid-molten-invar` | Inferred |
+| `angelsrefining` > `angelspetrochem` | replaced: `angelsrefining`'s gone | 1 | resource-category 1 | `angels-natural-gas` | Inferred |
+| `bobplates` > `bobelectronics` > `bobwarfare` | replaced: `bobplates`'s and `bobelectronics`'s gone | 1 | item-subgroup 1 | `bob-resource` | Inferred |
+| `boblogistics` > `bobwarfare` | replaced: `boblogistics`'s gone | 1 | item-subgroup 1 | `bob-robot-parts` | Inferred |
+| `bobinserters` > `boblogistics` | replaced: `bobinserters`'s gone | 1 | custom-input 1 | `bob-inserter-long` | Inferred |
+| `bobenemies` > `bobwarfare` > `bobvehicleequipment` | replaced: `bobenemies`'s and `bobwarfare`'s gone | 1 | damage-type 1 | `bob-plasma` | Inferred |
+| `Clowns-Nuclear` > `Clowns-AngelBob-Nuclear` | replaced: `Clowns-Nuclear`'s gone | 1 | item-subgroup 1 | `clowns-thorium` | Inferred |
+| `bobenemies` > `bobwarfare` | replaced: `bobenemies`'s gone | 1 | damage-type 1 | `bob-pierce` | Inferred |
+| `bobplates` > `bobassembly` | replaced: `bobplates`'s gone | 1 | item-subgroup 1 | `bob-assembly-machine` | Inferred |
+| `bobplates` > `bobelectronics` > `boblogistics` | replaced: `bobplates`'s and `bobelectronics`'s gone; 1 then patched by Angel's queue | 1 | recipe 1 | `bob-oil-processing` | Inferred |

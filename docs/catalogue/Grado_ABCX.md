@@ -386,6 +386,9 @@ reach. *Ruled 2026-10-19 (#294, in `docs/decisions.md`): `Grado_ABCX` has no 2.0
 supersedes the hold on its first 2.0 release ruled 2026-10-15, and its first, on 2.1, waits until
 the fourth stage can be reached there.*
 
+*Traced 2026-10-20 (#331):* it defines no name another member defines, at `1.3.3`, the release
+staged. See *Names members both define*, below.
+
 ## Dropped during the port
 
 **None.** The 1.1 `Grado_ABCX` held 56 mods; 55 of them are accounted for under `Grado_ABC` and
@@ -424,3 +427,13 @@ membership decision rather than a relocation.
 **The rule is under no pressure from `Grado_ABCX`.** It is under pressure from `Grado_ABCS`, and
 that is reported in `docs/catalogue/Grado_ABCS.md`. *`CLAUDE.md` reworded the rule on 2026-10-20
 (#31): see its entry in `docs/decisions.md`.*
+
+## Names members both define (2026-10-20, #331)
+
+**`Grado_ABCX` shares the same 463 names as `Grado_ABC`, and no more.** *Measured* by a traced
+run of the data stage on Factorio 2.0.77 on 2026-10-20: the run of this pack printed the same
+output as `Grado_ABC`'s, byte for byte, the 569 base-game names and the 341 a mod defines twice
+included. So `SpaceModFeorasFork` `1.3.3`, the release staged, defines no name that another member
+defines. The table, what it means and the one ticket it raised are in
+`docs/catalogue/Grado_ABC.md`, *Names members both define (2026-10-20, #331)*; every name is in
+`docs/traces/Grado_ABC-2026-10-20.md`.

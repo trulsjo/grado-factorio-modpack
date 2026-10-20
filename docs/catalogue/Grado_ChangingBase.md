@@ -552,6 +552,10 @@ in Factorio. *2026-10-04 (#115): both mods loaded together in the pack's recorde
 `docs/loads/Grado_ChangingBase-2026-10-04.md`. A load runs no ticks, so the detection is still
 unobserved.*
 
+*Traced 2026-10-20 (#331):* named in `docs/catalogue/Grado_ABC.md`, *Names members both define*: its
+definition replaces that of `0-things`, which it requires, for 16 sprite names. Found in
+`Grado_ABC`'s trace; `Grado_ChangingBase` was not traced.
+
 ### `miniloader-redux`
 
 | | |

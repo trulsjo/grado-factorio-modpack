@@ -299,7 +299,7 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   makes the two run together without doing either. *The count:* the one-mod-per-branch rule counts
   what a player installs, not counting the mods the game supplies with an end-game, which keeps
   #10's `quality` and `elevated-rails`. *The exception:* a coexistence fix cannot sit in
-  `Grado_ABC`, because each of the six #335 lists requires `space-age` (read 2026-10-20) and
+  `Grado_ABC`, because each of the seven mods #335 lists requires `space-age` (read 2026-10-20) and
   `Grado_ABCX` refuses it, so a branch may carry one beside its end-game. This refines #10's "no
   bridge mod": merges and relocations stay out, and fixes may be proposed. Of #31's four
   candidates, all fail, by their authors' own descriptions: `angelbob-spaceage-rebalance` merges

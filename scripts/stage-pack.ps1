@@ -12,7 +12,9 @@
 
       resolve   vendor/grado-factorio-tools/scripts/resolve-modpack.ps1 picks the exact release of
                 every member of the pack's closure, for the pack's own factorio_version and the
-                game build, and writes the picks to a pin file.
+                game build, and writes the picks to a pin file, <ModsDirectory>.pins.psd1 beside
+                the mods directory: .mod-cache/<Pack>.pins.psd1 by default. A directory named
+                with -ModsDirectory gets its own, so the default one is left alone (#143).
       fetch     fetch-mods.ps1 there downloads those releases, and only those, into -ModsDirectory.
       stage     pack-mods.ps1 there zips the pack, and every pack under it in the chain, as
                 <name>_<version>.zip beside them, holding <name>/. The version is read from the
@@ -248,6 +250,17 @@ function Remove-DroppedMod {
         ForEach-Object { Remove-Item -LiteralPath $_.FullName -Recurse -Force }
 }
 
+function Get-PinFile {
+    <#  Where the resolve writes the pin file and the fetch reads it: <dir>.pins.psd1, beside the
+        mods directory. With no -ModsDirectory that is .mod-cache/<Pack>.pins.psd1, as it always
+        was; a directory named elsewhere gets its own, so a stage there leaves the pin file of a
+        recorded load alone (#143).  #>
+    param([Parameter(Mandatory)] [string] $Root, [Parameter(Mandatory)] [string] $Pack, [string] $ModsDirectory)
+
+    if (-not $ModsDirectory) { $ModsDirectory = Join-Path $Root ".mod-cache/$Pack" }
+    $ModsDirectory.TrimEnd('\', '/') + '.pins.psd1'
+}
+
 function Install-PackZip {
     <#  Zip each pack into $ModsDirectory with the shared packer, pack-mods.ps1, which also deletes
         each pack's other <name>_<x.y.z>.zip there. It leaves directories alone, so an unpacked
@@ -397,6 +410,19 @@ function Invoke-SelfTest {
             Remove-Item -LiteralPath (Join-Path $mods 'MidX_0.1.0.zip')
             $rows = @(Get-HarnessMods -Path $mods)
             (($rows | ForEach-Object { "$($_.Name) $($_.Version)" }) -join ',') -eq 'High 1.4.2,Low 0.2.0,Mid 0.1.0' } }
+        # The stage hands one path to the resolve, which writes it, and to the fetch, which reads
+        # it, so where that path points is where both go (#143).
+        @{ Name = 'a stage with no -ModsDirectory puts its pin file beside the default cache, where it always went'; Test = {
+            (Get-PinFile -Root $root -Pack 'High') -eq (Join-Path $root '.mod-cache/High.pins.psd1') } }
+        @{ Name = 'a stage into a named directory puts its pin file beside that directory and leaves the default one byte for byte'; Test = {
+            $default = Join-Path $root '.mod-cache/High.pins.psd1'
+            New-Item -ItemType Directory -Path (Split-Path $default) -Force | Out-Null
+            Set-Content -LiteralPath $default -Value '@{ Sets = @{ High = @() } }' -NoNewline
+            $was = (Get-FileHash -LiteralPath $default).Hash
+            $named = Join-Path $temp 'elsewhere'
+            $pin = Get-PinFile -Root $root -Pack 'High' -ModsDirectory "$named/"
+            Set-Content -LiteralPath $pin -Value 'written by the resolve'
+            $pin -eq "$named.pins.psd1" -and (Get-FileHash -LiteralPath $default).Hash -eq $was } }
         @{ Name = 'no info.json was modified'; Test = {
             -not (Compare-Object $before @(& $infoHash)) } }
     )
@@ -439,7 +465,7 @@ if (-not $Build) {
 if (-not $Build.StartsWith("$line.")) {
     throw "$Pack declares factorio_version $line, and build $Build is not on that line. Pass -Build $line.<n>, or run against a $line install."
 }
-$pinFile = Join-Path $ROOT ".mod-cache/$Pack.pins.psd1"
+$pinFile = Get-PinFile -Root $ROOT -Pack $Pack -ModsDirectory $ModsDirectory
 New-Item -ItemType Directory -Path (Split-Path $pinFile) -Force | Out-Null
 
 Write-Host "stage-pack: $Pack $($chain[0].Info.version), chain $(($chain | ForEach-Object Name) -join ' > '), line $line on build $Build"

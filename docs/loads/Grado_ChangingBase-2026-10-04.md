@@ -259,8 +259,9 @@ alone. The mod directory held `underground-pipe-pack` `2.0.6` beside base, with 
 `PAD -`, both with no `linked_game_control`. Two runs, `--dump-data` and `--create`, both exited
 0, and each left its config file as the harness wrote it, 211 bytes holding only `[path]`, with no
 `[controls]` section. In the two write directories only the dump holds a `KP_` or `PAD ` line,
-its two `key_sequence` values. So the bridge is still not measured, and the `plus-valve` and
-`minus-valve` rows of the table above still rest on the assumption. What would write the
+its two `key_sequence` values. So whether `PAD +` and `KP_PLUS` are one key is still not
+measured, and the `plus-valve` and `minus-valve` rows of the table above still rest on taking them
+as one. What would write the
 section is inferred and not tried: the file #96 read was written on 2026-09-30, during
 `Grado_NonChanging`'s play session, so a windowed start with that config file, quit from the main
 menu, should write it.*

@@ -37,9 +37,10 @@
     backticks or three tildes, and the next such line closes it, whichever of the two it uses and
     however long. Inside one a `##` line is not a heading, and a `### <n>.` line is still a
     finding. CommonMark reads fences otherwise, so the rule can be wrong both ways. A fence line
-    in an indented code block, or a line opening with a code span, hides every heading after it
-    until the next fence line. A fence of one character inside one of the other, or a shorter
-    fence inside a longer one, ends the outer fence early, and a heading inside it is counted.
+    in an indented code block, or a line opening with a code span of three backticks, hides every
+    heading after it until the next fence line. A fence of one character inside one of the
+    other, or a shorter fence inside a longer one, ends the outer fence early, and a heading
+    inside it is counted.
 
 .PARAMETER Draft
     The body above the review: the `Closes` lines and the pr skill's template, filled.

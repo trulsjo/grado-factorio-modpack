@@ -174,6 +174,18 @@ assessed the first two; #91 assessed the two #83 found in the 2.1 listing alone 
 **None is a member, and nothing here changes that**: #10 ruled on 2026-09-23 that the pack is
 `Grado_ABC` *beside* Space Age, and #31 is where that is revisited.
 
+*Closed 2026-10-20 (#31), in its `docs/decisions.md` entry.* The promise now fails a mod that
+merges or relocates and passes a *coexistence fix* (`GLOSSARY.md`), and the one-mod-per-branch rule
+counts what a player installs. On that reading all four fail: `angelbob-spaceage-rebalance` and
+`angels_space_age_galore` merge, and `BobsAngelsSpaceAge` and `industrial-worlds` relocate. So
+the open questions their recommendations leave to Truls are answered, and the recommendations stand
+as written. The four were re-read 2026-10-20 and no assessment moved: `angelbob-spaceage-rebalance`
+is at `1.2.18` (2.1) and `1.1.43` (2.0), both 2026-10-15, with the same eight mandatory mods and
+4,066 downloads; `BobsAngelsSpaceAge` still `0.0.3`, 263 downloads; `angels_space_age_galore`
+`1.0.2`, 2.1 only, 56 downloads; `industrial-worlds` `0.0.12`, 2026-10-17, 2.1 only, 76 downloads.
+The same day's sweep found mods these searches missed, coexistence fixes among them; #335 assesses
+them.
+
 The first two entries were read on **2026-09-24**, and there a closure is what
 `resolve-modpack.ps1` picks on line `2.0`, build `2.0.77`, for a copy of the chain with the one
 candidate added to this pack's list. The last two were read on **2026-10-01**, and that method
@@ -261,7 +273,10 @@ checked against a mod that redistributes ores across planets.
 (`! BobsAngelsSpaceAge >= 0.0.3`), and doing nothing, which #10 chose. No third bridge was found;
 #6's search and #4's before it are the ones behind that claim, not a new one. *Two more were found
 2026-10-01 (#83) in the 2.1 listing alone and are assessed below (#91). `industrial-worlds`
-declares `! angelbob-spaceage-rebalance`; this mod declares nothing about either.*
+declares `! angelbob-spaceage-rebalance`; this mod declares nothing about either.* *False when
+written, found 2026-10-20 (#31): #4's, #6's and #83's searches matched names only. A sweep of names,
+titles and summaries over both listings found `TIMSABA`, a merge on 2.0 since 2026-05-15, and
+several coexistence fixes. #335 assesses them and corrects this claim where else it stands.*
 
 **Recommendation: reconsider:** whether this pack should carry a bridge at all, once #29 shows
 whether the unintegrated pack plays - and only together with the promise, which a bridge fails.
@@ -1944,4 +1959,7 @@ fails that promise, whichever of the two it is. #31 stays open as the place to r
 after #29 shows whether the unintegrated pack is playable; taking a bridge would mean changing the
 promise first. *"The two" were #31's bridges. #91 assessed two more on 2026-10-01; the ruling was
 made before they were found, and `industrial-worlds`, which separates rather than merges, is the
-one it may not cover. See* Pressure on the one-mod-per-branch rule.
+one it may not cover. See* Pressure on the one-mod-per-branch rule. *Revisited 2026-10-20 (#31)
+without #29: the promise fails relocation too, so `industrial-worlds` is covered, and a
+coexistence fix passes it. See* Candidates, not members *and the #31 entry of
+`docs/decisions.md`.*

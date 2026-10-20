@@ -292,3 +292,20 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   three packs each load without it (`docs/loads/`, 2026-10-20). At stable 2.1, with #290, the check
   is that still no member depends on its items; that is a check, not a reopening. No ADR: before a
   release the drop is easy to undo.
+- **A branch adds one end-game and may add coexistence fixes; `Grado_ABCS` takes no bridge that
+  merges or relocates** (2026-10-20, #31): Truls's rulings in the grill on #31, three together.
+  *The promise:* `Grado_ABCS`'s fails a mod that merges `Grado_ABC` with Space Age or moves
+  either's content between planets, and passes a *Coexistence fix* (`GLOSSARY.md`), a mod that
+  makes the two run together without doing either. *The count:* the one-mod-per-branch rule counts
+  what a player installs, not counting the mods the game itself supplies, which keeps #10's
+  `quality` and `elevated-rails`. *The exception:* a coexistence fix cannot sit in `Grado_ABC`,
+  because each one found requires `space-age` and `Grado_ABCX` refuses it, so a branch may carry
+  one beside its end-game. This narrows #10's "no bridge mod": merges and relocations stay out,
+  and fixes may be proposed. Of #31's four candidates, all fail: `angelbob-spaceage-rebalance`
+  merges and installs nineteen mods, `BobsAngelsSpaceAge` and `industrial-worlds` relocate, and
+  `angels_space_age_galore` merges and cannot be installed beside `Grado_ABC`. Neither branch's
+  list changes: `SpaceModFeorasFork` `1.3.4` and `space-age` each install one mod (read
+  2026-10-20). The rule's wording is in `CLAUDE.md`, its old wording on the trail in
+  `docs/porting-notes.md`. #31 closes; the mods its searches missed, coexistence fixes among them,
+  are #335's, and a poor play session in #29 reopens the question. No ADR: before a release this
+  is easy to undo.

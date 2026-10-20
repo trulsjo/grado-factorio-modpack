@@ -27,13 +27,19 @@
 
     WHAT IT CANNOT SEE. What a confirmation line says: "3. not fixed" answers finding 3 as well
     as "3. fixed" does, and whether a finding left unfixed has its reason beside it is read by a
-    person. A finding not headed `### <n>.`, which is taken as text. A `##` heading inside a
-    fenced block is not a heading, and a `### <n>.` line there is still a finding; a `##` heading
-    inside an indented block is a heading. Of the draft, the three headings alone are read: not
-    what stands under them, not `**Door:**` or `**Blast Radius:**`, and not the `Closes` lines.
-    A heading line is the heading's text exactly, from the line's first column, with trailing
+    person. A finding not headed `### <n>.`, which is taken as text. Of the draft, the three
+    headings alone are read: not what stands under them, not `**Door:**` or `**Blast Radius:**`,
+    and not the `Closes` lines. A heading of the draft, and a `##` heading of the report, is read
+    from the line's first column, so none in an indented block is taken, whose every line opens
+    with four spaces or more. A draft heading line is the heading's text exactly, with trailing
     spaces allowed: one indented, closed with `##`, or underlined is taken as missing, and one in
-    an indented block or an HTML comment is taken as a heading.
+    an HTML comment is taken as a heading. A fence is any line of optional spaces then three
+    backticks or three tildes, and the next such line closes it, whichever of the two it uses and
+    however long. Inside one a `##` line is not a heading, and a `### <n>.` line is still a
+    finding. CommonMark reads fences otherwise, so the rule can be wrong both ways. A fence line
+    in an indented code block, or a line opening with a code span, hides every heading after it
+    until the next fence line. A fence of one character inside one of the other, or a shorter
+    fence inside a longer one, ends the outer fence early, and a heading inside it is counted.
 
 .PARAMETER Draft
     The body above the review: the `Closes` lines and the pr skill's template, filled.

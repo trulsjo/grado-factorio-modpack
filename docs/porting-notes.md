@@ -766,7 +766,8 @@ four passages below are word for word as they stood on `0444fa2`, each with what
 >   request when the work is committed."*
 
 **Two documents, two jobs**, under *Conventions*. It is now *Three documents, three jobs*, and the
-sentence about this trail is a bullet of its own.
+sentence about this trail is a bullet of its own. *Four since 2026-10-20 (#331): see* Three
+documents, three jobs *below.*
 
 > - **Two documents, two jobs.** `docs/porting-notes.md` records what happened to the 1.1 packs,
 >   and since 2026-10-05 the superseded wording of this file's *State* and *Decisions still open*;

@@ -52,9 +52,9 @@ The times are from one machine (i7-9850H) and one run. They are context, not a b
 
 ## Conflicts
 
-**Nothing stopped the load, and nothing new is logged.** `Grado_ABC`'s three complaints (#125)
-are here, word for word, and no member logs a complaint that names a Space Age prototype. None
-involves `PlutoniumEnergy`.
+**Nothing stopped the load, and nothing new is logged.** The three complaints of
+`docs/loads/Grado_ABC-2026-10-04.md` are here, word for word, and no member logs a complaint that
+names a Space Age prototype. None involves `PlutoniumEnergy`.
 
 ## Not checked <!-- deliberate: checked -->
 

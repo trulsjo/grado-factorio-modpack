@@ -282,12 +282,13 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   the branch is named by its role, never by its hash* and *A closing keyword stands in a bare
   `Closes #N` line and nowhere else*. This entry records the ruling here as #320's has its own
   entry above (Truls, on the pre-PR review of PR #323, #324).
-- **`PlutoniumEnergy` is out of `Grado_ABC`** (2026-10-20, #330). 39 mods to 38. The first *Choice
-  drop* (`GLOSSARY.md`): Truls's reason is that the pack's nuclear chain is too overloaded. It
-  loads, and the recipe name it shares with `Clowns-AngelBob-Nuclear`, whose definition replaces its
-  own, is not the reason. No replacement, and no condition reopens the question. No report to either
-  mod's author: the mod promises no interop with these mods. No *Patch*. No version moves, because
-  no pack has had its first release. What the pack loses was measured first (#332): the note under
-  `PlutoniumEnergy` in `docs/catalogue/Grado_ABC.md`, and the three packs each load without it
-  (`docs/loads/`, 2026-10-20). At stable 2.1, with #290, the check is that still no member depends
-  on its items; that is a check, not a reopening. No ADR: before a release the drop is easy to undo.
+- **`PlutoniumEnergy` is out of `Grado_ABC`** (2026-10-20, #330). 39 mods to 38. The first so named,
+  a *Choice drop* (`GLOSSARY.md`): Truls's reason is that the pack's nuclear chain is too
+  overloaded. It loads, and the recipe name it shares with `Clowns-AngelBob-Nuclear`, whose
+  definition replaces its own, is not the reason. No replacement, and no condition reopens the
+  question. No report to either mod's author: the mod promises no interop with these mods. No
+  *Patch*. No version moves, because no pack has had its first release. What the pack loses was
+  measured first (#332): the note under `PlutoniumEnergy` in `docs/catalogue/Grado_ABC.md`, and the
+  three packs each load without it (`docs/loads/`, 2026-10-20). At stable 2.1, with #290, the check
+  is that still no member depends on its items; that is a check, not a reopening. No ADR: before a
+  release the drop is easy to undo.

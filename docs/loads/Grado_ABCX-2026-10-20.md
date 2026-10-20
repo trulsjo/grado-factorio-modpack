@@ -37,10 +37,11 @@ The resolve read line `2.0` on build 2.0.77: 100 mods, effective floor `base >= 
 
 ## Loads
 
-**Load 1, base only.** Exit 0. **104 mods validated and a map created.** The log's per-mod
-checksum list has 105 entries: `base` and the 104. The data stage ran 84 member `data.lua` files
-and 81 later-stage files, one fewer of each than on 2026-10-04. Prototypes were ready at 41.1 s
-(prototype list checksum `3113249636`) and the run ended at 59.3 s.
+**Load 1, base only.** Exit 0. **104 mods validated and a map created.** The log's per-mod checksum
+list has 105 entries: `base` and the 104. The data stage ran 84 member `data.lua` files and 80
+later-stage files, against 85 and 82 on 2026-10-04: `PlutoniumEnergy`'s `data.lua`,
+`data-updates.lua` and `data-final-fixes.lua`. Prototypes were ready at 41.1 s (prototype list
+checksum `3113249636`) and the run ended at 59.3 s.
 
 **`factorio-current.log`:** no line the game marks as an error or a warning. The search is as in
 `docs/loads/Grado_ABC-2026-10-04.md`. The members' `Script` lines are 544: `Grado_ABC`'s 540 of
@@ -50,10 +51,10 @@ The times are from one machine (i7-9850H) and one run. They are context, not a b
 
 ## Conflicts
 
-**Nothing stopped the load, and nothing new is logged.** The complaints are the 2026-10-04
-record's, word for word: `Grado_ABC`'s three (#125), and the fork's two technologies that
-`boblibrary` does not find, `drydock-assembly` and `bob-battery-equipment-6`. None involves
-`PlutoniumEnergy`.
+**Nothing stopped the load, and nothing new is logged.** The complaints are the 2026-10-04 record's,
+word for word: `Grado_ABC`'s three, and the fork's two technologies that `boblibrary` does not find,
+`drydock-assembly` and `bob-battery-equipment-6`. Those are the complaints #125 is about. None
+involves `PlutoniumEnergy`.
 
 ## Not checked <!-- deliberate: checked -->
 

@@ -161,6 +161,8 @@ stays at three. The tier that could not be served was the one that left.
 `UltimateBeltsSpaceAge` entry in `docs/catalogue/Grado_ChangingBase.md`, and that entry is now under
 *Ruled out after the port*.
 
+#### Names it shares (2026-10-20, #331)
+
 *Traced 2026-10-20 (#331):* named in *Names members both define*, below: a member's definition
 replaces its own for 21 names, and its own replaces `bobores`' for 3; for 3 recipes its definition
 stands with a patch from Angel's queue merged in. `quality`, which it requires and which has no
@@ -715,13 +717,20 @@ which also says what *mix* and *replaced* mean here and what the trace cannot se
 **34 rows are this pack's own:** 30 names `Grado_ABC` does not have, and 4 recipes, `carbon`,
 `lithium-plate`, `tungsten-carbide` and `tungsten-plate`, that Space Age defines first here, where
 in `Grado_ABC` `bobplates` does. They are below, one row per sequence of mods. No pair in them
-raises a ticket. Where a member stands over Space Age, it knows Space Age by the test in
-`Grado_ABC`'s section, except in two places; where `space-age` stands, over `bobores`'
-`tungsten-ore` and its particle, those are #134's rows. `reskins-bobs` redefines the three turbo
-belt corpses as graphics for Bob's belts, which is not a loss #331's ruling tickets.
-`angelspetrochem` makes `rocket-fuel-recycling` again from its own changed `rocket-fuel`, through
-`quality`'s function for it: *Read from source*, `prototypes/override/recycling.lua`, which lists
-`rocket-fuel` among the recipes it changed.
+raises a ticket. Three pairs fail the test in `Grado_ABC`'s section, and each was read:
+
+- `space-age` > `reskins-bobs`, the three turbo belt corpses. *Read from source*
+  (`reskins-library` `2.3.3`, `prototypes/functions/functions.lua`, lines 150 to 157):
+  `reskins.lib.create_remnant` copies the vanilla belt's remnants under the turbo name, and
+  `reskins-bobs` `2.3.8` then gives them Bob's belt graphics. A corpse's graphics are not a loss
+  #331's ruling tickets.
+- `quality` > `angelspetrochem`, `rocket-fuel-recycling`. *Read from source*: `angelspetrochem`
+  `2.0.3`'s `prototypes/override/recycling.lua` lists the item `rocket-fuel` for self-recycling
+  (line 61), and so makes its recycling recipe again through `quality`'s function for it.
+- `bobores` > `space-age`, the item and resource `tungsten-ore` and its particle, where the
+  expansion stands. Here the earlier mod is the one that knows: `bobores` `2.1.2` keeps the name
+  beside Space Age and drops its own placement when Space Age is loaded, and its particle follows
+  from the ore, both *Read from source* in #134's rows, above.
 
 **Against #134's 29 names.** The trace has 27 names that `space-age` defines and a member defines
 too: 26 of #134's 29, and one it did not list. Both differences are explained:
@@ -747,10 +756,10 @@ is gone, not what the game ends with.
 | `space-age` > `boblogistics` | replaced: `space-age`'s gone | 9 | item 3, recipe 3, splitter 1, transport-belt 1, underground-belt 1 | `turbo-splitter`, `turbo-transport-belt`, `turbo-underground-belt` | Inferred |
 | `space-age` > `bobequipment` | replaced: `space-age`'s gone | 4 | battery-equipment 1, item 1, recipe 1, technology 1 | `battery-mk3-equipment` | Inferred |
 | `bobores` > `space-age` | replaced: `bobores`'s gone | 3 | item 1, optimized-particle 1, resource 1 | `tungsten-ore`, `tungsten-ore-particle` | Inferred |
-| `space-age` > `reskins-bobs` | replaced: `space-age`'s gone | 3 | corpse 3 | `turbo-splitter-remnants`, `turbo-transport-belt-remnants`, `turbo-underground-belt-remnants` | Inferred |
+| `space-age` > `reskins-bobs` | replaced: `space-age`'s gone; a copy of the vanilla belt's remnants | 3 | corpse 3 | `turbo-splitter-remnants`, `turbo-transport-belt-remnants`, `turbo-underground-belt-remnants` | Read from source |
 | `space-age` > `bobassembly` | replaced: `space-age`'s gone | 2 | recipe-category 2 | `electronics`, `electronics-with-fluid` | Inferred |
 | `space-age` > `bobplates` | replaced: `space-age`'s gone; 1 then patched by Angel's queue | 2 | item 1, recipe 1 | `carbon` | Inferred |
-| `quality` > `angelspetrochem` | replaced: `angelspetrochem` makes it again from its changed `rocket-fuel`, through `quality`'s own function | 1 | recipe 1 | `rocket-fuel-recycling` | Read from source |
+| `quality` > `angelspetrochem` | replaced: `angelspetrochem` makes it again for the item `rocket-fuel`, through `quality`'s own function | 1 | recipe 1 | `rocket-fuel-recycling` | Read from source |
 | `space-age` > `bobrevamp` | replaced: `space-age`'s gone | 1 | fluid 1 | `ammonia` | Inferred |
 
 ### A Space Age recipe the overhaul changed: 36

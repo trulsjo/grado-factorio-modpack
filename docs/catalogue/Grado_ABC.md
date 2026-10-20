@@ -3189,8 +3189,8 @@ files and a search of each standing mod's files. Every pair passes it but two:
 - `bobequipment` > `bobvehicleequipment`, the six laser beams, which `bobwarfare` defines first.
   *Read from source* (`bobwarfare` `2.1.0`, `bobequipment` `2.1.0`, `bobvehicleequipment`
   `2.1.1`): the three definitions differ only in which mod's graphics files they name, and
-  `bobwarfare` takes the same sound from a file of its own. No ticket: that is not a loss
-  #331's ruling tickets.
+  `bobwarfare` takes the same sound from a file of its own. No ticket: Truls ruled on 2026-10-20
+  that graphics are not a loss.
 - `RealisticFusionPowerPort` > `angelspetrochem`, `angels-electric-boiler` as item, machine and
   recipe. *Read from source* (`RealisticFusionPowerPort` `1.9.2`, `angelspetrochem` `2.0.3`): the
   boiler that is gone is the only machine for `RealisticFusionPowerPort`'s `rfp-boiling` recipes,

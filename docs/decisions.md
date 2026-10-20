@@ -310,3 +310,16 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   wording is in `CLAUDE.md`, its old wording on the trail in `docs/porting-notes.md`. #31 closes;
   the mods #4's, #6's and #83's searches missed, coexistence fixes among them, are #335's, and a
   poor play session in #29 reopens the question. No ADR: before a release this is easy to undo.
+- **Shared names are recorded per pack, and a ticket goes only where the mod that stands does not
+  know the other** (2026-10-20, #331): Truls's rulings on #331, in its two ruling comments and on
+  the pre-PR review of its branch. *The method:* a trace of the data stage (`trace-definitions.ps1`,
+  grado-factorio-tools#173), run on `Grado_ABC`, `Grado_ABCX` and `Grado_ABCS`. *What counts:* a
+  *Shared name* (`GLOSSARY.md`) is a name two or more members define, hidden members among them, or
+  a member and an expansion; the base game's own prototypes are counted and not listed. *The
+  record:* `Grado_ABC`'s catalogue holds the table, `Grado_ABCX`'s points to it and `Grado_ABCS`'s
+  adds its own rows, and every name is in `docs/traces/`, which `CLAUDE.md`'s line on the documents
+  now names. *Tickets:* only where the mod that stands shows no sign of knowing the earlier one, and
+  only for a loss in a recipe's ingredients, results or unlock, an item's or entity's stats, or
+  whether it is hidden. Graphics are not a loss. Of the run's 100 replaced definitions in
+  `Grado_ABC`, one pair is ticketed: #338. Rows are graded *Inferred*, and the pairs the test sends
+  on are read from source. No ADR: records and a convention, easy to undo.

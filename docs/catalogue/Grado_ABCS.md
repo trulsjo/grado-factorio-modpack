@@ -722,8 +722,8 @@ raises a ticket. Three pairs fail the test in `Grado_ABC`'s section, and each wa
 - `space-age` > `reskins-bobs`, the three turbo belt corpses. *Read from source*
   (`reskins-library` `2.3.3`, `prototypes/functions/functions.lua`, lines 150 to 157):
   `reskins.lib.create_remnant` copies the vanilla belt's remnants under the turbo name, and
-  `reskins-bobs` `2.3.8` then gives them Bob's belt graphics. A corpse's graphics are not a loss
-  #331's ruling tickets.
+  `reskins-bobs` `2.3.8` then gives them Bob's belt graphics. No ticket: Truls ruled on 2026-10-20
+  that graphics are not a loss.
 - `quality` > `angelspetrochem`, `rocket-fuel-recycling`. *Read from source*: `angelspetrochem`
   `2.0.3`'s `prototypes/override/recycling.lua` lists the item `rocket-fuel` for self-recycling
   (line 61), and so makes its recycling recipe again through `quality`'s function for it.

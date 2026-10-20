@@ -151,12 +151,14 @@ not missing.
   tracked file.
 - **`info.json` is strict JSON — no comments.** Anything that needs explaining goes in
   `docs/porting-notes.md`, next to the mod it explains.
-- **Three documents, three jobs.** `docs/porting-notes.md` records what happened to the 1.1
+- **Four documents, four jobs.** `docs/porting-notes.md` records what happened to the 1.1
   packs; `docs/catalogue/<pack>.md` records what is in each pack now and why, one entry per mod,
   in the format of `docs/mod-catalogue.md`; `docs/loads/<pack>-<date>.md` records one load and
   its play session - the build, the bundled mods and every resolved member version, so the next
-  load can be compared with it. The first load record is the template. A fact about the port
-  goes in the notes, a fact about a mod goes in its catalogue entry.
+  load can be compared with it. The first load record is the template.
+  `docs/traces/<pack>-<date>.md` records one traced run of the data stage, every name two or more
+  mods define, and its catalogue section says what the rows mean. A fact about the port goes in
+  the notes, a fact about a mod goes in its catalogue entry.
 - **Ask Truls before a session downloads a program and runs it on this machine** (#179), and
   say the same in a brief written for a subagent. `scripts/ask-before-download.ps1` is a hook
   that refuses a package install or a fetched program, which Truls runs himself with `!` once

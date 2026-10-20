@@ -29,6 +29,9 @@ The dependency list holds 46 entries: `base >= 2.0.0`, `Grado_ChangingBase` — 
 pack, through `Grado_ChangingBase`, and still has an entry below. Ten more were dropped during the
 port. *Superseded 2026-09-23 by #9, and the `base` line 2026-09-24 by #58: the list now holds 43
 entries - `base >= 2.0.74`, `Grado_ChangingBase` and 41 mods.*
+**The pack is now catalogued in full**: #4 surveyed 29 members and 3 drops on 2026-09-21, #5 the
+other 16 and 7 the same day. Which ticket took which is *The split between #4 and #5* below, kept
+because two tickets writing one file is the only way a mod falls through.
 **#9 took the pack from 44 mods to 41 on 2026-09-23**: four out, one in. Its ledger is *Decisions,
 2026-09-23 (#9)* below, and the four removed members are now under *Ruled out after the port*. The
 survey text, including the four findings below, is left as it was measured over 45.
@@ -40,9 +43,6 @@ after the port*.
 **#330 took the pack from 39 mods to 38 on 2026-10-20**: `PlutoniumEnergy` out, by choice. The
 list now holds 40 entries - `base >= 2.0.74`, `Grado_ChangingBase` and 38 mods. Its ledger is
 *Decisions, 2026-10-20 (#330)* below, and the entry is now under *Ruled out after the port*.
-**The pack is now catalogued in full**: #4 surveyed 29 members and 3 drops on 2026-09-21, #5 the
-other 16 and 7 the same day. Which ticket took which is *The split between #4 and #5* below, kept
-because two tickets writing one file is the only way a mod falls through.
 
 Four findings hold across all 45:
 
@@ -2146,10 +2146,10 @@ that source; nothing was run on 2.1.*
 
 *Measured 2026-10-20 (#332): the pack without this mod. Two `--dump-data` dumps of the staged
 `Grado_ABC` on 2.0.77, made by `get-dump.ps1` from one mod directory with the pack's own zip
-disabled in both, and this mod disabled in the second: the two sets differ by this mod alone.
-The first has checksum `2195323740`, the 2026-10-11 dump's (its set less the pack's zip, which
-holds no prototype). The second has `3718243312`. `dump-diff.ps1` between them, and a script over
-the second for the rest:*
+disabled in both, and this mod disabled in the second: the two sets differ by this mod alone. The
+first has checksum `2195323740`, the 2026-10-11 dump's (its set less the pack's zip, which holds no
+prototype). The second has `3718243312`. `dump-diff.ps1` between them, and a script over the second
+for the rest:*
 
 - *92 prototypes go and none comes. 40 recipes, 13 items, 11 technologies, 4 ammunitions, the
   `MOX-reactor` and `breeder-reactor`, 2 fluids, the `MOX` and `nuclear-breeder` fuel categories,
@@ -2164,11 +2164,12 @@ the second for the rest:*
   gives" above is among the 92.*
 - *14 prototypes stay and change.*
   - *`RealisticReactorsReborn`'s branch for this mod: its two reactor displayers burn `nuclear`
-    and `MOX` with it, `nuclear` alone without, and its three cell recipes above go. Nothing
+    and `MOX` with it, `nuclear` alone without, and the three `RRR-` recipes above go. Nothing
     else of it changes.*
   - *The Clowns `advanced-nuclear-fuel-reprocessing`, the name both mods define: with this mod it
     has `allow_productivity` set and this mod's `nuclear-uranium` subgroup, without it neither.
-    So this mod reaches into the recipe that replaced its own.*
+    So this mod reaches into the recipe whose definition replaced its own, and the recipe the
+    game ends with is a mix of the two (`GLOSSARY.md`, *Replaced definition*).*
   - *`nuclear-fuel-reprocessing`, and the recipe and item `uranium-fuel-cell` and the item
     `depleted-uranium-fuel-cell`, go back from that subgroup to the Clowns and Angel's ones.
     Four more change only an order string. Menu placement, nothing a recipe uses.*
@@ -2627,14 +2628,15 @@ on a 2026 cadence, the other is a single 2.0 release after two dormant years. If
 carries one third-party Angel's extension instead of two, that is which.
 
 **Nuclear reaches across the split.** `Clowns-AngelBob-Nuclear` and its hidden `Clowns-Nuclear` add
-thorium cycles, waste processing and reactor fuels; #5 holds `PlutoniumEnergy` *(dropped 2026-10-20,
-#330)*, `RealisticReactorsReborn` and the two `True-Nukes` mods *(both dropped 2026-10-04, #81)*.
-That is six mods on one subsystem, spread across both halves of this pack, and `Clowns-Nuclear`
-declares `(?) RealisticReactorsReborn`, so at least one pair is integrated by its author. **Both
-halves are now surveyed** and the subsystem is set out in *Six mods on one nuclear chain* above: the
-six are wired together by their own authors and none is a candidate for removal, but five of them
-are small and stale and only `PlutoniumEnergy` is not. *2026-10-20 (#330): that one was the one
-removed, by choice, for the chain's load and not its health. See* Decisions, 2026-10-20 (#330).
+thorium cycles, waste processing and reactor fuels; #5 holds `PlutoniumEnergy`,
+`RealisticReactorsReborn` and the two `True-Nukes` mods. That is six mods on one subsystem, spread
+across both halves of this pack, and `Clowns-Nuclear` declares `(?) RealisticReactorsReborn`, so at
+least one pair is integrated by its author. **Both halves are now surveyed** and the subsystem is
+set out in *Six mods on one nuclear chain* above: the six are wired together by their own authors
+and none is a candidate for removal, but five of them are small and stale and only `PlutoniumEnergy`
+is not. *2026-10-04 (#81) dropped the two `True-Nukes` mods. 2026-10-20 (#330) dropped
+`PlutoniumEnergy`, the one that is not small and stale, by choice, because the chain is too
+overloaded, and not for its health. See* Decisions, 2026-10-20 (#330).
 
 **Bulk storage, and the half of it that is this pack's own.** `angelsaddons-storage`'s warehouses,
 silos and pressure tanks overlap the `WideChests` family, and `WideChestsBobs` — one of #5's — is a

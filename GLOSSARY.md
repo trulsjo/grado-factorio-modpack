@@ -53,16 +53,19 @@ it was)
 
 **Shared name**:
 A prototype type and name that two or more members define, or a member and an expansion. It says
-nothing of which definition the game ends with: the later one can replace the earlier whole, or
-the two can mix. Added 2026-10-20 (#330).
-_Avoid_: "clash" for it (the word is kept for a key binding where one input stops working)
+nothing of which definition stands or what the game ends with: the later definition can replace
+the earlier whole, and a later stage can still change the prototype, so the game can end with a
+mix of the two. Added 2026-10-20 (#330).
+_Avoid_: "clash" for it (the load records keep the word for a key binding where one input stops
+working)
 
 **Replaced definition**:
-A shared name whose later definition replaces the earlier one whole, so one member's prototype is
-gone from the game without a log line. Which one is left follows the load order, which a release of
-either mod can change. Added 2026-10-20 (#330).
+A shared name whose later definition replaces the earlier one whole, so the earlier definition is
+gone without a log line. It judges the definitions, not what the game ends with: a later stage of
+either mod can still change the prototype that stands, which then ends as a mix. Which definition
+stands follows the load order, which a release of either mod can change. Added 2026-10-20 (#330).
 _Avoid_: "clash" for it (as for a shared name); "override" for it (the catalogues use the word
-for one mod's deliberate change to another's prototype)
+loosely, for deliberate changes and for replaced definitions)
 
 **Declared line**:
 The Factorio release line a pack's `factorio_version` names - `2.0` or `2.1` - and so the games the

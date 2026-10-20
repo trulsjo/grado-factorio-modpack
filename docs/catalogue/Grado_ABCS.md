@@ -43,7 +43,10 @@ Three findings:
   counted: resolved 2026-09-24 (#31), under* Candidates, not members. *The two found by #83 were
   assessed 2026-10-01 (#91), so the finding covers four bridges: `angels_space_age_galore` brings
   four more mods and cannot be installed beside `Grado_ABC` at all, and `industrial-worlds`
-  brings two.*
+  brings two.* *2026-10-20 (#335): six bridges, not four. A wider sweep found `TIMSABA` and
+  `omniab-space-age-compat`, which merge by their own descriptions and each install one mod on
+  the 2.0 line; `TIMSABA` cannot be installed beside `Grado_ABC`. It also found coexistence fixes.
+  See* Seven more, found by a wider sweep.
 
 ## In the pack
 
@@ -204,6 +207,10 @@ assessment moved: `angelbob-spaceage-rebalance` is at `1.2.18` (2.1) and `1.1.43
 `industrial-worlds` `0.0.12`, 2026-10-17, 2.1 only, 76 downloads. The same day's sweep found mods
 #4's, #6's and #83's searches missed, coexistence fixes among them; #335 assesses them.
 
+*2026-10-20 (#335): "the four mods that attempt the bridge" are six. `TIMSABA` and
+`omniab-space-age-compat` merge, by their own descriptions, and are assessed with five others
+under* Seven more, found by a wider sweep, *below the four.*
+
 ### `angelbob-spaceage-rebalance`
 
 | | |
@@ -284,7 +291,9 @@ declares `! angelbob-spaceage-rebalance`; this mod declares nothing about either
 2026-10-20 (#31): a third existed when this was written. A sweep of names, titles and summaries
 over both listings found `TIMSABA`, a merge by its own summary, on 2.0 since 2026-05-15. These
 searches did not report it; how they missed it is not recorded. #335 assesses it, with the
-coexistence fixes the sweep also found, and corrects this claim where else it stands.*
+coexistence fixes the sweep also found, and corrects this claim where else it stands.* *Assessed
+2026-10-20 (#335), under* Seven more, found by a wider sweep: *`TIMSABA` and
+`omniab-space-age-compat` merge, and `omniab-space-age-compat` declares `!` against this mod.*
 
 **Recommendation: reconsider:** whether this pack should carry a bridge at all, once #29 shows
 whether the unintegrated pack plays - and only together with the promise, which a bridge fails.
@@ -506,6 +515,290 @@ read, a description five releases behind, no source, and no word on MadClown. Fo
 light: named the way #10 named `quality` and `elevated-rails`, the pack would list two members,
 `space-age` and this mod, with its two libraries unnamed; counted by what a player installs, it
 adds three.
+
+### Seven more, found by a wider sweep (2026-10-20, #335)
+
+The seven entries below are the mods #4's, #6's and #83's searches missed. They are judged by the
+#31 rulings (`docs/decisions.md`): the promise fails a mod that merges `Grado_ABC` with Space Age
+or moves either's content between planets and passes a *coexistence fix* (`GLOSSARY.md`), and the
+one-mod-per-branch rule counts what a player installs, less the mods the game supplies. Each entry
+says which of the three it is, what it installs besides itself and whether a `!` hits the chain.
+**None is a member, and nothing here makes one**: which, if any, `Grado_ABCS` carries is Truls's.
+A classification is *Inferred* from the mod's own portal description; no source was read and
+nothing was loaded.
+
+**The sweep, so it can be re-run.** Both listings,
+`https://mods.factorio.com/api/mods?page_size=max&version=2.0` and `&version=2.1`, read 2026-10-20
+at 21:32 UTC: 10,013 and 4,696 entries, 11,252 distinct names in their union. Kept: a mod whose
+name, title and summary, taken together, hold `angel` or `bob`, and also `space age`, `space-age`,
+`spaceage` or `planet`, anywhere in a word and ignoring case. That kept 44. The sweep #31 ran
+earlier the same day counted 11,243 and 42; which two were added in between was not recorded. Of the
+44, the seven below and the three after them are the ten #335 lists, and the four bridges above are
+four more. The other 30 were not assessed here: `5dim_modpack`, `add-original-for-bobs`,
+`Alt_Chemical_Processing`, `bob-electronics-em-plant-compat`, `casting_ladle`, `Common-Industries`,
+`EditedMegaBotStart`, `FNKbobassemblySpaceAgeBalancePatcher`, `foliax`, `GUI_Unifyer`,
+`Ingredient_Scrap`, `knavts_ru`, `LF_molten-core-space-age`, `Load-Furn-2-2-1-SAFix`,
+`Load-Furn-2-SpaceAgeFix`, `loaders-modernized-integrations`, `MegaBotStart`, `Oxygen_to_oxygen`,
+`research_data`, `RU-AE-BOB-SA-248K`, `science-bottles`, `shield-projector`, `SimpleKoreanLocale`,
+`space-age-machine-tiers`, `space-ammo`, `suck-yourself`, `TIMSABA_Deutsch`, `TurboBelt`,
+`vagor_perevodchik` and `vanilla-rails-recipe`. **A mod the portal marks deprecated is in neither
+listing**, on one case: `angels-space-age-tungsten-compat` (`exfret`, `0.0.1`, 2.0, 2026-03-25, 242
+downloads), which matches the terms, was found only through `omniab-space-age-compat`'s `!` against
+it. It is deprecated, requires `angelsaddons-space-age` and `AngelBob`, and its summary sends a
+player to `angelsaddons-space-age` instead. It is not assessed here.
+
+**What *the chain* means below**: the `Grado_ABCS` set of the pin file `stage-pack.ps1` wrote on
+2026-10-20, 99 portal mods resolved for line `2.0` on build `2.0.77`, hidden members among them.
+Each mod was read from `https://mods.factorio.com/api/mods/<name>/full` on 2026-10-20, its latest
+release on each line. What it installs from outside the chain is walked as #91 walked it: every
+dependency without a prefix or with `~`, recursively, over each mod's latest release on that line,
+with `base`, `space-age`, `quality` and `elevated-rails` taken as the game's.
+
+| | Line served | Installs from outside the chain | `!` on the chain | By its description |
+|---|---|---|---|---|
+| `TIMSABA` | 2.0 | nothing | four | merge |
+| `omniab-space-age-compat` | 2.0 and 2.1 | nothing on 2.0; `forgeworks-core` on 2.1 | none | merge |
+| `angelsaddons-space-age` | 2.0 | nothing | none | coexistence fix, with balance changes |
+| `angelsaddons-space-age-revived` | 2.0 | nothing | none | as the row above, with a crash fix |
+| `angelbob-planet-routes` | 2.0 | nothing | none | open: a fix in part, leaning relocate |
+| `space-age-bobs-compat` | 2.0 | nothing | none | open: a fix in part, leaning relocate, with new content |
+| `FixingRecipes` | 2.0 | nothing | none | coexistence fix |
+
+#### `TIMSABA`
+
+| | |
+|---|---|
+| **Title** | Project T.I.M.S.A.B.A. (Angel's, Bob's and Space Age) |
+| **Does** | Reworks the recipes, buildings and items of the base game, Space Age and the core Bob's and Angel's mods "to function as a single, cohesive system", with new intermediates, building tiers, power rules and icons, and content for the community planets it lists, nineteen entries |
+| **Latest** | `1.18.0`, `factorio_version` **2.0**, 2026-09-20. All 41 releases declare 2.0, the first `1.0.0` on 2026-05-15 |
+| **Downloads** | 2,550 |
+| **Owner** | `Tachigami_Itsuki_BY` |
+| **Status** | candidate, not a member (#335) |
+| **Read on** | 2026-10-20 |
+
+A source repository is linked, `https://github.com/Tachigami-Itsuki-BY-New/TIMSABA/tree/dev`, and
+was not read.
+
+**What it installs.** Nothing from outside the chain. Its 22 mandatory dependencies are `base`,
+`space-age` and `quality`, which the game supplies, and 19 chain members: ten Bob's mods,
+`angelsaddons-storage`, the four Angel's core mods and the four `reskins-` mods.
+
+**`!` on the chain: four, and they decide it.** `1.18.0` declares `! Clowns-AngelBob-Nuclear`,
+`! Clowns-Extended-Minerals`, `! Clowns-Processing` and `! extendedangels`, all four named in
+`Grado_ABC/info.json`, and every one of the 41 releases declares the same four. So no release can
+be installed beside `Grado_ABC`.
+
+**Against the promise and the rule: a merge.** "Merges the classic depth of Angel's & Bob's mods
+with the innovative mechanics <!-- deliberate: mechanics --> of the Space Age expansion", in its
+own words. It fails the promise, and it would fail it with the four `!`s gone. Counted by what a
+player installs it is one mod, so it does not reach the rule.
+
+**Recommendation:** none to make. The #31 ruling keeps a merge out, and the four `!`s keep it out
+on any reading of the promise.
+
+#### `omniab-space-age-compat`
+
+| | |
+|---|---|
+| **Title** | Omni/Angel/Bob Space Age Compat |
+| **Does** | A "compatibility and progression-hardening layer" for Space Age with the Omnimods, Bob's or Angel's, whichever are loaded: bridge recipes for "cross-suite material and fluid collisions", "Space Age material, fluid, and progression bridging", "deep integration", and "rescue-route" recipes against a soft-lock on each of the four planets |
+| **Latest** | `1.4.12`, `factorio_version` **2.1**, 2026-10-14. On the 2.0 line: `1.3.7`, 2026-06-10. 16 releases declare 2.0 and 13 declare 2.1 |
+| **Downloads** | 867 |
+| **Owner** | `Szentigrade`, who also wrote `industrial-worlds` above |
+| **Status** | candidate, not a member (#335) |
+| **Read on** | 2026-10-20 |
+
+No source repository is linked.
+
+**What it installs.** On 2.0, `1.3.7` requires `base >= 2.0` and `space-age >= 2.0.73` and
+nothing else. On 2.1, `1.4.12` requires `base >= 2.1.20`, `space-age >= 2.1.20` and
+`forgeworks-core >= 0.3.6`, the author's library (`0.3.10`, 2.1, 2026-10-18, 7,306 downloads),
+which requires nothing from outside the chain. So a player installs one mod on 2.0 and two on
+2.1. 31 of the chain's mods are among its 56 optional dependencies on 2.0, and 32 of 59 on 2.1.
+
+**`!` on the chain: none.** It declares `!` against five mods on 2.0, three of them candidates in
+this file: `angelsaddons-space-age`, `space-age-bobs-compat` and `angelbob-spaceage-rebalance`. On
+2.1 it adds `! TIMSABA`. Its description says other compat mods for the same overlap "should not
+be stacked on top".
+
+**Against the promise and the rule: a merge, with fixes inside it.** Its rescue routes are
+"anti-softlock recovery tools", which is a coexistence fix's job, but it also names "progression
+bridging" and "deep integration", which is the merge the promise fails. Read by the ruling's
+terms, a mod that merges fails whatever else it does. One mod on 2.0, so it does not reach the
+rule.
+
+**What was not measured.** Which of its layers apply to Angel's and Bob's together without the
+Omnimods, which it says it detects. How its rescue routes compare with the soft-locks the pack
+has: none is recorded, since *Whether each Space Age science pack can be made* read the
+prototypes and not which planet a recipe can run on.
+
+**Recommendation:** none. As read, it fails the promise.
+
+#### `angelsaddons-space-age`
+
+| | |
+|---|---|
+| **Title** | Angel's Space Age Compatibility |
+| **Does** | Patches "game-breaking issues" of Angel's with Space Age: Space Age's carbon merged with Angel's, Fulgora's oil ocean giving crude oil, Vulcanus's sulfuric acid geyser giving Angel's sulfuric acid, void recipes for the expansion's new fluids, a firearm magazine a platform can make, biolabs behind Bob's labs. Also lowers the cost of rocket parts, low density structures and rocket fuel |
+| **Latest** | `0.0.13`, `factorio_version` **2.0**, 2026-02-16. All 13 releases declare 2.0 |
+| **Downloads** | 1,292 |
+| **Owner** | `joihoin` |
+| **Status** | candidate, not a member (#335) |
+| **Read on** | 2026-10-20 |
+
+A source repository is linked, `https://github.com/johantiden/angelsaddons-space-age`, and was not
+read.
+
+**What it installs.** Nothing from outside the chain: `base`, `space-age >= 2.0.73`,
+`boblibrary >= 2.0.3` and `angelspetrochem >= 2.0.1`. **`!` on the chain: none.**
+
+**Against the promise and the rule: a coexistence fix, with balance changes beside it.** Two of
+its fixes meet a state this file records: the pack's Fulgora ocean is `heavy-oil`, which is hidden
+and no recipe takes, and Vulcanus's lichen gives `carbon`, which is hidden (*Which planets can
+supply the overhaul's ores*, #133). Its cost cuts to rocket parts, low
+density structures and rocket fuel are neither a merge, a move nor a fix; the ruling's terms do
+not say whether they pass. Its description warns that one change, simple coal liquefaction giving
+mineral oil, breaks an existing Vulcanus setup. One mod, so it fits the rule.
+
+**What was not measured.** Whether each fix still applies to the pack's versions of Angel's and
+Bob's, which have moved since 2026-02-16. Whether it carries the sulfuric acid crash the next
+entry fixes.
+
+**Recommendation:** none. Whether its balance changes stand in the way is Truls's, beside the
+fork below.
+
+#### `angelsaddons-space-age-revived`
+
+| | |
+|---|---|
+| **Title** | Angel's Space Age Compatibility - Revived |
+| **Does** | A fork of `angelsaddons-space-age`, "with a fix for the sulfuric acid fluid name mismatch that crashed recipe recycling with Quality" |
+| **Latest** | `0.0.14`, `factorio_version` **2.0**, 2026-08-13, its only release |
+| **Downloads** | 95 |
+| **Owner** | `blackwelled` |
+| **Status** | candidate, not a member (#335) |
+| **Read on** | 2026-10-20 |
+
+No source repository is linked, and the description is one line. Its dependency list is the
+original's, so it installs nothing from outside the chain and has no `!` on it. Neither declares
+`!` against the other.
+
+**Against the promise and the rule: as the original**, with one crash fix more by its summary. The
+game supplies `quality` beside `space-age`, so a crash in recycling would reach this pack if the
+original carries it; that was not read.
+
+**Recommendation:** none. If the original is ever wanted, this is the one to compare it with: one
+release and 95 downloads against thirteen and 1,292.
+
+#### `angelbob-planet-routes`
+
+| | |
+|---|---|
+| **Title** | Angel's/Bob's Planet Routes |
+| **Does** | Adds recipes on Vulcanus, Gleba and Fulgora that make the Angel's and Bob's intermediates Space Age's planet recipes need from what each planet has: lead, tin, nickel, alumina and fluorite from lava, circuit boards from local materials, solder from scrap. Each is locked to its planet by surface pressure and gives ore rather than plate. On Aquilo it gives modded entities the heating their vanilla counterparts have, since without it they never freeze |
+| **Latest** | `0.7.1`, `factorio_version` **2.0**, 2026-08-24. All nine releases declare 2.0 |
+| **Downloads** | 116 |
+| **Owner** | `V1irus` |
+| **Status** | candidate, not a member (#335) |
+| **Read on** | 2026-10-20 |
+
+No source repository is linked.
+
+**What it installs.** Nothing besides itself: `base >= 2.0.0` and `space-age >= 2.0.0`. Seven of
+its nine optional dependencies are chain members, and one is `omniab-space-age-compat`. **`!` on
+the chain: none.**
+
+**Against the promise: open, and Truls's.** #335 was asked to judge it, and the judgement is
+*Inferred*:
+
+- **The Aquilo half is a coexistence fix.** It changes no progression and moves nothing: it makes
+  the overhaul's entities obey a rule of the expansion.
+- **The recipes lean towards a relocation.** They make Angel's and Bob's materials on Space Age's
+  planets, which is what `BobsAngelsSpaceAge` does with map resources and #31 ruled a relocation.
+  Against that reading: nothing leaves Nauvis, the recipes stay on their planets, and the glossary
+  names "a missing recipe" as a fix. The pack's planets place no Angel's or Clowns resource
+  (*Which planets can supply the overhaul's ores*), so a recipe Space Age expects to run on a
+  planet may have nothing to run on there. Whether that is a missing recipe or the gap the promise
+  leaves on purpose is the line the ruling does not draw.
+
+One mod, so it fits the rule.
+
+**What was not measured.** Whether the pack has the planet soft-locks its recipes answer, and
+whether its Aquilo heating covers the pack's entities.
+
+**Recommendation:** none; the line above is Truls's.
+
+#### `space-age-bobs-compat`
+
+| | |
+|---|---|
+| **Title** | Space Age x Bob's Compatibility |
+| **Does** | "Compatibility tweaks": Bob's tungsten and tungsten carbide convert 1:1 to Space Age's; quartz and alumina from lava on Vulcanus; an Advanced Recycler on Fulgora that breaks Bob's items down; a "Reuseable Rockets" research with a silo that reuses the rocket's lower stages |
+| **Latest** | `0.3.4`, `factorio_version` **2.0**, 2025-09-16. All nine releases declare 2.0 |
+| **Downloads** | 838 |
+| **Owner** | `Phalke` |
+| **Status** | candidate, not a member (#335) |
+| **Read on** | 2026-10-20 |
+
+No source repository is linked. Its description calls it "still a work in progress", and its last
+release is thirteen months old.
+
+**What it installs.** Nothing from outside the chain: `base >= 2.0.0`, `space-age`, `bobplates`,
+`bobores` and `bobpower`. **`!` on the chain: none.** `omniab-space-age-compat` declares `!`
+against it.
+
+**Against the promise: open, and Truls's.** The tungsten conversion is a coexistence fix. Quartz
+and alumina from lava lean towards a relocation, as `angelbob-planet-routes`' recipes do. The
+recycler and the reusable rocket are new content, which the ruling's three kinds do not name. It
+is written for Bob's alone and names no Angel's mod. One mod, so it fits the rule.
+
+**What was not measured.** How its tungsten conversion meets the pack, where Angel's makes
+`tungsten-carbide` and `tungsten-plate` and Space Age's recipes for both are hidden (#128, under
+*Science packs, rockets and planets*).
+
+**Recommendation:** none.
+
+#### `FixingRecipes`
+
+| | |
+|---|---|
+| **Title** | FixingRecipes for angel/bob + space-age |
+| **Does** | "Fixes thungsten carbide plate and copper tungsten plate": two recipes, by its summary |
+| **Latest** | `1.0.0`, `factorio_version` **2.0**, 2026-10-16, its only release |
+| **Downloads** | 3 |
+| **Owner** | `zero84ena` |
+| **Status** | candidate, not a member (#335) |
+| **Read on** | 2026-10-20 |
+
+No source repository is linked, and the description is two lines.
+
+**What it installs.** Nothing from outside the chain: `base`, `space-age`, `bobplates` and
+`angelssmelting`. **`!` on the chain: none.**
+
+**Against the promise and the rule: a coexistence fix**, by its summary: two recipe repairs, no
+merge and no move. One mod, so it fits the rule.
+
+**What was not measured.** What it repairs. The pack's `tungsten-carbide` comes from Angel's, and
+Space Age's recipe of that name is hidden (#128, #132), so whether its fix has anything to act on
+here is unknown.
+
+**Recommendation:** none. When read it was four days old, with three downloads.
+
+#### Three that are not candidates
+
+- **`angelbob-spaceage-rebalance-compat`** (`QuingKhaos`, `1.6.0`, 2.0, 2026-06-28, 94 downloads,
+  read 2026-10-20) requires `angelbob-spaceage-rebalance`, which the promise fails as a merge, so it
+  cannot be installed without a mod the pack has ruled out.
+- **`angelbob-spaceage-even-distribution-patch`** (`Troublesim`, `1.0.1` on 2.0, 2026-06-24, and
+  `1.0.2` on 2.1, 2026-07-19, 274 downloads, read 2026-10-20) is not an add-on to a candidate, as
+  #335 has it. It requires `even-distribution`, a `Grado_NonChanging` member, and not `space-age`;
+  `angelbob-spaceage-rebalance` is optional to it. By its description it adds Angel's and Bob's
+  items to Even Distribution's inventory cleanup. So it is not a `Grado_ABCS` candidate: a mod that
+  does not need Space Age is a question for `Grado_ABC`, and whether to ask it is Truls's.
+- **`AE_BOB_SA_248K_mod`** (`lyx_kljk`, `0.2.0`, 2.0, 2026-06-04, 2,322 downloads, read
+  2026-10-20) is a bundle of mods. On 2.0 it names 91 mandatory dependencies, four of them the
+  game's and 35 in the chain, and installs 56 mods from outside the chain, `248k-Redux` and
+  community planets among them.
 
 ## Where the overhaul and Space Age touch (2026-10-04, #128)
 
@@ -1943,7 +2236,8 @@ declares `! angelbob-spaceage-rebalance` and `! BobsAngelsSpaceAge`. So "two" is
 are #31's; see the #83 note under the AngelBob finding in* `docs/catalogue/Grado_ABC.md`. *Both
 were assessed 2026-10-01 (#91); see* Four bridges, not two *below.* *Added 2026-10-07 (#175) from
 this file's header, which until then named the ticket of the re-read above: "the one re-read on
-2026-09-23 (#10)".*
+2026-09-23 (#10)".* *2026-10-20 (#335): six on 2.x, and two of them on the 2.0 line besides
+these two; see* Six bridges, not four *below.*
 
 | | `angelbob-spaceage-rebalance` | `BobsAngelsSpaceAge` |
 |---|---|---|
@@ -1995,6 +2289,25 @@ How the two new ones push on the rule, stated without resolving it:
 So the options #31 holds are four bridges or none, and one of the four is out on the metadata
 alone. **Nothing here is decided either**; #10's ruling below stands, and which option, if any, is
 Truls's.
+
+**Six bridges, not four: assessed 2026-10-20 (#335).** This extends the table above, and the
+"four" of its heading and of the paragraph before this one is six. A wider sweep found two more
+mods that merge, by their own descriptions; their entries are under *Seven more, found by a wider
+sweep*, which also holds five mods that are not bridges, coexistence fixes and two the #31 ruling
+leaves open. Side by side, in the rows above:
+
+| | `TIMSABA` | `omniab-space-age-compat` |
+|---|---|---|
+| **Read on** | 2026-10-20 (#335) | 2026-10-20 (#335) |
+| **Served on the declared 2.0 line** | yes, `1.18.0` | yes, `1.3.7` |
+| **Mods it brings from outside the chain** | none | none on line `2.0`; one, `forgeworks-core`, on 2.1 |
+| **`!` against chain members** | four: `Clowns-AngelBob-Nuclear`, `Clowns-Extended-Minerals`, `Clowns-Processing`, `extendedangels` | none |
+| **Excludes**, of the bridges | - | `angelbob-spaceage-rebalance`, and `TIMSABA` on 2.1 |
+| **Approach** | merges Angel's and Bob's with Space Age into "a single, cohesive system" | merges whichever of Angel's, Bob's and the Omnimods are loaded with Space Age, with recipes against planet soft-locks |
+| **Recommendation** | none: the ruling and the four `!`s keep it out | none: as read, the ruling keeps it out |
+
+Both fail the promise as #31 ruled it, so the #10 ruling's outcome, no bridge, does not move.
+`TIMSABA` is the second, after `angels_space_age_galore`, that a `!` keeps away from `Grado_ABC`.
 
 **How each one pushes on the rule, stated without resolving it:**
 

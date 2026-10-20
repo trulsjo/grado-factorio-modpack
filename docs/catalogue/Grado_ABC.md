@@ -2830,6 +2830,11 @@ Age, with every Angel's and Bob's dependency optional. It requires `base >= 2.1.
 2026-10-01 (#91): `angels_space_age_galore` does. It requires `angels_galore`, which declares `!`
 against six members of this pack (`bobores`, `bobassembly`, `bobelectronics`, `bobtech`,
 `bobrevamp`, `extendedangels`), so it cannot be installed beside it. See its entry in
+`docs/catalogue/Grado_ABCS.md`.* *2026-10-20 (#335): a wider sweep found `TIMSABA`, which
+declares `!` against four members of this pack, `Clowns-AngelBob-Nuclear`,
+`Clowns-Extended-Minerals`, `Clowns-Processing` and `extendedangels`, so it cannot be installed
+beside it either; and `angelbob-spaceage-even-distribution-patch`, which needs `even-distribution`
+and not Space Age. Both are under* Seven more, found by a wider sweep *in
 `docs/catalogue/Grado_ABCS.md`.*
 
 ## The pack cannot load on the Factorio version it declares

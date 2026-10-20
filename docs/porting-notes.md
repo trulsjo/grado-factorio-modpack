@@ -898,3 +898,14 @@ as it stood until 2026-10-20, when #31 counted it by what a player installs and 
 a coexistence fix beside its end-game. The ruling is the #31 entry of `docs/decisions.md`.
 
 > **Anything both branches need goes in ABC**, and each branch adds exactly one thing.
+
+**Three documents, three jobs**, under *Conventions*, as it stood until 2026-10-20, when Truls
+ruled on the pre-PR review of the #331 branch that the line names `docs/traces/` too. The ruling
+is the #331 entry of `docs/decisions.md`.
+
+> - **Three documents, three jobs.** `docs/porting-notes.md` records what happened to the 1.1
+>   packs; `docs/catalogue/<pack>.md` records what is in each pack now and why, one entry per mod,
+>   in the format of `docs/mod-catalogue.md`; `docs/loads/<pack>-<date>.md` records one load and
+>   its play session - the build, the bundled mods and every resolved member version, so the next
+>   load can be compared with it. The first load record is the template. A fact about the port
+>   goes in the notes, a fact about a mod goes in its catalogue entry.

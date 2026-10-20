@@ -104,9 +104,10 @@
 .PARAMETER ModsDirectory
     Where the set goes. Defaults to .mod-cache/<Pack> under the repository root, which is
     git-ignored, and the only directory pruned of mods the pack has dropped. A directory named
-    here is never pruned. Point it at a Factorio mods directory to install there instead. One
-    directory per pack: staging a second pack into the same directory leaves the first pack's
-    members there too, which for Grado_ABCX and Grado_ABCS is a set that must never exist.
+    here is never pruned. Point it at a Factorio mods directory to install there instead; the
+    pin file then goes beside it, as mods.pins.psd1. One directory per pack: staging a second
+    pack into the same directory leaves the first pack's members there too, which for Grado_ABCX
+    and Grado_ABCS is a set that must never exist.
 
 .PARAMETER Build
     The game build to resolve for, e.g. 2.0.77. Defaults to the version of the installed game's
@@ -414,7 +415,7 @@ function Invoke-SelfTest {
         # it, so where that path points is where both go (#143).
         @{ Name = 'a stage with no -ModsDirectory puts its pin file beside the default cache, where it always went'; Test = {
             (Get-PinFile -Root $root -Pack 'High') -eq (Join-Path $root '.mod-cache/High.pins.psd1') } }
-        @{ Name = 'a stage into a named directory puts its pin file beside that directory and leaves the default one byte for byte'; Test = {
+        @{ Name = 'Get-PinFile puts a named directory''s pin file beside it, and a write there leaves the default one byte for byte'; Test = {
             $default = Join-Path $root '.mod-cache/High.pins.psd1'
             New-Item -ItemType Directory -Path (Split-Path $default) -Force | Out-Null
             Set-Content -LiteralPath $default -Value '@{ Sets = @{ High = @() } }' -NoNewline

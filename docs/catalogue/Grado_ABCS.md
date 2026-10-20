@@ -38,15 +38,14 @@ Three findings:
   the expansion beside Angel's and Bob's; it does not make them work together. The two mods on 2.x
   that attempt that job, both assessed by #31, would each be a second addition, and one of them,
   `angelbob-spaceage-rebalance`, brings eight more mods with it. *Two more, served at 2.1 only and
-  not assessed, were found 2026-10-01 (#83).* See *Pressure on the one-mod-per-branch rule*.
-  *Eight it names, eighteen once theirs are
-  counted: resolved 2026-09-24 (#31), under* Candidates, not members. *The two found by #83 were
-  assessed 2026-10-01 (#91), so the finding covers four bridges: `angels_space_age_galore` brings
-  four more mods and cannot be installed beside `Grado_ABC` at all, and `industrial-worlds`
-  brings two.* *2026-10-20 (#335): six bridges, not four. A wider sweep found `TIMSABA` and
-  `omniab-space-age-compat`, which merge by their own descriptions and each install one mod on
-  the 2.0 line; `TIMSABA` cannot be installed beside `Grado_ABC`. It also found coexistence fixes.
-  See* Seven more, found by a wider sweep.
+  not assessed, were found 2026-10-01 (#83).* See *Pressure on the one-mod-per-branch rule*. *Eight
+  it names, eighteen once theirs are counted: resolved 2026-09-24 (#31), under* Candidates, not
+  members. *The two found by #83 were assessed 2026-10-01 (#91), so the finding covers four bridges:
+  `angels_space_age_galore` brings four more mods and cannot be installed beside `Grado_ABC` at all,
+  and `industrial-worlds` brings two.* *2026-10-20 (#335): at least six bridges, not four. A wider
+  sweep found `TIMSABA` and `omniab-space-age-compat`, which merge by their own descriptions and
+  each install one mod on the 2.0 line; `TIMSABA` cannot be installed beside `Grado_ABC`. It also
+  found coexistence fixes. See* Seven more, found by a wider sweep.
 
 ## In the pack
 
@@ -207,7 +206,7 @@ assessment moved: `angelbob-spaceage-rebalance` is at `1.2.18` (2.1) and `1.1.43
 `industrial-worlds` `0.0.12`, 2026-10-17, 2.1 only, 76 downloads. The same day's sweep found mods
 #4's, #6's and #83's searches missed, coexistence fixes among them; #335 assesses them.
 
-*2026-10-20 (#335): "the four mods that attempt the bridge" are six. `TIMSABA` and
+*2026-10-20 (#335): "the four mods that attempt the bridge" are at least six. `TIMSABA` and
 `omniab-space-age-compat` merge, by their own descriptions, and are assessed with five others
 under* Seven more, found by a wider sweep, *below the four.*
 
@@ -293,7 +292,8 @@ over both listings found `TIMSABA`, a merge by its own summary, on 2.0 since 202
 searches did not report it; how they missed it is not recorded. #335 assesses it, with the
 coexistence fixes the sweep also found, and corrects this claim where else it stands.* *Assessed
 2026-10-20 (#335), under* Seven more, found by a wider sweep: *`TIMSABA` and
-`omniab-space-age-compat` merge, and `omniab-space-age-compat` declares `!` against this mod.*
+`omniab-space-age-compat` merge by their own descriptions, and `omniab-space-age-compat`
+declares `!` against this mod.*
 
 **Recommendation: reconsider:** whether this pack should carry a bridge at all, once #29 shows
 whether the unintegrated pack plays - and only together with the promise, which a bridge fails.
@@ -341,7 +341,9 @@ the second excludes this mod too (`! BobsAngelsSpaceAge`).*
 
 **Recommendation: reconsider:** this mod as the bridge, only if a bridge is wanted and the heavier
 mod's eighteen extras are not. It is the one bridge that keeps the rule by any count: one member,
-no extras. Doing nothing keeps it too.
+no extras. Doing nothing keeps it too. *2026-10-20 (#335): `TIMSABA` and
+`omniab-space-age-compat` keep it as well on the 2.0 line, one mod each; see* Seven more, found by
+a wider sweep.
 Against it: 253 downloads, `0.0.x`, two releases on one day and none since, no source, 2.0 only,
 and a narrower job - it moves ores between planets rather than merging the two progressions. The
 `!` is the other mod's declaration, not this one's; this mod declares nothing about it.
@@ -411,6 +413,7 @@ description says Aquilo content "has not yet been completely implemented".
 
 **Alternatives considered.** The other three bridges in this section, and doing nothing.
 `angels_galore`, which its page names as the version without Space Age, is not a bridge.
+*2026-10-20 (#335): five others, with `TIMSABA` and `omniab-space-age-compat`.*
 
 **Recommendation: do not add.** It cannot be installed beside `Grado_ABC` on any release, because
 the mod it requires declares `!` against six of `Grado_ABC`'s members, and its job is the merge the
@@ -505,7 +508,8 @@ without Pyanodons: `0.0.10` made both optional, but the description, written for
 does not say either alone is supported. How it treats MadClown and `rso-mod` is unread.
 
 **Alternatives considered.** The other three bridges in this section, two of which it excludes, and
-doing nothing.
+doing nothing. *2026-10-20 (#335): five others, with `TIMSABA` and `omniab-space-age-compat`, the
+second of which it also excludes.*
 
 **Recommendation: reconsider:** whether `Grado_ABCS`'s promise reads "side by side" as "on separate
 worlds", since this is the only one of the four bridges built that way - and only once the pack has
@@ -514,11 +518,13 @@ downloads, `0.0.x`, seven releases in 33 days, a mandatory list that changed sha
 read, a description five releases behind, no source, and no word on MadClown. For the rule it is
 light: named the way #10 named `quality` and `elevated-rails`, the pack would list two members,
 `space-age` and this mod, with its two libraries unnamed; counted by what a player installs, it
-adds three.
+adds three. *2026-10-20 (#335): it is still the only one built that way of the
+six; `TIMSABA` and `omniab-space-age-compat` merge.*
 
 ### Seven more, found by a wider sweep (2026-10-20, #335)
 
-The seven entries below are the mods #4's, #6's and #83's searches missed. They are judged by the
+The seven entries below are seven of the mods #4's, #6's and #83's searches missed, the seven
+#335 lists. They are judged by the
 #31 rulings (`docs/decisions.md`): the promise fails a mod that merges `Grado_ABC` with Space Age
 or moves either's content between planets and passes a *coexistence fix* (`GLOSSARY.md`), and the
 one-mod-per-branch rule counts what a player installs, less the mods the game supplies. Each entry
@@ -531,8 +537,9 @@ nothing was loaded.
 `https://mods.factorio.com/api/mods?page_size=max&version=2.0` and `&version=2.1`, read 2026-10-20
 at 21:32 UTC: 10,013 and 4,696 entries, 11,252 distinct names in their union. Kept: a mod whose
 name, title and summary, taken together, hold `angel` or `bob`, and also `space age`, `space-age`,
-`spaceage` or `planet`, anywhere in a word and ignoring case. That kept 44. The sweep #31 ran
-earlier the same day counted 11,243 and 42; which two were added in between was not recorded. Of the
+`spaceage` or `planet`, anywhere in a word and ignoring case. That kept 44. #335's body gives
+the sweep #31 ran earlier the same day as 11,243 and 42; its output was not kept, and what changed
+in between is not recorded. Of the
 44, the seven below and the three after them are the ten #335 lists, and the four bridges above are
 four more. The other 30 were not assessed here: `5dim_modpack`, `add-original-for-bobs`,
 `Alt_Chemical_Processing`, `bob-electronics-em-plant-compat`, `casting_ladle`, `Common-Industries`,
@@ -2236,8 +2243,8 @@ declares `! angelbob-spaceage-rebalance` and `! BobsAngelsSpaceAge`. So "two" is
 are #31's; see the #83 note under the AngelBob finding in* `docs/catalogue/Grado_ABC.md`. *Both
 were assessed 2026-10-01 (#91); see* Four bridges, not two *below.* *Added 2026-10-07 (#175) from
 this file's header, which until then named the ticket of the re-read above: "the one re-read on
-2026-09-23 (#10)".* *2026-10-20 (#335): six on 2.x, and two of them on the 2.0 line besides
-these two; see* Six bridges, not four *below.*
+2026-09-23 (#10)".* *2026-10-20 (#335): at least six on 2.x, two more of them on the 2.0 line
+besides these two; see* At least six bridges, not four *below.*
 
 | | `angelbob-spaceage-rebalance` | `BobsAngelsSpaceAge` |
 |---|---|---|
@@ -2290,25 +2297,6 @@ So the options #31 holds are four bridges or none, and one of the four is out on
 alone. **Nothing here is decided either**; #10's ruling below stands, and which option, if any, is
 Truls's.
 
-**Six bridges, not four: assessed 2026-10-20 (#335).** This extends the table above, and the
-"four" of its heading and of the paragraph before this one is six. A wider sweep found two more
-mods that merge, by their own descriptions; their entries are under *Seven more, found by a wider
-sweep*, which also holds five mods that are not bridges, coexistence fixes and two the #31 ruling
-leaves open. Side by side, in the rows above:
-
-| | `TIMSABA` | `omniab-space-age-compat` |
-|---|---|---|
-| **Read on** | 2026-10-20 (#335) | 2026-10-20 (#335) |
-| **Served on the declared 2.0 line** | yes, `1.18.0` | yes, `1.3.7` |
-| **Mods it brings from outside the chain** | none | none on line `2.0`; one, `forgeworks-core`, on 2.1 |
-| **`!` against chain members** | four: `Clowns-AngelBob-Nuclear`, `Clowns-Extended-Minerals`, `Clowns-Processing`, `extendedangels` | none |
-| **Excludes**, of the bridges | - | `angelbob-spaceage-rebalance`, and `TIMSABA` on 2.1 |
-| **Approach** | merges Angel's and Bob's with Space Age into "a single, cohesive system" | merges whichever of Angel's, Bob's and the Omnimods are loaded with Space Age, with recipes against planet soft-locks |
-| **Recommendation** | none: the ruling and the four `!`s keep it out | none: as read, the ruling keeps it out |
-
-Both fail the promise as #31 ruled it, so the #10 ruling's outcome, no bridge, does not move.
-`TIMSABA` is the second, after `angels_space_age_galore`, that a `!` keeps away from `Grado_ABC`.
-
 **How each one pushes on the rule, stated without resolving it:**
 
 - **`angelbob-spaceage-rebalance` breaks the rule outright.** It is the more serious mod by every
@@ -2331,6 +2319,25 @@ Both fail the promise as #31 ruled it, so the #10 ruling's outcome, no bridge, d
 - **Doing nothing is also an option and is not obviously wrong.** `Grado_ABCS` as it stands is a
   playable claim — Angel's and Bob's on Nauvis, the expansion's planets beside them, unintegrated —
   and whether that is the pack Truls wants is exactly the kind of question `CLAUDE.md` reserves.
+
+**At least six bridges, not four: assessed 2026-10-20 (#335).** This extends the table of *Four
+bridges, not two*, and the "four" of its heading and of the paragraph after it is at least six. A
+wider sweep found two more mods that merge, by their own descriptions; their entries are under
+*Seven more, found by a wider sweep*, which also holds five more: coexistence fixes, and two the #31
+ruling leaves open. Side by side, in that table's rows:
+
+| | `TIMSABA` | `omniab-space-age-compat` |
+|---|---|---|
+| **Read on** | 2026-10-20 (#335) | 2026-10-20 (#335) |
+| **Served on the declared 2.0 line** | yes, `1.18.0` | yes, `1.3.7` |
+| **Mods it brings from outside the chain** | none | none on line `2.0`; one, `forgeworks-core`, on 2.1 |
+| **`!` against chain members** | four: `Clowns-AngelBob-Nuclear`, `Clowns-Extended-Minerals`, `Clowns-Processing`, `extendedangels` | none |
+| **Excludes**, of the bridges | - | `angelbob-spaceage-rebalance`, and `TIMSABA` on 2.1; `industrial-worlds` excludes it |
+| **Approach** | merges Angel's and Bob's with Space Age into "a single, cohesive system" | merges whichever of Angel's, Bob's and the Omnimods are loaded with Space Age, with recipes against planet soft-locks |
+| **Recommendation** | none: the ruling and the four `!`s keep it out | none: as read, the ruling keeps it out |
+
+Both fail the promise as #31 ruled it, so the #10 ruling's outcome, no bridge, does not move.
+`TIMSABA` is the second, after `angels_space_age_galore`, that a `!` keeps away from `Grado_ABC`.
 
 **Nothing here is decided.** Which of the three, and whether the one-mod-per-branch rule bends or
 holds, is pack membership, which is Truls's under `CLAUDE.md` and belongs to issues #10 and #31.

@@ -341,12 +341,12 @@ the second excludes this mod too (`! BobsAngelsSpaceAge`).*
 
 **Recommendation: reconsider:** this mod as the bridge, only if a bridge is wanted and the heavier
 mod's eighteen extras are not. It is the one bridge that keeps the rule by any count: one member,
-no extras. Doing nothing keeps it too. *2026-10-20 (#335): `TIMSABA` and
-`omniab-space-age-compat` keep it as well on the 2.0 line, one mod each; see* Seven more, found by
-a wider sweep.
+no extras. Doing nothing keeps it too.
 Against it: 253 downloads, `0.0.x`, two releases on one day and none since, no source, 2.0 only,
 and a narrower job - it moves ores between planets rather than merging the two progressions. The
 `!` is the other mod's declaration, not this one's; this mod declares nothing about it.
+*2026-10-20 (#335): `TIMSABA` and `omniab-space-age-compat` keep the rule as well on the 2.0 line,
+one mod each; see* Seven more, found by a wider sweep.
 
 ### `angels_space_age_galore`
 
@@ -519,7 +519,7 @@ read, a description five releases behind, no source, and no word on MadClown. Fo
 light: named the way #10 named `quality` and `elevated-rails`, the pack would list two members,
 `space-age` and this mod, with its two libraries unnamed; counted by what a player installs, it
 adds three. *2026-10-20 (#335): it is still the only one built that way of the
-six; `TIMSABA` and `omniab-space-age-compat` merge.*
+six assessed; `TIMSABA` and `omniab-space-age-compat` merge.*
 
 ### Seven more, found by a wider sweep (2026-10-20, #335)
 
@@ -2321,10 +2321,10 @@ Truls's.
   and whether that is the pack Truls wants is exactly the kind of question `CLAUDE.md` reserves.
 
 **At least six bridges, not four: assessed 2026-10-20 (#335).** This extends the table of *Four
-bridges, not two*, and the "four" of its heading and of the paragraph after it is at least six. A
-wider sweep found two more mods that merge, by their own descriptions; their entries are under
-*Seven more, found by a wider sweep*, which also holds five more: coexistence fixes, and two the #31
-ruling leaves open. Side by side, in that table's rows:
+bridges, not two*, and the "four" of its heading and of the paragraph that begins *So the options
+#31 holds* is at least six. A wider sweep found two more mods that merge, by their own descriptions;
+their entries are under *Seven more, found by a wider sweep*, which also holds five more:
+coexistence fixes, and two the #31 ruling leaves open. Side by side, in that table's rows:
 
 | | `TIMSABA` | `omniab-space-age-compat` |
 |---|---|---|

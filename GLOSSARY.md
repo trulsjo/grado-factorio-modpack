@@ -52,14 +52,18 @@ _Avoid_: glue for code that does one member's job; fix for the pack's own Lua (i
 it was)
 
 **Coexistence fix**:
-A mod that makes `Grado_ABC` and Space Age work side by side without merging them. It passes only
-when its problem has been measured in this pack, and when every part of it does one of these:
-fixes a crash; removes a soft-lock, meaning something that can't be made at all, even with
-imports; or removes a planet requirement the overhaul introduced. One failing part fails the whole
-mod. A part fails when it changes balance, adds content, moves content between planets (removing
-a planet requirement that is Space Age's own design counts as moving it), or installs a mod that
-isn't in `Grado_ABC`. A mod that passes becomes eligible, not a member. Added 2026-10-20 (#31), as
-"a crash fix, a missing recipe, a soft-lock removed"; restated 2026-10-21 (#343).
+A mod that makes `Grado_ABC` and its branch's end-game work side by side without merging them. It
+passes only when its problem has been measured in this pack, and when every part of it does one of
+these: fixes a crash; removes a soft-lock, meaning something that can't be made at all, even with
+imports; or removes a planet requirement the overhaul introduced. Replacing a prerequisite the
+overhaul disabled with the overhaul's own replacement removes a soft-lock; removing it outright
+does not. One failing part fails the whole mod. A part fails when it changes balance, adds
+content, moves content between planets (removing a planet requirement that is Space Age's own
+design counts as moving it), or installs a mod that isn't in `Grado_ABC`. The planet clauses apply
+where the end-game has planets, which SpaceX does not. A mod that passes becomes eligible, not a
+member. Added 2026-10-20 (#31), as "a crash fix, a missing recipe, a soft-lock removed"; restated
+2026-10-21 (#343), naming Space Age where this names the branch's end-game; widened to both
+branches, with the prerequisite clause, 2026-10-21 (#347).
 _Avoid_: "glue" for it (that is the pack's own Lua between two members); "bridge" for it (kept for
 a mod that merges or relocates); "compat mod" for it (used for both)
 
@@ -213,7 +217,8 @@ member need not be *about* the overhaul - it may extend the overhaul mods or add
 but it must not conflict with them. Because both end-games build on it, nothing in it may declare
 `! space-age`.
 `Grado_ABCX`'s, settled 2026-09-23 (#10): `Grado_ABC` plus the SpaceX end-game and nothing else;
-the pack is never installed beside Space Age.
+the pack is never installed beside Space Age. *2026-10-21 (#347): a coexistence fix is not
+"else"; the branch may carry one beside its end-game, as #31 ruled for either branch.*
 `Grado_ABCS`'s, settled 2026-09-23 (#10): `Grado_ABC` *beside* Space Age, not integrated with it -
 the planets and the overhaul run side by side, so a mod that merges the two, or moves either's
 content between planets, fails the test; a coexistence fix passes it. Restated 2026-10-20 (#31).

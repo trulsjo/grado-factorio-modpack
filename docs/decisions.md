@@ -361,4 +361,15 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   the pack would release on, 2.1, at the review at stable 2.1 that #294 tied to #290; a 2.0
   measurement does not count for it. The wording is in `GLOSSARY.md`; `CLAUDE.md`, #31's entry and
   `docs/porting-notes.md` already said either branch and are unchanged. The search for a
-  `Grado_ABCX` candidate is #348. No ADR: no member changes.
+  `Grado_ABCX` candidate is #348. No ADR: no member changes. *Re-ruled 2026-10-21 (#347), in a
+  second grill on finding 2 of PR #349's pre-PR review. The question behind the disabled
+  prerequisite rule offered `centrifuging-1` and `centrifuging-2` as the overhaul's replacement
+  for Kovarex, and `Clowns-Processing` does not create them when `bobassembly` is loaded. Read
+  from source, `Clowns-AngelBob-Nuclear` `2.0.13` has several replacements, one of them a bare
+  removal. So the rule is restated by effect: a fix that removes or replaces a disabled
+  prerequisite removes a soft-lock when the technology still needs everything that prerequisite
+  needed, and it may add prerequisites to make it so. This holds in either branch, and #147's
+  ruling stands. A candidate is measured on a dump of the pack with it installed, on the branch's
+  line, by comparing prerequisite closures in that dump. Measured on 2.0.77 and recorded in the two
+  catalogues: dropping Kovarex outright from SpaceX's two technologies passes in `Grado_ABCX`, and
+  dropping it from `captive-biter-spawner` fails in `Grado_ABCS`.*

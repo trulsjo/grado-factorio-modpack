@@ -52,10 +52,14 @@ _Avoid_: glue for code that does one member's job; fix for the pack's own Lua (i
 it was)
 
 **Coexistence fix**:
-A mod that makes an end-game and `Grado_ABC` run together without merging their progressions or
-moving either's content between planets: a crash fix, a missing recipe, a soft-lock removed. It
-passes `Grado_ABCS`'s promise, and a branch may carry one beside its end-game. Added 2026-10-20
-(#31).
+A mod that makes `Grado_ABC` and Space Age work side by side without merging them. It passes only
+when its problem has been measured in this pack, and when every part of it does one of these:
+fixes a crash; removes a soft-lock, meaning something that can't be made at all, even with
+imports; or removes a planet requirement the overhaul introduced. One failing part fails the whole
+mod. A part fails when it changes balance, adds content, moves content between planets (removing
+a planet requirement that is Space Age's own design counts as moving it), or installs a mod that
+isn't in `Grado_ABC`. A mod that passes becomes eligible, not a member. Added 2026-10-20 (#31), as
+"a crash fix, a missing recipe, a soft-lock removed"; restated 2026-10-21 (#343).
 _Avoid_: "glue" for it (that is the pack's own Lua between two members); "bridge" for it (kept for
 a mod that merges or relocates); "compat mod" for it (used for both)
 

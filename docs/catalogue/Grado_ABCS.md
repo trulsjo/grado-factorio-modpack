@@ -210,7 +210,8 @@ assessment moved: `angelbob-spaceage-rebalance` is at `1.2.18` (2.1) and `1.1.43
 
 *2026-10-20 (#335): "the four mods that attempt the bridge" are at least six. `TIMSABA` and
 `omniab-space-age-compat` merge, by their own descriptions, and are assessed with five others
-under* Seven more, found by a wider sweep, *below the four.*
+under* Seven more, found by a wider sweep, *below the four.* *2026-10-21 (#341): at least seven.
+`FNKbobassemblySpaceAgeBalancePatcher` merges by its description; see* The other thirty, assessed.
 
 ### `angelbob-spaceage-rebalance`
 
@@ -415,7 +416,8 @@ description says Aquilo content "has not yet been completely implemented".
 
 **Alternatives considered.** The other three bridges in this section, and doing nothing.
 `angels_galore`, which its page names as the version without Space Age, is not a bridge.
-*2026-10-20 (#335): five others, with `TIMSABA` and `omniab-space-age-compat`.*
+*2026-10-20 (#335): five others, with `TIMSABA` and `omniab-space-age-compat`.* *2026-10-21
+(#341): six others, with `FNKbobassemblySpaceAgeBalancePatcher`; see* The other thirty, assessed.
 
 **Recommendation: do not add.** It cannot be installed beside `Grado_ABC` on any release, because
 the mod it requires declares `!` against six of `Grado_ABC`'s members, and its job is the merge the
@@ -511,7 +513,8 @@ does not say either alone is supported. How it treats MadClown and `rso-mod` is 
 
 **Alternatives considered.** The other three bridges in this section, two of which it excludes, and
 doing nothing. *2026-10-20 (#335): five others, with `TIMSABA` and `omniab-space-age-compat`, the
-second of which it also excludes.*
+second of which it also excludes.* *2026-10-21 (#341): six others, with
+`FNKbobassemblySpaceAgeBalancePatcher`; see* The other thirty, assessed.
 
 **Recommendation: reconsider:** whether `Grado_ABCS`'s promise reads "side by side" as "on separate
 worlds", since this is the only one of the four bridges built that way - and only once the pack has
@@ -521,7 +524,8 @@ read, a description five releases behind, no source, and no word on MadClown. Fo
 light: named the way #10 named `quality` and `elevated-rails`, the pack would list two members,
 `space-age` and this mod, with its two libraries unnamed; counted by what a player installs, it
 adds three. *2026-10-20 (#335): it is still the only one built that way of the
-six assessed; `TIMSABA` and `omniab-space-age-compat` merge.*
+six assessed; `TIMSABA` and `omniab-space-age-compat` merge.* *2026-10-21 (#341): and of the
+seven, since `FNKbobassemblySpaceAgeBalancePatcher` merges.*
 
 ### Seven more, found by a wider sweep (2026-10-20, #335)
 
@@ -819,9 +823,9 @@ its latest release on each line, and what it installs from outside the chain was
 against the same pin file's `Grado_ABCS` set of 99 mods. **None is a member, and nothing here
 makes one.**
 
-**Five are candidates**: each requires `space-age` and, by its description, works on Angel's or
-Bob's beside it. The
-other 25 are not, and each has a line under *Twenty-five that are not candidates* below.
+**Five are candidates**: each requires `space-age` and, by its description, is made for a game of
+Angel's or Bob's beside Space Age, not only compatible with one. The other 25 are not, and each
+has a line under *Twenty-five that are not candidates* below.
 
 | | Line served | Installs from outside the chain | `!` on the chain | By its description |
 |---|---|---|---|---|
@@ -849,8 +853,8 @@ No source repository is linked, and the description is one sentence.
 `bobelectronics >= 2.0.0`, a chain member. **`!` on the chain: none.**
 
 **Against the promise and the rule: a coexistence fix.** It lets one of Space Age's machines make
-the overhaul's electronics and, as described, changes no recipe, technology or planet. One mod, so
-it fits the rule.
+the overhaul's electronics and, as described, changes only which machines can make them, and no
+technology or planet. One mod, so it fits the rule.
 
 **What was not measured.** Whether the pack's electromagnetic plant already makes Bob's boards.
 `space-age` and `bobassembly` both define the recipe categories `electronics` and
@@ -989,11 +993,11 @@ whether to ask it is Truls's.
   `0.1.52`, 2.0, 2026-05-10, 421 downloads) adds alternative recipes for Bob's rocket fuel and
   other chemicals and changes stack sizes; it requires only `base`, and Bob's mods are optional to
   it.
-- **Space Age content that needs no Bob's or Angel's mod.** `space-age-machine-tiers`
-  (`Primeruler`, `0.0.6`, 2.0, 2025-12-28, 491 downloads) adds tier 2 and 3 Space Age machines to
-  "basically match what many of bobs mods are doing for progression"; `LF_molten-core-space-age`
-  (`Lucian.Fallen`, `1.2.8`, 2.0, 2026-05-03, 224 downloads) adds molten and liquid processing,
-  with Bob's optional. Each
+- **Space Age content not made for Angel's or Bob's.** `space-age-machine-tiers` (`Primeruler`,
+  `0.0.6`, 2.0, 2025-12-28, 491 downloads) adds tier 2 and 3 Space Age machines to "basically
+  match what many of bobs mods are doing for progression": it copies Bob's style and needs no Bob's
+  mod. `LF_molten-core-space-age` (`Lucian.Fallen`, `1.2.8`, 2.0, 2026-05-03, 224 downloads) adds
+  molten and liquid processing, with Bob's among the mods it is optionally compatible with. Each
   requires `space-age`, so neither is a `Grado_ABC` question, and each is content of its own, not
   a fix, so each would be a second mod the rule does not admit.
 - **A planet, or a link to one the chain lacks.** `foliax` (`Crethor`, `2.0.20` on 2.0,
@@ -1004,19 +1008,20 @@ whether to ask it is Truls's.
 - **Translations.** `knavts_ru`, `RU-AE-BOB-SA-248K`, `SimpleKoreanLocale`, `TIMSABA_Deutsch`,
   which translates `TIMSABA` above, and `vagor_perevodchik`. None adds content.
 - **Needs mods the chain lacks.** `5dim_modpack` (`McGuten`, `2.1.1`, 2.1 only, 2026-08-05, 90
-  downloads) is a bundle of 5Dim's mods and installs 21 from outside the chain.
+  downloads) is a bundle of 5Dim's mods and installs 21 from outside the chain. It requires
+  `space-age`, but it is made for the 5Dim suite, and its one Bob's requirement is `bobinserters`.
   `loaders-modernized-integrations` (`kryojenik`, `2.0.10` on 2.0, 3,466 downloads) requires
   `loaders-modernized`, which the chain does not have.
 - **Refused beside Space Age.** `TurboBelt` (`Stargateur`, `1.1.0`, 2.0, 2026-04-18, 5,558
   downloads) declares `! space-age`: it adds the turbo belt to a game without the expansion.
-- **Needs no more than `base` and does not work on the two together.** `casting_ladle`,
+- **Needs no more than `base`.** `casting_ladle`,
   `Common-Industries` (a library other mods ask for ingredients, "NOT a compatibility of overhaul
   mods with each other"), `EditedMegaBotStart`, `MegaBotStart`, `GUI_Unifyer`, `Ingredient_Scrap`,
   `Load-Furn-2-SpaceAgeFix`, `Load-Furn-2-2-1-SAFix` (2.1 only), `research_data`,
-  `science-bottles` and `shield-projector`. Ten matched the sweep because their summaries name
-  Bob's or Angel's, as mods they support or work beside, and Space Age or a planet; the two furnace
-  mods' "Space Age fix" is a fix of their own furnaces. `shield-projector` matched the Angel's and
-  Bob's term through "changelog", which holds `angel`.
+  `science-bottles` and `shield-projector`. Ten matched the sweep because their names, titles and
+  summaries, taken together, name Bob's or Angel's, as mods they support or work beside, and Space
+  Age or a planet; the two furnace mods' "Space Age fix" is a fix of their own furnaces.
+  `shield-projector` matched the Angel's and Bob's term through "changelog", which holds `angel`.
 
 **What the sweep's match lets in.** `foliax` and `shield-projector` show that matching `angel`
 anywhere in a word admits mods that name neither overhaul. Matching whole words would have dropped
@@ -2459,7 +2464,8 @@ are #31's; see the #83 note under the AngelBob finding in* `docs/catalogue/Grado
 were assessed 2026-10-01 (#91); see* Four bridges, not two *below.* *Added 2026-10-07 (#175) from
 this file's header, which until then named the ticket of the re-read above: "the one re-read on
 2026-09-23 (#10)".* *2026-10-20 (#335): at least six on 2.x, two more of them on the 2.0 line
-besides these two; see* At least six bridges, not four *below.*
+besides these two; see* At least six bridges, not four *below.* *2026-10-21 (#341): at least
+seven, three more of them on the 2.0 line besides these two; see* The other thirty, assessed.
 
 | | `angelbob-spaceage-rebalance` | `BobsAngelsSpaceAge` |
 |---|---|---|

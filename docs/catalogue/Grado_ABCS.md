@@ -2041,6 +2041,17 @@ overhaul's own technologies were not chased; see *Not covered*.
   unresearched, and between them the probe's source writes only `enabled` and an empty research
   queue, which was already empty. The result changed from `false` to `true`. Still inferred: that
   no route gets the spawner researched in play while Kovarex is disabled.*
+  *Measured 2026-10-21 (#347), in #344's dump (checksum `4259335355`), for the coexistence fix
+  test in `GLOSSARY.md`: **a fix that dropped Kovarex from `captive-biter-spawner` outright would
+  fail that test, and one that put Kovarex's own prerequisites in its place would pass it.**
+  Kovarex's prerequisite closure there holds 158 technologies. Ten are missing from the closure of
+  the spawner's other two prerequisites, `cryogenic-science-pack` and `biter-egg-handling`:
+  `uranium-processing`, `nuclear-power`, `nuclear-fuel-reprocessing`, `bob-centrifuge-2`,
+  `angels-cobalt-steel-smelting-1`, `bob-heat-pipe-1`, `bob-heat-pipe-2`, `bob-boiler-2`,
+  `bob-steam-engine-2` and `bob-steam-engine-3`, by a throwaway script over the dump's
+  `prerequisites`. Kovarex's own are `uranium-processing`, `space-science-pack`,
+  `nuclear-fuel-reprocessing` and `bob-centrifuge-2`. No such mod has been found, and #147's
+  ruling stands.*
 
 **Three things a planet supplies that nothing takes**, which are not dead ends in a walk but are
 dead material:

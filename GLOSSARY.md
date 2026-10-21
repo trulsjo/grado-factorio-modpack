@@ -60,10 +60,10 @@ overhaul disabled with the overhaul's own replacement removes a soft-lock; remov
 does not. One failing part fails the whole mod. A part fails when it changes balance, adds
 content, moves content between planets (removing a planet requirement that is Space Age's own
 design counts as moving it), or installs a mod that isn't in `Grado_ABC`. The planet clauses apply
-where the end-game has planets, which SpaceX does not. A mod that passes becomes eligible, not a
-member. Added 2026-10-20 (#31), as "a crash fix, a missing recipe, a soft-lock removed"; restated
-2026-10-21 (#343), naming Space Age where this names the branch's end-game; widened to both
-branches, with the prerequisite clause, 2026-10-21 (#347).
+where the end-game has planets. A mod that passes becomes eligible, not a member. Added 2026-10-20
+(#31), as "a crash fix, a missing recipe, a soft-lock removed"; restated 2026-10-21 (#343), naming
+Space Age where this names the branch's end-game; widened to both branches, with the prerequisite
+clause, 2026-10-21 (#347).
 _Avoid_: "glue" for it (that is the pack's own Lua between two members); "bridge" for it (kept for
 a mod that merges or relocates); "compat mod" for it (used for both)
 
@@ -217,11 +217,12 @@ member need not be *about* the overhaul - it may extend the overhaul mods or add
 but it must not conflict with them. Because both end-games build on it, nothing in it may declare
 `! space-age`.
 `Grado_ABCX`'s, settled 2026-09-23 (#10): `Grado_ABC` plus the SpaceX end-game and nothing else;
-the pack is never installed beside Space Age. *2026-10-21 (#347): a coexistence fix is not
-"else"; the branch may carry one beside its end-game, as #31 ruled for either branch.*
+the pack is never installed beside Space Age.
 `Grado_ABCS`'s, settled 2026-09-23 (#10): `Grado_ABC` *beside* Space Age, not integrated with it -
 the planets and the overhaul run side by side, so a mod that merges the two, or moves either's
 content between planets, fails the test; a coexistence fix passes it. Restated 2026-10-20 (#31).
+*2026-10-21 (#347): in `Grado_ABCX`'s promise a coexistence fix is not "else"; the branch may
+carry one beside its end-game, as #31 ruled for either branch.*
 _Avoid_: "does not change save state or the factory" (the original wording of
 `Grado_NonChanging`'s promise, and false under any reading that lets that pack do its job -
 `Tapeline`, `Todo-List`, `YARM` and `SpeedControl` all write to the save, and half the pack exists

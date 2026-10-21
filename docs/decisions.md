@@ -353,13 +353,11 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   restated *Coexistence fix* entry named only Space Age while `CLAUDE.md`'s *The chain* and #31's
   entry above let either branch carry one. *Both branches:* the entry now makes `Grado_ABC` and its
   branch's end-game work side by side, and #343's rules stand for both; the planet clauses apply
-  where the end-game has planets, which SpaceX does not. `Grado_ABCX`'s promise, "the SpaceX
-  end-game and nothing else" (#10), does not count a coexistence fix as "else". *A disabled
-  prerequisite:* replacing a prerequisite the overhaul disabled with the overhaul's own
-  replacement removes a soft-lock and passes; removing it outright fails, in either branch. So a
-  mod moving SpaceX's `exploration-satellite` and `space-fluid-tanks` from Kovarex, which
-  `Clowns-AngelBob-Nuclear` disables, to `centrifuging` would pass (#294), and #147's ruling on the
-  captive spawner stands. *Which line:* for `Grado_ABCX`, a fix's problem is measured on the line
+  where the end-game has planets. `Grado_ABCX`'s promise, "the SpaceX end-game and nothing else"
+  (#10), does not count a coexistence fix as "else". *A disabled prerequisite:* replacing a
+  prerequisite the overhaul disabled with the overhaul's own replacement removes a soft-lock and
+  passes; removing it outright fails, in either branch. #147's ruling on the captive spawner
+  stands. *Which line:* for `Grado_ABCX`, a fix's problem is measured on the line
   the pack would release on, 2.1, at the review at stable 2.1 that #294 tied to #290; a 2.0
   measurement does not count for it. The wording is in `GLOSSARY.md`; `CLAUDE.md`, #31's entry and
   `docs/porting-notes.md` already said either branch and are unchanged. The search for a

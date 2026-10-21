@@ -806,9 +806,20 @@ merge and no move. One mod, so it fits the rule.
 Space Age's recipe of that name is hidden (#128, #132), so whether its fix has anything to act on
 here is unknown.
 
+**Measured 2026-10-21 (#344): both plates have an Angel's route.** From the dump of the staged
+pack under *The measurement* below. Space Age's `tungsten-carbide` recipe is hidden and unlocked by
+nothing, and Angel's `angels-plate-tungsten-carbide` makes the item, unlocked by
+`angels-tungsten-carbide-smelting-1`. Bob's `bob-copper-tungsten-alloy` recipe is hidden and
+unlocked by nothing, and Angel's `angels-molten-copper-tungsten-smelting-1` makes the item,
+unlocked by `angels-copper-tungsten-smelting-1`. Both technologies are enabled and not hidden.
+That `bob-copper-tungsten-alloy` is the "copper tungsten plate" its summary names is *Inferred*,
+since the mod's source was not read. #132's walk, run on this dump, reaches both technologies and
+counts both Angel's recipes as made. That is *Inferred*, since the walk is an upper bound (*How
+the walk was made*).
+
 **Recommendation:** none. When read it was four days old, with three downloads.
-*2026-10-21 (#343): fails: it restores a recipe Angel's hid on purpose while Angel's own route
-works, under* The rulings of 2026-10-21 *below.*
+*2026-10-21 (#343, #344): fails: it restores recipes the overhaul hid while the overhaul's own
+routes work, as measured above, under* The rulings of 2026-10-21 *below.*
 
 #### Three that are not candidates
 
@@ -874,9 +885,20 @@ technology or planet. One mod, so it fits the rule.
 both define*, #331, graded *Inferred* there). Which categories Bob's boards use, and which the mod
 adds, were not read.
 
+**Measured 2026-10-21 (#344): the pack's electromagnetic plant already makes Bob's boards.** In
+the dump of the staged pack under *The measurement* below, the plant crafts Space Age's four
+categories, `electromagnetics`, `electronics`, `electronics-with-fluid` and
+`electronics-or-assembling`. Bob's board and circuit recipes keep Bob's categories, `crafting`,
+`crafting-with-fluid` or `advanced-crafting`, and carry `electronics` as an additional category:
+`electronic-circuit`, `advanced-circuit`, `processing-unit`, `bob-wooden-board`,
+`bob-phenolic-board`, `bob-circuit-board`, `bob-superior-circuit-board` and
+`bob-multi-layer-circuit-board` among them. The plant can craft 140 recipes that are not hidden,
+against 35 in Space Age alone. Which member adds the additional category was not read. So the
+problem the mod answers is not in this pack.
+
 **Recommendation:** none. Whether the pack needs it turns on the measurement above.
-*2026-10-21 (#343): waits on #344, which measures whether its problem exists here, under* The
-rulings of 2026-10-21 *below.*
+*2026-10-21 (#343, #344): fails: the problem it answers is not in this pack, as measured above,
+under* The rulings of 2026-10-21 *below.*
 
 #### `space-ammo`
 
@@ -903,9 +925,16 @@ make". One mod, so it fits the rule.
 **What was not measured.** Whether the pack's firearm magazine needs lead, and so whether the
 soft-lock it answers exists here.
 
+**Measured 2026-10-21 (#344): the pack's firearm magazine needs no lead.** In the dump of the
+staged pack under *The measurement* below, the recipe `firearm-magazine` takes 2 `iron-plate` and
+1 `coal`, where Space Age alone takes 4 `iron-plate`. It is enabled from the start, and has no
+surface condition. Bob's `copper-nickel-firearm-magazine` takes `bob-lead-plate`, and so does
+`piercing-rounds-magazine`. Whether a platform can make `coal` was not read: under the rulings a
+magazine shipped up from a planet is not a soft-lock.
+
 **Recommendation:** none.
-*2026-10-21 (#343): waits on #344, which measures whether its problem exists here, under* The
-rulings of 2026-10-21 *below.*
+*2026-10-21 (#343, #344): fails: the magazine needs no lead, as measured above, so there is no
+soft-lock to answer, and its ammunition is new content, under* The rulings of 2026-10-21 *below.*
 
 #### `add-original-for-bobs`
 
@@ -968,9 +997,25 @@ none.**
 Counted by what a player installs it is two mods, and `angelsaddons-bots` is not a fix, so it does
 not fit the rule as the rule stands.
 
+**Measured 2026-10-21 (#344): both places it moves the technologies from are Space Age's own.**
+From the dump of the staged pack under *The measurement* below, and the cached dump of Space Age
+alone:
+
+- **`artillery`** requires `metallurgic-science-pack` in Space Age alone, as a prerequisite and
+  among its science packs, beside `military-4` and `radar`. In the pack it keeps both, and the
+  overhaul swaps `military-4` for `processing-unit`, `concrete`, `bob-brass-processing`,
+  `angels-aluminium-smelting-1` and `angels-invar-smelting-1`. `metallurgic-science-pack` is
+  Vulcanus's: its technology is triggered by crafting `tungsten-plate`. So the artillery half
+  removes a requirement of Space Age's own design.
+- **`logistic-system`**, which unlocks the requester, buffer and active provider chests, requires
+  `space-science-pack` in Space Age alone. In the pack it requires that too, and the overhaul
+  adds `construction-robotics` and `bob-advanced-logistic-science-pack`. So moving it back before
+  space science undoes Space Age's design as well, which none of the three kinds of fix covers.
+
 **Recommendation:** none; the line between the halves is Truls's.
-*2026-10-21 (#343): fails: it installs `angelsaddons-bots`, and its artillery half is a move if
-Space Age's own design puts artillery behind Vulcanus, under* The rulings of 2026-10-21 *below.*
+*2026-10-21 (#343, #344): fails: it installs `angelsaddons-bots`, and its artillery half removes a
+requirement of Space Age's own design, as measured above, under* The rulings of 2026-10-21
+*below.*
 
 #### `FNKbobassemblySpaceAgeBalancePatcher`
 
@@ -1056,8 +1101,9 @@ adds content, moves content between planets, restores a recipe the overhaul hid 
 its own route works, or installs a mod that is not in `Grado_ABC`, and one failing part fails the
 whole mod. A fix is admitted only once its problem is measured in this pack, and a *soft-lock* is
 something that cannot be made at all, even with imports. Against these the twelve candidates
-above stand as the table says. Each result is read from the entry's own text and is as *Inferred*
-as that entry: nothing new was read for it.
+above stand as the table says. Each result applies the rulings to the entry's own text, and is
+*Inferred*. Four entries also hold a fact measured for #344, under *The measurement* below; the
+other eight had nothing new read for them.
 
 | Candidate | Result | What it turns on |
 |---|---|---|
@@ -1068,10 +1114,10 @@ as that entry: nothing new was read for it.
 | `angelbob-planet-routes` | fails | its planet recipes answer no soft-lock, so its Aquilo half does not save it |
 | `space-age-bobs-compat` | fails | its recycler and reusable rocket are new content |
 | `FixingRecipes` | fails | it restores Space Age's `tungsten-carbide`, which Angel's hides while its own route works (#128, #132) |
-| `bob-electronics-em-plant-compat` | waits on #344 | whether the electromagnetic plant already makes Bob's boards |
-| `space-ammo` | waits on #344 | whether the pack's firearm magazine needs lead |
+| `bob-electronics-em-plant-compat` | fails | the electromagnetic plant already makes Bob's boards, measured (#344), so it answers no problem here |
+| `space-ammo` | fails | the firearm magazine needs no lead, measured (#344), so there is no soft-lock, and its ammunition is new content |
 | `add-original-for-bobs` | fails | it installs `bobclasses`, and no soft-lock it answers is measured |
-| `suck-yourself` | fails | it installs `angelsaddons-bots`; its artillery half is a move if Space Age's own design puts artillery behind Vulcanus, which #344 reads |
+| `suck-yourself` | fails | it installs `angelsaddons-bots`, and its artillery half removes a requirement of Space Age's own design, measured (#344) |
 | `FNKbobassemblySpaceAgeBalancePatcher` | fails | a merge, and six mods installed besides it |
 
 **A mod that passes is eligible, not a member.** It comes back to Truls as a membership question,
@@ -1080,7 +1126,18 @@ Truls's.
 
 **#49 does not change these.** `Grado_ABC` taking `bobclasses` or `angelsaddons-bots` would admit
 neither `add-original-for-bobs`, which has no measured soft-lock, nor `suck-yourself`, whose
-artillery half fails on its own if #344 finds it a move.
+artillery half fails on its own.
+
+**None of the twelve passes**, so none comes to Truls as a membership question.
+
+**The measurement (#344).** One dump of the data stage, `--dump-data`, of the staged pack with
+`space-age`, `quality` and `elevated-rails`, made 2026-10-21 on Factorio 2.0.77 (build 84539)
+headless by `get-dump.ps1` in `vendor/grado-factorio-tools`, through the load harness, with its own
+config and write directory. Its set is the pin file of 2026-10-20: the 99 mods above, and the zips
+of `Grado_ABCS` and the three packs below it. Its prototype list checksum is `4259335355`. Space
+Age alone is the cached dump `3295867752` under *How the comparison was made*. Each fact is under
+the entry it settles, graded *Measured*. Whether the overhaul's machines freeze on Aquilo is a
+play question, and only `angelbob-planet-routes` turned on it.
 
 **Local gaps, not soft-locks.** Three states this file records leave nothing unmakeable once
 material is shipped in, so none is a soft-lock and no fix is sought for them:

@@ -338,8 +338,9 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   Truls as a membership question, and adding a member to `Grado_ABCS` is a major version bump. The
   wording is the *Coexistence fix* entry in `GLOSSARY.md`. Of the twelve candidates #335 and #341
   assessed, ten fail on the records, each with its reason in `docs/catalogue/Grado_ABCS.md`, and
-  two, `space-ammo` and `bob-electronics-em-plant-compat`, wait on the measurement of #344, which
-  also reads what `suck-yourself` and `FixingRecipes` would turn on. Fulgora's `heavy-oil`,
+  the other two, `space-ammo` and `bob-electronics-em-plant-compat`, fail on the measurement of
+  #344, a dump of the staged pack: the problem each answers is not in this pack. So none is
+  eligible. Fulgora's `heavy-oil`,
   Vulcanus's `carbon` and Fulgora's electromagnetic science pack needing fuel oil shipped in are
   local gaps, not soft-locks: no fix is sought, and the play session (#29) notes whether they hurt.
   #49 adding `bobclasses` or `angelsaddons-bots` admits neither `add-original-for-bobs` nor

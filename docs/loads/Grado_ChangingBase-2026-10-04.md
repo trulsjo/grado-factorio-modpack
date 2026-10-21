@@ -285,7 +285,9 @@ gives `larger-terrain-building-area` and `smaller-terrain-building-area`. The pl
 headless runs logged it unavailable. Its `player-data.json` holds, beyond the defaults the
 `--create` run's also has, tutorial levels 2 to 5, a last-played save and a filled factorio.com
 username and token. So it read the player's data from Steam Cloud (*Inferred* from the log line
-and the file). Whether quitting wrote anything back is not shown.*
+and the file). Whether quitting wrote anything back is not shown. Truls ruled the same day that
+reading the player's data from Steam Cloud is not reading the player's configuration, which
+#142 forbids, and the copy holding the token was deleted.*
 
 ## Not checked
 

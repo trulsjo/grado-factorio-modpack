@@ -441,6 +441,47 @@ membership decision rather than a relocation.
 that is reported in `docs/catalogue/Grado_ABCS.md`. *`CLAUDE.md` reworded the rule on 2026-10-20
 (#31): see its entry in `docs/decisions.md`.*
 
+### A coexistence fix sought (2026-10-21, #348)
+
+**The sweep found no mod to judge.** #347 lets this branch carry a coexistence fix, and #348 asked
+for a search for one, by #335's method (`docs/catalogue/Grado_ABCS.md`, *Seven more, found by a
+wider sweep*). The SpaceX alternatives search (#44, under `SpaceModFeorasFork` above) looked for a
+successor, not a fix. Nothing here is a member or makes one.
+
+**The sweep, so it can be re-run.** Both listings,
+`https://mods.factorio.com/api/mods?page_size=max&version=2.0` and `&version=2.1`, read 2026-10-21
+at 21:54 UTC: 10,024 and 4,746 entries, 11,284 distinct names in their union. Two terms, each
+over a mod's name, title and summary taken together, anywhere in a word and ignoring case:
+
+- **A SpaceX word and an overhaul word:** `spacex`, `space extension` or `spacemod`, and also
+  `angel`, `bob`, `clown` or `kovarex`. **0 kept.** Without the overhaul word, two mods hold a
+  SpaceX word: `SpaceModFeorasFork` itself, and `ERPC-K2-integration`, whose summary integrates
+  Krastorio 2 materials into another rocket mod "and optionally SpaceX".
+- **A mod that requires `SpaceModFeorasFork`:** a mandatory dependency on it, no prefix or `~`, in
+  any 2.x release. A listing carries no dependencies and the portal has no reverse lookup, so,
+  at Truls's word (2026-10-21), only the 1,440 mods whose name, title or summary hold `space` were
+  read from `https://mods.factorio.com/api/mods/<name>/full`, between 21:54 and 22:08 UTC. **0
+  kept.** One names the fork optionally: `ERPC-K2-integration` `0.3.3`,
+  `? SpaceModFeorasFork >= 1.3.0`. A mod that requires the fork and never says `space` is missed.
+
+So no hit was read further or walked as #91 walked it, and none is judged by the *Coexistence fix*
+entry in `GLOSSARY.md`. A mod the portal marks deprecated is in neither listing, as #335 found,
+and so is not covered.
+
+**Outside the terms.** Fourteen mods in the union name `kovarex`, and none holds a SpaceX word. One
+reads, by its title, as aimed at the soft-lock, and has a line here because the terms miss it:
+`RestoredKovarex` ("Restored Kovarex Enrichment", `jakefeb3`, 49 downloads), read from `/full` on
+2026-10-21 at 22:08 UTC. Its one release, `1.0.0` (2026-04-03), declares `factorio_version` 2.0 and
+depends on `base` alone. So the portal does not serve it to 2.1, the line this pack would release on
+(#294). Its description reads, in full, "For personal use to add kovarex recipe", and its tags
+include `cheats`. *Inferred* from that description, not from source: it adds a recipe rather than
+enabling the technology. The other thirteen are `atan-nuclear-exotic-space-industries-compat`,
+`FlashFunMod`, `hatsune-enrichment-process`, `helmod-plus`, `Kovarex`, `kovarex-everything`,
+`Leylaa-Mod`, `marble-chemistry`, `more_u235`, `NonGreedyKovarex`, `Nuclear Fuel`,
+`PlutoniumBreeding` and `Rebalanced_research`, and none of them was judged. Whether any of the
+fourteen is worth a look is Truls's. A candidate's problem would be measured on 2.1, at #290's
+review, not here.
+
 ## Names members both define (2026-10-20, #331)
 
 **`Grado_ABCX` shares the same 463 names as `Grado_ABC`, and no more.** *Measured* by a traced

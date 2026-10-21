@@ -2556,7 +2556,9 @@ declares `Q`, the pipette's own default.
 **Not checked.** Whether 2.0.77 reads a `PAD` spelling as the number pad, which the game writes
 `KP_`. It matters for no row: `Kux-BlueprintExtensions` `3.3.16`'s `PAD 1` to `PAD 9` match no
 engine default either way (see its entry), and `kry-picker-extended`'s `PAD +` and `PAD -` are
-linked.
+linked. *2026-10-21 (#142): a windowed start wrote `underground-pipe-pack`'s `PAD +` and `PAD -`
+defaults as `KP_PLUS` and `KP_MINUS`; see the note of that date in
+`docs/loads/Grado_ChangingBase-2026-10-04.md`. `PAD 1` to `PAD 9` are still not measured.*
 
 **To re-run on a later build:**
 

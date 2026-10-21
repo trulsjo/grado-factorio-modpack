@@ -386,15 +386,16 @@ reach. *Ruled 2026-10-19 (#294, in `docs/decisions.md`): `Grado_ABCX` has no 2.0
 supersedes the hold on its first 2.0 release ruled 2026-10-15, and its first, on 2.1, waits until
 the fourth stage can be reached there.*
 
-*Measured 2026-10-21 (#347), in the dump above, for the coexistence fix test in `GLOSSARY.md`:
-**without Kovarex, `exploration-satellite` and `space-fluid-tanks` still need everything Kovarex
-needs, so a fix that drops it from them outright passes that test on 2.0.** Kovarex's prerequisite
-closure there holds 107 technologies, and each one is in the closure of the two technologies'
-other prerequisites, `ftl-propulsion` and `space-thrusters` for the first and `ftl-propulsion` and
-`bob-fluid-handling-4` for the second, by a throwaway script over the dump's `prerequisites`.
-`nuclear-fuel-1`, which unlocks the `nuclear-fuel` their recipes take, is in neither closure, so
-the test does not ask for it. 2.0 only: for this pack a fix's problem is measured on 2.1, at
-#290's review, and no candidate has been found (#348).*
+*Measured 2026-10-21 (#347), in the dump above, for the prerequisite clause of the* Coexistence
+fix *entry in `GLOSSARY.md`: **without Kovarex, `exploration-satellite` and `space-fluid-tanks`
+still need everything Kovarex needs, so a fix that drops it from them outright meets that clause
+on 2.0.** Kovarex's prerequisite closure there holds 107 technologies, and each one is in the
+closure of the two technologies' other prerequisites, `ftl-propulsion` and `space-thrusters` for
+the first and `ftl-propulsion` and `bob-fluid-handling-4` for the second, by a throwaway script
+over the dump's `prerequisites`. `nuclear-fuel-1`, which unlocks the `nuclear-fuel` that
+`exploration-satellite` and `space-fuel-tank` take, is in neither closure, so the clause does not
+ask for it. 2.0 only: for this pack a fix's problem is measured on 2.1, at #290's review, and the
+search for a candidate is #348.*
 
 #### No name shared (2026-10-20, #331)
 

@@ -45,7 +45,9 @@ Three findings:
   and `industrial-worlds` brings two.* *2026-10-20 (#335): at least six bridges, not four. A wider
   sweep found `TIMSABA` and `omniab-space-age-compat`, which merge by their own descriptions and
   each install one mod on the 2.0 line; `TIMSABA` cannot be installed beside `Grado_ABC`. It also
-  found coexistence fixes. See* Seven more, found by a wider sweep.
+  found coexistence fixes. See* Seven more, found by a wider sweep. *2026-10-21 (#341): the sweep's
+  other 30 hits add one more merge, `FNKbobassemblySpaceAgeBalancePatcher`, which installs six
+  mods, and one open case leaning relocate; see* The other thirty, assessed.
 
 ## In the pack
 
@@ -552,7 +554,8 @@ four more. The other 30 were not assessed here: `5dim_modpack`, `add-original-fo
 listing**, on one case: `angels-space-age-tungsten-compat` (`exfret`, `0.0.1`, 2.0, 2026-03-25, 242
 downloads), which matches the terms, was found only through `omniab-space-age-compat`'s `!` against
 it. It is deprecated, requires `angelsaddons-space-age` and `AngelBob`, and its summary sends a
-player to `angelsaddons-space-age` instead. It is not assessed here.
+player to `angelsaddons-space-age` instead. It is not assessed here. *2026-10-21 (#341): the 30
+are assessed under* The other thirty, assessed: *five are candidates and 25 are not.*
 
 **What *the chain* means below**: the `Grado_ABCS` set of the pin file `stage-pack.ps1` wrote on
 2026-10-20, 99 portal mods resolved for line `2.0` on build `2.0.77`, hidden members among them.
@@ -806,6 +809,218 @@ here is unknown.
   2026-10-20) is a bundle of mods. On 2.0 it names 91 mandatory dependencies, four of them the
   game's and 35 in the chain, and installs 56 mods from outside the chain, `248k-Redux` and
   community planets among them.
+
+### The other thirty, assessed (2026-10-21, #341)
+
+The 30 hits of the sweep above that #335 did not assess, judged as the seven were: by the #31
+rulings, each classification *Inferred* from the mod's own portal description, no source read and
+nothing loaded. Each was read from `https://mods.factorio.com/api/mods/<name>/full` on 2026-10-21,
+its latest release on each line, and what it installs from outside the chain was walked as above,
+against the same pin file's `Grado_ABCS` set of 99 mods. **None is a member, and nothing here
+makes one.**
+
+**Five are candidates**: each requires `space-age` and, by its description, works on Angel's or
+Bob's beside it. The
+other 25 are not, and each has a line under *Twenty-five that are not candidates* below.
+
+| | Line served | Installs from outside the chain | `!` on the chain | By its description |
+|---|---|---|---|---|
+| `bob-electronics-em-plant-compat` | 2.0 | nothing | none | coexistence fix |
+| `space-ammo` | 2.0 and 2.1 | nothing | none | coexistence fix |
+| `add-original-for-bobs` | 2.0 | `bobclasses` | none | coexistence fix, with changes it calls large |
+| `suck-yourself` | 2.0 | `angelsaddons-bots` | none | open: a fix in part, leaning relocate |
+| `FNKbobassemblySpaceAgeBalancePatcher` | 2.0 | six mods | none | merge |
+
+#### `bob-electronics-em-plant-compat`
+
+| | |
+|---|---|
+| **Title** | Bob's Electronics - Electromagnetic Plant Compatibility |
+| **Does** | "Makes Bob's Electronics circuit boards and related electronics craftable in Space Age Electromagnetic plants by extending their crafting categories" |
+| **Latest** | `0.1.0`, `factorio_version` **2.0**, 2026-03-07, its only release |
+| **Downloads** | 96 |
+| **Owner** | `ComputerComa` |
+| **Status** | candidate, not a member (#341) |
+| **Read on** | 2026-10-21 |
+
+No source repository is linked, and the description is one sentence.
+
+**What it installs.** Nothing besides itself: `base >= 2.0.0`, `space-age >= 2.0.0` and
+`bobelectronics >= 2.0.0`, a chain member. **`!` on the chain: none.**
+
+**Against the promise and the rule: a coexistence fix.** It lets one of Space Age's machines make
+the overhaul's electronics and, as described, changes no recipe, technology or planet. One mod, so
+it fits the rule.
+
+**What was not measured.** Whether the pack's electromagnetic plant already makes Bob's boards.
+`space-age` and `bobassembly` both define the recipe categories `electronics` and
+`electronics-with-fluid`, and `bobassembly`'s definition replaces the expansion's (*Names members
+both define*, #331, graded *Inferred* there). Which categories Bob's boards use, and which the mod
+adds, were not read.
+
+**Recommendation:** none. Whether the pack needs it turns on the measurement above.
+
+#### `space-ammo`
+
+| | |
+|---|---|
+| **Title** | Space Ammo (for Bob's Mods) |
+| **Does** | Adds a cheap ammunition, made from iron plates and carbon, for space platforms, because with Bob's mods "there is no lead in space you can't build ammo in space". Its damage is low |
+| **Latest** | `0.1.3`, `factorio_version` **2.1**, 2026-10-02. On the 2.0 line: `0.1.1`, 2025-09-07. Two releases declare 2.0 and one declares 2.1 |
+| **Downloads** | 385 |
+| **Owner** | `Phalke`, who also wrote `space-age-bobs-compat` above |
+| **Status** | candidate, not a member (#341) |
+| **Read on** | 2026-10-21 |
+
+No source repository is linked.
+
+**What it installs.** Nothing besides itself: `base` and `space-age` on both lines. It requires
+no Bob's mod, though its title and description name them. **`!` on the chain: none.**
+
+**Against the promise and the rule: a coexistence fix.** A platform that cannot make ammunition is
+a soft-lock, which the glossary names as a fix's job, and the recipe moves nothing between planets.
+`angelsaddons-space-age` above lists the same fix among its own, "a firearm magazine a platform can
+make". One mod, so it fits the rule.
+
+**What was not measured.** Whether the pack's firearm magazine needs lead, and so whether the
+soft-lock it answers exists here.
+
+**Recommendation:** none.
+
+#### `add-original-for-bobs`
+
+| | |
+|---|---|
+| **Title** | add New recipe to bobs |
+| **Does** | By its Japanese summary: adds recipes so that a game of Bob's mods and Space Age does not get stuck partway, and warns that it may change the game considerably, Gleba in particular. Its description says only that it adds new recipes when Bob's mods are used |
+| **Latest** | `1.0.0`, `factorio_version` **2.0**, 2025-07-01, its only release |
+| **Downloads** | 107 |
+| **Owner** | `SolesReles` |
+| **Status** | candidate, not a member (#341) |
+| **Read on** | 2026-10-21 |
+
+No source repository is linked; its homepage is a blog post, `https://sky-dream.xyz/?p=695`, which
+was not read. The summary was translated here from Japanese.
+
+**What it installs.** `bobclasses` (`2.1.0` on 2.0, 2026-06-01, 113,624 downloads), which is not
+in the chain and requires nothing outside it. Its other 19 mandatory dependencies are `base`,
+`space-age` and 17 Bob's mods in the chain. `bobclasses` is one of the two suite mods the
+`Grado_ABC` catalogue records the pack as lacking, deferred to #49. **`!` on the chain: none.**
+
+**Against the promise and the rule: a coexistence fix by its stated job, with a warning against
+it.** Recipes against getting stuck remove a soft-lock. Its warning that the game may change
+considerably, on Gleba most, is not explained, so whether any recipe merges or relocates is not
+known. Counted by what a player installs it is two mods, and `bobclasses` is not a fix, so it does
+not fit the rule as the rule stands.
+
+**Recommendation:** none.
+
+#### `suck-yourself`
+
+| | |
+|---|---|
+| **Title** | Angel Bobs Space Age Logisitics (its spelling) |
+| **Does** | "Returns the logistic network technology back to its original place on the tech tree when playing Angel/Bobs with space age enabled", and moves artillery back, "no longer requiring Vulcanus" |
+| **Latest** | `0.0.3`, `factorio_version` **2.0**, 2026-05-23. All three releases declare 2.0 |
+| **Downloads** | 275 |
+| **Owner** | `brojam` |
+| **Status** | candidate, not a member (#341) |
+| **Read on** | 2026-10-21 |
+
+No source repository is linked, and its summary is empty.
+
+**What it installs.** `angelsaddons-bots` (`2.0.0` on 2.0, 2026-01-03, 21,436 downloads), which is
+not in the chain and is the other suite mod #49 holds. Its mandatory list has 38 entries, 36
+distinct: `base`, `space-age`, `angelsaddons-bots` and 33 chain members. **`!` on the chain:
+none.**
+
+**Against the promise: open, and Truls's.** The two halves read differently:
+
+- **The logistic network half is a coexistence fix** if, as its description implies, Angel's and
+  Bob's beside Space Age leave the technology somewhere it should not be. What moves it was not
+  read.
+- **The artillery half leans towards a relocation.** By its description Space Age puts artillery
+  behind Vulcanus, and taking that away moves the expansion's content off its planet, which the
+  promise fails.
+
+Counted by what a player installs it is two mods, and `angelsaddons-bots` is not a fix, so it does
+not fit the rule as the rule stands.
+
+**Recommendation:** none; the line between the halves is Truls's.
+
+#### `FNKbobassemblySpaceAgeBalancePatcher`
+
+| | |
+|---|---|
+| **Title** | Fink's Space Age Balance Patcher for X Mods |
+| **Does** | Changes the recipes, technologies and stats of Bob's assembling machines, chemical plants, refineries, drills and furnaces, and of four other mods, to "fit the Space Age progression": higher tiers need holmium, tungsten, bioflux, carbon fibre or quantum processors among others, and their technologies need the expansion's. Removes Bob's electronics assembling machines and pumpjack 3 |
+| **Latest** | `1.1.2`, `factorio_version` **2.0**, 2026-04-10. All five releases declare 2.0 |
+| **Downloads** | 36 |
+| **Owner** | `AceFinka` |
+| **Status** | candidate, not a member (#341) |
+| **Read on** | 2026-10-21 |
+
+No source repository is linked. Its author made it "for personal use".
+
+**What it installs.** Six mods from outside the chain: `Age-of-Production`, `RampantArsenalFork`,
+`SolarMatrix` and `Accumulator-V2`, which it requires, and `PlanetsLib` and
+`Age-of-Production-Graphics`, which `Age-of-Production` requires. In the chain it requires
+`boblibrary`, `bobassembly` and `bobmining`. **`!` on the chain: none.**
+
+**Against the promise and the rule: a merge.** Putting Bob's machine tiers behind Space Age's
+materials and technologies is the merged progression the promise fails, by its own list of
+changes. Seven mods counted by what a player installs, so it fails the rule too. Of the overhaul
+it requires three Bob's mods and no Angel's mod.
+
+**Recommendation:** none to make. The ruling keeps a merge out.
+
+#### Twenty-five that are not candidates
+
+Each read 2026-10-21. A mod with no `space-age` dependency does not declare the expansion, and is
+not a `Grado_ABCS` candidate for that reason alone; where one reads like a fix for `Grado_ABC`
+beside Space Age, that is a question for `Grado_ABC`, as with the even-distribution patch above, and
+whether to ask it is Truls's.
+
+- **Read like a `Grado_ABC` question.** `vanilla-rails-recipe` (`DoctorStonee`, `1.0.2`, 2.0,
+  2026-06-08, 53 downloads) adds the vanilla rail recipe beside Bob's wood rail, so rails can be
+  made off Nauvis, and reads like a missing recipe. It requires only `base`, but its recipe is
+  unlocked by the elevated rails technology, which the game supplies with Space Age; whether it
+  does anything without the expansion was not read. `Alt_Chemical_Processing` (`Sgamez`,
+  `0.1.52`, 2.0, 2026-05-10, 421 downloads) adds alternative recipes for Bob's rocket fuel and
+  other chemicals and changes stack sizes; it requires only `base`, and Bob's mods are optional to
+  it.
+- **Space Age content that needs no Bob's or Angel's mod.** `space-age-machine-tiers`
+  (`Primeruler`, `0.0.6`, 2.0, 2025-12-28, 491 downloads) adds tier 2 and 3 Space Age machines to
+  "basically match what many of bobs mods are doing for progression"; `LF_molten-core-space-age`
+  (`Lucian.Fallen`, `1.2.8`, 2.0, 2026-05-03, 224 downloads) adds molten and liquid processing,
+  with Bob's optional. Each
+  requires `space-age`, so neither is a `Grado_ABC` question, and each is content of its own, not
+  a fix, so each would be a second mod the rule does not admit.
+- **A planet, or a link to one the chain lacks.** `foliax` (`Crethor`, `2.0.20` on 2.0,
+  2026-06-11, 13,009 downloads) is a planet and installs `cr-commons`; it matched the sweep's
+  Angel's and Bob's term through "strangely", which holds `angel`. `Oxygen_to_oxygen` (`Zarnoo`,
+  `2.0.2`, 2.0, 2025-09-05, 76 downloads) converts Bob's oxygen to `planet-muluna`'s and
+  installs eight mods from outside the chain, the planet among them.
+- **Translations.** `knavts_ru`, `RU-AE-BOB-SA-248K`, `SimpleKoreanLocale`, `TIMSABA_Deutsch`,
+  which translates `TIMSABA` above, and `vagor_perevodchik`. None adds content.
+- **Needs mods the chain lacks.** `5dim_modpack` (`McGuten`, `2.1.1`, 2.1 only, 2026-08-05, 90
+  downloads) is a bundle of 5Dim's mods and installs 21 from outside the chain.
+  `loaders-modernized-integrations` (`kryojenik`, `2.0.10` on 2.0, 3,466 downloads) requires
+  `loaders-modernized`, which the chain does not have.
+- **Refused beside Space Age.** `TurboBelt` (`Stargateur`, `1.1.0`, 2.0, 2026-04-18, 5,558
+  downloads) declares `! space-age`: it adds the turbo belt to a game without the expansion.
+- **Needs no more than `base` and does not work on the two together.** `casting_ladle`,
+  `Common-Industries` (a library other mods ask for ingredients, "NOT a compatibility of overhaul
+  mods with each other"), `EditedMegaBotStart`, `MegaBotStart`, `GUI_Unifyer`, `Ingredient_Scrap`,
+  `Load-Furn-2-SpaceAgeFix`, `Load-Furn-2-2-1-SAFix` (2.1 only), `research_data`,
+  `science-bottles` and `shield-projector`. Ten matched the sweep because their summaries name
+  Bob's or Angel's, as mods they support or work beside, and Space Age or a planet; the two furnace
+  mods' "Space Age fix" is a fix of their own furnaces. `shield-projector` matched the Angel's and
+  Bob's term through "changelog", which holds `angel`.
+
+**What the sweep's match lets in.** `foliax` and `shield-projector` show that matching `angel`
+anywhere in a word admits mods that name neither overhaul. Matching whole words would have dropped
+them; whether it would also drop a mod that matters was not measured.
 
 ## Where the overhaul and Space Age touch (2026-10-04, #128)
 
@@ -2338,6 +2553,9 @@ coexistence fixes, and two the #31 ruling leaves open. Side by side, in that tab
 
 Both fail the promise as #31 ruled it, so the #10 ruling's outcome, no bridge, does not move.
 `TIMSABA` is the second, after `angels_space_age_galore`, that a `!` keeps away from `Grado_ABC`.
+*2026-10-21 (#341): at least seven. Of the sweep's other 30 hits,
+`FNKbobassemblySpaceAgeBalancePatcher` merges by its description and installs six mods from outside
+the chain, and `suck-yourself` is open, leaning relocate. See* The other thirty, assessed.
 
 **Nothing here is decided.** Which of the three, and whether the one-mod-per-branch rule bends or
 holds, is pack membership, which is Truls's under `CLAUDE.md` and belongs to issues #10 and #31.

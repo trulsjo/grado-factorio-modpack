@@ -266,18 +266,26 @@ section is inferred and not tried: the file #96 read was written on 2026-09-30, 
 `Grado_NonChanging`'s play session, so a windowed start with that config file, quit from the main
 menu, should write it.*
 
-*2026-10-21 (#142): **`PAD +` and `KP_PLUS` are one key, and so are `PAD -` and `KP_MINUS`**,
-so the `plus-valve` and `minus-valve` rows of the table above stand. Measured on the same build,
-with the same mod directory and a new config file and write directory of their own: one windowed
-start, closed from the main menu once the log said `Factorio initialised`, with the window's
-close message and not by killing it. The process started first exited 0 after 12 seconds and
-Steam started a second with the same arguments; the second is the one that was closed. It took
-the harness's config file, `[path]` alone, as invalid: Truls saw a message saying so, and the log
+*2026-10-21 (#142): **the game writes `PAD +` as `KP_PLUS` and `PAD -` as `KP_MINUS`**
+(*Measured*), so they are one key each and the `plus-valve` and `minus-valve` rows of the table
+above stand (*Inferred* from the written spelling; no key was pressed). Measured on the same
+build, with the same mods in a mod directory of its own and a new config file and write
+directory: one windowed start, closed with the window's close message once the log said
+`Factorio initialised`, which is taken as the main menu (*Inferred*), and not by killing it.
+Steam started a second process with the same arguments at 08:38:45 while the first was still
+running (per `Win32_Process` and the log's first line); the first exited 0 at 08:38:51, about
+13 seconds after it started, and the second is the one that was closed. It took the config file,
+`[path]` alone as the harness writes it, as invalid: Truls saw a message saying so, and the log
 has `Resetting config.` before `Factorio initialised`. The reset kept the `write-data` path. The
 config file went from 211 bytes to 64,848 and gained a `[controls]` section, which writes the
 two inputs' defaults as `; plus-valve=KP_PLUS` and `; minus-valve=KP_MINUS`, the spelling it
 gives `larger-terrain-building-area` and `smaller-terrain-building-area`. The player's
-`config.ini` was not read: its last write time stayed at 2026-09-30.*
+`config.ini` was not written (its last write time stayed at 2026-09-30) and not used (the log's
+`Config path` is the run's own). This one logged `Cloud player-data.json available`, where the
+headless runs logged it unavailable. Its `player-data.json` holds, beyond the defaults the
+`--create` run's also has, tutorial levels 2 to 5, a last-played save and a filled factorio.com
+username and token. So it read the player's data from Steam Cloud (*Inferred* from the log line
+and the file). Whether quitting wrote anything back is not shown.*
 
 ## Not checked
 

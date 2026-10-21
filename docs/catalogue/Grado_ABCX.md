@@ -450,11 +450,11 @@ successor, not a fix. Nothing here is a member or makes one.
 
 **The sweep, so it can be re-run.** Both listings,
 `https://mods.factorio.com/api/mods?page_size=max&version=2.0` and `&version=2.1`, read 2026-10-21
-at 21:54 UTC: 10,024 and 4,746 entries, 11,284 distinct names in their union. Two terms, each
-over a mod's name, title and summary taken together, anywhere in a word and ignoring case:
+at 21:54 UTC: 10,024 and 4,746 entries, 11,284 distinct names in their union. Two terms:
 
-- **A SpaceX word and an overhaul word:** `spacex`, `space extension` or `spacemod`, and also
-  `angel`, `bob`, `clown` or `kovarex`. **0 kept.** Without the overhaul word, two mods hold a
+- **A SpaceX word and an overhaul or Kovarex word,** over a mod's name, title and summary taken
+  together, anywhere in a word and ignoring case: `spacex`, `space extension` or `spacemod`, and
+  also `angel`, `bob`, `clown` or `kovarex`. **0 kept.** Without the second word, two mods hold a
   SpaceX word: `SpaceModFeorasFork` itself, and `ERPC-K2-integration`, whose summary integrates
   Krastorio 2 materials into another rocket mod "and optionally SpaceX".
 - **A mod that requires `SpaceModFeorasFork`:** a mandatory dependency on it, no prefix or `~`, in
@@ -465,22 +465,22 @@ over a mod's name, title and summary taken together, anywhere in a word and igno
   `? SpaceModFeorasFork >= 1.3.0`. A mod that requires the fork and never says `space` is missed.
 
 So no hit was read further or walked as #91 walked it, and none is judged by the *Coexistence fix*
-entry in `GLOSSARY.md`. A mod the portal marks deprecated is in neither listing, as #335 found,
-and so is not covered.
+entry in `GLOSSARY.md`. A mod the portal marks deprecated was in neither listing in #335's one case,
+so such a mod may not be covered.
 
-**Outside the terms.** Fourteen mods in the union name `kovarex`, and none holds a SpaceX word. One
-reads, by its title, as aimed at the soft-lock, and has a line here because the terms miss it:
-`RestoredKovarex` ("Restored Kovarex Enrichment", `jakefeb3`, 49 downloads), read from `/full` on
-2026-10-21 at 22:08 UTC. Its one release, `1.0.0` (2026-04-03), declares `factorio_version` 2.0 and
-depends on `base` alone. So the portal does not serve it to 2.1, the line this pack would release on
-(#294). Its description reads, in full, "For personal use to add kovarex recipe", and its tags
-include `cheats`. *Inferred* from that description, not from source: it adds a recipe rather than
-enabling the technology. The other thirteen are `atan-nuclear-exotic-space-industries-compat`,
-`FlashFunMod`, `hatsune-enrichment-process`, `helmod-plus`, `Kovarex`, `kovarex-everything`,
-`Leylaa-Mod`, `marble-chemistry`, `more_u235`, `NonGreedyKovarex`, `Nuclear Fuel`,
-`PlutoniumBreeding` and `Rebalanced_research`, and none of them was judged. Whether any of the
-fourteen is worth a look is Truls's. A candidate's problem would be measured on 2.1, at #290's
-review, not here.
+**Outside the terms.** Fourteen mods in the union hold `kovarex` in their name, title or summary,
+and none holds a SpaceX word. One, by its title alone (*Inferred*), is aimed at the soft-lock, and
+has a line here because the terms miss it: `RestoredKovarex` ("Restored Kovarex Enrichment",
+`jakefeb3`, 49 downloads), read from `/full` on 2026-10-21 at 22:08 UTC. Its one release, `1.0.0`
+(2026-04-03), declares `factorio_version` 2.0 and depends on `base` alone. So the portal does not
+serve it to 2.1, the line this pack would release on (#294). Its description reads, in full, "For
+personal use to add kovarex recipe", and its tags include `cheats`. *Inferred* from that
+description, not from source: it adds a recipe rather than enabling the technology. The other
+thirteen are `atan-nuclear-exotic-space-industries-compat`, `FlashFunMod`,
+`hatsune-enrichment-process`, `helmod-plus`, `Kovarex`, `kovarex-everything`, `Leylaa-Mod`,
+`marble-chemistry`, `more_u235`, `NonGreedyKovarex`, `Nuclear Fuel`, `PlutoniumBreeding` and
+`Rebalanced_research`, and none of them was judged. Whether any of the fourteen is worth a look is
+Truls's. A candidate's problem would be measured on 2.1, at #290's review, not here.
 
 ## Names members both define (2026-10-20, #331)
 

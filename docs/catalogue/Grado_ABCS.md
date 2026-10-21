@@ -609,6 +609,7 @@ player installs it is one mod, so it does not reach the rule.
 
 **Recommendation:** none to make. The #31 ruling keeps a merge out, and the four `!`s keep it out
 on any reading of the promise.
+*2026-10-21 (#343): fails as a merge, under* The rulings of 2026-10-21 *below.*
 
 #### `omniab-space-age-compat`
 
@@ -647,6 +648,8 @@ has: none is recorded, since *Whether each Space Age science pack can be made* r
 prototypes and not which planet a recipe can run on.
 
 **Recommendation:** none. As read, it fails the promise.
+*2026-10-21 (#343): fails as a merge: one failing part fails the whole, under* The rulings of
+2026-10-21 *below.*
 
 #### `angelsaddons-space-age`
 
@@ -680,6 +683,8 @@ entry fixes.
 
 **Recommendation:** none. Whether its balance changes stand in the way is Truls's, beside the
 fork below.
+*2026-10-21 (#343): fails: its cost cuts are balance changes, under* The rulings of 2026-10-21
+*below.*
 
 #### `angelsaddons-space-age-revived`
 
@@ -703,6 +708,7 @@ original carries it; that was not read.
 
 **Recommendation:** none. If the original is ever wanted, this is the one to compare it with: one
 release and 95 downloads against thirteen and 1,292.
+*2026-10-21 (#343): fails as the original does, under* The rulings of 2026-10-21 *below.*
 
 #### `angelbob-planet-routes`
 
@@ -741,6 +747,8 @@ One mod, so it fits the rule.
 whether its Aquilo heating covers the pack's entities.
 
 **Recommendation:** none; the line above is Truls's.
+*2026-10-21 (#343): fails: its planet recipes answer no soft-lock, and one failing part fails the
+whole, under* The rulings of 2026-10-21 *below.*
 
 #### `space-age-bobs-compat`
 
@@ -771,6 +779,8 @@ is written for Bob's alone and names no Angel's mod. One mod, so it fits the rul
 *Science packs, rockets and planets*).
 
 **Recommendation:** none.
+*2026-10-21 (#343): fails: the recycler and the reusable rocket are new content, under* The rulings
+of 2026-10-21 *below.*
 
 #### `FixingRecipes`
 
@@ -797,6 +807,8 @@ Space Age's recipe of that name is hidden (#128, #132), so whether its fix has a
 here is unknown.
 
 **Recommendation:** none. When read it was four days old, with three downloads.
+*2026-10-21 (#343): fails: it restores a recipe Angel's hid on purpose while Angel's own route
+works, under* The rulings of 2026-10-21 *below.*
 
 #### Three that are not candidates
 
@@ -863,6 +875,8 @@ both define*, #331, graded *Inferred* there). Which categories Bob's boards use,
 adds, were not read.
 
 **Recommendation:** none. Whether the pack needs it turns on the measurement above.
+*2026-10-21 (#343): waits on #344, which measures whether its problem exists here, under* The
+rulings of 2026-10-21 *below.*
 
 #### `space-ammo`
 
@@ -890,6 +904,8 @@ make". One mod, so it fits the rule.
 soft-lock it answers exists here.
 
 **Recommendation:** none.
+*2026-10-21 (#343): waits on #344, which measures whether its problem exists here, under* The
+rulings of 2026-10-21 *below.*
 
 #### `add-original-for-bobs`
 
@@ -918,6 +934,8 @@ known. Counted by what a player installs it is two mods, and `bobclasses` is not
 not fit the rule as the rule stands.
 
 **Recommendation:** none.
+*2026-10-21 (#343): fails: it installs `bobclasses`, and no soft-lock is measured, under* The
+rulings of 2026-10-21 *below.*
 
 #### `suck-yourself`
 
@@ -951,6 +969,8 @@ Counted by what a player installs it is two mods, and `angelsaddons-bots` is not
 not fit the rule as the rule stands.
 
 **Recommendation:** none; the line between the halves is Truls's.
+*2026-10-21 (#343): fails: it installs `angelsaddons-bots`, and its artillery half is a move if
+Space Age's own design puts artillery behind Vulcanus, under* The rulings of 2026-10-21 *below.*
 
 #### `FNKbobassemblySpaceAgeBalancePatcher`
 
@@ -977,6 +997,7 @@ changes. Seven mods counted by what a player installs, so it fails the rule too.
 it requires three Bob's mods and no Angel's mod.
 
 **Recommendation:** none to make. The ruling keeps a merge out.
+*2026-10-21 (#343): fails as a merge, under* The rulings of 2026-10-21 *below.*
 
 #### Twenty-five that are not candidates
 
@@ -1026,6 +1047,52 @@ whether to ask it is Truls's.
 **What the sweep's match lets in.** `foliax` and `shield-projector` show that matching `angel`
 anywhere in a word admits mods that name neither overhaul. Matching whole words would have dropped
 them; whether it would also drop a mod that matters was not measured.
+
+### The rulings of 2026-10-21 (#343)
+
+Truls ruled in a grill on 2026-10-21 what a coexistence fix may do: `docs/decisions.md`, #343,
+and the *Coexistence fix* entry in `GLOSSARY.md`. A part of a mod fails when it changes balance,
+adds content, moves content between planets, restores a recipe the overhaul hid on purpose while
+its own route works, or installs a mod that is not in `Grado_ABC`, and one failing part fails the
+whole mod. A fix is admitted only once its problem is measured in this pack, and a *soft-lock* is
+something that cannot be made at all, even with imports. Against these the twelve candidates
+above stand as the table says. Each result is read from the entry's own text and is as *Inferred*
+as that entry: nothing new was read for it.
+
+| Candidate | Result | What it turns on |
+|---|---|---|
+| `TIMSABA` | fails | a merge (#31) |
+| `omniab-space-age-compat` | fails | a merge (#31), and one failing part fails the whole |
+| `angelsaddons-space-age` | fails | its cost cuts to rocket parts, low density structures and rocket fuel are balance changes |
+| `angelsaddons-space-age-revived` | fails | as the original |
+| `angelbob-planet-routes` | fails | its planet recipes answer no soft-lock, so its Aquilo half does not save it |
+| `space-age-bobs-compat` | fails | its recycler and reusable rocket are new content |
+| `FixingRecipes` | fails | it restores Space Age's `tungsten-carbide`, which Angel's hides while its own route works (#128, #132) |
+| `bob-electronics-em-plant-compat` | waits on #344 | whether the electromagnetic plant already makes Bob's boards |
+| `space-ammo` | waits on #344 | whether the pack's firearm magazine needs lead |
+| `add-original-for-bobs` | fails | it installs `bobclasses`, and no soft-lock it answers is measured |
+| `suck-yourself` | fails | it installs `angelsaddons-bots`; its artillery half is a move if Space Age's own design puts artillery behind Vulcanus, which #344 reads |
+| `FNKbobassemblySpaceAgeBalancePatcher` | fails | a merge, and six mods installed besides it |
+
+**A mod that passes is eligible, not a member.** It comes back to Truls as a membership question,
+and a member added to `Grado_ABCS` is a major version bump. Whether the pack carries one is
+Truls's.
+
+**#49 does not change these.** `Grado_ABC` taking `bobclasses` or `angelsaddons-bots` would admit
+neither `add-original-for-bobs`, which has no measured soft-lock, nor `suck-yourself`, whose
+artillery half fails on its own if #344 finds it a move.
+
+**Local gaps, not soft-locks.** Three states this file records leave nothing unmakeable once
+material is shipped in, so none is a soft-lock and no fix is sought for them:
+
+- Fulgora's ocean is `heavy-oil`, which no recipe in the pack takes (*Dead ends*).
+- Vulcanus's lichen trees give `carbon`, which no recipe takes (*Dead ends*).
+- Fulgora's `electromagnetic-science-pack` needs `superconductor`, which needs
+  `angels-liquid-fuel-oil`, which Fulgora cannot start, so the fuel oil or crude oil is shipped in
+  (*From its own materials*).
+
+The play session (#29) notes whether they hurt. By the same ruling the wood that Vulcanus,
+Fulgora, Aquilo and a platform lack, for Bob's `electronic-circuit`, is a local gap too.
 
 ## Where the overhaul and Space Age touch (2026-10-04, #128)
 

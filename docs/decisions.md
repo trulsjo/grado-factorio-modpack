@@ -323,3 +323,24 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   whether it is hidden. Graphics are not a loss. Of the run's 100 replaced definitions in
   `Grado_ABC`, one pair is ticketed: #338. Rows are graded *Inferred*, and the pairs the test sends
   on are read from source. No ADR: records and a convention, easy to undo.
+- **A coexistence fix passes only on a measured problem, and only whole** (2026-10-21, #343):
+  Truls's rulings in a grill on the open `Grado_ABCS` decisions of #335 and #341. They refine #31's
+  entry above, which named "a crash fix, a missing recipe, a soft-lock removed" and drew no line
+  between a fix and a move. *What a fix may do:* fix a crash, remove a *soft-lock*, which is
+  something that cannot be made at all, even with imports, or remove a planet requirement the
+  overhaul introduced. What a planet or platform cannot make from its own materials is not a
+  soft-lock, and a local planet recipe for the overhaul's materials is a fix only when it answers
+  one. *What fails a part:* a balance change, new content, a move between planets (removing a
+  requirement that is Space Age's own design is one), restoring a recipe the overhaul hid on purpose
+  while its own route works, or installing a mod that is not in `Grado_ABC`. *One failing part
+  fails the whole mod*, as a merge does under #31. *A problem first:* a fix is admitted only once
+  its problem is measured in this pack. *Eligible, not a member:* a mod that passes comes back to
+  Truls as a membership question, and adding a member to `Grado_ABCS` is a major version bump. The
+  wording is the *Coexistence fix* entry in `GLOSSARY.md`. Of the twelve candidates #335 and #341
+  assessed, ten fail on the records, each with its reason in `docs/catalogue/Grado_ABCS.md`, and
+  two, `space-ammo` and `bob-electronics-em-plant-compat`, wait on the measurement of #344, which
+  also reads what `suck-yourself` and `FixingRecipes` would turn on. Fulgora's `heavy-oil`,
+  Vulcanus's `carbon` and Fulgora's electromagnetic science pack needing fuel oil shipped in are
+  local gaps, not soft-locks: no fix is sought, and the play session (#29) notes whether they hurt.
+  #49 adding `bobclasses` or `angelsaddons-bots` admits neither `add-original-for-bobs` nor
+  `suck-yourself`, which fail on other grounds. No ADR: no member changes.

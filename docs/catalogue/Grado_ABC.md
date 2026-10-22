@@ -485,9 +485,6 @@ this file, under *Overlaps*. The four-mod cross-pack half is #30's, against
 `docs/catalogue/Grado_ChangingBase.md`. Whether the row above may name a same-pack mod at all is
 **#33**.
 
-*Ruled 2026-10-22 (#33):* it may. The `WideChests` family straddles the pack boundary, so the row
-stands under the exception in `docs/mod-catalogue.md`, *Two kinds of duplication*.
-
 **Recommendation: keep**, with the caveat that it is the smallest mod in the pack at 805 downloads
 and inherits whatever #30 concludes about the family's cost. Under
 `docs/catalogue/Grado_ChangingBase.md`'s finding that the merging mods' load cost scales with the
@@ -498,6 +495,10 @@ number of chest types above them, this is the mod that adds those types.
 entry already marked `reconsider:`, and this one was not, so it stays and is tracked under #43.
 Whether it can be installed at all turns on #16: every named member of the three lower packs has at
 least one 2.0 release (measured 2026-09-23), so on a 2.0 target this mod is served.
+
+*Ruled 2026-10-22 (#33):* the row above may name a same-pack mod. The `WideChests` family
+straddles the pack boundary, so the row stands under the exception in `docs/mod-catalogue.md`,
+*Two kinds of duplication*.
 
 ### `angels-smelting-extended`
 
@@ -700,16 +701,16 @@ within-pack overlap has no lower pack to defer to, so it is written under *Overl
 than sent to #30 — and #30 is told, because whoever closes it would otherwise compare four mods
 against a warehouse and miss the fifth.
 
-*Ruled 2026-10-22 (#33):* `WideChestsBobs` stays in the row. A family that straddles a pack
-boundary is named as far as the packs carry it, each member tagged with its pack, under the
-exception in `docs/mod-catalogue.md`, *Two kinds of duplication*.
-
 **Recommendation: keep.** Current on 2.1 and the most-downloaded Angel's add-on. The overlap is
 evidence for the question #30 asks, not a reason to dispose of either side here — which layer owns
 bulk storage is pack membership, and that is #8's and #9's.
 
 *Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
 a patch from Angel's queue merged in, for 5 names.
+
+*Ruled 2026-10-22 (#33):* `WideChestsBobs` stays in the row. A family that straddles a pack
+boundary is named as far as the packs carry it, each member tagged with its pack, under the
+exception in `docs/mod-catalogue.md`, *Two kinds of duplication*.
 
 ### `angelsbioprocessing`
 
@@ -1992,7 +1993,7 @@ survive any decision about the others.
 | **Latest** | `2.6.0`, `factorio_version` **2.0**, 2025-01-06 |
 | **Downloads** | 126,788 |
 | **Owner** | `shanemadden` |
-| **Overlaps** | `miniloader-redux` (`Grado_ChangingBase`) |
+| **Overlaps** | ~~`miniloader-redux` (`Grado_ChangingBase`)~~ - resolved 2026-09-23 (#9), this mod is in no pack |
 | **Read on** | 2026-09-21 |
 | **Status** | dropped 2026-09-23 (#9) |
 
@@ -2764,7 +2765,7 @@ above it — which `WideChestsBobs` is precisely the mod that adds. An ABC playe
 four-mod cross-pack side is **#30**'s; whether the **Overlaps** row may name a same-pack mod at all
 is **#33**. This paragraph exists so the fifth mod is not lost between the two files.
 *Ruled 2026-10-22 (#33):* it may, for a family that straddles a pack boundary, as this one does,
-so both entries keep their rows. The other overlaps in this section stay without one.
+so both entries keep their rows. The other within-pack overlaps in this section stay without one.
 
 **Belts, where this pack meets the one below.** Six cross-pack overlaps have been recorded across
 the project and three of them are belt-adjacent, all against `Grado_ChangingBase`:
@@ -2773,7 +2774,9 @@ as of 2026-09-22 (#8), that mod is in no pack - and #5's `deadlock-beltboxes-loa
 `miniloader-redux`, the one that survives. That comparison is written in
 `docs/catalogue/Grado_ChangingBase.md`. `boblogistics` is this half's side of the first and has the
 most surface area of any member against the layer below; a survey of either pack should look at
-belts first.
+belts first. *Corrected 2026-10-22 (#33):* none of the three survives. #9 dropped
+`deadlock-beltboxes-loaders` on 2026-09-23 with the whole Deadlock family, so its overlap with
+`miniloader-redux` is void too, and no belt-adjacent overlap is live.
 
 ## Space Age is not ruled out
 

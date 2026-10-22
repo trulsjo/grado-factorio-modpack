@@ -91,14 +91,13 @@ loosely, for deliberate changes and for replaced definitions)
 
 **Overlap**:
 Two different member mods doing an overlapping job for the player, by the same mechanism or by
-different ones. A *cross-pack* overlap has its two mods in two packs: each entry carries an
-**Overlaps** row, and the lower pack's entry owns the comparison, or the first one reached when the
-two packs are `Grado_ABCX` and `Grado_ABCS`. A *within-pack* overlap has both mods in one pack: it
-is prose in that pack's catalogue, under *Overlaps*, with no row, except where one mod of a family
-whose members sit on both sides of a pack boundary is in the same pack, and then the row names it
-too, tagged with its pack. The same mod named in two packs is not an overlap, and neither is a
-shared name: that is about prototypes, and this is about what the player gets. Added 2026-10-22
-(#33).
+different ones. A *cross-pack* overlap has its two mods in two packs and is recorded under the
+rules in `docs/mod-catalogue.md`, *Two kinds of duplication*. A *within-pack* overlap has both
+mods in one pack: it is prose in that pack's catalogue, under *Overlaps*, with no row, except where
+one mod of a family whose members sit on both sides of a pack boundary is in the same pack, and
+then the row names it too, tagged with its pack. The same mod named in two packs is not an
+overlap, and neither is a shared name: that is about prototypes, and this is about what the player
+gets. Added 2026-10-22 (#33).
 _Avoid_: "duplication" for it (`docs/mod-catalogue.md` uses it for an overlap and for the same mod
 named twice); "conflict" (an overlap need not break anything)
 

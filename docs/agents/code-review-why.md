@@ -437,3 +437,11 @@ moved the grades and their rules to the shared page in `grado-factorio-tools`:
 (#301):
 
 > - `GLOSSARY.md`, which holds the three grades the rules above use;
+
+**The clearing rule**, its sentence on a session with no branch, as it stood from 2026-10-13
+(#243) until 2026-10-22, when #359 made it reach a figure the session repeated as well as one it
+made. The grill on #33 put a tally copied from `docs/mod-catalogue.md` to Truls as a question's
+premise, with no command behind it, and the tally was stale.
+
+> **A session with no branch is cleared once what it decided is a comment on its ticket**, with
+> the command and the output behind each figure it made. A grill is one.

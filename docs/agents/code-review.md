@@ -252,7 +252,8 @@ condition that does not when one is missing.
   ticket or a line in the brain's *Still open*.
 
 **A session with no branch is cleared once what it decided is a comment on its ticket**, with
-the command and the output behind each figure it made. A grill is one. Its last message says so.
+the command and the output behind each figure it made or repeated. A grill is one. Its last
+message says so.
 
 **From spawning the pre-PR reviewer until the pull request is open is not a clearing point.**
 Nor is the time the tickets are being implemented: which output and which command stand behind

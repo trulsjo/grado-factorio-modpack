@@ -67,6 +67,17 @@ the comparison still goes below.
 pair, they cannot be installed together, and one survey (#6) covers both — so that survey writes
 the comparison in whichever entry it reaches first and points at it from the other.
 
+**An overlap inside one pack has no row**, because there is no lower pack to defer it to: it is
+prose in that pack's catalogue, under *Overlaps*. **The one exception is a family that straddles
+a pack boundary.** When a mod overlaps a family whose members sit on both sides of a pack boundary,
+its row names each member the packs carry, tagged with its pack, the same-pack ones included,
+and the same-pack members' entries carry a row back. Splitting one family between a row and a
+prose section would hide half of it from a grep of the dependency list. The cross-pack half
+follows the rules above; the same-pack half is compared in the pack's own *Overlaps* section. The
+one instance on 2026-10-22 is `angelsaddons-storage` against the `WideChests` family: four
+members in `Grado_ChangingBase` and `WideChestsBobs` in `Grado_ABC`. Ruled 2026-10-22 (#33),
+keeping the rows #4 and #5 had written.
+
 **A survey assesses only the mods it was given**, and edits only those packs' catalogue files,
 because the surveys run in parallel and two sessions writing one file collide. Ticket and file do
 not map one to one — #4 and #5 split `Grado_ABC` between them and #6 covers two packs — so the
@@ -167,7 +178,8 @@ instead. Use it sparingly — a survey where several entries reconsider has not 
   `| **Overlaps** | `other-mod` (`Pack_Name`) |`, and nothing else in the table — but the row is
   never the whole of it. The entry also carries either the comparison itself or one sentence
   pointing at where it lives; which of the two is *Two kinds of duplication* above. A row on its
-  own leaves an overlap nobody can trace.
+  own leaves an overlap nobody can trace. A row names a mod in the entry's own pack only for a
+  family that straddles a pack boundary, under the exception in *Two kinds of duplication* (#33).
 
 - **A mod dropped during the port** does three things: it adds
   `| **Status** | dropped during the port |`, it sits in the *Dropped during the port* section
@@ -282,6 +294,10 @@ removal does not change; only the tally of live overlaps does, and that is **thr
 `WideChests` family, and `SpaceModFeorasFork` against `space-age`. Three of the six are void — the
 two above and, earlier, `blueprint-sandboxes` against `EditorExtensions`, which **#7** voided on
 2026-09-22 by removing `blueprint-sandboxes` from `Grado_NonChanging`.
+
+**The tally counts cross-pack overlaps only** (2026-10-22, #33). `WideChestsBobs` against
+`angelsaddons-storage` has a row under the straddle exception, but both mods are in `Grado_ABC`, so
+it is within-pack and the tally stays at three.
 
 ## Worked examples
 

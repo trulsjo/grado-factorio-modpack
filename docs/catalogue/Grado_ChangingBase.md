@@ -1302,7 +1302,7 @@ three overhaul packs inherit this one.
 | **Downloads** | 11,301 |
 | **Owner** | `Jabor047` |
 | **Supersedes** | `UltimateBelts` by `Tyarns`, last `1.1.1` on 2022-05-09, 54,161 downloads |
-| **Overlaps** | `boblogistics` (`Grado_ABC`) |
+| **Overlaps** | ~~`boblogistics` (`Grado_ABC`)~~ - resolved 2026-09-22 (#8), this mod is in no pack |
 | **Read on** | 2026-09-21 |
 | **Status** | dropped 2026-09-22 (#8) |
 

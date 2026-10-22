@@ -805,7 +805,7 @@ ceiling and brings no new transitive dependency.
 | **Latest** | `3.3.0`, `factorio_version` **2.1**, 2026-07-11 |
 | **Downloads** | 117,279 |
 | **Owner** | `somethingtohide` |
-| **Overlaps** | `EditorExtensions` (`Grado_ChangingBase`) |
+| **Overlaps** | ~~`EditorExtensions` (`Grado_ChangingBase`)~~ - resolved 2026-09-22 (#7), this mod is in no pack |
 | **Read on** | 2026-09-20 |
 | **Status** | dropped 2026-09-22 (#7) |
 

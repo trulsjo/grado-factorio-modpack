@@ -512,6 +512,26 @@ and `depleted-uranium-reprocessing`.* Inferred *from that list and the source ab
 researching it would unlock those twelve, if the list holds on 2.1. A candidate's problem stays
 #290's, on 2.1, and nothing here is a member or makes one.*
 
+*Read from source 2026-10-22 (#354), the same zip of `PlutoniumBreeding` `1.3.0`, re-read before
+these lines were copied: **it is not eligible at either setting**, by the* Coexistence fix *entry
+in `GLOSSARY.md` and Truls's ruling of that day, whose reasons are in `docs/decisions.md`. One
+failing part fails the mod, and three parts fail:*
+
+- *It adds content: three technologies, `nuclear-rocket-fuel`, `mox-fuel` and
+  `plutonium-breeding` (`prototypes/technology.lua` lines 1-82), the items `plutonium-239`,
+  `breeder-fuel-cell` and `depleted-breeder-fuel-cell` (`prototypes/items.lua`), and recipes
+  such as `mox-fuel-cell` (`prototypes/recipes.lua`).*
+- *It changes balance: it replaces `atomic-bomb`'s prerequisites (`prototypes/technology.lua`
+  lines 84-85), and `nuclear-fuel-reprocessing`'s time, ingredients and results
+  (`prototypes/recipes.lua` lines 2-9).*
+- *With `plutonium-breeding-kovarex-enabled` on, enabling Kovarex again fails as well: it is not
+  a prerequisite fix, and it puts back content the overhaul disabled.*
+
+***The search for a `Grado_ABCX` coexistence fix is finished, with no candidate.*** *The routes
+stay #296 and #297; #290's review at stable 2.1 measures the problem only, and a new search is a
+ticket of its own. The notes above stand as they were written, the open case in the last of them
+among them: this note answers it and does not change it.*
+
 ## Names members both define (2026-10-20, #331)
 
 **`Grado_ABCX` shares the same 463 names as `Grado_ABC`, and no more.** *Measured* by a traced

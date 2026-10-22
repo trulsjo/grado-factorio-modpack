@@ -57,15 +57,17 @@ passes only when its problem has been measured in this pack, and when every part
 these: fixes a crash; removes a soft-lock, meaning something that can't be made at all, even with
 imports; or removes a planet requirement the overhaul introduced. Removing a prerequisite the
 overhaul disabled removes a soft-lock when the technology still needs everything that prerequisite
-needed; a fix may add prerequisites to make it so. One failing part fails the whole mod. A part
-fails when it changes balance, adds content, moves content between planets (removing a planet
-requirement that is Space Age's own design counts as moving it), or installs a mod that isn't in
-`Grado_ABC`. The planet clauses apply where the end-game has planets. A mod that passes becomes
-eligible, not a member. Added 2026-10-20 (#31), as "a crash fix, a missing recipe, a soft-lock
-removed"; restated 2026-10-21 (#343), naming Space Age where this names the branch's end-game;
-widened to both branches, with the prerequisite clause, 2026-10-21 (#347). That clause read
-"Replacing a prerequisite the overhaul disabled with the overhaul's own replacement removes a
-soft-lock; removing it outright does not" until it was restated by effect the same day (#347).
+needed; a fix may add prerequisites to make it so. Enabling a technology the overhaul disabled is
+not a prerequisite fix: it adds content back, so it fails (2026-10-22, #354, reasons in
+`docs/decisions.md`). One failing part fails the whole mod. A part fails when it changes balance,
+adds content, moves content between planets (removing a planet requirement that is Space Age's own
+design counts as moving it), or installs a mod that isn't in `Grado_ABC`. The planet clauses apply
+where the end-game has planets. A mod that passes becomes eligible, not a member. Added 2026-10-20
+(#31), as "a crash fix, a missing recipe, a soft-lock removed"; restated 2026-10-21 (#343), naming
+Space Age where this names the branch's end-game; widened to both branches, with the prerequisite
+clause, 2026-10-21 (#347). That clause read "Replacing a prerequisite the overhaul disabled with
+the overhaul's own replacement removes a soft-lock; removing it outright does not" until it was
+restated by effect the same day (#347). The re-enable sentence added 2026-10-22 (#354).
 _Avoid_: "glue" for it (that is the pack's own Lua between two members); "bridge" for it (kept for
 a mod that merges or relocates); "compat mod" for it (used for both)
 

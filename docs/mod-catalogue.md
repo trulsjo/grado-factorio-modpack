@@ -293,11 +293,15 @@ removal does not change; only the tally of live overlaps does, and that is **thr
 `miniloader-redux` against `deadlock-beltboxes-loaders`, `angelsaddons-storage` against the
 `WideChests` family, and `SpaceModFeorasFork` against `space-age`. Three of the six are void — the
 two above and, earlier, `blueprint-sandboxes` against `EditorExtensions`, which **#7** voided on
-2026-09-22 by removing `blueprint-sandboxes` from `Grado_NonChanging`.
+2026-09-22 by removing `blueprint-sandboxes` from `Grado_NonChanging`. *Corrected 2026-10-22
+(#33):* the tally has been **two** since 2026-09-23, when #9 dropped `deadlock-beltboxes-loaders`
+with the whole Deadlock family and voided its overlap with `miniloader-redux`. The two live ones
+are `angelsaddons-storage` against the `WideChests` family and `SpaceModFeorasFork` against
+`space-age`, and four of the six are void.
 
 **The tally counts cross-pack overlaps only** (2026-10-22, #33). `WideChestsBobs` against
 `angelsaddons-storage` has a row under the straddle exception, but both mods are in `Grado_ABC`, so
-it is within-pack and the tally stays at three.
+it is within-pack and not counted.
 
 ## Worked examples
 

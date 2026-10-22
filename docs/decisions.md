@@ -398,9 +398,11 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   boundary** (2026-10-22, #33): Truls's rulings in a grill on #33, which are a comment on it. A
   within-pack overlap is otherwise prose in the pack's catalogue, under *Overlaps*, with no row.
   Where a mod overlaps a family with members on both sides of a pack boundary, its row names each
-  member the packs carry, tagged with its pack, so a grep of the dependency list finds the whole
-  family. The one instance on 2026-10-22 is `angelsaddons-storage` against the four `WideChests`
-  mods of `Grado_ChangingBase` and `WideChestsBobs` of `Grado_ABC`, whose rows stand as #4 and #5
-  wrote them. The live tally in `docs/mod-catalogue.md` counts cross-pack overlaps only and stays
-  at three. The rule is in `docs/mod-catalogue.md`, *Two kinds of duplication*; the term is
-  *Overlap* in `GLOSSARY.md`. No ADR: it changes no member and is cheap to reverse.
+  member the packs carry, tagged with its pack. The one instance on 2026-10-22 is
+  `angelsaddons-storage` against the four `WideChests` mods of `Grado_ChangingBase` and
+  `WideChestsBobs` of `Grado_ABC`, whose rows stand as #4 and #5 wrote them. The live tally in
+  `docs/mod-catalogue.md` counts cross-pack overlaps only. The rulings said it stays at three;
+  it has been two since #9 dropped `deadlock-beltboxes-loaders` on 2026-09-23, which the
+  pre-PR review of #33 found, and Truls ruled the same day to correct it. The rule is in
+  `docs/mod-catalogue.md`, *Two kinds of duplication*; the term is *Overlap* in `GLOSSARY.md`. No
+  ADR: it changes no member and is cheap to reverse.

@@ -159,7 +159,10 @@ one tier past express and `boblogistics` adds its own, and `miniloader-redux` se
 page says "three tiers in the base game ("Vanilla", Fast and Express) and four when playing Space
 Age (adds Turbo mode)", and it declares optional support for `boblogistics`. Nothing is duplicated
 in the sense *Two kinds of duplication* uses, so no **Overlaps** row is added and the live tally
-stays at three. The tier that could not be served was the one that left.
+stays at three. The tier that could not be served was the one that left. *Corrected 2026-10-22
+(#33):* the live tally has been two since 2026-09-23, when #9 dropped
+`deadlock-beltboxes-loaders` and voided its overlap with `miniloader-redux`; see
+`docs/mod-catalogue.md`, *What the evidence rules mean here*.
 
 **Issue #38 is moot** and was closed with the reason. It existed to write this subsection under the
 `UltimateBeltsSpaceAge` entry in `docs/catalogue/Grado_ChangingBase.md`, and that entry is now under

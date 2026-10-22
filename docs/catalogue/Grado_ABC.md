@@ -485,6 +485,9 @@ this file, under *Overlaps*. The four-mod cross-pack half is #30's, against
 `docs/catalogue/Grado_ChangingBase.md`. Whether the row above may name a same-pack mod at all is
 **#33**.
 
+*Ruled 2026-10-22 (#33):* it may. The `WideChests` family straddles the pack boundary, so the row
+stands under the exception in `docs/mod-catalogue.md`, *Two kinds of duplication*.
+
 **Recommendation: keep**, with the caveat that it is the smallest mod in the pack at 805 downloads
 and inherits whatever #30 concludes about the family's cost. Under
 `docs/catalogue/Grado_ChangingBase.md`'s finding that the merging mods' load cost scales with the
@@ -696,6 +699,10 @@ format defines that row for cross-pack overlaps and this family straddles the bo
 within-pack overlap has no lower pack to defer to, so it is written under *Overlaps* below rather
 than sent to #30 — and #30 is told, because whoever closes it would otherwise compare four mods
 against a warehouse and miss the fifth.
+
+*Ruled 2026-10-22 (#33):* `WideChestsBobs` stays in the row. A family that straddles a pack
+boundary is named as far as the packs carry it, each member tagged with its pack, under the
+exception in `docs/mod-catalogue.md`, *Two kinds of duplication*.
 
 **Recommendation: keep.** Current on 2.1 and the most-downloaded Angel's add-on. The overlap is
 evidence for the question #30 asks, not a reason to dispose of either side here — which layer owns
@@ -2756,6 +2763,8 @@ warehouse does not, and why the merging family's cost scales with how many chest
 above it — which `WideChestsBobs` is precisely the mod that adds. An ABC player loads both. The
 four-mod cross-pack side is **#30**'s; whether the **Overlaps** row may name a same-pack mod at all
 is **#33**. This paragraph exists so the fifth mod is not lost between the two files.
+*Ruled 2026-10-22 (#33):* it may, for a family that straddles a pack boundary, as this one does,
+so both entries keep their rows. The other overlaps in this section stay without one.
 
 **Belts, where this pack meets the one below.** Six cross-pack overlaps have been recorded across
 the project and three of them are belt-adjacent, all against `Grado_ChangingBase`:

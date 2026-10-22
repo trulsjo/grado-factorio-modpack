@@ -394,3 +394,13 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   `docs/catalogue/Grado_ABCS.md` and for re-enable wording in `docs/catalogue/Grado_ABC.md`, this
   file and `GLOSSARY.md` (2026-10-22) found no recorded judgement resting on a re-enable, so no
   other entry changes. No ADR: no member changes.
+- **An Overlaps row may name a mod in the same pack only for a family that straddles a pack
+  boundary** (2026-10-22, #33): Truls's rulings in a grill on #33, which are a comment on it. A
+  within-pack overlap is otherwise prose in the pack's catalogue, under *Overlaps*, with no row.
+  Where a mod overlaps a family with members on both sides of a pack boundary, its row names each
+  member the packs carry, tagged with its pack, so a grep of the dependency list finds the whole
+  family. The one instance on 2026-10-22 is `angelsaddons-storage` against the four `WideChests`
+  mods of `Grado_ChangingBase` and `WideChestsBobs` of `Grado_ABC`, whose rows stand as #4 and #5
+  wrote them. The live tally in `docs/mod-catalogue.md` counts cross-pack overlaps only and stays
+  at three. The rule is in `docs/mod-catalogue.md`, *Two kinds of duplication*; the term is
+  *Overlap* in `GLOSSARY.md`. No ADR: it changes no member and is cheap to reverse.

@@ -445,3 +445,11 @@ premise, with no command behind it, and the tally was stale.
 
 > **A session with no branch is cleared once what it decided is a comment on its ticket**, with
 > the command and the output behind each figure it made. A grill is one.
+
+**The head of the second rule**, as it stood from 2026-10-11 (#182, #209) until 2026-10-22, when
+#357 added a check of what a catalogue's **Overlaps** rows say to the pre-commit hook:
+
+> **This repository is almost entirely prose, and nothing here checks what it says.** The commit
+> hooks read the shape of a message and of the Markdown - emphasis, tables, links and line length
+> (`vendor/grado-factorio-tools/scripts/markdown-check.ps1`) - and a load can contradict only
+> whether a pack starts.

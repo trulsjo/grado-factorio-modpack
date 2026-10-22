@@ -20,6 +20,10 @@
 # (#211), with that check's self-test among the others. It reads each of them and not the pull
 # request's alone: a header has no range.
 #
+# Every Overlaps row of docs/catalogue/ is read against the five dependency lists at the pull
+# request's head (#357), with that check's self-test among the others. It reads the whole
+# catalogue and not the pull request's lines: a row goes stale when an info.json changes.
+#
 # scripts/absolute-words.ps1 (#219) has its self-test among the others and no step of its own:
 # it lists lines for a session to walk before the pre-PR review, and has nothing to fail on.
 #
@@ -78,6 +82,7 @@ jobs:
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/pr-body-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/header-length-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/absolute-words.ps1 -SelfTest
+          pwsh -NoProfile -File scripts/overlap-rows-check.ps1 -SelfTest
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 -SelfTest -Settings .claude/settings.json
 
       - name: Check the commit messages
@@ -95,6 +100,10 @@ jobs:
       - name: Check the scripts' comment headers for line length
         if: ${{ !cancelled() }}
         run: pwsh -NoProfile -File scripts/header-length-check.ps1 -All
+
+      - name: Check every Overlaps row against the dependency lists
+        if: ${{ !cancelled() }}
+        run: pwsh -NoProfile -File scripts/overlap-rows-check.ps1 -Revision HEAD
 
       - name: Check the pull request body
         if: ${{ !cancelled() }}

@@ -381,9 +381,9 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   disabled can meet it. The rulings are a comment on #351. *Not under the clause:* the clause is
   about the prerequisite graph, where #347 put it. A removal or replacement is judged there, by
   comparing prerequisite closures in a dump. What an overhaul meant to hide when it disabled a
-  technology is shown by no reading. *Judged part by part:* a re-enable is judged like any
-  other change, and enabling a technology the overhaul disabled puts content back, so it fails as
-  *adds content*, and the mod with it. Since #347 the entry covers both branches, so this ruling
+  technology is shown by no dump and no source. *Judged part by part:* a re-enable is judged like
+  any other change, and enabling a technology the overhaul disabled puts content back, so it fails
+  as *adds content*, and the mod with it. Since #347 the entry covers both branches, so this ruling
   does too. *`PlutoniumBreeding` `1.3.0` is judged now,* from its source, and fails at either
   setting of its Kovarex switch: it adds content and changes balance, and with the setting on its
   re-enable fails as well. The parts and their source lines are in

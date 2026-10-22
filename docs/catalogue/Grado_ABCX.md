@@ -515,7 +515,7 @@ researching it would unlock those twelve, if the list holds on 2.1. A candidate'
 *Read from source 2026-10-22 (#354), the same zip of `PlutoniumBreeding` `1.3.0`, re-read before
 these lines were copied: **it is not eligible at either setting**, by the* Coexistence fix *entry
 in `GLOSSARY.md` and Truls's ruling of that day, whose reasons are in `docs/decisions.md`. One
-failing part fails the mod, and three parts fail:*
+failing part fails the mod. Two parts fail at either setting, and a third with its setting on:*
 
 - *It adds content: three technologies, `nuclear-rocket-fuel`, `mox-fuel` and
   `plutonium-breeding` (`prototypes/technology.lua` lines 1-82), the items `plutonium-239`,
@@ -524,8 +524,8 @@ failing part fails the mod, and three parts fail:*
 - *It changes balance: it replaces `atomic-bomb`'s prerequisites (`prototypes/technology.lua`
   lines 84-85), and `nuclear-fuel-reprocessing`'s time, ingredients and results
   (`prototypes/recipes.lua` lines 2-9).*
-- *With `plutonium-breeding-kovarex-enabled` on, enabling Kovarex again fails as well: it is not
-  a prerequisite fix, and it puts back content the overhaul disabled.*
+- *With `plutonium-breeding-kovarex-enabled` on, enabling Kovarex again fails as well, by the
+  ruling.*
 
 ***The search for a `Grado_ABCX` coexistence fix is finished, with no candidate.*** *The routes
 stay #296 and #297; #290's review at stable 2.1 measures the problem only, and a new search is a

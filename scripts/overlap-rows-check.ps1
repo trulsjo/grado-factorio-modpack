@@ -14,7 +14,8 @@
     holds:
       1. it names a mod tagged (`Pack`) that is not in that pack's dependencies;
       2. it stands in the entry of a mod that is not in the dependencies of the pack its file
-         catalogues, and still names a mod.
+         catalogues, nor of a pack below it, and still names a mod. An entry resolved through a
+         lower pack, which docs/mod-catalogue.md keeps under *In the pack*, is a member.
     It also fails a row it cannot read: a name with no pack tag after it, a tag naming no pack,
     a row under no `## ` or `### ` heading that is a mod's name alone, and a catalogue file with
     no pack of its name.
@@ -23,7 +24,8 @@
     dependency is parsed by `ConvertFrom-Dependency` in
     vendor/grado-factorio-tools/scripts/resolve-modpack.ps1, loaded from that file, so the parse
     is the resolver's. A pack's members are its entries of every kind but incompatible (`!`): an
-    optional or hidden entry counts. A row's entry is the last `## ` or `### ` heading above it;
+    optional or hidden entry counts. The packs below one are the packs among its members, and
+    theirs in turn. A row's entry is the last `## ` or `### ` heading above it;
     `#### ` and deeper are inside an entry. In a row, the code spans before a tag (`Pack`) and
     after the tag before it are that pack's.
 
@@ -32,8 +34,8 @@
 
     WHAT IT CANNOT SEE. A figure in prose, such as a tally of live overlaps: only the rows are
     read. A mod named in an entry's prose and not in its row. Whether an overlap is real, or
-    whether the row on the other pack's side exists. A pack's transitive members: a tag means
-    the pack's own list.
+    whether the row on the other pack's side exists. A pack's members below it, for a tag: a tag
+    means the pack's own list. A mod a member brings in that is not a pack here.
 
 .PARAMETER Revision
     Read the catalogue and the packs as at this commit, not as staged.
@@ -81,6 +83,15 @@ function Find-Stale {
         $members[$p] = [Collections.Generic.HashSet[string]]::new([string[]] @($Packs[$p] | ForEach-Object { ConvertFrom-Dependency $_ } |
             Where-Object Kind -ne 'incompatible' | ForEach-Object Name), [StringComparer]::Ordinal)
     }
+    # A pack's members with those of every pack below it, for rule 2.
+    $reach = @{}
+    foreach ($p in $Packs.Keys) {
+        $reach[$p] = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+        $queue = [Collections.Generic.Queue[string]]::new([string[]] @($p))
+        while ($queue.Count) {
+            foreach ($m in $members[$queue.Dequeue()]) { if ($reach[$p].Add($m) -and $members.ContainsKey($m)) { $queue.Enqueue($m) } }
+        }
+    }
     foreach ($file in $Catalogues.Keys) {
         $pack = [IO.Path]::GetFileNameWithoutExtension($file)
         $lines = @($Catalogues[$file])
@@ -107,9 +118,9 @@ function Find-Stale {
                 $named.Add($m.Groups[1].Value)
                 & $say "entry ``$entry``: it names ``$($m.Groups[1].Value)`` with no pack tag after it"
             }
-            if ($named.Count -and -not $members[$pack].Contains($entry)) {
+            if ($named.Count -and -not $reach[$pack].Contains($entry)) {
                 $list = ($named | ForEach-Object { '`' + $_ + '`' }) -join ', '
-                & $say "entry ``$entry``, rule 2: ``$entry`` is not in ${pack}'s dependencies and the row still names $list"
+                & $say "entry ``$entry``, rule 2: ``$entry`` is not in ${pack}'s dependencies or those of a pack below it, and the row still names $list"
             }
         }
     }
@@ -127,6 +138,8 @@ if ($SelfTest) {
         @{ Name = 'rule 2: a live row in the entry of a mod not in the pack fails and names what it still names'; Test = {
             $f = @(& $find "### ``dropped```n| **Overlaps** | ``kept`` (``Lower``) |")
             $f.Count -eq 1 -and $f[0] -match '^2: entry `dropped`, rule 2: .*still names `kept`' } }
+        @{ Name = 'rule 2: an entry resolved through a lower pack is a member, and its live row passes'; Test = {
+            @(& $find "### ``kept```n| **Status** | line removed from this pack; still a member of ``Lower`` |`n| **Overlaps** | ``soft`` (``Lower``) |").Count -eq 0 } }
         @{ Name = 'a struck name passes both rules, and a struck row in a dropped entry passes'; Test = {
             (@(& $find "### ``top```n| **Overlaps** | ~~``gone`` (``Lower``)~~ - resolved |").Count -eq 0) -and
                 (@(& $find "### ``dropped```n| **Overlaps** | ~~``kept`` (``Lower``)~~ - resolved (#1), this mod is in no pack |").Count -eq 0) } }

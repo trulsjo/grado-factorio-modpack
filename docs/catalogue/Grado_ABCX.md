@@ -482,7 +482,7 @@ thirteen are `atan-nuclear-exotic-space-industries-compat`, `FlashFunMod`,
 `Rebalanced_research`, and none of them was judged. Whether any of the fourteen is worth a look is
 Truls's. A candidate's problem would be measured on 2.1, at #290's review, not here.
 
-*Read 2026-10-22 (#351), all fourteen from `/full` at 07:08 UTC: **three have a release that
+*Read 2026-10-22 (#351), all fourteen from `/full` at 07:09 UTC: **three have a release that
 declares `factorio_version` 2.1**, by every release's `factorio_version` in the fourteen
 responses. They are `hatsune-enrichment-process` `0.1.4`, `PlutoniumBreeding` `1.3.0` and
 `Rebalanced_research` `1.0.6`, and the portal serves the other eleven to no 2.1 game.
@@ -495,7 +495,7 @@ changes";* Inferred *from that, not from source, it is not a fix.*
 the portal's: **with its setting at the default, it does not meet the prerequisite clause of the*
 Coexistence fix *entry.** It changes no prerequisite of `exploration-satellite` or
 `space-fluid-tanks`. Its Lua names `prerequisites` five times: on its three own technologies, as
-the whole of `atomic-bomb`'s list (`prototypes/technology.lua` line 84), and by adding
+the whole of `atomic-bomb`'s list (`prototypes/technology.lua` lines 84-85), and by adding
 `uranium-processing` to Space Age's `captive-biter-spawner` (lines 94-99). Kovarex is enabled
 again by its startup setting `plutonium-breeding-kovarex-enabled` alone, whose default is `false`
 (`settings.lua`). `control.lua`, at `on_init` and `on_configuration_changed`, sets the
@@ -503,12 +503,14 @@ technology's `enabled` to `true` with the setting on and to `false` with it off 
 `Clowns-AngelBob-Nuclear` `2.0.13` has no control script, by its zip's list of Lua files, so
 nothing in it disables the technology again while the game runs.*
 
-*Whether enabling a disabled prerequisite again, which removes and replaces nothing, can meet the
-clause is a case its terms leave open, and is Truls's. Measured in the dump above, on 2.0.77 and
-without this mod: `captive-biter-spawner` is absent, and the disabled `kovarex-enrichment-process`
-unlocks twelve recipes: five `angels-*`, six `clowns-centrifuging-*` and
-`depleted-uranium-reprocessing`. Enabling it would open those as well. A candidate's problem
-stays #290's, on 2.1, and nothing here is a member or makes one.*
+*Whether enabling a disabled prerequisite again, which, read from source, removes and replaces
+nothing, can meet the clause is a case its terms leave open, and is Truls's; the entry's other
+clauses were not applied to this mod. Measured in the dump `Grado_ABCX-1533854567-4ab17c33a054`
+(2.0.77, without this mod): `captive-biter-spawner` is absent, and the disabled
+`kovarex-enrichment-process` unlocks twelve recipes: five `angels-*`, six `clowns-centrifuging-*`
+and `depleted-uranium-reprocessing`.* Inferred *from that list and the source above: once enabled,
+researching it would unlock those twelve, if the list holds on 2.1. A candidate's problem stays
+#290's, on 2.1, and nothing here is a member or makes one.*
 
 ## Names members both define (2026-10-20, #331)
 

@@ -375,3 +375,22 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   catalogues: dropping Kovarex outright from SpaceX's two technologies meets the prerequisite
   clause on 2.0.77 in `Grado_ABCX`, and dropping it from `captive-biter-spawner` does not meet it
   in `Grado_ABCS`.*
+- **Enabling a disabled technology again is not a prerequisite fix** (2026-10-22, #354): Truls's
+  rulings in a grill on finding 5 of PR #352's pre-PR review, which found that the prerequisite
+  clause of #347's entry above left open whether enabling again a technology the overhaul
+  disabled can meet it. The rulings are a comment on #351. *Not under the clause:* the clause is
+  about the prerequisite graph, where #347 put it. A removal or replacement is judged there, by
+  comparing prerequisite closures in a dump. What an overhaul meant to hide when it disabled a
+  technology is shown by no reading. *Judged part by part:* a re-enable is judged like any
+  other change, and enabling a technology the overhaul disabled puts content back, so it fails as
+  *adds content*, and the mod with it. Since #347 the entry covers both branches, so this ruling
+  does too. *`PlutoniumBreeding` `1.3.0` is judged now,* from its source, and fails at either
+  setting of its Kovarex switch: it adds content and changes balance, and with the setting on its
+  re-enable fails as well. The parts and their source lines are in
+  `docs/catalogue/Grado_ABCX.md`. *The search is finished:* the `Grado_ABCX` coexistence fix
+  search of #348 and #351 ends with no candidate. The routes stay #296 and #297, #290's review at
+  stable 2.1 measures the problem only, and a new search is a ticket of its own. The wording is
+  one sentence in the *Coexistence fix* entry of `GLOSSARY.md`. A search for `enabl` in
+  `docs/catalogue/Grado_ABCS.md` and for re-enable wording in `docs/catalogue/Grado_ABC.md`, this
+  file and `GLOSSARY.md` (2026-10-22) found no recorded judgement resting on a re-enable, so no
+  other entry changes. No ADR: no member changes.

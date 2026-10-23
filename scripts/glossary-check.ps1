@@ -51,7 +51,7 @@
 
 .PARAMETER All
     Read every line of every tracked Markdown file, as at HEAD. For measuring how often a word is
-    used: it counts and exits 0.
+    used: it counts and does not fail on a use.
 
 .PARAMETER List
     Print the avoid entries that are matched and those that are not, with why.

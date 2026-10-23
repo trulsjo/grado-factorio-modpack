@@ -134,10 +134,10 @@ it on the staged scripts after the Markdown check, and the same workflow runs it
 
 `scripts/overlap-rows-check.ps1` reads every `| **Overlaps** |` row in `docs/catalogue/` against
 the five packs' dependency lists, and fails on a row that names, outside `~~ ~~`, a mod its tagged
-pack does not list, or that stands in the entry of a mod its own pack does not hold. The
-`pre-commit` hook runs it on the staged content, and the same workflow at the pull request's head,
-with its self-test. `-Revision <commit>` reads a commit instead. Its header says what it cannot
-see.
+pack does not list, or that stands in the entry of a mod not in the dependencies of its own pack
+or of a pack below it. The `pre-commit` hook runs it on the staged content, and the same workflow
+at the pull request's head, with its self-test. `-Revision <commit>` reads a commit instead. Its
+header says what it cannot see.
 
 `scripts/absolute-words.ps1 -Range origin/main...HEAD` lists each line a branch adds, in Markdown,
 in a comment or in a commit message, that holds a word such as "only", "every" or "cannot". Code

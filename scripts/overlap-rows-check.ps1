@@ -18,7 +18,8 @@
          lower pack, which docs/mod-catalogue.md keeps under *In the pack*, is a member.
     It also fails a row it cannot read: a name with no pack tag after it, a tag naming no pack,
     a row under no `## ` or `### ` heading that is a mod's name alone, and a catalogue file with
-    no pack of its name.
+    no pack of its name. A run that finds no pack or no catalogue file fails too, since it read
+    nothing.
 
     WHAT IT READS AS WHAT. A pack is a top-level `<dir>/info.json`, by its `name` key. A
     dependency is parsed by `ConvertFrom-Dependency` in
@@ -42,7 +43,8 @@
 
 .PARAMETER SelfTest
     Prove each rule fails a row and names it, that a struck name passes, that a row it cannot
-    read fails, and that the staged content and -Revision are what is read. That case needs git.
+    read fails, that the staged content and -Revision are what is read, and that a commit with no
+    pack or no catalogue file fails. Those two cases need git.
 
 .EXAMPLE
     pwsh -File scripts/overlap-rows-check.ps1
@@ -151,7 +153,7 @@ if ($SelfTest) {
             $nopack = @(& $find "### ``top```n| **Overlaps** | ``kept`` (``Nowhere``) |")
             $nofile = @(Find-Stale -Catalogues @{ 'docs/catalogue/Stray.md' = @('### `top`', '| **Overlaps** | `kept` (`Lower`) |') } -Packs $packs)
             $untagged.Count -eq 1 -and $untagged[0] -match 'no pack tag' -and $nopack[0] -match 'which is no pack' -and $nofile[0].Text -match 'no pack is named Stray' } }
-        @{ Name = 'the staged content is what is read, and -Revision reads a commit: a stale staged row fails by file and line, its staged repair passes, and the commit before still fails'; Test = {
+        @{ Name = 'the staged content is what is read, and -Revision reads a commit: a stale staged row fails by file and line, its staged repair passes, the commit before still fails, and so do a commit with no pack and one with no catalogue file'; Test = {
             $temp = Join-Path ([IO.Path]::GetTempPath()) "overlap-rows-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
             New-Item -ItemType Directory -Path (Join-Path $temp 'docs/catalogue'), (Join-Path $temp 'Lower'), (Join-Path $temp 'Upper') -Force | Out-Null
             try {
@@ -159,8 +161,15 @@ if ($SelfTest) {
                 $write = { param([string] $path, [string[]] $lines) Set-Content -LiteralPath (Join-Path $temp $path) -Value $lines }
                 $run = { Push-Location $temp; try { $text = (& pwsh -NoProfile -File $PSCommandPath @args 2>&1 | Out-String) } finally { Pop-Location }; @{ Code = $LASTEXITCODE; Text = $text } }
                 & $git init --quiet
+                & $write 'docs/catalogue/Upper.md' @('# Upper', '', '### `top`', '', '| **Overlaps** | `gone` (`Lower`) |')
+                & $git add -A
+                & $git commit --quiet -m x
+                & $git rm --quiet docs/catalogue/Upper.md
+                New-Item -ItemType Directory -Path (Join-Path $temp 'docs/catalogue') -Force | Out-Null
                 & $write 'Lower/info.json' '{ "name": "Lower", "dependencies": ["kept"] }'
                 & $write 'Upper/info.json' '{ "name": "Upper", "dependencies": ["Lower", "top"] }'
+                & $git add -A
+                & $git commit --quiet -m x
                 & $write 'docs/catalogue/Upper.md' @('# Upper', '', '### `top`', '', '| **Overlaps** | `gone` (`Lower`) |')
                 & $git add -A
                 & $git commit --quiet -m x
@@ -169,8 +178,12 @@ if ($SelfTest) {
                 & $git add -A
                 $green = & $run
                 $before = & $run -Revision HEAD
+                $nopack = & $run -Revision HEAD~2
+                $nocatalogue = & $run -Revision HEAD~1
                 if ($red.Code -ne 1 -or $green.Code -ne 0) { Write-Host (($red.Text + $green.Text).TrimEnd() -replace '(?m)^', '    ') }
-                $red.Code -eq 1 -and $red.Text -match '(?m)^docs/catalogue/Upper\.md:5: entry `top`, rule 1' -and $green.Code -eq 0 -and $before.Code -eq 1
+                $red.Code -eq 1 -and $red.Text -match '(?m)^docs/catalogue/Upper\.md:5: entry `top`, rule 1' -and $green.Code -eq 0 -and $before.Code -eq 1 -and
+                    $nopack.Code -eq 1 -and $nopack.Text -match 'found 0 pack\(s\) and 1 catalogue file\(s\)' -and
+                    $nocatalogue.Code -eq 1 -and $nocatalogue.Text -match 'found 2 pack\(s\) and 0 catalogue file\(s\)'
             }
             finally { Remove-Item -LiteralPath $temp -Recurse -Force }
         } }
@@ -191,7 +204,7 @@ if ($SelfTest) {
 
 # The staged content, or the commit's: `:path` or `<rev>:path` to git show.
 $at = if ($Revision) { "${Revision}:" } else { ':' }
-$listed = if ($Revision) { @(git -c core.quotepath=off ls-tree -r --name-only $Revision) } else { @(git -c core.quotepath=off ls-files) }
+$listed = @(if ($Revision) { git -c core.quotepath=off ls-tree -r --name-only $Revision } else { git -c core.quotepath=off ls-files })
 if ($LASTEXITCODE -ne 0) { throw 'git could not list the files to read. Run it inside the repository.' }
 $packs = [ordered] @{}
 foreach ($f in $listed -match '^[^/]+/info\.json$') {
@@ -205,9 +218,14 @@ foreach ($f in $listed -match '^docs/catalogue/[^/]+\.md$') {
     if ($LASTEXITCODE -ne 0) { throw "git could not read $at$f." }
 }
 
+$where = if ($Revision) { " at $Revision" } else { ', as staged' }
+if (-not $packs.Count -or -not $catalogues.Count) {
+    Write-Host "FAILED - overlap-rows-check: found $($packs.Count) pack(s) and $($catalogues.Count) catalogue file(s)$where, so nothing was read."
+    exit 1
+}
 $stale = @(Find-Stale -Catalogues $catalogues -Packs $packs)
 foreach ($s in $stale) { Write-Host "$($s.File):$($s.Line): $($s.Text)" }
-$what = "$($catalogues.Count) catalogue file(s) against $($packs.Count) pack(s)$(if ($Revision) { " at $Revision" } else { ', as staged' })"
+$what = "$($catalogues.Count) catalogue file(s) against $($packs.Count) pack(s)$where"
 if ($stale) {
     Write-Host ''
     Write-Host "FAILED - overlap-rows-check: $($stale.Count) stale Overlaps row(s), $what. Strike each name the row no longer holds, as ~~``mod`` (``Pack``)~~ - resolved <date> (#N)."

@@ -77,6 +77,12 @@ was left open and two ores rested on it.
 **Where prose restates a list the code holds, read the two side by side.** Found in PR #186,
 where the README's list of what a hook stops had lost two entries of the script's.
 
+**A check fails when the rules it reads, or the set it must cover, come back empty, and its
+self-test covers that run.** A run that only has nothing to check this time, such as a commit
+that stages no Markdown, may pass, and says it read nothing. A lister that does not fail is
+outside this. Found in PR #360, where `overlap-rows-check.ps1` passed with no catalogue file, and
+in the survey on #361, which found three more.
+
 **A citation of a section names its heading, and the reviewer opens that heading and reads that
 it holds the claim.** Found in PR #303, where "the section before it" pointed to the wrong section.
 

@@ -1,7 +1,8 @@
 <#
 .SYNOPSIS
     Reports each line over 100 characters in the comment header of a script here, as
-    <file>:<line> with its length. Exit 1 if it reports one.
+    <file>:<line> with its length. Exit 1 if it reports one, and with -All if it lists no
+    script, which is a run that read nothing.
 
 .DESCRIPTION
     WHY (#211). The headers are wrapped at 100 characters and nothing read that. On PR #210

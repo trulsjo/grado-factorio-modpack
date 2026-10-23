@@ -2,7 +2,8 @@
 .SYNOPSIS
     Reports each use, in the lines a commit range adds to tracked Markdown, of a word that
     GLOSSARY.md lists on an `_Avoid_` line: <file>:<line>: the word, and the term that avoids it.
-    Over a range it fails on a use that is not marked deliberate: exit 1 if it reports one.
+    Over a range it fails on a use that is not marked deliberate: exit 1 if it reports one. It
+    fails too on a GLOSSARY.md that gives it no word to match, which is a run that read nothing.
 
 .DESCRIPTION
     WHY (#164). GLOSSARY.md gives most terms an `_Avoid_` line, and nothing read new prose against
@@ -36,10 +37,12 @@
     there: <!-- deliberate: confirms -->. A marked use is not reported. A word inside double
     quotes or a code span is being mentioned and is not reported either.
 
-    WHAT FAILS WITH NOTHING READ (#362). A GLOSSARY.md that git cannot read at the range's end,
-    one that is empty, and one with no `_Avoid_` entry whose word is matched: exit 1 in every mode
-    but -SelfTest, since there is no word to read a line against. A range that adds no Markdown
-    line passes, and says it read 0 files: that run had nothing to check.
+    WHAT FAILS WITH NOTHING READ (#362). A GLOSSARY.md that git cannot read at the range's end:
+    exit 1 in every mode but -SelfTest. One that is empty, and one with no `_Avoid_` entry whose
+    word is matched: exit 1 with -Range and -All, since there is no word to read a line against.
+    -List still prints what it found and exits 0, since it lists and shows why an entry is not
+    matched. A range that adds no Markdown line passes, and says it read 0 files: that run had
+    nothing to check.
 
     WHAT IT CANNOT SEE. Whether a use is wrong. A phrase or a quotation broken over two lines. A
     line that was moved and not changed is reported as added. GLOSSARY.md itself, where the words
@@ -60,7 +63,8 @@
     Prove an avoided word is reported and that a clean line, a marked use and a mention pass,
     and that over a range the script exits 1 on an unmarked use, 0 once it is marked and 0
     where the range only removes lines, and 1 where GLOSSARY.md has no matched `_Avoid_` entry,
-    is empty or is missing. Those two cases need git.
+    is empty or is missing, while -List on the unmatched one exits 0 and says why. Those two
+    cases need git.
 
 .EXAMPLE
     pwsh -File scripts/glossary-check.ps1 -Range origin/main...HEAD
@@ -189,7 +193,7 @@ if ($SelfTest) {
             }
             finally { Remove-Item -LiteralPath $temp -Recurse -Force }
         } }
-        @{ Name = 'over a range the script exits 1, saying so, where GLOSSARY.md has no _Avoid_ line it matches, is empty or is missing'; Test = {
+        @{ Name = 'over a range the script exits 1, saying so, where GLOSSARY.md has no _Avoid_ line it matches, is empty or is missing, and -List on the unmatched one prints why and exits 0'; Test = {
             $temp = Join-Path ([IO.Path]::GetTempPath()) "glossary-check-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
             New-Item -ItemType Directory -Path $temp -Force | Out-Null
             try {
@@ -200,6 +204,7 @@ if ($SelfTest) {
                 & $commit $glossary
                 & $commit '**Measured**:', 'Run and written down.'
                 & $commit '**Portal entry**:', '_Avoid_: above/below without saying of what'
+                Push-Location $temp; try { $listed = (& pwsh -NoProfile -File $PSCommandPath -List 2>&1 | Out-String); $listedCode = $LASTEXITCODE } finally { Pop-Location }
                 & $commit @()
                 & $git rm --quiet GLOSSARY.md
                 Add-Content -LiteralPath (Join-Path $temp 'a.md') -Value 'Verified again.'
@@ -210,7 +215,9 @@ if ($SelfTest) {
                 $empty = & $run 'HEAD~2..HEAD~1'
                 $missing = & $run 'HEAD~1..HEAD'
                 foreach ($r in $none, $unmatched, $empty, $missing) { if ($r.Code -ne 1) { Write-Host ($r.Text.TrimEnd() -replace '(?m)^', '    ') } }
-                $none.Code -eq 1 -and $none.Text -match 'FAILED - glossary-check: GLOSSARY\.md at HEAD~3 has no _Avoid_ entry' -and
+                if ($listedCode -ne 0) { Write-Host ($listed.TrimEnd() -replace '(?m)^', '    ') }
+                $listedCode -eq 0 -and $listed -match 'above/below without saying of what -- carries a condition' -and
+                    $none.Code -eq 1 -and $none.Text -match 'FAILED - glossary-check: GLOSSARY\.md at HEAD~3 has no _Avoid_ entry' -and
                     $unmatched.Code -eq 1 -and $unmatched.Text -match 'has no _Avoid_ entry' -and
                     $empty.Code -eq 1 -and $empty.Text -match 'has no _Avoid_ entry' -and
                     $missing.Code -eq 1 -and $missing.Text -match 'FAILED - glossary-check: git could not read GLOSSARY\.md at HEAD'
@@ -238,7 +245,6 @@ $revision = if ($Range) { $Range -replace '^.*\.\.+' } else { 'HEAD' }
 $glossary = @(git show "${revision}:GLOSSARY.md" 2>$null)
 if ($LASTEXITCODE -ne 0) { Write-Host "FAILED - glossary-check: git could not read GLOSSARY.md at $revision, so no line was read against it. Run it inside the repository."; exit 1 }
 $avoided = @(if ($glossary) { Get-Avoided -Glossary $glossary })
-if (-not ($avoided | Where-Object { -not $_.Why })) { Write-Host "FAILED - glossary-check: GLOSSARY.md at $revision has no _Avoid_ entry whose word it matches, so no line was read against it."; exit 1 }
 
 if ($List) {
     Write-Host 'Matched:'
@@ -249,6 +255,8 @@ if ($List) {
     $LEFT.GetEnumerator() | Where-Object { $key = $_.Key; -not ($avoided | Where-Object { $_.Why -eq $LEFT[$key] }) } | ForEach-Object { Write-Host "  $($_.Key) -- $($_.Value)" }
     exit 0
 }
+# After -List, which is how a reader sees why no entry is matched.
+if (-not ($avoided | Where-Object { -not $_.Why })) { Write-Host "FAILED - glossary-check: GLOSSARY.md at $revision has no _Avoid_ entry whose word it matches, so no line was read against it. -List shows why."; exit 1 }
 
 # The added lines of each Markdown file: every line with -All, or what the range's diff adds.
 $added = [ordered] @{}

@@ -19,7 +19,9 @@
     It also fails a row it cannot read: a name with no pack tag after it, a tag naming no pack,
     a row under no `## ` or `### ` heading that is a mod's name alone, and a catalogue file with
     no pack of its name. A run that finds no pack or no catalogue file fails too, since it read
-    nothing.
+    nothing, and so does one that finds no Overlaps row in any catalogue file (#362). Rows are
+    counted across the catalogue and not per file: a pack with no cross-pack overlap is a real
+    state.
 
     WHAT IT READS AS WHAT. A pack is a top-level `<dir>/info.json`, by its `name` key. A
     dependency is parsed by `ConvertFrom-Dependency` in
@@ -36,15 +38,18 @@
     WHAT IT CANNOT SEE. A figure in prose, such as a tally of live overlaps: only the rows are
     read. A mod named in an entry's prose and not in its row. Whether an overlap is real, or
     whether the row on the other pack's side exists. A pack's members below it, for a tag: a tag
-    means the pack's own list. A mod a member brings in that is not a pack here.
+    means the pack's own list. A mod a member brings in that is not a pack here. A row whose
+    label is misspelt, as `| **Overlap** |`, in a catalogue that has other rows: it is not read,
+    and only a catalogue with no row left fails.
 
 .PARAMETER Revision
     Read the catalogue and the packs as at this commit, not as staged.
 
 .PARAMETER SelfTest
     Prove each rule fails a row and names it, that a struck name passes, that a row it cannot
-    read fails, that the staged content and -Revision are what is read, and that a commit with no
-    pack or no catalogue file fails. Those two cases need git.
+    read fails, that the staged content and -Revision are what is read, that a commit with no
+    pack or no catalogue file fails, and that zero rows across the catalogue fails where a file
+    with none beside one with a row passes. Those three cases need git.
 
 .EXAMPLE
     pwsh -File scripts/overlap-rows-check.ps1
@@ -71,6 +76,9 @@ $ast = [Management.Automation.Language.Parser]::ParseFile((Resolve-Path -Literal
 $parse = $ast.Find({ param($n) $n -is [Management.Automation.Language.FunctionDefinitionAst] -and $n.Name -eq 'ConvertFrom-Dependency' }, $true)
 if (-not $parse) { throw "$resolver no longer defines ConvertFrom-Dependency." }
 . ([scriptblock]::Create($parse.Extent.Text))
+
+# An Overlaps row, with its cells after the label as group 1.
+$ROW = '^\|\s*\*\*Overlaps\*\*\s*\|(.*)\|\s*$'
 
 function Find-Stale {
     <#  The stale rows of the catalogue files, each as @{ File; Line; Text }. Catalogues maps a
@@ -100,7 +108,7 @@ function Find-Stale {
         $entry = $null
         for ($i = 0; $i -lt $lines.Count; $i++) {
             if ($lines[$i] -match '^#{2,3}\s+(.*?)\s*$') { $entry = if ($Matches[1] -match '^`([^`]+)`$') { $Matches[1] } else { $null }; continue }
-            if ($lines[$i] -notmatch '^\|\s*\*\*Overlaps\*\*\s*\|(.*)\|\s*$') { continue }
+            if ($lines[$i] -notmatch $ROW) { continue }
             $say = { param([string] $text) @{ File = $file; Line = $i + 1; Text = $text } }
             if (-not $members.ContainsKey($pack)) { & $say "no pack is named $pack, so the row cannot be read"; continue }
             if (-not $entry) { & $say 'the row is under no heading that is a mod''s name'; continue }
@@ -187,6 +195,31 @@ if ($SelfTest) {
             }
             finally { Remove-Item -LiteralPath $temp -Recurse -Force }
         } }
+        @{ Name = 'zero Overlaps rows across the catalogue fails, a misspelt label among them, and a file with none beside one that has a row passes'; Test = {
+            $temp = Join-Path ([IO.Path]::GetTempPath()) "overlap-rows-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
+            New-Item -ItemType Directory -Path (Join-Path $temp 'docs/catalogue'), (Join-Path $temp 'Lower'), (Join-Path $temp 'Upper') -Force | Out-Null
+            try {
+                $git = { git -C $temp -c user.name=selftest -c user.email=selftest@example.invalid -c core.autocrlf=false -c commit.gpgsign=false @args | Out-Null; if ($LASTEXITCODE -ne 0) { throw "git $args failed; the self-test needs git." } }
+                $write = { param([string] $path, [string[]] $lines) Set-Content -LiteralPath (Join-Path $temp $path) -Value $lines }
+                $run = { Push-Location $temp; try { $text = (& pwsh -NoProfile -File $PSCommandPath @args 2>&1 | Out-String) } finally { Pop-Location }; @{ Code = $LASTEXITCODE; Text = $text } }
+                & $git init --quiet
+                & $write 'Lower/info.json' '{ "name": "Lower", "dependencies": ["kept"] }'
+                & $write 'Upper/info.json' '{ "name": "Upper", "dependencies": ["Lower", "top"] }'
+                & $write 'docs/catalogue/Lower.md' @('# Lower', '', '### `kept`', '', '| **Status** | in |')
+                & $write 'docs/catalogue/Upper.md' @('# Upper', '', '### `top`', '', '| **Overlap** | `gone` (`Lower`) |')
+                & $git add -A
+                & $git commit --quiet -m x
+                & $write 'docs/catalogue/Upper.md' @('# Upper', '', '### `top`', '', '| **Overlaps** | `kept` (`Lower`) |')
+                & $git add -A
+                & $git commit --quiet -m x
+                $none = & $run -Revision HEAD~1
+                $one = & $run -Revision HEAD
+                if ($none.Code -ne 1 -or $one.Code -ne 0) { Write-Host (($none.Text + $one.Text).TrimEnd() -replace '(?m)^', '    ') }
+                $none.Code -eq 1 -and $none.Text -match 'FAILED - overlap-rows-check: 0 Overlaps row\(s\) in 2 catalogue file\(s\)' -and
+                    $one.Code -eq 0 -and $one.Text -match '1 Overlaps row\(s\) in 2 catalogue file\(s\)'
+            }
+            finally { Remove-Item -LiteralPath $temp -Recurse -Force }
+        } }
     )
     $failures = 0
     $n = 0
@@ -223,9 +256,15 @@ if (-not $packs.Count -or -not $catalogues.Count) {
     Write-Host "FAILED - overlap-rows-check: found $($packs.Count) pack(s) and $($catalogues.Count) catalogue file(s)$where, so nothing was read."
     exit 1
 }
+# Counted across the catalogue and not per file: a pack with no cross-pack overlap is a real state (#362).
+$rows = @($catalogues.Values | ForEach-Object { $_ } | Where-Object { $_ -match $ROW }).Count
+$what = "$rows Overlaps row(s) in $($catalogues.Count) catalogue file(s) against $($packs.Count) pack(s)$where"
+if (-not $rows) {
+    Write-Host "FAILED - overlap-rows-check: $what, so nothing was read. A row is labelled exactly | **Overlaps** |."
+    exit 1
+}
 $stale = @(Find-Stale -Catalogues $catalogues -Packs $packs)
 foreach ($s in $stale) { Write-Host "$($s.File):$($s.Line): $($s.Text)" }
-$what = "$($catalogues.Count) catalogue file(s) against $($packs.Count) pack(s)$where"
 if ($stale) {
     Write-Host ''
     Write-Host "FAILED - overlap-rows-check: $($stale.Count) stale Overlaps row(s), $what. Strike each name the row no longer holds, as ~~``mod`` (``Pack``)~~ - resolved <date> (#N)."

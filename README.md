@@ -155,6 +155,10 @@ findings and confirmation under the draft of a pull request body, word for word,
 finding the confirmation does not answer, and on a draft without the `mattpocock-skills:pr`
 template's three headings, in order. Its self-test runs in the same workflow.
 
+Four of these fail on a run that read nothing they must cover: the glossary check on a
+`GLOSSARY.md` with no `_Avoid_` entry it matches, the header check's `-All` on no tracked script,
+the Overlaps check on no row in any catalogue file, and `pr-body.ps1` on an empty `## Findings`.
+
 The shared `vendor/grado-factorio-tools/scripts/pr-body-check.ps1` reads the finished body: it
 fails on a commit cited by hash that is not on `main`, and on a closing keyword outside a bare
 `Closes #N` line. A session runs it on the body file before `gh pr create`, and the same workflow

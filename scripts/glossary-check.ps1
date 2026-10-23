@@ -36,6 +36,11 @@
     there: <!-- deliberate: confirms -->. A marked use is not reported. A word inside double
     quotes or a code span is being mentioned and is not reported either.
 
+    WHAT FAILS WITH NOTHING READ (#362). A GLOSSARY.md that git cannot read at the range's end,
+    one that is empty, and one with no `_Avoid_` entry whose word is matched: exit 1 in every mode
+    but -SelfTest, since there is no word to read a line against. A range that adds no Markdown
+    line passes, and says it read 0 files: that run had nothing to check.
+
     WHAT IT CANNOT SEE. Whether a use is wrong. A phrase or a quotation broken over two lines. A
     line that was moved and not changed is reported as added. GLOSSARY.md itself, where the words
     are listed. An irregular verb form (read, chose). Markdown outside `.md` files.
@@ -54,7 +59,8 @@
 .PARAMETER SelfTest
     Prove an avoided word is reported and that a clean line, a marked use and a mention pass,
     and that over a range the script exits 1 on an unmarked use, 0 once it is marked and 0
-    where the range only removes lines. That case needs git.
+    where the range only removes lines, and 1 where GLOSSARY.md has no matched `_Avoid_` entry,
+    is empty or is missing. Those two cases need git.
 
 .EXAMPLE
     pwsh -File scripts/glossary-check.ps1 -Range origin/main...HEAD
@@ -183,6 +189,34 @@ if ($SelfTest) {
             }
             finally { Remove-Item -LiteralPath $temp -Recurse -Force }
         } }
+        @{ Name = 'over a range the script exits 1, saying so, where GLOSSARY.md has no _Avoid_ line it matches, is empty or is missing'; Test = {
+            $temp = Join-Path ([IO.Path]::GetTempPath()) "glossary-check-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
+            New-Item -ItemType Directory -Path $temp -Force | Out-Null
+            try {
+                $git = { git -C $temp -c user.name=selftest -c user.email=selftest@example.invalid -c core.autocrlf=false -c commit.gpgsign=false @args | Out-Null; if ($LASTEXITCODE -ne 0) { throw "git $args failed; the self-test needs git." } }
+                $commit = { param([string[]] $lines) Set-Content -LiteralPath (Join-Path $temp 'GLOSSARY.md') -Value $lines; Add-Content -LiteralPath (Join-Path $temp 'a.md') -Value 'It was verified.'; & $git add -A; & $git commit --quiet -m x }
+                $run = { param([string] $range) Push-Location $temp; try { $text = (& pwsh -NoProfile -File $PSCommandPath -Range $range 2>&1 | Out-String) } finally { Pop-Location }; @{ Code = $LASTEXITCODE; Text = $text } }
+                & $git init --quiet
+                & $commit $glossary
+                & $commit '**Measured**:', 'Run and written down.'
+                & $commit '**Portal entry**:', '_Avoid_: above/below without saying of what'
+                & $commit @()
+                & $git rm --quiet GLOSSARY.md
+                Add-Content -LiteralPath (Join-Path $temp 'a.md') -Value 'Verified again.'
+                & $git add -A
+                & $git commit --quiet -m x
+                $none = & $run 'HEAD~4..HEAD~3'
+                $unmatched = & $run 'HEAD~3..HEAD~2'
+                $empty = & $run 'HEAD~2..HEAD~1'
+                $missing = & $run 'HEAD~1..HEAD'
+                foreach ($r in $none, $unmatched, $empty, $missing) { if ($r.Code -ne 1) { Write-Host ($r.Text.TrimEnd() -replace '(?m)^', '    ') } }
+                $none.Code -eq 1 -and $none.Text -match 'FAILED - glossary-check: GLOSSARY\.md at HEAD~3 has no _Avoid_ entry' -and
+                    $unmatched.Code -eq 1 -and $unmatched.Text -match 'has no _Avoid_ entry' -and
+                    $empty.Code -eq 1 -and $empty.Text -match 'has no _Avoid_ entry' -and
+                    $missing.Code -eq 1 -and $missing.Text -match 'FAILED - glossary-check: git could not read GLOSSARY\.md at HEAD'
+            }
+            finally { Remove-Item -LiteralPath $temp -Recurse -Force }
+        } }
     )
     $failures = 0
     $n = 0
@@ -200,8 +234,11 @@ if ($SelfTest) {
 
 if ($Range -and $Range -notmatch '\.\.+[^.]') { throw '-Range needs both ends, as origin/main...HEAD: the files are read at its end.' }
 $revision = if ($Range) { $Range -replace '^.*\.\.+' } else { 'HEAD' }
-$avoided = @(Get-Avoided -Glossary @(git show "${revision}:GLOSSARY.md"))
-if ($LASTEXITCODE -ne 0) { throw "git could not read GLOSSARY.md at $revision. Run it inside the repository." }
+# A glossary that gives the script no word to match leaves nothing it reads able to fail (#362).
+$glossary = @(git show "${revision}:GLOSSARY.md" 2>$null)
+if ($LASTEXITCODE -ne 0) { Write-Host "FAILED - glossary-check: git could not read GLOSSARY.md at $revision, so no line was read against it. Run it inside the repository."; exit 1 }
+$avoided = @(if ($glossary) { Get-Avoided -Glossary $glossary })
+if (-not ($avoided | Where-Object { -not $_.Why })) { Write-Host "FAILED - glossary-check: GLOSSARY.md at $revision has no _Avoid_ entry whose word it matches, so no line was read against it."; exit 1 }
 
 if ($List) {
     Write-Host 'Matched:'

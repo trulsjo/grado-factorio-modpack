@@ -15,8 +15,10 @@
     `## Confirmation`. The findings keep their `### <n>.` headings. *Read and found correct* and
     anything else in the report stays out.
 
-    WHAT IT REFUSES, writing nothing: a report with no `## Findings`; one with a numbered finding
-    and no `## Confirmation`; one where a finding's number opens no line of the confirmation.
+    WHAT IT REFUSES, writing nothing: a report with no `## Findings`; one whose `## Findings`
+    holds blank lines only (#362), since docs/agents/pre-pr-review-brief.md has a reviewer who
+    found nothing say so there; one with a numbered finding and no `## Confirmation`; one where a
+    finding's number opens no line of the confirmation.
 
     THE DRAFT'S HEADINGS (#320). Truls ruled on 2026-10-19 that the body above the review carries
     the `mattpocock-skills:pr` template's three headings: `## Summary`, `## Evidence` and
@@ -114,6 +116,7 @@ function Get-Body([string] $DraftText, [string[]] $ReviewLines) {
     if ($problems) { throw "The draft breaks the pr template: $($problems -join '; '). It needs ``## Summary``, ``## Evidence`` and ``## Merge Danger``, once each and in that order." }
     $findings = Get-Section $ReviewLines 'Findings'
     if ($null -eq $findings) { throw 'The report has no "## Findings" section.' }
+    if (-not ($findings -join '').Trim()) { throw 'The report''s "## Findings" section is empty: a reviewer who found nothing says so there.' }
     $confirmation = Get-Section $ReviewLines 'Confirmation'
     $numbers = @($findings | ForEach-Object { if ($_ -match '^### (\d+)\.') { $Matches[1] } })
     if ($numbers -and $null -eq $confirmation) { throw "The report has $($numbers.Count) finding(s) and no ""## Confirmation"" section." }
@@ -157,6 +160,8 @@ if ($SelfTest) {
             (Get-Body $extra (& $report @('Nothing found.', '') $null)).StartsWith($extra.TrimEnd()) } }
         @{ Name = 'a report with no Findings section is refused'; Test = {
             & $throws @('# Report', '', '## Confirmation', '', '1. fixed') 'no "## Findings"' } }
+        @{ Name = 'a report whose Findings section is empty, or blank lines only, is refused'; Test = {
+            (& $throws (& $report @() $null) '"## Findings" section is empty') -and (& $throws (& $report @('', '   ', '') $null) '"## Findings" section is empty') } }
         @{ Name = 'findings with no Confirmation section are refused'; Test = {
             & $throws (& $report $two $null) '2 finding\(s\) and no "## Confirmation"' } }
         @{ Name = 'a finding with no confirmation line is refused by its number, and a longer number does not answer it'; Test = {

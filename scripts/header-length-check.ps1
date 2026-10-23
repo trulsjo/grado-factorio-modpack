@@ -13,6 +13,10 @@
     switch, the staged content of the staged scripts, which is what the commit will hold. -All
     reads each tracked script, as staged.
 
+    WHAT FAILS WITH NOTHING READ (#362). -All that lists no tracked script, as from a directory
+    other than the root or in a clone whose checkout failed: exit 1. With no switch, nothing
+    staged passes and says it read 0 scripts, since that commit had nothing to check.
+
     WHAT IT LEAVES. A line under `.EXAMPLE`, up to the next line that opens with a dot and a word
     in capitals: a command there is not wrapped. The code below the header.
 
@@ -27,8 +31,9 @@
 
 .PARAMETER SelfTest
     Prove a long header line is reported by its line and length, that a long line under
-    `.EXAMPLE`, below the header or in a script with no block comment is not, and that a commit's
-    staged content is what is read. That case needs git.
+    `.EXAMPLE`, below the header or in a script with no block comment is not, that a commit's
+    staged content is what is read, and that -All with no tracked script fails while nothing
+    staged passes. Those two cases need git.
 
 .EXAMPLE
     pwsh -File scripts/header-length-check.ps1
@@ -98,6 +103,21 @@ if ($SelfTest) {
             }
             finally { Remove-Item -LiteralPath $temp -Recurse -Force }
         } }
+        @{ Name = '-All fails, saying so, where git tracks no script, and with nothing staged and no switch the run passes and says it read 0'; Test = {
+            $temp = Join-Path ([IO.Path]::GetTempPath()) "header-length-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
+            New-Item -ItemType Directory -Path $temp -Force | Out-Null
+            try {
+                git -C $temp init --quiet
+                if ($LASTEXITCODE -ne 0) { throw 'git init failed; the self-test needs git.' }
+                $run = { Push-Location $temp; try { $text = (& pwsh -NoProfile -File $PSCommandPath @args 2>&1 | Out-String) } finally { Pop-Location }; @{ Code = $LASTEXITCODE; Text = $text } }
+                $all = & $run -All
+                $staged = & $run
+                if ($all.Code -ne 1 -or $staged.Code -ne 0) { Write-Host (($all.Text + $staged.Text).TrimEnd() -replace '(?m)^', '    ') }
+                $all.Code -eq 1 -and $all.Text -match 'FAILED - header-length-check: -All found no tracked scripts/\*\.ps1' -and
+                    $staged.Code -eq 0 -and $staged.Text -match '0 script\(s\) read'
+            }
+            finally { Remove-Item -LiteralPath $temp -Recurse -Force }
+        } }
     )
     $failures = 0
     $n = 0
@@ -116,6 +136,11 @@ if ($SelfTest) {
 $files = if ($All) { @(git -c core.quotepath=off ls-files -- 'scripts/*.ps1') }
 else { @(git -c core.quotepath=off diff --cached --name-only --diff-filter=ACMR -- 'scripts/*.ps1') }
 if ($LASTEXITCODE -ne 0) { throw 'git could not list the scripts to read. Run it from the repository root.' }
+# -All is the set every header must be read from, so an empty one is a run that read nothing (#362).
+if ($All -and -not $files) {
+    Write-Host 'FAILED - header-length-check: -All found no tracked scripts/*.ps1, so nothing was read. Run it from the repository root.'
+    exit 1
+}
 
 $found = 0
 foreach ($f in $files) {

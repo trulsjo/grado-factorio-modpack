@@ -24,7 +24,10 @@ pack to 20 on 2026-09-22 and the section after this one is its ledger. **Fourtee
 members**: the six lost in the port, reassessed at the end, and the eight under *Ruled out after the
 port* - **five** #8 removed outright and **three** it replaced. `LogisticTrainNetwork` counts as
 replaced, not removed: `cybersyn2` carries its `Supersedes` row. *The `base` line is
-`base >= 2.0.74` since 2026-09-24 (#58).*
+`base >= 2.0.74` since 2026-09-24 (#58).* *Since 2026-10-24 (#368, #370) the `base` line is
+`base >= 2.1.22`, and two of the twenty were replaced at the move to line 2.1, so sixteen mods
+are no longer members, ten of them under* Ruled out after the port *(see* Decisions,
+2026-10-24 *below).*
 
 **All 20 current members have a 2.x release.** None is stranded on 1.1. **Eleven of the twenty
 require `base >= 2.1`**, which is the same finding the `Grado_NonChanging` survey reached and is
@@ -89,6 +92,20 @@ pack, which needs a ticket of its own, and `kry-picker-complete`'s members asses
 for whichever pack each fits, which is **#46**. *Assessed 2026-10-01: see* Candidates, not members.
 *The first went to #84, which assessed three candidates on 2026-10-01; see* Outside the bundle
 *under the same section.*
+
+## Decisions, 2026-10-24 (#370)
+
+Truls ruled on each member with no release declaring `factorio_version` 2.1, in the grill on the
+move to line 2.1 (#368). The resolve on line 2.1 of that day found these two and no other member of
+this pack missing (`docs/porting-notes.md`, *Resolves on stable 2.1.23*). **Still 20 members.**
+
+| mod | ruling |
+|---|---|
+| `Nanobots2` | **replaced** by `Nanobots3`, accepted with its `5.9.8` source unread |
+| `qol_research` | **replaced** by `qol_research-21`, its *Stand-in* |
+
+Each old entry is under *Ruled out after the port* with its ruling; each new one is under *In the
+pack*. The hidden `stdlib2` leaves with `Nanobots2`. #373 watches `qol_research`.
 
 ## In the pack
 
@@ -175,94 +192,46 @@ modules on Angel's machines, which is the situation per-machine-type configurati
 swap adds no mod to the closure. It declares `base >= 2.1`, below the pack's floor, so it adds
 nothing there either.
 
-### `Nanobots2`
+### `Nanobots3`
 
 | | |
 |---|---|
-| **Title** | Nanobots: Early Bots 2.0 |
-| **Does** | A gun that revives nearby blueprint ghosts out of the player's own inventory long before construction robots are researched, and repurposes personal construction bots to clear items off the ground |
-| **Latest** | `3.3.2`, `factorio_version` **2.0**, 2025-03-12 |
-| **Downloads** | 44,712 |
-| **Owner** | `Regi_Mahler` |
-| **Supersedes** | `Nanobots` by `Nexela`, last `3.2.19` on 2022-04-16, 189,166 downloads |
-| **Read on** | 2026-09-21 |
+| **Title** | Nanobots: Early Bots 3.0 |
+| **Does** | The Nanobots gun and ammo that build and clear from the player's own inventory before robots, with equipment chips, a roboport interface, and on top of `Nanobots2`'s set automatic turret ammo delivery, vehicle refuelling, combat modes and a statistics window |
+| **Latest** | `5.9.8`, `factorio_version` **2.1**, 2026-10-19 |
+| **Downloads** | 7,361 |
+| **Owner** | `MikdadAgasiev` |
+| **Supersedes** | `Nanobots2`, last `3.3.2` (`factorio_version` 2.0), 2025-03-12 |
+| **Read on** | 2026-10-24 |
 
-**Alternatives considered.** Searching the 2.x list by title and summary for early-construction mods
-returns `early_construction`, `spiderbots`, `disposable-construction-robots` and `blueprint-shotgun`
-— several of which name Nanobots as the thing they are an alternative *to*. None is a drop-in; they
-replace the mechanic rather than continue it. This mod is the direct 2.0 continuation and says so:
-"Fixed and reuploaded for 2.0. Thank you Nexela."
+**Alternatives considered.** `Nanobots2-continued` (`goakiller900`, `3.4.4`, 2026-08-28, 331
+downloads on 2026-10-24) continues `Nanobots2` with the same nine Bob's lookups (see
+`Nanobots2`'s entry). `Nanobots3` has 47 releases and is kept on both lines, `5.8.x` for 2.0 and
+`5.9.x` for 2.1. Its summary: "Build, repair, and defend your factory with portable nanobots — no
+roboport network required!" `early_construction_unofficial_2_1`, `Construction_Drones`,
+`disposable-construction-robots` and `blueprint-shotgun` replace the mechanic rather than continue
+it, as `Nanobots2`'s entry found.
 
-*Checked 2026-10-01 (#44, #83): the terms were not recorded beyond "early-construction". Re-run over
-the union for "early construction", "nanobot" and "construction robot". **One new hit could change
-this entry: [`Nanobots2-continued`](https://mods.factorio.com/mod/Nanobots2-continued)**, *Nanobots:
-Early Bots Continued* by `goakiller900` - `3.4.4`, `factorio_version` 2.1 and no other line,
-2026-08-28, 305 downloads, a "community-maintained continuation for Factorio 2.1". It declares
-`! Nanobots2` and needs `kry_stdlib >= 2.2.4`, already a hidden member of `Grado_NonChanging`, in
-place of `stdlib2`. It is not served on the declared 2.0 line, and this mod is not served at 2.1,
-so it is a successor for the 2.1 release rather than this one, and "the only successor that
-preserves the mechanic" below is true on 2.0 only. Whether to swap is #86's. The other new hits are
-`early_construction_unofficial_2_1`, a 2.1 build of `early_construction`; `Construction_Drones`
-(`Klonan`), ground-based personal construction robots, which replaces the mechanic rather than
-continuing it; robot tiers, quality upgrades and a ghost reader; and starting-kit mods.*
+**Against the promise, accepted with its source unread.** `5.9.8` publishes no source, and the
+public repository `MikdadAgasiev/Nanobots3` stops at `4.7.1` (`factorio_version` 2.0, last pushed
+2026-01-16). At `4.7.1` its prototypes are `Nanobots2`'s set: `gun-nano-emitter`, the
+`ammo-nano-constructors` and `ammo-nano-termites` ammo, five equipment chips, a roboport interface
+made of vanilla parts, and the `nanobots`, `nanobots-cliff`, `nano-range` and `nano-speed`
+technologies. Its changelog since records new behaviour and keys, `Alt+G` (auto-defence), `Alt+H`
+(statistics), `Alt+T` (ammo swap) and `Alt+N` (area overlay), and no new item. It declares
+`! Nanobots`, `! Nanobots2` and `! nanobots-refined`, and no mandatory mod: it carries its own copy
+of `stdlib2` since `5.9.0` (changelog, 2026-07-18), so it brings no hidden member. *Read from
+source* at `4.7.1`, from the changelog for `5.9.8`, by the grill's subagent on 2026-10-24.
 
-**Recommendation: keep.** Another `Nexela` mod rescued by someone else, the same pattern the Picker
-family shows — see *The raiguard pattern* in `docs/catalogue/Grado_NonChanging.md` for the other
-half of the authorship story. Last touched 2025-03-12, which is quiet rather than abandoned, and it
-is the only successor that preserves the mechanic.
+**Its Bob's integration** at `4.7.1`, `data-updates.lua:6-21`, names the same pre-Bob's-2.x items
+that leave `Nanobots2`'s recipes at their no-Bob's cost in `Grado_ABC` (#122). From `5.8.5` each
+edit checks the item and logs a miss (changelog). Whether `5.9.8` uses Bob's 2.1 names is unread:
+the 2.1 load and dump of `Grado_ABC` (#372) show it.
 
-#### What its Bob's integration leaves in the recipes on `Grado_ABC` (2026-10-04, #122)
-
-A measurement. Nothing was patched, and whether to report it upstream is Truls's.
-
-`Grado_ABC`'s recorded load has eight log lines from this mod, through `stdlib2`: it looks up three
-items that do not exist (`docs/loads/Grado_ABC-2026-10-04.md`, *Conflicts*). What that leaves
-behind was read from two data dumps on Factorio 2.0.77, made on 2026-10-04 through the shared
-harness's `Invoke-HarnessDump`: the staged `Grado_ABC` (prototype list checksum `2195323740`, the
-recorded load's) and the staged `Grado_ChangingBase` (`1028326153`), which has no `boblibrary` and
-so shows the recipes as the mod writes them without Bob's. Releases: `Nanobots2` `3.3.2`,
-`stdlib2` `2.0.1`, `bobelectronics` `2.1.1`, `boblogistics` `2.1.1`, `bobwarfare` `2.1.0`.
-
-`data-updates.lua` has one block that runs when `boblibrary` is loaded. Line 11 is behind the Bob's
-setting `bobmods-logistics-disableroboports`, off by default, and did not run. Lines 12 to 21 are
-nine calls. Eight of them name a Bob's item by its name from before Bob's 2.x. `stdlib2` checks the
-item first, logs `Item ... does not exist` and changes nothing. The ninth names this mod's own
-`gun-nano-emitter` and is applied.
-
-| Recipe | Meant with Bob's | In the `Grado_ABC` dump | As meant? |
-|---|---|---|---|
-| `gun-nano-emitter` | `electronic-circuit` replaced by `basic-circuit-board` | `copper-plate` 5, `iron-plate` 10, `electronic-circuit` 2 | no |
-| `ammo-nano-constructors` | the same replacement | `iron-stick` 1, `repair-pack` 1 | yes: the recipe has no `electronic-circuit` to replace, so the failed lookup costs nothing |
-| `ammo-nano-termites` | the same replacement | `iron-stick` 1, `electronic-circuit` 1 | no |
-| `equipment-bot-chip-items` | `robot-brain-construction` added | `processing-unit` 1, `battery` 1 | no |
-| `equipment-bot-chip-trees` | `robot-brain-construction` added | `processing-unit` 1, `battery` 1 | no |
-| `equipment-bot-chip-nanointerface` | `robot-brain-construction` and `gun-nano-emitter` added | `processing-unit` 1, `battery` 1, `gun-nano-emitter` 1 | no: the emitter is there, the brain is not |
-| `equipment-bot-chip-launcher` | `robot-brain-combat` added | `processing-unit` 1, `battery` 1 | no |
-| `equipment-bot-chip-feeder` | `robot-brain-combat` added | `processing-unit` 1, `battery` 1 | no |
-
-**Seven of the eight recipes differ from what the mod meant.** Six of the seven are exactly the
-recipe the mod has without Bob's, as the `Grado_ChangingBase` dump shows them. The seventh,
-`equipment-bot-chip-nanointerface`, has the emitter and not the brain. Nothing is broken: each
-recipe lists only items that exist. What a player gets is the Nanobots items at their no-Bob's
-cost in a Bob's game.
-
-The three names, against the `Grado_ABC` dump and the staged Bob's source:
-
-| Name asked for | Status | What exists |
-|---|---|---|
-| `basic-circuit-board` | renamed | `bob-basic-circuit-board`, item and recipe, `bobelectronics` `2.1.1` (`prototypes/electronics.lua`) |
-| `robot-brain-combat` | renamed | `bob-robot-brain-combat`, item and recipe, `bobwarfare` `2.1.0` (`prototypes/robot-parts.lua`) |
-| `robot-brain-construction` | removed | `boblogistics` `2.0.0` (2025-03-30): "Combined Construction and Logistics Brains and Tools #184". The combined item is `bob-robot-brain` (`boblogistics` `2.1.1`, `prototypes/robot-parts.lua`), with `-2` to `-4` above it. No prototype of any type is named `bob-robot-brain-construction` |
-
-The newest release on each line (portal, read 2026-10-04):
-
-- **2.0:** `Nanobots2` `3.3.2` (2025-03-12) is the newest and the one measured. The mod has no 2.1
-  release.
-- **2.1:** `Nanobots2-continued` `3.4.4` (2026-08-28, `goakiller900`), fetched with its SHA-1
-  checked and read, not loaded. Its `data-updates.lua` makes the same nine calls with the same
-  three old names. It uses helpers of its own that check the item exists and skip without a word
-  if it does not. So beside Bob's it would leave the same recipes and log nothing. That is read
-  from its source against Bob's 2.0-line names. Bob's on the 2.1 line was not read.
+**Recommendation: keep.** Added by #370 on 2026-10-24 in `Nanobots2`'s place: Truls's ruling in the
+grill on the move to line 2.1 (#368), accepted with its `5.9.8` source unread, the 2.1 dump to test
+it. Content there that competes with an overhaul would make it a load drop or a choice drop. It is
+not a stand-in, so nothing sends it back.
 
 ### `UltimateResearchQueue2`
 
@@ -535,6 +504,7 @@ and reconciling the closure is #39's, which is why the dependency list carries t
 library. **It is a genuine addition to that closure, not a new kind of problem**: `flib`
 (`EditorExtensions`, `WideChests`, `UltimateResearchQueue2`), `stdlib2` (`Nanobots2`) and
 `kry_stdlib` (`reverse-factory`) are already mandatory in this pack and named in no list either.
+*(`stdlib2` until 2026-10-24, when `Nanobots2` left, #370.)*
 
 **What the swap costs, and it is not nothing.** Four members become one. `LtnManager`'s job is built
 in here, and the combinator GUI is available separately as `cybersyn2-combinator` and was declined —
@@ -621,41 +591,33 @@ Checked and not recorded as an overlap.
 **Recommendation: keep.** Current on 2.1 and declares only `base`, so it constrains nothing above
 it.
 
-### `qol_research`
+### `qol_research-21`
 
 | | |
 |---|---|
-| **Title** | Quality of Life research |
-| **Does** | Adds bonuses — inventory size, movement speed, hand-crafting speed, reach, mining speed — each of which can be delivered as a research line or set to a flat value in the settings |
-| **Latest** | `3.4.2`, `factorio_version` **2.0**, 2025-05-04 |
-| **Downloads** | 220,228 |
-| **Owner** | `Aidiakapi` |
-| **Read on** | 2026-09-21 |
+| **Title** | Quality of Life research (2.1 fork) |
+| **Does** | `qol_research`'s bonuses — inventory size, movement speed, hand-crafting speed, reach, mining speed — as research lines or flat values, published for 2.1 |
+| **Latest** | `3.4.3`, `factorio_version` **2.1**, 2026-09-14 |
+| **Downloads** | 172 |
+| **Owner** | `wei937` |
+| **Supersedes** | `qol_research`, last `3.4.2` (`factorio_version` 2.0), 2025-05-04 |
+| **Read on** | 2026-10-24 |
 
-**Alternatives considered.** None searched; nothing about its state prompts a replacement.
+**Alternatives considered.** `qol_research_fork` (`Dizabeth`, `3.4.3`, 2026-07-09, 752
+downloads), the other 2.1 fork. Its description does not name the original. This one says:
+"Community-maintained fork of the original "qol_research" by Aidiakapi, updated for Factorio 2.1.
+No code logic was changed." Both are one release each, and download counts this small do not tell
+them apart.
 
-**Recommendation: keep.** Last touched 2025-05-04, which is quiet, but it declares `base >= 2.0.0`
-and its optional compatibility covers `space-exploration`, `nullius` and `Krastorio2` — three
-overhauls, but not Bob's or Angel's. Flagged under *What constrains an overhaul on top*: adding
-technologies is the mechanism most likely to interact with an overhauled tech tree, and the
-settings offer a flat-value mode that sidesteps the tech tree entirely if it does.
+**Against the promise.** Its source is unread: the portal gives the original's repository,
+`Aidiakapi/qol_research`, as both source and homepage. #8 read the original against this pack's
+promise and kept it (`qol_research`'s entry); this fork says it changed no logic. Its dependencies
+are `base >= 2.0.0` and the original's optional `space-exploration`, `nullius` and `Krastorio2`.
+*Read from the description*, 2026-10-24.
 
-**Ruled 2026-09-22 (#8): kept — tested against the promise and passes.** #8 ran the promise against
-the five members flagged under *What constrains an overhaul on top*, and this is the one where the
-two readings diverge. It adds technologies, and the tech tree is what an overhaul restructures; but
-"competes for the same ground" means duplicating content the overhaul provides, the way this pack's
-belt tiers duplicated `boblogistics`' belt tiers, and nothing in Angel's or Bob's grants player
-quality-of-life bonuses. Sitting on a shared tech tree is not competing for a place on it. The
-stricter reading would disqualify every member that adds a technology, which is most of what a
-content mod is.
-
-The flat-value mode is a real escape hatch but not one the pack can pull: setting another mod's
-default needs settings-stage Lua, which these packs do not carry.
-
-**It remains unreachable** — `factorio_version` **2.0**, against a 2.1 floor — and stays in the pack
-under #8's third rule, which leaves such members alone outside entries already marked `reconsider:`.
-That is #43's, not this ticket's. *#43, 2026-09-24: served on stable 2.0.77; unreachable only at a
-2.1 target.*
+**Recommendation: keep.** Added by #370 on 2026-10-24, as the *Stand-in* (`GLOSSARY.md`) for
+`qol_research`, which has no 2.1 release: Truls's ruling in the grill on the move to line 2.1
+(#368). It goes back to the original as the glossary entry says.
 
 ### `reverse-factory`
 
@@ -1414,6 +1376,148 @@ recorded under `Waterfill_v17` in *In the pack*.
 `Waterfill_v17`. Its recipe, technology and item are unchanged beside the overhaul, as the
 prototypes read. Placing the tile in a game and the feature delta are both still open. `safefill`
 itself is not in the pack and was not loaded.*
+
+### `Nanobots2`
+
+| | |
+|---|---|
+| **Title** | Nanobots: Early Bots 2.0 |
+| **Does** | A gun that revives nearby blueprint ghosts out of the player's own inventory long before construction robots are researched, and repurposes personal construction bots to clear items off the ground |
+| **Latest** | `3.3.2`, `factorio_version` **2.0**, 2025-03-12 |
+| **Downloads** | 44,712 |
+| **Owner** | `Regi_Mahler` |
+| **Supersedes** | `Nanobots` by `Nexela`, last `3.2.19` on 2022-04-16, 189,166 downloads |
+| **Read on** | 2026-09-21 |
+| **Status** | replaced by `Nanobots3`, 2026-10-24 (#370) |
+
+**Alternatives considered.** Searching the 2.x list by title and summary for early-construction mods
+returns `early_construction`, `spiderbots`, `disposable-construction-robots` and `blueprint-shotgun`
+— several of which name Nanobots as the thing they are an alternative *to*. None is a drop-in; they
+replace the mechanic rather than continue it. This mod is the direct 2.0 continuation and says so:
+"Fixed and reuploaded for 2.0. Thank you Nexela."
+
+*Checked 2026-10-01 (#44, #83): the terms were not recorded beyond "early-construction". Re-run over
+the union for "early construction", "nanobot" and "construction robot". **One new hit could change
+this entry: [`Nanobots2-continued`](https://mods.factorio.com/mod/Nanobots2-continued)**, *Nanobots:
+Early Bots Continued* by `goakiller900` - `3.4.4`, `factorio_version` 2.1 and no other line,
+2026-08-28, 305 downloads, a "community-maintained continuation for Factorio 2.1". It declares
+`! Nanobots2` and needs `kry_stdlib >= 2.2.4`, already a hidden member of `Grado_NonChanging`, in
+place of `stdlib2`. It is not served on the declared 2.0 line, and this mod is not served at 2.1,
+so it is a successor for the 2.1 release rather than this one, and "the only successor that
+preserves the mechanic" below is true on 2.0 only. Whether to swap is #86's. The other new hits are
+`early_construction_unofficial_2_1`, a 2.1 build of `early_construction`; `Construction_Drones`
+(`Klonan`), ground-based personal construction robots, which replaces the mechanic rather than
+continuing it; robot tiers, quality upgrades and a ghost reader; and starting-kit mods.*
+
+**Recommendation: keep.** Another `Nexela` mod rescued by someone else, the same pattern the Picker
+family shows — see *The raiguard pattern* in `docs/catalogue/Grado_NonChanging.md` for the other
+half of the authorship story. Last touched 2025-03-12, which is quiet rather than abandoned, and it
+is the only successor that preserves the mechanic.
+
+#### What its Bob's integration leaves in the recipes on `Grado_ABC` (2026-10-04, #122)
+
+A measurement. Nothing was patched, and whether to report it upstream is Truls's.
+
+`Grado_ABC`'s recorded load has eight log lines from this mod, through `stdlib2`: it looks up three
+items that do not exist (`docs/loads/Grado_ABC-2026-10-04.md`, *Conflicts*). What that leaves
+behind was read from two data dumps on Factorio 2.0.77, made on 2026-10-04 through the shared
+harness's `Invoke-HarnessDump`: the staged `Grado_ABC` (prototype list checksum `2195323740`, the
+recorded load's) and the staged `Grado_ChangingBase` (`1028326153`), which has no `boblibrary` and
+so shows the recipes as the mod writes them without Bob's. Releases: `Nanobots2` `3.3.2`,
+`stdlib2` `2.0.1`, `bobelectronics` `2.1.1`, `boblogistics` `2.1.1`, `bobwarfare` `2.1.0`.
+
+`data-updates.lua` has one block that runs when `boblibrary` is loaded. Line 11 is behind the Bob's
+setting `bobmods-logistics-disableroboports`, off by default, and did not run. Lines 12 to 21 are
+nine calls. Eight of them name a Bob's item by its name from before Bob's 2.x. `stdlib2` checks the
+item first, logs `Item ... does not exist` and changes nothing. The ninth names this mod's own
+`gun-nano-emitter` and is applied.
+
+| Recipe | Meant with Bob's | In the `Grado_ABC` dump | As meant? |
+|---|---|---|---|
+| `gun-nano-emitter` | `electronic-circuit` replaced by `basic-circuit-board` | `copper-plate` 5, `iron-plate` 10, `electronic-circuit` 2 | no |
+| `ammo-nano-constructors` | the same replacement | `iron-stick` 1, `repair-pack` 1 | yes: the recipe has no `electronic-circuit` to replace, so the failed lookup costs nothing |
+| `ammo-nano-termites` | the same replacement | `iron-stick` 1, `electronic-circuit` 1 | no |
+| `equipment-bot-chip-items` | `robot-brain-construction` added | `processing-unit` 1, `battery` 1 | no |
+| `equipment-bot-chip-trees` | `robot-brain-construction` added | `processing-unit` 1, `battery` 1 | no |
+| `equipment-bot-chip-nanointerface` | `robot-brain-construction` and `gun-nano-emitter` added | `processing-unit` 1, `battery` 1, `gun-nano-emitter` 1 | no: the emitter is there, the brain is not |
+| `equipment-bot-chip-launcher` | `robot-brain-combat` added | `processing-unit` 1, `battery` 1 | no |
+| `equipment-bot-chip-feeder` | `robot-brain-combat` added | `processing-unit` 1, `battery` 1 | no |
+
+**Seven of the eight recipes differ from what the mod meant.** Six of the seven are exactly the
+recipe the mod has without Bob's, as the `Grado_ChangingBase` dump shows them. The seventh,
+`equipment-bot-chip-nanointerface`, has the emitter and not the brain. Nothing is broken: each
+recipe lists only items that exist. What a player gets is the Nanobots items at their no-Bob's
+cost in a Bob's game.
+
+The three names, against the `Grado_ABC` dump and the staged Bob's source:
+
+| Name asked for | Status | What exists |
+|---|---|---|
+| `basic-circuit-board` | renamed | `bob-basic-circuit-board`, item and recipe, `bobelectronics` `2.1.1` (`prototypes/electronics.lua`) |
+| `robot-brain-combat` | renamed | `bob-robot-brain-combat`, item and recipe, `bobwarfare` `2.1.0` (`prototypes/robot-parts.lua`) |
+| `robot-brain-construction` | removed | `boblogistics` `2.0.0` (2025-03-30): "Combined Construction and Logistics Brains and Tools #184". The combined item is `bob-robot-brain` (`boblogistics` `2.1.1`, `prototypes/robot-parts.lua`), with `-2` to `-4` above it. No prototype of any type is named `bob-robot-brain-construction` |
+
+The newest release on each line (portal, read 2026-10-04):
+
+- **2.0:** `Nanobots2` `3.3.2` (2025-03-12) is the newest and the one measured. The mod has no 2.1
+  release.
+- **2.1:** `Nanobots2-continued` `3.4.4` (2026-08-28, `goakiller900`), fetched with its SHA-1
+  checked and read, not loaded. Its `data-updates.lua` makes the same nine calls with the same
+  three old names. It uses helpers of its own that check the item exists and skip without a word
+  if it does not. So beside Bob's it would leave the same recipes and log nothing. That is read
+  from its source against Bob's 2.0-line names. Bob's on the 2.1 line was not read.
+
+**Ruled 2026-10-24 (#370): replaced by `Nanobots3`.** It has no release declaring `factorio_version`
+2.1: its newest is `3.3.2`, 2025-03-12 (portal, read 2026-10-24). `Nanobots2-continued`, the
+continuation named above, was weighed and not taken. Ruled by Truls in the grill of 2026-10-24 on
+the move to line 2.1 (#368), and applied by #370. `Nanobots3` is a rework by another author, not a
+stand-in, so nothing sends it back. The recipe measurement above is of `3.3.2` on 2.0.77;
+`Nanobots3`'s entry says what of it carries over. With this mod, `stdlib2` leaves the closure:
+nothing else in the chain requires it.
+
+### `qol_research`
+
+| | |
+|---|---|
+| **Title** | Quality of Life research |
+| **Does** | Adds bonuses — inventory size, movement speed, hand-crafting speed, reach, mining speed — each of which can be delivered as a research line or set to a flat value in the settings |
+| **Latest** | `3.4.2`, `factorio_version` **2.0**, 2025-05-04 |
+| **Downloads** | 220,228 |
+| **Owner** | `Aidiakapi` |
+| **Read on** | 2026-09-21 |
+| **Status** | replaced by `qol_research-21`, 2026-10-24 (#370) |
+
+**Alternatives considered.** None searched; nothing about its state prompts a replacement.
+
+**Recommendation: keep.** Last touched 2025-05-04, which is quiet, but it declares `base >= 2.0.0`
+and its optional compatibility covers `space-exploration`, `nullius` and `Krastorio2` — three
+overhauls, but not Bob's or Angel's. Flagged under *What constrains an overhaul on top*: adding
+technologies is the mechanism most likely to interact with an overhauled tech tree, and the
+settings offer a flat-value mode that sidesteps the tech tree entirely if it does.
+
+**Ruled 2026-09-22 (#8): kept — tested against the promise and passes.** #8 ran the promise against
+the five members flagged under *What constrains an overhaul on top*, and this is the one where the
+two readings diverge. It adds technologies, and the tech tree is what an overhaul restructures; but
+"competes for the same ground" means duplicating content the overhaul provides, the way this pack's
+belt tiers duplicated `boblogistics`' belt tiers, and nothing in Angel's or Bob's grants player
+quality-of-life bonuses. Sitting on a shared tech tree is not competing for a place on it. The
+stricter reading would disqualify every member that adds a technology, which is most of what a
+content mod is.
+
+The flat-value mode is a real escape hatch but not one the pack can pull: setting another mod's
+default needs settings-stage Lua, which these packs do not carry.
+
+**It remains unreachable** — `factorio_version` **2.0**, against a 2.1 floor — and stays in the pack
+under #8's third rule, which leaves such members alone outside entries already marked `reconsider:`.
+That is #43's, not this ticket's. *#43, 2026-09-24: served on stable 2.0.77; unreachable only at a
+2.1 target.*
+
+**Ruled 2026-10-24 (#370): replaced by its *Stand-in* (`GLOSSARY.md`), `qol_research-21`.** It has
+no release declaring `factorio_version` 2.1: its newest is `3.4.2`, 2025-05-04 (portal, read
+2026-10-24). Ruled by Truls in the grill of 2026-10-24 on the move to line 2.1 (#368), and applied
+by #370. The stand-in goes back to this mod as its glossary entry says, and #373 watches for a 2.1
+release. #8's reading against the promise, above, is of this mod's code, which the stand-in says it
+did not change.
 
 ## Candidates, not members
 

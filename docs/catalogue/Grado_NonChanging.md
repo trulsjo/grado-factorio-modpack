@@ -65,7 +65,6 @@ Each old entry is under *Ruled out after the port* with its ruling; each new one
 pack*. A port drop reopens on a 2.1 release of the original or of an updated fork, and the stand-in
 goes back as `GLOSSARY.md` says; #373 watches the originals.
 
-
 ## In the pack
 
 In dependency-list order.

@@ -136,6 +136,17 @@ bundle's members are ticketed for assessment one at a time, as #46.
 - `beautiful_bridge_railway`
 - `crafting_combinator`
 
+### At the move to line 2.1, 2026-10-24 (#370)
+
+**Still 20 members.** Two had no release declaring `factorio_version` 2.1 on the resolve of
+2026-10-24 (*Resolves on stable 2.1.23* below), and Truls ruled both the same day. Reasons are in
+`docs/catalogue/Grado_ChangingBase.md`, *Decisions, 2026-10-24*.
+
+| Member | Now | Kind |
+|---|---|---|
+| `Nanobots2` | `Nanobots3` | replaced; the hidden `stdlib2` leaves with it |
+| `qol_research` | `qol_research-21` | *Stand-in* |
+
 ## Grado_ABC
 
 The 1.1 `Grado_ABCX` held 56 mods and is split here between `Grado_ABC` and `Grado_ABCX`. This

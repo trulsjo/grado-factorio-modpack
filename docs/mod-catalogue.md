@@ -219,7 +219,7 @@ instead. Use it sparingly — a survey where several entries reconsider has not 
   ruling paragraph names the kind: a *Port drop* (`GLOSSARY.md`) with the release the original
   lacked, or a replacement. The new member's entry under *In the pack* carries the
   `**Supersedes**` row, and its **Recommendation** says whether it is a *Stand-in*, which goes
-  back to the original as the glossary entry says, or a member by another author, which nothing
+  back to the original as the glossary entry says, or a member in its own right, which nothing
   sends back. #369's six in `docs/catalogue/Grado_NonChanging.md` are the first.
 
 - **A mod added after the port** is the mirror of the one above: a mod that was never in the 1.1

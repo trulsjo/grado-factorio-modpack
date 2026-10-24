@@ -10,14 +10,12 @@ Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below w
 **2026-09-20** and is reproduced from the fetched data rather than retyped, except where a later
 date is given inline, such as the notes marked *Superseded 2026-09-23 by #15*.
 
-*2026-10-24 (#369): 26 members to 24 at the move to line 2.1. Two port drops and four
-replacements; see* Decisions, 2026-10-24 *below. The paragraph after this one is the reading of
-2026-09-20.*
-
 **All 26 current members have a 2.x release.** None is stranded on 1.1 — nor were the 29 the
 survey read on 2026-09-20, before #7 removed three of them. That is not the same as being
 installable: see *Six members cannot be downloaded* below, found on 2026-09-22 - at a 2.1 target
-only. *On stable 2.0.77 the pack resolves (2026-09-24, #43).*
+only. *On stable 2.0.77 the pack resolves (2026-09-24, #43).* *2026-10-24 (#369): 26 members to
+24 at the move to line 2.1. Two port drops and four replacements; see* Decisions, 2026-10-24
+*below.*
 
 ## Decisions, 2026-09-22 (#7)
 
@@ -411,8 +409,8 @@ by default, and both write map tags and save data, not entities. *Read from sour
 `1.7.3` is the release a 2.1 game installs.
 
 **Recommendation: keep.** Added by #369 on 2026-10-24 in `YARM`'s place: Truls's ruling in the
-grill on the move to line 2.1 (#368). It is not a stand-in, so nothing sends it back. Its default
-keys are read with the 2.1 load (#372).
+grill on the move to line 2.1 (#368). It is not a stand-in, so nothing sends it back. It defines
+no custom-input or shortcut, so it has no default key.
 
 ### `even-distribution`
 
@@ -485,7 +483,8 @@ against the promise on 2026-10-24 by the grill's subagents:
   `SpeedControl`, with a top-bar button. Not taken: the button is drawn for player 1 only
   (`control.lua:43`) and any player can change the speed.
 - **`tick-control`** (`herrabanani`, `1.2.1`, 171 downloads) publishes no source, so it could not
-  be read; its pause key, `Ctrl+Shift+P`, is `pump`'s, a `Grado_ABC` member.
+  be read. Its description gives its pause key as `Ctrl+Shift+P`, which is `pump`'s, a `Grado_ABC`
+  member, on 2.0.77 (`docs/loads/Grado_ABC-2026-10-04.md`).
 
 274 downloads against `SpeedControl`'s 42,478 at its own reading: a young mod, not a judgement.
 
@@ -576,7 +575,7 @@ controls.
 | | |
 |---|---|
 | **Title** | Where Is My Body |
-| **Does** | Draws lines from the player to their corpses, shown and hidden with the Alt key, and tags the corpses on the map |
+| **Does** | Draws lines from the player to their corpses, shown in Alt mode, and tags the corpses on the map |
 | **Latest** | `3.0.0`, `factorio_version` **2.1**, 2026-07-02 |
 | **Downloads** | 8,094 |
 | **Owner** | `ZwerOxotnik` |
@@ -594,9 +593,9 @@ on by default (`settings.lua:8`) and are chart tags, not entities. Its dependenc
 the optional `zk-lib` and `gvv`, so it brings no hidden member. *Read from source.*
 
 **Recommendation: keep.** Added by #369 on 2026-10-24 in `WhereIsMyBody`'s place: Truls's ruling in
-the grill on the move to line 2.1 (#368). It is a rewrite by another author, not a stand-in, so
-nothing sends it back. Whether its Alt key clashes with another member is read with the 2.1 load
-(#372).
+the grill on the move to line 2.1 (#368). It is a rewrite, not a fork or port, so it is not a
+stand-in and nothing sends it back. It defines no key: its lines are drawn only in the game's own
+Alt mode (`models/WhereIsMyBody.lua:157`, *Read from source* by the pre-PR review).
 
 ## Dropped during the port
 
@@ -707,11 +706,11 @@ not overwritten on paste - the entity adopts the existing one.
 ## Ruled out after the port
 
 Five mods that survived the 1.1 -> 2.0 port and were removed on 2026-09-22 by #7 — by a
-decision, not by an upstream <!-- deliberate: upstream --> gap. *Six more since 2026-10-24 (#369),
-at the move to line 2.1: two port drops and four replaced, at the end of this section.* Entry
-format: `docs/mod-catalogue.md`, *a mod ruled out after the port*. Each keeps the recommendation the
+decision, not by an upstream <!-- deliberate: upstream --> gap. Entry format:
+`docs/mod-catalogue.md`, *a mod ruled out after the port*. Each keeps the recommendation the
 survey wrote, with the ruling appended below it, so what was recommended and what was decided stay
-separable.
+separable. *Six more since 2026-10-24 (#369), at the move to line 2.1: two port drops and four
+replaced, at the end of this section.*
 
 In former dependency-list order.
 
@@ -2607,10 +2606,6 @@ What `CLAUDE.md` still lists as open is the 2.1 release.*
 
 ## Six members cannot be downloaded
 
-*2026-10-24 (#369): settled at the move to line 2.1. These six are the six the resolve on line 2.1
-found missing that day; two left as port drops and four were replaced. See* Decisions,
-2026-10-24 *above. The section is left as found.*
-
 Found on 2026-09-22 while checking whether `AfraidOfTheDark` could move up a tier. It is the other
 half of the problem the section above describes, and no `factorio_version` declaration fixes it.
 
@@ -2677,11 +2672,11 @@ list above is still left as measured.
 installed by hand on 2.1. The docs say it is unsupported and the portal will not serve it; nothing
 here has been loaded in Factorio.
 
-## Keys against base 2.0.77's own controls (#96)
+*2026-10-24 (#369): settled at the move to line 2.1. These six are the six the resolve on line 2.1
+found missing that day; two left as port drops and four were replaced. See* Decisions,
+2026-10-24 *above. The section is left as found.*
 
-*2026-10-24 (#369): read on 2.0.77 against the member list of that day. `YARM`, `SpeedControl`,
-`WhereIsMyBody` and `PipeVisualizer-Updated` have since left the pack, and the keys of their
-replacements are read with the 2.1 load (#372).*
+## Keys against base 2.0.77's own controls (#96)
 
 Read **2026-10-02** on the installed 2.0.77 game. The key comparisons above, by the load record
 (#17) and by #41 and #89, matched mods against mods and could not see the game's own controls.
@@ -2779,6 +2774,10 @@ defaults as `KP_PLUS` and `KP_MINUS`; see the note of that date in
    does not have.
 4. Compare the keys exactly, modifiers in one order and `COMMAND` read as `CONTROL`. Set linked
    inputs aside.
+
+*2026-10-24 (#369): read on 2.0.77 against the member list of that day. `YARM`, `SpeedControl`,
+`WhereIsMyBody` and `PipeVisualizer-Updated` have since left the pack, and the keys of their
+replacements are read with the 2.1 load (#372).*
 
 ## What was not checked
 

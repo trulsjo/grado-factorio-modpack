@@ -37,8 +37,9 @@ A fork or port of a member mod that holds the member's slot while the original h
 the *Declared line*. It goes back to the original once the original has such a release, by itself
 where that costs nothing: before the pack's first release, or when the original's release declares
 `migrates_from` covering the stand-in. Otherwise the original's release reopens the question,
-because changing the name breaks the stand-in's save data. A mod by another author that does the
-same job is a member, not a stand-in, and nothing sends it back. Added 2026-10-24.
+because changing the name breaks the stand-in's save data. A mod that does the same job and is
+not a fork or port of the member is a member in its own right, and nothing sends it back. Added
+2026-10-24.
 _Avoid_: fork or port for the role (both name what the mod is, not the slot it holds)
 
 **Load drop**:

@@ -61,9 +61,9 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   changed: one member each. Both gained a promise (`GLOSSARY.md`). **`Grado_ABCS` is ABC *beside*
   Space Age, not merged with it**, so no bridge mod; #31 stays open to revisit that. ABCX keeps its
   own `! space-age` beside the fork's. `quality` and `elevated-rails` go unnamed, because
-  `space-age` requires both (read from the installed game, 2.0.77). *Since 2026-10-24 (#368)
-  `Grado_ABCS` names `quality`: the 2.1.23 build of `space-age` only recommends it.* Reasons per
-  mod in `docs/catalogue/Grado_ABCX.md` and `docs/catalogue/Grado_ABCS.md`.
+  `space-age` requires both (read from the installed game, 2.0.77). Reasons per mod in
+  `docs/catalogue/Grado_ABCX.md` and `docs/catalogue/Grado_ABCS.md`. *Since 2026-10-24 (#368)
+  `Grado_ABCS` names `quality`: the 2.1.23 build of `space-age` only recommends it.*
 - **A pack version does not move before its first release** (2026-09-22). All five stay at
   `0.1.0` through any number of dependency edits; the major/minor rule under *Conventions* starts
   applying at the first published release. `0.x` to `1.0.0` is the one major that signals
@@ -423,9 +423,9 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   `GLOSSARY.md`. A port drop reopens on a release on the declared line of the original or of an
   updated fork of it; a stand-in goes back to its original as its entry says. *Members:* twelve
   named members had no 2.1 release on the resolve of 2026-10-24, and each was ruled the same day:
-  #369 for `Grado_NonChanging`, #370 for `Grado_ChangingBase`, #371 for `Grado_ABC`, with the
-  reasons in each pack's catalogue. *Evidence before a first release:* a *Load* of each pack on
-  2.1 (#372), and the play sessions #26, #27 and #29 on 2.1, as #28 already was.
-  `Grado_NonChanging`'s 2.0 play session (#17) stands as dated evidence. *Watch:* #373 reads the
-  originals of the port drops and stand-ins before each pack release. No ADR: a 2.0 release could
-  still be made later, and before a first release no member change is hard to undo.
+  #369 for `Grado_NonChanging`, 26 mods to 24; #370 for `Grado_ChangingBase`, still 20; #371 for
+  `Grado_ABC`, 38 mods to 35. The reasons are in each pack's catalogue. *Evidence before a first
+  release:* a *Load* of each pack on 2.1 (#372), and the play sessions #26, #27 and #29 on 2.1, as
+  #28 already was. `Grado_NonChanging`'s 2.0 play session (#17) stands as dated evidence. *Watch:*
+  #373 reads the originals of the port drops and stand-ins before each pack release. No ADR: a 2.0
+  release could still be made later, and before a first release no member change is hard to undo.

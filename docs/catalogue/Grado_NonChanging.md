@@ -707,10 +707,11 @@ not overwritten on paste - the entity adopts the existing one.
 ## Ruled out after the port
 
 Five mods that survived the 1.1 -> 2.0 port and were removed on 2026-09-22 by #7 — by a
-decision, not by an upstream gap. *Six more since 2026-10-24 (#369), at the move to line 2.1: two
-port drops and four replaced, at the end of this section.* Entry format: `docs/mod-catalogue.md`,
-*a mod ruled out after the port*. Each keeps the recommendation the survey wrote, with the ruling
-appended below it, so what was recommended and what was decided stay separable.
+decision, not by an upstream <!-- deliberate: upstream --> gap. *Six more since 2026-10-24 (#369),
+at the move to line 2.1: two port drops and four replaced, at the end of this section.* Entry
+format: `docs/mod-catalogue.md`, *a mod ruled out after the port*. Each keeps the recommendation the
+survey wrote, with the ruling appended below it, so what was recommended and what was decided stay
+separable.
 
 In former dependency-list order.
 

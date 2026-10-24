@@ -1,8 +1,8 @@
 # Grado Non-Changing: quality of life
 
-A modpack of quality-of-life mods for Factorio 2.1. **It adds no content:** no new items,
-buildings or recipes. The mods tune how the game looks and handles, remember some data of their own
-in your save, and change your factory only when you ask them to.
+A modpack <!-- deliberate: modpack --> of quality-of-life mods for Factorio 2.1. **It adds no
+content:** no new items, buildings or recipes. The mods tune how the game looks and handles,
+remember some data of their own in your save, and change your factory only when you ask them to.
 
 It is the base of the Grado modpacks. Every other Grado pack includes it.
 

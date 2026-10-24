@@ -1,8 +1,8 @@
 # grado-factorio-modpack
 
-Five Factorio **2.1** modpacks, ported from the three 1.1 packs published on the mod portal by
-`ostogvin`. A pack is an `info.json` and nothing else unless compatibility between member mods
-forces Lua into it.
+Five Factorio **2.1** modpacks, <!-- deliberate: modpacks --> ported from the three 1.1 packs
+published on the mod portal by `ostogvin`. A pack is an `info.json` and nothing else unless
+compatibility between member mods forces Lua into it.
 
 ## The chain
 

@@ -2605,7 +2605,9 @@ more.*
 
 *Noted 2026-10-06 (#158), on "one of the decisions `CLAUDE.md` lists as still open" above: ruled
 2026-09-24 (#16), the declared line is `2.0`, and the record is that entry in `docs/decisions.md`.
-What `CLAUDE.md` still lists as open is the 2.1 release.*
+What `CLAUDE.md` still lists as open is the 2.1 release.* *2026-10-24 (#368): the pack declares line
+2.1 since, at `base >= 2.1.22`, so the 2.0 declaration this section argues from is gone. Whether the
+pack loads on 2.1 is #372, and `CLAUDE.md` no longer lists the 2.1 line as open.*
 
 ## Six members cannot be downloaded
 

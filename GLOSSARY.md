@@ -19,8 +19,9 @@ _Avoid_: dependency (true but wider - it also covers `base` and optional entries
 **Hidden member**:
 A mod in a pack's mandatory closure that no pack's `dependencies` names. It is not a *Member mod*,
 which is named: it is installed because a member mod requires it, and it arrives and leaves with
-that member. `stdlib2` is one: `Nanobots2` requires it and no pack lists it. Added 2026-10-04
-(#81).
+that member. `flib` is one: `PipeVisualizer-2-1-Support` requires it, among others, and no pack
+lists it. Added 2026-10-04 (#81), with `stdlib2` as the example until 2026-10-24, when `Nanobots2`,
+which required it, left the pack (#370).
 _Avoid_: unnamed dependency, transitive dependency, and "hidden" for anything in the closure that a
 lower pack does name
 

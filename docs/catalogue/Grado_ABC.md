@@ -43,6 +43,9 @@ after the port*.
 **#330 took the pack from 39 mods to 38 on 2026-10-20**: `PlutoniumEnergy` out, by choice. The
 list now holds 40 entries - `base >= 2.0.74`, `Grado_ChangingBase` and 38 mods. Its ledger is
 *Decisions, 2026-10-20 (#330)* below, and the entry is now under *Ruled out after the port*.
+**#371 took the pack from 38 mods to 35 on 2026-10-24**, at the move to line 2.1: three port drops
+and one stand-in. The list now holds 37 entries - `base >= 2.1.22`, `Grado_ChangingBase` and 35
+mods. Its ledger is *Decisions, 2026-10-24 (#371)* below.
 
 Four findings hold across all 45:
 
@@ -207,7 +210,25 @@ packs that hold it each load without it (`docs/loads/`, the records of that date
 member at its release of 2026-10-04, and the log complaints of #125 unchanged. No member
 depends on it: none declares it, and `RealisticReactorsReborn`'s branch for it goes quietly.
 At stable 2.1, with #290, the check is that still no member depends on its items. That is a
-check, not a reopening.
+check, not a reopening. *2026-10-24 (#371): `RealisticReactorsReborn` is replaced by its stand-in
+`RealisticReactorRebornPort`, whose source is unpublished, so whether it keeps that branch is
+unread; the 2.1 load (#372) and #290's check read it.*
+
+## Decisions, 2026-10-24 (#371)
+
+Truls ruled on each member with no release declaring `factorio_version` 2.1, in the grill on the
+move to line 2.1 (#368). The resolve on line 2.1 of that day found these four and no other member of
+this pack missing (`docs/porting-notes.md`, *Resolves on stable 2.1.23*). **38 mods to 35.**
+
+| mod | ruling |
+|---|---|
+| `angels-smelting-extended` | **out**, a *Port drop* |
+| `WideChestsBobs` | **out**, a *Port drop*; what it leaves is measured on the 2.1 dump (#372) |
+| `RealisticFusionPowerPort` | **out**, a *Port drop*; the slot stays meant for `realistic-fusion-refreshed` (#9) |
+| `RealisticReactorsReborn` | **replaced** by `RealisticReactorRebornPort`, its *Stand-in* |
+
+Each old entry is under *Ruled out after the port* with its ruling; the new one is under *In the
+pack*. #373 watches the originals.
 
 ## The split between #4 and #5
 
@@ -386,252 +407,43 @@ largest single block of content in the pack that is neither Angel's nor Bob's.
 *Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition stands with
 a patch from Angel's queue merged in, for 2 names.
 
-### `RealisticFusionPowerPort`
+### `RealisticReactorRebornPort`
 
 | | |
 |---|---|
-| **Title** | Realistic Fusion Power Port |
-| **Does** | A port of `RealisticFusionPower` to Factorio 2.0: fusion power as an alternative endgame to fission |
-| **Latest** | `1.9.2`, `factorio_version` **2.0**, 2025-12-13 |
-| **Downloads** | 1,863 |
-| **Owner** | `Durikkan` |
-| **Supersedes** | `RealisticFusionPower` by `Romner_set`, last `1.8.18` on 2024-10-25, 29,430 downloads |
-| **Read on** | 2026-09-23 |
+| **Title** | Realistic Reactors Reborn (Port 2.1) |
+| **Does** | `RealisticReactorsReborn`'s simulated reactor, ported to 2.1: control rods, coolant loops, emergency cooling, breeder operation and meltdowns |
+| **Latest** | `2.1.3`, `factorio_version` **2.1**, 2026-07-22 |
+| **Downloads** | 68 |
+| **Owner** | `JoeWhizer` |
+| **Supersedes** | `RealisticReactorsReborn`, last `2.0.27` (`factorio_version` 2.0), 2025-08-01 |
+| **Read on** | 2026-10-24 |
 
-**A comparison slot.** Truls wants it next to his own
-`realistic-fusion-refreshed`, which may take the slot once it is published. The two can be installed
-together: the sibling project shares no prototype names with this one, and says so in its own
-description.
+**Alternatives considered.** The only 2.1 port of `RealisticReactorsReborn` found in the 2.1
+listing by name, title and summary (2026-10-24, #368's grill). The original's predecessor,
+`RealisticReactors` by `IngoKnieto`, is 1.1 only. 68 downloads in three releases: the smallest
+member of the pack.
 
-**It ignores the overhaul it sits in.** `1.9.0` (2025-01-02) declared optional support for
-`angelspetrochem`, `angelssmelting`, `angelsindustries`, `bobelectronics`, `bobplates` and
-`bobpower`, among others. `1.9.2` removed all of them, and its only dependency is `base >= 2.0`. So
-neither fusion mod in view integrates with Angel's or Bob's today. That passes `Grado_ABC`'s
-promise, which asks a member not to conflict with the overhaul mods rather than to extend them.
+**What its description says** (read 2026-10-24): "Old saves are unsupported", since "the internal
+package name changed" and the original's `storage` is not migrated. It "retains the existing
+`RRR-*` prototype IDs, settings, custom input, remote interface, recipes, balance values", and "A
+Factorio 2.1 runtime was not available at this checkpoint, so startup, reactor operation [...] and
+meltdown behavior still require in-game testing." So its author has not loaded it: the 2.1 load
+(#372) is the first run this pack has of it. It publishes no source.
 
-It declares `factorio_version` **2.0**, so it is not served to a 2.1 game, and is tracked under #43
-with the other six members here that do the same. It declares nothing about Space Age.
+**Against the promise.** Its only dependency is `base >= 2.1`, and it declares nothing about Space
+Age, so nothing in it forecloses either branch. Its prototypes are the original's by its
+description, and the original passed (#9). *Read from the description.*
 
-**Recommendation: keep.** Added by #9 on 2026-09-23, replacing `RealisticFusionPower`, as a
-comparison slot for `realistic-fusion-refreshed`. Not yet loaded in game. *Loaded 2026-10-04 (#116),
-at `1.9.2`, in the pack's recorded load. Not played.*
+**One integration may not carry over.** `Clowns-Nuclear`, a hidden member, declares
+`(?) RealisticReactorsReborn`, the original's name. Whether its integration also answers to the
+port's name is unread; if it checks for the original by name, it does not fire. *Inferred* from the
+name change; the 2.1 load and dump (#372) show it.
 
-*Traced 2026-10-20 (#331):* named in *Names members both define*, below: another mod's definition
-replaces its own, for 3 names. They are its `angels-electric-boiler` as item, machine and recipe,
-replaced by `angelspetrochem`'s. That leaves its `rfp-boiling` recipes with no machine,
-*Inferred* from the trace and the source read in #338.
-
-### `RealisticReactorsReborn`
-
-| | |
-|---|---|
-| **Title** | Realistic Reactors Reborn |
-| **Does** | Replaces the vanilla reactor with a simulated one: control rods, coolant loops, emergency cooling, breeder operation and meltdowns if the heat is not managed |
-| **Latest** | `2.0.27`, `factorio_version` **2.0**, 2025-08-01 |
-| **Downloads** | 3,437 |
-| **Owner** | `OwnlyMe` |
-| **Supersedes** | `RealisticReactors` by `IngoKnieto`, last `3.1.5` on 2024-04-15, 23,678 downloads |
-| **Read on** | 2026-09-21 |
-
-**Alternatives considered.** None found offering reactor simulation on 2.x. The mod it replaces has
-no 2.x release and its last 1.1 release predates Factorio 2.0.
-
-**The download gap is the thing to read carefully here.** 3,437 against the original's 23,678 is not
-the usual successor asymmetry — `RealisticReactorsReborn` is a **2.0-only mod with no 1.1 history at
-all**, its entire release list being `factorio_version` 2.0, so it has had the whole 2.x period to
-accumulate 3,437 and no more. Three members sit below it —
-`True-Nukes_Continued` at 2,777, `WideChestsBobs` at 805 and `True-Nukes-Graphics_Continued` at
-346 — so it is fourth from the bottom of the 45 rather than last, and two of those three are its
-neighbours in the nuclear subsystem. Its last release was 2025-08-01, over a year before this
-reading. *Since 2026-10-04 (#81) the two `True-Nukes` mods are out, so of those three only
-`WideChestsBobs` is still a member.*
-
-`Clowns-Nuclear` — a hidden mandatory member, see below — declares `(?) RealisticReactorsReborn`,
-so the Clowns nuclear chain already knows about it.
-
-**Recommendation: keep**, and treat it as the member most worth watching for abandonment. Nothing
-replaces it, and the pack's nuclear content is built around it; that is an argument for keeping it
-and also the reason its staleness matters.
-
-**Ruled 2026-09-23 (#9): kept.** It declares `factorio_version` **2.0**, so it is not served to a
-2.1 game — the portal serves it only at 2.0. Under #8's third rule that breaks a tie only in an
-entry already marked `reconsider:`, and this one was not, so it stays and is tracked under #43.
-Whether it can be installed at all turns on #16: every named member of the three lower packs has at
-least one 2.0 release (measured 2026-09-23), so on a 2.0 target this mod is served.
-
-### `WideChestsBobs`
-
-| | |
-|---|---|
-| **Title** | Merging Chests Bobs |
-| **Does** | Adds Bob's-material variants of the merged chests, so the `WideChests` merging mechanic covers Bob's chest tiers and not only the base-game ones |
-| **Latest** | `2.0.0`, `factorio_version` **2.0**, 2025-07-27 |
-| **Downloads** | 805 |
-| **Owner** | `Atria` |
-| **Overlaps** | `angelsaddons-storage` (`Grado_ABC`) |
-| **Read on** | 2026-09-21 |
-
-**Alternatives considered.** None; it is the Bob's bridge for a specific mod in the pack below and
-has no substitute that is not that mod.
-
-It is the fifth member of the `WideChests` family and the only one in this pack — the other four are
-`Grado_ChangingBase` members. Its mandatory dependencies are `WideChests >= 6.0.0`, `boblogistics`
-and `bobplates`, all three already in the chain, so it adds no hidden member of its own.
-
-**The overlap with `angelsaddons-storage` is within-pack and is the half #30 does not cover.**
-`angelsaddons-storage` offers warehouses and silos; this mod extends a merging mechanic to Bob's
-chests. Both are in `Grado_ABC`, so there is no lower pack to defer to and the comparison sits in
-this file, under *Overlaps*. The four-mod cross-pack half is #30's, against
-`docs/catalogue/Grado_ChangingBase.md`. Whether the row above may name a same-pack mod at all is
-**#33**.
-
-**Recommendation: keep**, with the caveat that it is the smallest mod in the pack at 805 downloads
-and inherits whatever #30 concludes about the family's cost. Under
-`docs/catalogue/Grado_ChangingBase.md`'s finding that the merging mods' load cost scales with the
-number of chest types above them, this is the mod that adds those types.
-
-**Ruled 2026-09-23 (#9): kept.** It declares `factorio_version` **2.0**, so it is not served to a
-2.1 game — the portal serves it only at 2.0. Under #8's third rule that breaks a tie only in an
-entry already marked `reconsider:`, and this one was not, so it stays and is tracked under #43.
-Whether it can be installed at all turns on #16: every named member of the three lower packs has at
-least one 2.0 release (measured 2026-09-23), so on a 2.0 target this mod is served.
-
-*Ruled 2026-10-22 (#33):* the row above may name a same-pack mod. The `WideChests` family
-straddles the pack boundary, so the row stands under the exception in `docs/mod-catalogue.md`,
-*Two kinds of duplication*.
-
-### `angels-smelting-extended`
-
-| | |
-|---|---|
-| **Title** | Angel's Extended Smelting and Compression |
-| **Does** | Extends Angel's Smelting with metal-mixing recipes for the alloys (brass, bronze and the rest) as an alternative to the ingot route, compression and un-compression of cast metal forms, and an Ironworks that casts gears, pipes and underground pipes straight from molten metal |
-| **Latest** | `2.0.01`, `factorio_version` **2.0**, 2026-08-22 |
-| **Downloads** | 18,573 |
-| **Owner** | `pezzawinkle` |
-| **Read on** | 2026-09-21 |
-
-**Alternatives considered.** One real candidate, found by searching the 2.x list for the AngelBob
-ecosystem rather than by name: **`angelsextended-remelting`**, *Angel's Extended - Remelting* by
-`Aragas` — `2.0.0`, `factorio_version` 2.0, 2026-02-27, 1,206 downloads. It covers the same ground
-from the other direction: remelting plates back to molten metal, and a four-tier Alloy Mixer that
-"mixes molten metals into alloys directly, bypassing the ingot stage", which is this mod's alloy
-feature almost word for word. It also declares optional support for `bobplates` and
-`Clowns-Processing`, both of which are here. It is not obviously better — 1,206 downloads against
-18,573, and no compression or Ironworks — but it is a genuine alternative and the first one recorded
-for this pack. *Checked 2026-10-01 (#44, #83): the terms were not recorded beyond "the AngelBob
-ecosystem". Re-run over the union by name, title and summary for "angel", "alloy" and "remelt":
-thirteen hits are in the 2.1 listing alone, and none is an alternative. The nearest,
-`angelsqualitysmelting` (`usafphoenix`, 2.1, 2026-09-10, 8 downloads), adds quality-chaining
-recipes to Angel's smelting, not alloy mixing, compression or casting.*
-
-**This is the entry to distrust in this survey, and the reason is its release history.** Its 2.x
-release is a single one: `2.0.01` on 2026-08-22, the first release of any kind since `1.0.14` on
-2024-05-28. It is the only part-1 member declaring `factorio_version` 2.0 rather than 2.1, and it
-shipped *after* the whole Angel's set moved to 2.1 on 2026-07-27, so the author saw 2.1 and stayed
-on 2.0. Its Angel's dependencies carry no version floors at all, so it will resolve against the 2.1
-Angel's mods that are actually installed — resolving is not the same as working, and this mod
-modifies Angel's Smelting's recipes directly.
-
-**Recommendation: reconsider:** whether a one-release 2.0 port of a 2024-dormant mod should be a
-mandatory member of the core both end-games build on, and if so whether `angelsextended-remelting`
-covers enough of it. Not a recommendation to drop — the compression and Ironworks features have no
-substitute found — but it is the member of this half most likely to be the first thing that breaks
-when the pack is first loaded, and the only one where that can be said from the portal alone.
-
-**Ruled 2026-09-23 (#9): kept for now.** The rule 3 tie-break was available, since the entry is
-`reconsider:` and the mod declares `factorio_version` 2.0, and it was not taken. The reason is the
-alternative: from the two mods' descriptions, **Truls does not read `angelsextended-remelting` as
-an alternative to this mod.** They seem to extend different parts of the melting process, with
-mixing, compression and the Ironworks here, and remelting and the Alloy Mixer there. The survey's
-"a genuine alternative" above is therefore not accepted as written. **#50** assesses the two side by
-side, and this ruling is revisited when it lands.
-
-*#50, 2026-09-30: the comparison is under* Candidates, not members, *read from both mods' 2.x
-code. They are complements. In `2.0.01` this mod no longer mixes molten metals at all; its
-changelog removed that. No name collision was found. The "almost word for word" above held only
-for `1.0.14`'s off-by-default setting.*
-
-#### The `angels-liquid-molten-invar` redefinition, measured (2026-10-01, #80)
-
-#50 found that with `bobplates` this mod defines the fluid `angels-liquid-molten-invar`, which
-Angel's already defines, and left it unmeasured. Measured here at the releases a 2.0.77 game
-resolves, read from `.mod-cache/Grado_ABC.pins.psd1` on 2026-10-01: `angelssmelting` `2.0.5`,
-`angels-smelting-extended` `2.0.01`, `bobplates` `2.1.1`, `angelsrefining` `2.0.4`.
-
-**The two definitions, field by field.** Angel's is
-`angelssmelting/prototypes/items/angels-alloy-invar.lua:5-18`; this mod's is
-`angels-smelting-extended/prototypes/items/alloys-extended.lua:7-19`. Both sit behind
-`if mods["bobplates"]`.
-
-| Field | `angelssmelting` `2.0.5` | `angels-smelting-extended` `2.0.01` |
-|---|---|---|
-| `icon`, `icon_size` | `molten-invar.png`, 64 | the same |
-| `icon_mipmaps` | absent | `4` (line 12) |
-| `subgroup` | `"angels-alloys-casting"` (line 10) | absent |
-| `order` | `"d[invar]-a[liquid-molten-invar]"` (line 11) | absent |
-| `default_temperature` | `0` (line 12) | `100` (line 13) |
-| `max_temperature` | `0` (line 16) | `100` (line 17) |
-| `heat_capacity` | `"0kJ"` | the same |
-| `base_color` | 95/256, 125/256, 122/256 (line 14) | the same values, from `ASE.tables.coil_metals["invar"].tint` (`prototypes/data-tables.lua:9`) |
-| `flow_color` | the same as `base_color` (line 15) | `angelsmods.functions.fluid_color("Fe2Ni")` (line 16), an orange-brown |
-| `auto_barrel` | `false` | the same |
-
-Neither sets `fuel_value`, `gas_temperature` or `hidden`.
-
-**Which wins: this mod's, whole.** `data:extend` replaces a prototype rather than merging it, and
-this mod depends on `angelssmelting`, so its `data.lua` runs second. A `--dump-data` run on
-Factorio 2.0.77 (build 84539, win64, Steam), base only, read the fluid back as this mod's
-definition: `default_temperature` 100, `max_temperature` 100, `icon_mipmaps` 4, no `subgroup` and
-no `order`, `flow_color` {r 0.592, g 0.432, b 0.117}. Nothing later in the data stage puts Angel's
-fields back. The run went through the shared harness's `New-LoadHarness` and
-`Invoke-HarnessDump`, which use a temp mod directory and their own write-data directory, so the
-player's mods and data were not touched. **It was not a load of the whole pack.** The first dump,
-with every staged mod enabled, failed in the data stage on `Warheads_Continued` `0.0.21`
-(`prototypes/weapontype-sanitise.lua:344`, "attempt to index field 'ammo_type' (a nil value)"), a
-hidden member pulled in by `True-Nukes_Continued` `0.3.36`. The dump that is read here disabled
-`Warheads_Continued`, `True-Nukes_Continued`, `True-Nukes-Graphics_Continued` and the pack itself,
-which requires them. **So the dump is not of `Grado_ABC`'s full
-closure.** None of the four mentions the fluid, so the reading of it should not depend on them,
-but that is a reading of their code, not a measurement.
-
-**What depends on it.** Six recipes in the dump make or use the fluid, and none sets a
-`temperature`, `minimum_temperature` or `maximum_temperature` on it:
-
-| Recipe | From | Role |
-|---|---|---|
-| `angels-liquid-molten-invar` | `angelssmelting`, `prototypes/recipes/smelting-alloy-invar.lua:5-21` | makes 360 from steel and nickel ingots |
-| `angels-plate-invar` | the same file, lines 23-44 | uses 40, makes 4 `bob-invar-alloy` |
-| `angels-roll-invar-casting` | this mod, `prototypes/recipes/compressing-extended.lua:24` | uses 80 |
-| `angels-roll-invar-casting-fast` | the same file, line 79 | uses 140 |
-| `angels-roll-invar-casting-rfp-ddw` | `RealisticFusionPowerPort` `1.9.2`, a copy of the roll casting made in `data-final-fixes.lua:168-239` | uses 80 |
-| `rf-angels-liquid-molten-invar` | `reverse-factory` `9.1.5`, `func.lua:136` | uses 360, returns the ingots |
-
-So the temperature change reaches no recipe: the fluid is made at 100 instead of 0, and nothing
-asks what temperature it is. With `heat_capacity` `0kJ` in both, it carries no heat either way.
-What a player can see is all display: the colour of the fluid in pipes and machine windows, and,
-with no `subgroup`, where the fluid sorts in Factoriopedia and the signal picker - the game's
-default fluid subgroup instead of Angel's invar casting row. `icon_mipmaps` was removed in 2.0
-and is ignored. This mod's `prototypes/override.lua:55-63` also moves the invar *recipes* into its
-own `angels-invar-casting` subgroup, which is the mod doing its job, not the redefinition.
-
-**Not checked.** Nothing here ran a tick or opened the game, so the colour and sorting above are
-read from the dump, not seen. A save made before this mod was added would hold the fluid at 0
-and receive it at 100. Factorio mixes the two by averaging, and with no recipe testing the
-temperature that should be harmless, but it was not tried.
-
-**What the measurement recommends: no conflict.** The entry's **Recommendation** above stands as
-written; whether this changes it is Truls's. The redefinition changes how the fluid looks and where
-it sorts,
-not what any recipe does, so it does not break the pack's promise. Nothing needs doing for the
-pack. If a fix is wanted, it is upstream: this mod's `alloys-extended.lua` could change the fields
-it wants in `data.raw` instead of replacing the prototype, which would keep Angel's `subgroup` and
-`order`. The `Warheads_Continued` failure is a separate and larger finding, and not this entry's: it
-is
-#81. *Ruled 2026-10-04 (#81): the nukes mods are out; see* Decisions, 2026-10-04 (#81).
-
-*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition replaces
-another mod's, for 2 names.
+**Recommendation: keep.** Added by #371 on 2026-10-24, as the *Stand-in* (`GLOSSARY.md`) for
+`RealisticReactorsReborn`, which has no 2.1 release: Truls's ruling in the grill on the move to line
+2.1 (#368). It goes back to the original as the glossary entry says. If the pack does not load with
+it beside `Clowns-AngelBob-Nuclear` on 2.1, it becomes a *Load drop*.
 
 ### `angelsaddons-cab`
 
@@ -680,7 +492,7 @@ dependencies the list does not name*.
 | **Latest** | `2.1.1`, `factorio_version` **2.1**, 2026-07-14 |
 | **Downloads** | 187,724 |
 | **Owner** | `Arch666Angel` |
-| **Overlaps** | `WideChests`, `WideChestsAllTypes`, `WideChestsLogistic`, `WideChestsUnlimited` (`Grado_ChangingBase`); `WideChestsBobs` (`Grado_ABC`) |
+| **Overlaps** | `WideChests`, `WideChestsAllTypes`, `WideChestsLogistic`, `WideChestsUnlimited` (`Grado_ChangingBase`); ~~`WideChestsBobs` (`Grado_ABC`)~~ - resolved 2026-10-24 (#371), that mod is in no pack |
 | **Read on** | 2026-09-21 |
 
 **Alternatives considered.** None searched as a substitute. The overlap is not with a candidate
@@ -711,6 +523,10 @@ a patch from Angel's queue merged in, for 5 names.
 *Ruled 2026-10-22 (#33):* `WideChestsBobs` stays in the row. A family that straddles a pack
 boundary is named as far as the packs carry it, each member tagged with its pack, under the
 exception in `docs/mod-catalogue.md`, *Two kinds of duplication*.
+
+*2026-10-24 (#371):* `WideChestsBobs` is a port drop, so it is struck from the row, and the family
+sits in `Grado_ChangingBase` alone. The overlap is cross-pack only now, and the within-pack half
+above is history.
 
 ### `angelsbioprocessing`
 
@@ -1931,7 +1747,9 @@ Members that survived the 1.1 -> 2.0 port and were removed by #9 on 2026-09-23, 
 2026-10-04. The survey text is kept as written, and each entry ends with its ruling. #9's four were
 removed by choice. #81's two were removed because `True-Nukes_Continued` does not load; that is a
 load drop (`GLOSSARY.md`). *2026-10-20 (#330): `PlutoniumEnergy`, last below, is the fifth removed
-by choice, the first so named: a* Choice drop *(`GLOSSARY.md`).*
+by choice, the first so named: a* Choice drop *(`GLOSSARY.md`).* *2026-10-24 (#371): four more at
+the move to line 2.1, last below: three port drops and `RealisticReactorsReborn`, replaced by its
+stand-in.*
 
 ### `DeadlockStackingForBobs`
 
@@ -2311,6 +2129,289 @@ releases on both lines, and nothing failed. The pack still has the Clowns and An
 MOX, as measured above. No replacement, and no condition reopens the question. No report to either
 mod's author: the mod promises no interop with these mods. The version stays `0.1.0`, since a pack's
 version does not move before its first release. The ruling is under *Decisions, 2026-10-20 (#330)*.
+
+### `RealisticFusionPowerPort`
+
+| | |
+|---|---|
+| **Title** | Realistic Fusion Power Port |
+| **Does** | A port of `RealisticFusionPower` to Factorio 2.0: fusion power as an alternative endgame to fission |
+| **Latest** | `1.9.2`, `factorio_version` **2.0**, 2025-12-13 |
+| **Downloads** | 1,863 |
+| **Owner** | `Durikkan` |
+| **Supersedes** | `RealisticFusionPower` by `Romner_set`, last `1.8.18` on 2024-10-25, 29,430 downloads |
+| **Read on** | 2026-09-23 |
+| **Status** | dropped 2026-10-24 (#371) |
+
+**A comparison slot.** Truls wants it next to his own
+`realistic-fusion-refreshed`, which may take the slot once it is published. The two can be installed
+together: the sibling project shares no prototype names with this one, and says so in its own
+description.
+
+**It ignores the overhaul it sits in.** `1.9.0` (2025-01-02) declared optional support for
+`angelspetrochem`, `angelssmelting`, `angelsindustries`, `bobelectronics`, `bobplates` and
+`bobpower`, among others. `1.9.2` removed all of them, and its only dependency is `base >= 2.0`. So
+neither fusion mod in view integrates with Angel's or Bob's today. That passes `Grado_ABC`'s
+promise, which asks a member not to conflict with the overhaul mods rather than to extend them.
+
+It declares `factorio_version` **2.0**, so it is not served to a 2.1 game, and is tracked under #43
+with the other six members here that do the same. It declares nothing about Space Age.
+
+**Recommendation: keep.** Added by #9 on 2026-09-23, replacing `RealisticFusionPower`, as a
+comparison slot for `realistic-fusion-refreshed`. Not yet loaded in game. *Loaded 2026-10-04 (#116),
+at `1.9.2`, in the pack's recorded load. Not played.*
+
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: another mod's definition
+replaces its own, for 3 names. They are its `angels-electric-boiler` as item, machine and recipe,
+replaced by `angelspetrochem`'s. That leaves its `rfp-boiling` recipes with no machine,
+*Inferred* from the trace and the source read in #338.
+
+**Ruled 2026-10-24 (#371): out, a *Port drop* (`GLOSSARY.md`) at the move to line 2.1.** It has no
+release declaring `factorio_version` 2.1: its newest is `1.9.2`, 2025-12-13 (portal, read
+2026-10-24), and a search of the 2.1 listing for `fusion`, `romner` and `realistic fusion` found no
+successor. Ruled by Truls in the grill of 2026-10-24 on the move to line 2.1 (#368), and applied by
+#371. The slot stays meant for `realistic-fusion-refreshed` once it is published (#9), and #338, its
+electric boiler replaced by Angel's, is moot. A 2.1 release of it, or of an updated fork of it,
+reopens the question; #373 watches for one.
+
+### `RealisticReactorsReborn`
+
+| | |
+|---|---|
+| **Title** | Realistic Reactors Reborn |
+| **Does** | Replaces the vanilla reactor with a simulated one: control rods, coolant loops, emergency cooling, breeder operation and meltdowns if the heat is not managed |
+| **Latest** | `2.0.27`, `factorio_version` **2.0**, 2025-08-01 |
+| **Downloads** | 3,437 |
+| **Owner** | `OwnlyMe` |
+| **Supersedes** | `RealisticReactors` by `IngoKnieto`, last `3.1.5` on 2024-04-15, 23,678 downloads |
+| **Read on** | 2026-09-21 |
+| **Status** | replaced by `RealisticReactorRebornPort`, 2026-10-24 (#371) |
+
+**Alternatives considered.** None found offering reactor simulation on 2.x. The mod it replaces has
+no 2.x release and its last 1.1 release predates Factorio 2.0.
+
+**The download gap is the thing to read carefully here.** 3,437 against the original's 23,678 is not
+the usual successor asymmetry — `RealisticReactorsReborn` is a **2.0-only mod with no 1.1 history at
+all**, its entire release list being `factorio_version` 2.0, so it has had the whole 2.x period to
+accumulate 3,437 and no more. Three members sit below it —
+`True-Nukes_Continued` at 2,777, `WideChestsBobs` at 805 and `True-Nukes-Graphics_Continued` at
+346 — so it is fourth from the bottom of the 45 rather than last, and two of those three are its
+neighbours in the nuclear subsystem. Its last release was 2025-08-01, over a year before this
+reading. *Since 2026-10-04 (#81) the two `True-Nukes` mods are out, so of those three only
+`WideChestsBobs` is still a member.*
+
+`Clowns-Nuclear` — a hidden mandatory member, see below — declares `(?) RealisticReactorsReborn`,
+so the Clowns nuclear chain already knows about it.
+
+**Recommendation: keep**, and treat it as the member most worth watching for abandonment. Nothing
+replaces it, and the pack's nuclear content is built around it; that is an argument for keeping it
+and also the reason its staleness matters.
+
+**Ruled 2026-09-23 (#9): kept.** It declares `factorio_version` **2.0**, so it is not served to a
+2.1 game — the portal serves it only at 2.0. Under #8's third rule that breaks a tie only in an
+entry already marked `reconsider:`, and this one was not, so it stays and is tracked under #43.
+Whether it can be installed at all turns on #16: every named member of the three lower packs has at
+least one 2.0 release (measured 2026-09-23), so on a 2.0 target this mod is served.
+
+**Ruled 2026-10-24 (#371): replaced by its *Stand-in* (`GLOSSARY.md`),
+`RealisticReactorRebornPort`.** It has no release declaring `factorio_version` 2.1: its newest is
+`2.0.27`, 2025-08-01 (portal, read 2026-10-24). Ruled by Truls in the grill of 2026-10-24 on the
+move to line 2.1 (#368), and applied by #371. The stand-in goes back to this mod as its glossary
+entry says, and #373 watches for a 2.1 release.
+
+### `WideChestsBobs`
+
+| | |
+|---|---|
+| **Title** | Merging Chests Bobs |
+| **Does** | Adds Bob's-material variants of the merged chests, so the `WideChests` merging mechanic covers Bob's chest tiers and not only the base-game ones |
+| **Latest** | `2.0.0`, `factorio_version` **2.0**, 2025-07-27 |
+| **Downloads** | 805 |
+| **Owner** | `Atria` |
+| **Overlaps** | ~~`angelsaddons-storage` (`Grado_ABC`)~~ - resolved 2026-10-24 (#371), this mod is in no pack |
+| **Read on** | 2026-09-21 |
+| **Status** | dropped 2026-10-24 (#371) |
+
+**Alternatives considered.** None; it is the Bob's bridge for a specific mod in the pack below and
+has no substitute that is not that mod.
+
+It is the fifth member of the `WideChests` family and the only one in this pack — the other four are
+`Grado_ChangingBase` members. Its mandatory dependencies are `WideChests >= 6.0.0`, `boblogistics`
+and `bobplates`, all three already in the chain, so it adds no hidden member of its own.
+
+**The overlap with `angelsaddons-storage` is within-pack and is the half #30 does not cover.**
+`angelsaddons-storage` offers warehouses and silos; this mod extends a merging mechanic to Bob's
+chests. Both are in `Grado_ABC`, so there is no lower pack to defer to and the comparison sits in
+this file, under *Overlaps*. The four-mod cross-pack half is #30's, against
+`docs/catalogue/Grado_ChangingBase.md`. Whether the row above may name a same-pack mod at all is
+**#33**.
+
+**Recommendation: keep**, with the caveat that it is the smallest mod in the pack at 805 downloads
+and inherits whatever #30 concludes about the family's cost. Under
+`docs/catalogue/Grado_ChangingBase.md`'s finding that the merging mods' load cost scales with the
+number of chest types above them, this is the mod that adds those types.
+
+**Ruled 2026-09-23 (#9): kept.** It declares `factorio_version` **2.0**, so it is not served to a
+2.1 game — the portal serves it only at 2.0. Under #8's third rule that breaks a tie only in an
+entry already marked `reconsider:`, and this one was not, so it stays and is tracked under #43.
+Whether it can be installed at all turns on #16: every named member of the three lower packs has at
+least one 2.0 release (measured 2026-09-23), so on a 2.0 target this mod is served.
+
+*Ruled 2026-10-22 (#33):* the row above may name a same-pack mod. The `WideChests` family
+straddles the pack boundary, so the row stands under the exception in `docs/mod-catalogue.md`,
+*Two kinds of duplication*.
+
+**Ruled 2026-10-24 (#371): out, a *Port drop* (`GLOSSARY.md`) at the move to line 2.1.** It has no
+release declaring `factorio_version` 2.1: its newest is `2.0.0`, 2025-07-27 (portal, read
+2026-10-24). `Atria`'s other `WideChests` mods are on 2.1, and no Bob's variant is. Ruled by Truls
+in the grill of 2026-10-24 on the move to line 2.1 (#368), and applied by #371. What the pack loses
+is measured on the 2.1 dump (#372): for each Bob's chest, whether `WideChestsAllTypes`, a
+`Grado_ChangingBase` member whose summary says it lets every basic chest type merge, gives it a
+merged variant. With it out, no `WideChests` mod is in this pack, so the family no longer straddles
+a pack boundary. A 2.1 release of it, or of an updated fork of it, reopens the question; #373
+watches for one.
+
+### `angels-smelting-extended`
+
+| | |
+|---|---|
+| **Title** | Angel's Extended Smelting and Compression |
+| **Does** | Extends Angel's Smelting with metal-mixing recipes for the alloys (brass, bronze and the rest) as an alternative to the ingot route, compression and un-compression of cast metal forms, and an Ironworks that casts gears, pipes and underground pipes straight from molten metal |
+| **Latest** | `2.0.01`, `factorio_version` **2.0**, 2026-08-22 |
+| **Downloads** | 18,573 |
+| **Owner** | `pezzawinkle` |
+| **Read on** | 2026-09-21 |
+| **Status** | dropped 2026-10-24 (#371) |
+
+**Alternatives considered.** One real candidate, found by searching the 2.x list for the AngelBob
+ecosystem rather than by name: **`angelsextended-remelting`**, *Angel's Extended - Remelting* by
+`Aragas` — `2.0.0`, `factorio_version` 2.0, 2026-02-27, 1,206 downloads. It covers the same ground
+from the other direction: remelting plates back to molten metal, and a four-tier Alloy Mixer that
+"mixes molten metals into alloys directly, bypassing the ingot stage", which is this mod's alloy
+feature almost word for word. It also declares optional support for `bobplates` and
+`Clowns-Processing`, both of which are here. It is not obviously better — 1,206 downloads against
+18,573, and no compression or Ironworks — but it is a genuine alternative and the first one recorded
+for this pack. *Checked 2026-10-01 (#44, #83): the terms were not recorded beyond "the AngelBob
+ecosystem". Re-run over the union by name, title and summary for "angel", "alloy" and "remelt":
+thirteen hits are in the 2.1 listing alone, and none is an alternative. The nearest,
+`angelsqualitysmelting` (`usafphoenix`, 2.1, 2026-09-10, 8 downloads), adds quality-chaining
+recipes to Angel's smelting, not alloy mixing, compression or casting.*
+
+**This is the entry to distrust in this survey, and the reason is its release history.** Its 2.x
+release is a single one: `2.0.01` on 2026-08-22, the first release of any kind since `1.0.14` on
+2024-05-28. It is the only part-1 member declaring `factorio_version` 2.0 rather than 2.1, and it
+shipped *after* the whole Angel's set moved to 2.1 on 2026-07-27, so the author saw 2.1 and stayed
+on 2.0. Its Angel's dependencies carry no version floors at all, so it will resolve against the 2.1
+Angel's mods that are actually installed — resolving is not the same as working, and this mod
+modifies Angel's Smelting's recipes directly.
+
+**Recommendation: reconsider:** whether a one-release 2.0 port of a 2024-dormant mod should be a
+mandatory member of the core both end-games build on, and if so whether `angelsextended-remelting`
+covers enough of it. Not a recommendation to drop — the compression and Ironworks features have no
+substitute found — but it is the member of this half most likely to be the first thing that breaks
+when the pack is first loaded, and the only one where that can be said from the portal alone.
+
+**Ruled 2026-09-23 (#9): kept for now.** The rule 3 tie-break was available, since the entry is
+`reconsider:` and the mod declares `factorio_version` 2.0, and it was not taken. The reason is the
+alternative: from the two mods' descriptions, **Truls does not read `angelsextended-remelting` as
+an alternative to this mod.** They seem to extend different parts of the melting process, with
+mixing, compression and the Ironworks here, and remelting and the Alloy Mixer there. The survey's
+"a genuine alternative" above is therefore not accepted as written. **#50** assesses the two side by
+side, and this ruling is revisited when it lands.
+
+*#50, 2026-09-30: the comparison is under* Candidates, not members, *read from both mods' 2.x
+code. They are complements. In `2.0.01` this mod no longer mixes molten metals at all; its
+changelog removed that. No name collision was found. The "almost word for word" above held only
+for `1.0.14`'s off-by-default setting.*
+
+#### The `angels-liquid-molten-invar` redefinition, measured (2026-10-01, #80)
+
+#50 found that with `bobplates` this mod defines the fluid `angels-liquid-molten-invar`, which
+Angel's already defines, and left it unmeasured. Measured here at the releases a 2.0.77 game
+resolves, read from `.mod-cache/Grado_ABC.pins.psd1` on 2026-10-01: `angelssmelting` `2.0.5`,
+`angels-smelting-extended` `2.0.01`, `bobplates` `2.1.1`, `angelsrefining` `2.0.4`.
+
+**The two definitions, field by field.** Angel's is
+`angelssmelting/prototypes/items/angels-alloy-invar.lua:5-18`; this mod's is
+`angels-smelting-extended/prototypes/items/alloys-extended.lua:7-19`. Both sit behind
+`if mods["bobplates"]`.
+
+| Field | `angelssmelting` `2.0.5` | `angels-smelting-extended` `2.0.01` |
+|---|---|---|
+| `icon`, `icon_size` | `molten-invar.png`, 64 | the same |
+| `icon_mipmaps` | absent | `4` (line 12) |
+| `subgroup` | `"angels-alloys-casting"` (line 10) | absent |
+| `order` | `"d[invar]-a[liquid-molten-invar]"` (line 11) | absent |
+| `default_temperature` | `0` (line 12) | `100` (line 13) |
+| `max_temperature` | `0` (line 16) | `100` (line 17) |
+| `heat_capacity` | `"0kJ"` | the same |
+| `base_color` | 95/256, 125/256, 122/256 (line 14) | the same values, from `ASE.tables.coil_metals["invar"].tint` (`prototypes/data-tables.lua:9`) |
+| `flow_color` | the same as `base_color` (line 15) | `angelsmods.functions.fluid_color("Fe2Ni")` (line 16), an orange-brown |
+| `auto_barrel` | `false` | the same |
+
+Neither sets `fuel_value`, `gas_temperature` or `hidden`.
+
+**Which wins: this mod's, whole.** `data:extend` replaces a prototype rather than merging it, and
+this mod depends on `angelssmelting`, so its `data.lua` runs second. A `--dump-data` run on
+Factorio 2.0.77 (build 84539, win64, Steam), base only, read the fluid back as this mod's
+definition: `default_temperature` 100, `max_temperature` 100, `icon_mipmaps` 4, no `subgroup` and
+no `order`, `flow_color` {r 0.592, g 0.432, b 0.117}. Nothing later in the data stage puts Angel's
+fields back. The run went through the shared harness's `New-LoadHarness` and
+`Invoke-HarnessDump`, which use a temp mod directory and their own write-data directory, so the
+player's mods and data were not touched. **It was not a load of the whole pack.** The first dump,
+with every staged mod enabled, failed in the data stage on `Warheads_Continued` `0.0.21`
+(`prototypes/weapontype-sanitise.lua:344`, "attempt to index field 'ammo_type' (a nil value)"), a
+hidden member pulled in by `True-Nukes_Continued` `0.3.36`. The dump that is read here disabled
+`Warheads_Continued`, `True-Nukes_Continued`, `True-Nukes-Graphics_Continued` and the pack itself,
+which requires them. **So the dump is not of `Grado_ABC`'s full
+closure.** None of the four mentions the fluid, so the reading of it should not depend on them,
+but that is a reading of their code, not a measurement.
+
+**What depends on it.** Six recipes in the dump make or use the fluid, and none sets a
+`temperature`, `minimum_temperature` or `maximum_temperature` on it:
+
+| Recipe | From | Role |
+|---|---|---|
+| `angels-liquid-molten-invar` | `angelssmelting`, `prototypes/recipes/smelting-alloy-invar.lua:5-21` | makes 360 from steel and nickel ingots |
+| `angels-plate-invar` | the same file, lines 23-44 | uses 40, makes 4 `bob-invar-alloy` |
+| `angels-roll-invar-casting` | this mod, `prototypes/recipes/compressing-extended.lua:24` | uses 80 |
+| `angels-roll-invar-casting-fast` | the same file, line 79 | uses 140 |
+| `angels-roll-invar-casting-rfp-ddw` | `RealisticFusionPowerPort` `1.9.2`, a copy of the roll casting made in `data-final-fixes.lua:168-239` | uses 80 |
+| `rf-angels-liquid-molten-invar` | `reverse-factory` `9.1.5`, `func.lua:136` | uses 360, returns the ingots |
+
+So the temperature change reaches no recipe: the fluid is made at 100 instead of 0, and nothing
+asks what temperature it is. With `heat_capacity` `0kJ` in both, it carries no heat either way.
+What a player can see is all display: the colour of the fluid in pipes and machine windows, and,
+with no `subgroup`, where the fluid sorts in Factoriopedia and the signal picker - the game's
+default fluid subgroup instead of Angel's invar casting row. `icon_mipmaps` was removed in 2.0
+and is ignored. This mod's `prototypes/override.lua:55-63` also moves the invar *recipes* into its
+own `angels-invar-casting` subgroup, which is the mod doing its job, not the redefinition.
+
+**Not checked.** Nothing here ran a tick or opened the game, so the colour and sorting above are
+read from the dump, not seen. A save made before this mod was added would hold the fluid at 0
+and receive it at 100. Factorio mixes the two by averaging, and with no recipe testing the
+temperature that should be harmless, but it was not tried.
+
+**What the measurement recommends: no conflict.** The entry's **Recommendation** above stands as
+written; whether this changes it is Truls's. The redefinition changes how the fluid looks and where
+it sorts,
+not what any recipe does, so it does not break the pack's promise. Nothing needs doing for the
+pack. If a fix is wanted, it is upstream: this mod's `alloys-extended.lua` could change the fields
+it wants in `data.raw` instead of replacing the prototype, which would keep Angel's `subgroup` and
+`order`. The `Warheads_Continued` failure is a separate and larger finding, and not this entry's: it
+is
+#81. *Ruled 2026-10-04 (#81): the nukes mods are out; see* Decisions, 2026-10-04 (#81).
+
+*Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition replaces
+another mod's, for 2 names.
+
+**Ruled 2026-10-24 (#371): out, a *Port drop* (`GLOSSARY.md`) at the move to line 2.1.** It has no
+release declaring `factorio_version` 2.1: its newest is `2.0.01`, 2026-08-22 (portal, read
+2026-10-24). A search of the 2.1 listing for `angel.*(smelt|extend)`, `metal mix`, `brass`, `bronze`
+and `remelt` found no successor; `angelsextended-remelting`, the candidate named above, is 2.0 only
+(`2.0.0`, 2026-02-27). Ruled by Truls in the grill of 2026-10-24 on the move to line 2.1 (#368), and
+applied by #371. A 2.1 release of it, or of an updated fork of it, reopens the question; #373
+watches for one.
 
 ## Candidates, not members
 
@@ -2741,7 +2842,8 @@ Bioprocessing — so they are adjacent rather than competing, and `extendedangel
 the other at all. The pair is worth naming anyway, because they are the only two third-party
 production-chain mods in the core and they are in very different health: one is maintained by Kirazy
 on a 2026 cadence, the other is a single 2.0 release after two dormant years. If the pack ever
-carries one third-party Angel's extension instead of two, that is which.
+carries one third-party Angel's extension instead of two, that is which. *2026-10-24 (#371):
+it does. `angels-smelting-extended` is a port drop, with no 2.1 release.*
 
 **Nuclear reaches across the split.** `Clowns-AngelBob-Nuclear` and its hidden `Clowns-Nuclear` add
 thorium cycles, waste processing and reactor fuels; #5 holds `PlutoniumEnergy`,
@@ -2752,7 +2854,9 @@ set out in *Six mods on one nuclear chain* above: the six are wired together by 
 and none is a candidate for removal, but five of them are small and stale and only `PlutoniumEnergy`
 is not. *2026-10-04 (#81) dropped the two `True-Nukes` mods. 2026-10-20 (#330) dropped
 `PlutoniumEnergy`, the one that is not small and stale, by choice, because the chain is too
-overloaded, and not for its health. See* Decisions, 2026-10-20 (#330).
+overloaded, and not for its health. See* Decisions, 2026-10-20 (#330). *2026-10-24 (#371)
+replaced `RealisticReactorsReborn` with its stand-in `RealisticReactorRebornPort`, under another
+name than the one `Clowns-Nuclear` declares.*
 
 **Bulk storage, and the half of it that is this pack's own.** `angelsaddons-storage`'s warehouses,
 silos and pressure tanks overlap the `WideChests` family, and `WideChestsBobs` — one of #5's — is a
@@ -2766,6 +2870,8 @@ four-mod cross-pack side is **#30**'s; whether the **Overlaps** row may name a s
 is **#33**. This paragraph exists so the fifth mod is not lost between the two files.
 *Ruled 2026-10-22 (#33):* it may, for a family that straddles a pack boundary, as this one does,
 so both entries keep their rows. The other within-pack overlaps in this section stay without one.
+*2026-10-24 (#371): `WideChestsBobs` is a port drop, so this half is gone, and its name is struck
+from the row.*
 
 **Belts, where this pack meets the one below.** Six cross-pack overlaps have been recorded across
 the project and three of them are belt-adjacent, all against `Grado_ChangingBase`:

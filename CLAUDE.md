@@ -12,7 +12,14 @@ at session start.
 **Skeleton.** Five `info.json` files with resolved dependency lists, a README and the docs. No
 pack carries Lua.
 
-**All five packs have a recorded load on Factorio 2.0.77; one has been played.**
+**All five packs declare line `2.1`, and none has been loaded on it** (2026-10-24, #368). No
+pack gets a 2.0 release. Twelve members with no 2.1 release were dropped, stood in for or
+replaced (#369 to #371). A load of each pack on 2.1 comes first (#372), then the play sessions
+(#26 to #29). `Grado_ABCX`'s first release also waits until SpaceX's fourth stage can be reached
+(#294).
+
+**On 2.0.77, all five have a recorded load and one has been played**, with the member lists of
+before the move:
 
 - `Grado_NonChanging`: loaded, base only and with Space Age, and played (2026-09-29 to
   2026-09-30, #17). 24 of its 26 named members were seen working; `ixuAutoSave` and
@@ -20,14 +27,12 @@ pack carries Lua.
   share `Alt+Y`, as does a base control that is not the cause (#71). Whether the pack carries Lua
   to change a default is Truls's (#73).
 - `Grado_ChangingBase`, `Grado_ABC`, `Grado_ABCX`, `Grado_ABCS`: loaded 2026-10-04 (#115 to
-  #118). No play session yet (#26 to #29). `Grado_ABCX` is refused beside Space Age, as intended.
-  `Grado_ABCX` has no 2.0 release; its first is on 2.1, once SpaceX's fourth stage can be
-  reached there (#294).
-  The three overhaul packs log non-fatal complaints (#125).
+  #118). `Grado_ABCX` is refused beside Space Age, as intended. The three overhaul packs log
+  non-fatal complaints (#125).
 
 The records are in `docs/loads/`. **"It resolves on the portal", "it loads in the game" and "it
-plays" are three claims** (`GLOSSARY.md`: *Resolve*, *Load*, *Play session*). For the four upper
-packs only the first two are true. A *Start* is a fourth thing, less than a load.
+plays" are three claims** (`GLOSSARY.md`: *Resolve*, *Load*, *Play session*). On line 2.1 only
+the first is true of any pack. A *Start* is a fourth thing, less than a load.
 
 How this section came to read as it does, every superseded sentence kept:
 `docs/porting-notes.md`, *The trail of CLAUDE.md's State and open decisions*.
@@ -81,21 +86,11 @@ a dropped mod back. A new decision is appended there, with its date and ticket.
 
 Listed with their evidence in `docs/porting-notes.md`. Do not close one silently.
 
-- **The 2.1 line.** The declared line is `2.0` (#16, in `docs/decisions.md`). A 2.1 release on the
-  same entries follows once factorio.com's stable release is 2.1.x. Stable Factorio is 2.0.77 and
-  2.1.20 is experimental (read 2026-09-24). What is known for that day:
-  - On a latest-release reading the project's highest floor is `base >= 2.1.20`, from the hidden
-    member `kry_stdlib` `2.2.21` (2026-09-23), or `base >= 2.1.12` from `cybersyn2` if the game
-    installs an older `kry_stdlib`. The table is *Effective Factorio floor* in
-    `docs/porting-notes.md` (#15).
-  - Fourteen members, one of them hidden, have no 2.1 release (since 2026-10-04, #81). The list
-    is under *Resolves on stable 2.0.77* there.
-  - The 2.1 build of `space-age` is unread.
 - **`PickerPipeTools`' pipe clamps are the one feature lost in the port with no successor
   found**: a search, not a proof. All twenty port drops are closed (#7, #8, #9): nineteen stay
   dropped and `RealisticFusionPower` was replaced by `RealisticFusionPowerPort`.
 
-How the first item was measured and ruled, step by step: `docs/porting-notes.md`, *The trail of
+How the 2.1 line was measured and ruled, step by step: `docs/porting-notes.md`, *The trail of
 CLAUDE.md's State and open decisions*.
 
 ## Factorio specifics

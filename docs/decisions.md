@@ -61,8 +61,9 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   changed: one member each. Both gained a promise (`GLOSSARY.md`). **`Grado_ABCS` is ABC *beside*
   Space Age, not merged with it**, so no bridge mod; #31 stays open to revisit that. ABCX keeps its
   own `! space-age` beside the fork's. `quality` and `elevated-rails` go unnamed, because
-  `space-age` requires both (read from the installed game, 2.0.77). Reasons per mod in
-  `docs/catalogue/Grado_ABCX.md` and `docs/catalogue/Grado_ABCS.md`.
+  `space-age` requires both (read from the installed game, 2.0.77). *Since 2026-10-24 (#368)
+  `Grado_ABCS` names `quality`: the 2.1.23 build of `space-age` only recommends it.* Reasons per
+  mod in `docs/catalogue/Grado_ABCX.md` and `docs/catalogue/Grado_ABCS.md`.
 - **A pack version does not move before its first release** (2026-09-22). All five stay at
   `0.1.0` through any number of dependency edits; the major/minor rule under *Conventions* starts
   applying at the first published release. `0.x` to `1.0.0` is the one major that signals
@@ -73,7 +74,9 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   resolver re-measured all five on line `2.0`, build `2.0.77`, and read the same floors - `2.0.67`
   from `helmod` `2.2.14`, `2.0.74` from `miniloader-redux` `1.2.0` - and each `info.json` now
   declares its floor. Versions stay `0.1.0`. *Not for `Grado_ABCX` since 2026-10-19 (#294): its
-  first release is on 2.1, by the entry "`Grado_ABCX` has no 2.0 release" below.*
+  first release is on 2.1, by the entry "`Grado_ABCX` has no 2.0 release" below.* *Superseded
+  2026-10-24 (#368) for all five: no pack gets a 2.0 release, by the entry "All five packs move to
+  the declared line `2.1` before their first release" below.*
 - **A claim has one of three grades of evidence** (2026-10-06, #157): *Measured*, *Read from
   source* and *Inferred*, defined in `GLOSSARY.md`. Three and not two, because six of the eight
   review-fix commits of 2026-10-04 and 2026-10-05 repaired a sentence that gave an inference or a
@@ -263,7 +266,8 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   #316's read of its commits), and no 2.0 branch or tag of it drops it. The 2.0 report (#316) was
   dropped, so on 2.0 the hold would wait on a release this project chose not to ask for. The
   hold, both causes, is reviewed at stable 2.1 in #290. A 2.0 play session of the pack is not
-  run: #28 waits for 2.1.
+  run: #28 waits for 2.1. *Since 2026-10-24 (#368) no pack has a 2.0 release; the hold on
+  `Grado_ABCX`'s first release stands.*
 - **A pull request's body carries the pr template's three headings** (2026-10-19, #320):
   `## Summary`, `## Evidence` and `## Merge Danger`, each once, at the second level, outside
   fenced blocks and in that order, in the body above the pre-PR review. Other sections may stand
@@ -406,3 +410,22 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   pre-PR review of #33 found, and Truls ruled the same day to correct it. The rule is in
   `docs/mod-catalogue.md`, *Two kinds of duplication*; the term is *Overlap* in `GLOSSARY.md`. No
   ADR: it changes no member and is cheap to reverse.
+- **All five packs move to the declared line `2.1` before their first release** (2026-10-24,
+  #368): Truls's rulings in a grill, once factorio.com's stable release was 2.1.23
+  (`https://factorio.com/api/latest-releases`, read 2026-10-24). *No 2.0 release:* each pack's
+  first release declares `factorio_version` `2.1`, as `Grado_ABCX`'s already would (#294), and
+  the floor the resolve on line 2.1 measures, `base >= 2.1.22` from `RateCalculator` `3.4.2` on
+  2026-10-24. This supersedes #16's line `2.0`. Versions stay `0.1.0`. *`quality`:*
+  `Grado_ABCS` names it. The 2.1.23 build of `space-age` declares `+ quality >= 2.1.0`, a
+  recommended dependency, where its 2.0.77 build required it, and every load of the pack so far
+  ran with it. `recycler`, new on 2.1 and required by `space-age`, goes unnamed with
+  `elevated-rails`, by #10's reasoning. *Two terms:* *Port drop* and *Stand-in* in
+  `GLOSSARY.md`. A port drop reopens on a release on the declared line of the original or of an
+  updated fork of it; a stand-in goes back to its original as its entry says. *Members:* twelve
+  named members had no 2.1 release on the resolve of 2026-10-24, and each was ruled the same day:
+  #369 for `Grado_NonChanging`, #370 for `Grado_ChangingBase`, #371 for `Grado_ABC`, with the
+  reasons in each pack's catalogue. *Evidence before a first release:* a *Load* of each pack on
+  2.1 (#372), and the play sessions #26, #27 and #29 on 2.1, as #28 already was.
+  `Grado_NonChanging`'s 2.0 play session (#17) stands as dated evidence. *Watch:* #373 reads the
+  originals of the port drops and stand-ins before each pack release. No ADR: a 2.0 release could
+  still be made later, and before a first release no member change is hard to undo.

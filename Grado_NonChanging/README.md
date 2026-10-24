@@ -1,6 +1,6 @@
 # Grado Non-Changing: quality of life
 
-A modpack <!-- deliberate: modpack --> of quality-of-life mods for Factorio 2.1. **It adds no
+A pack of quality-of-life mods for Factorio 2.1. **It adds no
 content:** no new items, buildings or recipes. The mods tune how the game looks and handles,
 remember some data of their own in your save, and change your factory only when you ask them to.
 
@@ -63,6 +63,9 @@ The pack also installs the libraries these mods need.
 
 ## Known issues
 
+- **`Alt+Y` may be taken twice.** Pipe Visualizer's mouse-over toggle uses it by default, and the
+  game's own discharge-defense remote key was `Alt+Y` in Factorio 2.0. If either does not
+  respond, rebind it under *Settings → Controls*.
 - **Some other keys are shared by default.** Most only act in one situation - with a blueprint in
   hand, in a vehicle, with a chest under the cursor - so they may never get in each other's way. If
   a key does not do what you expect, check *Settings → Controls → Mods* for these:

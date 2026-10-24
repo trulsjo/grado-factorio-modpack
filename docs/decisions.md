@@ -49,7 +49,10 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   three rules carried up unchanged, with **a partial replacement counted as an addition**, which is
   why `ScienceCostTweakerM` and the others went to #49. A 2.x `angelsindustries` port reopens the
   question rather than adding it back. All ten of this pack's drops are closed. The hidden mandatory
-  members stay unnamed. Reasons per mod in `docs/catalogue/Grado_ABC.md`.
+  members stay unnamed. Reasons per mod in `docs/catalogue/Grado_ABC.md`. *2026-10-24 (#371):
+  `RealisticFusionPowerPort` and `angels-smelting-extended` are port drops at the move to line 2.1,
+  with `WideChestsBobs`; see the entry "All five packs move to the declared line `2.1` before their
+  first release" below.*
 - **The nukes mods are out of `Grado_ABC`** (2026-10-04, #81). 41 mods to 39:
   `True-Nukes_Continued` and `True-Nukes-Graphics_Continued`, and the hidden member
   `Warheads_Continued` leaves with them. They fail in the data stage beside the pack's Bob's and
@@ -409,7 +412,8 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   it has been two since #9 dropped `deadlock-beltboxes-loaders` on 2026-09-23, which the
   pre-PR review of #33 found, and Truls ruled the same day to correct it. The rule is in
   `docs/mod-catalogue.md`, *Two kinds of duplication*; the term is *Overlap* in `GLOSSARY.md`. No
-  ADR: it changes no member and is cheap to reverse.
+  ADR: it changes no member and is cheap to reverse. *2026-10-24 (#371): the instance is gone.
+  `WideChestsBobs` is a port drop and both rows are struck, so the exception has no instance.*
 - **All five packs move to the declared line `2.1` before their first release** (2026-10-24,
   #368): Truls's rulings in a grill, once factorio.com's stable release was 2.1.23
   (`https://factorio.com/api/latest-releases`, read 2026-10-24). *No 2.0 release:* each pack's

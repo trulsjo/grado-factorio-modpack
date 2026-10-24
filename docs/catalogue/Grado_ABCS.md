@@ -6,7 +6,8 @@ as a DLC and installed with it. That makes this the one pack whose contents cann
 the method every other entry in this catalogue uses. *Measured 2026-10-04 (#118), by the other
 method: the pack loaded on Factorio 2.0.77 with Space Age, 104 mods validated beside `space-age`,
 `quality` and `elevated-rails`, all `2.0.77`. A load, not a play session. See
-`docs/loads/Grado_ABCS-2026-10-04.md`.*
+`docs/loads/Grado_ABCS-2026-10-04.md`.* *2026-10-24 (#368): the list names `quality` too, which the
+game supplies as it does `space-age`; see the dependency list below.*
 
 Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below was taken on
 **2026-09-22** and is reproduced from the fetched data rather than retyped, except where a later
@@ -16,7 +17,10 @@ its own date.*
 The dependency list holds 3 entries: `base >= 2.0.0`, `Grado_ABC` — a pack, catalogued in
 `docs/catalogue/Grado_ABC.md` — and `space-age`. **The pack is new**, so nothing was carried over,
 replaced or dropped; `docs/porting-notes.md` records that. *The `base` line is `base >= 2.0.74`
-since 2026-09-24 (#58).*
+since 2026-09-24 (#58).* *2026-10-24 (#368): the pack declares line 2.1, and the list holds 4
+entries: `base >= 2.1.22`, `Grado_ABC`, `space-age` and `quality`. Why `quality` is named is in
+`docs/decisions.md`, the entry "All five packs move to the declared line `2.1` before their first
+release".*
 
 Three findings:
 
@@ -310,6 +314,8 @@ them planets and planet content. How it pushes on the one-mod-per-branch rule de
 rule counts. Named the way #10 named `quality` and `elevated-rails` - hidden mandatory members stay
 unnamed - the pack would list two members, `space-age` and this mod, with the eighteen unnamed.
 Counted by what a player installs, it adds nineteen. Which reading the rule means is Truls's.
+*2026-10-24 (#368): `Grado_ABCS` names `quality` since; `elevated-rails` and `recycler` go
+unnamed.*
 
 ### `BobsAngelsSpaceAge`
 
@@ -528,7 +534,8 @@ light: named the way #10 named `quality` and `elevated-rails`, the pack would li
 `space-age` and this mod, with its two libraries unnamed; counted by what a player installs, it
 adds three. *2026-10-20 (#335): it is still the only one built that way of the
 six assessed; `TIMSABA` and `omniab-space-age-compat` merge.* *2026-10-21 (#341): and of the
-seven, since `FNKbobassemblySpaceAgeBalancePatcher` merges.*
+seven, since `FNKbobassemblySpaceAgeBalancePatcher` merges.* *2026-10-24 (#368): `Grado_ABCS` names
+`quality` since; `elevated-rails` and `recycler` go unnamed.*
 
 ### Seven more, found by a wider sweep (2026-10-20, #335)
 

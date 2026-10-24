@@ -17,7 +17,8 @@ the other 55 are accounted for under `Grado_ABC` — 45 of them as members, 10 a
 `docs/porting-notes.md` records. *The `base` line is `base >= 2.0.74` since 2026-09-24 (#58).*
 *Superseded 2026-09-22 by #8 and 2026-09-23 by #9: 40 of the 55 are `Grado_ABC` members now,
 `bobinserters` is `Grado_ChangingBase`'s, four are under* Ruled out after the port *there, and
-`RealisticFusionPowerPort`, replacing one of the 10 drops, is ABC's 41st member.*
+`RealisticFusionPowerPort`, replacing one of the 10 drops, is ABC's 41st member.* *2026-10-24
+(#368): the pack declares line 2.1, and the `base` line is `base >= 2.1.22`.*
 
 Four findings, and the first is the one #6 was asked to check:
 

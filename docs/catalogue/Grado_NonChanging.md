@@ -276,10 +276,11 @@ source of its own. 1,127 downloads against the original's 19,692 at its own read
 patch.
 
 **Against the promise.** The patch's own source is unread. The original's, at
-`AtelierAmber/PipeVisualizer-Updated` `main` (last pushed 2025-11-16), defines in `data.lua` four
-custom-inputs, two shortcuts and sprites, and no item, recipe or entity. The patch's summary names
-the same keys: `Y`, `Shift+Y`, `Alt+Y` and `Control+Y`. *Read from source* for the original and
-from the summary for the patch.
+`AtelierAmber/PipeVisualizer-Updated` commit `c65411e`, the head of `main` since 2025-11-16, whose
+`info.json` is `2.4.5`, defines in `data.lua` four custom-inputs, two shortcuts and sprites, and no
+item, recipe or entity. *Read from source*, for the original at that commit. The patch's summary
+names the same keys: `Y`, `Shift+Y`, `Alt+Y` and `Control+Y`. The patch's dependencies are
+`base >= 2.1.0` and `flib >= 0.17.0` (`2.4.51`, read on the portal 2026-10-24).
 
 **Recommendation: keep.** Added by #369 on 2026-10-24, as the *Stand-in* (`GLOSSARY.md`) for
 `PipeVisualizer-Updated`, which has no 2.1 release: Truls's ruling in the grill on the move to line
@@ -467,7 +468,7 @@ For #73; see* Keys against base 2.0.77's own controls.
 | | |
 |---|---|
 | **Title** | Game Speed Control |
-| **Does** | Two keys step game speed up or down through two lists of speeds; the other key returns to 1x, and the current speed shows above the character when it is not 1x |
+| **Does** | Two keys step game speed up or down through two lists of speeds, and by its description the key for the other direction returns to 1x; the current speed shows above the character when it is not 1x |
 | **Latest** | `0.1.0`, `factorio_version` **2.1**, 2026-06-24 |
 | **Downloads** | 274 |
 | **Owner** | `0n0w1c` |
@@ -596,7 +597,8 @@ the optional `zk-lib` and `gvv`, so it brings no hidden member. *Read from sourc
 **Recommendation: keep.** Added by #369 on 2026-10-24 in `WhereIsMyBody`'s place: Truls's ruling in
 the grill on the move to line 2.1 (#368). It is a rewrite, not a fork or port, so it is not a
 stand-in and nothing sends it back. It defines no key: its lines are drawn only in the game's own
-Alt mode (`models/WhereIsMyBody.lua:157`, *Read from source* by the pre-PR review).
+Alt mode (`models/WhereIsMyBody.lua:157` at the head whose `info.json` is `3.0.0`, *Read from
+source* by the pre-PR review).
 
 ## Dropped during the port
 

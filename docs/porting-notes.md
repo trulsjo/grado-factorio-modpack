@@ -242,6 +242,19 @@ The heading below describes the original port search, not the current state.
 - `baron-turrets`
 - `beautiful_bridge_railway_bob_fix_updated_new`
 
+### At the move to line 2.1, 2026-10-24 (#371)
+
+**38 members to 35.** Four had no release declaring `factorio_version` 2.1 on the resolve of
+2026-10-24 (*Resolves on stable 2.1.23* below), and Truls ruled each the same day. Reasons are in
+`docs/catalogue/Grado_ABC.md`, *Decisions, 2026-10-24*.
+
+| Member | Now | Kind |
+|---|---|---|
+| `angels-smelting-extended` | dropped | *Port drop* |
+| `WideChestsBobs` | dropped | *Port drop* |
+| `RealisticFusionPowerPort` | dropped | *Port drop*; `RealisticFusionPower`'s slot stays meant for `realistic-fusion-refreshed` |
+| `RealisticReactorsReborn` | `RealisticReactorRebornPort` | *Stand-in* |
+
 ## Grado_ABCX
 
 **1 replaced, nothing carried over or dropped** -> **1 in the 2.0 pack**. It is the 56th mod of the
@@ -568,6 +581,13 @@ requires it. #370 replaces `Nanobots2` with `Nanobots3`, which needs no `stdlib2
 2.1.0"`. `quality` is recommended rather than required, so `Grado_ABCS` names it; `recycler` is a
 mod the game supplies, new on 2.1. Its `base` floor is below the members', so `Grado_ABCS`'s floor
 is the others'.
+
+**Result, after the member changes** (#369 to #371, the same resolver and build, run 2026-10-24
+14:31 +02:00 on the branch that carries them): 26 mods for `Grado_NonChanging`, 48 for
+`Grado_ChangingBase`, 96 for `Grado_ABC`, 97 for `Grado_ABCX` and 96 for `Grado_ABCS`, game mods
+not counted. Effective floor `base >= 2.1.22` for each, still from `RateCalculator` `3.4.2`. No
+constraint violation. One `UNRESOLVED` line per pack, all the same one: `+FluidWagonColorMask`,
+trulsjo/grado-factorio-tools#208.
 
 **What this does not prove.** A resolve reads metadata. No pack has been loaded on 2.1: that is
 #372, after the member changes.

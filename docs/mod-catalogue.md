@@ -76,7 +76,8 @@ prose section would hide half of it from a grep of the dependency list. The cros
 follows the rules above; the same-pack half is compared in the pack's own *Overlaps* section. The
 one instance on 2026-10-22 is `angelsaddons-storage` against the `WideChests` family: four
 members in `Grado_ChangingBase` and `WideChestsBobs` in `Grado_ABC`. Ruled 2026-10-22 (#33),
-keeping the rows #4 and #5 had written.
+keeping the rows #4 and #5 had written. *Since 2026-10-24 (#371) the exception has no instance:
+`WideChestsBobs` is a port drop, and the family sits in `Grado_ChangingBase` alone.*
 
 **A survey assesses only the mods it was given**, and edits only those packs' catalogue files,
 because the surveys run in parallel and two sessions writing one file collide. Ticket and file do
@@ -310,7 +311,8 @@ are `angelsaddons-storage` against the `WideChests` family and `SpaceModFeorasFo
 
 **The tally counts cross-pack overlaps only** (2026-10-22, #33). `WideChestsBobs` against
 `angelsaddons-storage` has a row under the straddle exception, but both mods are in `Grado_ABC`, so
-it is within-pack and not counted.
+it is within-pack and not counted. *Both rows were struck when `WideChestsBobs` left, 2026-10-24
+(#371).*
 
 ## Worked examples
 

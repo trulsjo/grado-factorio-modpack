@@ -329,7 +329,9 @@ to agree. *Applied 2026-10-01 (#39): `docs/catalogue/Grado_ABC.md` now names fou
 and states fifteen plus four as this file's nineteen.*
 
 This is issue #15's measurement for this pack. The number to declare instead is issue #16 and is
-Truls's to set; no `info.json` was modified.
+Truls's to set; no `info.json` was modified. *2026-10-24 (#368): the pack declares line 2.1 since,
+at `base >= 2.1.22`, so the 2.0 declaration this section argues from is gone. Whether the pack loads
+on 2.1 is #372.*
 
 #### The fourth stage waits on a disabled Kovarex (2026-10-15, #294)
 

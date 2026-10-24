@@ -2278,7 +2278,9 @@ its only member is not a portal mod. That measurement is **#15**, and **#8 chang
 2026-09-23 by #15:** every pack now inherits `>= 2.1.20` on a latest-release reading, from the
 hidden `kry_stdlib` `2.2.21`; see *Effective Factorio floor* in `docs/porting-notes.md`. **The
 number to declare instead is Truls's to set** and is **#16**; this section supplies the evidence for
-this pack, not the decision.
+this pack, not the decision. *2026-10-24 (#368): the pack declares line 2.1 since, at
+`base >= 2.1.22`, so the 2.0 declaration this section argues from is gone. Whether the pack loads
+on 2.1 is #372.*
 
 ## What was not checked
 

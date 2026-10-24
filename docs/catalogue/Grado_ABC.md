@@ -3032,7 +3032,8 @@ requirement cannot be read by this method and needs the game (**#29**). **#15 is
 for four packs and not completable for the fifth**, which is a different shape from nearly closed.
 See `docs/catalogue/Grado_ABCX.md` and `docs/catalogue/Grado_ABCS.md`. **The number to declare
 instead is Truls's** and is **#16**; this section supplies the evidence for this pack, not the
-decision.
+decision. *2026-10-24 (#368): the pack declares line 2.1 since, at `base >= 2.1.22`, so the 2.0
+declaration this section argues from is gone. Whether the pack loads on 2.1 is #372.*
 
 ## Technologies the walk cannot reach (2026-10-18, #144)
 

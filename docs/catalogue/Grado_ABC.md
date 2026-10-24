@@ -428,8 +428,10 @@ member of the pack.
 package name changed" and the original's `storage` is not migrated. It "retains the existing
 `RRR-*` prototype IDs, <!-- deliberate: IDs --> settings, custom input, remote interface, recipes,
 balance values", and "A Factorio 2.1 runtime was not available at this checkpoint, so startup,
-reactor operation [...] and meltdown behavior still require in-game testing." So its author has not
-loaded it: the 2.1 load (#372) is the first run this pack has of it. It publishes no source.
+reactor operation [...] and meltdown behavior still require in-game testing." So, by its
+description, it had not been run on 2.1 when that was written (*Inferred*: the description does not
+say of which release), and the 2.1 load (#372) is the first run this project has of it. It publishes
+no source.
 
 **Against the promise.** Its only dependency is `base >= 2.1`, and it declares nothing about Space
 Age, so nothing in it forecloses either branch. Its prototypes are the original's by its
@@ -2610,7 +2612,8 @@ subtraction matters. **`flib` is the clearest case** — it
 is a mandatory dependency of `reskins-library` here, but it is *already* pulled into every install
 by four `Grado_NonChanging` members, so it is not ABC's to claim. Three more are the lower packs':
 `alien-biomes-graphics`, `kry_stdlib` and `stdlib2`. Counting those four would have made the number
-nineteen and the finding weaker.
+nineteen and the finding weaker. *2026-10-24 (#370): `stdlib2` left the
+closure with `Nanobots2`.*
 
 **That nineteen is the chain's closure** - the nineteen hidden mandatory dependencies #6 measured
 across all three lower packs on 2026-09-22 (`docs/catalogue/Grado_ABCX.md`, *The pack cannot load
@@ -2816,7 +2819,9 @@ plutonium items, is in the note on* `PlutoniumEnergy` *above.*
 overloaded. Three of the six remain: `Clowns-AngelBob-Nuclear`, its hidden `Clowns-Nuclear` and
 `RealisticReactorsReborn`. The plutonium and MOX of the Clowns pair, Angel's and Bob's stay,
 measured. The entry the two notes above point to is now under "Ruled out after the port", and
-what left with it is in its note of 2026-10-20 (#332).*
+what left with it is in its note of 2026-10-20 (#332).* *2026-10-24 (#371):
+`RealisticReactorsReborn` is replaced by its stand-in `RealisticReactorRebornPort`, under another
+name than the one `Clowns-Nuclear` declares.*
 
 ## Overlaps
 

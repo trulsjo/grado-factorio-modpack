@@ -379,15 +379,14 @@ closure is 29 mods for `Grado_NonChanging`, 52 for `Grado_ChangingBase`, 107 for
 `+FluidWagonColorMask`, which is not a portal name. It is almost certainly a mangled prefix on
 `FluidWagonColorMask`, already a named `Grado_NonChanging` member: `Automatic_Train_Painter`'s
 newest 2.0 release, `2.0.1`, lists `?FluidWagonColorMask`. Whether the game accepts the `+` is
-checkable only in game. *Corrected 2026-10-24 (#368): not mangled. On line 2.1 `+` is a prefix of
-its own, "a recommended dependency"
+checkable only in game. Every other mod in every closure has a 2.0 release. The 2.0 closure is
+one smaller for the two lower packs (that entry) and four smaller for the three above them (that
+entry and three Artisanal Reskins libraries, `reskins-assets-base`, `reskins-assets-bobs` and
+`reskins-sprite-utils`, that the older releases do not pull). *Corrected 2026-10-24 (#368): the
+`+` is not mangled. On line 2.1 it is a prefix of its own, "a recommended dependency"
 (<https://lua-api.factorio.com/2.1.23/auxiliary/mod-structure.html>, read 2026-10-24; the 2.0.77
 page has no `+`), and `Automatic_Train_Painter` `2.1.0` declares `+FluidWagonColorMask`. The
-resolver still reads it as part of the name: trulsjo/grado-factorio-tools#208.* Every other mod
-in every closure has a 2.0 release. The 2.0 closure is one
-smaller for the two lower packs (that entry) and four smaller for the three above them (that entry
-and three Artisanal Reskins libraries, `reskins-assets-base`, `reskins-assets-bobs` and
-`reskins-sprite-utils`, that the older releases do not pull).
+resolver still reads it as part of the name: trulsjo/grado-factorio-tools#208.*
 
 | Pack | Declares | Highest own member, latest 2.x | Effective floor, latest 2.x | Effective floor, newest 2.0 | Honours `base >= 2.0.0`? |
 |---|---|---|---|---|---|
@@ -480,12 +479,11 @@ not the 104 mods read here: the nukes mods left on 2026-10-04 (#81), and `Grado_
 that day was 100 mods. So what the game has borne out is the resolver, once per pack, and not this
 reading. The records are in `docs/loads/`.*
 
-**Not served at 2.1: seventeen, kept as a watch list for when 2.1 goes stable.** *Superseded
-2026-10-24 (#368): 2.1 went stable, and the resolve on line 2.1 that day is* Resolves on stable
-2.1.23 *below.* Their newest
+**Not served at 2.1: seventeen, kept as a watch list for when 2.1 goes stable.** Their newest
 release declares `factorio_version` 2.0, and `?version=2.1&namelist=` returns none of them
 (2026-09-24). Fifteen are named members and two are hidden, the same set as the list in the section
-above:
+above. *Superseded 2026-10-24 (#368): 2.1 went stable, and the resolve on line 2.1 that day is*
+Resolves on stable 2.1.23 *below.*
 
 | Introduced by | Mod | Newest release |
 |---|---|---|
@@ -559,8 +557,8 @@ whose `base` floor 2.1.23 meets, walks the mandatory closure, and checks every d
 against the picks. Its header says what it does not check.
 
 **Result, before the member changes.** Effective floor `base >= 2.1.22` for every pack, from
-`RateCalculator` `3.4.2`, a `Grado_NonChanging` member. No constraint violation. Thirteen
-`UNRESOLVED` lines:
+`RateCalculator` `3.4.2`, a `Grado_NonChanging` member. No constraint violation. `UNRESOLVED`
+lines for thirteen names, each pack repeating those of the packs below it:
 
 - Twelve named members with no release declaring 2.1. `Grado_NonChanging`: `CleanFloor`,
   `PipeVisualizer-Updated`, `SpeedControl`, `WhereIsMyBody`, `YARM`, `solar-calc`.
@@ -882,6 +880,14 @@ stable 2.1.23* above.
 >
 > How the first item was measured and ruled, step by step: `docs/porting-notes.md`, *The trail of
 > CLAUDE.md's State and open decisions*.
+
+**`PickerPipeTools`' pipe clamps**, under *Decisions still open*, as it stood until 2026-10-24,
+when *Port drop* (`GLOSSARY.md`) came to cover the move to line 2.1 as well (#368), and the
+sentence's "the port" and "All twenty" stopped being the only ones.
+
+> - **`PickerPipeTools`' pipe clamps are the one feature lost in the port with no successor
+>   found**: a search, not a proof. All twenty port drops are closed (#7, #8, #9): nineteen stay
+>   dropped and `RealisticFusionPower` was replaced by `RealisticFusionPowerPort`.
 
 ### Conventions and commit messages, as they stood
 

@@ -86,9 +86,9 @@ a dropped mod back. A new decision is appended there, with its date and ticket.
 
 Listed with their evidence in `docs/porting-notes.md`. Do not close one silently.
 
-- **`PickerPipeTools`' pipe clamps are the one feature lost in the port with no successor
-  found**: a search, not a proof. All twenty port drops are closed (#7, #8, #9): nineteen stay
-  dropped and `RealisticFusionPower` was replaced by `RealisticFusionPowerPort`.
+- **`PickerPipeTools`' pipe clamps are the one feature lost in the 1.1 -> 2.0 port with no
+  successor found**: a search, not a proof. All twenty port drops of the 1.1 -> 2.0 port are
+  closed (#7, #8, #9).
 
 How the 2.1 line was measured and ruled, step by step: `docs/porting-notes.md`, *The trail of
 CLAUDE.md's State and open decisions*.

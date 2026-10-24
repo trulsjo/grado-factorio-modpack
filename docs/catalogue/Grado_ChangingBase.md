@@ -34,6 +34,9 @@ require `base >= 2.1`**, which is the same finding the `Grado_NonChanging` surve
 fatal to this pack's declared `factorio_version` for the same reason; see *The pack cannot load on
 the Factorio version it declares* *(at a 2.1 target; on stable 2.0.77 the pack resolves - #43,
 2026-09-24)*. #8 raised the floor again, to `base >= 2.1.12`, by adopting `cybersyn2`.
+*2026-10-24 (#368, #370): the pack declares line 2.1 since, so a `base >= 2.1` floor is no longer
+fatal to it, and `Nanobots3`, which replaced `Nanobots2`, makes twelve of the twenty that require
+it.*
 
 ## Decisions, 2026-09-22 (#8)
 
@@ -225,8 +228,8 @@ source* at `4.7.1`, from the changelog for `5.9.8`, by the grill's subagent on 2
 
 **Its Bob's integration** at `4.7.1`, `data-updates.lua:6-21`, names the same pre-Bob's-2.x items
 that leave `Nanobots2`'s recipes at their no-Bob's cost in `Grado_ABC` (#122). From `5.8.5` each
-edit checks the item and logs a miss (changelog). Whether `5.9.8` uses Bob's 2.1 names is unread:
-the 2.1 load and dump of `Grado_ABC` (#372) show it.
+edit checks that its recipe and item exist before touching them (changelog). Whether `5.9.8` uses
+Bob's 2.1 names is unread: the 2.1 load and dump of `Grado_ABC` (#372) show it.
 
 **Recommendation: keep.** Added by #370 on 2026-10-24 in `Nanobots2`'s place: Truls's ruling in the
 grill on the move to line 2.1 (#368), accepted with its `5.9.8` source unread, the 2.1 dump to test
@@ -1023,7 +1026,8 @@ game.
 Eight mods that survived the 1.1 -> 2.0 port and were removed on 2026-09-22 by #8 — by a
 decision, not by an upstream gap. Entry format: `docs/mod-catalogue.md`, *a mod ruled out after
 the port*. Each keeps the recommendation the survey wrote, with the ruling appended below it, so
-what was recommended and what was decided stay separable.
+what was recommended and what was decided stay separable. *2026-10-24 (#370): ten since, with
+`Nanobots2` and `qol_research`, at the move to line 2.1, last in this section.*
 
 In former dependency-list order.
 

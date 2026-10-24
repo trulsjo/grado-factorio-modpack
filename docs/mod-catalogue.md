@@ -212,6 +212,15 @@ instead. Use it sparingly — a survey where several entries reconsider has not 
   `docs/catalogue/Grado_ABC.md` are the first, one of each kind. No new variant: whether the format
   should have fewer or more is #62's.
 
+  **A port drop at a later move of the declared line, and a member replaced at one, use this
+  variant too** (2026-10-24, #369). The 2.0 -> 2.1 move happened after the port this section is
+  named for, and was ruled mod by mod, so its leavers sit here with the same **Status** row. The
+  ruling paragraph names the kind: a *Port drop* (`GLOSSARY.md`) with the release the original
+  lacked, or a replacement. The new member's entry under *In the pack* carries the
+  `**Supersedes**` row, and its **Recommendation** says whether it is a *Stand-in*, which goes
+  back to the original as the glossary entry says, or a member by another author, which nothing
+  sends back. #369's six in `docs/catalogue/Grado_NonChanging.md` are the first.
+
 - **A mod added after the port** is the mirror of the one above: a mod that was never in the 1.1
   pack and entered by a decision. It sits under *In the pack*, carries the `**Supersedes**` row if
   it displaced an existing member, and **its Recommendation reads `keep`, followed by "Added by

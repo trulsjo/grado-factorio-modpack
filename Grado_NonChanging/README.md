@@ -22,12 +22,12 @@ It is the base of the Grado modpacks. Every other Grado pack includes it.
   rates.
 - **Factory Search** (`FactorySearch`): find items, fluids, buildings and signals anywhere in the
   factory.
-- **YARM - Resource Monitor** (`YARM`): tracks mining sites, how much is left and when they run out.
-- **Solar Calculator** (`solar-calc`): solar panels and accumulators needed for a given power
-  demand.
+- **Resource Monitor** (`dqol-resource-monitor`): finds ore patches as you explore, and tracks how
+  much each mined site has left.
 - **Tapeline** (`Tapeline`): measures distances, and can leave measurements on the map.
 - **Todo List** (`Todo-List`): an in-game todo list, shared in multiplayer.
-- **Pipe Visualizer 2.0** (`PipeVisualizer-Updated`): shows fluid networks as an overlay.
+- **Pipe Visualizer 2.1 Support** (`PipeVisualizer-2-1-Support`): shows fluid networks as an
+  overlay.
 - **Bottleneck Lite** (`BottleneckLite`): a small status light on each machine, so starved or
   blocked ones stand out.
 
@@ -42,10 +42,12 @@ It is the base of the Grado modpacks. Every other Grado pack includes it.
   too.
 - **Blueprint Tools** (`BlueprintTools`): swap wire colours, set tiles and more on blueprints.
 - **VehicleSnap** (`VehicleSnap`): snaps car and tank steering for straight driving.
-- **Speed Control** (`SpeedControl`): keys and buttons to change game speed.
+- **Game Speed Control** (`game-speed-control`): keys to step the game speed up and down. In
+  multiplayer only an admin can change it.
 - **ixuAutoSave** (`ixuAutoSave`): choose how often the game autosaves and what the saves are
   called.
-- **Where Is My Body** (`WhereIsMyBody`): a line to your corpse after you die.
+- **Where Is My Body** (`m_WhereIsMyBody`): lines to your corpses after you die; `Alt` shows or
+  hides them.
 
 **Looks**
 
@@ -56,16 +58,11 @@ It is the base of the Grado modpacks. Every other Grado pack includes it.
   stock.
 - **Disco Science** (`DiscoScience`): labs light up in the colours of the science they are using.
 - **Brighter Lamps** (`Brighter-Lamps`): lamps light a wider area.
-- **Clean Floor** (`CleanFloor`): placing floor tiles removes the decoratives under them.
 
 The pack also installs the libraries these mods need.
 
 ## Known issues
 
-- **`Alt+Y` is taken by two mods.** YARM's selector and Pipe Visualizer's mouse-over toggle both
-  use it by default, and Pipe Visualizer wins. The game's own discharge-defense remote key is
-  `Alt+Y` too. To use YARM's selector, rebind it under
-  *Settings → Controls → Mods*.
 - **Some other keys are shared by default.** Most only act in one situation - with a blueprint in
   hand, in a vehicle, with a chest under the cursor - so they may never get in each other's way. If
   a key does not do what you expect, check *Settings → Controls → Mods* for these:
@@ -79,6 +76,6 @@ The pack also installs the libraries these mods need.
   | `Ctrl+R` | Fill4Me (reload), Picker Extended (reverse belts) |
   | `Y` | Helmod (recipe explorer), Pipe Visualizer (visualise selected) |
 
-- **Speed Control's keys are `-` and `=` on a US keyboard.** Factorio names keys by their US
-  position, so on other layouts they are whichever keys sit there - on a Norwegian keyboard, `+`
-  and `\`.
+- **Game Speed Control's keys are `Ctrl+-` and `Ctrl+=` on a US keyboard.** Factorio names keys by
+  their US position, so on other layouts they are whichever keys sit there - on a Norwegian
+  keyboard, `Ctrl` with `+` and `\`.

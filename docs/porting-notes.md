@@ -44,6 +44,21 @@ describes the original port search, not the current state.
 - `PickerBlueprinter`
 - `PickerInventoryTools`
 
+### At the move to line 2.1, 2026-10-24 (#369)
+
+**26 members to 24.** Six members had no release declaring `factorio_version` 2.1 on the resolve
+of 2026-10-24 (*Resolves on stable 2.1.23* below), and Truls ruled each the same day. Reasons per
+mod are in `docs/catalogue/Grado_NonChanging.md`, *Decisions, 2026-10-24*.
+
+| Member | Now | Kind |
+|---|---|---|
+| `CleanFloor` | dropped | *Port drop* |
+| `solar-calc` | dropped | *Port drop* |
+| `PipeVisualizer-Updated` | `PipeVisualizer-2-1-Support` | *Stand-in* |
+| `WhereIsMyBody` | `m_WhereIsMyBody` | replaced |
+| `YARM` | `dqol-resource-monitor` | replaced |
+| `SpeedControl` | `game-speed-control` | replaced |
+
 ## Grado_ChangingBase
 
 31 entries in the 1.1 pack, of which 29 are members and 2 are optional: **17 carried over,

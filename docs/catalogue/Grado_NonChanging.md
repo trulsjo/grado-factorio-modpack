@@ -10,6 +10,10 @@ Format and evidence rules: `docs/mod-catalogue.md`. Every portal reading below w
 **2026-09-20** and is reproduced from the fetched data rather than retyped, except where a later
 date is given inline, such as the notes marked *Superseded 2026-09-23 by #15*.
 
+*2026-10-24 (#369): 26 members to 24 at the move to line 2.1. Two port drops and four
+replacements; see* Decisions, 2026-10-24 *below. The paragraph after this one is the reading of
+2026-09-20.*
+
 **All 26 current members have a 2.x release.** None is stranded on 1.1 — nor were the 29 the
 survey read on 2026-09-20, before #7 removed three of them. That is not the same as being
 installable: see *Six members cannot be downloaded* below, found on 2026-09-22 - at a 2.1 target
@@ -41,6 +45,26 @@ retired as false. See *The promise* below for the evidence that produced it.
 
 Two questions were deferred rather than answered, each with its evidence carried forward: candidate
 additions that were never in the 1.1 pack, and a night-lighting replacement for `AfraidOfTheDark`.
+
+## Decisions, 2026-10-24 (#369)
+
+Truls ruled on each member with no release declaring `factorio_version` 2.1, in the grill on the
+move to line 2.1 (#368). The resolve on line 2.1 of that day found these six and no other member of
+this pack missing (`docs/porting-notes.md`, *Resolves on stable 2.1.23*). **26 members to 24.**
+
+| mod | ruling |
+|---|---|
+| `CleanFloor` | **out**, a *Port drop* |
+| `solar-calc` | **out**, a *Port drop* |
+| `PipeVisualizer-Updated` | **replaced** by `PipeVisualizer-2-1-Support`, its *Stand-in* |
+| `WhereIsMyBody` | **replaced** by `m_WhereIsMyBody` |
+| `YARM` | **replaced** by `dqol-resource-monitor` |
+| `SpeedControl` | **replaced** by `game-speed-control` |
+
+Each old entry is under *Ruled out after the port* with its ruling; each new one is under *In the
+pack*. A port drop reopens on a 2.1 release of the original or of an updated fork, and the stand-in
+goes back as `GLOSSARY.md` says; #373 watches the originals.
+
 
 ## In the pack
 
@@ -129,22 +153,6 @@ dependency, `(?) space-exploration-postprocess`, is a hidden optional and pulls 
 
 **Recommendation: keep**, with the same caveat as `AfraidOfTheDark`: this edits a vanilla prototype,
 so it changes how an existing factory behaves rather than only how it is displayed.
-
-### `CleanFloor`
-
-| | |
-|---|---|
-| **Title** | Clean Floor |
-| **Does** | Removes ground decoratives when floor tiles are placed over them |
-| **Latest** | `2.0.0`, `factorio_version` **2.0**, 2024-10-20 |
-| **Downloads** | 124,157 |
-| **Owner** | `Skrundz` |
-| **Read on** | 2026-09-20 |
-
-**Alternatives considered.** None searched. Last touched 2024-10-20.
-
-**Recommendation: keep.** It deletes decoratives, which is map state, but only where the player has
-already chosen to tile over them.
 
 ### `CopyPasteModules`
 
@@ -251,27 +259,35 @@ usually wanted together.
 
 **Recommendation: keep.** Cosmetic prototype change; pairs with the train painter.
 
-### `PipeVisualizer-Updated`
+### `PipeVisualizer-2-1-Support`
 
 | | |
 |---|---|
-| **Title** | Pipe Visualizer 2.0 |
-| **Does** | Draws fluid network layout and contents as an overlay |
-| **Latest** | `2.4.4`, `factorio_version` **2.0**, 2025-11-16 |
-| **Downloads** | 19,692 |
-| **Owner** | `Ashier` |
-| **Supersedes** | `PipeVisualizer` by `raiguard`, last `2.2.1` on 2024-03-29, 93,024 downloads |
-| **Read on** | 2026-09-20 |
+| **Title** | Pipe Visualizer 2.1 Support |
+| **Does** | Pipe Visualizer's overlay of fluid network layout and contents, patched to run on 2.1 |
+| **Latest** | `2.4.51`, `factorio_version` **2.1**, 2026-06-28 |
+| **Downloads** | 1,127 |
+| **Owner** | `rapman86` |
+| **Supersedes** | `PipeVisualizer-Updated`, last `2.4.4` (`factorio_version` 2.0), 2025-11-16 |
+| **Read on** | 2026-10-24 |
 
-**Alternatives considered.** It is already the replacement for `PipeVisualizer`, made during the
-port. Original is 1.1-only.
+**Alternatives considered.** The only 2.1 continuation of Pipe Visualizer found in the 2.1 listing
+by name, title and summary (2026-10-24, #368's grill). `PipeVisualizer` by `raiguard` is 1.1 only.
+Its summary calls it an "Unofficial compatibility patch for Pipe Visualizer (by ashier) to support
+Factorio 2.1", and it gives `PipeVisualizer-Updated`'s repository as its homepage; it publishes no
+source of its own. 1,127 downloads against the original's 19,692 at its own reading: a small
+patch.
 
-**Recommendation: keep.** Read-only overlay; last touched 2025-11-16.
+**Against the promise.** The patch's own source is unread. The original's, at
+`AtelierAmber/PipeVisualizer-Updated` `main` (last pushed 2025-11-16), defines in `data.lua` four
+custom-inputs, two shortcuts and sprites, and no item, recipe or entity. The patch's summary names
+the same keys: `Y`, `Shift+Y`, `Alt+Y` and `Control+Y`. *Read from source* for the original and
+from the summary for the patch.
 
-*Seen in play 2026-09-29 (#17): its default `Alt+Y` clashes with `YARM`'s, and
-`PipeVisualizer-Updated` wins. A player can rebind the key. Base's `give-discharge-defense-remote`
-defaults to `Alt+Y` too (#71, 2026-09-30). Whether the pack changes a default is open (#73). See
-`docs/loads/Grado_NonChanging-2026-09-29.md`, *Key bindings*.*
+**Recommendation: keep.** Added by #369 on 2026-10-24, as the *Stand-in* (`GLOSSARY.md`) for
+`PipeVisualizer-Updated`, which has no 2.1 release: Truls's ruling in the grill on the move to line
+2.1 (#368). It goes back to the original as the glossary entry says. Whether its keys clash with
+the 2.1 members is read with the 2.1 load (#372).
 
 ### `RateCalculator`
 
@@ -293,22 +309,6 @@ unlike the incumbent it does not exclude Quality.
 so it enters under the pack's 2.1.7 ceiling and brings no transitive dependency the pack did not
 already carry. `helmod`, also a member, overlaps on throughput maths but plans a factory rather than
 measuring a built one.
-
-### `SpeedControl`
-
-| | |
-|---|---|
-| **Title** | Speed Control |
-| **Does** | Hotkeys and buttons to raise or lower game speed |
-| **Latest** | `2.0.1`, `factorio_version` **2.0**, 2024-10-27 |
-| **Downloads** | 42,478 |
-| **Owner** | `s2upidperson` |
-| **Read on** | 2026-09-20 |
-
-**Alternatives considered.** None searched.
-
-**Recommendation: keep**, and note it is the member least like the others: changing game speed
-alters how the game runs rather than what it shows. It does not touch the factory.
 
 ### `Tapeline`
 
@@ -369,41 +369,6 @@ For #73; see* Keys against base 2.0.77's own controls.
 
 **Recommendation: keep.**
 
-### `WhereIsMyBody`
-
-| | |
-|---|---|
-| **Title** | Where Is My Body |
-| **Does** | Draws a line from the player to their corpses after death |
-| **Latest** | `2.0.15`, `factorio_version` **2.0**, 2024-11-19 |
-| **Downloads** | 37,332 |
-| **Owner** | `darkfrei` |
-| **Read on** | 2026-09-20 |
-
-**Alternatives considered.** None searched. Last touched 2024-11-19.
-
-**Recommendation: keep.**
-
-### `YARM`
-
-| | |
-|---|---|
-| **Title** | YARM - Resource Monitor |
-| **Does** | Tracks mining sites and reports percentage mined and time to depletion |
-| **Latest** | `1.0.5`, `factorio_version` **2.0**, 2025-01-01 |
-| **Downloads** | 169,866 |
-| **Owner** | `Narc` |
-| **Read on** | 2026-09-20 |
-
-**Alternatives considered.** None needed. Last touched 2025-01-01.
-
-**Recommendation: keep.** Stores monitored sites in the save; changes nothing in the factory.
-
-*Seen in play 2026-09-29 (#17): its default `Alt+Y` clashes with `PipeVisualizer-Updated`'s, and
-`PipeVisualizer-Updated` wins. A player can rebind the key. Base's `give-discharge-defense-remote`
-defaults to `Alt+Y` too (#71, 2026-09-30). Whether the pack changes a default is open (#73). See
-`docs/loads/Grado_NonChanging-2026-09-29.md`, *Key bindings*.*
-
 ### `automatic-station-painter`
 
 | | |
@@ -418,6 +383,37 @@ defaults to `Alt+Y` too (#71, 2026-09-30). Whether the pack changes a default is
 **Alternatives considered.** None needed; current on 2.1. Pairs with `Automatic_Train_Painter`.
 
 **Recommendation: keep.** Writes station colour, which is save state, cosmetically.
+
+### `dqol-resource-monitor`
+
+| | |
+|---|---|
+| **Title** | Resource Monitor |
+| **Does** | Finds resource patches as the map is explored, tracks each mined site's amount left, and tags the sites on the map, per surface |
+| **Latest** | `1.7.3`, `factorio_version` **2.1**, 2026-08-24 |
+| **Downloads** | 15,204 |
+| **Owner** | `devdot` |
+| **Supersedes** | `YARM`, last `1.0.5` (`factorio_version` 2.0), 2025-01-01 |
+| **Read on** | 2026-10-24 |
+
+**Alternatives considered.** `YARM-fork` (`JoeWhizer`), a 2.1 fork of `YARM`: `1.1.0`, 2026-07-23,
+its only release, 500 downloads, and no published source. `dqol-resource-monitor` has 30 releases
+on 2.x from 2024-10-23 to 2026-08-24, and its source is `devdot/dqol-resource-monitor`. It works
+differently from `YARM`: it finds and tracks sites by itself, where `YARM` asks the player to
+select each one. It can import `YARM`'s sites, but only while `YARM` itself is installed
+(`components/ui/yarm.lua:32-39`), so not in this pack.
+
+**Against the promise.** Read from its source at `master` (`info.json` `1.7.2`, last commit
+2026-08-24) by the grill's subagent: `data.lua:1` loads only `prototypes/ui.lua`, whose styles,
+sprites and one selection tool define no item, recipe or entity a player can make; the tool is
+`hidden = true`, `only-in-cursor` and has no recipe (`prototypes/ui.lua:144-180`). Its settings
+are about scanning, tracking and map markers (`settings.lua:5-91`); scanning and map markers are on
+by default, and both write map tags and save data, not entities. *Read from source*, of `1.7.2`;
+`1.7.3` is the release a 2.1 game installs.
+
+**Recommendation: keep.** Added by #369 on 2026-10-24 in `YARM`'s place: Truls's ruling in the
+grill on the move to line 2.1 (#368). It is not a stand-in, so nothing sends it back. Its default
+keys are read with the 2.1 load (#372).
 
 ### `even-distribution`
 
@@ -467,6 +463,42 @@ and `-west` (`Shift+Up`, `Right`, `Down`, `Left`) share their defaults with
 `move-blueprint-entities-up`, `-right`, `-down` and `-left`, and `dolly-rotate-rectangle` (`KP_0`)
 with the map editor's `editor-toggle-pause`. Which acts was not tried.
 For #73; see* Keys against base 2.0.77's own controls.
+
+### `game-speed-control`
+
+| | |
+|---|---|
+| **Title** | Game Speed Control |
+| **Does** | Two keys step game speed up or down through two lists of speeds; the other key returns to 1x, and the current speed shows above the character when it is not 1x |
+| **Latest** | `0.1.0`, `factorio_version` **2.1**, 2026-06-24 |
+| **Downloads** | 274 |
+| **Owner** | `0n0w1c` |
+| **Supersedes** | `SpeedControl`, last `2.0.1` (`factorio_version` 2.0), 2024-10-27 |
+| **Read on** | 2026-10-24 |
+
+**Alternatives considered.** No fork of `SpeedControl` is on 2.1. Three other mods were read
+against the promise on 2026-10-24 by the grill's subagents:
+
+- **`TimeTools`** (`binbinhfr`, `3.0.9`, 70,765 downloads) **fails it**: it adds a craftable clock
+  combinator, an item, an entity and a recipe unlocked by `circuit-network`
+  (`prototypes/items.lua:5-13`, `prototypes/entities.lua:7-8`, `prototypes/recipies.lua:5-19`).
+- **`game-speed-button`** (`0n0w1c`, `0.3.0`, 9,359 downloads) passes, and is the closest to
+  `SpeedControl`, with a top-bar button. Not taken: the button is drawn for player 1 only
+  (`control.lua:43`) and any player can change the speed.
+- **`tick-control`** (`herrabanani`, `1.2.1`, 171 downloads) publishes no source, so it could not
+  be read; its pause key, `Ctrl+Shift+P`, is `pump`'s, a `Grado_ABC` member.
+
+274 downloads against `SpeedControl`'s 42,478 at its own reading: a young mod, not a judgement.
+
+**Against the promise.** Read from its source at the GitHub head whose `info.json` is `0.1.0`:
+`data.lua` defines two custom-inputs, one shortcut and one GUI style, and no item, recipe or
+entity (`data.lua:1-31`). Only an admin may change the speed (`control.lua:152-156`). Its keys are
+`Ctrl+=` and `Ctrl+-` (`data.lua:12, 18`). It stores its speed lists in the save. *Read from
+source.*
+
+**Recommendation: keep.** Added by #369 on 2026-10-24 in `SpeedControl`'s place: Truls's ruling in
+the grill on the move to line 2.1 (#368). It does less than `SpeedControl`, with no on-screen
+buttons, and does it for every player. It is not a stand-in, so nothing sends it back.
 
 ### `helmod`
 
@@ -540,20 +572,32 @@ to `pipette`, `larger-terrain-building-area` and `smaller-terrain-building-area`
 those controls' keys by design, whatever they declare. For #73; see* Keys against base 2.0.77's own
 controls.
 
-### `solar-calc`
+### `m_WhereIsMyBody`
 
 | | |
 |---|---|
-| **Title** | Solar Calculator |
-| **Does** | Calculates solar panel and accumulator counts for a given power demand |
-| **Latest** | `0.5.72`, `factorio_version` **2.0**, 2025-12-21 |
-| **Downloads** | 84,837 |
-| **Owner** | `Kaktusbot` |
-| **Read on** | 2026-09-20 |
+| **Title** | Where Is My Body |
+| **Does** | Draws lines from the player to their corpses, shown and hidden with the Alt key, and tags the corpses on the map |
+| **Latest** | `3.0.0`, `factorio_version` **2.1**, 2026-07-02 |
+| **Downloads** | 8,094 |
+| **Owner** | `ZwerOxotnik` |
+| **Supersedes** | `WhereIsMyBody`, last `2.0.15` (`factorio_version` 2.0), 2024-11-19 |
+| **Read on** | 2026-10-24 |
 
-**Alternatives considered.** None searched. Last touched 2025-12-21.
+**Alternatives considered.** `some-corpsemarker` (`someone1337`, `2.1.0`, 14,508 downloads) marks
+corpses on the map rather than drawing lines to them. `m_WhereIsMyBody`'s summary says
+"Initially, "darkfrei" made such mod. This mod fully rewritten from scratch with new features."
 
-**Recommendation: keep.**
+**Against the promise.** Read from its source at `ZwerOxotnik/factorio-WhereIsMyBody`, whose
+`info.json` is `3.0.0`, by the grill's subagent: it has no `data.lua`, so it defines no prototype.
+Deleting empty corpses is a setting, off by default (`settings.lua:4`); map tags after a death are
+on by default (`settings.lua:8`) and are chart tags, not entities. Its dependencies are `base` and
+the optional `zk-lib` and `gvv`, so it brings no hidden member. *Read from source.*
+
+**Recommendation: keep.** Added by #369 on 2026-10-24 in `WhereIsMyBody`'s place: Truls's ruling in
+the grill on the move to line 2.1 (#368). It is a rewrite by another author, not a stand-in, so
+nothing sends it back. Whether its Alt key clashes with another member is read with the 2.1 load
+(#372).
 
 ## Dropped during the port
 
@@ -664,9 +708,10 @@ not overwritten on paste - the entity adopts the existing one.
 ## Ruled out after the port
 
 Five mods that survived the 1.1 -> 2.0 port and were removed on 2026-09-22 by #7 — by a
-decision, not by an upstream gap. Entry format: `docs/mod-catalogue.md`, *a mod ruled out after
-the port*. Each keeps the recommendation the survey wrote, with the ruling appended below it, so
-what was recommended and what was decided stay separable.
+decision, not by an upstream gap. *Six more since 2026-10-24 (#369), at the move to line 2.1: two
+port drops and four replaced, at the end of this section.* Entry format: `docs/mod-catalogue.md`,
+*a mod ruled out after the port*. Each keeps the recommendation the survey wrote, with the ruling
+appended below it, so what was recommended and what was decided stay separable.
 
 In former dependency-list order.
 
@@ -931,6 +976,159 @@ miners became flippable, inserter drop-sides flip with the blueprint. The mod cl
 to `101.8.6` to `200.8.6`, the same feature level throughout, last functional change 2020-08, and
 its 2.0 changelog entry reads in full *"Try to support Factorio 2.0 (Spage Age)"*. No replacement
 needed and no feature lost.
+
+### `CleanFloor`
+
+| | |
+|---|---|
+| **Title** | Clean Floor |
+| **Does** | Removes ground decoratives when floor tiles are placed over them |
+| **Latest** | `2.0.0`, `factorio_version` **2.0**, 2024-10-20 |
+| **Downloads** | 124,157 |
+| **Owner** | `Skrundz` |
+| **Read on** | 2026-09-20 |
+| **Status** | dropped 2026-10-24 (#369) |
+
+**Alternatives considered.** None searched. Last touched 2024-10-20.
+
+**Recommendation: keep.** It deletes decoratives, which is map state, but only where the player has
+already chosen to tile over them.
+
+**Ruled 2026-10-24 (#369): out, a *Port drop* (`GLOSSARY.md`) at the move to line 2.1.** It has no
+release declaring `factorio_version` 2.1: its newest is `2.0.0`, 2024-10-20 (portal, read
+2026-10-24). The 2.1 listing has same-purpose mods and no fork of it, `RealisticDecorationCleanup`
+(34,437 downloads) and `CleanedConcrete` (61,695) among them; picking one would be a new member,
+which is #85's ground. Ruled by Truls in the grill of 2026-10-24 on the move to line 2.1 (#368), and
+applied by #369. A 2.1 release of `CleanFloor`, or of an updated fork of it, reopens the question;
+#373 watches for one.
+
+### `PipeVisualizer-Updated`
+
+| | |
+|---|---|
+| **Title** | Pipe Visualizer 2.0 |
+| **Does** | Draws fluid network layout and contents as an overlay |
+| **Latest** | `2.4.4`, `factorio_version` **2.0**, 2025-11-16 |
+| **Downloads** | 19,692 |
+| **Owner** | `Ashier` |
+| **Supersedes** | `PipeVisualizer` by `raiguard`, last `2.2.1` on 2024-03-29, 93,024 downloads |
+| **Read on** | 2026-09-20 |
+| **Status** | replaced by `PipeVisualizer-2-1-Support`, 2026-10-24 (#369) |
+
+**Alternatives considered.** It is already the replacement for `PipeVisualizer`, made during the
+port. Original is 1.1-only.
+
+**Recommendation: keep.** Read-only overlay; last touched 2025-11-16.
+
+*Seen in play 2026-09-29 (#17): its default `Alt+Y` clashes with `YARM`'s, and
+`PipeVisualizer-Updated` wins. A player can rebind the key. Base's `give-discharge-defense-remote`
+defaults to `Alt+Y` too (#71, 2026-09-30). Whether the pack changes a default is open (#73). See
+`docs/loads/Grado_NonChanging-2026-09-29.md`, *Key bindings*.*
+
+**Ruled 2026-10-24 (#369): replaced by its *Stand-in* (`GLOSSARY.md`),
+`PipeVisualizer-2-1-Support`.** It has no release declaring `factorio_version` 2.1: its newest is
+`2.4.4`, 2025-11-16 (portal, read 2026-10-24). Ruled by Truls in the grill of 2026-10-24 on the move
+to line 2.1 (#368), and applied by #369. The stand-in goes back to this mod as its glossary entry
+says, and #373 watches for a 2.1 release. The `Alt+Y` clash above was read on `2.4.4`; whether the
+stand-in keeps the key is in its entry.
+
+### `SpeedControl`
+
+| | |
+|---|---|
+| **Title** | Speed Control |
+| **Does** | Hotkeys and buttons to raise or lower game speed |
+| **Latest** | `2.0.1`, `factorio_version` **2.0**, 2024-10-27 |
+| **Downloads** | 42,478 |
+| **Owner** | `s2upidperson` |
+| **Read on** | 2026-09-20 |
+| **Status** | replaced by `game-speed-control`, 2026-10-24 (#369) |
+
+**Alternatives considered.** None searched.
+
+**Recommendation: keep**, and note it is the member least like the others: changing game speed
+alters how the game runs rather than what it shows. It does not touch the factory.
+
+**Ruled 2026-10-24 (#369): replaced by `game-speed-control`.** It has no release declaring
+`factorio_version` 2.1: its newest is `2.0.1`, 2024-10-27 (portal, read 2026-10-24), and no fork of
+it is on 2.1. Ruled by Truls in the grill of 2026-10-24 on the move to line 2.1 (#368), and applied
+by #369. `game-speed-control` is another author's mod, not a stand-in, so nothing sends it back; the
+mods weighed against it are in its entry.
+
+### `WhereIsMyBody`
+
+| | |
+|---|---|
+| **Title** | Where Is My Body |
+| **Does** | Draws a line from the player to their corpses after death |
+| **Latest** | `2.0.15`, `factorio_version` **2.0**, 2024-11-19 |
+| **Downloads** | 37,332 |
+| **Owner** | `darkfrei` |
+| **Read on** | 2026-09-20 |
+| **Status** | replaced by `m_WhereIsMyBody`, 2026-10-24 (#369) |
+
+**Alternatives considered.** None searched. Last touched 2024-11-19.
+
+**Recommendation: keep.**
+
+**Ruled 2026-10-24 (#369): replaced by `m_WhereIsMyBody`.** It has no release declaring
+`factorio_version` 2.1: its newest is `2.0.15`, 2024-11-19 (portal, read 2026-10-24). Ruled by Truls
+in the grill of 2026-10-24 on the move to line 2.1 (#368), and applied by #369. `m_WhereIsMyBody`
+credits `darkfrei` and says it was "fully rewritten from scratch", so Truls ruled it a replacement,
+not a stand-in, and nothing sends it back.
+
+### `YARM`
+
+| | |
+|---|---|
+| **Title** | YARM - Resource Monitor |
+| **Does** | Tracks mining sites and reports percentage mined and time to depletion |
+| **Latest** | `1.0.5`, `factorio_version` **2.0**, 2025-01-01 |
+| **Downloads** | 169,866 |
+| **Owner** | `Narc` |
+| **Read on** | 2026-09-20 |
+| **Status** | replaced by `dqol-resource-monitor`, 2026-10-24 (#369) |
+
+**Alternatives considered.** None needed. Last touched 2025-01-01.
+
+**Recommendation: keep.** Stores monitored sites in the save; changes nothing in the factory.
+
+*Seen in play 2026-09-29 (#17): its default `Alt+Y` clashes with `PipeVisualizer-Updated`'s, and
+`PipeVisualizer-Updated` wins. A player can rebind the key. Base's `give-discharge-defense-remote`
+defaults to `Alt+Y` too (#71, 2026-09-30). Whether the pack changes a default is open (#73). See
+`docs/loads/Grado_NonChanging-2026-09-29.md`, *Key bindings*.*
+
+**Ruled 2026-10-24 (#369): replaced by `dqol-resource-monitor`.** It has no release declaring
+`factorio_version` 2.1: its newest is `1.0.5`, 2025-01-01 (portal, read 2026-10-24). `YARM-fork`
+(`JoeWhizer`) is a 2.1 fork, `1.1.0` of 2026-07-23, 500 downloads, and was weighed and not taken: it
+publishes no source, so it could not be read against the promise. Ruled by Truls in the grill of
+2026-10-24 on the move to line 2.1 (#368), and applied by #369. `dqol-resource-monitor` is another
+author's mod, not a stand-in, so nothing sends it back. The `Alt+Y` clash above leaves with `YARM`'s
+selector.
+
+### `solar-calc`
+
+| | |
+|---|---|
+| **Title** | Solar Calculator |
+| **Does** | Calculates solar panel and accumulator counts for a given power demand |
+| **Latest** | `0.5.72`, `factorio_version` **2.0**, 2025-12-21 |
+| **Downloads** | 84,837 |
+| **Owner** | `Kaktusbot` |
+| **Read on** | 2026-09-20 |
+| **Status** | dropped 2026-10-24 (#369) |
+
+**Alternatives considered.** None searched. Last touched 2025-12-21.
+
+**Recommendation: keep.**
+
+**Ruled 2026-10-24 (#369): out, a *Port drop* (`GLOSSARY.md`) at the move to line 2.1.** It has no
+release declaring `factorio_version` 2.1: its newest is `0.5.72`, 2025-12-21 (portal, read
+2026-10-24). A search of the 2.1 listing for `solar.?calc`, `solar.*calculat`, `calculat.*solar` and
+`accumulator.*ratio`, and of every mod with "solar" in its name, title or summary, found no
+calculator (2026-10-24). Ruled by Truls in the grill of 2026-10-24 on the move to line 2.1 (#368),
+and applied by #369. A 2.1 release of `solar-calc`, or of an updated fork of it, reopens the
+question; #373 watches for one.
 
 ## Candidates, not members
 
@@ -2409,6 +2607,10 @@ What `CLAUDE.md` still lists as open is the 2.1 release.*
 
 ## Six members cannot be downloaded
 
+*2026-10-24 (#369): settled at the move to line 2.1. These six are the six the resolve on line 2.1
+found missing that day; two left as port drops and four were replaced. See* Decisions,
+2026-10-24 *above. The section is left as found.*
+
 Found on 2026-09-22 while checking whether `AfraidOfTheDark` could move up a tier. It is the other
 half of the problem the section above describes, and no `factorio_version` declaration fixes it.
 
@@ -2476,6 +2678,10 @@ installed by hand on 2.1. The docs say it is unsupported and the portal will not
 here has been loaded in Factorio.
 
 ## Keys against base 2.0.77's own controls (#96)
+
+*2026-10-24 (#369): read on 2.0.77 against the member list of that day. `YARM`, `SpeedControl`,
+`WhereIsMyBody` and `PipeVisualizer-Updated` have since left the pack, and the keys of their
+replacements are read with the 2.1 load (#372).*
 
 Read **2026-10-02** on the installed 2.0.77 game. The key comparisons above, by the load record
 (#17) and by #41 and #89, matched mods against mods and could not see the game's own controls.

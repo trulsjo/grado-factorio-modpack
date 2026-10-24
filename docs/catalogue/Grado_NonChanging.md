@@ -410,7 +410,8 @@ by default, and both write map tags and save data, not entities. *Read from sour
 
 **Recommendation: keep.** Added by #369 on 2026-10-24 in `YARM`'s place: Truls's ruling in the
 grill on the move to line 2.1 (#368). It is not a stand-in, so nothing sends it back. It defines
-no custom-input or shortcut, so it has no default key.
+no custom-input or shortcut, so it has no default key (`data.lua:1`, `prototypes/ui.lua`; *Read
+from source*, of `1.7.2`).
 
 ### `even-distribution`
 
@@ -1051,8 +1052,8 @@ alters how the game runs rather than what it shows. It does not touch the factor
 **Ruled 2026-10-24 (#369): replaced by `game-speed-control`.** It has no release declaring
 `factorio_version` 2.1: its newest is `2.0.1`, 2024-10-27 (portal, read 2026-10-24), and no fork of
 it is on 2.1. Ruled by Truls in the grill of 2026-10-24 on the move to line 2.1 (#368), and applied
-by #369. `game-speed-control` is another author's mod, not a stand-in, so nothing sends it back; the
-mods weighed against it are in its entry.
+by #369. `game-speed-control` is not a fork or port of `SpeedControl`, so it is not a stand-in and
+nothing sends it back; the mods weighed against it are in its entry.
 
 ### `WhereIsMyBody`
 
@@ -1101,9 +1102,9 @@ defaults to `Alt+Y` too (#71, 2026-09-30). Whether the pack changes a default is
 `factorio_version` 2.1: its newest is `1.0.5`, 2025-01-01 (portal, read 2026-10-24). `YARM-fork`
 (`JoeWhizer`) is a 2.1 fork, `1.1.0` of 2026-07-23, 500 downloads, and was weighed and not taken: it
 publishes no source, so it could not be read against the promise. Ruled by Truls in the grill of
-2026-10-24 on the move to line 2.1 (#368), and applied by #369. `dqol-resource-monitor` is another
-author's mod, not a stand-in, so nothing sends it back. The `Alt+Y` clash above leaves with `YARM`'s
-selector.
+2026-10-24 on the move to line 2.1 (#368), and applied by #369. `dqol-resource-monitor` is not a
+fork or port of `YARM`, so it is not a stand-in and nothing sends it back. The `Alt+Y` clash above
+leaves with `YARM`'s selector.
 
 ### `solar-calc`
 

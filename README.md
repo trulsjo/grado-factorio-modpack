@@ -27,17 +27,19 @@ lives there, and each branch adds its own end-game.
 there before their first release, on 2026-10-24, with twelve members dropped or replaced for want
 of a 2.1 release (see [docs/decisions.md](docs/decisions.md)). On line 2.0, the dependency lists
 were resolved from the 1.1 packs against the mod portal, and
-**one pack has been loaded and played: `Grado_NonChanging`**, on Factorio 2.0.77 (2026-09-29 to
-2026-09-30). 24 of its 26 named members were seen working, the save reloaded with the members'
-data that was checked, and one key-binding clash turned up - see
-[docs/loads/Grado_NonChanging-2026-09-29.md](docs/loads/Grado_NonChanging-2026-09-29.md). The
-other four packs each have a recorded load, from 2026-10-04, and have not been played: a load shows
-the mods start together, not that the pack plays well. `Grado_ABCX` was also refused beside Space
-Age, as intended. The records are in [docs/loads/](docs/loads/). See [docs/porting-notes.md](docs/porting-notes.md) for what was kept,
-replaced and dropped, and for the open questions. [docs/catalogue/](docs/catalogue/) is the other half: one file per
-pack, one entry per mod, recording what each mod does, how current it is and whether it should stay.
-**All five packs have now been surveyed**, the last two on 2026-09-22 - which is a claim about the
-portal, not about the game.
+**one pack has been loaded and played: `Grado_NonChanging`**, with its members of before the move,
+on Factorio 2.0.77 (2026-09-29 to 2026-09-30). 24 of its 26 named members were seen working, the
+save reloaded with the members' data that was checked <!-- deliberate: checked -->, and one
+key-binding clash turned up - see
+[docs/loads/Grado_NonChanging-2026-09-29.md](docs/loads/Grado_NonChanging-2026-09-29.md). The other
+four packs each have a recorded load, from 2026-10-04, and have not been played: a load shows the
+mods start together, not that the pack plays well. `Grado_ABCX` was also refused beside Space Age,
+as intended. The records are in [docs/loads/](docs/loads/). See
+[docs/porting-notes.md](docs/porting-notes.md) for what was kept, replaced and dropped, and for the
+open questions. [docs/catalogue/](docs/catalogue/) is the other half: one file per pack, one entry
+per mod, recording what each mod does, how current it is and whether it should stay. **All five
+packs have now been surveyed**, the last two on 2026-09-22 - which is a claim about the portal, not
+about the game.
 
 ## Staging a pack
 
@@ -71,8 +73,8 @@ loads it. The options:
   `space-age`, `quality` and `elevated-rails` too, on an install that owns the expansion. Use one
   directory per pack: a second pack staged into the same one joins the first pack's members, and
   `Grado_ABCX` beside `Grado_ABCS` is a set that must never exist.
-- `-Build 2.1.23` resolves for a build other than the installed one. It has to be on the pack's
-  `factorio_version` line, or the command refuses.
+- `-Build 2.1.23` resolves for the build it names, which need not be the installed one. It has to be
+  on the pack's `factorio_version` line, or the command refuses.
 - `-FactorioExe <path>` names the install, when it is not where `load-harness.ps1` looks.
 
 A pack that does not resolve stops the command before anything is fetched. A pack whose declared

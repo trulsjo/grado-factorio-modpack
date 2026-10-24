@@ -812,9 +812,9 @@ Truls ruled that all five move to line 2.1 before their first release (#368). Th
 >
 > - `Grado_NonChanging`: loaded, base only and with Space Age, and played (2026-09-29 to
 >   2026-09-30, #17). 24 of its 26 named members were seen working; `ixuAutoSave` and
->   `kry-picker-extended` were not confirmed. One clash found: `YARM` and `PipeVisualizer-Updated`
->   share `Alt+Y`, as does a base control that is not the cause (#71). Whether the pack carries Lua
->   to change a default is Truls's (#73).
+>   `kry-picker-extended` were not confirmed. <!-- deliberate: confirmed --> One clash found: `YARM`
+>   and `PipeVisualizer-Updated` share `Alt+Y`, as does a base control that is not the cause (#71).
+>   Whether the pack carries Lua to change a default is Truls's (#73).
 > - `Grado_ChangingBase`, `Grado_ABC`, `Grado_ABCX`, `Grado_ABCS`: loaded 2026-10-04 (#115 to
 >   #118). No play session yet (#26 to #29). `Grado_ABCX` is refused beside Space Age, as intended.
 >   `Grado_ABCX` has no 2.0 release; its first is on 2.1, once SpaceX's fourth stage can be

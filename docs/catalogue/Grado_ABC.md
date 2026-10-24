@@ -426,10 +426,10 @@ member of the pack.
 
 **What its description says** (read 2026-10-24): "Old saves are unsupported", since "the internal
 package name changed" and the original's `storage` is not migrated. It "retains the existing
-`RRR-*` prototype IDs, settings, custom input, remote interface, recipes, balance values", and "A
-Factorio 2.1 runtime was not available at this checkpoint, so startup, reactor operation [...] and
-meltdown behavior still require in-game testing." So its author has not loaded it: the 2.1 load
-(#372) is the first run this pack has of it. It publishes no source.
+`RRR-*` prototype IDs, <!-- deliberate: IDs --> settings, custom input, remote interface, recipes,
+balance values", and "A Factorio 2.1 runtime was not available at this checkpoint, so startup,
+reactor operation [...] and meltdown behavior still require in-game testing." So its author has not
+loaded it: the 2.1 load (#372) is the first run this pack has of it. It publishes no source.
 
 **Against the promise.** Its only dependency is `base >= 2.1`, and it declares nothing about Space
 Age, so nothing in it forecloses either branch. Its prototypes are the original's by its
@@ -2152,7 +2152,8 @@ description.
 `angelspetrochem`, `angelssmelting`, `angelsindustries`, `bobelectronics`, `bobplates` and
 `bobpower`, among others. `1.9.2` removed all of them, and its only dependency is `base >= 2.0`. So
 neither fusion mod in view integrates with Angel's or Bob's today. That passes `Grado_ABC`'s
-promise, which asks a member not to conflict with the overhaul mods rather than to extend them.
+promise, which asks a member not to conflict <!-- deliberate: conflict --> with the overhaul mods
+rather than to extend them.
 
 It declares `factorio_version` **2.0**, so it is not served to a 2.1 game, and is tracked under #43
 with the other six members here that do the same. It declares nothing about Space Age.
@@ -2211,7 +2212,8 @@ and also the reason its staleness matters.
 2.1 game — the portal serves it only at 2.0. Under #8's third rule that breaks a tie only in an
 entry already marked `reconsider:`, and this one was not, so it stays and is tracked under #43.
 Whether it can be installed at all turns on #16: every named member of the three lower packs has at
-least one 2.0 release (measured 2026-09-23), so on a 2.0 target this mod is served.
+least one 2.0 release (measured 2026-09-23), so on a 2.0 target <!-- deliberate: target --> this mod
+is served.
 
 **Ruled 2026-10-24 (#371): replaced by its *Stand-in* (`GLOSSARY.md`),
 `RealisticReactorRebornPort`.** It has no release declaring `factorio_version` 2.1: its newest is
@@ -2255,7 +2257,8 @@ number of chest types above them, this is the mod that adds those types.
 2.1 game — the portal serves it only at 2.0. Under #8's third rule that breaks a tie only in an
 entry already marked `reconsider:`, and this one was not, so it stays and is tracked under #43.
 Whether it can be installed at all turns on #16: every named member of the three lower packs has at
-least one 2.0 release (measured 2026-09-23), so on a 2.0 target this mod is served.
+least one 2.0 release (measured 2026-09-23), so on a 2.0 target <!-- deliberate: target --> this mod
+is served.
 
 *Ruled 2026-10-22 (#33):* the row above may name a same-pack mod. The `WideChests` family
 straddles the pack boundary, so the row stands under the exception in `docs/mod-catalogue.md`,
@@ -2291,11 +2294,11 @@ from the other direction: remelting plates back to molten metal, and a four-tier
 feature almost word for word. It also declares optional support for `bobplates` and
 `Clowns-Processing`, both of which are here. It is not obviously better — 1,206 downloads against
 18,573, and no compression or Ironworks — but it is a genuine alternative and the first one recorded
-for this pack. *Checked 2026-10-01 (#44, #83): the terms were not recorded beyond "the AngelBob
-ecosystem". Re-run over the union by name, title and summary for "angel", "alloy" and "remelt":
-thirteen hits are in the 2.1 listing alone, and none is an alternative. The nearest,
-`angelsqualitysmelting` (`usafphoenix`, 2.1, 2026-09-10, 8 downloads), adds quality-chaining
-recipes to Angel's smelting, not alloy mixing, compression or casting.*
+for this pack. *Checked <!-- deliberate: Checked --> 2026-10-01 (#44, #83): the terms were not
+recorded beyond "the AngelBob ecosystem". Re-run over the union by name, title and summary for
+"angel", "alloy" and "remelt": thirteen hits are in the 2.1 listing alone, and none is an
+alternative. The nearest, `angelsqualitysmelting` (`usafphoenix`, 2.1, 2026-09-10, 8 downloads),
+adds quality-chaining recipes to Angel's smelting, not alloy mixing, compression or casting.*
 
 **This is the entry to distrust in this survey, and the reason is its release history.** Its 2.x
 release is a single one: `2.0.01` on 2026-08-22, the first release of any kind since `1.0.14` on
@@ -2387,19 +2390,19 @@ default fluid subgroup instead of Angel's invar casting row. `icon_mipmaps` was 
 and is ignored. This mod's `prototypes/override.lua:55-63` also moves the invar *recipes* into its
 own `angels-invar-casting` subgroup, which is the mod doing its job, not the redefinition.
 
-**Not checked.** Nothing here ran a tick or opened the game, so the colour and sorting above are
-read from the dump, not seen. A save made before this mod was added would hold the fluid at 0
-and receive it at 100. Factorio mixes the two by averaging, and with no recipe testing the
-temperature that should be harmless, but it was not tried.
+**Not checked.** <!-- deliberate: checked --> Nothing here ran a tick or opened the game, so the
+colour and sorting above are read from the dump, not seen. A save made before this mod was added
+would hold the fluid at 0 and receive it at 100. Factorio mixes the two by averaging, and with no
+recipe testing the temperature that should be harmless, but it was not tried.
 
-**What the measurement recommends: no conflict.** The entry's **Recommendation** above stands as
-written; whether this changes it is Truls's. The redefinition changes how the fluid looks and where
-it sorts,
-not what any recipe does, so it does not break the pack's promise. Nothing needs doing for the
-pack. If a fix is wanted, it is upstream: this mod's `alloys-extended.lua` could change the fields
+**What the measurement recommends: no conflict.** <!-- deliberate: conflict --> The entry's
+**Recommendation** above stands as written; whether this changes it is Truls's. The redefinition
+changes how the fluid looks and where it sorts, not what any recipe does, so it does not break the
+pack's promise. Nothing needs doing for the pack. If a fix is wanted, it is
+upstream: <!-- deliberate: upstream --> this mod's `alloys-extended.lua` could change the fields
 it wants in `data.raw` instead of replacing the prototype, which would keep Angel's `subgroup` and
-`order`. The `Warheads_Continued` failure is a separate and larger finding, and not this entry's: it
-is
+`order`. The
+`Warheads_Continued` failure is a separate and larger finding, and not this entry's: it is
 #81. *Ruled 2026-10-04 (#81): the nukes mods are out; see* Decisions, 2026-10-04 (#81).
 
 *Traced 2026-10-20 (#331):* named in *Names members both define*, below: its definition replaces

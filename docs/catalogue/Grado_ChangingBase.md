@@ -1396,15 +1396,16 @@ returns `early_construction`, `spiderbots`, `disposable-construction-robots` and
 replace the mechanic rather than continue it. This mod is the direct 2.0 continuation and says so:
 "Fixed and reuploaded for 2.0. Thank you Nexela."
 
-*Checked 2026-10-01 (#44, #83): the terms were not recorded beyond "early-construction". Re-run over
-the union for "early construction", "nanobot" and "construction robot". **One new hit could change
-this entry: [`Nanobots2-continued`](https://mods.factorio.com/mod/Nanobots2-continued)**, *Nanobots:
-Early Bots Continued* by `goakiller900` - `3.4.4`, `factorio_version` 2.1 and no other line,
-2026-08-28, 305 downloads, a "community-maintained continuation for Factorio 2.1". It declares
-`! Nanobots2` and needs `kry_stdlib >= 2.2.4`, already a hidden member of `Grado_NonChanging`, in
-place of `stdlib2`. It is not served on the declared 2.0 line, and this mod is not served at 2.1,
-so it is a successor for the 2.1 release rather than this one, and "the only successor that
-preserves the mechanic" below is true on 2.0 only. Whether to swap is #86's. The other new hits are
+*Checked <!-- deliberate: Checked --> 2026-10-01 (#44, #83): the terms were not recorded beyond
+"early-construction". Re-run over the union for "early construction", "nanobot" and "construction
+robot". **One new hit could change this entry:
+[`Nanobots2-continued`](https://mods.factorio.com/mod/Nanobots2-continued)**, *Nanobots: Early Bots
+Continued* by `goakiller900` - `3.4.4`, `factorio_version` 2.1 and no other line, 2026-08-28, 305
+downloads, a "community-maintained continuation for Factorio 2.1". It declares `! Nanobots2` and
+needs `kry_stdlib >= 2.2.4`, already a hidden member of `Grado_NonChanging`, in place of `stdlib2`.
+It is not served on the declared 2.0 line, and this mod is not served at 2.1, so it is a successor
+for the 2.1 release rather than this one, and "the only successor that preserves the mechanic" below
+is true on 2.0 only. Whether to swap is #86's. The other new hits are
 `early_construction_unofficial_2_1`, a 2.1 build of `early_construction`; `Construction_Drones`
 (`Klonan`), ground-based personal construction robots, which replaces the mechanic rather than
 continuing it; robot tiers, quality upgrades and a ghost reader; and starting-kit mods.*
@@ -1416,15 +1417,17 @@ is the only successor that preserves the mechanic.
 
 #### What its Bob's integration leaves in the recipes on `Grado_ABC` (2026-10-04, #122)
 
-A measurement. Nothing was patched, and whether to report it upstream is Truls's.
+A measurement. Nothing was patched, and whether to report it upstream <!-- deliberate: upstream -->
+is Truls's.
 
 `Grado_ABC`'s recorded load has eight log lines from this mod, through `stdlib2`: it looks up three
-items that do not exist (`docs/loads/Grado_ABC-2026-10-04.md`, *Conflicts*). What that leaves
-behind was read from two data dumps on Factorio 2.0.77, made on 2026-10-04 through the shared
-harness's `Invoke-HarnessDump`: the staged `Grado_ABC` (prototype list checksum `2195323740`, the
-recorded load's) and the staged `Grado_ChangingBase` (`1028326153`), which has no `boblibrary` and
-so shows the recipes as the mod writes them without Bob's. Releases: `Nanobots2` `3.3.2`,
-`stdlib2` `2.0.1`, `bobelectronics` `2.1.1`, `boblogistics` `2.1.1`, `bobwarfare` `2.1.0`.
+items that do not exist (`docs/loads/Grado_ABC-2026-10-04.md`,
+*Conflicts*). <!-- deliberate: Conflicts --> What that leaves behind was read from two data dumps on
+Factorio 2.0.77, made on 2026-10-04 through the shared harness's `Invoke-HarnessDump`: the staged
+`Grado_ABC` (prototype list checksum `2195323740`, the recorded load's) and the staged
+`Grado_ChangingBase` (`1028326153`), which has no `boblibrary` and so shows the recipes as the mod
+writes them without Bob's. Releases: `Nanobots2` `3.3.2`, `stdlib2` `2.0.1`, `bobelectronics`
+`2.1.1`, `boblogistics` `2.1.1`, `bobwarfare` `2.1.0`.
 
 `data-updates.lua` has one block that runs when `boblibrary` is loaded. Line 11 is behind the Bob's
 setting `bobmods-logistics-disableroboports`, off by default, and did not run. Lines 12 to 21 are
@@ -1462,10 +1465,11 @@ The newest release on each line (portal, read 2026-10-04):
 - **2.0:** `Nanobots2` `3.3.2` (2025-03-12) is the newest and the one measured. The mod has no 2.1
   release.
 - **2.1:** `Nanobots2-continued` `3.4.4` (2026-08-28, `goakiller900`), fetched with its SHA-1
-  checked and read, not loaded. Its `data-updates.lua` makes the same nine calls with the same
-  three old names. It uses helpers of its own that check the item exists and skip without a word
-  if it does not. So beside Bob's it would leave the same recipes and log nothing. That is read
-  from its source against Bob's 2.0-line names. Bob's on the 2.1 line was not read.
+  checked <!-- deliberate: checked --> and read, not loaded. Its `data-updates.lua` makes the same
+  nine calls with the same three old names. It uses helpers of its own that check the item exists
+  and skip without a word if it does not. So beside Bob's it would leave the same recipes and log
+  nothing. That is read from its source against Bob's 2.0-line names. Bob's on the 2.1 line was not
+  read.
 
 **Ruled 2026-10-24 (#370): replaced by `Nanobots3`.** It has no release declaring `factorio_version`
 2.1: its newest is `3.3.2`, 2025-03-12 (portal, read 2026-10-24). `Nanobots2-continued`, the
@@ -1510,7 +1514,7 @@ default needs settings-stage Lua, which these packs do not carry.
 **It remains unreachable** — `factorio_version` **2.0**, against a 2.1 floor — and stays in the pack
 under #8's third rule, which leaves such members alone outside entries already marked `reconsider:`.
 That is #43's, not this ticket's. *#43, 2026-09-24: served on stable 2.0.77; unreachable only at a
-2.1 target.*
+2.1 target.* <!-- deliberate: target -->
 
 **Ruled 2026-10-24 (#370): replaced by its *Stand-in* (`GLOSSARY.md`), `qol_research-21`.** It has
 no release declaring `factorio_version` 2.1: its newest is `3.4.2`, 2025-05-04 (portal, read

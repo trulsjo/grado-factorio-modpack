@@ -5,10 +5,10 @@
   "author": "ostogvin",
   "contact": "",
   "homepage": "https://github.com/trulsjo/grado-factorio-modpack",
-  "factorio_version": "2.0",
+  "factorio_version": "2.1",
   "description": "Quality-of-life mods: no new content, and nothing changes your factory unless you ask it to.",
   "dependencies": [
-    "base >= 2.0.67",
+    "base >= 2.1.22",
     "Automatic_Train_Painter",
     "BlueprintTools",
     "BottleneckLite",

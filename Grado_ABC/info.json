@@ -5,10 +5,10 @@
   "author": "ostogvin",
   "contact": "",
   "homepage": "https://github.com/trulsjo/grado-factorio-modpack",
-  "factorio_version": "2.0",
+  "factorio_version": "2.1",
   "description": "Angel's, Bob's and MadClown overhaul, on top of Grado Changing Base. The shared core for the ABCX and ABCS end-game packs. Does not include Angel's Industries (angelsindustries): its tech overhaul and components layer are absent.",
   "dependencies": [
-    "base >= 2.0.74",
+    "base >= 2.1.22",
     "Grado_ChangingBase",
     "Clowns-AngelBob-Nuclear",
     "Clowns-Extended-Minerals",

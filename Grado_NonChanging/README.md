@@ -1,6 +1,6 @@
 # Grado Non-Changing: quality of life
 
-A modpack of quality-of-life mods for Factorio 2.0. **It adds no content:** no new items,
+A modpack of quality-of-life mods for Factorio 2.1. **It adds no content:** no new items,
 buildings or recipes. The mods tune how the game looks and handles, remember some data of their own
 in your save, and change your factory only when you ask them to.
 
@@ -8,8 +8,8 @@ It is the base of the Grado modpacks. Every other Grado pack includes it.
 
 ## Requirements
 
-- Factorio **2.0**, version 2.0.67 or later.
-- Space Age is not required. The pack has loaded cleanly both with and without it on 2.0.77.
+- Factorio **2.1**, version 2.1.22 or later.
+- Space Age is not required.
 
 ## What is in it
 

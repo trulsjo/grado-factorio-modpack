@@ -1,6 +1,6 @@
 # grado-factorio-modpack
 
-Five Factorio **2.0** modpacks, ported from the three 1.1 packs published on the mod portal by
+Five Factorio **2.1** modpacks, ported from the three 1.1 packs published on the mod portal by
 `ostogvin`. A pack is an `info.json` and nothing else unless compatibility between member mods
 forces Lua into it.
 
@@ -23,7 +23,10 @@ lives there, and each branch adds its own end-game.
 
 ## Status
 
-**Skeleton only.** The dependency lists are resolved from the 1.1 packs against the mod portal, but
+**Skeleton only.** The packs declare line 2.1, and none has been loaded on it yet: they moved
+there before their first release, on 2026-10-24, with twelve members dropped or replaced for want
+of a 2.1 release (see [docs/decisions.md](docs/decisions.md)). On line 2.0, the dependency lists
+were resolved from the 1.1 packs against the mod portal, and
 **one pack has been loaded and played: `Grado_NonChanging`**, on Factorio 2.0.77 (2026-09-29 to
 2026-09-30). 24 of its 26 named members were seen working, the save reloaded with the members'
 data that was checked, and one key-binding clash turned up - see
@@ -68,7 +71,7 @@ loads it. The options:
   `space-age`, `quality` and `elevated-rails` too, on an install that owns the expansion. Use one
   directory per pack: a second pack staged into the same one joins the first pack's members, and
   `Grado_ABCX` beside `Grado_ABCS` is a set that must never exist.
-- `-Build 2.0.77` resolves for a build other than the installed one. It has to be on the pack's
+- `-Build 2.1.23` resolves for a build other than the installed one. It has to be on the pack's
   `factorio_version` line, or the command refuses.
 - `-FactorioExe <path>` names the install, when it is not where `load-harness.ps1` looks.
 
@@ -210,7 +213,7 @@ that says why. Reading the portal, staging a pack, `git` and the rest of `gh` pa
 ## Publishing
 
 `Grado_NonChanging`, `Grado_ChangingBase` and `Grado_ABCX` already exist on the portal under
-`ostogvin` as 1.1 entries, and the 2.0 packs go to those same entries - the 1.1 releases stay in
+`ostogvin` as 1.1 entries, and the 2.1 packs go to those same entries - the 1.1 releases stay in
 place, and a player still on 1.1 keeps a working install. `Grado_ABC` and `Grado_ABCS` are new
 entries.
 

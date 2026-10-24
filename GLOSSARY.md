@@ -24,11 +24,27 @@ that member. `stdlib2` is one: `Nanobots2` requires it and no pack lists it. Add
 _Avoid_: unnamed dependency, transitive dependency, and "hidden" for anything in the closure that a
 lower pack does name
 
+**Port drop**:
+A member mod removed at a move of the *Declared line* because it has no release on the line the
+pack moves to. The twenty of the 1.1 -> 2.0 port are port drops, and so is a member with a 2.0
+release and none on 2.1. A port drop's record says which move it was. Added 2026-10-24, when the
+packs moved from 2.0 to 2.1 before their first release.
+_Avoid_: line drop; port drop for a member that has a release on the declared line
+
+**Stand-in**:
+A fork or port of a member mod that holds the member's slot while the original has no release on
+the *Declared line*. It goes back to the original once the original has such a release, by itself
+where that costs nothing: before the pack's first release, or when the original's release declares
+`migrates_from` covering the stand-in. Otherwise the original's release reopens the question,
+because changing the name breaks the stand-in's save data. A mod by another author that does the
+same job is a member, not a stand-in, and nothing sends it back. Added 2026-10-24.
+_Avoid_: fork or port for the role (both name what the mod is, not the slot it holds)
+
 **Load drop**:
-A member mod that was kept at the 1.1 -> 2.0 port and removed later because the pack does not load
-with it. Distinct from a port drop, which is a 1.1 mod with no 2.x release, and from a
-*Choice drop*, a member ruled out by choice. Added 2026-10-04 (#81).
-_Avoid_: drop without saying which kind, port drop for a mod that has a 2.x release
+A member mod that was kept at a port and removed later because the pack does not load with it.
+Distinct from a *Port drop* and from a *Choice drop*, a member ruled out by choice. Added
+2026-10-04 (#81).
+_Avoid_: drop without saying which kind
 
 **Choice drop**:
 A member mod removed at Truls's ruling, for what it adds to the pack, while it still has a release

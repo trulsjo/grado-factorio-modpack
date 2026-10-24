@@ -340,7 +340,12 @@ closure is 29 mods for `Grado_NonChanging`, 52 for `Grado_ChangingBase`, 107 for
 `+FluidWagonColorMask`, which is not a portal name. It is almost certainly a mangled prefix on
 `FluidWagonColorMask`, already a named `Grado_NonChanging` member: `Automatic_Train_Painter`'s
 newest 2.0 release, `2.0.1`, lists `?FluidWagonColorMask`. Whether the game accepts the `+` is
-checkable only in game. Every other mod in every closure has a 2.0 release. The 2.0 closure is one
+checkable only in game. *Corrected 2026-10-24 (#368): not mangled. On line 2.1 `+` is a prefix of
+its own, "a recommended dependency"
+(<https://lua-api.factorio.com/2.1.23/auxiliary/mod-structure.html>, read 2026-10-24; the 2.0.77
+page has no `+`), and `Automatic_Train_Painter` `2.1.0` declares `+FluidWagonColorMask`. The
+resolver still reads it as part of the name: trulsjo/grado-factorio-tools#208.* Every other mod
+in every closure has a 2.0 release. The 2.0 closure is one
 smaller for the two lower packs (that entry) and four smaller for the three above them (that entry
 and three Artisanal Reskins libraries, `reskins-assets-base`, `reskins-assets-bobs` and
 `reskins-sprite-utils`, that the older releases do not pull).
@@ -436,7 +441,9 @@ not the 104 mods read here: the nukes mods left on 2026-10-04 (#81), and `Grado_
 that day was 100 mods. So what the game has borne out is the resolver, once per pack, and not this
 reading. The records are in `docs/loads/`.*
 
-**Not served at 2.1: seventeen, kept as a watch list for when 2.1 goes stable.** Their newest
+**Not served at 2.1: seventeen, kept as a watch list for when 2.1 goes stable.** *Superseded
+2026-10-24 (#368): 2.1 went stable, and the resolve on line 2.1 that day is* Resolves on stable
+2.1.23 *below.* Their newest
 release declares `factorio_version` 2.0, and `?version=2.1&namelist=` returns none of them
 (2026-09-24). Fifteen are named members and two are hidden, the same set as the list in the section
 above:
@@ -498,6 +505,46 @@ hidden member of `Grado_NonChanging`. `OrphanPin` drops map pins on the orphans 
 them with arrows. The evidence is in `docs/catalogue/Grado_ChangingBase.md`, in `Nanobots2`'s
 entry and in `Orphan Finder`'s under *Candidates, not members*. `Orphan Finder`'s entry in
 `docs/catalogue/Grado_NonChanging.md` names the two and points there.
+
+## Resolves on stable 2.1.23, measured 2026-10-24 (#368)
+
+**Factorio's stable release is 2.1.23** (`https://factorio.com/api/latest-releases`, read
+2026-10-24, where it printed 2.1.23 as both stable and experimental), and the installed game is
+2.1.23 (`data/base/info.json`). Truls ruled the same day that all five packs move to line `2.1`
+before their first release (`docs/decisions.md`).
+
+**Method.** The pinned resolver, `vendor/grado-factorio-tools/scripts/resolve-modpack.ps1` at
+`3e86514`, with `-Line 2.1 -Build 2.1.23` on all five `info.json` files in one run, as the pre-PR
+review brief runs it. It picks each mod's newest release that declares `factorio_version` 2.1 and
+whose `base` floor 2.1.23 meets, walks the mandatory closure, and checks every dependency line
+against the picks. Its header says what it does not check.
+
+**Result, before the member changes.** Effective floor `base >= 2.1.22` for every pack, from
+`RateCalculator` `3.4.2`, a `Grado_NonChanging` member. No constraint violation. Thirteen
+`UNRESOLVED` lines:
+
+- Twelve named members with no release declaring 2.1. `Grado_NonChanging`: `CleanFloor`,
+  `PipeVisualizer-Updated`, `SpeedControl`, `WhereIsMyBody`, `YARM`, `solar-calc`.
+  `Grado_ChangingBase`: `Nanobots2`, `qol_research`. `Grado_ABC`: `RealisticFusionPowerPort`,
+  `RealisticReactorsReborn`, `WideChestsBobs`, `angels-smelting-extended`. Each was ruled on
+  2026-10-24, and each pack's catalogue gives the reason: #369, #370, #371.
+- `Automatic_Train_Painter` `2.1.0` declaring `+FluidWagonColorMask`, which the resolver reads as a
+  name the portal does not know. On 2.1 the `+` marks a recommended dependency, and
+  `FluidWagonColorMask` is a named member with a 2.1 release: trulsjo/grado-factorio-tools#208.
+
+Of the fourteen in *Resolves on stable 2.0.77*'s watch list as it stood after #81, twelve are the
+list above. `spidertrontiers-community-updates` resolves on 2.1. The hidden `stdlib2` was not
+reached: the resolver walks no further than a member it cannot resolve, and `Nanobots2` is what
+requires it. #370 replaces `Nanobots2` with `Nanobots3`, which needs no `stdlib2`.
+
+**The 2.1 build of `space-age`**, read from the installed game's `data/space-age/info.json`
+(2.1.23): `"base >= 2.1.0", "elevated-rails >= 2.1.0", "+ quality >= 2.1.0", "recycler >=
+2.1.0"`. `quality` is recommended rather than required, so `Grado_ABCS` names it; `recycler` is a
+mod the game supplies, new on 2.1. Its `base` floor is below the members', so `Grado_ABCS`'s floor
+is the others'.
+
+**What this does not prove.** A resolve reads metadata. No pack has been loaded on 2.1: that is
+#372, after the member changes.
 
 ## Open questions
 
@@ -711,6 +758,27 @@ not counted) and a map created. No member versions were written down, which is w
 
 > `Grado_ABCX`'s first 2.0 release is held until SpaceX's fourth stage can be reached (#294).
 
+**All five packs on 2.0.77**, under *State*, as it stood from 2026-10-19 until 2026-10-24, when
+Truls ruled that all five move to line 2.1 before their first release (#368). The ruling is in
+`docs/decisions.md`.
+
+> **All five packs have a recorded load on Factorio 2.0.77; one has been played.**
+>
+> - `Grado_NonChanging`: loaded, base only and with Space Age, and played (2026-09-29 to
+>   2026-09-30, #17). 24 of its 26 named members were seen working; `ixuAutoSave` and
+>   `kry-picker-extended` were not confirmed. One clash found: `YARM` and `PipeVisualizer-Updated`
+>   share `Alt+Y`, as does a base control that is not the cause (#71). Whether the pack carries Lua
+>   to change a default is Truls's (#73).
+> - `Grado_ChangingBase`, `Grado_ABC`, `Grado_ABCX`, `Grado_ABCS`: loaded 2026-10-04 (#115 to
+>   #118). No play session yet (#26 to #29). `Grado_ABCX` is refused beside Space Age, as intended.
+>   `Grado_ABCX` has no 2.0 release; its first is on 2.1, once SpaceX's fourth stage can be
+>   reached there (#294).
+>   The three overhaul packs log non-fatal complaints (#125).
+>
+> The records are in `docs/loads/`. **"It resolves on the portal", "it loads in the game" and "it
+> plays" are three claims** (`GLOSSARY.md`: *Resolve*, *Load*, *Play session*). For the four upper
+> packs only the first two are true. A *Start* is a fourth thing, less than a load.
+
 ### Decisions still open, as it stood
 
 Listed in full with their evidence in `docs/porting-notes.md`. Do not close one silently.
@@ -749,6 +817,25 @@ Listed in full with their evidence in `docs/porting-notes.md`. Do not close one 
 - **`PickerPipeTools`' pipe clamps are the one feature lost in the port with no successor found** —
   a search, not a proof. All twenty port drops are now closed (#7, #8, #9): nineteen stay dropped
   and `RealisticFusionPower` was replaced by `RealisticFusionPowerPort`.
+
+**The 2.1 line**, under *Decisions still open*, as it stood until 2026-10-24, when Truls ruled
+that all five packs move to line 2.1 before their first release (#368), and #66 asked to close it.
+The ruling is in `docs/decisions.md`; what the resolve on line 2.1 read that day is *Resolves on
+stable 2.1.23* above.
+
+> - **The 2.1 line.** The declared line is `2.0` (#16, in `docs/decisions.md`). A 2.1 release on the
+>   same entries follows once factorio.com's stable release is 2.1.x. Stable Factorio is 2.0.77 and
+>   2.1.20 is experimental (read 2026-09-24). What is known for that day:
+>   - On a latest-release reading the project's highest floor is `base >= 2.1.20`, from the hidden
+>     member `kry_stdlib` `2.2.21` (2026-09-23), or `base >= 2.1.12` from `cybersyn2` if the game
+>     installs an older `kry_stdlib`. The table is *Effective Factorio floor* in
+>     `docs/porting-notes.md` (#15).
+>   - Fourteen members, one of them hidden, have no 2.1 release (since 2026-10-04, #81). The list
+>     is under *Resolves on stable 2.0.77* there.
+>   - The 2.1 build of `space-age` is unread.
+>
+> How the first item was measured and ruled, step by step: `docs/porting-notes.md`, *The trail of
+> CLAUDE.md's State and open decisions*.
 
 ### Conventions and commit messages, as they stood
 

@@ -14,7 +14,7 @@ _Avoid_: modpack (fine in prose, but "pack" is the unit), mod
 **Member mod**:
 A mod named in a pack's `dependencies`. Written by someone else, published separately, and never
 vendored into this repo. A pack that depends on another pack depends on it as a member. A mod the
-game supplies, such as `quality`, is not one (2026-10-25, #375).
+game supplies, such as `quality`, is not one when a change is judged breaking (2026-10-25, #375).
 _Avoid_: dependency (true but wider - it also covers `base` and optional entries), child mod
 
 **Hidden member**:

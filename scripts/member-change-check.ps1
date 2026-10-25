@@ -1,9 +1,10 @@
 <#
 .SYNOPSIS
     Refuses a commit that adds or removes a member of a pack when its subject has no `!` before
-    the colon, naming each pack and each member gained or lost. Exit 1 if it refuses one, or
-    reads no pack; exit 0 means every commit read changes no member, carries the `!`, or has a
-    subject the shared check skips.
+    the colon, naming each pack and each member gained or lost. Exit 1 if it refuses one, or if
+    the commits it reads hold no pack; exit 0 means every commit read changes no member, carries
+    the `!`, or has a subject the shared check skips. A range of no commits has nothing to read:
+    it passes, and says "0 commit(s)".
 
 .DESCRIPTION
     WHY (#375). CLAUDE.md, *Commit messages*: adding or removing a member mod of any pack is a
@@ -15,10 +16,9 @@
     WHAT A MEMBER IS (Truls, 2026-10-25). A dependency with no prefix or with `~`: what the game
     installs with the pack. `?`, `(?)`, `!` and `+` lines are not members, so a change of prefix
     counts when it crosses that line (`? foo` to `foo`). A `Grado_*` line is a member like any
-    other. A mod the game supplies is not a member (Truls, 2026-10-25, as GLOSSARY.md's *Member
-    mod* sets `base` aside): `base`, `elevated-rails`, `quality`, `recycler` and `space-age`, the
-    mods in the data/ directory of the installed 2.1.23 but `core`. A line that bundles another
-    mod adds it to $BUNDLED by hand. A dependency is parsed by `ConvertFrom-Dependency` in
+    other. A mod the game supplies is not a member: $BUNDLED, whose list and the reading behind
+    it are in docs/decisions.md (2026-10-25, #375). A line that bundles another mod adds it there
+    and to $BUNDLED by hand. A dependency is parsed by `ConvertFrom-Dependency` in
     vendor/grado-factorio-tools/scripts/resolve-modpack.ps1, loaded from that file, so the parse
     is the resolver's; a `+` line is set aside before it, since that parse does not know `+`
     (grado-factorio-tools#208).
@@ -54,8 +54,8 @@
     constraint-only change, a non-member line and a mod the game supplies pass, that a move
     fails in both packs, that a skipped subject passes, that an info.json that is not JSON fails
     with its own message, that a run from a subdirectory reads the packs, that commits holding
-    no pack fail, that a range with three dots is refused, and that -MessageFile reads the
-    staged tree. Needs git and the tools submodule.
+    no pack fail and a range of no commits passes, that a range with three dots is refused, and
+    that -MessageFile reads the staged tree. Needs git and the tools submodule.
 
 .EXAMPLE
     pwsh -File scripts/member-change-check.ps1 -Range origin/main..HEAD
@@ -81,8 +81,7 @@ $parse = $ast.Find({ param($n) $n -is [Management.Automation.Language.FunctionDe
 if (-not $parse) { throw "$resolver no longer defines ConvertFrom-Dependency." }
 . ([scriptblock]::Create($parse.Extent.Text))
 
-# The mods the game supplies: the data/ directory of the installed 2.1.23, read 2026-10-25,
-# but core.
+# The mods the game supplies, by docs/decisions.md (2026-10-25, #375).
 $BUNDLED = 'base', 'elevated-rails', 'quality', 'recycler', 'space-age'
 
 # The member names among a pack's dependency strings, sorted.
@@ -200,6 +199,7 @@ if ($SelfTest) {
         & $git commit --quiet -m 'x(repo)!: drop both packs'
         & $git commit --quiet --allow-empty -m 'x(repo): nothing'
         $runs['nopack'] = & $run -Range 'nopack~1..nopack'
+        $runs['empty'] = & $run -Range 'base..base'
     }
     finally { Remove-Item -LiteralPath $temp -Recurse -Force }
 
@@ -230,6 +230,7 @@ if ($SelfTest) {
         @{ Name = '-MessageFile with nothing staged passes'; Test = { & $passes 'msgnone' } }
         @{ Name = 'run from a subdirectory, a member lost without ! still fails'; Test = { & $fails 'subdir' 'Lower lost `kept`' } }
         @{ Name = 'commits that hold no pack fail'; Test = { & $fails 'nopack' 'no pack' } }
+        @{ Name = 'a range of no commits passes and says 0 commit(s)'; Test = { (& $passes 'empty') -and $runs['empty'].Text -match '0 commit\(s\) in base\.\.base' } }
         @{ Name = 'a range with three dots is refused'; Test = {
             # A narrow console wraps the error and margins it with |, as on the Actions runner.
             $runs['threedots'].Code -ne 0 -and ($runs['threedots'].Text -replace '[\s|]+', ' ') -match 'with two dots' } }

@@ -1,6 +1,6 @@
-# Two of the checks a clone opts into with `git config core.hooksPath .githooks`, run on every pull
-# request whether or not its author's clone did (#180): the commit messages and the changed
-# Markdown, over the pull request's own commits. Each check's self-test runs first, so a check
+# Three of the checks a clone opts into with `git config core.hooksPath .githooks`, run on every
+# pull request whether or not its author's clone did (#180): the commit messages, the members
+# each commit changes and the changed Markdown, over the pull request's own commits. Each check's self-test runs first, so a check
 # that can no longer fail is caught here. The download hook's self-test runs with them (#194):
 # scripts/ask-before-download.ps1 refuses in an agent session and checks nothing here, so this
 # is the one place a pull request that breaks it goes red. The glossary check runs over the same

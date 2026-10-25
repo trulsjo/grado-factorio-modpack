@@ -181,11 +181,13 @@ review: <scratch>/draft.md, read like the commit messages; or nothing.>
 Not fixed, and why: <each finding by its number; or none>. <For a fix of a plugin-pass finding,
 which is not one of yours: the finding as the pull request states it; or nothing.>
 
-Read each fix against your own finding. The fix commit's message is read like the rest. Still
-read-only, and still from the repository root. Name the branch's commits by their roles, as in
-the first turn, in a confirmation line too.
+Read each fix commit as new diff: against your own finding, and by every rule you reviewed by
+in the first turn. The fix commit's message is read like the rest. Still read-only, and still
+from the repository root. Name the branch's commits by their roles, as in the first turn, in a
+confirmation line too.
 
-Add a section to <scratch>/review.md with the file tool. Once it is written, end your turn with
+Write your confirmation into <scratch>/review.md with the file tool, under ## Confirmation as
+below, above any other section this turn asks of you. Once it is written, end your turn with
 at most five lines and the path as its last text, and send no message.
 
 ## Confirmation
@@ -197,6 +199,11 @@ its number carrying on from the last, with "(at confirmation)" after its sentenc
 confirmation goes under ## Confirmation as ### Second confirmation, ### Third confirmation and
 so on, with a line for each finding it answers.
 ```
+
+Two lines of the turn come from PR #377. Its plugin-pass findings 1 to 3 were in sentences
+that fixes the pre-PR reviewer had proposed or passed added to the branch. And a confirmation
+written below the reviewer's `## Classes` section was not read, since `pr-body.ps1` reads
+`## Confirmation` up to the next `##` heading.
 
 ## Into the pull request
 

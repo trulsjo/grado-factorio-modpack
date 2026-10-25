@@ -441,3 +441,15 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   grill's rule that a dependency with no prefix is a member had counted it, and the check then
   refused #368's commit. `scripts/member-change-check.ps1` holds the list. No ADR: one line of a
   script.
+- **The pre-PR reviewer is handed every line that names what a branch changed** (2026-10-25,
+  #365): Truls's rulings in the triage grill of #365. `scripts/mentions.ps1` lists each tracked
+  line naming a script the branch changes, a member a pack gains or loses, or a `base >=` floor
+  or `factorio_version` an `info.json` replaces, leaving out load records, traces and the lines
+  the branch adds, and tagging a hit inside a dated note. The list goes to the reviewer beside
+  the diff, unlike `absolute-words.txt`, which the session walks. The brief's step carries the
+  judgement, so three review lines proposed for `docs/agents/code-review.md` are dropped: the one
+  from the plugin pass on PR #363, on when a script fails, and the first and third from PR #374,
+  on a changed member's name and on a section arguing from an old line or floor. Of PR #374's
+  three proposed checks, the one for an `info.json` changed without its catalogue is dropped as
+  covered, the lister of *Read from source* marks with no version is not filed, and the one for
+  an HTML comment in a pack's player page is #376. No ADR: a step of the brief.

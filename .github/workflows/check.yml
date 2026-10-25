@@ -32,6 +32,7 @@
 #
 # scripts/absolute-words.ps1 (#219) has its self-test among the others and no step of its own:
 # it lists lines for a session to walk before the pre-PR review, and has nothing to fail on.
+# scripts/mentions.ps1 (#365) is the same: it lists lines for the pre-PR reviewer.
 #
 # The self-test of the mod-cache hook's wiring runs with the others (#225):
 # vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 -SelfTest -Settings
@@ -88,6 +89,7 @@ jobs:
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/pr-body-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/header-length-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/absolute-words.ps1 -SelfTest
+          pwsh -NoProfile -File scripts/mentions.ps1 -SelfTest
           pwsh -NoProfile -File scripts/overlap-rows-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/member-change-check.ps1 -SelfTest
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 -SelfTest -Settings .claude/settings.json

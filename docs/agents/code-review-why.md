@@ -453,3 +453,11 @@ premise, with no command behind it, and the tally was stale.
 > hooks read the shape of a message and of the Markdown - emphasis, tables, links and line length
 > (`vendor/grado-factorio-tools/scripts/markdown-check.ps1`) - and a load can contradict only
 > whether a pack starts.
+
+**The confirmation**, what the reviewer reads a fix by, as it stood until 2026-10-25, when the
+retro of PR #377 widened it. That pull request's plugin-pass findings 1 to 3 were in sentences
+that fixes the pre-PR reviewer had proposed or passed added to the branch, by its classes comment
+([`issuecomment-6395958532`](https://github.com/trulsjo/grado-factorio-modpack/pull/377#issuecomment-6395958532)).
+
+> Continue the same subagent and have it
+> read each fix against its own finding.

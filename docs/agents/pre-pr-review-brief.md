@@ -200,10 +200,10 @@ confirmation goes under ## Confirmation as ### Second confirmation, ### Third co
 so on, with a line for each finding it answers.
 ```
 
-Two lines of the turn come from PR #377. Its plugin-pass findings 1 to 3 were in sentences
-that fixes the pre-PR reviewer had proposed or passed added to the branch. And a confirmation
-written below the reviewer's `## Classes` section was not read, since `pr-body.ps1` reads
-`## Confirmation` up to the next `##` heading.
+The confirmation stands above any other section because `pr-body.ps1` reads `## Confirmation`
+up to the next `##` heading (its `Get-Section`, read from source at `e9d6d09`). On PR #377
+(2026-10-25) a confirmation written below the reviewer's `## Classes` section made it fail with
+"No line of the confirmation answers finding 15"; that output was not kept.
 
 ## Into the pull request
 

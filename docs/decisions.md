@@ -435,12 +435,12 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   release could still be made later, and before a first release no member change is hard to undo.
 - **A mod the game supplies is no member when a change is judged breaking** (2026-10-25, #375):
   Truls's ruling while #375 was implemented. `base`, `elevated-rails`, `quality`, `recycler` and
-  `space-age`, the mods in the `data/` directory of the installed 2.1.23 (read 2026-10-25), are
-  set aside when a commit's members are compared, as `GLOSSARY.md`'s *Member mod* already sets
-  `base` aside. Naming one, as #368 named `quality` in `Grado_ABCS`, takes no `!`; the triage
-  grill's rule that a dependency with no prefix is a member had counted it, and the check then
-  refused #368's commit. `scripts/member-change-check.ps1` holds the list. No ADR: one line of a
-  script.
+  `space-age`, the mods in the `data/` directory of the installed 2.1.23 but `core` (read
+  2026-10-25), are set aside when a commit's members are compared, as `GLOSSARY.md`'s *Member
+  mod* already sets `base` aside. Naming one, as #368 named `quality` in `Grado_ABCS`, takes no
+  `!`; the triage grill's rule that a dependency with no prefix is a member had counted it, and
+  the check then refused #368's commit. `scripts/member-change-check.ps1` holds the list. No ADR:
+  one line of a script.
 - **The pre-PR reviewer is handed every line that names what a branch changed** (2026-10-25,
   #365): Truls's rulings in the triage grill of #365. `scripts/mentions.ps1` lists each tracked
   line naming a script the branch changes, a member a pack gains or loses, or a `base >=` floor

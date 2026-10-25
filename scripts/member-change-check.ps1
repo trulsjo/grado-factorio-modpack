@@ -1,8 +1,9 @@
 <#
 .SYNOPSIS
     Refuses a commit that adds or removes a member of a pack when its subject has no `!` before
-    the colon, naming each pack and each member gained or lost. Exit 1 if it refuses one; exit 0
-    means every commit read either changes no member or carries the `!`.
+    the colon, naming each pack and each member gained or lost. Exit 1 if it refuses one, or
+    reads no pack; exit 0 means every commit read changes no member, carries the `!`, or has a
+    subject the shared check skips.
 
 .DESCRIPTION
     WHY (#375). CLAUDE.md, *Commit messages*: adding or removing a member mod of any pack is a
@@ -16,8 +17,8 @@
     counts when it crosses that line (`? foo` to `foo`). A `Grado_*` line is a member like any
     other. A mod the game supplies is not a member (Truls, 2026-10-25, as GLOSSARY.md's *Member
     mod* sets `base` aside): `base`, `elevated-rails`, `quality`, `recycler` and `space-age`, the
-    mods in the data/ directory of the installed 2.1.23. A line that bundles another mod adds it
-    to $BUNDLED by hand. A dependency is parsed by `ConvertFrom-Dependency` in
+    mods in the data/ directory of the installed 2.1.23 but `core`. A line that bundles another
+    mod adds it to $BUNDLED by hand. A dependency is parsed by `ConvertFrom-Dependency` in
     vendor/grado-factorio-tools/scripts/resolve-modpack.ps1, loaded from that file, so the parse
     is the resolver's; a `+` line is set aside before it, since that parse does not know `+`
     (grado-factorio-tools#208).
@@ -26,7 +27,8 @@
     member names before and after. A version constraint is not compared, so `base >= 2.0.74` to
     `base >= 2.1.22` passes. Each pack is compared on its own: a member moved from one pack to
     another is lost by one and gained by the other, and both are named. A pack whose info.json is
-    added or deleted gains or loses all its members.
+    added or deleted gains or loses all its members. The packs are read from the repository's
+    root wherever the script is run, and a run whose commits hold no pack fails.
 
     WHICH COMMITS. -MessageFile is the commit being made, as .githooks/commit-msg runs it: the
     staged tree against HEAD, or against nothing in a repository with no commit. -Range is each
@@ -51,8 +53,9 @@
     member gained or lost without `!` fails and names the pack, that a `!` passes, that a
     constraint-only change, a non-member line and a mod the game supplies pass, that a move
     fails in both packs, that a skipped subject passes, that an info.json that is not JSON fails
-    with its own message, and that -MessageFile reads the staged tree. Needs git and the tools
-    submodule.
+    with its own message, that a run from a subdirectory reads the packs, that commits holding
+    no pack fail, that a range with three dots is refused, and that -MessageFile reads the
+    staged tree. Needs git and the tools submodule.
 
 .EXAMPLE
     pwsh -File scripts/member-change-check.ps1 -Range origin/main..HEAD
@@ -79,7 +82,7 @@ if (-not $parse) { throw "$resolver no longer defines ConvertFrom-Dependency." }
 . ([scriptblock]::Create($parse.Extent.Text))
 
 # The mods the game supplies: the data/ directory of the installed 2.1.23, read 2026-10-25,
-# less core, which no info.json can name.
+# but core.
 $BUNDLED = 'base', 'elevated-rails', 'quality', 'recycler', 'space-age'
 
 # The member names among a pack's dependency strings, sorted.
@@ -186,6 +189,17 @@ if ($SelfTest) {
         $runs['msgbang'] = & $run -MessageFile (Join-Path $temp 'msg-bang.txt')
         & $git reset --quiet --hard
         $runs['msgnone'] = & $run -MessageFile (Join-Path $temp 'msg-plain.txt')
+        # From a subdirectory, which git lists only the files beneath.
+        Push-Location (Join-Path $temp 'Lower')
+        try { $text = (& pwsh -NoProfile -File $PSCommandPath -Range 'base..lost' 2>&1 | Out-String) } finally { Pop-Location }
+        $runs['subdir'] = @{ Code = $LASTEXITCODE; Text = $text -replace "`r" }
+        $runs['threedots'] = & $run -Range 'base...lost'
+        # Two commits that hold no pack.
+        & $git checkout --quiet -B nopack base
+        & $git rm --quiet -r Lower Upper
+        & $git commit --quiet -m 'x(repo)!: drop both packs'
+        & $git commit --quiet --allow-empty -m 'x(repo): nothing'
+        $runs['nopack'] = & $run -Range 'nopack~1..nopack'
     }
     finally { Remove-Item -LiteralPath $temp -Recurse -Force }
 
@@ -214,6 +228,9 @@ if ($SelfTest) {
         @{ Name = '-MessageFile reads the staged tree: a staged member change fails without ! past a comment line, and passes with it'; Test = {
             (& $fails 'msgplain' 'this commit x\(lower\): drop kept: Lower lost `kept`') -and (& $passes 'msgbang') } }
         @{ Name = '-MessageFile with nothing staged passes'; Test = { & $passes 'msgnone' } }
+        @{ Name = 'run from a subdirectory, a member lost without ! still fails'; Test = { & $fails 'subdir' 'Lower lost `kept`' } }
+        @{ Name = 'commits that hold no pack fail'; Test = { & $fails 'nopack' 'no pack' } }
+        @{ Name = 'a range with three dots is refused'; Test = { $runs['threedots'].Code -ne 0 -and $runs['threedots'].Text -match 'with two dots' } }
     )
     $failures = 0
     $n = 0
@@ -233,6 +250,12 @@ if ($SelfTest) {
     exit 0
 }
 
+# The packs are top-level, and git lists only the files beneath where it stands.
+if ($MessageFile) { $MessageFile = (Resolve-Path -LiteralPath $MessageFile).Path }
+$root = git rev-parse --show-toplevel
+if ($LASTEXITCODE -ne 0) { throw 'Run it inside the repository.' }
+Set-Location -LiteralPath $root
+
 # Each commit to read, as @{ Where; Subject; Before; After }.
 if ($MessageFile) {
     $subject = @(Get-Content -LiteralPath $MessageFile | Where-Object { $_ -notmatch '^#' -and $_.Trim() })[0] ?? ''
@@ -241,7 +264,7 @@ if ($MessageFile) {
     $commits = @([pscustomobject] @{ Where = 'this commit'; Subject = $subject; Before = $before; After = (Read-Packs ':') })
     $what = 'the commit being made'
 }
-elseif ($Range -match '^(.+?)\.\.([^.].*)$') {
+elseif ($Range -notmatch '\.\.\.' -and $Range -match '^(.+?)\.\.([^.].*)$') {
     $shas = @(git rev-list --reverse $Range)
     if ($LASTEXITCODE -ne 0) { throw "git could not read the range $Range. Run it inside the repository." }
     $commits = @(
@@ -258,6 +281,11 @@ elseif ($Range -match '^(.+?)\.\.([^.].*)$') {
     $what = "$($commits.Count) commit(s) in $Range"
 }
 else { throw 'Say what to read: -MessageFile <file>, -Range origin/main..HEAD with two dots, or -SelfTest.' }
+
+if ($commits -and -not @($commits | Where-Object { $_.Before.Count -or $_.After.Count })) {
+    Write-Host "FAILED - member-change-check: no pack was read in $what, which holds no top-level info.json."
+    exit 1
+}
 
 $refused = 0
 $changing = 0

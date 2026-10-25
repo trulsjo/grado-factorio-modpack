@@ -80,8 +80,7 @@ one that does not. The script lists and does not fail, and a word used in passin
 `<scratch>/mentions.txt` is not walked by the session: it goes to the reviewer (#365). It lists
 each tracked line that names what the branch changed: a script, a member a pack gains or loses,
 or a `base >=` floor or `factorio_version` an `info.json` replaces. Load records, traces and the
-lines the branch adds are left out. A sentence outside the diff that rests on the change is
-where the pre-PR reviews of PR #363 and PR #374 missed what the plugin pass found.
+lines the branch adds are left out.
 
 Copy the raw output behind each figure on the branch into `<scratch>` as well, and save beside it
 the command that produced it, as it was run and with any prompt it was given (#234). A figure

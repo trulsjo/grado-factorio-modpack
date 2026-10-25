@@ -50,11 +50,13 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
 - **Comment on an issue**: `gh issue comment <number> --body "..."`
 - **Apply / remove labels**: `gh issue edit <number> --add-label "..."` / `--remove-label "..."`
 - **Close**: `gh issue close <number> --comment "..."`
-- **Close a duplicate** with `gh issue close <n> --duplicate-of <m>` (gh 2.103.1). First comment
-  on `<m>` listing what `<n>` has that `<m>`'s body lacks: criteria, and any ruling it leaves
-  open. While that ruling is open, `ready-for-agent` comes off `<m>`. On 2026-10-25
-  trulsjo/grado-factorio-tools#210 was closed as a duplicate of trulsjo/grado-factorio-tools#208
-  with a ruling open that the other's body had already answered, and first as "not planned".
+- **Close a duplicate** with `gh issue close <n> --duplicate-of <m>` (gh 2.103.1, read from
+  `gh issue close --help` on 2026-10-26, not run). Comment on `<m>` first, listing what `<n>` has
+  that `<m>`'s body lacks: criteria, and any ruling it leaves open. While that ruling is open,
+  `ready-for-agent` comes off `<m>`. On 2026-10-25 trulsjo/grado-factorio-tools#210 was closed
+  as a duplicate of trulsjo/grado-factorio-tools#208 with a ruling open, first by
+  `gh issue close` with `--reason "not planned"` and then set to duplicate through `gh api`; the
+  label came off the ticket that stayed, at Truls's word, until he rules.
 - **Add a blocker**: a native issue dependency, which GitHub shows on the ticket.
   `gh api --method POST repos/trulsjo/grado-factorio-modpack/issues/<n>/dependencies/blocked_by -F issue_id=<blocker-db-id>`,
   where `<blocker-db-id>` is the blocker's numeric **database id**, <!-- deliberate: id -->
@@ -79,12 +81,12 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
   run with the Bash tool as a command of its own, is refused, the rule is not honoured: file a
   ticket with the transcript's lines and the client's version.
 - **A ticket that waits carries no `ready-for-agent`**: filed with an open blocker or made to
-  wait later, it gets the label when its last blocker closes. #383 was filed so on 2026-10-25,
-  where the `to-tickets` skill's default is the label. A decision that makes a ticket wait is
-  recorded in one step with three parts: the `blocked_by` edge is added, the body's "Blocked by"
-  line names the blocker, and `ready-for-agent` comes off. On 2026-10-12 #225 was handed to a
-  session as `ready-for-agent` with "None" under "Blocked by" in its body, while Truls's decision
-  of 2026-10-11 that it waits stood in its comments (#232).
+  wait later, it carries none until its last blocker closes. A decision that makes a ticket wait
+  is recorded in one step with three parts: the `blocked_by` edge is added, the body's "Blocked
+  by" line names the blocker, and `ready-for-agent` comes off. On 2026-10-12 #225 was handed to
+  a session as `ready-for-agent` with "None" under "Blocked by" in its body, while Truls's
+  decision of 2026-10-11 that it waits stood in its comments (#232). On 2026-10-25 #383 was filed
+  with an open blocker, where the `to-tickets` skill's default is the label.
 - **Pull request body**: carries the `mattpocock-skills:pr` template's three headings,
   `## Summary`, `## Evidence` and `## Merge Danger`, each once, at the second level, outside
   fenced blocks and in that order; other sections may stand between them and after them (Truls,

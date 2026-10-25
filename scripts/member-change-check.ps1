@@ -230,7 +230,9 @@ if ($SelfTest) {
         @{ Name = '-MessageFile with nothing staged passes'; Test = { & $passes 'msgnone' } }
         @{ Name = 'run from a subdirectory, a member lost without ! still fails'; Test = { & $fails 'subdir' 'Lower lost `kept`' } }
         @{ Name = 'commits that hold no pack fail'; Test = { & $fails 'nopack' 'no pack' } }
-        @{ Name = 'a range with three dots is refused'; Test = { $runs['threedots'].Code -ne 0 -and $runs['threedots'].Text -match 'with two dots' } }
+        @{ Name = 'a range with three dots is refused'; Test = {
+            # A narrow console wraps the error and margins it with |, as on the Actions runner.
+            $runs['threedots'].Code -ne 0 -and ($runs['threedots'].Text -replace '[\s|]+', ' ') -match 'with two dots' } }
     )
     $failures = 0
     $n = 0

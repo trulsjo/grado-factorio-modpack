@@ -178,9 +178,12 @@ on no row in any catalogue file, and `pr-body.ps1` on an empty `## Findings`: ea
 read nothing it must cover.
 
 The shared `vendor/grado-factorio-tools/scripts/pr-body-check.ps1` reads the finished body: it
-fails on a commit cited by hash that is not on `main`, and on a closing keyword outside a bare
-`Closes #N` line. A session runs it on the body file before `gh pr create`, and the same workflow
-runs it on the pull request's body, again when the body is edited, with its self-test.
+fails on a commit cited by hash that is not on `main`, on a closing keyword outside a bare
+`Closes #N` line. It fails, too, on a body without the `mattpocock-skills:pr` template's three
+headings, once each and in order, or without one of its four markers under its own heading:
+`**Before:**` and `**After:**` under `## Evidence`, `**Door:**` and `**Blast Radius:**` under
+`## Merge Danger`. A session runs it on the body file before `gh pr create`, and the same
+workflow runs it on the pull request's body, again when the body is edited, with its self-test.
 
 Agent sessions also get a hook from `.claude/settings.json`: a shell command that changes
 directory into `.mod-cache/` is refused before it runs, because a session's tooling writes state

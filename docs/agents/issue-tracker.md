@@ -86,7 +86,7 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
   by" line names the blocker, and `ready-for-agent` comes off. On 2026-10-12 #225 was handed to
   a session as `ready-for-agent` with "None" under "Blocked by" in its body, while Truls's
   decision of 2026-10-11 that it waits stood in its comments (#232). On 2026-10-25 #383 was filed
-  with an open blocker, where the `to-tickets` skill's default is the label.
+  with an open blocker and without the label, where the `to-tickets` skill's default is the label.
 - **Pull request body**: carries the `mattpocock-skills:pr` template's three headings,
   `## Summary`, `## Evidence` and `## Merge Danger`, each once, at the second level, outside
   fenced blocks and in that order; other sections may stand between them and after them (Truls,

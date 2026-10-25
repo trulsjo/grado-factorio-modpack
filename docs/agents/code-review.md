@@ -197,8 +197,9 @@ review.** No pull request is needed for it.
 
 **The reviewer that raised a finding confirms its fix.** <!-- deliberate: confirms -->
 Continue the same subagent and have it
-read each fix against its own finding. That is a confirmation and not a second round. **A fix that
-adds a sentence adds a claim, and the confirmation checks it like any other.** "Confirms" here
+read each fix commit as new diff: against its own finding, and by every rule of this file. That
+is a confirmation and not a second round. **A fix that adds a sentence adds a claim, and the
+confirmation checks it like any other.** "Confirms" here
 names this step and is not a grade of evidence; `GLOSSARY.md` avoids the word for a claim.
 
 **A fix narrows or deletes before it adds.** Where cutting a sentence or making it claim less

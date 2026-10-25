@@ -144,6 +144,12 @@ or of a pack below it. The `pre-commit` hook runs it on the staged content, and 
 at the pull request's head, with its self-test. `-Revision <commit>` reads a commit instead. Its
 header says what it cannot see.
 
+`scripts/member-change-check.ps1` refuses a commit that gains or loses a pack member with no `!`
+before its subject's colon, and names each pack and member. A member is a dependency with no
+prefix or with `~`; a mod the game supplies is not one. The `commit-msg` hook runs it on the
+commit being made, after the message check, and the same workflow over the pull request's
+commits, with its self-test. Its header says what it cannot see.
+
 `scripts/absolute-words.ps1 -Range origin/main...HEAD` lists each line a branch adds, in Markdown,
 in a comment or in a commit message, that holds a word such as "only", "every" or "cannot". Code
 is left out, and what else it cannot see is in its header. It does not fail: the list is for a

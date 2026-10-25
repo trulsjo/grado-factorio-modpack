@@ -7,11 +7,11 @@
 .DESCRIPTION
     WHY (#365). A sentence outside a diff that rests on what the diff changed is not in the diff,
     and the pre-PR review missed such sentences on two pull requests running. On PR #363 three of
-    the plugin pass's findings were sentences saying when a changed script fails. On PR #374 four
-    were sentences naming an old floor or a dropped member, and the confirmation found four
-    catalogue sections arguing from the old line. Finding those lines is mechanical; judging each
-    is not. The list is handed to the pre-PR reviewer beside the diff
-    (docs/agents/pre-pr-review-brief.md), who reads each hit against it.
+    the plugin pass's findings were sentences saying when a changed script fails. On PR #374 its
+    findings 1, 3 and 6 were sentences naming an old floor or a dropped member, and the
+    confirmation of their fixes found four catalogue sections arguing from the old line. Finding
+    those lines is mechanical; judging each is not. The list is handed to the pre-PR reviewer
+    beside the diff (docs/agents/pre-pr-review-brief.md), who reads each hit against it.
 
     WHAT IT LOOKS FOR. The changed names of the range, from its merge base to its tip:
       - each `scripts/*.ps1` and each `.githooks/` file the range adds, changes, deletes or
@@ -24,7 +24,8 @@
     A name is matched whole: a letter, digit, `-` or `_` on either side is another name, and a
     version is not matched inside a longer one, so `2.0` is not found in `2.0.77`.
 
-    WHAT IT READS. Every tracked text file at the tip.
+    WHAT IT READS. Every tracked text file at the tip, from the repository's root wherever the
+    script is run.
 
     WHAT IT LEAVES. Files under docs/loads/ and docs/traces/, which record one run as it was. A
     line the range adds, which is in the diff already. Files git calls binary, and the
@@ -38,7 +39,8 @@
     WHAT IT CANNOT SEE. A sentence that rests on a change without naming it, such as "the floor
     is the resolver's" or a figure counted from a member list. A name written another way: a
     script without its `.ps1`, a mod by its title, a floor with its version alone. A dated note
-    holding `*` of its own ends, for the tag, at its first one. A name broken over two lines.
+    holding `*` of its own ends, for the tag, at its first one. A dated note in another shape,
+    such as `*#43, 2026-09-24: ...*`, is not tagged. A name broken over two lines.
 
 .PARAMETER Range
     The commit range, with three dots: -Range origin/main...HEAD.
@@ -155,6 +157,10 @@ if ($SelfTest) {
         & $git add -A
         & $git commit --quiet -m branch
         $out = & $run 'base...HEAD'
+        # From a subdirectory, which git lists only the files beneath.
+        Push-Location (Join-Path $temp 'scripts')
+        try { $text = (& pwsh -NoProfile -File $PSCommandPath -Range 'base...HEAD' 2>&1 | Out-String) } finally { Pop-Location }
+        $sub = @{ Code = $LASTEXITCODE; Text = $text -replace "`r" }
         $none = & $run 'HEAD...HEAD'
         $bad = & $run 'no-such-branch...HEAD'
     }
@@ -185,6 +191,7 @@ if ($SelfTest) {
         @{ Name = 'a range that changes no name says so and exits 0'; Test = {
             $none.Code -eq 0 -and $none.Text -match 'changes no script, member, floor or line' } }
         @{ Name = 'a range git cannot read exits non-zero'; Test = { $bad.Code -ne 0 } }
+        @{ Name = 'run from a subdirectory, the same hits are listed'; Test = { $sub.Code -eq 0 -and $sub.Text -eq $out.Text } }
     )
     $failures = 0
     $n = 0
@@ -201,6 +208,10 @@ if ($SelfTest) {
 }
 
 if ($Range -notmatch '^(.+?)\.\.\.([^.].*)$') { throw 'Say what to read: -Range origin/main...HEAD, with three dots, or -SelfTest.' }
+# The files are listed from the root, since git lists only those beneath where it stands.
+$root = git rev-parse --show-toplevel
+if ($LASTEXITCODE -ne 0) { throw 'Run it inside the repository.' }
+Set-Location -LiteralPath $root
 $tip = $Matches[2]
 $base = git merge-base $Matches[1] $tip
 if ($LASTEXITCODE -ne 0 -or -not $base) { throw "git could not read the range $Range. Run it inside the repository." }

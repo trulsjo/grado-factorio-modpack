@@ -17,7 +17,7 @@
 # is genuinely missing, say so and let the commit through rather than blocking work on a machine
 # that was never going to run the gates either.
 if ! command -v pwsh >/dev/null 2>&1; then
-    echo "commit-msg: pwsh not found, so the message format was NOT checked." >&2
+    echo "commit-msg: pwsh not found, so the message format and its member changes were NOT checked." >&2
     exit 0
 fi
 
@@ -27,7 +27,7 @@ fi
 # commit and names nothing the author can act on.
 CHECK="$(git rev-parse --show-toplevel)/vendor/grado-factorio-tools/scripts/commit-check.ps1"
 if [ ! -f "$CHECK" ]; then
-    echo "commit-msg: $CHECK not found, so the message format was NOT checked." >&2
+    echo "commit-msg: $CHECK not found, so the message format and its member changes were NOT checked." >&2
     echo "commit-msg: run 'git submodule update --init' to wire up the shared check." >&2
     exit 0
 fi

@@ -81,7 +81,10 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
 - **Pull request body**: carries the `mattpocock-skills:pr` template's three headings,
   `## Summary`, `## Evidence` and `## Merge Danger`, each once, at the second level, outside
   fenced blocks and in that order; other sections may stand between them and after them (Truls,
-  2026-10-19, #320). The template is filled with that skill, where the plugin is installed, and
+  2026-10-19, #320). It carries the template's four markers too, each under its own heading:
+  `**Before:**` and `**After:**` under `## Evidence`, `**Door:**` and `**Blast Radius:**` under
+  `## Merge Danger`; `pr-body-check.ps1`, below, fails a body without one (#353). The template
+  is filled with that skill, where the plugin is installed, and
   from the same three headings by hand where it is not. This repository adds to what it
   produces: above its template, a `Closes #<n>` for each ticket the branch resolves, where it
   resolves any; below it, under one heading, the pre-PR review's findings and its confirmation

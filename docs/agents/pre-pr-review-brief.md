@@ -228,7 +228,8 @@ pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/pr-body-check.ps1 <scr
 ```
 
 It fails on a commit cited by hash that is not on `main`, and on a closing keyword outside a bare
-`Closes #N` line, wherever either stands. A failure in the draft is fixed in the draft. One in
+`Closes #N` line, wherever either stands, and on a heading or marker of the template that is
+missing, as `README.md` lists. A failure in the draft is fixed in the draft. One in
 the review's text goes back to the reviewer by a confirmation turn, to reword its report, since
 the body takes the report as it stands. Then the body is built and run through the check again.
 The rules are on `docs/agents/issue-tracker.md`.

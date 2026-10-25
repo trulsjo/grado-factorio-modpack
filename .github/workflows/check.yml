@@ -45,8 +45,8 @@
 #
 # The shared body check, vendor/grado-factorio-tools/scripts/pr-body-check.ps1, runs on the pull
 # request's body (#321), with its self-test among the others: it fails a body that cites a commit
-# not on main, and a closing keyword outside a bare `Closes #N` line; why is on
-# docs/agents/issue-tracker.md. It also fails a body without the pr template's three headings
+# not on main, and a closing keyword outside a bare `Closes #N` line; why those two fail
+# is on docs/agents/issue-tracker.md. It also fails a body without the pr template's three headings
 # once each and in order (#337), or without one of its four markers (#353). The body reaches
 # the script through the environment, never pasted into the command, as the tools repository's
 # workflow hands it. `edited` is among the triggers so an edited body is checked again; it runs

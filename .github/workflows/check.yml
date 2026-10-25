@@ -56,8 +56,11 @@
 # The pull request's head is checked out, not the merge commit GitHub makes for it, so the range
 # is the pull request's commits and no other. The whole history and the submodule come with it,
 # or `origin/main..HEAD` is empty and the two shared checks, commit-check.ps1 and
-# markdown-check.ps1 (#182), are missing. The range keeps the three commits of 2026-09-20 out,
-# which fail the check and are left alone (CLAUDE.md).
+# markdown-check.ps1 (#182), are missing. The commit check is handed -RequireCommits (#364), so
+# an empty range fails rather than passing on no commits: a pull request has at least one, and
+# an empty range here is a broken checkout. A local run and .githooks/commit-msg leave it out,
+# as an empty range there is a branch with nothing on it yet. The range keeps the three commits
+# of 2026-09-20 out, which fail the check and are left alone (CLAUDE.md).
 #
 # Nothing is installed: pwsh, git and sh are on the runner. The checkout action is the one thing
 # fetched besides this repository and its submodule, pinned to a commit.
@@ -98,7 +101,7 @@ jobs:
 
       - name: Check the commit messages
         if: ${{ !cancelled() }}
-        run: pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -Range origin/main..HEAD
+        run: pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -Range origin/main..HEAD -RequireCommits
 
       - name: Check that a commit changing a pack's members carries !
         if: ${{ !cancelled() }}

@@ -178,7 +178,7 @@ on no row in any catalogue file, and `pr-body.ps1` on an empty `## Findings`: ea
 read nothing it must cover.
 
 The shared `vendor/grado-factorio-tools/scripts/pr-body-check.ps1` reads the finished body: it
-fails on a commit cited by hash that is not on `main`, on a closing keyword outside a bare
+fails on a commit cited by hash that is not on `main`, and on a closing keyword outside a bare
 `Closes #N` line. It fails, too, on a body without the `mattpocock-skills:pr` template's three
 headings, once each and in order, or without one of its four markers under its own heading:
 `**Before:**` and `**After:**` under `## Evidence`, `**Door:**` and `**Blast Radius:**` under

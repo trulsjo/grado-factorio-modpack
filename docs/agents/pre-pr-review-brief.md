@@ -200,10 +200,11 @@ confirmation goes under ## Confirmation as ### Second confirmation, ### Third co
 so on, with a line for each finding it answers.
 ```
 
-The confirmation stands above any other section because `pr-body.ps1` reads `## Confirmation`
-up to the next `##` heading (its `Get-Section`, read from source at `e9d6d09`). On PR #377
-(2026-10-25) a confirmation written below the reviewer's `## Classes` section made it fail with
-"No line of the confirmation answers finding 15"; that output was not kept.
+Each confirmation stays under `## Confirmation`, with no other `##` heading inside it, because
+`pr-body.ps1` reads `## Confirmation` up to the next `##` heading (its `Get-Section`, read from
+source at `e9d6d09`). On PR #377 (2026-10-25) a confirmation stood below the reviewer's
+`## Classes` section, and `pr-body.ps1` failed with "No line of the confirmation answers finding
+15"; that output was not kept.
 
 ## Into the pull request
 

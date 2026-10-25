@@ -433,3 +433,11 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   #28 already was. `Grado_NonChanging`'s 2.0 play session (#17) stands as dated evidence. *Watch:*
   #373 reads the originals of the port drops and stand-ins before each pack release. No ADR: a 2.0
   release could still be made later, and before a first release no member change is hard to undo.
+- **A mod the game supplies is no member when a change is judged breaking** (2026-10-25, #375):
+  Truls's ruling while #375 was implemented. `base`, `elevated-rails`, `quality`, `recycler` and
+  `space-age`, the mods in the `data/` directory of the installed 2.1.23 (read 2026-10-25), are
+  set aside when a commit's members are compared, as `GLOSSARY.md`'s *Member mod* already sets
+  `base` aside. Naming one, as #368 named `quality` in `Grado_ABCS`, takes no `!`; the triage
+  grill's rule that a dependency with no prefix is a member had counted it, and the check then
+  refused #368's commit. `scripts/member-change-check.ps1` holds the list. No ADR: one line of a
+  script.

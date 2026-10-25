@@ -2,6 +2,8 @@
 # Checks the message against the convention declared in
 # vendor/grado-factorio-tools/docs/commit-convention.md. The rules and the reasons live there and
 # in the check it runs; this is only the wiring, so git has something without an extension to run.
+# Then scripts/member-change-check.ps1 (#375) refuses a commit that gains or loses a pack member
+# with no ! before the subject's colon: what counts as breaking is this repository's own rule.
 #
 # INSTALL, twice per clone, because git tracks neither .git/hooks nor a submodule's contents:
 #
@@ -30,4 +32,5 @@ if [ ! -f "$CHECK" ]; then
     exit 0
 fi
 
-exec pwsh -NoProfile -File "$CHECK" "$1"
+pwsh -NoProfile -File "$CHECK" "$1" || exit 1
+exec pwsh -NoProfile -File "$(git rev-parse --show-toplevel)/scripts/member-change-check.ps1" -MessageFile "$1"

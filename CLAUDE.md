@@ -227,7 +227,8 @@ mechanics:
   chain - **`Grado_NonChanging` included**: `Tapeline`, `Todo-List`, `YARM` and `SpeedControl` all
   write to the save, and the removed `blueprint-sandboxes` created whole surfaces. It breaks
   silently and players find out, not the build. The `!` and the `BREAKING CHANGE:` footer are the
-  shared mechanism; what triggers them is this repo's own.
+  shared mechanism; what triggers them is this repo's own. `scripts/member-change-check.ps1`
+  refuses a member gained or lost without the `!`, in the hook and the pull request check (#375).
 - **What a body has to cite.** Name a mod by its portal name and pin the version or date behind a
   claim, because a portal reading goes stale.
 

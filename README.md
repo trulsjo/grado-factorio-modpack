@@ -156,6 +156,12 @@ is left out, and what else it cannot see is in its header. It does not fail: the
 session to walk before the pre-PR review. Its self-test runs in the same workflow, and no hook
 runs it.
 
+`scripts/mentions.ps1 -Range origin/main...HEAD` lists each tracked line that names what a branch
+changed: a script, a member a pack gains or loses, or a `base >=` floor or `factorio_version` an
+`info.json` replaces. Load records, traces and the lines the branch adds are left out, and a hit
+inside a dated note is tagged. It does not fail: the list is handed to the pre-PR reviewer, who
+reads each line against the diff. Its self-test runs in the same workflow, and no hook runs it.
+
 `scripts/reword-commit.ps1 -Commit <sha> -MessageFile <file>` rewords one commit of a branch that
 is not pushed, the tip or one under it, replays the commits above it, and prints each old and new
 hash. It does not move the branch if a tree changed or the commit check rejects a message. Its

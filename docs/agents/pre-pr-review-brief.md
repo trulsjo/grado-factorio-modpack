@@ -81,8 +81,9 @@ one that does not. The script lists and does not fail, and a word used in passin
 each tracked line that names what the branch changed: a script, a member a pack gains or loses,
 or a `base >=` floor or `factorio_version` an `info.json` replaces. On a branch that moves the
 pin it names too each tools script this repository runs that the move changes, itself or through
-a script it loads, and each tools file a line cites by its path, and after the list it prints
-the tools commits between the pins that call themselves breaking, with their footers (#384).
+a script it loads, and each tools file the move changes that a line cites by its path, and after
+the list it prints the tools commits between the pins that call themselves breaking, with their
+footers (#384).
 Load records, traces and the lines the branch adds are left out.
 
 Copy the raw output behind each figure on the branch into `<scratch>` as well, and save beside it

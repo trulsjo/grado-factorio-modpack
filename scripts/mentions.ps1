@@ -35,13 +35,12 @@
     through every level at either pin. A script loads a file of the tools scripts/ when it names
     that file in a command that names $PSScriptRoot, outside comments: a dot-source, a
     Join-Path, a file read. A cited file is named by its path inside the tools repository, not
-    its file name, since file names collide: code-review.md is a page there and one here. The
-    changed names line says what each such name rests on: (pin) when only its own file differs,
-    and otherwise (pin: <file>, ...), each file that differs of it and what it loads. After the
-    list come the tools commits between the pins whose subject has a `!` before its colon or
-    whose body has a BREAKING CHANGE: footer, every one, with its footer where it has one; those
-    a pin moved back drops are marked dropped. They are printed whenever the pin moved, with no
-    hit too.
+    its file name. The changed names line says what each such name rests on: (pin) when only
+    its own file differs, and otherwise (pin: <file>, ...), each file that differs of it and
+    what it loads. After the list come the tools commits between the pins whose subject has a
+    `!` before its colon or whose body has a BREAKING CHANGE: footer, every one, with its footer
+    where it has one; those a pin moved back drops are marked dropped. They are printed whenever
+    the pin moved, with no hit too.
 
     WHAT IT READS. Every tracked text file at the tip, from the repository's root wherever the
     script is run, and on a pin move the submodule's clone at both pins.
@@ -183,7 +182,7 @@ function Get-PinNames([string] $Tools, [string] $Old, [string] $New, [string] $T
         $note = if ($changed.Count -eq 1 -and $changed[0] -eq $r) { '(pin)' } else { "(pin: $($changed -join ', '))" }
         $names[$r] = @{ Pattern = & $whole ([regex]::Escape($r)); Note = $note }
     }
-    $cited = @(git -c core.quotepath=off grep -h -o -I -E "$TOOLS_PATH/[A-Za-z0-9_./-]+" $Tip -- . ':!docs/loads/' ':!docs/traces/' |
+    $cited = @(git -c core.quotepath=off grep -h -o -I -E "$TOOLS_PATH/[A-Za-z0-9_./-]+" $Tip -- . |
         ForEach-Object { ($_ -replace "^.*$TOOLS_PATH/") -replace '[./]+$' } | Sort-Object -Unique)
     foreach ($p in $cited) {
         if ($p -notin $differ -or $names.Contains($p)) { continue }
@@ -355,7 +354,7 @@ if ($SelfTest) {
             $out.Text -notmatch 'changed names: .*idle' -and -not (& $has '(?m)^docs/tools\.md:3:') } }
         @{ Name = 'a run script is named for a script it loads two levels down, tagged with it'; Test = {
             $out.Text -match 'changed names: .*`run-b\.ps1` \(pin: lib-c\.ps1\)' -and $out.Text -notmatch 'changed names: .*`lib-' } }
-        @{ Name = 'a tools file cited by its path is listed by that path, the online link too'; Test = {
+        @{ Name = 'a tools file cited by its path is listed by that path'; Test = {
             (& $has '(?m)^docs/tools\.md:4: docs/rules\.md: ') -and $out.Text -match 'changed names: .*`docs/rules\.md` \(pin\)' -and
                 -not (& $has '(?m)^docs/tools\.md:5:') } }
         @{ Name = 'a breaking commit between the pins is printed with its footer, and a plain one is not'; Test = {

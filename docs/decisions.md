@@ -463,5 +463,6 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   path inside the tools repository; each such name says what changed under it. It also prints
   every tools commit between the pins whose subject has a `!` or whose body has a
   `BREAKING CHANGE:` footer, with zero hits too. A pin the submodule clone cannot read exits 1.
-  Listing every tools file that differs was turned down as noise: on PR #387's move, 24 files
-  named in about 200 lines. No ADR: a step of the brief, as #365's was.
+  Listing every tools file that differs was turned down as noise: on PR #387's move, the 24 that
+  differ under its `scripts/` and `docs/` were named in about 200 lines. No ADR: a step of the
+  brief, as #365's was.

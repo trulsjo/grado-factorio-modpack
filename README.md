@@ -159,11 +159,11 @@ runs it.
 `scripts/mentions.ps1 -Range origin/main...HEAD` lists each tracked line that names what a branch
 changed: a script, a member a pack gains or loses, or a `base >=` floor or `factorio_version` an
 `info.json` replaces. On a branch that moves the tools pin it names too each tools script this
-repository runs that the move changes and each tools file a line cites by its path, and prints the
-tools commits between the pins that call themselves breaking. Load records, traces and the lines
-the branch adds are left out, and a hit inside a dated note is tagged. It does not fail: the list
-is handed to the pre-PR reviewer, who reads each line against the diff. Its self-test runs in the
-same workflow, and no hook runs it.
+repository runs that the move changes and each tools file the move changes that a line cites by
+its path, and prints the tools commits between the pins that call themselves breaking. Load
+records, traces and the lines the branch adds are left out, and a hit inside a dated note is
+tagged. It does not fail: the list is handed to the pre-PR reviewer, who reads each line against
+the diff. Its self-test runs in the same workflow, and no hook runs it.
 
 `scripts/reword-commit.ps1 -Commit <sha> -MessageFile <file>` rewords one commit of a branch that
 is not pushed, the tip or one under it, replays the commits above it, and prints each old and new

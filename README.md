@@ -178,9 +178,9 @@ finding the confirmation does not answer, and on a draft without the `mattpocock
 template's three headings, in order. Its self-test runs in the same workflow.
 
 The glossary check fails on a `GLOSSARY.md` it cannot read, an empty one, or one with no
-`_Avoid_` entry it matches, the header check's `-All` on no tracked script, the Overlaps check
-on no row in any catalogue file, and `pr-body.ps1` on an empty `## Findings`: each a run that
-read nothing it must cover.
+`_Avoid_` entry it matches, the header check's `-All` on no tracked script, hook or
+workflow, the Overlaps check on no row in any catalogue file, and `pr-body.ps1` on an empty
+`## Findings`: each a run that read nothing it must cover.
 
 The shared `vendor/grado-factorio-tools/scripts/pr-body-check.ps1` reads the finished body: it
 fails on a commit cited by hash that is not on `main`, and on a closing keyword outside a bare

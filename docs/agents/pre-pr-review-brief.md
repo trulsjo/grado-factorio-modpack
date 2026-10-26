@@ -101,17 +101,17 @@ it.
 
 ### The raw output behind a figure
 
-Copy the raw output behind each figure on the branch, in the draft of the pull request's body,
-and in each later fix commit, a fix after the plugin pass included, into `<scratch>` as well, and
-save beside it the command that produced it, as it was run and with any prompt it was given
-(#234). A figure whose raw output is gone is named to the reviewer as missing.
+Keep the raw output behind each figure on the branch, in the draft of the pull request's body,
+and in each later fix commit, a fix after the plugin pass included, in `<scratch>`, with the
+command that produced it, as it was run and with any prompt it was given (#234). A figure whose
+raw output is gone is named to the reviewer as missing.
 
 **A run whose result may become a figure is saved when it runs** (#396), a failing run of
 test-first work included: its output goes to `<scratch>/<name>.out.txt`, with its command on the
-first line, as it is made, and is not copied afterwards. On PR #394 (2026-10-26) two figures were
-read on screen and rebuilt later: the draft's "6 of 7 held" for a self-test case failing before
-the change, with every script's self-test counts, which the pre-PR review raised as its finding 6;
-and the red run the plugin-pass fix commit's message cites.
+first line, as it is made, and is not copied afterwards. Twice on PR #394 (2026-10-26) a figure
+was read on screen and rebuilt later: the draft's "6 of 7 held" for a self-test case failing
+before the change, with every script's self-test counts, which the pre-PR review raised as its
+finding 6; and the red run the plugin-pass fix commit's message cites.
 
 **Where the run is gone, a rebuild stands in for it** if the text that gives the figure says it is
 a rebuild, and how it was rebuilt and its output are kept beside it, as PR #394's body did and its
@@ -200,8 +200,8 @@ outside the diff, such as a ticket's body, and how to read each; or nothing.> <T
 results after this commit: <scratch>/commit-check.txt, <scratch>/markdown-check.txt and
 <scratch>/glossary-check.txt; or nothing.> <The draft of the pull request's body above the
 review: <scratch>/draft.md, read like the commit messages; or nothing.> <The raw output and
-saved command behind each figure the fix or the draft adds, one path each with its figure, or
-a rebuild named as one; or nothing.>
+saved command behind each figure the fix or the draft adds, one path each with its figure; or
+nothing.>
 
 Not fixed, and why: <each finding by its number; or none>. <For a fix of a plugin-pass finding,
 which is not one of yours: the finding as the pull request states it; or nothing.>

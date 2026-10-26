@@ -79,8 +79,11 @@ one that does not. The script lists and does not fail, and a word used in passin
 
 `<scratch>/mentions.txt` is not walked by the session: it goes to the reviewer (#365). It lists
 each tracked line that names what the branch changed: a script, a member a pack gains or loses,
-or a `base >=` floor or `factorio_version` an `info.json` replaces. Load records, traces and the
-lines the branch adds are left out.
+or a `base >=` floor or `factorio_version` an `info.json` replaces. On a branch that moves the
+pin it names too each tools script this repository runs that the move changes, itself or through
+a script it loads, and each tools file a line cites by its path, and after the list it prints
+the tools commits between the pins that call themselves breaking, with their footers (#384).
+Load records, traces and the lines the branch adds are left out.
 
 Copy the raw output behind each figure on the branch into `<scratch>` as well, and save beside it
 the command that produced it, as it was run and with any prompt it was given (#234). A figure
@@ -133,7 +136,9 @@ You are handed:
   each `<!-- deliberate: word -->` the diff adds whether the use is meant.
 - <scratch>/mentions.txt: each line outside the diff that names what the branch changed. Read
   each against the diff; a sentence the change makes false is a finding. A line tagged `dated:`
-  stands in a dated note, which names a thing as it was.
+  stands in a dated note, which names a thing as it was. On a pin move, read each listed line
+  against the breaking tools commits printed after the list too: a sentence one of them makes
+  false is a finding.
 - <raw output that is missing, and the figure it was behind; or nothing>
 - the tickets: `gh issue view <N> --json title,body,comments` for each.
 

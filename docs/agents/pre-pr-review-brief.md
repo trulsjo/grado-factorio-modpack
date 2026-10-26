@@ -86,10 +86,6 @@ the list it prints the tools commits between the pins that call themselves break
 footers (#384).
 Load records, traces and the lines the branch adds are left out.
 
-Copy the raw output behind each figure on the branch into `<scratch>` as well, and save beside it
-the command that produced it, as it was run and with any prompt it was given (#234). A figure
-whose raw output is gone is named to the reviewer as missing.
-
 **A probe in a clone outside the repository's directory can start under another profile**
 (#280). Where the `claude` command chooses its Claude Code profile by the directory it is started
 in, an interactive `claude` started in such a clone can run with another profile's settings,
@@ -102,6 +98,27 @@ Start the probe under the intended profile explicitly: set `CLAUDE_CONFIG_DIR` a
 Code's executable, not the `claude` command. Save the path of the `projects/` directory its
 transcript was written to beside its command and output, since that path shows which profile ran
 it.
+
+### The raw output behind a figure
+
+Copy the raw output behind each figure on the branch, in the draft of the pull request's body,
+and in each later fix commit, a fix after the plugin pass included, into `<scratch>` as well, and
+save beside it the command that produced it, as it was run and with any prompt it was given
+(#234). A figure whose raw output is gone is named to the reviewer as missing.
+
+**A run whose result may become a figure is saved when it runs** (#396), a failing run of
+test-first work included: its output goes to `<scratch>/<name>.out.txt`, with its command on the
+first line, as it is made, and is not copied afterwards. On PR #394 (2026-10-26) two figures were
+read on screen and rebuilt later: the draft's "6 of 7 held" for a self-test case failing before
+the change, with every script's self-test counts, which the pre-PR review raised as its finding 6;
+and the red run the plugin-pass fix commit's message cites.
+
+**Where the run is gone, a rebuild stands in for it** if the text that gives the figure says it is
+a rebuild, and how it was rebuilt and its output are kept beside it, as PR #394's body did and its
+reviewer accepted. A rebuild so named is not a finding of its own.
+
+The turns below hand a figure's raw output by this section and do not restate it, the
+confirmation turn's for a figure that a fix or the draft adds included.
 
 ## The review turn
 
@@ -182,7 +199,9 @@ message was reworded, named by its role, with its old and new hash for the comma
 outside the diff, such as a ticket's body, and how to read each; or nothing.> <The checks'
 results after this commit: <scratch>/commit-check.txt, <scratch>/markdown-check.txt and
 <scratch>/glossary-check.txt; or nothing.> <The draft of the pull request's body above the
-review: <scratch>/draft.md, read like the commit messages; or nothing.>
+review: <scratch>/draft.md, read like the commit messages; or nothing.> <The raw output and
+saved command behind each figure the fix or the draft adds, one path each with its figure, or
+a rebuild named as one; or nothing.>
 
 Not fixed, and why: <each finding by its number; or none>. <For a fix of a plugin-pass finding,
 which is not one of yours: the finding as the pull request states it; or nothing.>

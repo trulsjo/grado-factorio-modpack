@@ -27,12 +27,13 @@
     shebang, and `#Requires`, neither of which is a comment by that rule.
 
     WHAT IT CANNOT SEE. A line of a block comment other than a script's first, which the rewrap
-    reads, and any block comment in a hook or a workflow. A header whose opening does not start
-    its line. A `#` line with no space after the `#`. Whether a `#` line is a comment: a line of
-    a here-string or of a `run: |` block that opens with `#` and a space is read as one, as the
-    rewrap reads it. A script outside `scripts/`, and a workflow named `.yaml`. Whether a line
-    could have been wrapped: an address longer than the limit is reported like any other. A
-    character outside the basic plane, such as most emoji, counts two.
+    reads, unless it opens with optional whitespace, `#` and a space: such a line is read as a `#`
+    comment line, in a hook or a workflow too. A header whose opening does not start its line. A
+    `#` line with no space after the `#`. Whether a `#` line is a comment: a line of a here-string
+    or of a `run: |` block that opens with `#` and a space is read as one, as the rewrap reads it.
+    A script outside `scripts/`, and a workflow named `.yaml`. Whether a line could have been
+    wrapped: an address longer than the limit is reported like any other. A character outside the
+    basic plane, such as most emoji, counts two.
 
     WHAT A REFUSAL NAMES (#393). For each refused file, the command that rewraps its comment
     lines over the limit: `markdown-rewrap.ps1 -Comment` from the tools submodule, at this check's
@@ -136,7 +137,7 @@ if ($SelfTest) {
             }
             finally { Remove-Item -LiteralPath $temp -Recurse -Force }
         } }
-        @{ Name = 'a staged hook and workflow are read as staged, and -All reads each tracked one, by file, line and length'; Test = {
+        @{ Name = 'a staged hook and workflow are read as staged, not from disk, a refusal names the rewrap command for each refused one and for no other, and -All reads each tracked one, by file, line and length'; Test = {
             $temp = Join-Path ([IO.Path]::GetTempPath()) "header-length-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
             New-Item -ItemType Directory -Path (Join-Path $temp '.githooks'), (Join-Path $temp '.github/workflows') -Force | Out-Null
             try {
@@ -150,13 +151,18 @@ if ($SelfTest) {
                 & $git commit --quiet -m x
                 & $write '.githooks/pre-commit' @('#!/bin/sh', "# $long", "echo $long")
                 & $write '.github/workflows/check.yml' @('jobs:', "        run: pwsh -File $long", "      # $long")
+                & $write '.githooks/commit-msg' @('#!/bin/sh', '# Short.')
                 & $git add -A
+                & $write '.githooks/pre-commit' @('#!/bin/sh', '# Repaired, and not staged.', "echo $long")
+                & $write '.github/workflows/check.yml' @('jobs:', "        run: pwsh -File $long", '      # Repaired, and not staged.')
                 $staged = & $run
                 $all = & $run -All
+                $command = { param([string] $f) "pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/markdown-rewrap.ps1 -Comment -MaxLineLength $LIMIT -Path $f" }
+                $printed = @([regex]::Matches($staged.Text, '(?m)^\s*(pwsh .*markdown-rewrap\.ps1.*?)\s*$') | ForEach-Object { $_.Groups[1].Value })
                 if ($staged.Code -ne 1 -or $all.Code -ne 1) { Write-Host (($staged.Text + $all.Text).TrimEnd() -replace '(?m)^', '    ') }
                 $staged.Code -eq 1 -and $staged.Text -match '(?m)^\.githooks/pre-commit:2: 103 ' -and $staged.Text -match '(?m)^\.github/workflows/check\.yml:3: 109 ' -and
                     $staged.Text -notmatch 'old' -and $staged.Text -notmatch 'check\.yml:2:' -and $staged.Text -notmatch 'pre-commit:3:' -and
-                    $staged.Text -match 'markdown-rewrap\.ps1 -Comment -MaxLineLength 100 -Path \.githooks/pre-commit' -and
+                    $printed.Count -eq 2 -and $printed -contains (& $command '.githooks/pre-commit') -and $printed -contains (& $command '.github/workflows/check.yml') -and
                     $all.Code -eq 1 -and $all.Text -match '(?m)^\.githooks/old-hook:2: 103 ' -and $all.Text -match '(?m)^\.github/workflows/old\.yml:2: 105 '
             }
             finally { Remove-Item -LiteralPath $temp -Recurse -Force }

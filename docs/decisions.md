@@ -453,3 +453,15 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   three proposed checks, the one for an `info.json` changed without its catalogue is dropped as
   covered, the lister of *Read from source* marks with no version is not filed, and the one for
   an HTML comment in a pack's player page is #376. No ADR: a step of the brief.
+- **A pin move hands the pre-PR reviewer what it changes that this repository uses** (2026-10-26,
+  #384): Truls's rulings in the triage grill of #384, the second of four options put to him.
+  `scripts/mentions.ps1` reads the submodule too. On a branch that moves the pin it names each
+  tools script this repository names by its `vendor/grado-factorio-tools/scripts/` path in
+  `.githooks/`, `.github/`, `.claude/` or `scripts/`, when that file or a tools script it loads
+  differs between the two pins, and each tools file a tracked file outside `vendor/` cites by
+  its full path, when it differs. A script is matched by its file name and a cited file by its
+  path inside the tools repository; each such name says what changed under it. It also prints
+  every tools commit between the pins whose subject has a `!` or whose body has a
+  `BREAKING CHANGE:` footer, with zero hits too. A pin the submodule clone cannot read exits 1.
+  Listing every tools file that differs was turned down as noise: on PR #387's move, 24 files
+  named in about 200 lines. No ADR: a step of the brief, as #365's was.

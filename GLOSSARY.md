@@ -234,6 +234,13 @@ path and go on, or an italic label with the note's text after it in roman. Added
 (#181).
 _Avoid_: note on its own where an undated aside could be meant; the italics as the note's extent
 
+**Pin**:
+The commit of `grado-factorio-tools` this repository records for its submodule under `vendor/`.
+A *pin move* is a change to that commit, and the tools files that differ between the old pin and
+the new one are what it changes. Stating the version or day a claim was read on is not a pin:
+that is the claim's grade, *Measured* or *Read from source*. Added 2026-10-26 (#384).
+_Avoid_: "pin" for the version a claim rests on
+
 **Title**:
 The `title` field in `info.json`, e.g. `Grado ABCS: Angel's, Bob's, MadClown, Space Age`. Display
 only - shown in the in-game mod list and on the pack's portal entry, and freely changed in any

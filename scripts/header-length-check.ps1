@@ -1,50 +1,59 @@
 <#
 .SYNOPSIS
-    Reports each line over 100 characters in the comment header of a script here, as
-    <file>:<line> with its length. Exit 1 if it reports one, and with -All if it lists no
-    script, which is a run that read nothing.
+    Reports each comment line over 100 characters in a script, a hook or a workflow here, as
+    <file>:<line> with its length. Exit 1 if it reports one, and with -All if it lists no file,
+    which is a run that read nothing.
 
 .DESCRIPTION
-    WHY (#211). The headers are wrapped at 100 characters and nothing read that. On PR #210
+    WHY (#211, #378). The comments are wrapped at 100 characters and nothing read that. On PR #210
     (2026-10-09) a fix left a header line at 153 characters, and the pre-PR review took a second
-    confirmation turn over it. The Markdown check reads `.md` files only.
+    confirmation turn over it. On PR #377 (2026-10-25) one left a line of the workflow's header at
+    130, which the reviewer found and no check did. The Markdown check reads `.md` files only.
 
-    WHAT IT READS. The header of each `scripts/*.ps1`: the lines after the first line that opens
-    a block comment, up to the first that opens with the two characters that close one. With no
-    switch, the staged content of the staged scripts, which is what the commit will hold. -All
-    reads each tracked script, as staged.
+    WHAT IT READS. In each `scripts/*.ps1`, its header: the lines after the first line that opens
+    a block comment, up to the first that opens with the two characters that close one. In each
+    `scripts/*.ps1` outside its header, each file under `.githooks/` and each
+    `.github/workflows/*.yml`, every `#` comment line: one that opens with optional whitespace,
+    `#` and one space, as `markdown-rewrap.ps1 -Comment` reads one (#397), so the command a
+    refusal names rewraps what it refused. With no switch, the staged content of the staged files,
+    which is what the commit will hold. -All reads each tracked file, as staged.
 
-    WHAT FAILS WITH NOTHING READ (#362). -All that lists no tracked script, as from a directory
+    WHAT FAILS WITH NOTHING READ (#362). -All that lists no tracked file, as from a directory
     other than the root or in a clone whose checkout failed: exit 1. With no switch, nothing
-    staged passes and says it read 0 scripts, since that commit had nothing to check.
+    staged passes and says it read 0 files, since that commit had nothing to check.
 
     WHAT IT LEAVES. A line under `.EXAMPLE`, up to the next line that opens with a dot and a word
-    in capitals: a command there is not wrapped. The code below the header.
+    in capitals: a command there is not wrapped. Code, a workflow's `run:` line among it. A
+    shebang, and `#Requires`, neither of which is a comment by that rule.
 
-    WHAT IT CANNOT SEE. A comment other than the first block comment that starts a line. A header
-    whose opening does not start its line. A script outside `scripts/`, and the hooks and the
-    workflow, whose comments are wrapped the same way. Whether a line could have been wrapped: an
-    address longer than the limit is reported like any other. A character outside the basic
-    plane, such as most emoji, counts two.
+    WHAT IT CANNOT SEE. A line of a block comment other than a script's first, which the rewrap
+    reads, and any block comment in a hook or a workflow. A header whose opening does not start
+    its line. A `#` line with no space after the `#`. Whether a `#` line is a comment: a line of
+    a here-string or of a `run: |` block that opens with `#` and a space is read as one, as the
+    rewrap reads it. A script outside `scripts/`, and a workflow named `.yaml`. Whether a line
+    could have been wrapped: an address longer than the limit is reported like any other. A
+    character outside the basic plane, such as most emoji, counts two.
 
-    WHAT A REFUSAL NAMES (#393). For each refused script, the command that rewraps its comment
-    lines over the limit, those below the header too: `markdown-rewrap.ps1 -Comment` from the
-    tools submodule, at this check's limit. It reads and writes the working tree only, so the
-    script is staged again, and the refusal warns that staging it again stages any edit to it
-    that was not staged, beside the rewrap. Until the pin moves past
-    trulsjo/grado-factorio-tools#254, the rewrap can leave a line that opens with a dot and a
-    letter, such as `.github/`, which, by its source at the tools repository's `2c13393`, it takes
-    for a help keyword; this check still refuses that line, and it is rewrapped by hand.
+    WHAT A REFUSAL NAMES (#393). For each refused file, the command that rewraps its comment
+    lines over the limit: `markdown-rewrap.ps1 -Comment` from the tools submodule, at this check's
+    limit. It reads and writes the working tree only, so the file is staged again, and the
+    refusal warns that staging it again stages any edit to it that was not staged, beside the
+    rewrap. Until the pin moves past trulsjo/grado-factorio-tools#254, the rewrap can leave a line
+    that opens with a dot and a letter, such as `.github/`, which, by its source at the tools
+    repository's `2c13393`, it takes for a help keyword; this check still refuses that line, and
+    it is rewrapped by hand.
 
 .PARAMETER All
-    Read each tracked script, as staged, and not only the staged ones.
+    Read each tracked script, hook and workflow, as staged, and not only the staged ones.
 
 .PARAMETER SelfTest
     Prove a long header line is reported by its line and length, that a long line under
-    `.EXAMPLE`, below the header or in a script with no block comment is not, that a commit's
-    staged content is what is read, that a refusal names the rewrap command for each refused
-    script and no other, with a warning that staging it again takes unstaged edits, and that -All
-    with no tracked script fails while nothing staged passes. The last three cases need git.
+    `.EXAMPLE` or of code is not, that a long `#` comment line is, below a header, in a script
+    with no block comment, in a hook and in a workflow, while a shebang, `#Requires` and a
+    workflow's `run:` line are not, that a commit's staged content is what is read, a hook's and
+    a workflow's too, that a refusal names the rewrap command for each refused file and no other,
+    with a warning that staging it again takes unstaged edits, and that -All with no tracked file
+    fails while nothing staged passes. The last four cases need git.
 
 .EXAMPLE
     pwsh -File scripts/header-length-check.ps1
@@ -64,23 +73,30 @@ $ErrorActionPreference = 'Stop'
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $LIMIT = 100
 
-# The header's lines that are over the limit, each with its line number in the file.
-function Find-Long([string[]] $Lines) {
-    $inside = $false
+# The comment lines over the limit, each with its line number in the file and where it stands.
+# With -Header, a script's: its header, and each # comment line outside it. Without, a hook's or
+# a workflow's: each # comment line. A # comment line is the rewrap's, # and one space (#397).
+function Find-Long([string[]] $Lines, [switch] $Header) {
+    $state = if ($Header) { 'before' } else { 'after' }
     $example = $false
     $n = 0
     foreach ($line in $Lines) {
         $n++
-        if (-not $inside) { $inside = $line -match '^<#'; continue }
-        if ($line -match '^#>') { break }
-        if ($line -cmatch '^\.([A-Z]+)\b') { $example = $Matches[1] -eq 'EXAMPLE' }
-        if (-not $example -and $line.Length -gt $LIMIT) { [pscustomobject] @{ Line = $n; Length = $line.Length } }
+        $long = $line.Length -gt $LIMIT
+        if ($state -eq 'inside') {
+            if ($line -match '^#>') { $state = 'after'; continue }
+            if ($line -cmatch '^\.([A-Z]+)\b') { $example = $Matches[1] -eq 'EXAMPLE' }
+            if (-not $example -and $long) { [pscustomobject] @{ Line = $n; Length = $line.Length; Where = 'in the header' } }
+            continue
+        }
+        if ($state -eq 'before' -and $line -match '^<#') { $state = 'inside'; continue }
+        if ($long -and $line -match '^\s*# ') { [pscustomobject] @{ Line = $n; Length = $line.Length; Where = 'in a comment' } }
     }
 }
 
 if ($SelfTest) {
     $long = 'x' * 101
-    $hits = { param([string[]] $lines) @(Find-Long $lines | ForEach-Object { "$($_.Line):$($_.Length)" }) -join ' ' }
+    $hits = { param([string[]] $lines, [switch] $NoHeader) @(Find-Long $lines -Header:(-not $NoHeader) | ForEach-Object { "$($_.Line):$($_.Length)" }) -join ' ' }
     $cases = @(
         @{ Name = 'a header line over the limit is reported by its line and length, and one at the limit is not'; Test = {
             (& $hits @('<#', '.SYNOPSIS', "    $long", ('y' * 100), '#>')) -eq '3:105' } }
@@ -88,8 +104,14 @@ if ($SelfTest) {
             (& $hits @('<#', '.EXAMPLE', "    pwsh $long", '', "    $long", '.NOTES', "    $long", '#>')) -eq '7:105' } }
         @{ Name = 'a long line of code below the header is not reported'; Test = {
             (& $hits @('<#', '.SYNOPSIS', '    Short.', '#>', "`$x = '$long'", '<#', $long, '#>')) -eq '' } }
-        @{ Name = 'a script with no block comment passes'; Test = {
-            (& $hits @('#Requires -Version 7', "# $long", "`$x = '$long'")) -eq '' } }
+        @{ Name = 'a # comment line below the header over the limit is reported by its line and length, and one at the limit is not'; Test = {
+            (& $hits @('<#', '.SYNOPSIS', '    Short.', '#>', '$x = 1', "    # $long", ('# ' + 'y' * 98))) -eq '6:107' } }
+        @{ Name = 'in a script with no block comment a long # comment line is reported, and a long shebang, #Requires or line of code is not'; Test = {
+            (& $hits @("#!$long", "#Requires $long", "# $long", "`$x = '$long'")) -eq '3:103' } }
+        @{ Name = 'a hook''s long comment line is reported by its line and length, and its shebang, its code and a block comment are not'; Test = {
+            (& $hits -NoHeader @('#!/bin/sh', "# $long", "echo $long", '<#', "  $long", '#>')) -eq '2:103' } }
+        @{ Name = 'a workflow''s long comment line is reported, an indented one too, and a long run: line is not'; Test = {
+            (& $hits -NoHeader @("# $long", 'jobs:', "      # $long", "        run: pwsh -NoProfile -File $long")) -eq '1:103 3:109' } }
         @{ Name = 'a commit''s staged content is what is read: a staged long line is refused by file and line, the staged repair passes, and -All reads a script that is not staged'; Test = {
             $temp = Join-Path ([IO.Path]::GetTempPath()) "header-length-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
             New-Item -ItemType Directory -Path (Join-Path $temp 'scripts') -Force | Out-Null
@@ -114,6 +136,31 @@ if ($SelfTest) {
             }
             finally { Remove-Item -LiteralPath $temp -Recurse -Force }
         } }
+        @{ Name = 'a staged hook and workflow are read as staged, and -All reads each tracked one, by file, line and length'; Test = {
+            $temp = Join-Path ([IO.Path]::GetTempPath()) "header-length-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
+            New-Item -ItemType Directory -Path (Join-Path $temp '.githooks'), (Join-Path $temp '.github/workflows') -Force | Out-Null
+            try {
+                $git = { git -C $temp -c user.name=selftest -c user.email=selftest@example.invalid -c core.autocrlf=false -c commit.gpgsign=false @args | Out-Null; if ($LASTEXITCODE -ne 0) { throw "git $args failed; the self-test needs git." } }
+                $write = { param([string] $name, [string[]] $lines) Set-Content -LiteralPath (Join-Path $temp $name) -Value $lines }
+                $run = { Push-Location $temp; try { $text = (& pwsh -NoProfile -File $PSCommandPath @args 2>&1 | Out-String) } finally { Pop-Location }; @{ Code = $LASTEXITCODE; Text = $text } }
+                & $git init --quiet
+                & $write '.githooks/old-hook' @('#!/bin/sh', "# $long")
+                & $write '.github/workflows/old.yml' @('jobs:', "  # $long")
+                & $git add -A
+                & $git commit --quiet -m x
+                & $write '.githooks/pre-commit' @('#!/bin/sh', "# $long", "echo $long")
+                & $write '.github/workflows/check.yml' @('jobs:', "        run: pwsh -File $long", "      # $long")
+                & $git add -A
+                $staged = & $run
+                $all = & $run -All
+                if ($staged.Code -ne 1 -or $all.Code -ne 1) { Write-Host (($staged.Text + $all.Text).TrimEnd() -replace '(?m)^', '    ') }
+                $staged.Code -eq 1 -and $staged.Text -match '(?m)^\.githooks/pre-commit:2: 103 ' -and $staged.Text -match '(?m)^\.github/workflows/check\.yml:3: 109 ' -and
+                    $staged.Text -notmatch 'old' -and $staged.Text -notmatch 'check\.yml:2:' -and $staged.Text -notmatch 'pre-commit:3:' -and
+                    $staged.Text -match 'markdown-rewrap\.ps1 -Comment -MaxLineLength 100 -Path \.githooks/pre-commit' -and
+                    $all.Code -eq 1 -and $all.Text -match '(?m)^\.githooks/old-hook:2: 103 ' -and $all.Text -match '(?m)^\.github/workflows/old\.yml:2: 105 '
+            }
+            finally { Remove-Item -LiteralPath $temp -Recurse -Force }
+        } }
         @{ Name = 'a refusal names, for each refused script and for no other, the markdown-rewrap.ps1 -Comment command that rewraps it at the limit, and warns that restaging takes unstaged edits'; Test = {
             $temp = Join-Path ([IO.Path]::GetTempPath()) "header-length-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
             New-Item -ItemType Directory -Path (Join-Path $temp 'scripts') -Force | Out-Null
@@ -135,7 +182,7 @@ if ($SelfTest) {
             }
             finally { Remove-Item -LiteralPath $temp -Recurse -Force }
         } }
-        @{ Name = '-All fails, saying so, where git tracks no script, and with nothing staged and no switch the run passes and says it read 0'; Test = {
+        @{ Name = '-All fails, saying so, where git tracks no script, hook or workflow, and with nothing staged and no switch the run passes and says it read 0'; Test = {
             $temp = Join-Path ([IO.Path]::GetTempPath()) "header-length-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
             New-Item -ItemType Directory -Path $temp -Force | Out-Null
             try {
@@ -145,8 +192,8 @@ if ($SelfTest) {
                 $all = & $run -All
                 $staged = & $run
                 if ($all.Code -ne 1 -or $staged.Code -ne 0) { Write-Host (($all.Text + $staged.Text).TrimEnd() -replace '(?m)^', '    ') }
-                $all.Code -eq 1 -and $all.Text -match 'FAILED - header-length-check: -All found no tracked scripts/\*\.ps1' -and
-                    $staged.Code -eq 0 -and $staged.Text -match '0 script\(s\) read'
+                $all.Code -eq 1 -and $all.Text -match 'FAILED - header-length-check: -All found no tracked file to read' -and
+                    $staged.Code -eq 0 -and $staged.Text -match '0 file\(s\) read'
             }
             finally { Remove-Item -LiteralPath $temp -Recurse -Force }
         } }
@@ -165,12 +212,15 @@ if ($SelfTest) {
     exit 0
 }
 
-$files = if ($All) { @(git -c core.quotepath=off ls-files -- 'scripts/*.ps1') }
-else { @(git -c core.quotepath=off diff --cached --name-only --diff-filter=ACMR -- 'scripts/*.ps1') }
-if ($LASTEXITCODE -ne 0) { throw 'git could not list the scripts to read. Run it from the repository root.' }
-# -All is the set every header must be read from, so an empty one is a run that read nothing (#362).
+# The scripts, the hooks and the workflows (#378).
+$paths = @('scripts/*.ps1', '.githooks/*', '.github/workflows/*.yml')
+$files = if ($All) { @(git -c core.quotepath=off ls-files -- @paths) }
+else { @(git -c core.quotepath=off diff --cached --name-only --diff-filter=ACMR -- @paths) }
+if ($LASTEXITCODE -ne 0) { throw 'git could not list the files to read. Run it from the repository root.' }
+# -All is the whole set of files this check reads, so an empty one is a run that read nothing
+# (#362).
 if ($All -and -not $files) {
-    Write-Host 'FAILED - header-length-check: -All found no tracked scripts/*.ps1, so nothing was read. Run it from the repository root.'
+    Write-Host "FAILED - header-length-check: -All found no tracked file to read ($($paths -join ', ')), so nothing was read. Run it from the repository root."
     exit 1
 }
 
@@ -179,16 +229,16 @@ $refused = @()
 foreach ($f in $files) {
     $lines = @(git show ":$f")
     if ($LASTEXITCODE -ne 0) { throw "git could not read the staged $f. Run it from the repository root." }
-    $hits = @(Find-Long $lines)
+    $hits = @(Find-Long $lines -Header:($f -like 'scripts/*.ps1'))
     foreach ($hit in $hits) {
-        Write-Host "${f}:$($hit.Line): $($hit.Length) characters in the header, over $LIMIT."
+        Write-Host "${f}:$($hit.Line): $($hit.Length) characters $($hit.Where), over $LIMIT."
         $found++
     }
     if ($hits) { $refused += $f }
 }
 if ($found) {
     Write-Host ''
-    Write-Host "FAILED - header-length-check: $found header line(s) over $LIMIT, $($files.Count) script(s) read. Rewrap each; a line under .EXAMPLE is left."
+    Write-Host "FAILED - header-length-check: $found comment line(s) over $LIMIT, $($files.Count) file(s) read. Rewrap each; a line under .EXAMPLE is left."
     # The repair, named where it is needed (#393). It reads and writes the working tree, not
     # the staged copy this check read, so the file is staged again after it, and the warning
     # says what that stage takes with it (the plugin pass on PR #394).
@@ -199,4 +249,4 @@ if ($found) {
     }
     exit 1
 }
-Write-Host "OK - header-length-check: $($files.Count) script(s) read, no header line over $LIMIT."
+Write-Host "OK - header-length-check: $($files.Count) file(s) read, no comment line over $LIMIT."

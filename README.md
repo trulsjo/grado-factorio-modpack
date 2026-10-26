@@ -132,10 +132,12 @@ A deliberate use is marked on its line with `<!-- deliberate: word -->` and is n
 A pull request gets this one from the same workflow, with its self-test. No hook runs it.
 `-List` prints the avoid entries it matches and the ones it leaves to a reader, with why.
 
-`scripts/header-length-check.ps1` reads the comment header at the top of each `scripts/*.ps1` and
-fails on a line over 100 characters. A line under `.EXAMPLE` is left. The `pre-commit` hook runs
-it on the staged scripts after the Markdown check, and the same workflow runs it on every tracked
-`scripts/*.ps1`, with its self-test.
+`scripts/header-length-check.ps1` reads the comment header at the top of each `scripts/*.ps1`,
+and each `#` comment line of the scripts, of `.githooks/` and of `.github/workflows/*.yml`, and
+fails on a line over 100 characters. A line under `.EXAMPLE` is left, and so is code, a
+workflow's `run:` line among it. A refusal names the command that rewraps each refused file. The
+`pre-commit` hook runs it on the staged files after the Markdown check, and the same workflow
+runs it on every tracked one, with its self-test.
 
 `scripts/overlap-rows-check.ps1` reads every `| **Overlaps** |` row in `docs/catalogue/` against
 the five packs' dependency lists, and fails on a row that names, outside `~~ ~~`, a mod its tagged

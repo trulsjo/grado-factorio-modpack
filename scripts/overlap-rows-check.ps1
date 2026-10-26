@@ -256,7 +256,8 @@ if (-not $packs.Count -or -not $catalogues.Count) {
     Write-Host "FAILED - overlap-rows-check: found $($packs.Count) pack(s) and $($catalogues.Count) catalogue file(s)$where, so nothing was read."
     exit 1
 }
-# Counted across the catalogue and not per file: a pack with no cross-pack overlap is a real state (#362).
+# Counted across the catalogue and not per file: a pack with no cross-pack overlap is a real
+# state (#362).
 $rows = @($catalogues.Values | ForEach-Object { $_ } | Where-Object { $_ -match $ROW }).Count
 $what = "$rows Overlaps row(s) in $($catalogues.Count) catalogue file(s) against $($packs.Count) pack(s)$where"
 if (-not $rows) {

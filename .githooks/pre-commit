@@ -1,9 +1,9 @@
 #!/bin/sh
 # Checks the staged Markdown files for broken emphasis and code spans, ragged tables and links
-# that lead nowhere (#149), and for a prose line over 100 characters (#209), and
-# the staged scripts for a comment header line over 100 characters (#211), and every Overlaps
-# row of the staged catalogue against the staged dependency lists (#357). What each reads as
-# what, and what it cannot see, is in the header of
+# that lead nowhere (#149), and for a prose line over 100 characters (#209), and the staged
+# scripts, hooks and workflows for a comment line over 100 characters (#211, #378), and every
+# Overlaps row of the staged catalogue against the staged dependency lists (#357). What each
+# reads as what, and what it cannot see, is in the header of
 # vendor/grado-factorio-tools/scripts/markdown-check.ps1, the shared check (#182), of
 # scripts/header-length-check.ps1 and of scripts/overlap-rows-check.ps1; this is only the wiring.
 #

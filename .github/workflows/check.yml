@@ -19,8 +19,9 @@
 # the scripts themselves.
 #
 # The comment header of each tracked `scripts/*.ps1` is read for a line over 100 characters
-# (#211), with that check's self-test among the others. It reads each of them and not the pull
-# request's alone: a header has no range.
+# (#211), and each `#` comment line of the scripts, of .githooks/ and of these workflows
+# (#378), with that check's self-test among the others. It reads each of them and not the pull
+# request's alone: a comment has no range.
 #
 # Every Overlaps row of docs/catalogue/ is read against the five dependency lists at the pull
 # request's head (#357), with that check's self-test among the others. It reads the whole
@@ -115,7 +116,7 @@ jobs:
         if: ${{ !cancelled() }}
         run: pwsh -NoProfile -File scripts/glossary-check.ps1 -Range origin/main...HEAD
 
-      - name: Check the scripts' comment headers for line length
+      - name: Check the comments of the scripts, the hooks and the workflows for line length
         if: ${{ !cancelled() }}
         run: pwsh -NoProfile -File scripts/header-length-check.ps1 -All
 

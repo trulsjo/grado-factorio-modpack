@@ -88,6 +88,11 @@ that stages no Markdown, may pass, and says it read nothing. A lister that does 
 outside this. Found in PR #360, where `overlap-rows-check.ps1` passed with no catalogue file, and
 in the survey on #361, which found three more.
 
+**A remedy a check prints is read for what following it does.** One that acts on a different copy
+from the one the check read, such as the working tree where the check read the staged copy, with
+a side effect it does not name, is a finding. Found in PR #394, where staging a rewrapped script
+again, as the refusal said to, would stage its unstaged edits with it.
+
 **A citation of a section names its heading, and the reviewer opens that heading and reads that
 it holds the claim.** Found in PR #303, where "the section before it" pointed to the wrong section.
 

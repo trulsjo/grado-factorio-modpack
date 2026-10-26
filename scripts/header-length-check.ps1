@@ -27,12 +27,13 @@
     address longer than the limit is reported like any other. A character outside the basic
     plane, such as most emoji, counts two.
 
-    WHAT A REFUSAL NAMES (#393). For each refused script, the command that rewraps its header:
-    `markdown-rewrap.ps1 -Comment` from the tools submodule, at this check's limit. It writes the
-    working tree only, so the script is staged again. Until the pin moves past
-    trulsjo/grado-factorio-tools#254, the rewrap can leave a line that opens with a dot and a
-    letter, such as `.github/`, which it takes for a help keyword; this check still refuses that
-    line, and it is rewrapped by hand.
+    WHAT A REFUSAL NAMES (#393). For each refused script, the command that rewraps its comment
+    lines over the limit, those below the header too: `markdown-rewrap.ps1 -Comment` from the
+    tools submodule, at this check's limit. It writes the working tree only, so the script is
+    staged again. Until the pin moves past trulsjo/grado-factorio-tools#254, the rewrap can leave
+    a line that opens with a dot and a letter, such as `.github/`, which, by its source at the
+    tools repository's `2c13393`, it takes for a help keyword; this check still refuses that line,
+    and it is rewrapped by hand.
 
 .PARAMETER All
     Read each tracked script, as staged, and not only the staged ones.
@@ -187,8 +188,9 @@ foreach ($f in $files) {
 if ($found) {
     Write-Host ''
     Write-Host "FAILED - header-length-check: $found header line(s) over $LIMIT, $($files.Count) script(s) read. Rewrap each; a line under .EXAMPLE is left."
-    # The repair, named where it is needed (#393). It writes the working tree only, so the file is staged again after it.
-    Write-Host 'Rewrap with this, then stage the file again:'
+    # The repair, named where it is needed (#393). It writes the working tree only, so the file
+    # is staged again after it.
+    Write-Host 'Rewrap each file with its command, then stage it again:'
     foreach ($f in $refused) {
         Write-Host "    pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/markdown-rewrap.ps1 -Comment -MaxLineLength $LIMIT -Path $f"
     }

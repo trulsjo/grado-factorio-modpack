@@ -20,8 +20,7 @@
     it are in docs/decisions.md (2026-10-25, #375). A line that bundles another mod adds it there
     and to $BUNDLED by hand. A dependency is parsed by `ConvertFrom-Dependency` in
     vendor/grado-factorio-tools/scripts/resolve-modpack.ps1, loaded from that file, so the parse
-    is the resolver's; a `+` line is set aside before it, since that parse does not know `+`
-    (grado-factorio-tools#208).
+    is the resolver's; a `+` line is set aside before it.
 
     WHAT IS COMPARED. For each pack, a top-level `<dir>/info.json` by its `name` key, the set of
     member names before and after. A version constraint is not compared, so `base >= 2.0.74` to

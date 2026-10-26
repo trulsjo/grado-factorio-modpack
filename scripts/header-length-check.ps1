@@ -29,11 +29,12 @@
 
     WHAT A REFUSAL NAMES (#393). For each refused script, the command that rewraps its comment
     lines over the limit, those below the header too: `markdown-rewrap.ps1 -Comment` from the
-    tools submodule, at this check's limit. It writes the working tree only, so the script is
-    staged again. Until the pin moves past trulsjo/grado-factorio-tools#254, the rewrap can leave
-    a line that opens with a dot and a letter, such as `.github/`, which, by its source at the
-    tools repository's `2c13393`, it takes for a help keyword; this check still refuses that line,
-    and it is rewrapped by hand.
+    tools submodule, at this check's limit. It reads and writes the working tree only, so the
+    script is staged again, and the refusal warns that staging it again stages any edit to it
+    that was not staged, beside the rewrap. Until the pin moves past
+    trulsjo/grado-factorio-tools#254, the rewrap can leave a line that opens with a dot and a
+    letter, such as `.github/`, which, by its source at the tools repository's `2c13393`, it takes
+    for a help keyword; this check still refuses that line, and it is rewrapped by hand.
 
 .PARAMETER All
     Read each tracked script, as staged, and not only the staged ones.
@@ -42,8 +43,8 @@
     Prove a long header line is reported by its line and length, that a long line under
     `.EXAMPLE`, below the header or in a script with no block comment is not, that a commit's
     staged content is what is read, that a refusal names the rewrap command for each refused
-    script and no other, and that -All with no tracked script fails while nothing staged passes.
-    The last three cases need git.
+    script and no other, with a warning that staging it again takes unstaged edits, and that -All
+    with no tracked script fails while nothing staged passes. The last three cases need git.
 
 .EXAMPLE
     pwsh -File scripts/header-length-check.ps1
@@ -113,7 +114,7 @@ if ($SelfTest) {
             }
             finally { Remove-Item -LiteralPath $temp -Recurse -Force }
         } }
-        @{ Name = 'a refusal names, for each refused script and for no other, the markdown-rewrap.ps1 -Comment command that rewraps it at the limit'; Test = {
+        @{ Name = 'a refusal names, for each refused script and for no other, the markdown-rewrap.ps1 -Comment command that rewraps it at the limit, and warns that restaging takes unstaged edits'; Test = {
             $temp = Join-Path ([IO.Path]::GetTempPath()) "header-length-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
             New-Item -ItemType Directory -Path (Join-Path $temp 'scripts') -Force | Out-Null
             try {
@@ -130,7 +131,7 @@ if ($SelfTest) {
                 $printed = @([regex]::Matches($text, '(?m)^\s*(pwsh .*markdown-rewrap\.ps1.*?)\s*$') | ForEach-Object { $_.Groups[1].Value })
                 if ($code -ne 1) { Write-Host ($text.TrimEnd() -replace '(?m)^', '    ') }
                 $code -eq 1 -and $printed.Count -eq 2 -and $printed -contains (& $command 'scripts/a.ps1') -and
-                    $printed -contains (& $command 'scripts/b.ps1')
+                    $printed -contains (& $command 'scripts/b.ps1') -and $text -match 'stages with it any edit that was not staged'
             }
             finally { Remove-Item -LiteralPath $temp -Recurse -Force }
         } }
@@ -188,9 +189,11 @@ foreach ($f in $files) {
 if ($found) {
     Write-Host ''
     Write-Host "FAILED - header-length-check: $found header line(s) over $LIMIT, $($files.Count) script(s) read. Rewrap each; a line under .EXAMPLE is left."
-    # The repair, named where it is needed (#393). It writes the working tree only, so the file
-    # is staged again after it.
+    # The repair, named where it is needed (#393). It reads and writes the working tree, not
+    # the staged copy this check read, so the file is staged again after it, and the warning
+    # says what that stage takes with it (the plugin pass on PR #394).
     Write-Host 'Rewrap each file with its command, then stage it again:'
+    Write-Host '(The rewrap reads the file on disk, so staging it again stages with it any edit that was not staged.)'
     foreach ($f in $refused) {
         Write-Host "    pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/markdown-rewrap.ps1 -Comment -MaxLineLength $LIMIT -Path $f"
     }

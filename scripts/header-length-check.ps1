@@ -27,14 +27,22 @@
     address longer than the limit is reported like any other. A character outside the basic
     plane, such as most emoji, counts two.
 
+    WHAT A REFUSAL NAMES (#393). For each refused script, the command that rewraps its header:
+    `markdown-rewrap.ps1 -Comment` from the tools submodule, at this check's limit. It writes the
+    working tree only, so the script is staged again. Until the pin moves past
+    trulsjo/grado-factorio-tools#254, the rewrap can leave a line that opens with a dot and a
+    letter, such as `.github/`, which it takes for a help keyword; this check still refuses that
+    line, and it is rewrapped by hand.
+
 .PARAMETER All
     Read each tracked script, as staged, and not only the staged ones.
 
 .PARAMETER SelfTest
     Prove a long header line is reported by its line and length, that a long line under
     `.EXAMPLE`, below the header or in a script with no block comment is not, that a commit's
-    staged content is what is read, and that -All with no tracked script fails while nothing
-    staged passes. Those two cases need git.
+    staged content is what is read, that a refusal names the rewrap command for each refused
+    script and no other, and that -All with no tracked script fails while nothing staged passes.
+    The last three cases need git.
 
 .EXAMPLE
     pwsh -File scripts/header-length-check.ps1
@@ -104,6 +112,27 @@ if ($SelfTest) {
             }
             finally { Remove-Item -LiteralPath $temp -Recurse -Force }
         } }
+        @{ Name = 'a refusal names, for each refused script and for no other, the markdown-rewrap.ps1 -Comment command that rewraps it at the limit'; Test = {
+            $temp = Join-Path ([IO.Path]::GetTempPath()) "header-length-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
+            New-Item -ItemType Directory -Path (Join-Path $temp 'scripts') -Force | Out-Null
+            try {
+                git -C $temp init --quiet
+                if ($LASTEXITCODE -ne 0) { throw 'git init failed; the self-test needs git.' }
+                Set-Content -LiteralPath (Join-Path $temp 'scripts/a.ps1') -Value @('<#', $long, $long, '#>')
+                Set-Content -LiteralPath (Join-Path $temp 'scripts/b.ps1') -Value @('<#', $long, '#>')
+                Set-Content -LiteralPath (Join-Path $temp 'scripts/c.ps1') -Value @('<#', 'Short.', '#>')
+                git -C $temp add -A
+                Push-Location $temp
+                try { $text = (& pwsh -NoProfile -File $PSCommandPath 2>&1 | Out-String) } finally { Pop-Location }
+                $code = $LASTEXITCODE
+                $command = { param([string] $f) "pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/markdown-rewrap.ps1 -Comment -MaxLineLength $LIMIT -Path $f" }
+                $printed = @([regex]::Matches($text, '(?m)^\s*(pwsh .*markdown-rewrap\.ps1.*?)\s*$') | ForEach-Object { $_.Groups[1].Value })
+                if ($code -ne 1) { Write-Host ($text.TrimEnd() -replace '(?m)^', '    ') }
+                $code -eq 1 -and $printed.Count -eq 2 -and $printed -contains (& $command 'scripts/a.ps1') -and
+                    $printed -contains (& $command 'scripts/b.ps1')
+            }
+            finally { Remove-Item -LiteralPath $temp -Recurse -Force }
+        } }
         @{ Name = '-All fails, saying so, where git tracks no script, and with nothing staged and no switch the run passes and says it read 0'; Test = {
             $temp = Join-Path ([IO.Path]::GetTempPath()) "header-length-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
             New-Item -ItemType Directory -Path $temp -Force | Out-Null
@@ -144,17 +173,25 @@ if ($All -and -not $files) {
 }
 
 $found = 0
+$refused = @()
 foreach ($f in $files) {
     $lines = @(git show ":$f")
     if ($LASTEXITCODE -ne 0) { throw "git could not read the staged $f. Run it from the repository root." }
-    foreach ($hit in Find-Long $lines) {
+    $hits = @(Find-Long $lines)
+    foreach ($hit in $hits) {
         Write-Host "${f}:$($hit.Line): $($hit.Length) characters in the header, over $LIMIT."
         $found++
     }
+    if ($hits) { $refused += $f }
 }
 if ($found) {
     Write-Host ''
     Write-Host "FAILED - header-length-check: $found header line(s) over $LIMIT, $($files.Count) script(s) read. Rewrap each; a line under .EXAMPLE is left."
+    # The repair, named where it is needed (#393). It writes the working tree only, so the file is staged again after it.
+    Write-Host 'Rewrap with this, then stage the file again:'
+    foreach ($f in $refused) {
+        Write-Host "    pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/markdown-rewrap.ps1 -Comment -MaxLineLength $LIMIT -Path $f"
+    }
     exit 1
 }
 Write-Host "OK - header-length-check: $($files.Count) script(s) read, no header line over $LIMIT."

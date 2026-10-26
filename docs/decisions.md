@@ -465,4 +465,5 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   `BREAKING CHANGE:` footer, with zero hits too. A pin the submodule clone cannot read exits 1.
   Listing every tools file that differs was turned down as noise: on PR #387's move, the 24 that
   differ under its `scripts/` and `docs/` were named in about 200 lines. No ADR: a step of the
-  brief, as #365's was.
+  brief, as #365's was. The 24's command and output, and a rerun of the 200 (the triage's own
+  output was not kept), stand in PR #390's body, *Evidence*, "The decision's 24 files" (#392).

@@ -20,6 +20,10 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
   pull request is read from the source when the ticket or the comment is written. One that was
   not read is marked as an account, as `docs/agents/pre-pr-review-brief.md` does with "by #167's
   account" (#195, #273).
+- **A figure a triage or a grill makes or repeats goes into the ticket's comment with its command
+  and its output**, as `docs/agents/code-review.md`, *One review before the pull request*, asks
+  of a session with no branch before it is cleared. A figure copied from that comment into
+  `docs/decisions.md` cites the comment by its link (#392).
 - **A quantifier in a ticket carries its search**: a claim about all, none or the only one of a
   set ("every", "no", "the one", "nowhere else") is followed by the search that showed it, as a
   command or as the files walked. The session that implements the ticket runs the search before

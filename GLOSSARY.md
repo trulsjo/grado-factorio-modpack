@@ -238,8 +238,10 @@ _Avoid_: note on its own where an undated aside could be meant; the italics as t
 The commit of `grado-factorio-tools` this repository records for its submodule under `vendor/`.
 A *pin move* is a change to that commit, and the tools files that differ between the old pin and
 the new one are what it changes. Stating the version or day a claim was read on is not a pin:
-that is what the claim's grade carries, *Measured* or *Read from source*. Added 2026-10-26 (#384).
-_Avoid_: "pin" for the version a claim rests on
+that is what the claim's grade carries, *Measured* or *Read from source*. Nor is the resolver's
+*pin file*, `<dir>.pins.psd1`, the mod versions one resolve chose for each pack, which the fetch
+reads: it is always called the pin file in full. Added 2026-10-26 (#384).
+_Avoid_: "pin" for the version a claim rests on; "pin" alone for the pin file
 
 **Title**:
 The `title` field in `info.json`, e.g. `Grado ABCS: Angel's, Bob's, MadClown, Space Age`. Display

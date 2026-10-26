@@ -77,6 +77,11 @@ was left open and two ores rested on it.
 **Where prose restates a list the code holds, read the two side by side.** Found in PR #186,
 where the README's list of what a hook stops had lost two entries of the script's.
 
+**A glossary entry is read against the repository's uses of its word.** Grep the word whole. A
+thing of this repository's own that the word also names, and that the entry neither names nor
+avoids, is a finding; the word in its plain sense, or as the game uses it, is not. Found in PR
+#390, where *Pin* missed the resolver's pin file.
+
 **A check fails when the rules it reads, or the set it must cover, come back empty, and its
 self-test covers that run.** A run that only has nothing to check this time, such as a commit
 that stages no Markdown, may pass, and says it read nothing. A lister that does not fail is

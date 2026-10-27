@@ -19,9 +19,8 @@
     holds `<!--` anywhere; nothing else on it is read.
 
     WHAT FAILS WITH NOTHING READ (#362). -All that finds no pack directory, as from a directory
-    other than the root or in a clone whose checkout failed: exit 1. A pack directory with no
-    Markdown is not one. With no switch, nothing staged passes and says it read 0 files, since
-    that commit had nothing to check.
+    other than the root or in a clone whose checkout failed: exit 1. With no switch, nothing
+    staged passes and says it read 0 files, since that commit had nothing to check.
 
     WHAT IT CANNOT SEE. An HTML comment written another way, such as with an entity, and any other
     HTML, which is not read. A pack directory not named by an info.json at the top level: an

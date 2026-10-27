@@ -11,6 +11,12 @@ One of the five things this repo publishes. A pack is an `info.json` whose `depe
 the whole of it; it contributes no content of its own.
 _Avoid_: modpack (fine in prose, but "pack" is the unit), mod
 
+**Player page**:
+A pack's text for players: its `README.md`, and any other Markdown in the pack's directory. It
+ships in the pack zip and is meant for the portal description, so it carries no ticket numbers,
+no project vocabulary and no HTML comment. Added 2026-10-27 (#376).
+_Avoid_: "README" for it (the repository has its own)
+
 **Member mod**:
 A mod named in a pack's `dependencies`. Written by someone else, published separately, and never
 vendored into this repo. A pack that depends on another pack depends on it as a member. A mod the

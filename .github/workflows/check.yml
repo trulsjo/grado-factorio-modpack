@@ -27,6 +27,10 @@
 # request's head (#357), with that check's self-test among the others. It reads the whole
 # catalogue and not the pull request's lines: a row goes stale when an info.json changes.
 #
+# The Markdown of each pack's directory, its player page, is read at the pull request's head for
+# an HTML comment (#376), with that check's self-test among the others. It reads every tracked
+# page and not the pull request's lines, as .githooks/pre-commit reads the staged ones.
+#
 # Each commit of the pull request is read for a pack member gained or lost with no ! in its
 # subject (#375), by scripts/member-change-check.ps1 with its self-test among the others, over the
 # commit check's two-dot range: .githooks/commit-msg runs it on a commit being made, and a clone
@@ -102,6 +106,7 @@ jobs:
           pwsh -NoProfile -File scripts/mentions.ps1 -SelfTest
           pwsh -NoProfile -File scripts/probe-session.ps1 -SelfTest
           pwsh -NoProfile -File scripts/overlap-rows-check.ps1 -SelfTest
+          pwsh -NoProfile -File scripts/player-page-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/member-change-check.ps1 -SelfTest
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 -SelfTest -Settings .claude/settings.json
 
@@ -128,6 +133,10 @@ jobs:
       - name: Check every Overlaps row against the dependency lists
         if: ${{ !cancelled() }}
         run: pwsh -NoProfile -File scripts/overlap-rows-check.ps1 -Revision HEAD
+
+      - name: Check the pack directories' Markdown for an HTML comment
+        if: ${{ !cancelled() }}
+        run: pwsh -NoProfile -File scripts/player-page-check.ps1 -All
 
       - name: Check the pull request body
         if: ${{ !cancelled() }}

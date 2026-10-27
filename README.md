@@ -146,6 +146,13 @@ or of a pack below it. The `pre-commit` hook runs it on the staged content, and 
 at the pull request's head, with its self-test. `-Revision <commit>` reads a commit instead. Its
 header says what it cannot see.
 
+`scripts/player-page-check.ps1` reads the Markdown in each pack's directory, the pages that ship
+in the pack's zip, and fails on a line holding `<!--`, an HTML comment, naming the file and the
+line. A pack directory is a top-level directory with an `info.json`. Where the glossary check
+flags a word on such a page, the line is reworded, since a `<!-- deliberate: -->` marker would
+ship too. The `pre-commit` hook runs it on the staged pages, and the same workflow, with `-All`,
+on every tracked one, with its self-test.
+
 `scripts/member-change-check.ps1` refuses a commit that gains or loses a pack member with no `!`
 before its subject's colon, and names each pack and member. A member is a dependency with no
 prefix or with `~`; a mod the game supplies is not one. The `commit-msg` hook runs it on the
@@ -179,7 +186,8 @@ template's three headings, in order. Its self-test runs in the same workflow.
 
 `glossary-check.ps1` fails on a `GLOSSARY.md` it cannot read, an empty one, or one with no
 `_Avoid_` entry it matches, `header-length-check.ps1`'s `-All` on no tracked script, hook or
-workflow, `overlap-rows-check.ps1` on no row in any catalogue file, and `pr-body.ps1` on an
+workflow, `overlap-rows-check.ps1` on no row in any catalogue file, `player-page-check.ps1`'s
+`-All` on no pack directory, and `pr-body.ps1` on an
 empty `## Findings`: each a run that read nothing it must cover.
 
 The shared `vendor/grado-factorio-tools/scripts/pr-body-check.ps1` reads the finished body: it

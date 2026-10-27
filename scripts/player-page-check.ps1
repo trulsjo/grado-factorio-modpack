@@ -154,7 +154,7 @@ if ($SelfTest) {
 }
 
 # A pack directory is a top-level directory whose info.json is in the index.
-$packs = @(git -c core.quotepath=off ls-files -- '*/info.json' | Where-Object { $_ -match '^[^/]+/info\.json$' } | ForEach-Object { $_.Split('/')[0] })
+$packs = @(git -c core.quotepath=off ls-files | Where-Object { $_ -match '^[^/]+/info\.json$' } | ForEach-Object { $_.Split('/')[0] })
 if ($LASTEXITCODE -ne 0) { throw 'git could not list the pack directories. Run it from the repository root.' }
 # -All reads every pack directory, so finding none is a run that read nothing (#362).
 if ($All -and -not $packs) {
@@ -162,11 +162,14 @@ if ($All -and -not $packs) {
     exit 1
 }
 
-$paths = @($packs | ForEach-Object { "$_/*.md" })
+# Each pack directory by its path, and the .md files kept here: pwsh on Linux globs a native
+# argument such as Pack/*.md itself, so git saw no deeper file (the check run on PR #406).
+$paths = @($packs | ForEach-Object { "$_/" })
 $files = if (-not $paths) { @() }
 elseif ($All) { @(git -c core.quotepath=off ls-files -- @paths) }
 else { @(git -c core.quotepath=off diff --cached --name-only --diff-filter=ACMR -- @paths) }
 if ($LASTEXITCODE -ne 0) { throw 'git could not list the files to read. Run it from the repository root.' }
+$files = @($files | Where-Object { $_ -clike '*.md' })
 
 $found = 0
 foreach ($f in $files) {

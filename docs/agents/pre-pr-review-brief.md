@@ -86,18 +86,7 @@ the list it prints the tools commits between the pins that call themselves break
 footers (#384).
 Load records, traces and the lines the branch adds are left out.
 
-**A probe in a clone outside the repository's directory can start under another profile**
-(#280). Where the `claude` command chooses its Claude Code profile by the directory it is started
-in, an interactive `claude` started in such a clone can run with another profile's settings,
-sign-in and folder trust, and write its transcript under that profile. On 2026-10-14 it happened
-to #231's measurement, whose write-up did not say so
-([#231's addendum](https://github.com/trulsjo/grado-factorio-modpack/issues/231#issuecomment-6185969252)),
-and twice to #160's second process before it was started under the intended profile
-([#160](https://github.com/trulsjo/grado-factorio-modpack/issues/160#issuecomment-6178947824)).
-Start the probe under the intended profile explicitly: set `CLAUDE_CONFIG_DIR` and start Claude
-Code's executable, not the `claude` command. Save the path of the `projects/` directory its
-transcript was written to beside its command and output, since that path shows which profile ran
-it.
+A probe is started as `docs/agents/issue-tracker.md`'s bullet on a newly started process says.
 
 ### The raw output behind a figure
 

@@ -32,8 +32,8 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
   where the three ranges stand side by side", two other files held all three, and the claim
   reached a commit message before a review caught it (PR #210, finding 2 in its body).
 - **A criterion that a setting took effect names a newly started process**: where a ticket asks
-  that a setting, a hook or a plugin be shown working or absent, the criterion names a `claude`
-  process started after the commit that holds the setting is
+  that a setting, a hook or a plugin be shown working or absent, the criterion names a process of
+  Claude Code's executable started after the commit that holds the setting is
   checked out, <!-- deliberate: checked -->
   and the process's start time is kept beside the start of its transcript. A new session
   id <!-- deliberate: id -->
@@ -45,6 +45,20 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
   asked for it. A difference is stated beside the result (#272). On 2026-10-13 #233's control
   ran the `blocked_by` write as a typed prompt, while the refusal it stood in for was a session's
   own compound command, and a run was skipped on its result before a review found the difference.
+  **The process is started under the intended profile explicitly** (#280): set
+  `CLAUDE_CONFIG_DIR` and start Claude Code's executable, not the `claude` command, and save the
+  path of the `projects/` directory its transcript was written to beside its command and output,
+  since that path shows which profile ran it. Where the `claude` command chooses its profile by
+  the directory it is started in, an interactive `claude` started in a clone outside the
+  repository's directory can run with another profile's settings, sign-in and folder trust, and
+  write its transcript under that profile. On 2026-10-14 it happened to #231's measurement, whose
+  write-up did not say so
+  ([#231's addendum](https://github.com/trulsjo/grado-factorio-modpack/issues/231#issuecomment-6185969252)),
+  and twice to #160's second process before it was started under the intended profile
+  ([#160](https://github.com/trulsjo/grado-factorio-modpack/issues/160#issuecomment-6178947824)).
+  On 2026-10-27 #401's first probe was started through the `claude` command, which this page then
+  named as the process; it ran under the intended profile, and was run again from the executable
+  (#403).
 - **Read an issue**: `gh issue view <number> --json title,body,labels,comments`, filtered with
   `--jq`. One call gets the body, the labels and every comment; `--comments` alone, piped, printed
   the comments and not the body (2026-10-06).

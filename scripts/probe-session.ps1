@@ -2,15 +2,15 @@
 .SYNOPSIS
     Starts Claude Code's executable under a given CLAUDE_CONFIG_DIR with one prompt, and writes
     the evidence a criterion on a newly started process asks for to one file. It fails when the
-    transcript is not under that directory's projects/, or the process started before HEAD's
-    commit.
+    reply is not JSON, when the transcript is not under that directory's projects/, or when the
+    process started before HEAD's commit.
 
 .DESCRIPTION
     WHY (#404). A criterion that a setting took effect names a newly started process, its start
     time kept beside the start of its transcript (docs/agents/issue-tracker.md, the bullet on a
     newly started process). That evidence was built by hand on #160, #231, #245 and #401, three
-    times on #401 alone. Why it starts the executable and not the `claude` command is in the
-    same bullet.
+    times on #401 alone, by #404's account of 2026-10-27. Why it starts the executable and not
+    the `claude` command is in the same bullet.
 
     WHAT IT DOES. Reads HEAD and its commit time in the current directory. Starts the executable
     there with CLAUDE_CONFIG_DIR set to -ConfigDir, as `-p <prompt> --output-format json`, and
@@ -19,7 +19,7 @@
     first `timestamp` in it. With -Pattern it counts the transcript's lines that match, and
     writes the first match.
     The evidence file holds the command as run, each of those, the verdict, the raw reply and
-    any stderr. It is written whether the run passes or fails.
+    any stderr. Once the process has exited, it is written whether the run passes or fails.
 
     WHAT THE START-TIME FAILURE GUARDS. The script starts the process itself, so it starts
     before HEAD's commit only where that commit is dated ahead of this machine's clock. The
@@ -33,7 +33,8 @@
 
     WHAT IT CANNOT SEE. Whether the commit holding the setting is HEAD or older.
     An interactive probe, which is still made by hand (#231). A process that never exits: it
-    waits for it. A transcript the reply does not name.
+    waits for it. A transcript the reply does not name. Where a transcript not under
+    <ConfigDir>/projects/ went: the run fails without finding it.
 
     THE EXECUTABLE. Without -Executable it is the first application named `claude` on the path,
     so never a shell function or alias: in pwsh 7.6.9 on 2026-10-27,
@@ -63,9 +64,9 @@
     written clean, and as the paths that differ when a file is left uncommitted; that the stub
     is started with CLAUDE_CONFIG_DIR and the arguments -p <prompt> --output-format json; that
     -Pattern writes the count of matching lines and the first match, and a run without it
-    writes no match line; that a transcript outside the given projects/ fails, and so does a
-    process started before HEAD's commit, each with the evidence file still written. That part
-    needs git.
+    writes no match line; that a reply that is not JSON fails, so does a transcript outside the
+    given projects/, and so does a process started before HEAD's commit, each with the evidence
+    file still written. That part needs git.
 
 .EXAMPLE
     pwsh -NoProfile -File scripts/probe-session.ps1 -ConfigDir $HOME/.claude-personal -Prompt 'List your skills.' -Out probe.txt -Pattern 'mod-portal'
@@ -126,7 +127,8 @@ if ($SelfTest) {
                 ')'
                 'Set-Content -LiteralPath "' + (Join-Path $temp "$name.args.txt") + '" -Value (@("CLAUDE_CONFIG_DIR=$env:CLAUDE_CONFIG_DIR") + $args)'
                 '[Console]::Error.Write("stub warning")'
-                '[Console]::Out.Write((@{ type = "result"; result = "stub reply"; session_id = $sid } | ConvertTo-Json -Compress))'
+                $(if ($name -eq 'notjson') { '[Console]::Out.Write("Error: the stub is not signed in")' }
+                  else { '[Console]::Out.Write((@{ type = "result"; result = "stub reply"; session_id = $sid } | ConvertTo-Json -Compress))' })
             )
             $path
         }
@@ -142,6 +144,7 @@ if ($SelfTest) {
         $matched = & $run $repo 'matched' @('-Pattern', 'mod-portal')
         $outside = & $run $repo 'outside' @()
         $early = & $run $future 'early' @()
+        $notJson = & $run $repo 'notjson' @()
         $headSha = (git -C $repo rev-parse HEAD)
         $projects = [regex]::Escape((Join-Path $profileDir 'projects'))
         $field = { param([string] $text, [string] $name) if ($text -match "(?m)^$([regex]::Escape($name)): (.*)$") { $Matches[1] } else { $null } }
@@ -175,6 +178,9 @@ if ($SelfTest) {
         @{ Name = 'a transcript outside the given projects/ fails, and the evidence file is still written'; Test = {
             $outside.Code -ne 0 -and (& $field $outside.File 'verdict') -match '^FAILED: .*not under ' -and
                 (& $field $outside.File 'head') -eq $headSha -and (& $field $outside.File 'result') -eq 'stub reply' } }
+        @{ Name = 'a reply that is not JSON fails, and the evidence file is still written'; Test = {
+            $notJson.Code -ne 0 -and (& $field $notJson.File 'verdict') -match '^FAILED: the reply is not JSON' -and
+                (& $field $notJson.File 'head') -eq $headSha -and $notJson.File -match '(?m)^raw reply:\nError: the stub is not signed in$' } }
         @{ Name = 'a process started before HEAD''s commit fails, and the evidence file is still written'; Test = {
             $early.Code -ne 0 -and (& $field $early.File 'verdict') -match '^FAILED: .*started before HEAD''s commit' -and
                 (& $field $early.File 'transcript first timestamp') -eq '2026-10-27T10:16:22.123Z' } }

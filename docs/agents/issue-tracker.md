@@ -49,8 +49,10 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
   `CLAUDE_CONFIG_DIR` and start Claude Code's executable, not the `claude` command, and save the
   path of the `projects/` directory its transcript was written to beside its command and output,
   since that path shows which profile ran it. A probe made with one prompt is run by
-  `scripts/probe-session.ps1` (#404), which does each of these and writes the evidence to one
-  file; its header says what that file holds and what it does not judge. Where the `claude`
+  `scripts/probe-session.ps1` (#404), which does each of these for a transcript under the given
+  directory's `projects/` and writes the evidence to one file; a transcript written elsewhere
+  fails the run, and the file does not say where it went. Its header says what that file holds
+  and what it does not judge. Where the `claude`
   command chooses its profile by the directory it is started in, an interactive `claude` started
   in a clone outside the repository's directory can run with another profile's settings, sign-in
   and folder trust, and write its transcript under that profile. On 2026-10-14 it happened to

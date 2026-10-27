@@ -181,8 +181,10 @@ self-test runs in the same workflow.
 
 `scripts/pr-body.ps1 -Draft <file> -Review <report> -Out <file>` puts the pre-PR reviewer's
 findings and confirmation under the draft of a pull request body, word for word, and fails on a
-finding the confirmation does not answer, and on a draft without the `mattpocock-skills:pr`
-template's three headings, in order. Its self-test runs in the same workflow.
+finding the confirmation does not answer, on a draft without the `mattpocock-skills:pr`
+template's three headings, in order, and on a report whose findings or confirmation cite by hash
+a commit not on `origin/main`, by the shared body check's own test. Without the tools submodule
+it says that last check did not run. Its self-test runs in the same workflow.
 
 `glossary-check.ps1` fails on a `GLOSSARY.md` it cannot read, an empty one, or one with no
 `_Avoid_` entry it matches, `header-length-check.ps1`'s `-All` on no tracked script, hook or

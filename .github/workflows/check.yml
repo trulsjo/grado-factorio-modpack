@@ -36,6 +36,10 @@
 # it lists lines for a session to walk before the pre-PR review, and has nothing to fail on.
 # scripts/mentions.ps1 (#365) is the same: it lists lines for the pre-PR reviewer.
 #
+# scripts/probe-session.ps1 (#404) has its self-test among the others and no step of its own: a
+# session runs it while it meets a criterion on a newly started process. Its self-test starts a
+# stub in place of Claude Code's executable, so no session is started here.
+#
 # The self-test of the mod-cache hook's wiring runs with the others (#225):
 # vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 -SelfTest -Settings
 # .claude/settings.json. Its last case runs the command wired in that file, so a pull request
@@ -96,6 +100,7 @@ jobs:
           pwsh -NoProfile -File scripts/header-length-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/absolute-words.ps1 -SelfTest
           pwsh -NoProfile -File scripts/mentions.ps1 -SelfTest
+          pwsh -NoProfile -File scripts/probe-session.ps1 -SelfTest
           pwsh -NoProfile -File scripts/overlap-rows-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/member-change-check.ps1 -SelfTest
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 -SelfTest -Settings .claude/settings.json

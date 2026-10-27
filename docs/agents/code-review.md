@@ -77,6 +77,11 @@ was left open and two ores rested on it.
 **Where prose restates a list the code holds, read the two side by side.** Found in PR #186,
 where the README's list of what a hook stops had lost two entries of the script's.
 
+**A self-test's stated claims are read against its cases.** For each clause of `.PARAMETER
+SelfTest`, find the case that proves it, for every kind of input the clause names; a clause no
+case proves is a finding. Found in PR #398, where the claims covered hooks and workflows and the
+cases covered scripts alone.
+
 **A glossary entry is read against the repository's uses of its word.** Grep the word whole. A
 thing of this repository's own that the word also names, and that the entry neither names nor
 avoids, is a finding; the word in its plain sense, or as the game uses it, is not. Found in PR

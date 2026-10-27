@@ -1,7 +1,8 @@
 ---
 name: mod-portal
 description: Querying the Factorio mod portal API for a mod, its releases or a release's
-  info_json, or sweeping every mod on a line. Use before any call to mods.factorio.com/api.
+  info_json, or the full sweep of the 2.0 and 2.1 listings. Use before any call to
+  mods.factorio.com/api.
 ---
 
 # The mod portal API

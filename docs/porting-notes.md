@@ -1051,8 +1051,8 @@ is the #331 entry of `docs/decisions.md`.
 >   goes in the notes, a fact about a mod goes in its catalogue entry.
 
 **The portal's endpoints and sweep counts**, under *Checking the mod portal*, as they stood
-until 2026-10-27, when #401 moved them word for word to the `mod-portal` project skill, which a
-session that queries the portal loads, and left a pointer to it. The three rules below them stay.
+until 2026-10-27, when #401 moved them word for word to the `mod-portal` project skill and left
+a pointer to it. The three rules below them stay.
 
 > The portal API is the primary source for what exists and at what version. No key needed:
 >

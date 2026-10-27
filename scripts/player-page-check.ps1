@@ -89,10 +89,11 @@ if ($SelfTest) {
                 Push-Location $temp
                 try { $text = (& pwsh -NoProfile -File $PSCommandPath -All 2>&1 | Out-String) } finally { Pop-Location }
                 $code = $LASTEXITCODE
-                if ($code -ne 1) { Write-Host ($text.TrimEnd() -replace '(?m)^', '    ') }
-                $code -eq 1 -and $text -match '(?m)^Pack_A/README\.md:3: ' -and $text -match '(?m)^Pack_A/docs/notes\.md:1: ' -and
+                $ok = $code -eq 1 -and $text -match '(?m)^Pack_A/README\.md:3: ' -and $text -match '(?m)^Pack_A/docs/notes\.md:1: ' -and
                     @([regex]::Matches($text, '(?m)^\S+\.md:\d+: ')).Count -eq 2 -and $text -match '2 HTML comment\(s\), 3 file\(s\) read' -and
                     $text -match 'reword'
+                if (-not $ok) { Write-Host ($text.TrimEnd() -replace '(?m)^', '    ') }
+                $ok
             }
             finally { Remove-Item -LiteralPath $temp -Recurse -Force -ErrorAction SilentlyContinue }
         } }

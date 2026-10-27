@@ -25,10 +25,10 @@
     pr-body-check.ps1 in the tools submodule by its parse, so it is the test that check runs on
     the finished body. On PR #387 (2026-10-26) a confirmation cited two branch commits, the body
     was built, and only that check refused it, a turn later; a rebase-merge rewrites a branch
-    commit, so a reviewer names one by its role. Test-Body's own refusals stop it too: a shallow
-    clone, and an origin/main git cannot resolve. A clone without the submodule says the report
-    was not checked for a hash and builds the body, as .githooks/commit-msg lets a commit through
-    (ADR 0001 of the tools repository).
+    commit, so a reviewer names one by its role. Test-Body's own refusals stop it too, a shallow
+    clone and an origin/main git cannot resolve among them. A clone without the submodule says
+    the report was not checked for a hash and builds the body, as .githooks/commit-msg lets a
+    commit through (ADR 0001 of the tools repository).
 
     THE DRAFT'S HEADINGS (#320). Truls ruled on 2026-10-19 that the body above the review carries
     the `mattpocock-skills:pr` template's three headings: `## Summary`, `## Evidence` and
@@ -350,7 +350,8 @@ try {
     $reviewLines = @(Get-Content -LiteralPath $Review)
     $body = Get-Body (Get-Content -LiteralPath $Draft -Raw) $reviewLines
     # A clone without the submodule says the hash check did not run and builds, as
-    # .githooks/commit-msg does (ADR 0001); a shallow clone or no origin/main stops it.
+    # .githooks/commit-msg does (ADR 0001); a refusal of Test-Body's, such as a shallow clone or
+    # no origin/main, stops it.
     $hits = @()
     if (Get-Command Test-Body -ErrorAction SilentlyContinue) {
         $top = git -C $PSScriptRoot rev-parse --show-toplevel

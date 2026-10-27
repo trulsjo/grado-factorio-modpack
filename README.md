@@ -149,9 +149,8 @@ header says what it cannot see.
 `scripts/player-page-check.ps1` reads the Markdown in each pack's directory, the pages that ship
 in the pack's zip, and fails on a line holding `<!--`, an HTML comment, naming the file and the
 line. A pack directory is a top-level directory with an `info.json`. Where the glossary check
-flags a word on such a page, the line is reworded, since a `<!-- deliberate: -->` marker would
-ship too. The `pre-commit` hook runs it on the staged pages, and the same workflow, with `-All`,
-on every tracked one, with its self-test.
+flags a word on such a page, the line is reworded. The `pre-commit` hook runs it on the staged
+pages, and the same workflow, with `-All`, on every tracked one, with its self-test.
 
 `scripts/member-change-check.ps1` refuses a commit that gains or loses a pack member with no `!`
 before its subject's colon, and names each pack and member. A member is a dependency with no

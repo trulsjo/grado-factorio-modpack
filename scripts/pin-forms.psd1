@@ -2,8 +2,8 @@
 # when the tools pin moves (#389). Its shape, and what each placeholder becomes, is in that
 # script's header (grado-factorio-tools#247). One form for each way this repository runs a tools
 # script, in .githooks/, .github/workflows/check.yml and .claude/settings.json, and for each
-# script of its own that reaches into vendor/. The first 21 runs are the forms PR #387 measured
-# by hand (2026-10-26, its Evidence table); the rest are named where they start.
+# script of its own that reaches into vendor/. The first 20 forms, 21 runs, are those PR #387
+# measured by hand (2026-10-26, its Evidence table); the rest are named where they start.
 @{
     Forms = @(
         @{ Name = 'commit-check-selftest'; From = 'tools'; Script = 'commit-check.ps1'; Args = @('-SelfTest') }
@@ -21,7 +21,7 @@
         # The hook as .claude/settings.json wires it: one command refused, one let through.
         @{ Name = 'cd-hook-refused'; From = 'tools'; Script = 'refuse-cd-into-mod-cache.ps1'; Args = @('-Root', '.', '-CacheName', '.mod-cache', '{stdin:{"cwd":".","tool_input":{"command":"cd .mod-cache/Grado_ABC"}}}') }
         @{ Name = 'cd-hook-passed'; From = 'tools'; Script = 'refuse-cd-into-mod-cache.ps1'; Args = @('-Root', '.', '-CacheName', '.mod-cache', '{stdin:{"cwd":".","tool_input":{"command":"ls .mod-cache"}}}') }
-        # This repository's scripts that load a tools script's function by its parse.
+        # This repository's scripts that reach into vendor/.
         @{ Name = 'member-change-selftest'; From = 'sibling'; Script = 'scripts/member-change-check.ps1'; Args = @('-SelfTest') }
         @{ Name = 'member-change-range'; From = 'sibling'; Script = 'scripts/member-change-check.ps1'; Args = @('-Range', 'HEAD~20..HEAD') }
         @{ Name = 'member-change-hook'; From = 'sibling'; Script = 'scripts/member-change-check.ps1'; Args = @('-MessageFile', '{headmsg}') }
@@ -33,10 +33,8 @@
         @{ Name = 'stage-pack-selftest'; From = 'sibling'; Script = 'scripts/stage-pack.ps1'; Args = @('-SelfTest') }
         # Beyond PR #387's list. pr-body.ps1 loads Test-Body from pr-body-check.ps1 (#388).
         @{ Name = 'pr-body-selftest'; From = 'sibling'; Script = 'scripts/pr-body.ps1'; Args = @('-SelfTest') }
-        # Tools scripts this repository's scripts and README name, by self-tests that need no game
-        # and no network: header-length-check.ps1 names the rewrap in a refusal,
-        # ask-before-download.ps1 and stage-pack.ps1 the resolver and the dump. load-harness.ps1
-        # and dump-walk.ps1 are left out: their self-tests need the game.
+        # Four more tools scripts this repository names, by self-tests that need no game and no
+        # network.
         @{ Name = 'resolve-modpack-selftest'; From = 'tools'; Script = 'resolve-modpack.ps1'; Args = @('-SelfTest') }
         @{ Name = 'get-dump-selftest'; From = 'tools'; Script = 'get-dump.ps1'; Args = @('-SelfTest') }
         @{ Name = 'markdown-rewrap-selftest'; From = 'tools'; Script = 'markdown-rewrap.ps1'; Args = @('-SelfTest') }

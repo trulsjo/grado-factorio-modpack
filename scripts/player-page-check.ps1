@@ -162,8 +162,8 @@ if ($All -and -not $packs) {
     exit 1
 }
 
-# Each pack directory by its path, and the .md files kept here: pwsh on Linux globs a native
-# argument such as Pack/*.md itself, so git saw no deeper file (the check run on PR #406).
+# Each pack directory by its path, and the .md files kept here: given Pack/*.md, the check run
+# on PR #406 listed no deeper file on ubuntu, where Windows did.
 $paths = @($packs | ForEach-Object { "$_/" })
 $files = if (-not $paths) { @() }
 elseif ($All) { @(git -c core.quotepath=off ls-files -- @paths) }

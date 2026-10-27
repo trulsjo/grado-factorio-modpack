@@ -234,6 +234,9 @@ pwsh -NoProfile -File scripts/pr-body.ps1 -Draft <scratch>/draft.md -Review <scr
 `Closes` lines and the `mattpocock-skills:pr` template, filled: load the skill before writing it.
 The script fails, and writes nothing, when a finding's number opens no line of the confirmation,
 and when the draft lacks one of the template's three headings or holds them out of order (#320).
+It fails too when the report's findings or confirmation name a commit not on `origin/main`,
+naming each word and its line, so the report goes back to the reviewer before a body is built
+(#388).
 
 The shared body check runs before the pull request is created (#321), in one command joined
 with `&&`, so that a failure stops the create:

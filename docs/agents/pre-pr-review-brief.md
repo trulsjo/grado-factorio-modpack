@@ -86,7 +86,8 @@ the list it prints the tools commits between the pins that call themselves break
 footers (#384).
 Load records, traces and the lines the branch adds are left out.
 
-A probe is started as `docs/agents/issue-tracker.md`'s bullet on a newly started process says.
+A probe of a Claude Code setting is started as `docs/agents/issue-tracker.md`'s bullet on a
+newly started process says.
 
 ### The raw output behind a figure
 

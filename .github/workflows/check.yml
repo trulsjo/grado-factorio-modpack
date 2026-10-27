@@ -4,11 +4,11 @@
 # self-test runs first, so a check that can no longer fail is caught here. The download hook's
 # self-test runs with them (#194):
 # scripts/ask-before-download.ps1 refuses in an agent session and checks nothing here, so this
-# is the one place a pull request that breaks it goes red. The glossary check runs over the same
-# commits, with its self-test (#200): no hook runs it, and it fails on an added line that uses a
-# word GLOSSARY.md avoids and is not marked deliberate, and on a GLOSSARY.md it cannot read, an
-# empty one, or one with no avoided word it matches (#362). The Markdown check's range and the
-# glossary check's have three dots (#204): both scripts hand the range to `git diff`, where two
+# is the one place a pull request that breaks it goes red. scripts/glossary-check.ps1 runs over
+# the same commits, with its self-test (#200): no hook runs it, and it fails on an added line that
+# uses a word GLOSSARY.md avoids and is not marked deliberate, and on a GLOSSARY.md it cannot read,
+# an empty one, or one with no avoided word it matches (#362). The Markdown check's range and
+# glossary-check.ps1's have three dots (#204): both scripts hand the range to `git diff`, where two
 # dots would compare the two tips and judge a branch behind `main` on what `main` has changed
 # since. The commit check's keeps two: it hands the range to `git rev-list`, where two dots are
 # the branch's commits and three would add those of `main`. The Markdown check is handed a line

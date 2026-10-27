@@ -9,14 +9,15 @@
     WHY (#404). A criterion that a setting took effect names a newly started process, its start
     time kept beside the start of its transcript (docs/agents/issue-tracker.md, the bullet on a
     newly started process). That evidence was built by hand on #160, #231, #245 and #401, three
-    times on #401 alone, and a probe started through the shell's `claude` command rather than
-    the executable ran under another profile on #231 and twice on #160 (#280).
+    times on #401 alone. Why it starts the executable and not the `claude` command is in the
+    same bullet.
 
     WHAT IT DOES. Reads HEAD and its commit time in the current directory. Starts the executable
     there with CLAUDE_CONFIG_DIR set to -ConfigDir, as `-p <prompt> --output-format json`, and
-    takes the process's start time from the process. Reads `session_id` and `result` from the
-    reply, finds `<ConfigDir>/projects/*/<session_id>.jsonl`, and reads the first `timestamp` in
-    it. With -Pattern it counts the transcript's lines that match, and writes the first match.
+    takes the process's start time, and writes where it was read from. Reads `session_id` and
+    `result` from the reply, finds `<ConfigDir>/projects/*/<session_id>.jsonl`, and reads the
+    first `timestamp` in it. With -Pattern it counts the transcript's lines that match, and
+    writes the first match.
     The evidence file holds the command as run, each of those, the verdict, the raw reply and
     any stderr. It is written whether the run passes or fails.
 
@@ -85,7 +86,8 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 [Console]::OutputEncoding = [Text.Encoding]::UTF8
 
-# An argument as a shell would need it written to be read back as one.
+# An argument single-quoted as PowerShell quotes one, where it holds more than word characters
+# and ./:\=-. The command line it goes into is a record, not a line to paste into a shell.
 function Format-Argument([string] $Text) {
     if ($Text -match '^[\w./:\\=-]+$') { $Text } else { "'" + ($Text -replace "'", "''") + "'" }
 }

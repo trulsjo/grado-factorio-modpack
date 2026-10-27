@@ -22,9 +22,9 @@ fi
 # All run, so one commit shows what each found.
 root="$(git rev-parse --show-toplevel)"
 status=0
-# A clone that skipped `git submodule update --init` has no shared check, and no resolver for the
-# Overlaps check to take its parse of a dependency from. Say so and go on to the header check, as
-# commit-msg says so and lets the commit through.
+# A clone that skipped `git submodule update --init` has no shared check, and no resolver for
+# overlap-rows-check.ps1 to take its parse of a dependency from. Say so and go on to
+# header-length-check.ps1, as commit-msg says so and lets the commit through.
 CHECK="$root/vendor/grado-factorio-tools/scripts/markdown-check.ps1"
 if [ -f "$CHECK" ]; then
     pwsh -NoProfile -File "$CHECK" -MaxLineLength 100 || status=1

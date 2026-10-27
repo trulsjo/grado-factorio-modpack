@@ -32,7 +32,7 @@ if [ -f "$CHECK" ]; then
     pwsh -NoProfile -File "$CHECK" -MaxLineLength 100 || status=1
     pwsh -NoProfile -File "$root/scripts/overlap-rows-check.ps1" || status=1
 else
-    echo "pre-commit: $CHECK not found, so the Markdown and Overlaps rows were NOT checked." >&2
+    echo "pre-commit: $CHECK not found, so the shared Markdown check and the Overlaps rows did NOT run." >&2
     echo "pre-commit: run 'git submodule update --init' to wire up the shared check." >&2
 fi
 pwsh -NoProfile -File "$root/scripts/header-length-check.ps1" || status=1

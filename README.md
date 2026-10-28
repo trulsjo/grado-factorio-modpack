@@ -188,7 +188,7 @@ it says that last check did not run. Its self-test runs in the same workflow.
 `glossary-check.ps1` fails on a `GLOSSARY.md` it cannot read, an empty one, or one with no
 `_Avoid_` entry it matches, `header-length-check.ps1`'s `-All` on no tracked script, hook or
 workflow, `overlap-rows-check.ps1` on no row in any catalogue file, `player-page-check.ps1`'s
-`-All` on no pack directory, and `pr-body.ps1` on an
+`-All` on no pack directory or none holding Markdown, and `pr-body.ps1` on an
 empty `## Findings`: each a run that read nothing it must cover.
 
 The shared `vendor/grado-factorio-tools/scripts/pr-body-check.ps1` reads the finished body: it

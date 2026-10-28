@@ -1,8 +1,8 @@
 <#
 .SYNOPSIS
     Reports each HTML comment opening, `<!--`, in the Markdown of a pack's directory, as
-    <file>:<line>. Exit 1 if it reports one, and with -All if it finds no pack directory, which is
-    a run that read nothing.
+    <file>:<line>. Exit 1 if it reports one, and with -All if it finds no pack directory or no
+    Markdown in those it finds, each a run that read nothing.
 
 .DESCRIPTION
     WHY (#376). A pack's Markdown is its player page: it ships inside the pack zip, because the
@@ -19,8 +19,10 @@
     holds `<!--` anywhere; nothing else on it is read.
 
     WHAT FAILS WITH NOTHING READ (#362). -All that finds no pack directory, as from a directory
-    other than the root or in a clone whose checkout failed: exit 1. With no switch, nothing
-    staged passes and says it read 0 files, since that commit had nothing to check.
+    other than the root or in a clone whose checkout failed: exit 1. So does -All that finds pack
+    directories and no `.md` file in any, which read nothing too (Truls, 2026-10-28, on PR #406).
+    With no switch, nothing staged passes and says it read 0 files, since that commit had
+    nothing to check.
 
     WHAT IT CANNOT SEE. An HTML comment written another way, such as with an entity, and any other
     HTML, which is not read. A pack directory not named by an info.json at the top level: an
@@ -35,8 +37,8 @@
     Prove a `<!--` in a pack's README.md and in other Markdown deeper in a pack directory is
     reported by file and line, with the advice to reword, that one in Markdown outside a pack
     directory is not, nor one under an info.json below the top level, that a commit's staged
-    content is what is read, and that -All with no pack directory fails while nothing staged
-    passes. Needs git.
+    content is what is read, and that -All with no pack directory fails, and with pack
+    directories that hold no Markdown, while nothing staged passes. Needs git.
 
 .EXAMPLE
     pwsh -File scripts/player-page-check.ps1
@@ -137,6 +139,25 @@ if ($SelfTest) {
             }
             finally { Remove-Item -LiteralPath $temp -Recurse -Force -ErrorAction SilentlyContinue }
         } }
+        @{ Name = '-All fails, saying so, where it finds a pack directory and no .md file in it, though Markdown stands outside it and another file inside'; Test = {
+            $temp = Join-Path ([IO.Path]::GetTempPath()) "player-page-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
+            New-Item -ItemType Directory -Path (Join-Path $temp 'Pack'), (Join-Path $temp 'docs') -Force | Out-Null
+            try {
+                Set-Content -LiteralPath (Join-Path $temp 'Pack/info.json') -Value '{}'
+                Set-Content -LiteralPath (Join-Path $temp 'Pack/notes.txt') -Value '<!-- not Markdown -->'
+                Set-Content -LiteralPath (Join-Path $temp 'docs/a.md') -Value '# outside'
+                git -C $temp init --quiet
+                if ($LASTEXITCODE -ne 0) { throw 'git init failed; the self-test needs git.' }
+                git -C $temp add -A
+                Push-Location $temp
+                try { $text = (& pwsh -NoProfile -File $PSCommandPath -All 2>&1 | Out-String) } finally { Pop-Location }
+                $code = $LASTEXITCODE
+                $ok = $code -eq 1 -and $text -match 'FAILED - player-page-check: -All found 1 pack directory and no tracked \.md file in any'
+                if (-not $ok) { Write-Host ($text.TrimEnd() -replace '(?m)^', '    ') }
+                $ok
+            }
+            finally { Remove-Item -LiteralPath $temp -Recurse -Force -ErrorAction SilentlyContinue }
+        } }
     )
     $failures = 0
     $n = 0
@@ -169,6 +190,11 @@ elseif ($All) { @(git -c core.quotepath=off ls-files -- @paths) }
 else { @(git -c core.quotepath=off diff --cached --name-only --diff-filter=ACMR -- @paths) }
 if ($LASTEXITCODE -ne 0) { throw 'git could not list the files to read. Run it from the repository root.' }
 $files = @($files | Where-Object { $_ -clike '*.md' })
+# Pack directories with no page among them read nothing too: WHAT FAILS WITH NOTHING READ.
+if ($All -and -not $files) {
+    Write-Host "FAILED - player-page-check: -All found $($packs.Count) pack director$(if ($packs.Count -eq 1) { 'y' } else { 'ies' }) and no tracked .md file in any, so nothing was read. A checkout that dropped the pages reads so too."
+    exit 1
+}
 
 $found = 0
 foreach ($f in $files) {

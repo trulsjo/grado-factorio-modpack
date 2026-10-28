@@ -192,7 +192,7 @@ if ($LASTEXITCODE -ne 0) { throw 'git could not list the files to read. Run it f
 $files = @($files | Where-Object { $_ -clike '*.md' })
 # Pack directories with no page among them read nothing too: WHAT FAILS WITH NOTHING READ.
 if ($All -and -not $files) {
-    Write-Host "FAILED - player-page-check: -All found $($packs.Count) pack director$(if ($packs.Count -eq 1) { 'y' } else { 'ies' }) and no tracked .md file in any, so nothing was read. A checkout that dropped the pages reads so too."
+    Write-Host "FAILED - player-page-check: -All found $($packs.Count) pack director$(if ($packs.Count -eq 1) { 'y' } else { 'ies' }) and no tracked .md file in any, so nothing was read."
     exit 1
 }
 

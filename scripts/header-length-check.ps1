@@ -39,10 +39,7 @@
     lines over the limit: `markdown-rewrap.ps1 -Comment` from the tools submodule, at this check's
     limit. It reads and writes the working tree only, so the file is staged again, and the
     refusal warns that staging it again stages any edit to it that was not staged, beside the
-    rewrap. Until the pin moves past trulsjo/grado-factorio-tools#254, the rewrap can leave a line
-    that opens with a dot and a letter, such as `.github/`, which, by its source at the tools
-    repository's `2c13393`, it takes for a help keyword; this check still refuses that line, and
-    it is rewrapped by hand.
+    rewrap.
 
 .PARAMETER All
     Read each tracked script, hook and workflow, as staged, and not only the staged ones.

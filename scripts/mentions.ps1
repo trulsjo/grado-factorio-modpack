@@ -217,6 +217,9 @@ if ($SelfTest) {
     # The tools repository the fixture takes as its submodule, beside the fixture.
     $toolsRepo = "$temp-tools"
     New-Item -ItemType Directory -Path $temp, $toolsRepo -Force | Out-Null
+    # Fixed dates, so the commits and the hashes the self-test prints are the same on every run
+    # (#407).
+    $env:GIT_AUTHOR_DATE = $env:GIT_COMMITTER_DATE = '2026-01-01T12:00:00+00:00'
     try {
         $gitIn = { param([string] $dir) git -C $dir -c user.name=selftest -c user.email=selftest@example.invalid -c core.autocrlf=false -c commit.gpgsign=false -c protocol.file.allow=always @args | Out-Null; if ($LASTEXITCODE -ne 0) { throw "git $args failed; the self-test needs git." } }
         $git = { & $gitIn $temp @args }
@@ -320,7 +323,10 @@ if ($SelfTest) {
         & $git commit --quiet -m 'unreadable pin'
         $unread = & $run 'HEAD~1...HEAD'
     }
-    finally { Remove-Item -LiteralPath $temp, $toolsRepo -Recurse -Force }
+    finally {
+        Remove-Item -LiteralPath $temp, $toolsRepo -Recurse -Force
+        Remove-Item Env:GIT_AUTHOR_DATE, Env:GIT_COMMITTER_DATE -ErrorAction SilentlyContinue
+    }
     Write-Host ($out.Text.TrimEnd() -replace '(?m)^', '    ')
 
     $has = { param([string] $pattern) $out.Text -match $pattern }

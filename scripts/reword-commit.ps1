@@ -68,6 +68,9 @@ $utf8 = [System.Text.UTF8Encoding]::new($false)
 
 if ($SelfTest) {
     $new = '🔧 chore(repo): say it another way'
+    # A fixed committer date, which the runs below inherit, so the hashes the self-test prints are
+    # the same on every run (#407). Each fixture commit gives its own author date.
+    $env:GIT_COMMITTER_DATE = '2026-01-05T12:00:00+00:00'
     $fixture = {
         $temp = Join-Path ([IO.Path]::GetTempPath()) "reword-commit-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
         New-Item -ItemType Directory -Path $temp -Force | Out-Null
@@ -137,6 +140,7 @@ if ($SelfTest) {
         Write-Host ("self-test {0}/{1}: {2} -- {3}" -f $n, $cases.Count, $c.Name, $(if ($ok) { 'ok' } else { 'FAILED' }))
         if (-not $ok) { $failures++ }
     }
+    Remove-Item Env:GIT_COMMITTER_DATE -ErrorAction SilentlyContinue
     Write-Host ''
     if ($failures) { Write-Host "FAILED - self-test: $failures of $($cases.Count) case(s) did not hold."; exit 1 }
     Write-Host "OK - self-test passed: all $($cases.Count) cases."

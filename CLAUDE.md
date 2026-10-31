@@ -250,6 +250,11 @@ lets the commit through, instead of passing everything quietly — which is the 
 [ADR 0001](https://github.com/trulsjo/grado-factorio-tools/blob/main/docs/adr/0001-siblings-consume-this-repo-as-a-submodule.md)
 requires, and what makes the second step safe to ask for.
 
+**The same two steps keep the submodule at its pin** (#391). `.githooks/post-checkout`,
+`post-merge` and `post-rewrite` run the shared `scripts/follow-pin.ps1` after a branch switch, a
+merge or a rebase, to bring `vendor/grado-factorio-tools` to the pin the new `HEAD` records. Why,
+and what they leave alone, is in the header of `.githooks/post-checkout` and of that script.
+
 Old commits that fail the check are left alone — the three from 2026-09-20, `3ab917c` among them,
 predate it. The hook stops the failures growing; `-Range origin/main..HEAD` checks a branch before a
 push, and `-SelfTest` proves the check can still fail.

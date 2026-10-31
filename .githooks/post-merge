@@ -1,0 +1,20 @@
+#!/bin/sh
+# Brings vendor/grado-factorio-tools to the pin the merged HEAD records, as a `git pull` or a
+# `git merge --ff-only origin/main` past a pin move would otherwise leave it behind (#391). The
+# rules, the install and why every path exits 0 are in .githooks/post-checkout, the same wiring.
+hook=post-merge
+sub=vendor/grado-factorio-tools
+root="$(git rev-parse --show-toplevel)" && cd "$root" || exit 0
+f="$sub/scripts/follow-pin.ps1"
+if ! command -v pwsh >/dev/null 2>&1; then
+    echo "$hook: pwsh not found, so $sub was NOT brought to the pin HEAD records." >&2
+    echo "$hook: run 'git submodule update -- $sub' to bring it there." >&2
+    exit 0
+fi
+if [ ! -f "$f" ]; then
+    echo "$hook: $f not found, so $sub was NOT brought to the pin HEAD records." >&2
+    echo "$hook: run 'git submodule update --init -- $sub' to bring it there." >&2
+    exit 0
+fi
+pwsh -NoProfile -File "$f" "$hook" "$@"
+exit 0

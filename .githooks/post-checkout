@@ -1,0 +1,35 @@
+#!/bin/sh
+# Brings vendor/grado-factorio-tools to the pin the new HEAD records, after a branch checkout
+# (#391). Without it a switch between two branches that record different pins leaves the
+# submodule where it was, git status shows ` M vendor/grado-factorio-tools`, and a `git add -A`
+# stages a pin move nobody meant. The rules, and what it cannot see, are in the header of
+# vendor/grado-factorio-tools/scripts/follow-pin.ps1, the shared script (tools #253): it moves
+# only a submodule that is clean and at the pin the old HEAD records, and otherwise leaves it with
+# one line saying why. post-merge and post-rewrite are the same wiring; this is only the wiring.
+#
+# INSTALL, twice per clone, the same two lines that wire up commit-msg:
+#
+#     git submodule update --init
+#     git config core.hooksPath .githooks
+#
+# Every path exits 0: a hook's exit status becomes the checkout's, and the checkout is done.
+# A file checkout, whose third argument is 0, is never acted on, so it says nothing here either.
+[ "$3" = 1 ] || exit 0
+hook=post-checkout
+sub=vendor/grado-factorio-tools
+root="$(git rev-parse --show-toplevel)" && cd "$root" || exit 0
+f="$sub/scripts/follow-pin.ps1"
+# A clone with no pwsh, or a submodule not initialised or at a pin older than the script: say so
+# and name the command, as commit-msg does when its check is missing.
+if ! command -v pwsh >/dev/null 2>&1; then
+    echo "$hook: pwsh not found, so $sub was NOT brought to the pin HEAD records." >&2
+    echo "$hook: run 'git submodule update -- $sub' to bring it there." >&2
+    exit 0
+fi
+if [ ! -f "$f" ]; then
+    echo "$hook: $f not found, so $sub was NOT brought to the pin HEAD records." >&2
+    echo "$hook: run 'git submodule update --init -- $sub' to bring it there." >&2
+    exit 0
+fi
+pwsh -NoProfile -File "$f" "$hook" "$@"
+exit 0

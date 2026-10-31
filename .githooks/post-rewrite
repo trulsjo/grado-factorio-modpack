@@ -1,0 +1,23 @@
+#!/bin/sh
+# Brings vendor/grado-factorio-tools to the pin HEAD records after a rebase of a branch that
+# moved the pin itself, which post-checkout, run on the rebase's own checkout, does not see
+# (#391; measured 2026-10-27 in tools #253). The rules, the install and why every path exits 0
+# are in .githooks/post-checkout, the same wiring. An amend is never acted on, so it says nothing
+# here either. git lists the rewritten commits on stdin, and pwsh passes it on to the script.
+[ "$1" = rebase ] || exit 0
+hook=post-rewrite
+sub=vendor/grado-factorio-tools
+root="$(git rev-parse --show-toplevel)" && cd "$root" || exit 0
+f="$sub/scripts/follow-pin.ps1"
+if ! command -v pwsh >/dev/null 2>&1; then
+    echo "$hook: pwsh not found, so $sub was NOT brought to the pin HEAD records." >&2
+    echo "$hook: run 'git submodule update -- $sub' to bring it there." >&2
+    exit 0
+fi
+if [ ! -f "$f" ]; then
+    echo "$hook: $f not found, so $sub was NOT brought to the pin HEAD records." >&2
+    echo "$hook: run 'git submodule update --init -- $sub' to bring it there." >&2
+    exit 0
+fi
+pwsh -NoProfile -File "$f" "$hook" "$@"
+exit 0

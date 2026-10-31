@@ -467,3 +467,21 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   differ under its `scripts/` and `docs/` were named in about 200 lines. No ADR: a step of the
   brief, as #365's was. The 24's command and output, and a rerun of the 200 (the triage's own
   output was not kept), stand in PR #390's body, *Evidence*, "The decision's 24 files" (#392).
+- **Tracked hooks keep the tools submodule at the pin `HEAD` records** (2026-10-26, #391):
+  Truls's rulings in the triage grill of #391, two rounds, every answer the recommendation.
+  `.githooks/post-checkout`, on a branch checkout only, `post-merge` and `post-rewrite`, after a
+  rebase only, run `scripts/follow-pin.ps1` from the submodule, which lives in the tools
+  repository (trulsjo/grado-factorio-tools#253) as `commit-check.ps1` does;
+  trulsjo/realistic-fusion-refreshed#790 wires the same there. Clones already set
+  `core.hooksPath .githooks`, so there is no new opt-in. *Dirty or moved:* a submodule with
+  uncommitted work, or not at the pin the old `HEAD` records, is left, with one line saying why
+  and the command to run. *Failures:* every hook exits 0; a submodule not initialised, or at a
+  pin older than the script, gets a line naming `git submodule update --init`; a pin the clone
+  lacks is fetched by `git submodule update`, which is git fetching and not a downloaded program.
+  *Output:* `<hook>: vendor/grado-factorio-tools <old7> -> <new7>` on a move, and nothing when the
+  pin is unchanged. *Turned down:* `git config submodule.recurse true`, which also turns on
+  `--recurse-submodules` for `git grep`, run by `scripts/mentions.ps1`, and for `git reset`; and
+  a commit-time check on a gitlink change, as with the submodule kept in step the accident #391
+  starts from does not arise. `post-rewrite` was to be wired only if a rebase needed it: #253
+  measured one that did on 2026-10-27, a branch that moved the pin itself. No ADR: three hook
+  wrappers, cheap to remove.

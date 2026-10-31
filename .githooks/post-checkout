@@ -22,13 +22,13 @@ f="$sub/scripts/follow-pin.ps1"
 # A clone with no pwsh, or a submodule not initialised or at a pin older than the script: say so
 # and name the command, as commit-msg does when its check is missing.
 if ! command -v pwsh >/dev/null 2>&1; then
-    echo "$hook: pwsh not found, so $sub was NOT brought to the pin HEAD records." >&2
-    echo "$hook: run 'git submodule update -- $sub' to bring it there." >&2
+    echo "$hook: pwsh not found, so $sub was not checked against the pin HEAD records." >&2
+    echo "$hook: if it is clean and holds no commit of your own, 'git submodule update -- $sub' brings it there." >&2
     exit 0
 fi
 if [ ! -f "$f" ]; then
-    echo "$hook: $f not found, so $sub was NOT brought to the pin HEAD records." >&2
-    echo "$hook: run 'git submodule update --init -- $sub' to bring it there." >&2
+    echo "$hook: $f not found, so $sub was not checked against the pin HEAD records." >&2
+    echo "$hook: if it is clean and holds no commit of your own, 'git submodule update --init -- $sub' brings it there." >&2
     exit 0
 fi
 pwsh -NoProfile -File "$f" "$hook" "$@"

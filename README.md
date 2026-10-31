@@ -123,6 +123,13 @@ to the limit. It does not judge prose.
 `-Range origin/main...HEAD` checks the Markdown a branch changed, `-All` every tracked file, and
 `-SelfTest` proves it can fail.
 
+Three more hooks from the same `core.hooksPath` check nothing: `post-checkout` after a branch
+switch, `post-merge`, and `post-rewrite` after a rebase each run the shared
+`vendor/grado-factorio-tools/scripts/follow-pin.ps1`, which brings the tools submodule to the pin
+the new `HEAD` records. A submodule with uncommitted work, or not at the pin the old `HEAD`
+records, is left, with one line saying why and the command to run. Each hook exits 0. Why they
+exist is in the header of `.githooks/post-checkout`, and what the script cannot see in its own.
+
 A pull request gets both checks from `.github/workflows/check.yml`, over its own commits, with
 each check's self-test and the download hook's first. Nothing is installed on the runner.
 

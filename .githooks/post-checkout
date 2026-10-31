@@ -23,7 +23,7 @@ f="$sub/scripts/follow-pin.ps1"
 # and name the command, as commit-msg does when its check is missing.
 if ! command -v pwsh >/dev/null 2>&1; then
     echo "$hook: pwsh not found, so $sub was not checked against the pin HEAD records." >&2
-    echo "$hook: if it is clean and holds no commit of your own, 'git submodule update -- $sub' brings it there." >&2
+    echo "$hook: if it is clean and holds no commit of your own, 'git submodule update --init -- $sub' brings it there." >&2
     exit 0
 fi
 if [ ! -f "$f" ]; then

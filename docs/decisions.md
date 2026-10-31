@@ -472,7 +472,7 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   `.githooks/post-checkout`, on a branch checkout only, `post-merge` and `post-rewrite`, after a
   rebase only, run `scripts/follow-pin.ps1` from the submodule, which lives in the tools
   repository (trulsjo/grado-factorio-tools#253) as `commit-check.ps1` does;
-  trulsjo/realistic-fusion-refreshed#790 wires the same there. Clones already set
+  trulsjo/realistic-fusion-refreshed#790 is to wire the same there. Clones already set
   `core.hooksPath .githooks`, so there is no new opt-in. *Dirty or moved:* a submodule with
   uncommitted work, or not at the pin the old `HEAD` records, is left, with one line saying why
   and the command to run. *Failures:* every hook exits 0; a submodule not initialised, or at a
@@ -481,7 +481,10 @@ entries after the one on the declared line (#16) were never in `CLAUDE.md`: they
   *Output:* `<hook>: vendor/grado-factorio-tools <old7> -> <new7>` on a move, and nothing when the
   pin is unchanged. *Turned down:* `git config submodule.recurse true`, which also turns on
   `--recurse-submodules` for `git grep`, run by `scripts/mentions.ps1`, and for `git reset`; and
-  a commit-time check on a gitlink change, as with the submodule kept in step the accident #391
+  a commit-time check on a gitlink change, as, with the submodule kept in step, the accident #391
   starts from does not arise. `post-rewrite` was to be wired only if a rebase needed it: #253
   measured one that did on 2026-10-27, a branch that moved the pin itself. No ADR: three hook
-  wrappers, cheap to remove.
+  wrappers, cheap to remove. *2026-10-31, Truls, at the pre-PR review of #391: a clone with no
+  pwsh, or a submodule at a pin older than the script, gets the wrapper's two lines on every
+  branch checkout, merge and rebase, an unchanged pin included, since without the script the
+  pins are not read.*

@@ -111,7 +111,7 @@ the game.
 
 ## Checks
 
-Two git hooks, both wired up by `git config core.hooksPath .githooks`: `commit-msg` checks the
+Two of the git hooks `git config core.hooksPath .githooks` wires up check: `commit-msg` checks the
 shape of a commit message and the members it changes, and `pre-commit` runs the shared Markdown
 check, `vendor/grado-factorio-tools/scripts/markdown-check.ps1`, on the staged Markdown files.
 Both hooks need the tools submodule, so a clone runs `git submodule update --init` too; without

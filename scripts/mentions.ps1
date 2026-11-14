@@ -110,9 +110,9 @@ function Get-ChangedNames([Collections.IDictionary] $Before, [Collections.IDicti
     $deps = { param($info) @($info.PSObject.Properties['dependencies']?.Value | Where-Object { $_ } | ForEach-Object { ConvertFrom-Dependency ($_ -replace '^\s*\+\s*') }) }
     $packs = @(@($Before.Keys) + @($After.Keys) | Sort-Object -Unique)
     foreach ($p in $packs) {
-        $b = @(if ($Before.Contains($p)) { & $deps $Before[$p] })
-        $a = @(if ($After.Contains($p)) { & $deps $After[$p] })
-        foreach ($m in @(@($b.Name) + @($a.Name) | Where-Object { $_ -and (($_ -cin $b.Name) -xor ($_ -cin $a.Name)) })) {
+        $b = @($(if ($Before.Contains($p)) { & $deps $Before[$p] }) | ForEach-Object Name)
+        $a = @($(if ($After.Contains($p)) { & $deps $After[$p] }) | ForEach-Object Name)
+        foreach ($m in @($b + $a | Where-Object { $_ -and (($_ -cin $b) -xor ($_ -cin $a)) })) {
             $names[$m] = & $whole ([regex]::Escape($m))
         }
     }

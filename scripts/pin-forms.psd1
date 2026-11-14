@@ -39,5 +39,7 @@
         @{ Name = 'get-dump-selftest'; From = 'tools'; Script = 'get-dump.ps1'; Args = @('-SelfTest') }
         @{ Name = 'markdown-rewrap-selftest'; From = 'tools'; Script = 'markdown-rewrap.ps1'; Args = @('-SelfTest') }
         @{ Name = 'trace-definitions-selftest'; From = 'tools'; Script = 'trace-definitions.ps1'; Args = @('-SelfTest', '-NoGame') }
+        # .githooks/post-checkout, post-merge and post-rewrite run it (#391); added by #413.
+        @{ Name = 'follow-pin-selftest'; From = 'tools'; Script = 'follow-pin.ps1'; Args = @('-SelfTest') }
     )
 }

@@ -271,14 +271,16 @@ has the paragraph in front of them in the diff.
 
 ## Why the plugin pass reads past the comments this repository posts
 
-The plugin's first step stops the pass when "Claude has already commented on this PR". Here a
-pull request is given an AI-generated comment with its check run's result, as `code-review.md`'s
-rule on when a session that carries a branch is cleared asks, and its body holds the pre-PR
-review. Read literally, the step stops the pass on any pull request that has that comment. On PR
-#423 (2026-11-14) the eligibility agent was told to tell a review from other comments. It found
-the one comment to be a check run's result, and the pass went ahead (#425).
+The plugin's first step stops the pass when "Claude has already commented on this PR" (*Read from
+source*, `code-review:code-review` 1.0.1's command file). Here a pull request is given an
+AI-generated comment with its check run's result, as `code-review.md`'s rule on when a session
+that carries a branch is cleared asks. Read literally, the step stops the pass on any pull request
+that has that comment (*Inferred* from the step and the comment). By the session's account, PR
+#423's pass (2026-11-14) went ahead because its eligibility agent was told to tell a review from
+other comments.
 
-Without `--comment` the plugin posts nothing at all. The first rule says a pass that posts nothing
+Without `--comment` the plugin posts nothing at all (*Read from source*, the same file). The first
+rule says a pass that posts nothing
 still says what it filtered, and the pull request holds the pass's whole report. PR #423's pass
 raised no finding, and its record is `issuecomment-6880065525`.
 

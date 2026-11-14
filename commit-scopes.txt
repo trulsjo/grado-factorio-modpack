@@ -1,0 +1,18 @@
+# The scopes a commit subject here may name, one to a line: the five packs, then the two areas.
+# .githooks/commit-msg and the pull request check hand this file to the shared commit check as
+# -ScopeFile, which rejects a scope it does not list. What a scope is: CLAUDE.md, Commit messages.
+#
+# The list started from the scopes this repository's history used, read on main at 07a585a,
+# 2026-11-14, with
+#
+#     git log --format=%s | grep -oP '^\S+ \w+!?\(\K[^)]+' | sort | uniq -c | sort -rn
+#
+# which printed repo 240, docs 90, abcs 38, abc 37, nonchanging 24, abcx 16, changingbase 14.
+# Truls kept all seven (#415, 2026-11-14).
+nonchanging
+changingbase
+abc
+abcx
+abcs
+docs
+repo

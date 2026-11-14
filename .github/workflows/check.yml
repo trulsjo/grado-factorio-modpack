@@ -64,6 +64,12 @@
 # the other steps again too. The script refuses a shallow clone, and the whole history below is
 # what lets it tell a commit on main from one that is not.
 #
+# The commit check is handed commit-scopes.txt as -ScopeFile (#415), as .githooks/commit-msg
+# hands it, so a scope the file does not list fails here too. Each file git tracks under
+# .githooks is read for mode 100755 by one step over `git ls-files -s .githooks` (#415): off
+# Windows git skips a hook that is not executable, and a clone on Windows does not show it. The
+# step fails where git tracks no file there.
+#
 # The pull request's head is checked out, not the merge commit GitHub makes for it, so the range
 # is the pull request's commits and no other. The whole history and the submodule come with it,
 # or `origin/main..HEAD` is empty and the two shared checks, commit-check.ps1 and
@@ -119,7 +125,16 @@ jobs:
 
       - name: Check the commit messages
         if: ${{ !cancelled() }}
-        run: pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -Range origin/main..HEAD -RequireCommits
+        run: pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -ScopeFile commit-scopes.txt -Range origin/main..HEAD -RequireCommits
+
+      - name: Check that every hook is committed executable
+        if: ${{ !cancelled() }}
+        run: |
+          modes=$(git ls-files -s .githooks)
+          if [ -z "$modes" ]; then echo "FAILED - git tracks no file under .githooks, so no mode was read."; exit 1; fi
+          bad=$(printf '%s\n' "$modes" | awk '$1 != "100755"')
+          if [ -n "$bad" ]; then echo "FAILED - not mode 100755, so git off Windows skips it:"; printf '%s\n' "$bad"; exit 1; fi
+          echo "OK - $(printf '%s\n' "$modes" | wc -l | tr -d ' ') file(s) under .githooks, each mode 100755."
 
       - name: Check that a commit changing a pack's members carries !
         if: ${{ !cancelled() }}

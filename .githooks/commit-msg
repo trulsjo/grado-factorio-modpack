@@ -1,9 +1,12 @@
 #!/bin/sh
-# Checks the message against the convention declared in
-# vendor/grado-factorio-tools/docs/commit-convention.md. The rules and the reasons live there and
-# in the check it runs; this is only the wiring, so git has something without an extension to run.
-# Then scripts/member-change-check.ps1 (#375) refuses a commit that gains or loses a pack member
-# with no ! before the subject's colon: what counts as breaking is this repository's own rule.
+# Checks the message against vendor/grado-factorio-tools/docs/commit-convention.md.
+#
+# This repository's own, beside the first .EXAMPLE of commit-check.ps1 that the rest is held to
+# (#415): the scopes are commit-scopes.txt, and scripts/member-change-check.ps1 (#375) runs after
+# the shared check, which therefore ends in `|| exit 1` where the example has `exec`. It refuses a
+# commit that gains or loses a pack member with no ! before the subject's colon: what counts as
+# breaking is this repository's own rule. The two lines that say what was NOT checked name the
+# member changes too, as neither check runs there.
 #
 # INSTALL, twice per clone, because git tracks neither .git/hooks nor a submodule's contents:
 #
@@ -12,25 +15,16 @@
 #
 # The message file survives a rejection, so `git commit -e -F .git/COMMIT_EDITMSG` reopens what you
 # typed rather than making you write it again.
-#
-# pwsh is what every other script here needs, so a clone that can run the gates can run this. If it
-# is genuinely missing, say so and let the commit through rather than blocking work on a machine
-# that was never going to run the gates either.
 if ! command -v pwsh >/dev/null 2>&1; then
     echo "commit-msg: pwsh not found, so the message format and its member changes were NOT checked." >&2
     exit 0
 fi
-
-# A clone that skipped `git submodule update --init` has an empty vendor directory, so the check
-# cannot be resolved. Say so and let the commit through -- the same posture as a missing pwsh, and
-# what ADR 0001 requires. Left to pwsh this would be exit 64 and a usage dump, which blocks the
-# commit and names nothing the author can act on.
-CHECK="$(git rev-parse --show-toplevel)/vendor/grado-factorio-tools/scripts/commit-check.ps1"
+ROOT="$(git rev-parse --show-toplevel)"
+CHECK="$ROOT/vendor/grado-factorio-tools/scripts/commit-check.ps1"
 if [ ! -f "$CHECK" ]; then
     echo "commit-msg: $CHECK not found, so the message format and its member changes were NOT checked." >&2
-    echo "commit-msg: run 'git submodule update --init' to wire up the shared check." >&2
+    echo "commit-msg: run 'git submodule update --init' to fetch the shared check." >&2
     exit 0
 fi
-
-pwsh -NoProfile -File "$CHECK" "$1" || exit 1
-exec pwsh -NoProfile -File "$(git rev-parse --show-toplevel)/scripts/member-change-check.ps1" -MessageFile "$1"
+pwsh -NoProfile -File "$CHECK" -ScopeFile "$ROOT/commit-scopes.txt" "$1" || exit 1
+exec pwsh -NoProfile -File "$ROOT/scripts/member-change-check.ps1" -MessageFile "$1"

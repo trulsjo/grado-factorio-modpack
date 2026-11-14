@@ -179,15 +179,15 @@ if ($SelfTest) {
         $conf = if ($null -ne $Confirmation) { @('## Confirmation', '') + $Confirmation + '' } else { @() }
         @('# Pre-PR review of `branch`', '', 'Two findings.', '', '## Findings', '') + $Findings + $(if ($ConfirmationLast) { $read + $conf } else { $conf + $read }) }
     $two = (& $finding 1) + (& $finding 2)
-    $draft = "Closes #1`n`n## Summary`n`nA change.`n`n## Evidence`n`nRead.`n`n## Merge Danger`n`nNone.`n"
+    $sampleDraft = "Closes #1`n`n## Summary`n`nA change.`n`n## Evidence`n`nRead.`n`n## Merge Danger`n`nNone.`n"
     $refusesDraft = { param([string] $text, [string] $why) try { Get-Body $text (& $report @('Nothing found.', '') $null) | Out-Null; $false } catch { $_.Exception.Message -match $why } }
-    $throws = { param([string[]] $lines, [string] $why) try { Get-Body $draft $lines | Out-Null; $false } catch { $_.Exception.Message -match $why } }
+    $throws = { param([string[]] $lines, [string] $why) try { Get-Body $sampleDraft $lines | Out-Null; $false } catch { $_.Exception.Message -match $why } }
     # A repository of two commits, the first on origin/main and the second not, holding a copy of
     # this script and of the shared check where the submodule puts it (#388). Build runs the copy
     # on a report, and on the draft or another, and says what it printed, exited and wrote.
     $hashRepo = {
         if (-not (Test-Path -LiteralPath $sharedCheck)) { throw "$sharedCheck not found; this case needs the submodule." }
-        $draft = $draft
+        $sampleDraft = $sampleDraft
         $temp = Join-Path ([IO.Path]::GetTempPath()) "pr-body-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
         $vendored = Join-Path $temp 'vendor/grado-factorio-tools/scripts'
         New-Item -ItemType Directory -Path (Join-Path $temp 'scripts'), $vendored -Force | Out-Null
@@ -203,7 +203,7 @@ if ($SelfTest) {
         Set-Content -LiteralPath "$temp/a.txt" -Value 'b'
         & $git commit --quiet -am on-branch | Out-Null
         $onBranch = & $git rev-parse --short=7 HEAD
-        $build = { param([string] $name, [string[]] $reviewLines, [string] $draftText = $draft)
+        $build = { param([string] $name, [string[]] $reviewLines, [string] $draftText = $sampleDraft)
             Set-Content -LiteralPath "$temp/$name-draft.md" -Value $draftText -NoNewline
             Set-Content -LiteralPath "$temp/$name.md" -Value $reviewLines
             $said = & pwsh -NoProfile -File (Join-Path $temp 'scripts/pr-body.ps1') -Draft "$temp/$name-draft.md" -Review "$temp/$name.md" -Out "$temp/$name-body.md" 2>&1 | Out-String
@@ -214,22 +214,22 @@ if ($SelfTest) {
     }
     $cases = @(
         @{ Name = 'the body is the draft, one heading, every finding and the whole confirmation, with no report heading above the third level'; Test = {
-            $body = Get-Body $draft (& $report $two @('Read at `abc1234`.', '', '1. fixed', '2. not fixed: the count is still off'))
+            $body = Get-Body $sampleDraft (& $report $two @('Read at `abc1234`.', '', '1. fixed', '2. not fixed: the count is still off'))
             $after = $body.Substring($body.IndexOf('## Pre-PR review') + 16)
-            $body.StartsWith("$($draft.TrimEnd())`n`n## Pre-PR review`n`n### 1. Something is wrong.") -and
+            $body.StartsWith("$($sampleDraft.TrimEnd())`n`n## Pre-PR review`n`n### 1. Something is wrong.") -and
                 $after -match '(?m)^### 2\. Something' -and $after -match '(?m)^- \*\*Where:\*\* `a\.md:2`$' -and
                 $after -match "(?m)^### Confirmation`n`nRead at ``abc1234``\.`n`n1\. fixed`n2\. not fixed: the count is still off`n$" -and
                 $after -notmatch '(?m)^#{1,2} ' -and $body -notmatch 'Read and found correct|adding it up|Two findings' } }
         @{ Name = 'a draft with a template heading missing is refused, naming it'; Test = {
-            & $refusesDraft ($draft -replace '## Evidence', 'Evidence') '`## Evidence` is missing\.' } }
+            & $refusesDraft ($sampleDraft -replace '## Evidence', 'Evidence') '`## Evidence` is missing\.' } }
         @{ Name = 'a draft with a template heading twice is refused, naming it and the count'; Test = {
-            & $refusesDraft ($draft + "`n## Summary`n`nAgain.`n") '`## Summary` stands 2 times' } }
+            & $refusesDraft ($sampleDraft + "`n## Summary`n`nAgain.`n") '`## Summary` stands 2 times' } }
         @{ Name = 'a draft with the three headings out of order is refused, naming the order'; Test = {
             $swapped = "Closes #1`n`n## Evidence`n`nRead.`n`n## Summary`n`nA change.`n`n## Merge Danger`n`nNone.`n"
             & $refusesDraft $swapped 'in the order Evidence, Summary, Merge Danger' } }
         @{ Name = 'a template heading only inside a fenced block is missing, as is one at the third level'; Test = {
-            (& $refusesDraft ($draft -replace '## Merge Danger', "~~~`n## Merge Danger`n~~~") '`## Merge Danger` is missing\.') -and
-                (& $refusesDraft ($draft -replace '## Summary', '### Summary') '`## Summary` is missing\.') } }
+            (& $refusesDraft ($sampleDraft -replace '## Merge Danger', "~~~`n## Merge Danger`n~~~") '`## Merge Danger` is missing\.') -and
+                (& $refusesDraft ($sampleDraft -replace '## Summary', '### Summary') '`## Summary` is missing\.') } }
         @{ Name = 'a draft with other sections between and after the three headings passes'; Test = {
             $extra = "Closes #1`n`n## Summary`n`nA change.`n`n## Said on the tickets`n`nA ruling.`n`n## Evidence`n`nRead.`n`n## Merge Danger`n`nNone.`n`n## Notes`n`nMore.`n"
             (Get-Body $extra (& $report @('Nothing found.', '') $null)).StartsWith($extra.TrimEnd()) } }
@@ -242,23 +242,23 @@ if ($SelfTest) {
         @{ Name = 'a finding with no confirmation line is refused by its number, and a longer number does not answer it'; Test = {
             (& $throws (& $report $two @('1. fixed', '12. fixed')) 'answers finding 2\.$') -and (& $throws (& $report $two @('2. fixed')) 'answers finding 1\.$') } }
         @{ Name = 'a report that found nothing and has no confirmation gives a body that says so'; Test = {
-            $body = Get-Body $draft (& $report @('Nothing found.', '') $null)
+            $body = Get-Body $sampleDraft (& $report @('Nothing found.', '') $null)
             $body.EndsWith("## Pre-PR review`n`nNothing found.`n") -and $body -notmatch 'Confirmation' } }
         @{ Name = 'the confirmation is taken where it stands last, with two runs of numbered lines'; Test = {
-            $body = Get-Body $draft (& $report $two @('1. fixed', '2. not fixed: see 3', '', 'Second confirmation.', '', '2. fixed') -ConfirmationLast)
+            $body = Get-Body $sampleDraft (& $report $two @('1. fixed', '2. not fixed: see 3', '', 'Second confirmation.', '', '2. fixed') -ConfirmationLast)
             $body.EndsWith("### Confirmation`n`n1. fixed`n2. not fixed: see 3`n`nSecond confirmation.`n`n2. fixed`n") -and $body -notmatch 'adding it up' } }
         @{ Name = 'a later confirmation under its own third-level heading is kept, and its lines answer findings'; Test = {
-            $body = Get-Body $draft (& $report $two @('1. fixed', '', '### Second confirmation', '', '2. fixed'))
+            $body = Get-Body $sampleDraft (& $report $two @('1. fixed', '', '### Second confirmation', '', '2. fixed'))
             $body.EndsWith("### Confirmation`n`n1. fixed`n`n### Second confirmation`n`n2. fixed`n") } }
         @{ Name = 'a second-level heading inside a fenced block does not end a finding'; Test = {
             $fenced = (& $finding 1) + @('```', '## Findings', '## Not a heading', '```', 'After the block.', '')
-            $body = Get-Body $draft (& $report $fenced @('1. fixed'))
+            $body = Get-Body $sampleDraft (& $report $fenced @('1. fixed'))
             $body -match '(?m)^## Findings\n## Not a heading\n```\nAfter the block\.$' -and $body -match '(?m)^1\. fixed$' } }
         @{ Name = 'run as a command it writes the body and exits 0, and a refused report or draft exits 1 and writes nothing'; Test = {
             $temp = Join-Path ([IO.Path]::GetTempPath()) "pr-body-selftest-$([guid]::NewGuid().ToString('N').Substring(0, 8))"
             New-Item -ItemType Directory -Path $temp -Force | Out-Null
             try {
-                Set-Content -LiteralPath "$temp/draft.md" -Value $draft -NoNewline
+                Set-Content -LiteralPath "$temp/draft.md" -Value $sampleDraft -NoNewline
                 Set-Content -LiteralPath "$temp/good.md" -Value (& $report $two @('1. fixed', '2. fixed'))
                 Set-Content -LiteralPath "$temp/bad.md" -Value (& $report $two @('1. fixed'))
                 Set-Content -LiteralPath "$temp/bare.md" -Value "Closes #1`n`n## Summary`n`nA change.`n" -NoNewline
@@ -267,7 +267,7 @@ if ($SelfTest) {
                 $bare = & pwsh -NoProfile -File $PSCommandPath -Draft "$temp/bare.md" -Review "$temp/good.md" -Out "$temp/bare-body.md" 2>&1 | Out-String; $bareCode = $LASTEXITCODE
                 if ($goodCode -ne 0) { Write-Host ($good.TrimEnd() -replace '(?m)^', '    ') }
                 if ($badCode -ne 1) { Write-Host ($bad.TrimEnd() -replace '(?m)^', '    ') }
-                $goodCode -eq 0 -and (Get-Content -LiteralPath "$temp/good-body.md" -Raw) -eq (Get-Body $draft (& $report $two @('1. fixed', '2. fixed'))) -and
+                $goodCode -eq 0 -and (Get-Content -LiteralPath "$temp/good-body.md" -Raw) -eq (Get-Body $sampleDraft (& $report $two @('1. fixed', '2. fixed'))) -and
                     $badCode -eq 1 -and $bad -match 'finding 2' -and -not (Test-Path -LiteralPath "$temp/bad-body.md") -and
                     $bareCode -eq 1 -and $bare -match '`## Evidence` is missing' -and -not (Test-Path -LiteralPath "$temp/bare-body.md")
             }
@@ -297,14 +297,14 @@ if ($SelfTest) {
                 $read = $plain -replace 'by adding it up', "at $($r.OnBranch)"
                 $built = foreach ($x in @{ N = 'main'; L = $onMain }, @{ N = 'none'; L = $plain }, @{ N = 'read'; L = $read }) { , @((& $r.Build $x.N $x.L), $x.L) }
                 foreach ($b in $built) { if ($b[0].Code -ne 0) { Write-Host ($b[0].Said.TrimEnd() -replace '(?m)^', '    ') } }
-                -not @($built | Where-Object { $_[0].Code -ne 0 -or $_[0].Body -ne (Get-Body $draft $_[1]) })
+                -not @($built | Where-Object { $_[0].Code -ne 0 -or $_[0].Body -ne (Get-Body $sampleDraft $_[1]) })
             }
             finally { Remove-Item -LiteralPath $r.Temp -Recurse -Force -ErrorAction SilentlyContinue }
         } }
         @{ Name = 'a commit not on origin/main named only in the draft does not stop the body, which keeps it'; Test = {
             $r = & $hashRepo
             try {
-                $x = & $r.Build 'indraft' (& $report $two @('1. fixed', '2. fixed')) ($draft -replace 'Read\.', "Read at $($r.OnBranch).")
+                $x = & $r.Build 'indraft' (& $report $two @('1. fixed', '2. fixed')) ($sampleDraft -replace 'Read\.', "Read at $($r.OnBranch).")
                 if ($x.Code -ne 0) { Write-Host ($x.Said.TrimEnd() -replace '(?m)^', '    ') }
                 $x.Code -eq 0 -and $x.Body -match "Read at $($r.OnBranch)\."
             }

@@ -480,7 +480,7 @@ if ($LASTEXITCODE) { Write-Host ''; Write-Host "FAILED - $Pack did not resolve o
 
 New-Item -ItemType Directory -Path $ModsDirectory -Force | Out-Null
 $members = @((Import-PowerShellDataFile -LiteralPath $pinFile).Sets[$Pack])
-if ($prune) { Remove-DroppedMod -Directory $ModsDirectory -Keep @($members.Name; $chain.Name) }
+if ($prune) { Remove-DroppedMod -Directory $ModsDirectory -Keep @($members.Name; $chain | ForEach-Object Name) }
 foreach ($m in $members) { Remove-VersionedCopy -Directory $ModsDirectory -Name $m.Name }
 try { & (Join-Path $TOOLS 'fetch-mods.ps1') -PinFile $pinFile -Set $Pack -CacheDirectory $ModsDirectory }
 catch { Write-Host "  $($_.Exception.Message)"; Write-Host ''; Write-Host "FAILED - the members of $Pack could not all be fetched; the packs were not staged."; exit 1 }

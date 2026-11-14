@@ -242,7 +242,11 @@ pass's. A finding may be left unfixed if the body says which and why. **A findin
 decision of Truls's is not fixed by the session**: it is listed as unfixed and waiting on him.
 
 **The plugin pass is run when Truls asks for it, and not otherwise.** It keeps its scorers and its
-threshold, and the first rule above says where its findings go.
+threshold, and the first rule above says where its findings go. **A check-run comment is not a
+prior review** for the plugin's first step, nor is a pull request body that holds the pre-PR
+review. **A pass run without `--comment` still gets one comment on the pull request**, saying
+what it raised and what it filtered. Why: `code-review-why.md`, *Why the plugin pass reads past
+the comments this repository posts*.
 
 **A plugin-pass finding the pre-PR review missed gets its class named**, in the pull request, by
 the session that fixes it. A class a script could detect becomes a ticket proposing the check. A

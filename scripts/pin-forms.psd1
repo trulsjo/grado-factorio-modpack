@@ -1,9 +1,10 @@
 # The forms vendor/grado-factorio-tools/scripts/pin-measure.ps1 runs at the old pin and the new
 # when the tools pin moves (#389). Its shape, and what each placeholder becomes, is in that
 # script's header (grado-factorio-tools#247). One form for each way this repository runs a tools
-# script, in .githooks/, .github/workflows/check.yml and .claude/settings.json, and for each
-# script of its own that reaches into vendor/. The first 20 forms, 21 runs, are those PR #387
-# measured by hand (2026-10-26, its Evidence table); the rest are named where they start.
+# script, in .githooks/, .github/workflows/check.yml and .claude/settings.json, follow-pin.ps1
+# by its -SelfTest alone, and for each script of its own that reaches into vendor/. The first 20
+# forms, 21 runs, are those PR #387 measured by hand (2026-10-26, its Evidence table); the rest
+# are named where they start.
 @{
     Forms = @(
         @{ Name = 'commit-check-selftest'; From = 'tools'; Script = 'commit-check.ps1'; Args = @('-SelfTest') }

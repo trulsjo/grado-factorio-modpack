@@ -35,8 +35,11 @@ is needed for it.
   [`claim-grades.md`](../../vendor/grado-factorio-tools/docs/claim-grades.md)
   ([on GitHub](https://github.com/trulsjo/grado-factorio-tools/blob/main/docs/claim-grades.md),
   whose `main` may be ahead of the pin), which holds the three grades the rules below use.
-- **Check run:** the session's local runs that the brief lists, and the reviewer is handed their
-  output: `commit-check.ps1 -Range origin/main..HEAD`,
+- **Check run:** the session's local runs that the brief lists. The session walks the output of
+  `absolute-words.ps1 -Range origin/main...HEAD`, in `vendor/grado-factorio-tools/scripts/`, as
+  the procedure's *Before the reviewer is started* says, and does not hand it over. The reviewer
+  is handed the output of the rest:
+  `commit-check.ps1 -ScopeFile commit-scopes.txt -Range origin/main..HEAD`,
   `markdown-check.ps1 -Range origin/main...HEAD -MaxLineLength 100` and
   `glossary-check.ps1 -Range origin/main...HEAD -LeftFile glossary-left.txt`, all three in
   `vendor/grado-factorio-tools/scripts/`, `scripts/mentions.ps1`, and the resolve if an
@@ -107,13 +110,10 @@ and prints the old and new hashes. Once the branch is pushed the message stays, 
 request's body says what holds. Found in PR #186, where five messages stayed wrong, and PR #187,
 where one was reworded twice.
 
-**Its findings go in the pull request's body, every one**, each with whether it was fixed. A
-finding may be left unfixed if the body says which and why.
-
 **A fix made after the plugin pass is confirmed by the branch's <!-- deliberate: confirmed -->
 pre-PR reviewer**, continued as for any later fix commit: the plugin pass's reviewers do not
-outlive the pass. If that reviewer cannot be continued, a fresh one is handed its report and the
-commits. What the confirmation finds, and each repair, is recorded on the pull request. Found in
+outlive the pass. If that reviewer cannot be continued, step 8 of the procedure says who stands
+in. What the confirmation finds, and each repair, is recorded on the pull request. Found in
 PR #186. What the confirmation finds is repaired and read again, until a read finds nothing new
 (#166).
 
@@ -145,7 +145,7 @@ message says so.
 Nor is the time the tickets are being implemented: which output and which command stand behind
 a figure is known to the session alone, a later session gets another scratch directory, and no
 kept script makes a portal reading, a load's log or a timing again. **A clear before a
-plugin pass costs a fresh reviewer**, handed the report and the commits as above, and it may be
+plugin pass costs a fresh reviewer**, handed what step 8 of the procedure says, and it may be
 handed a figure whose raw output is gone.
 
 ## The prose checks this repository keeps

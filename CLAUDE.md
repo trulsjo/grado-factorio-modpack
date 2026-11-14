@@ -111,18 +111,14 @@ CLAUDE.md's State and open decisions*.
 The facts every repository works the portal by are on
 [`mod-portal.md`](vendor/grado-factorio-tools/docs/mod-portal.md), in the tools submodule at its
 pin ([on GitHub](https://github.com/trulsjo/grado-factorio-tools/blob/main/docs/mod-portal.md),
-whose `main` may be ahead of the pin): what says what exists, checking `factorio_version` for any
-`2.x`, and that a mod missing under one name may exist under another. Querying the portal - its
-endpoints, the full sweep and its counts - is the `mod-portal` skill, in
-`.claude/skills/mod-portal/SKILL.md`.
+whose `main` may be ahead of the pin). Querying the portal - its endpoints, the full sweep and
+its counts - is the `mod-portal` skill, in `.claude/skills/mod-portal/SKILL.md`.
 
 **A mod is served only to the major version it declares.** `factorio_version: "2.0"` means every
 2.0 release and no other major version, with no 2.0-to-2.1 exception
 ([mod structure](https://lua-api.factorio.com/2.0.77/auxiliary/mod-structure.html), 2.0.77), so a
 2.0-only mod is not served to a 2.1 game at all. A pack can therefore list a mod that resolves on
 the portal and still be uninstallable on the other line (#43).
-
-A mod missing under one name may be hiding successors for the seven dropped Picker mods too.
 
 ## Conventions
 
@@ -257,8 +253,9 @@ is that script's `.EXAMPLE`, word for word (#415). Why, and what they leave alon
 script's header.
 
 Old commits that fail the check are left alone — the three from 2026-09-20, `3ab917c` among them,
-predate it. The hook stops the failures growing; `-Range origin/main..HEAD` checks a branch before a
-push, and `-SelfTest` proves the check can still fail.
+predate it. The hook stops the failures growing;
+`-ScopeFile commit-scopes.txt -Range origin/main..HEAD` checks a branch before a push, and
+`-SelfTest` proves the check can still fail.
 
 **What `.githooks/pre-commit` checks is in its header.**
 `markdown-check.ps1 -Range origin/main...HEAD -MaxLineLength 100`, in

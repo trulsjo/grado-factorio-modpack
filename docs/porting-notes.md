@@ -1072,9 +1072,9 @@ repository's copy:
 > that refuses a package install or a fetched program, which Truls runs himself with `!` once
 > he has said yes; its header says what it cannot see.
 
-**The scope vocabulary**, under *Commit messages*, as it stood from 2026-09-21 until 2026-11-14,
-when #415 moved the list to `commit-scopes.txt`, which the commit check reads, and kept here what
-a scope is:
+**The scope vocabulary**, under *Commit messages*, as it stood from 2026-09-21, its list
+from 2026-09-20, until 2026-11-14, when #415 moved the list to `commit-scopes.txt`, which the
+commit check reads, and kept here what a scope is:
 
 > - **Scope vocabulary.** Use the pack (`nonchanging`, `changingbase`, `abc`, `abcx`, `abcs`) or the
 >   area (`docs`, `repo`).
@@ -1106,9 +1106,12 @@ and the link. The fourth bullet stays:
 > - `/stable/` and `/latest/` both move, and `latest` is the **experimental** build. Pin an
 >   explicit version when recording a fact.
 
-**Checking the mod portal**, the skill pointer and its last two rules, as they stood from
-2026-10-27 (#401) until 2026-11-14, when #417 put the portal facts every repository works by on
-the shared `mod-portal.md` and linked it. The rule on the major version a mod declares stays:
+**Checking the mod portal**, the skill pointer as it stood from 2026-10-27 (#401), and its last
+two rules as they stood from 2026-09-20, until 2026-11-14, when #417 put the portal facts every
+repository works by on the shared `mod-portal.md` and linked it. The pointer stands beside the
+link. The Picker sentence went with the rule it ends, as all twenty port drops are closed (#7,
+#8, #9). The rule on the major version a mod declares
+stays:
 
 > Querying the portal - its endpoints, the full sweep and its counts - is the `mod-portal` skill,
 > in `.claude/skills/mod-portal/SKILL.md`.
@@ -1126,3 +1129,10 @@ the shared `mod-portal.md` and linked it. The rule on the major version a mod de
 2026-10-12 (#235) until 2026-11-14, when #417 made the page a stub and linked the shared page:
 
 > `gh issue view <n> --json title,body,labels,comments`. See `docs/agents/issue-tracker.md`.
+
+**The range the commit check reads a branch with**, under *Commit messages*, as it stood from
+2026-09-20 until 2026-11-14, when #415's commit-scopes.txt was handed to it, as the hook and the
+pull request check hand it:
+
+> predate it. The hook stops the failures growing; `-Range origin/main..HEAD` checks a branch
+> before a push, and `-SelfTest` proves the check can still fail.

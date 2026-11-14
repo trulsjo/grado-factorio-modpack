@@ -159,7 +159,9 @@ You are handed:
 - the tickets, with their comments:
   `gh issue view <N> --json title,body,labels,comments --jq '{title, body, labels: [.labels[].name], comments: [.comments[].body]}'`
   for each. Hold the diff against each one's acceptance criteria, and ask of each test claim
-  whether it is shown able to fail.
+  whether it is shown able to fail. Where a ticket quotes Truls's request under `## Asked`, read
+  its scope against the quote: scope the quote does not hold is a finding, unless the ticket
+  marks it as the session's and a ruling in its comments keeps it.
 
 Write the report to <scratch>/review.md with the file tool. Once it is written, end your turn
 with at most five lines as its last text: how many findings, which one matters most, and the
@@ -191,6 +193,12 @@ If you find nothing, say so under Findings and still fill the other two sections
 The session answers each line under *Not read* before the fixes: it reads the thing itself
 and says so in the confirmation turn, or hands the reviewer what it lacked.
 
+**A ticket's scope is read against Truls's quoted request** (#427), which a ticket filed at his
+word holds under `## Asked` (`docs/agents/issue-tracker.md`). On PR #426 (2026-11-14) the pre-PR
+reviewer read the tickets by `gh issue view`, and #425's body did not tell his request from a
+half the session had added. Its finding 5 took the half for his, and was withdrawn once the
+session sent his words, a round later (by that session's account).
+
 ## The confirmation turn
 
 Sent to the same subagent, after the fixes are committed. A later fix commit, or a fix to the
@@ -215,7 +223,9 @@ Not fixed, and why: <each finding by its number; or none>. <For a fix of a plugi
 which is not one of yours: the finding as the pull request states it; or nothing.>
 
 Read each fix commit as new diff: against your own finding, and by every rule you reviewed by
-in the first turn. The fix commit's message is read like the rest. Still read-only, and still
+in the first turn. The fix commit's message is read like the rest, and each earlier commit
+message of the branch is read against the fix, `git log --format=%B origin/main..HEAD`: a claim
+the fix made false is a finding. Still read-only, and still
 from the repository root. Name the branch's commits by their roles, as in the first turn, in a
 confirmation line too.
 
@@ -232,6 +242,11 @@ its number carrying on from the last, with "(at confirmation)" after its sentenc
 confirmation goes under ## Confirmation as ### Second confirmation, ### Third confirmation and
 so on, with a line for each finding it answers.
 ```
+
+**The earlier commit messages are read against each fix** (#427). On PR #426 (2026-11-14) the fix
+of finding 3 made the ticket commit's message false; the session noticed and reworded it with
+`scripts/reword-commit.ps1`, and nothing asked the confirmation to read it (by that session's
+account).
 
 Each confirmation stays under `## Confirmation`, with no other `##` heading inside it, because
 `pr-body.ps1` reads `## Confirmation` up to the next `##` heading (its `Get-Section`, read from

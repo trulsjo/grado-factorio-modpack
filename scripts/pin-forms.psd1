@@ -42,5 +42,36 @@
         @{ Name = 'trace-definitions-selftest'; From = 'tools'; Script = 'trace-definitions.ps1'; Args = @('-SelfTest', '-NoGame') }
         # .githooks/post-checkout, post-merge and post-rewrite run it (#391); added by #413.
         @{ Name = 'follow-pin-selftest'; From = 'tools'; Script = 'follow-pin.ps1'; Args = @('-SelfTest') }
+        # The session hooks .claude/settings.json wires, each by its self-test on that file; added
+        # by #416 for #414.
+        @{ Name = 'download-hook-selftest'; From = 'tools'; Script = 'ask-before-download.ps1'; Args = @('-SelfTest', '-Settings', '.claude/settings.json') }
+        @{ Name = 'heredoc-hook-selftest'; From = 'tools'; Script = 'refuse-python-heredoc.ps1'; Args = @('-SelfTest', '-Settings', '.claude/settings.json') }
+        @{ Name = 'backtick-hook-selftest'; From = 'tools'; Script = 'refuse-backtick-substitution.ps1'; Args = @('-SelfTest', '-Settings', '.claude/settings.json') }
+        @{ Name = 'hanging-bash-hook-selftest'; From = 'tools'; Script = 'refuse-hanging-bash.ps1'; Args = @('-SelfTest', '-Settings', '.claude/settings.json') }
+        @{ Name = 'hook-skip-hook-selftest'; From = 'tools'; Script = 'refuse-git-hook-skip.ps1'; Args = @('-SelfTest', '-Settings', '.claude/settings.json') }
+        @{ Name = 'skipped-install-hook-selftest'; From = 'tools'; Script = 'warn-skipped-install.ps1'; Args = @('-SelfTest', '-Settings', '.claude/settings.json') }
+        # The commit check as .githooks/commit-msg and the workflow hand it commit-scopes.txt;
+        # added by #416 for #415.
+        @{ Name = 'commit-check-hook-scopes'; From = 'tools'; Script = 'commit-check.ps1'; Args = @('-ScopeFile', 'commit-scopes.txt', '{headmsg}') }
+        @{ Name = 'commit-check-range-scopes'; From = 'tools'; Script = 'commit-check.ps1'; Args = @('-ScopeFile', 'commit-scopes.txt', '-Range', 'HEAD~20..HEAD', '-RequireCommits') }
+        # The shared checks #416 runs in place of scripts/glossary-check.ps1 and
+        # scripts/header-length-check.ps1, and the four .githooks/pre-commit runs on the staged
+        # scripts, here over all of scripts/.
+        @{ Name = 'glossary-check-selftest'; From = 'tools'; Script = 'glossary-check.ps1'; Args = @('-SelfTest') }
+        @{ Name = 'glossary-check-range'; From = 'tools'; Script = 'glossary-check.ps1'; Args = @('-Range', 'HEAD~20...HEAD', '-LeftFile', 'glossary-left.txt') }
+        @{ Name = 'comment-line-selftest'; From = 'tools'; Script = 'comment-line-check.ps1'; Args = @('-SelfTest') }
+        @{ Name = 'comment-line-all'; From = 'tools'; Script = 'comment-line-check.ps1'; Args = @('-All', '-Path', 'scripts/*.ps1,.githooks/*,.github/workflows/*.yml') }
+        # .githooks/pre-commit, on the staged files: the clone's index matches HEAD, so none.
+        @{ Name = 'comment-line-hook'; From = 'tools'; Script = 'comment-line-check.ps1'; Args = @('-Path', 'scripts/*.ps1,.githooks/*,.github/workflows/*.yml') }
+        @{ Name = 'param-check-selftest'; From = 'tools'; Script = 'param-check.ps1'; Args = @('-SelfTest') }
+        @{ Name = 'param-check-scripts'; From = 'tools'; Script = 'param-check.ps1'; Args = @('scripts') }
+        @{ Name = 'variable-case-selftest'; From = 'tools'; Script = 'variable-case-check.ps1'; Args = @('-SelfTest') }
+        @{ Name = 'variable-case-scripts'; From = 'tools'; Script = 'variable-case-check.ps1'; Args = @('scripts') }
+        @{ Name = 'help-check-selftest'; From = 'tools'; Script = 'help-check.ps1'; Args = @('-SelfTest') }
+        @{ Name = 'help-check-scripts'; From = 'tools'; Script = 'help-check.ps1'; Args = @('scripts') }
+        @{ Name = 'strict-list-selftest'; From = 'tools'; Script = 'strict-list-check.ps1'; Args = @('-SelfTest') }
+        @{ Name = 'strict-list-scripts'; From = 'tools'; Script = 'strict-list-check.ps1'; Args = @('scripts') }
+        @{ Name = 'cited-commit-selftest'; From = 'tools'; Script = 'cited-commit-check.ps1'; Args = @('-SelfTest') }
+        @{ Name = 'cited-commit-tree'; From = 'tools'; Script = 'cited-commit-check.ps1'; Args = @('-Exempt', 'docs/loads/,docs/traces/') }
     )
 }

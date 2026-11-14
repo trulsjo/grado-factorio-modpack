@@ -265,8 +265,8 @@ push, and `-SelfTest` proves the check can still fail.
 **What `.githooks/pre-commit` checks is in its header.**
 `markdown-check.ps1 -Range origin/main...HEAD -MaxLineLength 100`, in
 `vendor/grado-factorio-tools/scripts/`, checks the Markdown a branch changed and holds its prose
-lines to 100 characters. Three dots here and for `scripts/glossary-check.ps1`, two for the commit
-check: why is in the header of `.github/workflows/check.yml`.
+lines to 100 characters. Three dots here and for `glossary-check.ps1`, in the same directory, two
+for the commit check: why is in the header of `.github/workflows/check.yml`.
 
 ## Agent skills
 

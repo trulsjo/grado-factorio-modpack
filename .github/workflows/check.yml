@@ -1,10 +1,11 @@
 # Three of the checks a clone opts into with `git config core.hooksPath .githooks`, run on every
 # pull request whether or not its author's clone did (#180): the commit messages, the members
 # each commit changes and the changed Markdown, over the pull request's own commits. Each check's
-# self-test runs first, so a check that can no longer fail is caught here.
-# scripts/glossary-check.ps1 runs over the same commits, with its self-test (#200): no hook runs it,
-# and it fails on an added line that uses a word GLOSSARY.md avoids and is not marked deliberate,
-# and on a GLOSSARY.md it cannot read, an empty one, or one with no avoided word it matches (#362).
+# self-test runs first, so a check that can no longer fail is caught here. The glossary check,
+# the shared glossary-check.ps1 since #416 with the words glossary-left.txt leaves to the
+# reviewer, runs over the same commits, with its self-test (#200): no hook runs it, and it fails
+# on an added line that uses a word GLOSSARY.md avoids and is not marked deliberate, and on a
+# GLOSSARY.md it cannot read, an empty one, or one with no avoided word it matches (#362).
 # The Markdown check's range and glossary-check.ps1's have three dots (#204): both scripts hand the
 # range to `git diff`, where two dots would compare the two tips and judge a branch behind `main` on
 # what `main` has changed since. The commit check's keeps two: it hands the range to `git rev-list`,
@@ -16,10 +17,21 @@
 # others: a session runs those two scripts before a pull request exists, so nothing here runs
 # the scripts themselves.
 #
-# The comment header of each tracked `scripts/*.ps1` is read for a line over 100 characters
-# (#211), and each `#` comment line of the scripts, of .githooks/ and of these workflows
-# (#378), with that check's self-test among the others. It reads each of them and not the pull
-# request's alone: a comment has no range.
+# The comment lines of each tracked `scripts/*.ps1`, of .githooks/ and of these workflows are
+# read for a line over 100 characters (#211, #378), by the shared comment-line-check.ps1 since
+# #416, with its self-test among the others. It reads each of them and not the pull request's
+# alone: a comment has no range. The self-tests of the shared param-check.ps1,
+# variable-case-check.ps1, help-check.ps1 and strict-list-check.ps1 run too (#416):
+# .githooks/pre-commit runs those four on the staged scripts, and nothing here runs them over
+# the tree.
+#
+# Every word shaped like a commit hash in the tracked .md, .lua, .ps1, .py and .js files is read
+# by the shared cited-commit-check.ps1 (#416) for a commit of this clone origin/main does not
+# reach, with its self-test among the others. It reads the whole tree: a citation goes stale
+# when a branch is rebase-merged, not when its line changes. The load and trace records,
+# docs/loads/ and docs/traces/, are exempt, as Truls ruled on #416 (2026-11-14); they are given
+# as directories, not a glob, so that pwsh on this runner does not expand them first. No hook
+# runs it; its header says why.
 #
 # Every Overlaps row of docs/catalogue/ is read against the five dependency lists at the pull
 # request's head (#357), with that check's self-test among the others. It reads the whole
@@ -104,11 +116,16 @@ jobs:
         run: |
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -SelfTest
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/markdown-check.ps1 -SelfTest
-          pwsh -NoProfile -File scripts/glossary-check.ps1 -SelfTest
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/glossary-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/reword-commit.ps1 -SelfTest
           pwsh -NoProfile -File scripts/pr-body.ps1 -SelfTest
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/pr-body-check.ps1 -SelfTest
-          pwsh -NoProfile -File scripts/header-length-check.ps1 -SelfTest
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/comment-line-check.ps1 -SelfTest
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/param-check.ps1 -SelfTest
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/variable-case-check.ps1 -SelfTest
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/help-check.ps1 -SelfTest
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/strict-list-check.ps1 -SelfTest
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/cited-commit-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/absolute-words.ps1 -SelfTest
           pwsh -NoProfile -File scripts/mentions.ps1 -SelfTest
           pwsh -NoProfile -File scripts/probe-session.ps1 -SelfTest
@@ -146,11 +163,15 @@ jobs:
 
       - name: Check the added Markdown lines against the glossary
         if: ${{ !cancelled() }}
-        run: pwsh -NoProfile -File scripts/glossary-check.ps1 -Range origin/main...HEAD
+        run: pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/glossary-check.ps1 -Range origin/main...HEAD -LeftFile glossary-left.txt
 
       - name: Check the comments of the scripts, the hooks and the workflows for line length
         if: ${{ !cancelled() }}
-        run: pwsh -NoProfile -File scripts/header-length-check.ps1 -All
+        run: pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/comment-line-check.ps1 -All -Path 'scripts/*.ps1,.githooks/*,.github/workflows/*.yml'
+
+      - name: Check that every commit the tree cites is on origin/main
+        if: ${{ !cancelled() }}
+        run: pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/cited-commit-check.ps1 -Exempt 'docs/loads/,docs/traces/'
 
       - name: Check every Overlaps row against the dependency lists
         if: ${{ !cancelled() }}

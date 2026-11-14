@@ -136,18 +136,31 @@ records, is left, with one line saying why and the command to run. Each hook exi
 the script's `.EXAMPLE` word for word. Why they exist, and what the script cannot see, is in the
 script's header.
 
-`scripts/glossary-check.ps1 -Range origin/main...HEAD` lists each line a branch adds that uses a
-word `GLOSSARY.md` tells you to avoid, with the term that avoids it, and fails if it lists one.
-A deliberate use is marked on its line with `<!-- deliberate: word -->` and is not listed.
-A pull request gets this one from the same workflow, with its self-test. No hook runs it.
-`-List` prints the avoid entries it matches and the ones it leaves to a reader, with why.
+The shared `vendor/grado-factorio-tools/scripts/glossary-check.ps1`, run with
+`-Range origin/main...HEAD -LeftFile glossary-left.txt`, lists each line a branch adds that uses
+a word `GLOSSARY.md` tells you to avoid, with the term that avoids it, and fails if it lists one.
+`glossary-left.txt` names the words left to the reviewer, each with why. A deliberate use is
+marked on its line with `<!-- deliberate: word -->` and is not listed. A pull request gets this
+one from the same workflow, with its self-test. No hook runs it. `-List` prints the avoid entries
+it matches and the ones it leaves to a reader, with why.
 
-`scripts/header-length-check.ps1` reads the comment header at the top of each `scripts/*.ps1`,
-and each `#` comment line of the scripts, of `.githooks/` and of `.github/workflows/*.yml`, and
-fails on a line over 100 characters. A line under `.EXAMPLE` is left, and so is code, a
-workflow's `run:` line among it. A refusal names the command that rewraps each refused file. The
-`pre-commit` hook runs it on the staged files after the Markdown check, and the same workflow
-runs it on every tracked one, with its self-test.
+The shared `comment-line-check.ps1`, in the same directory, reads each comment line of the
+scripts, of `.githooks/` and of `.github/workflows/*.yml`, and fails on a line over 100
+characters; its header says which lines it leaves. A refusal names the command that rewraps each
+refused file. The `pre-commit` hook runs it on the staged files after the Markdown check, and the
+same workflow runs it on every tracked one, with its self-test.
+
+The `pre-commit` hook also runs four shared checks on the staged `scripts/*.ps1`, each from the
+same directory: `param-check.ps1`, a list parameter never split on commas;
+`variable-case-check.ps1`, a variable spelt two ways in one scope; `help-check.ps1`, a help block
+PowerShell does not read; and `strict-list-check.ps1`, on the scripts that set strict mode, a
+read strict mode can throw on. The same workflow runs their self-tests.
+
+The shared `cited-commit-check.ps1` reads every tracked `.md`, `.lua`, `.ps1`, `.py` and `.js`
+file for a commit hash that names a commit of the clone `origin/main` does not reach, which a
+rebase merge or `git gc` can take away. The load and trace records, `docs/loads/` and
+`docs/traces/`, are exempt. The same workflow runs it, with its self-test, and no hook does; its
+header says why.
 
 `scripts/overlap-rows-check.ps1` reads every `| **Overlaps** |` row in `docs/catalogue/` against
 the five packs' dependency lists, and fails on a row that names, outside `~~ ~~`, a mod its tagged
@@ -196,7 +209,7 @@ a commit not on `origin/main`, by the shared body check's own test. Without the 
 it says that last check did not run. Its self-test runs in the same workflow.
 
 `glossary-check.ps1` fails on a `GLOSSARY.md` it cannot read, an empty one, or one with no
-`_Avoid_` entry it matches, `header-length-check.ps1`'s `-All` on no tracked script, hook or
+`_Avoid_` entry it matches, `comment-line-check.ps1`'s `-All` on no tracked script, hook or
 workflow, `overlap-rows-check.ps1` on no row in any catalogue file, `player-page-check.ps1`'s
 `-All` on no pack directory or none holding Markdown, and `pr-body.ps1` on an
 empty `## Findings`: each a run that read nothing it must cover.

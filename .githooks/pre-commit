@@ -1,12 +1,24 @@
 #!/bin/sh
-# Checks the staged Markdown files for broken emphasis and code spans, ragged tables and links
-# that lead nowhere (#149), and for a prose line over 100 characters (#209), and the staged
-# scripts, hooks and workflows for a comment line over 100 characters (#211, #378), and every
-# Overlaps row of the staged catalogue against the staged dependency lists (#357), and the staged
-# Markdown of each pack's directory for an HTML comment (#376). What each reads as what, and what
-# it cannot see, is in the header of vendor/grado-factorio-tools/scripts/markdown-check.ps1, the
-# shared check (#182), of scripts/header-length-check.ps1, of scripts/overlap-rows-check.ps1 and
-# of scripts/player-page-check.ps1; this is only the wiring.
+# Checks what the commit commits, as staged. All run, so one commit shows what each found:
+#
+# - the staged Markdown, for broken emphasis and code spans, ragged tables and links that lead
+#   nowhere (#149), and a prose line over 100 characters (#209), by the shared markdown-check.ps1
+#   (#182);
+# - the staged scripts, hooks and workflows, for a comment line over 100 characters (#211, #378),
+#   by the shared comment-line-check.ps1 (#416), in place of this repository's
+#   header-length-check.ps1, in the form its second example gives;
+# - the staged scripts/*.ps1 (#416), written out of the index into a folder under the git
+#   directory: by the shared param-check.ps1, a list parameter never split on commas; by
+#   variable-case-check.ps1, a variable spelt two ways in one scope; by help-check.ps1, a help
+#   block PowerShell does not read; and, on those that set strict mode, by strict-list-check.ps1,
+#   a read strict mode can throw on. With none staged, it says it read none;
+# - every Overlaps row of the staged catalogue against the staged dependency lists (#357), by
+#   scripts/overlap-rows-check.ps1;
+# - the staged Markdown of each pack's directory for an HTML comment (#376), by
+#   scripts/player-page-check.ps1.
+#
+# The shared scripts are in vendor/grado-factorio-tools/scripts/. What each reads as what, and
+# what it cannot see, is in its header; this is only the wiring.
 #
 # INSTALL, twice per clone, the same two lines that wire up commit-msg:
 #
@@ -14,27 +26,73 @@
 #     git config core.hooksPath .githooks
 #
 # pwsh is what every other script here needs. If it is missing, say so and let the commit through,
-# as commit-msg does, and never pass in silence.
+# as commit-msg does, and never pass in silence. A clone that skipped `git submodule update --init`
+# has no shared check, and no resolver for overlap-rows-check.ps1: say so and run
+# player-page-check.ps1, as commit-msg says so and lets the commit through.
+#
+# What the scripts' step cannot see: a script is taken as setting strict mode where a line of it
+# begins with Set-StrictMode, after any indent. A path is listed with core.quotePath off; one git
+# quotes even so, as one holding a double quote, a backslash or a line break, is not found as
+# staged, and the commit is refused, naming it. A path holding a comma is split by the checks.
 if ! command -v pwsh >/dev/null 2>&1; then
     echo "pre-commit: pwsh not found, so the staged Markdown, scripts, hooks and workflows were NOT checked." >&2
     exit 0
 fi
 
-# All run, so one commit shows what each found.
 root="$(git rev-parse --show-toplevel)"
+cd "$root" || exit 1
 status=0
-# A clone that skipped `git submodule update --init` has no shared check, and no resolver for
-# overlap-rows-check.ps1 to take its parse of a dependency from. Say so and go on to
-# header-length-check.ps1 and player-page-check.ps1, as commit-msg says so and lets the commit
-# through.
-CHECK="$root/vendor/grado-factorio-tools/scripts/markdown-check.ps1"
-if [ -f "$CHECK" ]; then
-    pwsh -NoProfile -File "$CHECK" -MaxLineLength 100 || status=1
+tools="$root/vendor/grado-factorio-tools/scripts"
+if [ -f "$tools/markdown-check.ps1" ]; then
+    pwsh -NoProfile -File "$tools/markdown-check.ps1" -MaxLineLength 100 || status=1
     pwsh -NoProfile -File "$root/scripts/overlap-rows-check.ps1" || status=1
+    pwsh -NoProfile -File "$tools/comment-line-check.ps1" -Path 'scripts/*.ps1,.githooks/*,.github/workflows/*.yml' || status=1
+
+    staged="$(git -c core.quotePath=false diff --cached --name-only --diff-filter=ACMR -- scripts/ | grep '^scripts/[^/]*\.ps1$')"
+    if [ -z "$staged" ]; then
+        echo "OK - pre-commit: no scripts/*.ps1 is staged, so the parameter, variable-case, help and strict-list checks read none."
+    else
+        # Under the git directory, a path git and pwsh both read alike on every system. Removed on
+        # every way out, an interrupt included.
+        scratch="$(git rev-parse --absolute-git-dir)/pre-commit-staged-$$"
+        trap 'rm -rf "${scratch:?}"' EXIT
+        trap 'exit 1' HUP INT TERM
+        if ! printf '%s\n' "$staged" | git checkout-index --stdin --prefix="$scratch/"; then
+            echo "pre-commit: git checkout-index could not write the staged scripts out, so they were NOT checked." >&2
+            status=1
+        else
+            missing="$(printf '%s\n' "$staged" | while IFS= read -r f; do
+                [ -f "$scratch/$f" ] || printf '%s\n' "$f"
+            done)"
+            if [ -n "$missing" ]; then
+                echo "pre-commit: these staged scripts could not be read as staged, so the scripts were NOT checked:" >&2
+                printf '%s\n' "$missing" | sed 's/^/    /' >&2
+                status=1
+            else
+                list="$(printf '%s\n' "$staged" | paste -sd, -)"
+                strict="$(printf '%s\n' "$staged" | while IFS= read -r f; do
+                    if grep -q '^[[:space:]]*Set-StrictMode' "$scratch/$f"; then printf '%s\n' "$f"; fi
+                done | paste -sd, -)"
+                # Run from the folder, so each script is named by its path from the root.
+                (
+                    cd "$scratch" || exit 1
+                    s=0
+                    pwsh -NoProfile -File "$tools/param-check.ps1" scripts || s=1
+                    pwsh -NoProfile -File "$tools/variable-case-check.ps1" scripts || s=1
+                    pwsh -NoProfile -File "$tools/help-check.ps1" "$list" || s=1
+                    if [ -z "$strict" ]; then
+                        echo "OK - strict-list check: none of the staged scripts sets strict mode, so none was read."
+                    else
+                        pwsh -NoProfile -File "$tools/strict-list-check.ps1" "$strict" || s=1
+                    fi
+                    exit $s
+                ) || status=1
+            fi
+        fi
+    fi
 else
-    echo "pre-commit: $CHECK not found, so the shared Markdown check and the Overlaps rows did NOT run." >&2
-    echo "pre-commit: run 'git submodule update --init' to wire up the shared check." >&2
+    echo "pre-commit: $tools/markdown-check.ps1 not found, so the shared checks and the Overlaps rows did NOT run." >&2
+    echo "pre-commit: run 'git submodule update --init' to wire up the shared checks." >&2
 fi
-pwsh -NoProfile -File "$root/scripts/header-length-check.ps1" || status=1
 pwsh -NoProfile -File "$root/scripts/player-page-check.ps1" || status=1
 exit $status

@@ -513,3 +513,13 @@ reworded, and its parameters; what left it is held now as follows:
 - "One fresh subagent runs it, and it is defined by what the subagent is handed and not by a
   skill's name": the stub's second paragraph names the one fresh subagent, and what it is handed
   is the procedure's steps 2 and 4 with the stub's *The pre-PR review*.
+
+**The plugin pass's second comment**, in the stub's *The plugin pass*, as it stood from #417
+until later on 2026-11-14, when the plugin pass on PR #428 found it narrower than the shared
+rules page, which reports every finding, a verifier's verdict included
+([its comment](https://github.com/trulsjo/grado-factorio-modpack/pull/428#issuecomment-6884289030)).
+The wording was carried from the old page, where it stood under "Report every finding that
+survived verification":
+
+> **Every other surviving finding goes in a second comment on the same pull request,
+> with its score**

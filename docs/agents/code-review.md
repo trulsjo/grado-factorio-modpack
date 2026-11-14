@@ -67,12 +67,12 @@ is needed for it.
 the report (decided 2026-08-26, settling
 [realistic-fusion-refreshed#128](https://github.com/trulsjo/realistic-fusion-refreshed/issues/128),
 adopted here 2026-09-20). The workflow's own comment carries only what clears 80, exactly as the
-workflow says. **Every other surviving finding goes in a second comment on the same pull request,
-with its score**, so that the pull request holds the plugin pass's whole report. "Posts nothing"
-means the workflow's own comment carries nothing; what it set aside is said in the second comment.
-"The report" is the second comment as well as what the person who ran the review is told. **A
-check-run comment is not a prior review** for the plugin's first step. **A pass run without
-`--comment` still gets the second comment**, which then also says what it raised. Why:
+workflow says. **Every other finding, a verifier's verdict included, goes in a second comment on
+the same pull request, with its score**, so that the pull request holds the plugin pass's whole
+report. "Posts nothing" means the workflow's own comment carries nothing; what it set aside is said
+in the second comment. "The report" is the second comment as well as what the person who ran the
+review is told. **A check-run comment is not a prior review** for the plugin's first step. **A pass
+run without `--comment` still gets the second comment**, which then also says what it raised. Why:
 `code-review-why.md`, *Why the plugin pass reads past the comments this repository posts*.
 
 **A plugin-pass finding the pre-PR review missed gets its class named in the pull request, by the

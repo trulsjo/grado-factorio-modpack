@@ -6,10 +6,10 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
 
 - **Create an issue**: `gh issue create --title "..." --body "..."`. Write a multi-line body to a
   file and pass `--body-file <path>`; the same goes for `gh issue comment` and `gh pr create`. Write
-  the file with the Write tool: a heredoc that writes the file is no safer.
-  `scripts/ask-before-download.ps1` refuses a heredoc when one of its lines opens with a command it
-  matches (measured 2026-10-08, recorded on PR #186), and `realistic-fusion-refreshed`'s tracker
-  page records heredoc bodies failing under the Bash tool.
+  the file with the Write tool: a heredoc that writes the file is no safer. The download hook,
+  `ask-before-download.ps1` in `vendor/grado-factorio-tools/scripts/`, refuses a heredoc when
+  one of its lines opens with a command it matches (measured 2026-10-08, recorded on PR #186), and
+  `realistic-fusion-refreshed`'s tracker page records heredoc bodies failing under the Bash tool.
 - **Before filing, list the open tickets** here and in `trulsjo/grado-factorio-tools`:
   `gh issue list --state open --limit 200 --json number,title`, and the same with
   `-R trulsjo/grado-factorio-tools`. The new ticket names any open one it touches. On 2026-10-09

@@ -7,10 +7,22 @@
   "permissions": {
     "allow": [
       "Bash(gh api --method POST repos/trulsjo/grado-factorio-modpack/issues/*/dependencies/blocked_by -F issue_id=*)",
-      "Bash(gh api --method POST repos/trulsjo/grado-factorio-tools/issues/*/dependencies/blocked_by -F issue_id=*)"
+      "Bash(gh api --method POST repos/trulsjo/grado-factorio-tools/issues/*/dependencies/blocked_by -F issue_id=*)",
+      "Bash(gh api --method POST repos/trulsjo/realistic-fusion-refreshed/issues/*/dependencies/blocked_by -F issue_id=*)",
+      "Bash(gh api --method POST repos/trulsjo/true-nukes-refreshed/issues/*/dependencies/blocked_by -F issue_id=*)"
     ]
   },
   "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat >/dev/null; h=\"$CLAUDE_PROJECT_DIR/vendor/grado-factorio-tools/scripts/warn-skipped-install.ps1\"; if [ -f \"$h\" ]; then pwsh -NoProfile -File \"$h\" -Root \"$CLAUDE_PROJECT_DIR\"; else m='warn-skipped-install: vendor/grado-factorio-tools/scripts/warn-skipped-install.ps1 was not found: the submodule is not initialised, so this clone was NOT checked for skipped install steps. git submodule update --init fetches it.'; printf '{\"systemMessage\":\"%s\",\"hookSpecificOutput\":{\"hookEventName\":\"SessionStart\",\"additionalContext\":\"%s\"}}' \"$m\" \"$m\"; fi"
+          }
+        ]
+      }
+    ],
     "PreToolUse": [
       {
         "matcher": "Bash|PowerShell",
@@ -21,7 +33,23 @@
           },
           {
             "type": "command",
-            "command": "i=$(cat); case $i in *npm*|*npx*|*pip*|*gem*|*cargo*|*winget*|*choco*|*scoop*|*release*download*|*.exe*|*.msi*|*.zip*|*.tar.gz*|*.tgz*) printf '%s' \"$i\" | pwsh -NoProfile -File \"$CLAUDE_PROJECT_DIR/scripts/ask-before-download.ps1\";; esac"
+            "command": "i=$(cat); case $i in *npm*|*npx*|*pip*|*gem*|*cargo*|*winget*|*choco*|*scoop*|*release*download*|*.exe*|*.msi*|*.zip*|*.tar.gz*|*.tgz*) h=\"$CLAUDE_PROJECT_DIR/vendor/grado-factorio-tools/scripts/ask-before-download.ps1\"; if [ -f \"$h\" ]; then printf '%s' \"$i\" | pwsh -NoProfile -File \"$h\"; else m='ask-before-download: vendor/grado-factorio-tools/scripts/ask-before-download.ps1 was not found, so this command was NOT checked by the download hook. git submodule update --init fetches the script.'; printf '{\"systemMessage\":\"%s\",\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"additionalContext\":\"%s\"}}' \"$m\" \"$m\"; fi;; esac"
+          },
+          {
+            "type": "command",
+            "command": "i=$(cat); case $i in *py*'<<'*) h=\"$CLAUDE_PROJECT_DIR/vendor/grado-factorio-tools/scripts/refuse-python-heredoc.ps1\"; if [ -f \"$h\" ]; then printf '%s' \"$i\" | pwsh -NoProfile -File \"$h\"; else m='refuse-python-heredoc: vendor/grado-factorio-tools/scripts/refuse-python-heredoc.ps1 was not found, so this command was NOT checked by the heredoc hook. git submodule update --init fetches the script.'; printf '{\"systemMessage\":\"%s\",\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"additionalContext\":\"%s\"}}' \"$m\" \"$m\"; fi;; esac"
+          },
+          {
+            "type": "command",
+            "command": "i=$(cat); case $i in *'`'*) h=\"$CLAUDE_PROJECT_DIR/vendor/grado-factorio-tools/scripts/refuse-backtick-substitution.ps1\"; if [ -f \"$h\" ]; then printf '%s' \"$i\" | pwsh -NoProfile -File \"$h\"; else m='refuse-backtick-substitution: vendor/grado-factorio-tools/scripts/refuse-backtick-substitution.ps1 was not found, so this command was NOT checked by the backtick hook. git submodule update --init fetches the script.'; printf '{\"systemMessage\":\"%s\",\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"additionalContext\":\"%s\"}}' \"$m\" \"$m\"; fi;; esac"
+          },
+          {
+            "type": "command",
+            "command": "i=$(cat); case ${i%%'\"tool_input\"'*} in *'\"tool_name\"'*'\"PowerShell\"'*) exit 0;; esac; c=${i#*'\"tool_input\"'}; case $c in *cat*|*py*|*'<<'*|*'\\\\\\\\\\\\\\\\'*) h=\"$CLAUDE_PROJECT_DIR/vendor/grado-factorio-tools/scripts/refuse-hanging-bash.ps1\"; if [ -f \"$h\" ]; then printf '%s' \"$i\" | pwsh -NoProfile -File \"$h\"; else m='refuse-hanging-bash: vendor/grado-factorio-tools/scripts/refuse-hanging-bash.ps1 was not found, so this command was NOT checked by the hanging-bash hook. git submodule update --init fetches the script.'; printf '{\"systemMessage\":\"%s\",\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"additionalContext\":\"%s\"}}' \"$m\" \"$m\"; fi;; esac"
+          },
+          {
+            "type": "command",
+            "command": "i=$(cat); case $i in *commit*|*push*) h=\"$CLAUDE_PROJECT_DIR/vendor/grado-factorio-tools/scripts/refuse-git-hook-skip.ps1\"; if [ -f \"$h\" ]; then printf '%s' \"$i\" | pwsh -NoProfile -File \"$h\"; else m='refuse-git-hook-skip: vendor/grado-factorio-tools/scripts/refuse-git-hook-skip.ps1 was not found, so this command was NOT checked by the hook-skip hook. git submodule update --init fetches the script.'; printf '{\"systemMessage\":\"%s\",\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"additionalContext\":\"%s\"}}' \"$m\" \"$m\"; fi;; esac"
           }
         ]
       }

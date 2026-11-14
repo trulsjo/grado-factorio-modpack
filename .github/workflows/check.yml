@@ -1,18 +1,16 @@
 # Three of the checks a clone opts into with `git config core.hooksPath .githooks`, run on every
 # pull request whether or not its author's clone did (#180): the commit messages, the members
 # each commit changes and the changed Markdown, over the pull request's own commits. Each check's
-# self-test runs first, so a check that can no longer fail is caught here. The download hook's
-# self-test runs with them (#194):
-# scripts/ask-before-download.ps1 refuses in an agent session and checks nothing here, so this
-# is the one place a pull request that breaks it goes red. scripts/glossary-check.ps1 runs over
-# the same commits, with its self-test (#200): no hook runs it, and it fails on an added line that
-# uses a word GLOSSARY.md avoids and is not marked deliberate, and on a GLOSSARY.md it cannot read,
-# an empty one, or one with no avoided word it matches (#362). The Markdown check's range and
-# glossary-check.ps1's have three dots (#204): both scripts hand the range to `git diff`, where two
-# dots would compare the two tips and judge a branch behind `main` on what `main` has changed
-# since. The commit check's keeps two: it hands the range to `git rev-list`, where two dots are
-# the branch's commits and three would add those of `main`. The Markdown check is handed a line
-# limit of 100 (#209), as .githooks/pre-commit hands it one: without it the check reads no length.
+# self-test runs first, so a check that can no longer fail is caught here.
+# scripts/glossary-check.ps1 runs over the same commits, with its self-test (#200): no hook runs it,
+# and it fails on an added line that uses a word GLOSSARY.md avoids and is not marked deliberate,
+# and on a GLOSSARY.md it cannot read, an empty one, or one with no avoided word it matches (#362).
+# The Markdown check's range and glossary-check.ps1's have three dots (#204): both scripts hand the
+# range to `git diff`, where two dots would compare the two tips and judge a branch behind `main` on
+# what `main` has changed since. The commit check's keeps two: it hands the range to `git rev-list`,
+# where two dots are the branch's commits and three would add those of `main`. The Markdown check is
+# handed a line limit of 100 (#209), as .githooks/pre-commit hands it one: without it the check
+# reads no length.
 #
 # The self-tests of scripts/reword-commit.ps1 (#207) and scripts/pr-body.ps1 (#208) run with the
 # others: a session runs those two scripts before a pull request exists, so nothing here runs
@@ -44,13 +42,17 @@
 # session runs it while it meets a criterion on a newly started process. Its self-test starts a
 # stub in place of Claude Code's executable, so no session is started here.
 #
-# The self-test of the mod-cache hook's wiring runs with the others (#225):
-# vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 -SelfTest -Settings
-# .claude/settings.json. Its last case runs the command wired in that file, so a pull request
-# whose wired command no longer reaches the script goes red here. On this runner it passes 36 of
-# its 40 cases at tools pin e3b9ba8 and skips 4, each a Windows way of writing a path (measured
-# 2026-10-12, run 38222599731); with a wrong file name in the wired path the last case failed
-# and so did the check (run 38222794433).
+# The session hooks .claude/settings.json wires from vendor/grado-factorio-tools/scripts/ refuse
+# in an agent session and check nothing here, so their self-tests are the one place a pull
+# request that breaks one goes red. Each runs with -Settings .claude/settings.json among the
+# others: the mod-cache hook (#225), and since #414 the download hook, the Python heredoc, the
+# backtick substitution, the hanging Bash call, the skipped git hook and, at SessionStart, the
+# skipped install steps. Each runs the command that file wires for it, so a pull request whose
+# wired command no longer reaches the script goes red; the hanging-Bash one also fails where git
+# does not ignore its refusal log, .claude/refused-bash.log. For the mod-cache hook, on this
+# runner it passed 36 of its 40 cases at tools pin e3b9ba8 and skipped 4, each a Windows way of
+# writing a path (measured 2026-10-12, run 38222599731); with a wrong file name in the wired path
+# the last case failed and so did the check (run 38222794433).
 #
 # The shared body check, vendor/grado-factorio-tools/scripts/pr-body-check.ps1, runs on the pull
 # request's body (#321), with its self-test among the others: it fails a body that cites a commit
@@ -97,7 +99,6 @@ jobs:
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -SelfTest
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/markdown-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/glossary-check.ps1 -SelfTest
-          pwsh -NoProfile -File scripts/ask-before-download.ps1 -SelfTest
           pwsh -NoProfile -File scripts/reword-commit.ps1 -SelfTest
           pwsh -NoProfile -File scripts/pr-body.ps1 -SelfTest
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/pr-body-check.ps1 -SelfTest
@@ -109,6 +110,12 @@ jobs:
           pwsh -NoProfile -File scripts/player-page-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/member-change-check.ps1 -SelfTest
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 -SelfTest -Settings .claude/settings.json
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/ask-before-download.ps1 -SelfTest -Settings .claude/settings.json
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/refuse-python-heredoc.ps1 -SelfTest -Settings .claude/settings.json
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/refuse-backtick-substitution.ps1 -SelfTest -Settings .claude/settings.json
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/refuse-hanging-bash.ps1 -SelfTest -Settings .claude/settings.json
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/refuse-git-hook-skip.ps1 -SelfTest -Settings .claude/settings.json
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/warn-skipped-install.ps1 -SelfTest -Settings .claude/settings.json
 
       - name: Check the commit messages
         if: ${{ !cancelled() }}

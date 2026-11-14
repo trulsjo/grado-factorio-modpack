@@ -1063,3 +1063,11 @@ a pointer to it. The three rules below them stay.
 >   `&version=2.1` — 4,334. **The full sweep is the union of both, 10,845 distinct mods**; neither
 >   listing alone is complete. 1,054 mods are in the 2.1 listing only, so a sweep of the 2.0 listing
 >   misses them. Counts read 2026-10-01; they move. (#44, which measured 977 missed on 2026-09-22.)
+
+**The download hook's path**, under *Conventions*, as it stood from #179 (2026-10-08) until
+2026-11-14, when #414 wired the shared script from the pin in its place and deleted this
+repository's copy:
+
+> say the same in a brief written for a subagent. `scripts/ask-before-download.ps1` is a hook
+> that refuses a package install or a fetched program, which Truls runs himself with `!` once
+> he has said yes; its header says what it cannot see.

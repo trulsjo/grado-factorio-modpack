@@ -148,9 +148,10 @@ not missing.
   mods define, and its catalogue section says what the rows mean. A fact about the port goes in
   the notes, a fact about a mod goes in its catalogue entry.
 - **Ask Truls before a session downloads a program and runs it on this machine** (#179), and
-  say the same in a brief written for a subagent. `scripts/ask-before-download.ps1` is a hook
-  that refuses a package install or a fetched program, which Truls runs himself with `!` once
-  he has said yes; its header says what it cannot see.
+  say the same in a brief written for a subagent.
+  [`ask-before-download.ps1`](vendor/grado-factorio-tools/scripts/ask-before-download.ps1), the
+  shared script in the pin, is a hook that refuses a package install or a fetched program, which
+  Truls runs himself with `!` once he has said yes; its header says what it cannot see.
 - **oh-my-claudecode and ponytail are disabled in `.claude/settings.json`** (#160). Where the
   oh-my-claudecode section of a global `CLAUDE.md` loads, do not act on its agents, skills or
   keywords here, and its review rule is replaced by `docs/agents/code-review.md`.

@@ -125,7 +125,7 @@ to the limit. It does not judge prose.
 `-SelfTest` proves it can fail.
 
 A pull request gets both checks from `.github/workflows/check.yml`, over its own commits, with
-each check's self-test and the download hook's first. Nothing is installed on the runner.
+each check's self-test and the session hooks' first. Nothing is installed on the runner.
 
 Three more hooks from the same `core.hooksPath` check nothing: `post-checkout` after a branch
 switch, `post-merge`, and `post-rewrite` after a rebase each run the shared
@@ -241,13 +241,25 @@ wired command. Before this the wiring printed a line to the same effect to stder
 and in the one run measured on 2026-10-11, with the Bash tool, what the tool call returned to the
 agent held nothing of it (#224).
 
-A second hook there, `scripts/ask-before-download.ps1`, stops a command that installs a package
+A second hook there, the shared `vendor/grado-factorio-tools/scripts/ask-before-download.ps1`,
+stops a command that installs a package
 (`npm install`, `ci`, `add` or `exec`, `npx`, `pip install`, `gem install`, `cargo install`, and
 `install` under `winget`, `choco` or `scoop`) or fetches an `.exe`, `.msi`, `.zip`, `.tar.gz` or
 `.tgz` from anywhere but `mods.factorio.com`, and tells the session to ask Truls, who runs an
 approved command himself. It refuses and does not ask: its header has the measurement of 2026-10-08
 that says why. Reading the portal, staging a pack, `git` and the rest of `gh` pass:
 `gh release download` is refused. Its header says what it cannot see, and it has a `-SelfTest` too.
+
+Four more shared hooks there refuse a shell command before it runs, each from
+`vendor/grado-factorio-tools/scripts/` and each with its header saying what it refuses and what
+it cannot see: `refuse-python-heredoc.ps1`, Python run from a heredoc;
+`refuse-backtick-substitution.ps1`, a backtick span bash would run as a command;
+`refuse-hanging-bash.ps1`, a Bash command that would hang on its input, a heredoc over 60 lines,
+or on Windows two backslashes in a row, each refusal logged to `.claude/refused-bash.log`, which
+git ignores; and `refuse-git-hook-skip.ps1`, a `git commit` or `git push` with the hooks skipped.
+A `SessionStart` hook, `warn-skipped-install.ps1`, warns a session whose clone skipped
+`core.hooksPath` or the submodule. Each wired hook's `-SelfTest -Settings .claude/settings.json`
+runs in the pull request check.
 
 ## Publishing
 

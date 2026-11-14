@@ -12,6 +12,10 @@
 # Personal, never committed
 CLAUDE.local.md
 
+# What the hang guard refused, one line a refusal -- refuse-hanging-bash.ps1 in
+# vendor/grado-factorio-tools/scripts, wired in .claude/settings.json
+/.claude/refused-bash.log
+
 # Agent orchestration state — session-scoped and machine-local. A pattern rather than the
 # bare directory because the tooling treats `.omc/skills/**` as committable, and git does not
 # descend into an ignored directory, so `.omc/` alone would make that negation unreachable.

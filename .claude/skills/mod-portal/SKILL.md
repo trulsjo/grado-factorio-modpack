@@ -7,7 +7,13 @@ description: Querying the Factorio mod portal API for a mod, its releases or a r
 
 # The mod portal API
 
-The portal API is the primary source for what exists and at what version. No key needed:
+The facts every repository that queries the portal works by, what says what exists and at what
+version, that reading needs no key, and how a mod is looked for before it is called gone, are on
+[`mod-portal.md`](../../../vendor/grado-factorio-tools/docs/mod-portal.md), in the tools
+submodule at its pin
+([on GitHub](https://github.com/trulsjo/grado-factorio-tools/blob/main/docs/mod-portal.md),
+whose `main` may be ahead of the pin). Read it first. This skill holds this repository's
+endpoints and its sweep:
 
 - `https://mods.factorio.com/api/mods/<name>` — one mod, with its release list.
 - `https://mods.factorio.com/api/mods/<name>/full` — adds each release's `info_json`, which is where

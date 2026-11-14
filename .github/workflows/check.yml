@@ -46,7 +46,8 @@
 # commit check's two-dot range: .githooks/commit-msg runs it on a commit being made, and a clone
 # without the hook, an amend or scripts/reword-commit.ps1 is covered here.
 #
-# scripts/absolute-words.ps1 (#219) has its self-test among the others and no step of its own:
+# The shared absolute-words.ps1 (#219, since #417 from vendor/) has its self-test among the others
+# and no step of its own:
 # it lists lines for a session to walk before the pre-PR review, and has nothing to fail on.
 # scripts/mentions.ps1 (#365) is the same: it lists lines for the pre-PR reviewer.
 #
@@ -126,7 +127,7 @@ jobs:
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/help-check.ps1 -SelfTest
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/strict-list-check.ps1 -SelfTest
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/cited-commit-check.ps1 -SelfTest
-          pwsh -NoProfile -File scripts/absolute-words.ps1 -SelfTest
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/absolute-words.ps1 -SelfTest
           pwsh -NoProfile -File scripts/mentions.ps1 -SelfTest
           pwsh -NoProfile -File scripts/probe-session.ps1 -SelfTest
           pwsh -NoProfile -File scripts/overlap-rows-check.ps1 -SelfTest

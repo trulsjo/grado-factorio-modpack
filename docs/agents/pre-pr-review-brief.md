@@ -1,7 +1,9 @@
 # The pre-PR reviewer's brief
 
 The words the pre-PR reviewer is handed its material with, for both of its turns. The rules are in
-`code-review.md`, *One review before the pull request*. This page adds the procedure: what a
+`code-review.md` and the shared rules page it links, and the steps are the shared procedure's
+(`vendor/grado-factorio-tools/docs/code-review-procedure.md`), with this repository's values
+from `code-review.md`. This page is the brief template the procedure's second step names: what a
 session does before the first turn, the words each turn is sent with, and how the report comes
 back. A session fills the blanks, written `<like this>`, and sends the rest as it stands.
 `<scratch>` is filled wherever it stands. The blanks under the report's headings are the
@@ -45,7 +47,7 @@ git diff origin/main...HEAD > <scratch>/branch.diff
 pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -Range origin/main..HEAD > <scratch>/commit-check.txt
 pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/markdown-check.ps1 -Range origin/main...HEAD -MaxLineLength 100 > <scratch>/markdown-check.txt
 pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/glossary-check.ps1 -Range origin/main...HEAD -LeftFile glossary-left.txt > <scratch>/glossary-check.txt
-pwsh -NoProfile -File scripts/absolute-words.ps1 -Range origin/main...HEAD > <scratch>/absolute-words.txt
+pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/absolute-words.ps1 -Range origin/main...HEAD > <scratch>/absolute-words.txt
 pwsh -NoProfile -File scripts/mentions.ps1 -Range origin/main...HEAD > <scratch>/mentions.txt
 ```
 
@@ -72,7 +74,8 @@ portal, so its output is a measurement and the time of the run is kept with it. 
 another is read from the files given, by the resolver's header, so the run covers every pack above
 the one that changed. A run that fails is handed over as it stands, and the review goes on.
 
-Walk `<scratch>/absolute-words.txt` before the reviewer is spawned (#219): it lists the added
+Walk `<scratch>/absolute-words.txt` before the reviewer is spawned (#219), the procedure's *Before
+the reviewer is started*: it lists the added
 lines of Markdown, of comment and of commit message that hold a word such as "only", "every" or
 "cannot". Of each line, ask whether the sentence holds for what its word covers, and reword the
 one that does not. The script lists and does not fail, and a word used in passing is left.
@@ -128,9 +131,13 @@ tooling writes state files where its shell stands, and a command that changes di
 You are handed:
 - the diff against `main`: <scratch>/branch.diff. The commit messages are part of the review:
   `git log --format=%B origin/main..HEAD`.
-- `docs/agents/code-review.md`. Read it whole. It is the rules you review by, and the prose is
-  reviewed as carefully as the code. Where prose restates a list the code holds, read the two
-  side by side.
+- `docs/agents/code-review.md` and the shared rules it links,
+  `vendor/grado-factorio-tools/docs/code-review-rules.md`. Read both whole. They are the rules
+  you review by, and the prose is reviewed as carefully as the code. Where prose restates a list
+  the code holds, read the two side by side.
+- each agent-facing file the diff changes, to read whole: `CLAUDE.md`, a page under
+  `docs/agents/`, a skill file. A sentence the change made false and did not touch is in no
+  hunk.
 - `GLOSSARY.md`, which holds the terms and the words most of them avoid.
 - `vendor/grado-factorio-tools/docs/claim-grades.md`, which holds the three grades of evidence
   and the rules a reviewer checks them by.
@@ -148,14 +155,17 @@ You are handed:
   against the breaking tools commits printed after the list too: a sentence one of them makes
   false is a finding.
 - <raw output that is missing, and the figure it was behind; or nothing>
-- the tickets: `gh issue view <N> --json title,body,comments` for each.
+- the tickets, with their comments:
+  `gh issue view <N> --json title,body,labels,comments --jq '{title, body, labels: [.labels[].name], comments: [.comments[].body]}'`
+  for each. Hold the diff against each one's acceptance criteria, and ask of each test claim
+  whether it is shown able to fail.
 
 Write the report to <scratch>/review.md with the file tool. Once it is written, end your turn
 with at most five lines as its last text: how many findings, which one matters most, and the
-path. Send no message: the five lines reach the session as they are. The report has two
+path. Send no message: the five lines reach the session as they are. The report has three
 sections and no scores. It goes into the pull request's body as it stands, so name a commit of
-the branch by its role, such as "the ticket commit for #N" or "the fix commit", and never by its
-hash. A commit on `main` may be named by its hash. Quote no closing keyword before an issue
+the branch by its role, such as "the ticket commit for #N" or "the fix commit", or by its subject
+in quotes, and never by its hash. A commit on `main` may be named by its hash. Quote no closing keyword before an issue
 reference: say "the `Closes` line for #N".
 
 ## Findings
@@ -170,8 +180,15 @@ reference: say "the `Closes` line for #N".
 
 One line for each thing you checked and found right, with how you checked it.
 
-If you find nothing, say so under Findings and still fill the second section.
+## Not read
+
+One line for each thing you were handed or meant to read and did not, with why; or "Nothing."
+
+If you find nothing, say so under Findings and still fill the other two sections.
 ```
+
+The session answers each line under *Not read* before the fixes: it reads the thing itself
+and says so in the confirmation turn, or hands the reviewer what it lacked.
 
 ## The confirmation turn
 

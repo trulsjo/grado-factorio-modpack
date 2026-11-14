@@ -181,7 +181,8 @@ prefix or with `~`; a mod the game supplies is not one. The `commit-msg` hook ru
 commit being made, after the message check, and the same workflow over the pull request's
 commits, with its self-test. Its header says what it cannot see.
 
-`scripts/absolute-words.ps1 -Range origin/main...HEAD` lists each line a branch adds, in Markdown,
+The shared `vendor/grado-factorio-tools/scripts/absolute-words.ps1 -Range origin/main...HEAD` lists
+each line a branch adds, in Markdown,
 in a comment or in a commit message, that holds a word such as "only", "every" or "cannot". Code
 is left out, and what else it cannot see is in its header. It does not fail: the list is for a
 session to walk before the pre-PR review. Its self-test runs in the same workflow, and no hook

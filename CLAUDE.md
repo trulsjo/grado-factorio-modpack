@@ -95,21 +95,26 @@ CLAUDE.md's State and open decisions*.
 
 ## Factorio specifics
 
-- Mods are **Lua**. The API has **three stages**: `settings` and `prototype` run at start-up,
-  `runtime` runs during gameplay. Know which stage code belongs to before writing it. A modpack
-  normally touches none of them.
-- API docs are published **per game version** at <https://lua-api.factorio.com/>. Check claims against
-  the version being targeted rather than from memory.
-- `/stable/` and `/latest/` both move, and `latest` is the **experimental** build. Pin an explicit
-  version when recording a fact.
+- **Check a fact about the game against the build, never from memory**, and pin the build when
+  recording it: the facts every repository works by are on
+  [`factorio-facts.md`](vendor/grado-factorio-tools/docs/factorio-facts.md), in the tools
+  submodule at its pin
+  ([on GitHub](https://github.com/trulsjo/grado-factorio-tools/blob/main/docs/factorio-facts.md),
+  whose `main` may be ahead of the pin). A pack normally touches none of the API's three
+  stages.
 - **The 1.1→2.0 break is the whole reason this project exists.** A 1.1 mod is not a 2.0 mod, and a
   mod with a 2.0 release is not necessarily Space Age compatible. Both are checkable; check rather
   than assume.
 
 ## Checking the mod portal
 
-Querying the portal - its endpoints, the full sweep and its counts - is the `mod-portal` skill,
-in `.claude/skills/mod-portal/SKILL.md`.
+The facts every repository works the portal by are on
+[`mod-portal.md`](vendor/grado-factorio-tools/docs/mod-portal.md), in the tools submodule at its
+pin ([on GitHub](https://github.com/trulsjo/grado-factorio-tools/blob/main/docs/mod-portal.md),
+whose `main` may be ahead of the pin): what says what exists, checking `factorio_version` for any
+`2.x`, and that a mod missing under one name may exist under another. Querying the portal - its
+endpoints, the full sweep and its counts - is the `mod-portal` skill, in
+`.claude/skills/mod-portal/SKILL.md`.
 
 **A mod is served only to the major version it declares.** `factorio_version: "2.0"` means every
 2.0 release and no other major version, with no 2.0-to-2.1 exception
@@ -117,14 +122,7 @@ in `.claude/skills/mod-portal/SKILL.md`.
 2.0-only mod is not served to a 2.1 game at all. A pack can therefore list a mod that resolves on
 the portal and still be uninstallable on the other line (#43).
 
-**A mod missing under one name is not a mod that does not exist.** Learned the expensive way on
-2026-09-20: `SpaceMod` has no 2.0 release, and reporting "SpaceX is dead" from that was wrong —
-`SpaceModFeorasFork` is a live fork on 2.1. Search titles and summaries, not just names, before
-concluding anything is gone. The same trap may be hiding successors for the seven dropped Picker
-mods.
-
-**Check `factorio_version` for any `2.x`, not `== "2.0"` exactly.** A mod that has moved to 2.1 is
-not missing.
+A mod missing under one name may be hiding successors for the seven dropped Picker mods too.
 
 ## Conventions
 
@@ -273,7 +271,11 @@ for the commit check: why is in the header of `.github/workflows/check.yml`.
 ### Issue tracker
 
 GitHub Issues on `trulsjo/grado-factorio-modpack`, via the `gh` CLI. Read a ticket with
-`gh issue view <n> --json title,body,labels,comments`. See `docs/agents/issue-tracker.md`.
+`gh issue view <n> --json title,body,labels,comments`. See `docs/agents/issue-tracker.md`, the
+stub page that links the shared conventions,
+[`tracker-conventions.md`](vendor/grado-factorio-tools/docs/tracker-conventions.md)
+([on GitHub](https://github.com/trulsjo/grado-factorio-tools/blob/main/docs/tracker-conventions.md),
+whose `main` may be ahead of the pin).
 
 ### Triage labels
 

@@ -73,5 +73,7 @@
         @{ Name = 'strict-list-scripts'; From = 'tools'; Script = 'strict-list-check.ps1'; Args = @('scripts') }
         @{ Name = 'cited-commit-selftest'; From = 'tools'; Script = 'cited-commit-check.ps1'; Args = @('-SelfTest') }
         @{ Name = 'cited-commit-tree'; From = 'tools'; Script = 'cited-commit-check.ps1'; Args = @('-Exempt', 'docs/loads/,docs/traces/') }
+        # The shared absolute-words.ps1, in place of scripts/absolute-words.ps1; added by #417.
+        @{ Name = 'absolute-words-selftest'; From = 'tools'; Script = 'absolute-words.ps1'; Args = @('-SelfTest') }
     )
 }

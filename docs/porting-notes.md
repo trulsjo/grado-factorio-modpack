@@ -1092,3 +1092,37 @@ repository's copy:
 
 > lines to 100 characters. Three dots here and for `scripts/glossary-check.ps1`, two for the commit
 > check: why is in the header of `.github/workflows/check.yml`.
+
+**Factorio specifics**, its first three bullets, as they stood until 2026-11-14, when #417 put
+the facts every repository works by on the shared `factorio-facts.md` and left a one-line form
+and the link. The fourth bullet stays:
+
+> - Mods are **Lua**. The API has **three stages**: `settings` and `prototype` run at start-up,
+>   `runtime` runs during gameplay. Know which stage code belongs to before writing it.
+>   A modpack <!-- deliberate: modpack -->
+>   normally touches none of them.
+> - API docs are published **per game version** at <https://lua-api.factorio.com/>. Check claims
+>   against the version being targeted rather than from memory.
+> - `/stable/` and `/latest/` both move, and `latest` is the **experimental** build. Pin an
+>   explicit version when recording a fact.
+
+**Checking the mod portal**, the skill pointer and its last two rules, as they stood from
+2026-10-27 (#401) until 2026-11-14, when #417 put the portal facts every repository works by on
+the shared `mod-portal.md` and linked it. The rule on the major version a mod declares stays:
+
+> Querying the portal - its endpoints, the full sweep and its counts - is the `mod-portal` skill,
+> in `.claude/skills/mod-portal/SKILL.md`.
+
+> **A mod missing under one name is not a mod that does not exist.** Learned the expensive way on
+> 2026-09-20: `SpaceMod` has no 2.0 release, and reporting "SpaceX is dead" from that was wrong —
+> `SpaceModFeorasFork` is a live fork on 2.1. Search titles and summaries, not just names, before
+> concluding anything is gone. The same trap may be hiding successors for the seven dropped Picker
+> mods.
+
+> **Check `factorio_version` for any `2.x`, not `== "2.0"` exactly.** A mod that has moved to 2.1
+> is not missing.
+
+**The issue-tracker pointer**, under *Agent skills*, its last sentence as it stood from
+2026-10-12 (#235) until 2026-11-14, when #417 made the page a stub and linked the shared page:
+
+> `gh issue view <n> --json title,body,labels,comments`. See `docs/agents/issue-tracker.md`.

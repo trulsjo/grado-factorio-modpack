@@ -1,55 +1,154 @@
-# Code review — three rules this repository adds
+# Code review — this repository's values
 
-All three are conventions kept around the `code-review:code-review` plugin rather than changes to
-it; why, the evidence behind each, and what each said before it last changed, is in
-`code-review-why.md`, which a review does not need to load.
+**The procedure is
+[`code-review-procedure.md`](../../vendor/grado-factorio-tools/docs/code-review-procedure.md),
+and the shared rules
+[`code-review-rules.md`](../../vendor/grado-factorio-tools/docs/code-review-rules.md)**, both
+in the tools submodule at its pin. Where the submodule is not initialised they are on GitHub,
+[the procedure](https://github.com/trulsjo/grado-factorio-tools/blob/main/docs/code-review-procedure.md)
+and [the rules](https://github.com/trulsjo/grado-factorio-tools/blob/main/docs/code-review-rules.md),
+whose `main` may be ahead of the pin. Read both with this page. This page gives this repository's
+value for each of the procedure's parameters, its own steps, and the prose checks it keeps beside
+the shared ones. Why, the evidence behind each rule, and what each said before it last changed,
+is in `code-review-why.md`, which a review does not need to load.
 
 **`/code-review` has meant three skills, and this file names two reviews.** **The pre-PR review**
-is one fresh subagent on the branch, before a pull request exists; the third rule defines it.
-**The plugin pass** is `code-review:code-review`, the official plugin: several reviewers, then
-scorers for the candidate findings, and it needs a pull request. "The workflow" below is the plugin
-pass. `mattpocock-skills:code-review` and the built-in `code-review` are neither.
+is one fresh subagent on the branch, before a pull request exists. **The plugin pass** is
+`code-review:code-review`, the official plugin: several reviewers, then scorers for the candidate
+findings, and it needs a pull request. "The workflow" below is the plugin pass.
+`mattpocock-skills:code-review` and the built-in `code-review` are neither. **When an implement
+skill says to close out with `/code-review`, here that means the pre-PR review.** No pull request
+is needed for it.
 
-The first two were decided by Truls in the sibling
-[realistic-fusion-refreshed](https://github.com/trulsjo/realistic-fusion-refreshed), and adopted here
-on 2026-09-20 because this repository hit the first of them on its first pull request. The third
-was decided by Truls here on 2026-10-06 (#151), a day after the sibling decided its own
-([realistic-fusion-refreshed#592](https://github.com/trulsjo/realistic-fusion-refreshed/issues/592)).
+## This repository's values
 
-1. **[The threshold gates the comment, not the report](#the-threshold-gates-the-comment-not-the-report)**
-   — decided 2026-08-26, settling
-   [realistic-fusion-refreshed#128](https://github.com/trulsjo/realistic-fusion-refreshed/issues/128).
-2. **[Review the prose, not only the code](#review-the-prose-not-only-the-code)** — decided
-   2026-09-03, widened 2026-09-14 settling
-   [realistic-fusion-refreshed#331](https://github.com/trulsjo/realistic-fusion-refreshed/issues/331).
-3. **[One review before the pull request](#one-review-before-the-pull-request)** — decided
-   2026-10-06, settling #151.
+- **When: before the pull request, and before the branch is first pushed** (Truls, 2026-10-06,
+  #151). Every branch with a diff gets it, as the procedure's first step says.
+- **Second pass: `on request`.** The plugin pass is run when Truls asks for it, and not otherwise.
+- **Trigger page:** this page, which `CLAUDE.md` says to load before a review.
+- **Brief template:** [`pre-pr-review-brief.md`](pre-pr-review-brief.md): what a session does
+  before the first turn, the words each turn is sent with, and how the report comes back. That
+  page is procedure and states no rule of review.
+- **Reviewer's copy:** none. The reviewer changes no file, in the repository or out of it, but
+  its report.
+- **Further reading:** `GLOSSARY.md`, which holds the terms and the words most of them avoid, and
+  [`claim-grades.md`](../../vendor/grado-factorio-tools/docs/claim-grades.md)
+  ([on GitHub](https://github.com/trulsjo/grado-factorio-tools/blob/main/docs/claim-grades.md),
+  whose `main` may be ahead of the pin), which holds the three grades the rules below use.
+- **Check run:** the session's local runs that the brief lists, and the reviewer is handed their
+  output: `commit-check.ps1 -Range origin/main..HEAD`,
+  `markdown-check.ps1 -Range origin/main...HEAD -MaxLineLength 100` and
+  `glossary-check.ps1 -Range origin/main...HEAD -LeftFile glossary-left.txt`, all three in
+  `vendor/grado-factorio-tools/scripts/`, `scripts/mentions.ps1`, and the resolve if an
+  `info.json` changed. The commit check's range has two dots and the other two checks' have
+  three: why is in the header of `.github/workflows/check.yml`. The glossary check fails on an
+  added line that uses a word `GLOSSARY.md` avoids and is not marked deliberate, so a listed use
+  is reworded or marked before the review. Whether a marker is honest is the reviewer's: a marker
+  silences the script.
+- **Raw output:** in the session's `<scratch>`, by command, as the brief's *The raw output behind
+  a figure* says. **A figure whose raw output is gone is a finding.** The reviewer is told which
+  output is missing and does not take the figure on trust.
+- **Test claims:** the reviewer's reading, by the rule on a self-test's stated claims below.
+- **Where recorded:** the pull request's body, built by `scripts/pr-body.ps1`.
+- **Merge workflow:** `.github/workflows/check.yml`.
+- **Threshold: every finding.** Each finding of the pre-PR review is fixed, or listed as left
+  unfixed with why.
+- **Lanes:** none. One reviewer reads the whole branch.
+- **The grade:** none. The pre-PR review's findings carry no score: one reviewer has no scorers,
+  and a score it gave itself would read as the plugin pass's. Claims are graded as
+  `claim-grades.md` says.
 
-## The threshold gates the comment, not the report
+## The plugin pass
 
-The plugin pass scores each candidate finding and leaves anything below 80 out of its comment.
-**That filter governs what the workflow's own comment carries. It does not govern what gets told to
-the person who ran the review**, or what reaches the pull request.
+**It keeps its scorers and its threshold of 80**, which gates the workflow's own comment and not
+the report (decided 2026-08-26, settling
+[realistic-fusion-refreshed#128](https://github.com/trulsjo/realistic-fusion-refreshed/issues/128),
+adopted here 2026-09-20). The workflow's own comment carries only what clears 80, exactly as the
+workflow says. **Every other surviving finding goes in a second comment on the same pull request,
+with its score**, so that the pull request holds the plugin pass's whole report. "Posts nothing"
+means the workflow's own comment carries nothing; what it set aside is said in the second comment.
+"The report" is the second comment as well as what the person who ran the review is told. **A
+check-run comment is not a prior review** for the plugin's first step. **A pass run without
+`--comment` still gets the second comment**, which then also says what it raised. Why:
+`code-review-why.md`, *Why the plugin pass reads past the comments this repository posts*.
 
-### The rule
+**A plugin-pass finding the pre-PR review missed gets its class named in the pull request, by the
+session that fixes it**, in one of the procedure's three forms.
 
-**Report every finding that survived verification, whatever it scored.** The workflow's own comment
-carries only what clears the threshold, exactly as the workflow says. **Every other surviving
-finding goes in a second comment on the same pull request, with its score**, so that the pull
-request holds the plugin pass's whole report.
+## The pre-PR review
 
-**A review that posts nothing must still say what it filtered.** Name each finding, its score, and
-whether it was independently verified. A silent pass and a filtered pass must never look the same.
-"Posts nothing" means the workflow's own comment carries nothing; what it filtered is said in the
-second comment.
+**The reviewer is handed** what the procedure's fourth step lists, the check runs and raw output
+above, `GLOSSARY.md` and `claim-grades.md`, and, at the confirmation, which a review that found
+nothing gets as well, the draft of the pull request's body above the review, which is read like
+the commit messages: a finding in it is fixed in the draft before the pull request opens (#273).
 
-**Do not re-score to move a finding into the first comment.** The threshold is deliberately
-conservative and stays where it is. If a filtered finding matters, say so in the report and let a
-human decide; inflating a score to route around the filter destroys the only signal the score
-carries. "The report" is the second comment as well as what the person who ran the review is
-told.
+**The reviewer that raised a finding confirms its fix** <!-- deliberate: confirms -->
+by being continued: the same subagent reads each fix commit as new diff, against its own finding
+and by every rule of this file. That is a confirmation and not a second round. **A fix that adds
+a sentence adds a claim, and the confirmation checks it like any other.** "Confirms" here names
+this step and is not a grade of evidence; `GLOSSARY.md` avoids the word for a claim.
 
-## Review the prose, not only the code
+**A fix narrows or deletes before it adds.** Where cutting a sentence or making it claim less
+repairs a finding, that is the fix, and a fix that adds a sentence in its place is a finding at
+confirmation.
+
+**A fix the reviewer proposes is a claim.** Its quantifier is walked before it goes into the
+report. Found in PR #205, where a proposed narrowing was false of one page and became the next
+finding.
+
+**The fixes are one commit, after the ticket commits**, not folded into the commits they repair,
+so the list in the pull request's body can be read against a diff.
+
+**A finding in a commit message is fixed by rewording that commit**, since the review runs before
+the first push, while a commit can still be reworded: the commit of fixes cannot repair a
+message. The reviewer is given the new hash, reads the message again, and checks that the tree
+did not change. `scripts/reword-commit.ps1` does the rewording, for a commit under the tip too,
+and prints the old and new hashes. Once the branch is pushed the message stays, and the pull
+request's body says what holds. Found in PR #186, where five messages stayed wrong, and PR #187,
+where one was reworded twice.
+
+**Its findings go in the pull request's body, every one**, each with whether it was fixed. A
+finding may be left unfixed if the body says which and why.
+
+**A fix made after the plugin pass is confirmed by the branch's <!-- deliberate: confirmed -->
+pre-PR reviewer**, continued as for any later fix commit: the plugin pass's reviewers do not
+outlive the pass. If that reviewer cannot be continued, a fresh one is handed its report and the
+commits. What the confirmation finds, and each repair, is recorded on the pull request. Found in
+PR #186. What the confirmation finds is repaired and read again, until a read finds nothing new
+(#166).
+
+**The merge is Truls's, so a session's last message says when a plugin pass or a confirmation is
+still running** (#159).
+
+## Where a session is cleared
+
+**A session that carries a branch is cleared at two points, and it says when it has reached
+one** (#159). A clear is
+`/clear`, a new session, or a later session taking the work up; the harness compacting by itself
+is not one. The session's last message names the point when its conditions hold, and names the
+condition that does not when one is missing.
+
+- **After the pull request is open**, when its body holds the review's findings and
+  confirmation, the check run's result is a comment on it, the brain page and journal are
+  updated and staged, and what waits on Truls is named in the pull request and not in the
+  session's last message alone.
+- **After the merge**, when local `main` is fast-forwarded to it, the local branch is deleted
+  after `git cherry` shows its commits in `main`, the tickets are seen closed, the brain page and
+  journal carry the merge and are staged, and what is still open from the pull request is a
+  ticket or a line in the brain's *Still open*.
+
+**A session with no branch is cleared once what it decided is a comment on its ticket**, with
+the command and the output behind each figure it made or repeated. A grill is one. Its last
+message says so.
+
+**From spawning the pre-PR reviewer until the pull request is open is not a clearing point.**
+Nor is the time the tickets are being implemented: which output and which command stand behind
+a figure is known to the session alone, a later session gets another scratch directory, and no
+kept script makes a portal reading, a load's log or a timing again. **A clear before a
+plugin pass costs a fresh reviewer**, handed the report and the commits as above, and it may be
+handed a figure whose raw output is gone.
+
+## The prose checks this repository keeps
 
 **This repository is almost entirely prose, and little here checks what it says.** The commit
 hooks read the shape of a message and of the Markdown - emphasis, tables, links and line length
@@ -58,21 +157,17 @@ whether an **Overlaps** row is stale (`scripts/overlap-rows-check.ps1`). A load 
 contradict only whether
 a pack starts. A count, a date or a portal reading is checked by the reviewer or by nobody.
 
-### The rule
-
-**Check every number in prose against a number in the diff, and do the arithmetic.** Not "does this
-look plausible" — add it up. A kept-plus-replaced-plus-dropped tally, a member count, a download
-comparison: each is a claim with an arithmetic answer.
-
-**Treat a quantifier as an instruction to enumerate.** "Every mod is accounted for", "the only mod
-duplicated across the five packs", "no replacement was found" — a claim about *all* or *none* of a
-set is checked by walking the set, never by agreeing with its tone. A fix that adds a figure
-re-walks every quantifier that covers the place it lands. Found in PR #163, twice.
+The rule to review the prose was decided by Truls in the sibling on 2026-09-03 and widened on
+2026-09-14, settling
+[realistic-fusion-refreshed#331](https://github.com/trulsjo/realistic-fusion-refreshed/issues/331),
+and adopted here on 2026-09-20. The shared rules page holds the arithmetic and the quantifier
+checks; here the quantifier check was missed twice in PR #163. These are this repository's own, and
+bind the reviewer: an author who greps before opening the pull request saves a round, but the
+obligation lives in the review.
 
 **A case a ruling's own terms leave open is a finding for Truls**, one per case, even where the
-evidence leans one way. It is listed as unfixed and waiting on him, as *One review before the pull
-request* says of any finding that needs his decision. Found in PR #311, where the area counted
-was left open and two ores rested on it.
+evidence leans one way. It is listed as unfixed and waiting on him. Found in PR #311, where the
+area counted was left open and two ores rested on it.
 
 **Where prose restates a list the code holds, read the two side by side.** Found in PR #186,
 where the README's list of what a hook stops had lost two entries of the script's.
@@ -147,8 +242,7 @@ or in a note elsewhere, carries the same qualifier, and a cause is given as what
 Found in PR #129 and PR #138.
 
 **A claim has a grade, and two of the three are always marked.** The grades, *Measured*, *Read
-from source* and *Inferred*, and the rules a reviewer checks them by are on the
-[shared page](../../vendor/grado-factorio-tools/docs/claim-grades.md).
+from source* and *Inferred*, and the rules a reviewer checks them by are on `claim-grades.md`.
 Here they apply to all new prose (2026-10-06, #157); the reason is in that entry of
 `docs/decisions.md`. Marking *Read from source*
 and *Inferred* wherever a conclusion is repeated is the rule above made general. Prose written
@@ -158,134 +252,3 @@ defect on its own.
 **A portal reading is a measurement.** Every version, date, download count and `factorio_version` in
 prose here came from an API call on a particular day and goes stale silently. Treat an undated one
 as a finding.
-
-**This binds the reviewer.** An author who greps before opening the pull request saves a round, but
-the obligation lives in the review.
-
-## One review before the pull request
-
-Decided by Truls, 2026-10-06, settling #151. The reason: only a review handed the raw output can
-check a figure against it, which is inferred from what the plugin's command file hands its
-reviewers; and the two reviews together cost about 1.4 million subagent tokens on the batch of
-2026-10-05 (the figure is #151's, which gives no split, so what leaving one out saves is not
-measured). The evidence is in `code-review-why.md`.
-
-### The rule
-
-**Every branch with a diff gets the pre-PR review, before its pull request exists.** No branch is
-exempt for being small. One fresh subagent runs it, and it is defined by what the subagent is
-handed and not by a skill's name:
-
-- the diff against `main`;
-- this file;
-- `GLOSSARY.md`, which holds the terms and the words most of them avoid;
-- `vendor/grado-factorio-tools/docs/claim-grades.md`, which holds the three grades the rules
-  above use;
-- the commit messages, and the branch's tickets;
-- on a branch that records measurements, the raw output behind them - a `--dump-data` dump, the
-  portal API's responses, a load's log - and the commands and scripts that produced the figures;
-- the results of `commit-check.ps1 -Range origin/main..HEAD` and of
-  `markdown-check.ps1 -Range origin/main...HEAD -MaxLineLength 100`, both in
-  `vendor/grado-factorio-tools/scripts/`, and of the resolve if an `info.json` changed. The
-  commit check's range has two dots and the other two checks' have three: why is in the header of
-  `.github/workflows/check.yml`.
-- the output of `glossary-check.ps1 -Range origin/main...HEAD -LeftFile glossary-left.txt`, in
-  `vendor/grado-factorio-tools/scripts/`, which lists each added line
-  that uses a word `GLOSSARY.md` avoids and is not marked deliberate. The script fails if it
-  lists one. A listed use is reworded or marked before the review. Whether a marker is honest is
-  the reviewer's: a marker silences the script.
-- at the confirmation, which a review that found nothing gets as well, the draft of the pull
-  request's body above the review, which is read like the commit messages: a finding in it is
-  fixed in the draft before the pull request opens (#273).
-
-**The review is read-only.** The reviewer changes nothing in the repository and posts nothing
-to GitHub: a fix is the session's.
-
-**The pre-PR review is run by `pre-pr-review-brief.md`, as it stands**: what a session does
-before the first turn, the words each turn is sent with, and how the report comes back. That
-page is procedure and states no rule of review.
-
-**A figure whose raw output is gone is a finding.** The reviewer is told which output is missing
-and does not take the figure on trust.
-
-**When an implement skill says to close out with `/code-review`, here that means the pre-PR
-review.** No pull request is needed for it.
-
-**The reviewer that raised a finding confirms its fix.** <!-- deliberate: confirms -->
-Continue the same subagent and have it
-read each fix commit as new diff: against its own finding, and by every rule of this file. That
-is a confirmation and not a second round. **A fix that adds a sentence adds a claim, and the
-confirmation checks it like any other.** "Confirms" here
-names this step and is not a grade of evidence; `GLOSSARY.md` avoids the word for a claim.
-
-**A fix narrows or deletes before it adds.** Where cutting a sentence or making it claim less
-repairs a finding, that is the fix, and a fix that adds a sentence in its place is a finding at
-confirmation.
-
-**A fix the reviewer proposes is a claim.** Its quantifier is walked before it goes into the
-report. Found in PR #205, where a proposed narrowing was false of one page and became the next
-finding.
-
-**The fixes are one commit of their own, after the ticket commits.** They are not folded into the
-commits they repair, so the list in the pull request's body can be read against a diff.
-
-**The review runs before the branch is first pushed**, while a commit can still be reworded.
-**A finding in a commit message is fixed by rewording that commit**: the commit of fixes cannot
-repair a message. The reviewer is given the new hash, reads the message again, and checks that
-the tree did not change. `scripts/reword-commit.ps1` does the rewording, for a commit under the
-tip too, and prints the old and new hashes. Once the branch is pushed the message stays, and
-the pull request's body says what holds. Found in PR #186, where five messages stayed wrong,
-and PR #187, where one was reworded twice.
-
-**Its findings go in the pull request's body, every one**, each with whether it was fixed. They
-carry no score: one reviewer has no scorers, and a score it gave itself would read as the plugin
-pass's. A finding may be left unfixed if the body says which and why. **A finding that needs a
-decision of Truls's is not fixed by the session**: it is listed as unfixed and waiting on him.
-
-**The plugin pass is run when Truls asks for it, and not otherwise.** It keeps its scorers and its
-threshold, and the first rule above says where its findings go. **A check-run comment is not a
-prior review** for the plugin's first step. **A pass run without `--comment` still gets the first
-rule's second comment**, which then also says what it raised. Why: `code-review-why.md`, *Why the
-plugin pass reads past the comments this repository posts*.
-
-**A plugin-pass finding the pre-PR review missed gets its class named**, in the pull request, by
-the session that fixes it. A class a script could detect becomes a ticket proposing the check. A
-class that takes judgement becomes a line in this file. "One-off, no rule" is an answer, and it is
-written down like the others.
-
-**A fix made after the plugin pass is confirmed by the branch's <!-- deliberate: confirmed -->
-pre-PR reviewer**, continued as
-for any later fix commit: the plugin pass's reviewers do not outlive the pass. If that reviewer
-cannot be continued, a fresh one is handed its report and the commits. What the confirmation
-finds, and each repair, is recorded on the pull request. Found in PR #186. What the confirmation
-finds is repaired and read again, until a read finds nothing new (#166).
-
-**A pull request is not merged while a plugin pass or a confirmation of it runs** (#159). The
-check run is outside this rule. The merge is Truls's, so a session's last message says when a
-plugin pass or a confirmation is still running.
-
-**A session that carries a branch is cleared at two points, and it says when it has reached
-one** (#159). A clear is
-`/clear`, a new session, or a later session taking the work up; the harness compacting by itself
-is not one. The session's last message names the point when its conditions hold, and names the
-condition that does not when one is missing.
-
-- **After the pull request is open**, when its body holds the review's findings and
-  confirmation, the check run's result is a comment on it, the brain page and journal are
-  updated and staged, and what waits on Truls is named in the pull request and not in the
-  session's last message alone.
-- **After the merge**, when local `main` is fast-forwarded to it, the local branch is deleted
-  after `git cherry` shows its commits in `main`, the tickets are seen closed, the brain page and
-  journal carry the merge and are staged, and what is still open from the pull request is a
-  ticket or a line in the brain's *Still open*.
-
-**A session with no branch is cleared once what it decided is a comment on its ticket**, with
-the command and the output behind each figure it made or repeated. A grill is one. Its last
-message says so.
-
-**From spawning the pre-PR reviewer until the pull request is open is not a clearing point.**
-Nor is the time the tickets are being implemented: which output and which command stand behind
-a figure is known to the session alone, a later session gets another scratch directory, and no
-kept script makes a portal reading, a load's log or a timing again. **A clear before a
-plugin pass costs a fresh reviewer**, handed the report and the commits as above, and it may be
-handed a figure whose raw output is gone.

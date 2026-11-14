@@ -483,3 +483,28 @@ to the reviewer, in `glossary-left.txt`, and deleted this repository's copy:
 
 > - the output of `scripts/glossary-check.ps1 -Range origin/main...HEAD`, which lists each
 >   added line
+
+**The whole page, made a stub on 2026-11-14 by #417.** The page as it stood before is
+`git show 07a585a:docs/agents/code-review.md`, on `main`, with #416's one-line change to the
+glossary check's path, above, after it. The stub keeps this repository's own rules word for word,
+or reworded as the list below says, and its parameters; what left it is held now as follows:
+
+- *The threshold gates the comment, not the report*, its rule that every finding that survived
+  verification is reported, that a review posting nothing says what it filtered, and that a
+  finding is not re-scored to move it: `code-review-rules.md`, *The threshold sorts the comment,
+  not the report*, in `vendor/grado-factorio-tools/docs/`, which reports every finding, a
+  verifier's verdict included. The plugin pass's second comment stays in the stub, under *The
+  plugin pass*.
+- *Review the prose*, its rules to check every number against the diff and to treat a quantifier
+  as an instruction to enumerate: `code-review-rules.md`, *Prose*. Its closing "This binds the
+  reviewer" is joined to the stub's lead-in to the prose checks.
+- *One review before the pull request*: that every branch gets the review, none exempt, is the
+  procedure's step 1 (`code-review-procedure.md`); that the review is read-only and posts nothing
+  is its step 3; that it is run by the brief as it stands is its step 2; that a finding needing
+  Truls's decision is not fixed by the session is its step 7; that the fixes are commits of their
+  own and the reviewer that raised a finding reads its fix, and a fresh reviewer stands in, is its
+  step 8; the class-naming of a plugin-pass finding is its step 9; and the merge rule, with "The
+  check run is outside this rule", is its step 10, which asks for the CI workflow to pass before the
+  merge. The cost and reason paragraph is above, under *Why one review before the pull request*.
+- The page's opening list of the three rules and their dates: each date is now beside its rule
+  in the stub.

@@ -1071,3 +1071,17 @@ repository's copy:
 > say the same in a brief written for a subagent. `scripts/ask-before-download.ps1` is a hook
 > that refuses a package install or a fetched program, which Truls runs himself with `!` once
 > he has said yes; its header says what it cannot see.
+
+**The scope vocabulary**, under *Commit messages*, as it stood from 2026-09-21 until 2026-11-14,
+when #415 moved the list to `commit-scopes.txt`, which the commit check reads, and kept here what
+a scope is:
+
+> - **Scope vocabulary.** Use the pack (`nonchanging`, `changingbase`, `abc`, `abcx`, `abcs`) or the
+>   area (`docs`, `repo`).
+
+**The pin hooks' header**, under *Commit messages*, the last sentence of its paragraph as it stood
+from #391 (2026-10-31) until 2026-11-14, when #415 made the three hooks `follow-pin.ps1`'s
+`.EXAMPLE` word for word, which carries no reason of its own:
+
+> Why, and what they leave alone, is in the header of `.githooks/post-checkout` and of that
+> script.

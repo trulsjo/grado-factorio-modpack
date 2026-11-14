@@ -112,7 +112,8 @@ the game.
 ## Checks
 
 Two of the git hooks that `git config core.hooksPath .githooks` wires up check: `commit-msg`
-checks the shape of a commit message and the members it changes, and `pre-commit` runs the shared
+checks the shape of a commit message, its scope against `commit-scopes.txt`, and the members it
+changes, and `pre-commit` runs the shared
 Markdown check, `vendor/grado-factorio-tools/scripts/markdown-check.ps1`, on the staged Markdown
 files.
 Both hooks need the tools submodule, so a clone runs `git submodule update --init` too; without
@@ -131,8 +132,9 @@ Three more hooks from the same `core.hooksPath` check nothing: `post-checkout` a
 switch, `post-merge`, and `post-rewrite` after a rebase each run the shared
 `vendor/grado-factorio-tools/scripts/follow-pin.ps1`, which brings the tools submodule to the pin
 the new `HEAD` records. A submodule with uncommitted work, or not at the pin the old `HEAD`
-records, is left, with one line saying why and the command to run. Each hook exits 0. Why they
-exist is in the header of `.githooks/post-checkout`, and what the script cannot see in its own.
+records, is left, with one line saying why and the command to run. Each hook exits 0, and each is
+the script's `.EXAMPLE` word for word. Why they exist, and what the script cannot see, is in the
+script's header.
 
 `scripts/glossary-check.ps1 -Range origin/main...HEAD` lists each line a branch adds that uses a
 word `GLOSSARY.md` tells you to avoid, with the term that avoids it, and fails if it lists one.

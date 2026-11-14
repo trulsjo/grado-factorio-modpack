@@ -214,8 +214,9 @@ shows `main`, which may be ahead of the commit this repo has pinned.
 Three things are this repository's own, because all three are its domain rather than shared
 mechanics:
 
-- **Scope vocabulary.** Use the pack (`nonchanging`, `changingbase`, `abc`, `abcx`, `abcs`) or the
-  area (`docs`, `repo`).
+- **Scope vocabulary.** A scope is the pack a commit changes or the area it touches. The list is
+  [`commit-scopes.txt`](commit-scopes.txt), which the `commit-msg` hook and the pull request
+  check hand the commit check: a scope it does not list is refused.
 - **What counts as a breaking change.** Here it is a dependency change an existing save cannot
   survive: adding or removing a member mod of `Grado_ChangingBase` or anything below it in the
   chain - **`Grado_NonChanging` included**: `Tapeline`, `Todo-List`, `YARM` and `SpeedControl` all
@@ -253,8 +254,9 @@ requires, and what makes the second step safe to ask for.
 
 **The same two steps wire three hooks that follow the pin** (#391). `.githooks/post-checkout`,
 `post-merge` and `post-rewrite` run the shared `scripts/follow-pin.ps1` after a branch switch, a
-merge or a rebase, to bring `vendor/grado-factorio-tools` to the pin the new `HEAD` records. Why,
-and what they leave alone, is in the header of `.githooks/post-checkout` and of that script.
+merge or a rebase, to bring `vendor/grado-factorio-tools` to the pin the new `HEAD` records. Each
+is that script's `.EXAMPLE`, word for word (#415). Why, and what they leave alone, is in the
+script's header.
 
 Old commits that fail the check are left alone — the three from 2026-09-20, `3ab917c` among them,
 predate it. The hook stops the failures growing; `-Range origin/main..HEAD` checks a branch before a

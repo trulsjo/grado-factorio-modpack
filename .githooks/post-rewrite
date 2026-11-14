@@ -1,23 +1,15 @@
 #!/bin/sh
-# Brings vendor/grado-factorio-tools to the pin HEAD records after a rebase of a branch that
-# moved the pin itself, which post-checkout, run on the rebase's own checkout, does not see
-# (#391; measured 2026-10-27 in tools #253). The rules, the install and why every path exits 0
-# are in .githooks/post-checkout, the same wiring. An amend is never acted on, so it says nothing
-# here either. git lists the rewritten commits on stdin, and pwsh passes it on to the script.
-[ "$1" = rebase ] || exit 0
+# Brings vendor/grado-factorio-tools to the pin the new HEAD records.
 hook=post-rewrite
+[ "$1" = rebase ] || exit 0
 sub=vendor/grado-factorio-tools
-root="$(git rev-parse --show-toplevel)" && cd "$root" || exit 0
-f="$sub/scripts/follow-pin.ps1"
-if ! command -v pwsh >/dev/null 2>&1; then
-    echo "$hook: pwsh not found, so $sub was not checked against the pin HEAD records." >&2
-    echo "$hook: if it is clean and holds no commit of your own, 'git submodule update --init -- $sub' brings it there." >&2
-    exit 0
+f=$sub/scripts/follow-pin.ps1
+say() {
+    echo "$hook: $1 not found, so $sub was not checked against the pin HEAD records." >&2
+    echo "$hook: if it is clean and holds no commit of your own, '$2' brings it there." >&2
+}
+if ! command -v pwsh >/dev/null 2>&1; then say pwsh "git submodule update --init -- $sub"
+elif [ ! -f "$f" ]; then say "$f" "git submodule update --init -- $sub"
+else pwsh -NoProfile -File "$f" "$hook" "$@"
 fi
-if [ ! -f "$f" ]; then
-    echo "$hook: $f not found, so $sub was not checked against the pin HEAD records." >&2
-    echo "$hook: if it is clean and holds no commit of your own, 'git submodule update --init -- $sub' brings it there." >&2
-    exit 0
-fi
-pwsh -NoProfile -File "$f" "$hook" "$@"
 exit 0

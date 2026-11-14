@@ -33,9 +33,11 @@ parts.
     with its command and its output, as `docs/agents/code-review.md`, *Where a session is
     cleared*, asks of a session with no branch. A figure copied from that comment into
     `docs/decisions.md` cites the comment by its link (#392).
-  - **A quantifier.** On 2026-10-09 #206 called one file "the one file where the three ranges
-    stand side by side", two other files held all three, and the claim reached a commit message
-    before a review caught it (PR #210, finding 2 in its body).
+  - **A quantifier.** Where the search the session runs and the ticket's claim disagree, the page
+    gets what the search showed and the pull request says the ticket was wrong. On 2026-10-09 #206
+    called one file "the one file where the three ranges stand side by side", two other files held
+    all three, and the claim reached a commit message before a review caught it (PR #210, finding 2
+    in its body).
 - **A criterion that a setting took effect names a newly started process**: where a ticket asks
   that a setting, a hook or a plugin be shown working or absent, the criterion names a process of
   Claude Code's executable started after the commit that holds the setting is
@@ -77,7 +79,12 @@ parts.
 - **Comment on an issue**: `gh issue comment <number> --body "..."`
 - **Apply / remove labels**: `gh issue edit <number> --add-label "..."` / `--remove-label "..."`
 - **Close**: `gh issue close <number> --comment "..."`, after the shared page's *Before closing*.
-- **Add a blocker** as the shared page's *Blocked by* says. **Run the POST with the Bash tool: a
+  Of its duplicate incident, trulsjo/grado-factorio-tools#210 closed beside
+  trulsjo/grado-factorio-tools#208 on 2026-10-25, the label came off the ticket that stayed, at
+  Truls's word, until he rules.
+- **Add a blocker** as the shared page's *Blocked by* says. A blocker in another repository works
+  the same: #225 carries such an edge to trulsjo/grado-factorio-tools#113 (read 2026-10-12).
+  **Run the POST with the Bash tool: a
   `Bash(...)` rule in the tracked `.claude/settings.json` allows it there, and the file has no
   `PowerShell(...)` rule** (#233, #267), in the shared page's spelling, for a ticket of this
   repository, `grado-factorio-tools`, `realistic-fusion-refreshed` or `true-nukes-refreshed`
@@ -114,7 +121,8 @@ parts.
   this rule and the one above: the session runs it on the body file before `gh pr create`
   (`docs/agents/pre-pr-review-brief.md`, *Into the pull request*), and
   `.github/workflows/check.yml` runs it on the pull request's body, again when the body is
-  edited. Nothing reads comments or commit messages for it.
+  edited. Nothing reads comments or commit messages for it. Whether GitHub closes on a keyword
+  in a code span was not measured.
 
 Infer the repo from `git remote -v`; `gh` does this automatically when run inside a clone.
 
@@ -126,7 +134,8 @@ requests; `/triage` reads this flag.)_
 When set to `yes`, PRs run through the same labels and states as issues, using the `gh pr`
 equivalents:
 
-- **Read a PR**: `gh pr view <number> --comments` and `gh pr diff <number>` for the diff.
+- **Read a PR**: `gh pr view <number> --json title,body,comments`, as the shared page's *Read an
+  issue with `--json`* says, and `gh pr diff <number>` for the diff.
 - **List external PRs for triage**:
   `gh pr list --state open --json number,title,body,labels,author,authorAssociation,comments` then
   keep only `authorAssociation` of `CONTRIBUTOR`, `FIRST_TIME_CONTRIBUTOR`, or `NONE` (drop

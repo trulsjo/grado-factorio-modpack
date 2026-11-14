@@ -6,7 +6,7 @@
 
 .DESCRIPTION
     WHY (#207). A finding in a commit message is fixed by rewording that commit
-    (docs/agents/code-review.md, *One review before the pull request*), and the reviewer is given
+    (docs/agents/code-review.md, *The pre-PR review*), and the reviewer is given
     the new hash and checks that the tree did not change. `git commit --amend` reaches the tip
     only, and a session has no interactive rebase. On PR #205 (2026-10-09) the ticket commit was
     reworded twice, the second time under the commit of fixes.

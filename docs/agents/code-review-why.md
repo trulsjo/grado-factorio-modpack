@@ -1,6 +1,8 @@
-# Code review — why the three rules exist
+# Code review — why the review rules exist
 
-The rules are in `code-review.md`. This page holds what stood beside them there until 2026-10-06:
+The rules are in `code-review.md` and the two shared pages it links, `code-review-rules.md` and
+`code-review-procedure.md` in `vendor/grado-factorio-tools/docs/`. This page holds what stood
+beside the rules in `code-review.md` until 2026-10-06:
 the measurements that produced each rule, and why they are conventions and not plugin edits. It
 moved word for word, so that a reviewer loads the rules without the history. Wording the rules
 have lost, that day or later, is under *What the rules said before*.
@@ -486,8 +488,8 @@ to the reviewer, in `glossary-left.txt`, and deleted this repository's copy:
 
 **The whole page, made a stub on 2026-11-14 by #417.** The page as it stood before is
 `git show 07a585a:docs/agents/code-review.md`, on `main`, with #416's one-line change to the
-glossary check's path, above, after it. The stub keeps this repository's own rules word for word,
-or reworded as the list below says, and its parameters; what left it is held now as follows:
+glossary check's path, above, after it. The stub keeps this repository's own rules, some
+reworded, and its parameters; what left it is held now as follows:
 
 - *The threshold gates the comment, not the report*, its rule that every finding that survived
   verification is reported, that a review posting nothing says what it filtered, and that a
@@ -508,3 +510,6 @@ or reworded as the list below says, and its parameters; what left it is held now
   merge. The cost and reason paragraph is above, under *Why one review before the pull request*.
 - The page's opening list of the three rules and their dates: each date is now beside its rule
   in the stub.
+- "One fresh subagent runs it, and it is defined by what the subagent is handed and not by a
+  skill's name": the stub's second paragraph names the one fresh subagent, and what it is handed
+  is the procedure's steps 2 and 4 with the stub's *The pre-PR review*.

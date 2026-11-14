@@ -3,14 +3,15 @@
 # script's header (grado-factorio-tools#247). One form for each way this repository runs a tools
 # script, in .githooks/, .github/workflows/check.yml and .claude/settings.json, follow-pin.ps1
 # by its -SelfTest alone, and for each script of its own that reaches into vendor/. The first 20
-# forms, 21 runs, are those PR #387 measured by hand (2026-10-26, its Evidence table); the rest
+# forms, 21 runs, are those PR #387 measured by hand (2026-10-26, its Evidence table), the
+# commit check's range and hook forms given -ScopeFile commit-scopes.txt since #415; the rest
 # are named where they start.
 @{
     Forms = @(
         @{ Name = 'commit-check-selftest'; From = 'tools'; Script = 'commit-check.ps1'; Args = @('-SelfTest') }
-        @{ Name = 'commit-check-range'; From = 'tools'; Script = 'commit-check.ps1'; Args = @('-Range', 'HEAD~20..HEAD', '-RequireCommits') }
+        @{ Name = 'commit-check-range'; From = 'tools'; Script = 'commit-check.ps1'; Args = @('-ScopeFile', 'commit-scopes.txt', '-Range', 'HEAD~20..HEAD', '-RequireCommits') }
         # .githooks/commit-msg hands it the message file.
-        @{ Name = 'commit-check-hook'; From = 'tools'; Script = 'commit-check.ps1'; Args = @('{headmsg}') }
+        @{ Name = 'commit-check-hook'; From = 'tools'; Script = 'commit-check.ps1'; Args = @('-ScopeFile', 'commit-scopes.txt', '{headmsg}') }
         @{ Name = 'markdown-check-selftest'; From = 'tools'; Script = 'markdown-check.ps1'; Args = @('-SelfTest') }
         @{ Name = 'markdown-check-range'; From = 'tools'; Script = 'markdown-check.ps1'; Args = @('-Range', 'HEAD~20...HEAD', '-MaxLineLength', '100') }
         # .githooks/pre-commit, on the staged files: the clone's index matches HEAD, so none.
@@ -50,10 +51,6 @@
         @{ Name = 'hanging-bash-hook-selftest'; From = 'tools'; Script = 'refuse-hanging-bash.ps1'; Args = @('-SelfTest', '-Settings', '.claude/settings.json') }
         @{ Name = 'hook-skip-hook-selftest'; From = 'tools'; Script = 'refuse-git-hook-skip.ps1'; Args = @('-SelfTest', '-Settings', '.claude/settings.json') }
         @{ Name = 'skipped-install-hook-selftest'; From = 'tools'; Script = 'warn-skipped-install.ps1'; Args = @('-SelfTest', '-Settings', '.claude/settings.json') }
-        # The commit check as .githooks/commit-msg and the workflow hand it commit-scopes.txt;
-        # added by #416 for #415.
-        @{ Name = 'commit-check-hook-scopes'; From = 'tools'; Script = 'commit-check.ps1'; Args = @('-ScopeFile', 'commit-scopes.txt', '{headmsg}') }
-        @{ Name = 'commit-check-range-scopes'; From = 'tools'; Script = 'commit-check.ps1'; Args = @('-ScopeFile', 'commit-scopes.txt', '-Range', 'HEAD~20..HEAD', '-RequireCommits') }
         # The shared checks #416 runs in place of scripts/glossary-check.ps1 and
         # scripts/header-length-check.ps1, and the four .githooks/pre-commit runs on the staged
         # scripts, here over all of scripts/.

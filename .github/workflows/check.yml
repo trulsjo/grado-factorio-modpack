@@ -55,8 +55,8 @@
 # session runs it while it meets a criterion on a newly started process. Its self-test starts a
 # stub in place of Claude Code's executable, so no session is started here.
 #
-# The session hooks .claude/settings.json wires from vendor/grado-factorio-tools/scripts/ refuse
-# in an agent session and check nothing here, so their self-tests are the one place a pull
+# The session hooks .claude/settings.json wires from vendor/grado-factorio-tools/scripts/ refuse or
+# warn in an agent session and check nothing here, so their self-tests are the one place a pull
 # request that breaks one goes red. Each runs with -Settings .claude/settings.json among the
 # others: the mod-cache hook (#225), and since #414 the download hook, the Python heredoc, the
 # backtick substitution, the hanging Bash call, the skipped git hook and, at SessionStart, the

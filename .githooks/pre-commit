@@ -32,8 +32,8 @@
 #
 # What the scripts' step cannot see: a script is taken as setting strict mode where a line of it
 # begins with Set-StrictMode, after any indent. A path is listed with core.quotePath off; one git
-# quotes even so, as one holding a double quote, a backslash or a line break, is not found as
-# staged, and the commit is refused, naming it. A path holding a comma is split by the checks.
+# quotes even so, as one holding a double quote, a backslash or a line break, is not read by the
+# scripts' step, and nothing says so. A path holding a comma is split by the checks.
 if ! command -v pwsh >/dev/null 2>&1; then
     echo "pre-commit: pwsh not found, so the staged Markdown, scripts, hooks and workflows were NOT checked." >&2
     exit 0

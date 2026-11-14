@@ -259,12 +259,13 @@ agent held nothing of it (#224).
 
 A second hook there, the shared `vendor/grado-factorio-tools/scripts/ask-before-download.ps1`,
 stops a command that installs a package
-(`npm install`, `ci`, `add` or `exec`, `npx`, `pip install`, `gem install`, `cargo install`, and
-`install` under `winget`, `choco` or `scoop`) or fetches an `.exe`, `.msi`, `.zip`, `.tar.gz` or
-`.tgz` from anywhere but `mods.factorio.com`, and tells the session to ask Truls, who runs an
-approved command himself. It refuses and does not ask: its header has the measurement of 2026-10-08
-that says why. Reading the portal, staging a pack, `git` and the rest of `gh` pass:
-`gh release download` is refused. Its header says what it cannot see, and it has a `-SelfTest` too.
+(`npm install`, `i`, `ci`, `add` or `exec`, `npx`, `pip install`, also as `python -m pip`,
+`gem install`, `cargo install`, and `install` under `winget`, `choco` or `scoop`) or fetches an
+`.exe`, `.msi`, `.zip`, `.tar.gz` or `.tgz` from anywhere but `mods.factorio.com`, and tells the
+session to ask Truls, who runs an approved command himself. It refuses and does not ask: its header
+has the measurement of 2026-10-08 that says why. Reading the portal, staging a pack, `git` and the
+rest of `gh` pass: `gh release download` is refused. Its header says what it cannot see, and it has
+a `-SelfTest` too.
 
 Four more shared hooks there refuse a shell command before it runs, each from
 `vendor/grado-factorio-tools/scripts/` and each with its header saying what it refuses and what

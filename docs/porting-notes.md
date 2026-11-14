@@ -1085,3 +1085,10 @@ from #391 (2026-10-31) until 2026-11-14, when #415 made the three hooks `follow-
 
 > Why, and what they leave alone, is in the header of `.githooks/post-checkout` and of that
 > script.
+
+**The glossary check's path**, in the range sentence under *Commit messages*, as it stood from
+2026-10-11 (#182, #209) until 2026-11-14, when #416 ran the shared script in place of this
+repository's copy:
+
+> lines to 100 characters. Three dots here and for `scripts/glossary-check.ps1`, two for the commit
+> check: why is in the header of `.github/workflows/check.yml`.

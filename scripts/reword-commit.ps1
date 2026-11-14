@@ -45,7 +45,7 @@
     submodule, for a fixture repository in a temp directory.
 
 .EXAMPLE
-    pwsh -File scripts/reword-commit.ps1 -Commit 879f5e5 -MessageFile ../scratch/message.txt
+    pwsh -File scripts/reword-commit.ps1 -Commit <sha> -MessageFile ../scratch/message.txt
 
 .EXAMPLE
     pwsh -File scripts/reword-commit.ps1 -SelfTest

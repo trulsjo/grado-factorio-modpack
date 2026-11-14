@@ -20,7 +20,7 @@ now posted in a second one.*
 
 **Measured here, on the first pull request this repository ever had.** [PR
 #12](https://github.com/trulsjo/grado-factorio-modpack/pull/12): five review agents, nine findings,
-**zero posted**. The two highest both scored 75, both were real, and both were fixed in `011f5d4`:
+**zero posted**. The two highest both scored 75, both were real, and both were fixed in `2f2181d`:
 
 | finding | score | what it was |
 |---|---|---|
@@ -476,3 +476,10 @@ that fixes the pre-PR reviewer had proposed or passed added to the branch, by it
 
 > Continue the same subagent and have it
 > read each fix against its own finding.
+
+**What the pre-PR reviewer is handed**, the glossary check's path, as it stood from #204
+(2026-10-09) until 2026-11-14, when #416 ran the shared script with this repository's words left
+to the reviewer, in `glossary-left.txt`, and deleted this repository's copy:
+
+> - the output of `scripts/glossary-check.ps1 -Range origin/main...HEAD`, which lists each
+>   added line

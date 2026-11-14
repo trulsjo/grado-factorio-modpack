@@ -1,0 +1,11 @@
+# The words the glossary check leaves to the reviewer: a pattern for the word as it stands in a
+# line, a space, and why it is left. The shared glossary-check.ps1 in
+# vendor/grado-factorio-tools/scripts/ reads it as -LeftFile. Moved word for word from the $LEFT
+# of this repository's own scripts/glossary-check.ps1, deleted by #416 (2026-11-14).
+^mods?$ what every member is; avoided only as a word for a pack
+^dependency$ info.json's own word; avoided only as a word for a member mod
+^releases?$ what a portal entry holds; avoided only as a word for the entry
+^names?$ a term of its own, *Name*; avoided only as a word for a title
+^loads?$ a term of its own, *Load*; avoided only as a word for a start
+^rules?$ what CLAUDE.md and the review page state; avoided only as a word for a promise
+^check(s|ing)?$ what the scripts here are and do; "checked" is still reported

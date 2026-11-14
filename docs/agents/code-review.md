@@ -189,7 +189,8 @@ handed and not by a skill's name:
   `vendor/grado-factorio-tools/scripts/`, and of the resolve if an `info.json` changed. The
   commit check's range has two dots and the other two checks' have three: why is in the header of
   `.github/workflows/check.yml`.
-- the output of `scripts/glossary-check.ps1 -Range origin/main...HEAD`, which lists each added line
+- the output of `glossary-check.ps1 -Range origin/main...HEAD -LeftFile glossary-left.txt`, in
+  `vendor/grado-factorio-tools/scripts/`, which lists each added line
   that uses a word `GLOSSARY.md` avoids and is not marked deliberate. The script fails if it
   lists one. A listed use is reworded or marked before the review. Whether a marker is honest is
   the reviewer's: a marker silences the script.

@@ -208,7 +208,7 @@ foreach ($f in $files) {
 if ($found) {
     Write-Host ''
     Write-Host "FAILED - player-page-check: $found HTML comment(s), $($files.Count) file(s) read. A pack's Markdown ships in its zip, where a comment is read as text; take each out."
-    Write-Host 'Where scripts/glossary-check.ps1 flags a word on a player page, reword the line: a <!-- deliberate: ... --> marker shows to players too.'
+    Write-Host 'Where the glossary check flags a word on a player page, reword the line: a <!-- deliberate: ... --> marker shows to players too.'
     exit 1
 }
 Write-Host "OK - player-page-check: $($files.Count) file(s) read in $($packs.Count) pack director$(if ($packs.Count -eq 1) { 'y' } else { 'ies' }), no HTML comment."

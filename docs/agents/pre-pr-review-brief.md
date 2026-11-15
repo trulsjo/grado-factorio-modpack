@@ -83,7 +83,8 @@ one that does not. The script lists and does not fail, and a word used in passin
 `<scratch>/mentions.txt` is not walked by the session: it goes to the reviewer (#365). It lists
 each tracked line that names what the branch changed: a script, a member a pack gains or loses,
 a `base >=` floor or `factorio_version` an `info.json` replaces, or a tools script whose call in
-`.githooks/`, `.github/workflows/` or `.claude/settings.json` the branch changes (#430). On a
+`.githooks/`, `.github/workflows/` or `.claude/settings.json` the branch changes, named there by
+its path or through a variable set to the submodule (#430). On a
 branch that moves the pin it names too each tools script this repository runs that the move
 changes, itself or through a script it loads, and each tools file the move changes that a line
 cites by its path, and after the list it prints the tools commits between the pins that call
@@ -194,10 +195,9 @@ The session answers each line under *Not read* before the fixes: it reads the th
 and says so in the confirmation turn, or hands the reviewer what it lacked.
 
 **A ticket's scope is read against Truls's quoted request** (#427), which a ticket filed at his
-word holds under `## Asked` (`docs/agents/issue-tracker.md`). On PR #426 (2026-11-14) the pre-PR
-reviewer read the tickets by `gh issue view`, and #425's body did not tell his request from a
-half the session had added. Its finding 5 took the half for his, and was withdrawn once the
-session sent his words, a round later (by that session's account).
+word holds under `## Asked`. On PR #426 (2026-11-14) the reviewer read the tickets by
+`gh issue view`, which gave it no quote to read #425's scope against: the incident is
+`docs/agents/issue-tracker.md`'s bullet on a ticket filed at his word.
 
 ## The confirmation turn
 
@@ -244,9 +244,10 @@ so on, with a line for each finding it answers.
 ```
 
 **The earlier commit messages are read against each fix** (#427). On PR #426 (2026-11-14) the fix
-of finding 3 made the ticket commit's message false; the session noticed and reworded it with
-`scripts/reword-commit.ps1`, and nothing asked the confirmation to read it (by that session's
-account).
+of finding 3 made the ticket commit's message false, and it was reworded with
+`scripts/reword-commit.ps1` (PR #426's body, *Confirmation*, "The reworded ticket commit for
+#425"). The session noticed it, and nothing asked the confirmation to read the earlier messages
+(by that session's account).
 
 Each confirmation stays under `## Confirmation`, with no other `##` heading inside it, because
 `pr-body.ps1` reads `## Confirmation` up to the next `##` heading (its `Get-Section`, read from

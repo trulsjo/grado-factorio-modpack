@@ -37,7 +37,7 @@
 
     WHAT IT CANNOT SEE. A member change made any other way than in a top-level info.json. On
     `git commit --amend` the hook compares with the commit being amended, so a member change it
-    already held is not read again; scripts/reword-commit.ps1 runs no commit-msg hook. The pull
+    already held is not read again; the shared reword-commit.ps1 runs no commit-msg hook. The pull
     request check reads every commit of the range, which covers both. Whether the
     `BREAKING CHANGE:` footer says what a save loses.
 

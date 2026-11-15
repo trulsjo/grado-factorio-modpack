@@ -199,10 +199,10 @@ themselves breaking. Load records, traces and the lines the branch adds are left
 inside a dated note is tagged. It does not fail: the list is handed to the pre-PR reviewer, who
 reads each line against the diff. Its self-test runs in the same workflow, and no hook runs it.
 
-`scripts/reword-commit.ps1 -Commit <sha> -MessageFile <file>` rewords one commit of a branch that
-is not pushed, the tip or one under it, replays the commits above it, and prints each old and new
-hash. It does not move the branch if a tree changed or the commit check rejects a message. Its
-self-test runs in the same workflow.
+The shared `vendor/grado-factorio-tools/scripts/reword-commit.ps1 -Commit <sha> -MessageFile <file>`
+rewords one commit of a branch that is not pushed, the tip or one under it, replays the commits
+above it, and prints each old and new hash. It does not move the branch if a tree changed or the
+commit check rejects a message. Its self-test runs in the same workflow.
 
 `scripts/pr-body.ps1 -Draft <file> -Review <report> -Out <file>` puts the pre-PR reviewer's
 findings and confirmation under the draft of a pull request body, word for word, and fails on a

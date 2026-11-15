@@ -31,7 +31,8 @@
         @{ Name = 'overlap-rows-revision'; From = 'sibling'; Script = 'scripts/overlap-rows-check.ps1'; Args = @('-Revision', 'HEAD') }
         @{ Name = 'overlap-rows-hook'; From = 'sibling'; Script = 'scripts/overlap-rows-check.ps1'; Args = @() }
         @{ Name = 'mentions-selftest'; From = 'sibling'; Script = 'scripts/mentions.ps1'; Args = @('-SelfTest') }
-        @{ Name = 'reword-commit-selftest'; From = 'sibling'; Script = 'scripts/reword-commit.ps1'; Args = @('-SelfTest') }
+        # The shared reword-commit.ps1 since #418, in place of the scripts/ copy PR #387 measured.
+        @{ Name = 'reword-commit-selftest'; From = 'tools'; Script = 'reword-commit.ps1'; Args = @('-SelfTest') }
         @{ Name = 'stage-pack-selftest'; From = 'sibling'; Script = 'scripts/stage-pack.ps1'; Args = @('-SelfTest') }
         # Beyond PR #387's list. pr-body.ps1 loads Test-Body from pr-body-check.ps1 (#388).
         @{ Name = 'pr-body-selftest'; From = 'sibling'; Script = 'scripts/pr-body.ps1'; Args = @('-SelfTest') }

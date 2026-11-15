@@ -13,9 +13,9 @@
 # handed a line limit of 100 (#209), as .githooks/pre-commit hands it one: without it the check
 # reads no length.
 #
-# The self-tests of scripts/reword-commit.ps1 (#207) and scripts/pr-body.ps1 (#208) run with the
-# others: a session runs those two scripts before a pull request exists, so nothing here runs
-# the scripts themselves.
+# The self-tests of the shared reword-commit.ps1 (#207, from vendor/ since #418) and
+# scripts/pr-body.ps1 (#208) run with the others: a session runs those two scripts before a pull
+# request exists, so nothing here runs the scripts themselves.
 #
 # The comment lines of each tracked `scripts/*.ps1`, of .githooks/ and of these workflows are
 # read for a line over 100 characters (#211, #378), by the shared comment-line-check.ps1 since
@@ -44,7 +44,7 @@
 # Each commit of the pull request is read for a pack member gained or lost with no ! in its
 # subject (#375), by scripts/member-change-check.ps1 with its self-test among the others, over the
 # commit check's two-dot range: .githooks/commit-msg runs it on a commit being made, and a clone
-# without the hook, an amend or scripts/reword-commit.ps1 is covered here.
+# without the hook, an amend or the shared reword-commit.ps1 is covered here.
 #
 # The shared absolute-words.ps1 (#219, since #417 from vendor/) has its self-test among the others
 # and no step of its own:
@@ -118,7 +118,7 @@ jobs:
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/commit-check.ps1 -SelfTest
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/markdown-check.ps1 -SelfTest
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/glossary-check.ps1 -SelfTest
-          pwsh -NoProfile -File scripts/reword-commit.ps1 -SelfTest
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/reword-commit.ps1 -SelfTest
           pwsh -NoProfile -File scripts/pr-body.ps1 -SelfTest
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/pr-body-check.ps1 -SelfTest
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/comment-line-check.ps1 -SelfTest

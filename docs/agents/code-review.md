@@ -105,7 +105,8 @@ so the list in the pull request's body can be read against a diff.
 **A finding in a commit message is fixed by rewording that commit**, since the review runs before
 the first push, while a commit can still be reworded: the commit of fixes cannot repair a
 message. The reviewer is given the new hash, reads the message again, and checks that the tree
-did not change. `scripts/reword-commit.ps1` does the rewording, for a commit under the tip too,
+did not change. The shared `vendor/grado-factorio-tools/scripts/reword-commit.ps1` does the
+rewording, for a commit under the tip too,
 and prints the old and new hashes. Once the branch is pushed the message stays, and the pull
 request's body says what holds. Found in PR #186, where five messages stayed wrong, and PR #187,
 where one was reworded twice.

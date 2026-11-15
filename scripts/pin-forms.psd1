@@ -23,6 +23,8 @@
         # The hook as .claude/settings.json wires it: one command refused, one let through.
         @{ Name = 'cd-hook-refused'; From = 'tools'; Script = 'refuse-cd-into-mod-cache.ps1'; Args = @('-Root', '.', '-CacheName', '.mod-cache', '{stdin:{"cwd":".","tool_input":{"command":"cd .mod-cache/Grado_ABC"}}}') }
         @{ Name = 'cd-hook-passed'; From = 'tools'; Script = 'refuse-cd-into-mod-cache.ps1'; Args = @('-Root', '.', '-CacheName', '.mod-cache', '{stdin:{"cwd":".","tool_input":{"command":"ls .mod-cache"}}}') }
+        # The shared reword-commit.ps1 since #418, in place of the scripts/ copy PR #387 measured.
+        @{ Name = 'reword-commit-selftest'; From = 'tools'; Script = 'reword-commit.ps1'; Args = @('-SelfTest') }
         # This repository's scripts that reach into vendor/.
         @{ Name = 'member-change-selftest'; From = 'sibling'; Script = 'scripts/member-change-check.ps1'; Args = @('-SelfTest') }
         @{ Name = 'member-change-range'; From = 'sibling'; Script = 'scripts/member-change-check.ps1'; Args = @('-Range', 'HEAD~20..HEAD') }
@@ -31,8 +33,6 @@
         @{ Name = 'overlap-rows-revision'; From = 'sibling'; Script = 'scripts/overlap-rows-check.ps1'; Args = @('-Revision', 'HEAD') }
         @{ Name = 'overlap-rows-hook'; From = 'sibling'; Script = 'scripts/overlap-rows-check.ps1'; Args = @() }
         @{ Name = 'mentions-selftest'; From = 'sibling'; Script = 'scripts/mentions.ps1'; Args = @('-SelfTest') }
-        # The shared reword-commit.ps1 since #418, in place of the scripts/ copy PR #387 measured.
-        @{ Name = 'reword-commit-selftest'; From = 'tools'; Script = 'reword-commit.ps1'; Args = @('-SelfTest') }
         @{ Name = 'stage-pack-selftest'; From = 'sibling'; Script = 'scripts/stage-pack.ps1'; Args = @('-SelfTest') }
         # Beyond PR #387's list. pr-body.ps1 loads Test-Body from pr-body-check.ps1 (#388).
         @{ Name = 'pr-body-selftest'; From = 'sibling'; Script = 'scripts/pr-body.ps1'; Args = @('-SelfTest') }

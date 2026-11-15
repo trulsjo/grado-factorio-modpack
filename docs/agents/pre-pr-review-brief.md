@@ -218,7 +218,7 @@ pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/pr-body-check.ps1 <scr
 
 On PR #431 (2026-11-15) the reviewer ran it on the draft at the second confirmation and raised
 findings 10 and 11 from its refusals; the text behind finding 11 had stood in the draft at the
-first.
+first (PR #431's body, findings 10 and 11).
 
 ```
 <The fixes are in the fix commit, at `HEAD`: `git show HEAD`; or nothing.> <A commit whose

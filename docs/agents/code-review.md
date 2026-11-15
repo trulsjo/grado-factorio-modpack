@@ -44,7 +44,8 @@ is needed for it.
   `glossary-check.ps1 -Range origin/main...HEAD -LeftFile glossary-left.txt`, all three in
   `vendor/grado-factorio-tools/scripts/`, `scripts/mentions.ps1`, the resolve if an
   `info.json` changed, and, at each confirmation that hands the draft of the pull request's body,
-  `pr-body-check.ps1` in the same directory run on that draft. The commit check's range has two
+  `vendor/grado-factorio-tools/scripts/pr-body-check.ps1` run on that draft. The commit check's
+  range has two
   dots and the other two checks' have three: why is in the header of `.github/workflows/check.yml`.
   The glossary check fails on an
   added line that uses a word `GLOSSARY.md` avoids and is not marked deliberate, so a listed use

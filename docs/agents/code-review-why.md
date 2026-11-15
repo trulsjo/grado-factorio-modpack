@@ -523,3 +523,14 @@ survived verification":
 
 > **Every other surviving finding goes in a second comment on the same pull request,
 > with its score**
+
+**What does the rewording**, in the stub's *The pre-PR review*, as it stood until 2026-11-15,
+when #418 deleted this repository's copy for the shared one in `vendor/`:
+
+> `scripts/reword-commit.ps1` does the rewording, for a commit under the tip too,
+
+**The end of the *Check run* value**, as it stood until 2026-11-15, when #432 added the body
+check's run on the draft of the pull request's body at a confirmation:
+
+> `vendor/grado-factorio-tools/scripts/`, `scripts/mentions.ps1`, and the resolve if an
+> `info.json` changed.

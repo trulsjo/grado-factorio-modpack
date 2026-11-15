@@ -218,7 +218,7 @@ workflow, `overlap-rows-check.ps1` on no row in any catalogue file, `player-page
 `-All` on no pack directory or none holding Markdown, and `pr-body.ps1` on an
 empty `## Findings`: each a run that read nothing it must cover.
 
-The shared `vendor/grado-factorio-tools/scripts/pr-body-check.ps1` reads the finished body: it
+The shared `vendor/grado-factorio-tools/scripts/pr-body-check.ps1` reads a pull request body: it
 fails on a commit cited by hash that is not on `main`, and on a closing keyword outside a bare
 `Closes #N` line. It fails, too, on a body without the `mattpocock-skills:pr` template's three
 headings, once each and in order, or without one of its four markers under its own heading:

@@ -39,12 +39,12 @@ parts.
     all three, and the claim reached a commit message before a review caught it (PR #210, finding 2
     in its body).
 - **A ticket filed at Truls's word quotes his request word for word**, under an `## Asked`
-  heading of its own with the date, and marks anything the session adds to it as its own (#427).
-  On 2026-11-14 #425 was filed with a rule half he had not asked for, that a pull request body
+  heading of its own, and marks anything the session adds to it as its own (#427). On
+  2026-11-14 #425 was filed with a rule half he had not asked for, that a pull request body
   holding the pre-PR review is not a prior review, and its body did not tell his request from
   the session's addition. At confirmation the pre-PR reviewer took the half for his and said
   dropping it was his call, and withdrew that once the session sent his words, a round later
-  (by that session's account).
+  (PR #426's body, its finding 5 and *Second confirmation*).
 - **A criterion that a setting took effect names a newly started process**: where a ticket asks
   that a setting, a hook or a plugin be shown working or absent, the criterion names a process of
   Claude Code's executable started after the commit that holds the setting is

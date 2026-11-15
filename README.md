@@ -191,7 +191,8 @@ runs it.
 `scripts/mentions.ps1 -Range origin/main...HEAD` lists each tracked line that names what a branch
 changed: a script, a member a pack gains or loses, a `base >=` floor or `factorio_version` an
 `info.json` replaces, or a tools script whose call in `.githooks/`, `.github/workflows/` or
-`.claude/settings.json` the branch changes. On a branch that moves the tools pin it names too
+`.claude/settings.json` the branch changes, named there by its path or through a variable set to
+the submodule. On a branch that moves the tools pin it names too
 each tools script this repository runs that the move changes and each tools file the move
 changes that a line cites by its path, and prints the tools commits between the pins that call
 themselves breaking. Load records, traces and the lines the branch adds are left out, and a hit

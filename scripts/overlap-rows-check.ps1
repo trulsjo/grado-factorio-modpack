@@ -241,7 +241,7 @@ $listed = @(if ($Revision) { git -c core.quotepath=off ls-tree -r --name-only $R
 if ($LASTEXITCODE -ne 0) { throw 'git could not list the files to read. Run it inside the repository.' }
 $packs = [ordered] @{}
 foreach ($f in $listed -match '^[^/]+/info\.json$') {
-    $info = (git show "$at$f" | Out-String) | ConvertFrom-Json # strict-lists: one
+    $info = (git show "$at$f" | Out-String) | ConvertFrom-Json -NoEnumerate # strict-lists: one
     if ($LASTEXITCODE -ne 0) { throw "git could not read $at$f." }
     $packs[$info.name] = @($info.PSObject.Properties['dependencies']?.Value | Where-Object { $_ })
 }

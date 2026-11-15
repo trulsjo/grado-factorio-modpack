@@ -26,11 +26,13 @@
       - each `factorio_version` an info.json replaces, as its old value;
       - each tools script whose call the range changes (#430), by its file name: one named on a
         line, not a comment, that the range adds or removes in .githooks/, .github/workflows/
-        or .claude/settings.json, by its path under vendor/grado-factorio-tools/scripts/ or as
+        or .claude/settings.json, by its path under vendor/grado-factorio-tools/scripts/, as
         $<var>/scripts/<name> where the same file sets <var> to a path ending in the
-        submodule's, as the pin hooks set $sub. A script of this repository's scripts/ of the
-        same name is not one. The changed names line says which gates each rests on, as
-        (call: <file>, ...);
+        submodule's, as the pin hooks set $sub, or as $<var>/<name> where it sets <var> to one
+        ending in the submodule's scripts/, as pre-commit sets $tools. A script of this
+        repository's scripts/ of the same name is not one. The changed names line says which
+        gates each rests on, as (call: <file>, ...), and a name a pin move gives as well keeps
+        both notes;
       - on a range that moves the pin (GLOSSARY.md, *Pin*), each tools script this repository
         runs, by its file name, and each tools file a tracked line cites by its path, by that
         path inside the tools repository. Below, under WHAT A PIN MOVE NAMES.
@@ -150,7 +152,7 @@ function Get-Pin([string] $Rev) {
 
 # The names a changed call gives, each as @{ Name; Pattern; Note } (#430): each tools script named
 # on a line, not a comment, that the range adds or removes in a gate file, by its path under the
-# submodule or by a variable the same file sets to the submodule's path.
+# submodule or by a variable the same file sets to the submodule's path or to its scripts/.
 $GATES = '.githooks', '.github/workflows', '.claude/settings.json'
 function Get-CallNames([string] $Base, [string] $Tip, [string] $Range) {
     $whole = { param([string] $core) '(?<![\w.-])' + $core + '(?![\w-]|\.\d)' }
@@ -164,19 +166,23 @@ function Get-CallNames([string] $Base, [string] $Tip, [string] $Range) {
     }
     $calls = [ordered] @{}
     foreach ($f in $lines.Keys) {
-        # The variables the file sets to the submodule's path, at either end of the range.
-        $vars = [Collections.Generic.HashSet[string]]::new()
+        # The variables the file sets to the submodule's path or to its scripts/, at either end of
+        # the range.
+        $roots = [Collections.Generic.HashSet[string]]::new()
+        $dirs = [Collections.Generic.HashSet[string]]::new()
         foreach ($rev in $Base, $Tip) {
             git cat-file -e "${rev}:$f" 2>$null
             if ($LASTEXITCODE -ne 0) { continue }
             foreach ($l in git show "${rev}:$f") {
                 if ($l -notmatch '^\s*(?:export\s+)?([A-Za-z_]\w*)=["'']?([^"''\s;]*)') { continue }
                 $var = $Matches[1]
-                if ($Matches[2] -match "$([regex]::Escape($TOOLS_PATH))/?$") { [void] $vars.Add($var) }
+                if ($Matches[2] -match "$([regex]::Escape($TOOLS_PATH))/?$") { [void] $roots.Add($var) }
+                elseif ($Matches[2] -match "$([regex]::Escape($TOOLS_PATH))/scripts/?$") { [void] $dirs.Add($var) }
             }
         }
-        $via = @([regex]::Escape($TOOLS_PATH)) + @($vars | ForEach-Object { '\$\{?' + $_ + '\}?' })
-        $call = "(?:$($via -join '|'))/scripts/([A-Za-z0-9_.-]+)"
+        $asVar = { param($set) @($set | ForEach-Object { '\$\{?' + $_ + '\}?' }) }
+        $via = @("(?:$((@([regex]::Escape($TOOLS_PATH)) + (& $asVar $roots)) -join '|'))/scripts") + (& $asVar $dirs)
+        $call = "(?:$($via -join '|'))/([A-Za-z0-9_.-]+)"
         foreach ($l in $lines[$f] -notmatch '^\s*#') {
             foreach ($m in [regex]::Matches($l, $call)) {
                 $s = $m.Groups[1].Value -replace '\.+$'
@@ -323,15 +329,21 @@ if ($SelfTest) {
             'The message hook runs call-b.ps1.',
             'A lone check.ps1 is another name.',
             'A comment names call-c.ps1.',
-            'The workflow also runs still.ps1, and namesake.ps1 is ours.')
+            'The workflow also runs still.ps1, and namesake.ps1 is ours.',
+            'The push hook runs s-call.ps1.',
+            'The workflow ran gone.ps1.')
         # The gates' calls (#430): the branch changes x-check.ps1's arguments, call-b.ps1's path
-        # through a variable, and a comment naming call-c.ps1, and adds a call of this
-        # repository's own namesake.ps1; still.ps1's call stays.
+        # through a variable set to the submodule, s-call.ps1's arguments through one set to its
+        # scripts/, run-a.ps1's arguments, which the pin move names too, and a comment naming
+        # call-c.ps1; it removes gone.ps1's call and adds one of this repository's own
+        # namesake.ps1; still.ps1's call stays.
         & $write '.github/workflows/check.yml' @(
             '# runs vendor/grado-factorio-tools/scripts/call-c.ps1 first',
             'run: pwsh -File vendor/grado-factorio-tools/scripts/x-check.ps1',
-            'run: pwsh -File vendor/grado-factorio-tools/scripts/still.ps1')
+            'run: pwsh -File vendor/grado-factorio-tools/scripts/still.ps1',
+            'run: pwsh -File vendor/grado-factorio-tools/scripts/gone.ps1')
         & $write '.githooks/commit-msg' @('t=vendor/grado-factorio-tools', 'f=$t/scripts/call-b.ps1', 'pwsh -File "$f" "$1"')
+        & $write '.githooks/pre-push' @('tools="$root/vendor/grado-factorio-tools/scripts"', 'pwsh -File "$tools/s-call.ps1" a')
         & $pack 'Lower' '2.0' @('base >= 2.0.5', 'kept', '? soft', 'top-ish')
         & $pack 'Upper' '2.0' @('Lower', 'top', 'stays')
         & $write 'scripts/a-check.ps1' @('# a check')
@@ -369,6 +381,11 @@ if ($SelfTest) {
             'run: pwsh -File vendor/grado-factorio-tools/scripts/still.ps1',
             'run: pwsh -File scripts/namesake.ps1')
         & $write '.githooks/commit-msg' @('t=vendor/grado-factorio-tools', 'f="${t}/scripts/call-b.ps1"', 'pwsh -File "$f" "$1"')
+        & $write '.githooks/pre-push' @('tools="$root/vendor/grado-factorio-tools/scripts"', 'pwsh -File "$tools/s-call.ps1" b')
+        & $write '.githooks/pre-commit' @(
+            'pwsh -File vendor/grado-factorio-tools/scripts/run-a.ps1 -New',
+            'pwsh -File vendor/grado-factorio-tools/scripts/run-b.ps1',
+            'pwsh -File vendor/grado-factorio-tools/scripts/run-c.ps1')
         & $git add -A
         & $git commit --quiet -m branch
         $out = & $run 'base...HEAD'
@@ -425,6 +442,12 @@ if ($SelfTest) {
             (& $has '(?m)^docs/tools\.md:6: x-check\.ps1: ') -and $out.Text -match 'changed names: .*`x-check\.ps1` \(call: \.github/workflows/check\.yml\)' } }
         @{ Name = 'a call through a variable the gate sets to the submodule is named'; Test = {
             (& $has '(?m)^docs/tools\.md:7: call-b\.ps1: ') -and $out.Text -match 'changed names: .*`call-b\.ps1` \(call: \.githooks/commit-msg\)' } }
+        @{ Name = 'a call through a variable the gate sets to the submodule''s scripts/ is named'; Test = {
+            (& $has '(?m)^docs/tools\.md:11: s-call\.ps1: ') -and $out.Text -match 'changed names: .*`s-call\.ps1` \(call: \.githooks/pre-push\)' } }
+        @{ Name = 'a call the range only removes is named'; Test = {
+            (& $has '(?m)^docs/tools\.md:12: gone\.ps1: ') -and $out.Text -match 'changed names: .*`gone\.ps1` \(call: \.github/workflows/check\.yml\)' } }
+        @{ Name = 'a name both a changed call and a pin move give keeps both notes'; Test = {
+            $out.Text -match 'changed names: .*`run-a\.ps1` \(call: \.githooks/pre-commit\) \(pin\)' } }
         @{ Name = 'a call is matched whole: check.ps1 is not named for x-check.ps1'; Test = {
             -not (& $has '(?m)^docs/tools\.md:8:') -and $out.Text -notmatch 'changed names: .*`check\.ps1`' } }
         @{ Name = 'a changed comment, an unchanged call and a call of this repository''s namesake name no tools script'; Test = {
@@ -432,7 +455,7 @@ if ($SelfTest) {
         @{ Name = 'a range that changes no gate call names nothing by a call'; Test = {
             $pinOnly.Text -notmatch '\(call' -and $back.Text -notmatch '\(call' } }
         @{ Name = 'a run script that changed between the pins is listed, tagged pin'; Test = {
-            (& $has '(?m)^docs/tools\.md:1: run-a\.ps1: ') -and $out.Text -match 'changed names: .*`run-a\.ps1` \(pin\)' } }
+            (& $has '(?m)^docs/tools\.md:1: run-a\.ps1: ') -and $out.Text -match 'changed names: .*`run-a\.ps1` (?:\(call: [^)]*\) )?\(pin\)' } }
         @{ Name = 'a run script that did not change is no name, though a comment in it names a changed file'; Test = {
             (& $has '(?m)^docs/tools\.md:2: run-b\.ps1: ') -and $out.Text -notmatch 'changed names: .*run-c' } }
         @{ Name = 'a changed tools file neither run nor cited is no name'; Test = {

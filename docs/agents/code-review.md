@@ -42,9 +42,11 @@ is needed for it.
   `commit-check.ps1 -ScopeFile commit-scopes.txt -Range origin/main..HEAD`,
   `markdown-check.ps1 -Range origin/main...HEAD -MaxLineLength 100` and
   `glossary-check.ps1 -Range origin/main...HEAD -LeftFile glossary-left.txt`, all three in
-  `vendor/grado-factorio-tools/scripts/`, `scripts/mentions.ps1`, and the resolve if an
-  `info.json` changed. The commit check's range has two dots and the other two checks' have
-  three: why is in the header of `.github/workflows/check.yml`. The glossary check fails on an
+  `vendor/grado-factorio-tools/scripts/`, `scripts/mentions.ps1`, the resolve if an
+  `info.json` changed, and, at each confirmation that hands the draft of the pull request's body,
+  `pr-body-check.ps1` in the same directory run on that draft. The commit check's range has two
+  dots and the other two checks' have three: why is in the header of `.github/workflows/check.yml`.
+  The glossary check fails on an
   added line that uses a word `GLOSSARY.md` avoids and is not marked deliberate, so a listed use
   is reworded or marked before the review. Whether a marker is honest is the reviewer's: a marker
   silences the script.

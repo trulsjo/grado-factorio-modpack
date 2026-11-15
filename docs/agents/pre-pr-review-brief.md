@@ -208,6 +208,18 @@ rewording is the exception: the reviewer runs `git diff <old> <new>`, so the two
 the turn's commands, and its confirmation line names the commit by its role. The first confirmation
 also hands the draft of the pull request's body, `<scratch>/draft.md`, written before it (#273).
 
+**Before a turn that hands the draft, the shared body check runs on it** (#432), and what it
+refuses is fixed in the draft before the turn is sent. Its output is kept as *The raw output
+behind a figure* says and handed with the turn:
+
+```
+pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/pr-body-check.ps1 <scratch>/draft.md > <scratch>/draft-body-check.txt
+```
+
+On PR #431 (2026-11-15) the reviewer ran it on the draft at the second confirmation and raised
+findings 10 and 11 from its refusals; the text behind finding 11 had stood in the draft at the
+first.
+
 ```
 <The fixes are in the fix commit, at `HEAD`: `git show HEAD`; or nothing.> <A commit whose
 message was reworded, named by its role, with its old and new hash for the commands alone:
@@ -215,7 +227,8 @@ message was reworded, named by its role, with its old and new hash for the comma
 outside the diff, such as a ticket's body, and how to read each; or nothing.> <The checks'
 results after this commit: <scratch>/commit-check.txt, <scratch>/markdown-check.txt and
 <scratch>/glossary-check.txt; or nothing.> <The draft of the pull request's body above the
-review: <scratch>/draft.md, read like the commit messages; or nothing.> <The raw output and
+review: <scratch>/draft.md, read like the commit messages, with the body check's run on it,
+<scratch>/draft-body-check.txt; or nothing.> <The raw output and
 saved command behind each figure the fix or the draft adds, one path each with its figure; or
 nothing.>
 

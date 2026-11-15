@@ -113,7 +113,7 @@ the game.
 
 Two of the git hooks that `git config core.hooksPath .githooks` wires up check: `commit-msg`
 checks the shape of a commit message, its scope against `commit-scopes.txt`, and the members it
-changes, and `pre-commit` runs the shared
+changes, and `pre-commit` runs first the shared
 Markdown check, `vendor/grado-factorio-tools/scripts/markdown-check.ps1`, on the staged Markdown
 files.
 Both hooks need the tools submodule, so a clone runs `git submodule update --init` too; without
@@ -125,8 +125,9 @@ to the limit. It does not judge prose.
 `-Range origin/main...HEAD` checks the Markdown a branch changed, `-All` every tracked file, and
 `-SelfTest` proves it can fail.
 
-A pull request gets both checks from `.github/workflows/check.yml`, over its own commits, with
-each check's self-test and the session hooks' first. Nothing is installed on the runner.
+A pull request gets both checks, among others, from `.github/workflows/check.yml`, over its own
+commits, with each check's self-test and the session hooks' first. Nothing is installed on the
+runner.
 
 Three more hooks from the same `core.hooksPath` check nothing: `post-checkout` after a branch
 switch, `post-merge`, and `post-rewrite` after a rebase each run the shared

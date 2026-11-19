@@ -942,6 +942,16 @@ nothing. The rest stands as quoted.
 >   changes, its old wording goes to *The trail of CLAUDE.md's State and open decisions* in
 >   `docs/porting-notes.md`, with the date, and not beside the new one.
 
+And as it stood from then until 2026-11-19, when #434 cut it to one line linking
+`vendor/grado-factorio-tools/docs/writing-agent-docs.md`, *The live rule only*, which states the
+rest of it for every repository (trulsjo/grado-factorio-tools#328). The line keeps only what is
+this repository's own, where an old wording goes:
+
+> - **This file states the live rule only.** It is loaded into every session. When a line here
+>   changes, its old wording goes to *The trail of CLAUDE.md's State and open decisions* in
+>   `docs/porting-notes.md`, with the date, and not beside the new one. A sentence added where none
+>   stood owes the trail nothing.
+
 **What the pull request check runs**, under *Commit messages*, as it stood until 2026-10-09, when
 #194 added the download hook's self-test:
 

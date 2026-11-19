@@ -71,6 +71,10 @@
         @{ Name = 'strict-list-scripts'; From = 'tools'; Script = 'strict-list-check.ps1'; Args = @('scripts') }
         @{ Name = 'cited-commit-selftest'; From = 'tools'; Script = 'cited-commit-check.ps1'; Args = @('-SelfTest') }
         @{ Name = 'cited-commit-tree'; From = 'tools'; Script = 'cited-commit-check.ps1'; Args = @('-Exempt', 'docs/loads/,docs/traces/') }
+        # .githooks/pre-commit and .github/workflows/check.yml run it with no argument, CI its
+        # -SelfTest too (#424); added by #424.
+        @{ Name = 'form-check-selftest'; From = 'tools'; Script = 'form-check.ps1'; Args = @('-SelfTest') }
+        @{ Name = 'form-check-gate'; From = 'tools'; Script = 'form-check.ps1'; Args = @() }
         # The shared absolute-words.ps1, in place of scripts/absolute-words.ps1; added by #417.
         @{ Name = 'absolute-words-selftest'; From = 'tools'; Script = 'absolute-words.ps1'; Args = @('-SelfTest') }
     )

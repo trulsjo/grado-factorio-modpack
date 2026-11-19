@@ -47,10 +47,11 @@
     Join-Path, a file read. A cited file is named by its path inside the tools repository, not
     its file name. The changed names line says what each such name rests on: (pin) when only
     its own file differs, and otherwise (pin: <file>, ...), each file that differs of it and
-    what it loads. After the list come the tools commits between the pins whose subject has a
-    `!` before its colon or whose body has a BREAKING CHANGE: footer, every one, with its footer
-    where it has one; those a pin moved back drops are marked dropped. They are printed whenever
-    the pin moved, with no hit too.
+    what it loads. After the list come the tools commits between the pins that call themselves
+    breaking, as the tools' breaking-lib.ps1 reads and prints them (grado-factorio-tools#255): that
+    library owns the rule, and its header states it and what it cannot see. This script holds no
+    rule of its own. Those a pin moved back drops are marked dropped. They are printed whenever
+    the pin moved, with no hit too, and `none` when there are none.
 
     WHAT IT READS. Every tracked text file at the tip, from the repository's root wherever the
     script is run, and on a pin move the submodule's clone at both pins.
@@ -109,6 +110,12 @@ $ast = [Management.Automation.Language.Parser]::ParseFile((Resolve-Path -Literal
 $parse = $ast.Find({ param($n) $n -is [Management.Automation.Language.FunctionDefinitionAst] -and $n.Name -eq 'ConvertFrom-Dependency' }, $true)
 if (-not $parse) { throw "$resolver no longer defines ConvertFrom-Dependency." }
 . ([scriptblock]::Create($parse.Extent.Text))
+
+# The one rule for a pin move's breaking tools commits, owned by the tools repository
+# (grado-factorio-tools#255): Get-BreakingCommit and Format-BreakingCommit.
+$breakingLib = Join-Path $PSScriptRoot '../vendor/grado-factorio-tools/scripts/breaking-lib.ps1'
+if (-not (Test-Path -LiteralPath $breakingLib)) { throw "$breakingLib not found: run 'git submodule update --init'." }
+. $breakingLib
 
 # The changed names, each as @{ Name; Pattern }, from the packs at two revisions and the paths
 # the range touches.
@@ -249,18 +256,6 @@ function Get-PinNames([string] $Tools, [string] $Old, [string] $New, [string] $T
     foreach ($k in $names.Keys) { [pscustomobject] @{ Name = $k; Pattern = $names[$k].Pattern; Note = $names[$k].Note } }
 }
 
-# The tools commits in From..To whose subject has a `!` before its colon or whose body has a
-# BREAKING CHANGE: footer, each as @{ Hash; Subject; Footer }.
-function Get-BreakingCommits([string] $Tools, [string] $From, [string] $To) {
-    $raw = @(git -C $Tools log --format='%h%x1f%s%x1f%b%x1e' "$From..$To") -join "`n"
-    foreach ($c in $raw -split "\x1e") {
-        $f = $c.Trim("`n") -split "\x1f"
-        if ($f.Count -lt 3) { continue }
-        $footer = [regex]::Match(($f[2] -replace "`r"), '(?ms)^BREAKING[ -]CHANGE:.*?(?=\n[ \t]*\n|\z)').Value.TrimEnd()
-        if ($f[1] -match '^[^:]*!:' -or $footer) { [pscustomobject] @{ Hash = $f[0]; Subject = $f[1]; Footer = $footer } }
-    }
-}
-
 # Whether the character at Index of a paragraph's text falls inside a dated note.
 function Test-Dated([string] $Paragraph, [int] $Index) {
     foreach ($m in [regex]::Matches($Paragraph, '\*\d{4}-\d{2}-\d{2} \(#[^*]*\*?')) {
@@ -308,9 +303,12 @@ if ($SelfTest) {
         & $twrite 'docs/rules.md' @('rules, changed')
         & $tgit commit --quiet -a -m 'feat(run-a)!: change run-a' -m 'Body.' -m 'BREAKING CHANGE: run-a now reads x.'
         $pin2 = git -C $toolsRepo rev-parse HEAD
-        # The third: a breaking commit changing only a page nothing cites.
+        # The third: a `!` commit with no footer, then a breaking commit changing only a page
+        # nothing cites, whose footer a trailer line ends.
+        & $twrite 'scripts/idle.ps1' @('# idle, changed again')
+        & $tgit commit --quiet -a -m 'fix(idle)!: no footer'
         & $twrite 'docs/other.md' @('other, changed')
-        & $tgit commit --quiet -a -m 'docs: move other' -m 'BREAKING CHANGE: other moved.'
+        & $tgit commit --quiet -a -m 'docs: move other' -m "BREAKING CHANGE: other moved.`nCo-Authored-By: Someone <someone@example.invalid>"
         $pin3 = git -C $toolsRepo rev-parse HEAD
         & $git init --quiet
         & $git submodule --quiet add $toolsRepo vendor/grado-factorio-tools
@@ -471,6 +469,10 @@ if ($SelfTest) {
         @{ Name = 'a pin move alone with no hit says nothing is listed, prints the footer and exits 0'; Test = {
             $pinOnly.Code -eq 0 -and $pinOnly.Text -match 'nothing is listed' -and $pinOnly.Text -match '(?m)^    BREAKING CHANGE: other moved\.$' -and
                 $pinOnly.Text -notmatch '(?m)^\S+:\d+: ' } }
+        @{ Name = 'a breaking commit with no footer is printed with a line saying so'; Test = {
+            $pinOnly.Text -match '(?m)^breaking: [0-9a-f]+ fix\(idle\)!: no footer\n    \(no BREAKING CHANGE: footer\)$' } }
+        @{ Name = 'a footer ends at a trailer line, which is not printed'; Test = {
+            $pinOnly.Text -match '(?m)^    BREAKING CHANGE: other moved\.$' -and $pinOnly.Text -notmatch 'Co-Authored-By' } }
         @{ Name = 'a pin moved back marks the breaking commit it drops as dropped'; Test = {
             $back.Code -eq 0 -and $back.Text -match '(?m)^breaking, dropped: [0-9a-f]+ docs: move other$' } }
         @{ Name = 'a pin the clone does not hold exits non-zero, naming the fetch'; Test = {
@@ -539,18 +541,14 @@ if ($moved) {
     }
     foreach ($n in Get-PinNames $tools $oldPin $newPin $tip) { Add-Name $n }
     $differCount = @(git -C $tools diff --name-only --no-renames $oldPin $newPin).Count
-    $breaking = @(@(Get-BreakingCommits $tools $oldPin $newPin | Select-Object *, @{ n = 'Dropped'; e = { $false } }) +
-        @(Get-BreakingCommits $tools $newPin $oldPin | Select-Object *, @{ n = 'Dropped'; e = { $true } }))
+    $breaking = @(Get-BreakingCommit -Repo $tools -Old $oldPin -New $newPin)
 }
 # What a pin move printed after the list: the move, then each breaking commit with its footer.
 function Write-Pin {
     if (-not $moved) { return }
     Write-Host ''
     Write-Host "pin: $TOOLS_PATH moves from $($oldPin.Substring(0, 7)) to $($newPin.Substring(0, 7)); $differCount tools file(s) differ, $($breaking.Count) breaking commit(s) between the pins."
-    foreach ($b in $breaking) {
-        Write-Host "breaking$(if ($b.Dropped) { ', dropped' }): $($b.Hash) $($b.Subject)"
-        if ($b.Footer) { Write-Host ($b.Footer -replace '(?m)^', '    ') }
-    }
+    Format-BreakingCommit -Commit $breaking | ForEach-Object { Write-Host $_ }
 }
 
 if (-not $names) {

@@ -149,10 +149,10 @@ the portal and still be uninstallable on the other line (#43).
 - **oh-my-claudecode and ponytail are disabled in `.claude/settings.json`** (#160). Where the
   oh-my-claudecode section of a global `CLAUDE.md` loads, do not act on its agents, skills or
   keywords here, and its review rule is replaced by `docs/agents/code-review.md`.
-- **This file states the live rule only.** It is loaded into every session. When a line here
-  changes, its old wording goes to *The trail of CLAUDE.md's State and open decisions* in
-  `docs/porting-notes.md`, with the date, and not beside the new one. A sentence added where none
-  stood owes the trail nothing.
+- **This file states the live rule only**
+  ([`writing-agent-docs.md`](vendor/grado-factorio-tools/docs/writing-agent-docs.md)): an old
+  wording goes to *The trail of CLAUDE.md's State and open decisions* in
+  `docs/porting-notes.md`, with the date.
 - **`<pack>/README.md` is the player's page** (2026-09-29, #17), and the text meant for the pack's
   portal description. It ships inside the pack zip, because the packer takes every tracked file in
   the pack directory. It is written for players, so no ticket numbers and no project vocabulary.

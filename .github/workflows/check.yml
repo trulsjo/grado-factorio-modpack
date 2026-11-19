@@ -77,6 +77,12 @@
 # the other steps again too. The script refuses a shallow clone, and the whole history below is
 # what lets it tell a commit on main from one that is not.
 #
+# Each tools script a gate runs, in .githooks/, .github/workflows/ and .claude/settings.json, is
+# read for a form in scripts/pin-forms.psd1 (#424), by the shared form-check.ps1 with its
+# self-test among the others, as .githooks/pre-commit runs it. A -SelfTest form is enough, as
+# Truls ruled on #424 (2026-11-14). What it reads as a call, and what it cannot see, is in its
+# header.
+#
 # The commit check is handed commit-scopes.txt as -ScopeFile (#415), as .githooks/commit-msg
 # hands it, so a scope the file does not list fails here too. Each file git tracks under
 # .githooks is read for mode 100755 by one step over `git ls-files -s .githooks` (#415): off
@@ -133,6 +139,7 @@ jobs:
           pwsh -NoProfile -File scripts/overlap-rows-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/player-page-check.ps1 -SelfTest
           pwsh -NoProfile -File scripts/member-change-check.ps1 -SelfTest
+          pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/form-check.ps1 -SelfTest
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/refuse-cd-into-mod-cache.ps1 -SelfTest -Settings .claude/settings.json
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/ask-before-download.ps1 -SelfTest -Settings .claude/settings.json
           pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/refuse-python-heredoc.ps1 -SelfTest -Settings .claude/settings.json
@@ -177,6 +184,10 @@ jobs:
       - name: Check every Overlaps row against the dependency lists
         if: ${{ !cancelled() }}
         run: pwsh -NoProfile -File scripts/overlap-rows-check.ps1 -Revision HEAD
+
+      - name: Check that every tools script a gate runs has a form
+        if: ${{ !cancelled() }}
+        run: pwsh -NoProfile -File vendor/grado-factorio-tools/scripts/form-check.ps1
 
       - name: Check the pack directories' Markdown for an HTML comment
         if: ${{ !cancelled() }}

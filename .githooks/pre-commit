@@ -15,7 +15,9 @@
 # - every Overlaps row of the staged catalogue against the staged dependency lists (#357), by
 #   scripts/overlap-rows-check.ps1;
 # - the staged Markdown of each pack's directory for an HTML comment (#376), by
-#   scripts/player-page-check.ps1.
+#   scripts/player-page-check.ps1;
+# - each tools script a gate runs, for a form in scripts/pin-forms.psd1 (#424), by the shared
+#   form-check.ps1, which reads the gates and the forms file from the working tree, not as staged.
 #
 # The shared scripts are in vendor/grado-factorio-tools/scripts/. What each reads as what, and
 # what it cannot see, is in its header; this is only the wiring.
@@ -47,6 +49,7 @@ if [ -f "$tools/markdown-check.ps1" ]; then
     pwsh -NoProfile -File "$tools/markdown-check.ps1" -MaxLineLength 100 || status=1
     pwsh -NoProfile -File "$root/scripts/overlap-rows-check.ps1" || status=1
     pwsh -NoProfile -File "$tools/comment-line-check.ps1" -Path 'scripts/*.ps1,.githooks/*,.github/workflows/*.yml' || status=1
+    pwsh -NoProfile -File "$tools/form-check.ps1" || status=1
 
     staged="$(git -c core.quotePath=false diff --cached --name-only --diff-filter=ACMR -- scripts/ | grep '^scripts/[^/]*\.ps1$')"
     if [ -z "$staged" ]; then

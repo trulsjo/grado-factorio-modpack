@@ -163,6 +163,14 @@ rebase merge or `git gc` can take away. The load and trace records, `docs/loads/
 `docs/traces/`, are exempt. The same workflow runs it, with its self-test, and no hook does; its
 header says why.
 
+The shared `form-check.ps1`, in the same directory, reads `.githooks/`, `.github/workflows/` and
+`.claude/settings.json` for each tools script they run, and fails on one with no form in
+`scripts/pin-forms.psd1`, naming the script and each gate line that runs it. A `-SelfTest` form
+is enough. It fails, too, on a forms file it cannot read or that holds no form, on no gate file,
+and on no tools script. The `pre-commit` hook runs it, on the working tree rather than as staged,
+and the same workflow, with its self-test. Its header says which calls it reads and which it
+cannot see.
+
 `scripts/overlap-rows-check.ps1` reads every `| **Overlaps** |` row in `docs/catalogue/` against
 the five packs' dependency lists, and fails on a row that names, outside `~~ ~~`, a mod its tagged
 pack does not list, or that stands in the entry of a mod not in the dependencies of its own pack
